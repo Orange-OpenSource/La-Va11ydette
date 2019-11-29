@@ -20,6 +20,9 @@
       <link rel="stylesheet" href="/css/reco.css">
       <link rel="stylesheet" href="/web/css/reco-custom.css">
 
+	  <!-- InscrybMDE - Markdown Editor https://github.com/Inscryb/inscryb-markdown-editor -->
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/inscrybmde@1.11.6/dist/inscrybmde.min.css">
+
       <script src="/js/jquery.min.js"></script>
       <script src="/js/jquery.validate.min.js"></script>
    
@@ -371,7 +374,7 @@ function reqListener(responseFirst) {
 			
 			<!-- Modal -->
 			 let htmlModal = '';
-			 htmlModal = '<div id="modal'+targetId+'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
+			 htmlModal = '<div id="modal'+targetId+'" data-keyboard="false" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
 			 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 			 htmlModal += '<div class="modal-content">';
 			 htmlModal += '<div class="modal-header">';
@@ -395,10 +398,20 @@ function reqListener(responseFirst) {
 			let elModal = document.getElementById('modal');
 			elModal.innerHTML = htmlModal;
 
+			var comment = document.getElementById('comment'+targetId);			
+
+			<!-- Load markdown editor -->
+			var inscrybmde;
+			window.setTimeout(function(){
+				inscrybmde = new InscrybMDE({spellChecker: false, element: comment});
+				inscrybmde.codemirror.options.extraKeys['Tab'] = false;
+				inscrybmde.codemirror.options.extraKeys['Shift-Tab'] = false;
+				inscrybmde.codemirror.options.extraKeys['Esc'] = false;
+			}, 0);
+
 			<!-- Event handler -->
-			var commentSave = document.getElementById("commentSaveBtn");
-			var comment = document.getElementById('comment'+targetId);
-			commentSave.addEventListener('click', function(){app.addComment(targetId, comment.value)});
+			var commentSave = document.getElementById("commentSaveBtn");			
+			commentSave.addEventListener('click', function(){app.addComment(targetId, inscrybmde?inscrybmde.value():comment.value)});			
 			
 		}
 	
@@ -677,7 +690,8 @@ function reqListener(responseFirst) {
 </script>
 	<script src="./boosted/js/boosted.min.js"></script>
     <script type="text/javascript" src="/js/highlight.min.js"></script>
-    <script type="text/javascript" src="/js/reco.js"></script> 
+    <script type="text/javascript" src="/js/reco.js"></script> 	
+    <script src="https://cdn.jsdelivr.net/npm/inscrybmde@1.11.6/dist/inscrybmde.min.js"></script>
 	<div id="modal"></div>
 </body>
 </html>

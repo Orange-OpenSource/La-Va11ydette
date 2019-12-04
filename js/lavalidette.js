@@ -101,13 +101,13 @@ function reqListener(responseFirst) {
 	
 	 //init checklist name
 	var btnChecklist = document.getElementById("btnChecklistName");
-	btnChecklist.addEventListener('click', function(){app.setChecklistName()}, false);
+	btnChecklist.addEventListener('click', function(){checklistApp.setChecklistName()}, false);
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = data.checklist.name;
 	
 	
-	let app = new function() {
+	let checklistApp = new function() {
 	  // Récupération des données
 	  //this.refTests = refTests;
 	  var textContent = {
@@ -219,7 +219,7 @@ function reqListener(responseFirst) {
 			<!-- Event handler -->
 			var nameSaveBtn = document.getElementById("nameSaveBtn");
 			var name = document.getElementById("inputChecklistName");
-			nameSaveBtn.addEventListener('click', function(){app.updateChecklistName(name.value)});
+			nameSaveBtn.addEventListener('click', function(){checklistApp.updateChecklistName(name.value)});
 
 		}
 	 
@@ -296,7 +296,7 @@ function reqListener(responseFirst) {
 			<!-- Event handler -->
 			var commentSave = document.getElementById("commentSaveBtn");
 			var comment = document.getElementById('comment'+targetId);
-			commentSave.addEventListener('click', function(){app.addComment(targetId, comment.value)});
+			commentSave.addEventListener('click', function(){checklistApp.addComment(targetId, comment.value)});
 			
 		}
 	
@@ -370,9 +370,9 @@ function reqListener(responseFirst) {
 			
 			let elreinitLink = document.getElementById('reinitLink');
 			 elreinitLink.addEventListener('click', function() {
-				app.FetchAll(refTests);
-				app.runFilter();
-				app.UpdateFeedback(false, refTests.length);
+				checklistApp.FetchAll(refTests);
+				checklistApp.runFilter();
+				checklistApp.UpdateFeedback(false, refTests.length);
 				
 				//reinitialisation du filtre en cours de sélection
 				var elToReinit = document.querySelector("#types input:checked");
@@ -456,12 +456,12 @@ function reqListener(responseFirst) {
 				var radios = document.getElementsByName("test"+i);
 				var nodeArray = [];
 				for (var j = 0; j < radios.length; ++j) {
-					 radios[j].addEventListener('click', function(){app.setStates(this, currentRefTests[i].ID)}, false);
+					 radios[j].addEventListener('click', function(){checklistApp.setStates(this, currentRefTests[i].ID)}, false);
 				}
 
 				//commentaires
 				var comment = document.getElementById("commentBtn"+i);
-				comment.addEventListener('click', function(){app.setComment(i, currentRefTests[i].title)}, false);
+				comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
 				
 			}
 			
@@ -481,9 +481,9 @@ function reqListener(responseFirst) {
 			  let elBtnReinit = document.getElementById('reinit');
 			  
 			 elBtnReinit.addEventListener('click', function() {
-				app.FetchAll(refTests);
-				app.runFilter();
-				app.UpdateFeedback(false, refTests.length);
+				checklistApp.FetchAll(refTests);
+				checklistApp.runFilter();
+				checklistApp.UpdateFeedback(false, refTests.length);
 				
 				//reinitialisation du filtre en cours de sélection
 				var elToReinit = document.querySelector("#types input:checked");
@@ -503,7 +503,7 @@ function reqListener(responseFirst) {
 				elTypes.appendChild(node);    
 
 				var elRadio = document.getElementById("type"+i);
-				elRadio.addEventListener('click', function(){app.runFilter(this)}, false);
+				elRadio.addEventListener('click', function(){checklistApp.runFilter(this)}, false);
 				
 			  }
 			 //fin ajout input de filtre
@@ -547,28 +547,28 @@ function reqListener(responseFirst) {
 						});		
 
 						//on met à jour la page				
-						app.FetchAll(filteredTest);
+						checklistApp.FetchAll(filteredTest);
 						
 						if (runUpdateType) {
-							app.UpdateTypes(uniqueTypes, filteredTest);
+							checklistApp.UpdateTypes(uniqueTypes, filteredTest);
 						}
 						
-						app.UpdateFeedback(true,filteredTest.length);
+						checklistApp.UpdateFeedback(true,filteredTest.length);
 			
 							
 				 } else {
 					//aucun critère de sélectionné, on réinitialise la page
-					app.FetchAll(refTests);
+					checklistApp.FetchAll(refTests);
 					
 				 }
 		}
 
 }
 	// Affichage de tous les tests
-	app.FetchAll(refTests);
+	checklistApp.FetchAll(refTests);
 	// Filtrage
 		
 	// Affiche les checkboxes et boutons radios
-	app.DisplayFilters();
-	app.UpdateFeedback(false, refTests.length);
+	checklistApp.DisplayFilters();
+	checklistApp.UpdateFeedback(false, refTests.length);
 }

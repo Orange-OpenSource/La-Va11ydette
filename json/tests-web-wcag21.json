@@ -1,0 +1,192 @@
+{
+	"checklist": {
+		"name": "Audit WCAG 2.1",
+		"items": [{
+				"themes": "1.1.1 Non-text Content",
+				"ID": "testID-001",
+				"title": "Pour les contenus audio et/ou vidéo : fournir une description à l'aide d'un texte adjacent",
+				"type": [
+					""
+				],
+				"markdown": ["Pour chaque média temporel (son ou vidéo), le contenu textuel adjacent permet-il d'identifier clairement le média temporel"],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.1.1 Non-text Content",
+				"ID": "testID-002",
+				"title": "Vérifier les balises IMG, AREA, canvas, input ou object type IMAGE",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"",
+					""
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.1.1 Non-text Content",
+				"ID": "testID-003",
+				"title": "Pour les images SVG (role image + aria-label)",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"",
+					""
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.1.1 Non-text Content",
+				"ID": "testID-004",
+				"title": "CAPTCHA (prévenir l'utilisateur via l'alternative par exemple qu'il y a un CAPTCHA)",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"",
+					""
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.1.1 Non-text Content",
+				"ID": "testID-005",
+				"title": "Prévoir une alternative pour : art ASCII, émoticon, syntaxe cryptique",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"",
+					""
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.3.1 Info and Relationships",
+				"ID": "testID-006",
+				"title": "CSS désactivées : ",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"L'information reste présente si CSS désactivées"
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.3.1 Info and Relationships",
+				"ID": "testID-007",
+				"title": "Tableau de données 1/3",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"Présence d'un résumé sur les tableaux de données complexe"
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.3.1 Info and Relationships",
+				"ID": "testID-008",
+				"title": "Tableau de données 2/3",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"Titre associé au tableau de données (balise caption)"
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			},{
+				"themes": "1.3.1 Info and Relationships",
+				"ID": "testID-009",
+				"title": "Tableau de données 3/3",
+				"type": [
+					""
+				],
+				"tests": [
+					""
+				],
+				"verifier": [
+					"Déclaration des en-têtes (lignes et colonnes)"
+				],
+				"resultat": [
+					""
+				],
+				"exception": "",
+				"raccourcis": "",
+				"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+				"resultatTest": "",
+				"commentaire": ""
+			}
+		]
+	}
+}

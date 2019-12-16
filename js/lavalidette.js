@@ -39,7 +39,7 @@
 	}
 
 	//appel des Json
-	doXHR('json/tests-web-v2.json');
+	doXHR('json/tests-web-wcag.json');
 	
 	function reqError(err) {
 	   let elrefTests = document.getElementById('refTests');
@@ -92,20 +92,32 @@
 function reqListener(responseFirst) {
 		
 	var data = JSON.parse(responseFirst);
+	var currentPage = 0;
+	var idPageIndex = 0;
+	
+	// Récupération des données
+	var refTests = data.checklist.page[currentPage].items;				 
 	
 	var uniqueTypes = [];
-	var refTests = data.checklist.items;
 
 	//class statut
 	var statutClass = "badge-light";
 	
 	 //init checklist name
 	var btnChecklist = document.getElementById("btnChecklistName");
-	btnChecklist.addEventListener('click', function(){checklistApp.setChecklistName()}, false);
+	btnChecklist.addEventListener('click', function(){checklistApp.setChecklistName(btnChecklist.dataset.element)}, false);
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = data.checklist.name;
 	
+	var btnaddPage = document.getElementById("btnAddPage");
+	btnaddPage.addEventListener('click', function(){checklistApp.addPage()}, false);
+	
+	var btnFirstPage = document.getElementById("pageID-0");
+	btnFirstPage.addEventListener('click', function(){checklistApp.showPage("pageID-0")}, false);
+	
+	var btndelPage = document.getElementById("btnDelPage");
+	btndelPage.addEventListener('click', function(){checklistApp.deletePage()}, false);											   
 	
 	let checklistApp = new function() {
 	  // Récupération des données
@@ -120,6 +132,87 @@ function reqListener(responseFirst) {
 		statut3 : "non-applicable",
 		statut4 : "non-testé"
 	  };
+
+///////////////// multipage //////////////////////	
+	this.addPage = function(){
+	// dupliquer
+		var arr2 = JSON.parse(JSON.stringify(data.checklist.page[currentPage]));
+		data.checklist.page.push(arr2);
+		indexPage = data.checklist.page.length - 1;
+		idPageIndex = idPageIndex + 1;
+		newIdPage =  "pageID-"+idPageIndex;
+		
+		btnFirstPage.disabled = false;
+		
+		//a supprimer
+		data.checklist.page[1].items[0].themes = "test page 2";
+		data.checklist.page[indexPage].IDPage = newIdPage;
+		data.checklist.page[indexPage].items.forEach(this.initNewPage);
+		
+		jsonStr = JSON.stringify(data);
+		//console.log(jsonStr);
+		
+		//display pagination
+		var pageElement = document.getElementById("pageManager");
+		var newBtnPage = document.createElement("button");
+		
+		newBtnPage.innerHTML = "Page "+newIdPage;
+		newBtnPage.setAttribute('id', newIdPage);
+		pageElement.appendChild(newBtnPage);
+		
+
+		var thisNewBtn = document.getElementById(newIdPage);
+		var currentIdPage = thisNewBtn.getAttribute('id');
+		thisNewBtn.addEventListener('click', function(){checklistApp.showPage(currentIdPage)}, false);
+	}	
+
+	this.initNewPage = function(item) {
+		item.ID = item.ID+'-p'+indexPage;
+		item.resultatTest = '';
+		item.commentaire = '';
+	}
+	
+	this.showPage = function(id) {
+				
+		var index = data.checklist.page.findIndex(function(o) {
+			return o.IDPage == id;
+		})	
+		
+		currentPage = index;
+		
+		[x,y] = this.getIfFilter("types");
+	
+		if (x) {
+			checklistApp.runFilter(y);
+		} else {
+			checklistApp.FetchAll(data.checklist.page[currentPage].items);
+		}
+		
+		
+	}
+	
+	this.deletePage = function(index) {
+		data.checklist.page.splice(0,1);
+	}
+	
+	this.getIfFilter = function(name) {
+		const filters = document.querySelectorAll('[name="'+name+'"]');
+		let found = false;
+		let foundItem;
+		filters.forEach(function(filterItem) {
+		
+			if(filterItem.checked) {
+				found=true;
+				foundItem = filterItem;
+			} 
+
+		});
+		
+		return [found,foundItem];
+	}
+	
+	
+///////////////// fin multipage //////////////////////	
 
 	//on prédéfini le tableau de filtres
 	var filtres = [["conforme","ok"], ["non-conforme","ko"], ["non-applicable","na"], ["non-teste","nt"]];
@@ -155,10 +248,10 @@ function reqListener(responseFirst) {
 	 this.setStates = function(ele, targetId) {
 		ele.parentNode.parentNode.classList.add("mystyle");
 		
-		for (let i in data.checklist.items) {
-			if (data.checklist.items[i].ID == targetId) {
-				lastResult = this.getStatutClass(data.checklist.items[i].resultatTest);
-				data.checklist.items[i].resultatTest = ele.value;
+		for (let i in data.checklist.page[currentPage].items) {
+			if (data.checklist.page[currentPage].items[i].ID == targetId) {
+				lastResult = this.getStatutClass(data.checklist.page[currentPage].items[i].resultatTest);
+				data.checklist.page[currentPage].items[i].resultatTest = ele.value;
 			}	
 		}
 		
@@ -188,7 +281,8 @@ function reqListener(responseFirst) {
 	
 	}
 
-		this.setChecklistName = function() {
+		this.setChecklistName = function(target) {
+	
 		
 			<!-- Modal -->
 			 let htmlModal = '';
@@ -202,7 +296,7 @@ function reqListener(responseFirst) {
 			 htmlModal += '</button>';
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-body">';
-			 htmlModal += '<input type="text" id="inputChecklistName" aria-labelledby="modalChecklistTitle" value="'+this.getChecklistName()+'">';
+			 htmlModal += '<input type="text" id="inputChecklistName" aria-labelledby="modalChecklistTitle" value="'+this.getChecklistName(target)+'">';
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-footer">';
 			 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
@@ -219,13 +313,13 @@ function reqListener(responseFirst) {
 			<!-- Event handler -->
 			var nameSaveBtn = document.getElementById("nameSaveBtn");
 			var name = document.getElementById("inputChecklistName");
-			nameSaveBtn.addEventListener('click', function(){checklistApp.updateChecklistName(name.value)});
+			nameSaveBtn.addEventListener('click', function(){checklistApp.updateChecklistName(name.value, target)});
 
 		}
 	 
-		this.updateChecklistName = function(name) {	
+		this.updateChecklistName = function(name, target) {	
 			if(name) {
-				var currentChecklistName = document.getElementById("checklistName");
+				var currentChecklistName = document.getElementById(target);
 				currentChecklistName.innerText = name;
 			}
 			
@@ -233,8 +327,8 @@ function reqListener(responseFirst) {
 			this.jsonUpdate();
 		}
 	
-		this.getChecklistName = function() {	
-				var currentChecklistName = document.getElementById("checklistName");
+		this.getChecklistName = function(target) {	
+				var currentChecklistName = document.getElementById(target);
 				return currentChecklistName.innerText;	
 		}
 	
@@ -301,7 +395,7 @@ function reqListener(responseFirst) {
 		}
 	
 		this.addComment = function(targetId, newComment) {
-			data.checklist.items[targetId].commentaire = newComment;
+			data.checklist.page[currentPage].items[targetId].commentaire = newComment;
 			
 			var currentBtnComment = document.getElementById("commentBtn"+targetId);
 			currentBtnComment.innerText = this.getCommentState(targetId);
@@ -311,12 +405,12 @@ function reqListener(responseFirst) {
 		}	
 
 		this.getComment = function(targetId) {
-			currentComment = data.checklist.items[targetId].commentaire;
+			data.checklist.page[currentPage].items[targetId].commentaire = newComment;
 			return (currentComment != "" ? currentComment : "");
 		}	
 
 		this.getCommentState = function(targetId) {
-			currentComment = data.checklist.items[targetId].commentaire;
+			currentComment = data.checklist.page[currentPage].items[targetId].commentaire;
 			return (!currentComment ? "Ajouter un commentaire" : "Modifier le commentaire");
 		}	
 
@@ -370,9 +464,10 @@ function reqListener(responseFirst) {
 			
 			let elreinitLink = document.getElementById('reinitLink');
 			 elreinitLink.addEventListener('click', function() {
-				checklistApp.FetchAll(refTests);
+									
 				checklistApp.runFilter();
 				checklistApp.UpdateFeedback(false, refTests.length);
+				
 				
 				//reinitialisation du filtre en cours de sélection
 				var elToReinit = document.querySelector("#types input:checked");
@@ -481,7 +576,7 @@ function reqListener(responseFirst) {
 			  let elBtnReinit = document.getElementById('reinit');
 			  
 			 elBtnReinit.addEventListener('click', function() {
-				checklistApp.FetchAll(refTests);
+									
 				checklistApp.runFilter();
 				checklistApp.UpdateFeedback(false, refTests.length);
 				
@@ -540,25 +635,25 @@ function reqListener(responseFirst) {
 								
 						//on applique tous les filtres stockés dans conditions
 						 //filteredTest = self.refTests.filter(function(d) {
-						filteredTest = data.checklist.items.filter(function(d) {
+						filteredTest = data.checklist.page[currentPage].items.filter(function(d) {
 							return conditions.every(function(c) {
 								return c(d);
 							});
 						});		
 
 						//on met à jour la page				
-						checklistApp.FetchAll(filteredTest);
+						checklistchecklistApp.FetchAll(filteredTest);
 						
 						if (runUpdateType) {
-							checklistApp.UpdateTypes(uniqueTypes, filteredTest);
+							checklistchecklistApp.UpdateTypes(uniqueTypes, filteredTest);
 						}
 						
-						checklistApp.UpdateFeedback(true,filteredTest.length);
+						checklistchecklistApp.UpdateFeedback(true,filteredTest.length);
 			
 							
 				 } else {
 					//aucun critère de sélectionné, on réinitialise la page
-					checklistApp.FetchAll(refTests);
+					checklistchecklistApp.FetchAll(data.checklist.page[currentPage].items);
 					
 				 }
 		}

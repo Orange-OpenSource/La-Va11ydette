@@ -3,6 +3,7 @@
 		"name": "Audit WCAG 2.1",
 		"page": [{
 				"IDPage": "pageID-0",
+				"name": "Page 1",
 				"items": [{
 					"themes": "1.1.1 Non-text Content",
 					"ID": "testID-001",

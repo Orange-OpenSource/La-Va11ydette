@@ -48,7 +48,7 @@
 		<div class="col-md-8">
 		
 			<h1 id="checklistName">Ma checklist ééé</h1>
-			<button class="btn btn-secondary btn-sm" id="btnChecklistName"  data-element="checklistName" data-toggle="modal" data-target="#modalChecklistName"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+			<button class="btn btn-secondary btn-sm" id="btnChecklistName"  data-element="checklistName" data-property="checklist.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
 				
 		</div>
 		
@@ -77,26 +77,23 @@
 
 	</div>
   </div>
-	  <div class="row" >
-   
+  
+  <div class="row" >
 	<div class="col-md-8" id="pageManager">
 		<button id="btnAddPage">Ajouter</button>
 		<button id="pageID-0" disabled>Première page</button>
-		<button id="btnDelPage">Supprimer</button>
-		
 	</div>
-	
   </div>
-  <div class="row" >
-   
+  
+  <div class="row">
 	<div class="col-md-8" id="currentPageManager">
 		<h1 id="pageName">Première page</h1>
-		<button class="btn btn-secondary btn-sm" id="btnChecklistName"  data-target="modal" data-toggle="modal" data-target="#modalChecklistName"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+		<button class="btn btn-secondary btn-sm" id="btnPageName" data-element="pageName" data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+		<button id="btnDelPage" data-property="checklist.page.0" >Supprimer</button>
 	</div>
-	
   </div>
 	
-  </div>
+
   <span id="count" class="alert-danger"></span>
   <div class="row mt-5">
 

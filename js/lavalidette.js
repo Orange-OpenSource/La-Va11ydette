@@ -105,7 +105,10 @@ function reqListener(responseFirst) {
 	
 	 //init checklist name
 	var btnChecklist = document.getElementById("btnChecklistName");
-	btnChecklist.addEventListener('click', function(){checklistApp.setChecklistName(btnChecklist.dataset.element)}, false);
+	btnChecklist.addEventListener('click', function(){checklistApp.setChecklistName(btnChecklist.dataset.element, btnChecklist.dataset.property)}, false);
+	
+	var btnPage = document.getElementById("btnPageName");
+	btnPage.addEventListener('click', function(){checklistApp.setChecklistName(btnPage.dataset.element, btnPage.dataset.property)}, false);
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = data.checklist.name;
@@ -145,12 +148,11 @@ function reqListener(responseFirst) {
 		btnFirstPage.disabled = false;
 		
 		//a supprimer
-		data.checklist.page[1].items[0].themes = "test page 2";
 		data.checklist.page[indexPage].IDPage = newIdPage;
+		data.checklist.page[indexPage].name = "Page"+indexPage;
 		data.checklist.page[indexPage].items.forEach(this.initNewPage);
 		
 		jsonStr = JSON.stringify(data);
-		//console.log(jsonStr);
 		
 		//display pagination
 		var pageElement = document.getElementById("pageManager");
@@ -188,11 +190,18 @@ function reqListener(responseFirst) {
 			checklistApp.FetchAll(data.checklist.page[currentPage].items);
 		}
 		
+		var currentPageName = document.getElementById('pageName');
+		currentPageName.innerHTML = data.checklist.page[currentPage].name;
 		
+		var currentBtnPageName = document.getElementById('btnPageName');
+		currentBtnPageName.dataset.property = "checklist.page."+currentPage+".name";
+		
+		var currentBtnDelPage = document.getElementById('btnDelPage');
+		currentBtnDelPage.dataset.property = "checklist.page."+currentPage;
 	}
 	
 	this.deletePage = function(index) {
-		data.checklist.page.splice(0,1);
+		data.checklist.page.splice(index,1);
 	}
 	
 	this.getIfFilter = function(name) {
@@ -281,47 +290,64 @@ function reqListener(responseFirst) {
 	
 	}
 
-		this.setChecklistName = function(target) {
-	
+	///////////Name/////////////////
+		this.setChecklistName = function(targetElement, targetProperty) {
+
+				let htmlModal = '';
+				 htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
+				 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+				 htmlModal += '<div class="modal-content">';
+				 htmlModal += '<div class="modal-header">';
+				 htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de la checklist</h5>';
+				 htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+				 htmlModal += '<span aria-hidden="true">&times;</span>';
+				 htmlModal += '</button>';
+				 htmlModal += '</div>';
+				 htmlModal += '<div class="modal-body">';
+				 htmlModal += '<input type="text" id="inputChecklistName" aria-labelledby="modalChecklistTitle" value="'+this.getChecklistName(targetElement)+'">';
+				 htmlModal += '</div>';
+				 htmlModal += '<div class="modal-footer">';
+				 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+				 htmlModal += '<button type="button" id="nameSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
+				 htmlModal += '</div>';
+				 htmlModal += '</div>';
+				 htmlModal += '</div>';
+				 htmlModal += '</div>';
 		
-			<!-- Modal -->
-			 let htmlModal = '';
-			 htmlModal = '<div id="modalChecklistName" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
-			 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
-			 htmlModal += '<div class="modal-content">';
-			 htmlModal += '<div class="modal-header">';
-			 htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de la checklist</h5>';
-			 htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-			 htmlModal += '<span aria-hidden="true">&times;</span>';
-			 htmlModal += '</button>';
-			 htmlModal += '</div>';
-			 htmlModal += '<div class="modal-body">';
-			 htmlModal += '<input type="text" id="inputChecklistName" aria-labelledby="modalChecklistTitle" value="'+this.getChecklistName(target)+'">';
-			 htmlModal += '</div>';
-			 htmlModal += '<div class="modal-footer">';
-			 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-			 htmlModal += '<button type="button" id="nameSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
-			 htmlModal += '</div>';
-			 htmlModal += '</div>';
-			 htmlModal += '</div>';
-			 htmlModal += '</div>';
-		
-			<!-- Parent element -->
+			// Parent element
 			let elModal = document.getElementById('modal');
 			elModal.innerHTML = htmlModal;
 			
-			<!-- Event handler -->
+			// Event handler 
 			var nameSaveBtn = document.getElementById("nameSaveBtn");
 			var name = document.getElementById("inputChecklistName");
-			nameSaveBtn.addEventListener('click', function(){checklistApp.updateChecklistName(name.value, target)});
+			nameSaveBtn.addEventListener('click', function(){checklistApp.updateChecklistName(name.value, targetElement, targetProperty)});
 
 		}
 	 
-		this.updateChecklistName = function(name, target) {	
-			if(name) {
-				var currentChecklistName = document.getElementById(target);
-				currentChecklistName.innerText = name;
+		this.updateChecklistName = function(name, targetElement, targetProperty) {	
+			
+
+			function setToValue(obj, value, path) {
+				path = path.split('.');
+				
+				for (i = 0; i < path.length - 1; i++) {
+					obj = obj[path[i]];
+					
+				}
+				obj[path[i]] = value;
 			}
+			
+
+			console.log(data.checklist.page[0].name);
+			if(name) {
+				var currentChecklistName = document.getElementById(targetElement);
+				currentChecklistName.innerText = name;
+
+				//data.checklist[targetProperty] = name;	
+				setToValue(data, name, targetProperty);
+			}
+			
 			
 			//on met à jour l'export
 			this.jsonUpdate();
@@ -332,9 +358,12 @@ function reqListener(responseFirst) {
 				return currentChecklistName.innerText;	
 		}
 	
+		
+	
+		///////////Fin Name/////////////////
+	
 		this.jsonUpdate = function() {
 			let DefaultName = document.getElementById("checklistName");
-			data.checklist.name = DefaultName.innerText;	
 			DefaultName = slugify(DefaultName.innerText);
 	
 			let dataStr = JSON.stringify(data);
@@ -360,8 +389,7 @@ function reqListener(responseFirst) {
 		this.setComment = function(targetId, title) {
 		
 		let titleModal = title;
-			
-			<!-- Modal -->
+
 			 let htmlModal = '';
 			 htmlModal = '<div id="modal'+targetId+'" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
 			 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
@@ -383,11 +411,11 @@ function reqListener(responseFirst) {
 			 htmlModal += '</div>';
 			 htmlModal += '</div>';
  
-			<!-- Parent element -->
+			// Parent element
 			let elModal = document.getElementById('modal');
 			elModal.innerHTML = htmlModal;
 
-			<!-- Event handler -->
+			// Event handler
 			var commentSave = document.getElementById("commentSaveBtn");
 			var comment = document.getElementById('comment'+targetId);
 			commentSave.addEventListener('click', function(){checklistApp.addComment(targetId, comment.value)});
@@ -405,7 +433,7 @@ function reqListener(responseFirst) {
 		}	
 
 		this.getComment = function(targetId) {
-			data.checklist.page[currentPage].items[targetId].commentaire = newComment;
+			currentComment = data.checklist.page[currentPage].items[targetId].commentaire;
 			return (currentComment != "" ? currentComment : "");
 		}	
 

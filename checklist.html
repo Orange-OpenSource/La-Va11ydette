@@ -81,15 +81,15 @@
   <div class="row" >
 	<div class="col-md-8" id="pageManager">
 		<button id="btnAddPage">Ajouter</button>
-		<button id="pageID-0" disabled>Première page</button>
+		<button id="pageID-0" disabled>Nom de la page</button>
 	</div>
   </div>
   
   <div class="row">
 	<div class="col-md-8" id="currentPageManager">
-		<h1 id="pageName">Première page</h1>
-		<button class="btn btn-secondary btn-sm" id="btnPageName" data-element="pageName" data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
-		<button id="btnDelPage" data-property="checklist.page.0" >Supprimer</button>
+		<h1 id="pageName">Nom de la page</h1>
+		<button class="btn btn-secondary btn-sm" id="btnPageName" data-element="pageName" data-secondary-element="pageID-0" data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+		<button id="btnDelPage" data-element="pageName" data-property="checklist.page.0" data-toggle="modal" data-target="#modalDelete">Supprimer</button>
 	</div>
   </div>
 	

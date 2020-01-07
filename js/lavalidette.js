@@ -105,10 +105,10 @@ function reqListener(responseFirst) {
 	
 	 //init checklist name
 	var btnChecklist = document.getElementById("btnChecklistName");
-	btnChecklist.addEventListener('click', function(){checklistApp.setChecklistName(btnChecklist.dataset.element, btnChecklist.dataset.property)}, false);
+	btnChecklist.addEventListener('click', function(){checklistApp.setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)}, false);
 	
 	var btnPage = document.getElementById("btnPageName");
-	btnPage.addEventListener('click', function(){checklistApp.setChecklistName(btnPage.dataset.element, btnPage.dataset.property)}, false);
+	btnPage.addEventListener('click', function(){checklistApp.setValue(btnPage.dataset.element, btnPage.dataset.property, btnPage.dataset.secondaryElement)}, false);
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = data.checklist.name;
@@ -120,7 +120,7 @@ function reqListener(responseFirst) {
 	btnFirstPage.addEventListener('click', function(){checklistApp.showPage("pageID-0")}, false);
 	
 	var btndelPage = document.getElementById("btnDelPage");
-	btndelPage.addEventListener('click', function(){checklistApp.deletePage()}, false);											   
+	btndelPage.addEventListener('click', function(){checklistApp.setDeletePage(btnPage.dataset.element)}, false);											   
 	
 	let checklistApp = new function() {
 	  // Récupération des données
@@ -138,18 +138,23 @@ function reqListener(responseFirst) {
 
 ///////////////// multipage //////////////////////	
 	this.addPage = function(){
-	// dupliquer
+
 		var arr2 = JSON.parse(JSON.stringify(data.checklist.page[currentPage]));
 		data.checklist.page.push(arr2);
 		indexPage = data.checklist.page.length - 1;
 		idPageIndex = idPageIndex + 1;
-		newIdPage =  "pageID-"+idPageIndex;
+		
+		
+		var newIdPage = new Uint32Array(1);
+window.crypto.getRandomValues(newIdPage);
+console.log(newIdPage);
+		newIdPage =  "pageID-"+newIdPage;
 		
 		btnFirstPage.disabled = false;
 		
 		//a supprimer
 		data.checklist.page[indexPage].IDPage = newIdPage;
-		data.checklist.page[indexPage].name = "Page"+indexPage;
+		data.checklist.page[indexPage].name = "Nom de la page "+indexPage;
 		data.checklist.page[indexPage].items.forEach(this.initNewPage);
 		
 		jsonStr = JSON.stringify(data);
@@ -158,7 +163,7 @@ function reqListener(responseFirst) {
 		var pageElement = document.getElementById("pageManager");
 		var newBtnPage = document.createElement("button");
 		
-		newBtnPage.innerHTML = "Page "+newIdPage;
+		newBtnPage.innerHTML = "Page "+idPageIndex;
 		newBtnPage.setAttribute('id', newIdPage);
 		pageElement.appendChild(newBtnPage);
 		
@@ -166,6 +171,7 @@ function reqListener(responseFirst) {
 		var thisNewBtn = document.getElementById(newIdPage);
 		var currentIdPage = thisNewBtn.getAttribute('id');
 		thisNewBtn.addEventListener('click', function(){checklistApp.showPage(currentIdPage)}, false);
+
 	}	
 
 	this.initNewPage = function(item) {
@@ -195,13 +201,68 @@ function reqListener(responseFirst) {
 		
 		var currentBtnPageName = document.getElementById('btnPageName');
 		currentBtnPageName.dataset.property = "checklist.page."+currentPage+".name";
+		currentBtnPageName.dataset.secondaryElement = id;
+		
 		
 		var currentBtnDelPage = document.getElementById('btnDelPage');
 		currentBtnDelPage.dataset.property = "checklist.page."+currentPage;
+		currentBtnDelPage.dataset.pagination = id;
+		
+		
 	}
 	
-	this.deletePage = function(index) {
-		data.checklist.page.splice(index,1);
+	this.setDeletePage = function(targetElement) {
+		
+		 let htmlModal = '';
+			 htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
+			 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+			 htmlModal += '<div class="modal-content">';
+			 htmlModal += '<div class="modal-header">';
+			 htmlModal += '<h5>Supprimer</h5>';
+			 htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+			 htmlModal += '<span aria-hidden="true">&times;</span>';
+			 htmlModal += '</button>';
+			 htmlModal += '</div>';
+			 htmlModal += '<div class="modal-body">';
+			 htmlModal += 'Supprimer la page '+this.getValue(targetElement)+' ?';
+			 htmlModal += '</div>';
+			 htmlModal += '<div class="modal-footer">';
+			 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+			 htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">Valider</button>';
+			 htmlModal += '</div>';
+			 htmlModal += '</div>';
+			 htmlModal += '</div>';
+			 htmlModal += '</div>';
+		
+			// Parent element
+			let elModal = document.getElementById('modal');
+			elModal.innerHTML = htmlModal;
+		
+			// Event handler 
+			var deteleSaveBtn = document.getElementById("deteleSaveBtn");
+			deteleSaveBtn.addEventListener('click', function(){checklistApp.deletePage(currentPage, targetElement)});
+		
+			
+	}
+	
+	this.deletePage = function(currentPage, targetElement) {	
+		//remove from data
+		data.checklist.page.splice(currentPage,1);
+
+		//remove from pagination
+		var currentBtnDelPage = document.getElementById('btnDelPage');
+		var paginationBtnId = currentBtnDelPage.dataset.pagination;
+		
+		var paginationBtn = document.getElementById(paginationBtnId);
+		paginationBtn.remove();
+		
+		//redirect to previous page
+		currentPage = currentPage-1;
+		newPageId = data.checklist.page[currentPage].IDPage;
+		this.showPage(newPageId);
+		
+		//on met à jour l'export
+		this.jsonUpdate();
 	}
 	
 	this.getIfFilter = function(name) {
@@ -290,9 +351,9 @@ function reqListener(responseFirst) {
 	
 	}
 
-	///////////Name/////////////////
-		this.setChecklistName = function(targetElement, targetProperty) {
-
+	///////////Edition manager/////////////////
+		this.setValue = function(targetElement, targetProperty, targetSecondaryElement) {
+	
 				let htmlModal = '';
 				 htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
 				 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
@@ -304,11 +365,11 @@ function reqListener(responseFirst) {
 				 htmlModal += '</button>';
 				 htmlModal += '</div>';
 				 htmlModal += '<div class="modal-body">';
-				 htmlModal += '<input type="text" id="inputChecklistName" aria-labelledby="modalChecklistTitle" value="'+this.getChecklistName(targetElement)+'">';
+				 htmlModal += '<input type="text" id="inputValue" aria-labelledby="modalChecklistTitle" value="'+this.getValue(targetElement)+'">';
 				 htmlModal += '</div>';
 				 htmlModal += '<div class="modal-footer">';
 				 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-				 htmlModal += '<button type="button" id="nameSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
+				 htmlModal += '<button type="button" id="saveValueBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
 				 htmlModal += '</div>';
 				 htmlModal += '</div>';
 				 htmlModal += '</div>';
@@ -319,15 +380,14 @@ function reqListener(responseFirst) {
 			elModal.innerHTML = htmlModal;
 			
 			// Event handler 
-			var nameSaveBtn = document.getElementById("nameSaveBtn");
-			var name = document.getElementById("inputChecklistName");
-			nameSaveBtn.addEventListener('click', function(){checklistApp.updateChecklistName(name.value, targetElement, targetProperty)});
+			var saveValueBtn = document.getElementById("saveValueBtn");
+			var targetInput = document.getElementById("inputValue");
+			saveValueBtn.addEventListener('click', function(){checklistApp.updateValue(targetInput.value, targetElement, targetProperty, targetSecondaryElement)});
 
 		}
 	 
-		this.updateChecklistName = function(name, targetElement, targetProperty) {	
+		this.updateValue = function(inputValue, targetElement, targetProperty, targetSecondaryElement) {	
 			
-
 			function setToValue(obj, value, path) {
 				path = path.split('.');
 				
@@ -337,15 +397,18 @@ function reqListener(responseFirst) {
 				}
 				obj[path[i]] = value;
 			}
-			
 
-			console.log(data.checklist.page[0].name);
-			if(name) {
-				var currentChecklistName = document.getElementById(targetElement);
-				currentChecklistName.innerText = name;
+			if(inputValue) {
+				var currentTargetElement = document.getElementById(targetElement);
+				currentTargetElement.innerText = inputValue;
 
 				//data.checklist[targetProperty] = name;	
-				setToValue(data, name, targetProperty);
+				setToValue(data, inputValue, targetProperty);
+				
+				if (targetSecondaryElement) {
+					var currentTargetSecondaryElement = document.getElementById(targetSecondaryElement);
+					currentTargetSecondaryElement.innerText = inputValue;					
+				}
 			}
 			
 			
@@ -353,14 +416,13 @@ function reqListener(responseFirst) {
 			this.jsonUpdate();
 		}
 	
-		this.getChecklistName = function(target) {	
-				var currentChecklistName = document.getElementById(target);
-				return currentChecklistName.innerText;	
+		this.getValue = function(target) {	
+				var targetElement = document.getElementById(target);
+				return targetElement.innerText;	
 		}
 	
 		
-	
-		///////////Fin Name/////////////////
+		///////////end edition manager/////////////////
 	
 		this.jsonUpdate = function() {
 			let DefaultName = document.getElementById("checklistName");
@@ -670,18 +732,18 @@ function reqListener(responseFirst) {
 						});		
 
 						//on met à jour la page				
-						checklistchecklistApp.FetchAll(filteredTest);
+						checklistApp.FetchAll(filteredTest);
 						
 						if (runUpdateType) {
-							checklistchecklistApp.UpdateTypes(uniqueTypes, filteredTest);
+							checklistApp.UpdateTypes(uniqueTypes, filteredTest);
 						}
 						
-						checklistchecklistApp.UpdateFeedback(true,filteredTest.length);
+						checklistApp.UpdateFeedback(true,filteredTest.length);
 			
 							
 				 } else {
 					//aucun critère de sélectionné, on réinitialise la page
-					checklistchecklistApp.FetchAll(data.checklist.page[currentPage].items);
+					checklistApp.FetchAll(data.checklist.page[currentPage].items);
 					
 				 }
 		}

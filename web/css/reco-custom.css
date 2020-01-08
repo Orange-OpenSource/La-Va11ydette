@@ -173,5 +173,4 @@ h2::before {
 #testForm input[type="radio"]{padding-top: 0.5rem; margin-right: 1.2rem;}
 #testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}
 #testForm button::after{position: relative; background-image: none; }
-
 #feedback {margin-bottom: 2rem;}

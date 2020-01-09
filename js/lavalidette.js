@@ -169,7 +169,7 @@ function reqListener(responseFirst) {
 					thisNewBtn.addEventListener('click', function(){checklistApp.showPage(thisNewBtn.id)}, false);
 					
 					let btnDelPage = document.getElementById("btnDelPage");
-					getPages.length>1 ? btnDelPage.disabled = false : "";
+					getPages.length>1 ? btnDelPage.disabled = false : btnDelPage.disabled = true;
 	
 			}
 		

@@ -93,10 +93,7 @@ document.getElementById('import').onclick = function() {
 	}
 	
 function reqListener(responseFirst) {
-		
-		
-		
-		
+			
 	var data = JSON.parse(responseFirst);
 	var currentPage = 0;
 	var idPageIndex = 0;
@@ -145,6 +142,7 @@ function reqListener(responseFirst) {
 		var getPages = pages.page;
 
 		//init add button
+		
 		var pageElement = document.getElementById("pageManager");
 		pageElement.innerHTML = "";
 		
@@ -159,18 +157,20 @@ function reqListener(responseFirst) {
 			for (let i in getPages) {
 
 					//display pagination
-					var newBtnPage = document.createElement("button");
+					let newBtnPage = document.createElement("button");
 					
 					newBtnPage.innerHTML = getPages[i].name;
 					newBtnPage.setAttribute('id', getPages[i].IDPage);
 					newBtnPage.classList.add("btn","btn-secondary","btn-sm","mr-1","mt-1");
 					(i == 0) && (getPages.length==1) ? newBtnPage.disabled = true : "";
 					pageElement.appendChild(newBtnPage);
+
+					let thisNewBtn = document.getElementById(getPages[i].IDPage);
+					thisNewBtn.addEventListener('click', function(){checklistApp.showPage(thisNewBtn.id)}, false);
 					
-			
-					var thisNewBtn = document.getElementById(getPages[i].IDPage);
-					thisNewBtn.addEventListener('click', function(){checklistApp.showPage(getPages[i].IDPage)}, false);
-				
+					let btnDelPage = document.getElementById("btnDelPage");
+					getPages.length>1 ? btnDelPage.disabled = false : "";
+	
 			}
 		
 	}
@@ -204,7 +204,7 @@ function reqListener(responseFirst) {
 		var pageElement = document.getElementById("pageManager");
 		var newBtnPage = document.createElement("button");
 		
-		newBtnPage.innerHTML = "Nom de la page "+idPageIndex;
+		newBtnPage.innerHTML = "Nom de la page "+indexPage;
 		newBtnPage.setAttribute('id', newIdPage);
 		newBtnPage.classList.add("btn","btn-secondary","btn-sm","mr-1","mt-1");
 		pageElement.appendChild(newBtnPage);
@@ -251,7 +251,13 @@ function reqListener(responseFirst) {
 		var currentBtnDelPage = document.getElementById('btnDelPage');
 		currentBtnDelPage.dataset.property = "checklist.page."+currentPage;
 		currentBtnDelPage.dataset.pagination = id;
-			
+		
+		var lastBtnPagination = document.getElementsByClassName("active");
+		lastBtnPagination[0] ? lastBtnPagination[0].classList.remove("active") : "";
+		
+		var currentBtnPagination = document.getElementById(data.checklist.page[currentPage].IDPage);
+		currentBtnPagination.classList.add("active");
+		
 	}
 	
 	this.setDeletePage = function(targetElement) {
@@ -291,6 +297,7 @@ function reqListener(responseFirst) {
 	this.deletePage = function(currentPage, targetElement) {	
 		//remove from data
 		data.checklist.page.splice(currentPage,1);
+		
 
 		//remove from pagination
 		var currentBtnDelPage = document.getElementById('btnDelPage');
@@ -300,8 +307,11 @@ function reqListener(responseFirst) {
 		var paginationBtn = document.getElementById(paginationBtnId);
 		paginationBtn.remove();
 		
-		//redirect to previous page
-		currentPage = currentPage-1;
+		
+		currentPage != 0 ? currentPage = currentPage-1 :"";
+		
+		//currentPage = currentPage-1;
+		
 		newPageId = data.checklist.page[currentPage].IDPage;
 		this.showPage(newPageId);
 		

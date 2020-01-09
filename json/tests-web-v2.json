@@ -1232,7 +1232,7 @@
 			},
 			{
 				"themes": "Formulaires",
-				"ID": "testID-036",
+				"ID": "testID-051",
 				"title": "Détecter, identifier les erreurs et suggérer des corrections / identification des erreurs",
 				"type": [
 					"Test manuel"
@@ -1258,6 +1258,7 @@
 			},
 			{
 				"themes": "Tactile et interactions",
+				"ID": "testID-052",
 				"title": "Autoriser l'utilisation du zoom",
 				"type": [
 					"Test manuel - Inspecteur de code",
@@ -1281,6 +1282,7 @@
 			},
 			{
 				"themes": "Tactile et interactions",
+				"ID": "testID-053",
 				"title": "Permettre d'annuler le déclenchement des interactions gestuelles 1",
 				"type": [
 					"Test manuel - Basé sur le mobile"
@@ -1302,6 +1304,7 @@
 			},
 			{
 				"themes": "Tactile et interactions",
+				"ID": "testID-054",
 				"title": "Permettre d'annuler le déclenchement des interactions gestuelles 2",
 				"type": [
 					"Test manuel - Basé sur le mobile"
@@ -1323,6 +1326,7 @@
 			},
 			{
 				"themes": "Tactile et interactions",
+				"ID": "testID-055",
 				"title": "Permettre d'annuler le déclenchement des interactions gestuelles 3",
 				"type": [
 					"Test manuel - Basé sur le mobile"
@@ -1347,6 +1351,7 @@
 			},
 			{
 				"themes": "Tactile et interactions",
+				"ID": "testID-056",
 				"title": "Proposer une alternative aux gestuelles complexes",
 				"type": [
 					"Test manuel - Basé sur le mobile"
@@ -1369,6 +1374,7 @@
 			},
 			{
 				"themes": "Tactile et interactions",
+				"ID": "testID-057",
 				"title": "Donner accès au contenu quelle que soit l'orientation de l'écran",
 				"type": [
 					"Test manuel - Basé sur le mobile"
@@ -1391,6 +1397,7 @@
 			},
 			{
 				"themes": "Aides techniques",
+				"ID": "testID-058",
 				"title": "S’assurer que les principales fonctionnalités sont utilisables avec les lecteurs d’écran",
 				"type": [
 					"Lecteur d'écran"

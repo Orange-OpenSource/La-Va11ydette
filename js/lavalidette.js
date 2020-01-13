@@ -20,29 +20,38 @@ document.getElementById('import').onclick = function() {
 	  //doXHR( fr.readAsText(files.item(0)));
 	};
 
-	//requette XMLHttpRequest
+	//requête XMLHttpRequest
 	function doXHR(url, callback) {
 	  var oReq = new XMLHttpRequest();
 
 	  oReq.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 		  if (this.status === 200) {
-			//return callback(null, this.responseText);
-			//console.log("Réponse reçue: %s", this.responseText);
-			reqListener(this.responseText);
+			return callback(null, this.responseText);
 		  } else {
-			//return callback({errCode: this.status, errMsg: this.statusText});
-			 console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
+			return callback({errCode: this.status, errMsg: this.statusText});
 		  }
 		}
 	  };
-
 	  oReq.open('GET', url, true);
 	  oReq.send(null);
 	}
 
 	//appel des Json
-	doXHR('json/tests-web-wcag.json');
+	doXHR('json/tests-web-wcag.json', function(errFirst, responseFirst) {
+	  if (errFirst) {
+		reqError(); 
+	  }
+		return doXHR('json/criteres-rgaa4.json', function(errSecond, responseSecond) {
+			if (errSecond) {
+			  reqError(); 
+			}
+			return reqListener(responseFirst, responseSecond);
+		  });
+	 
+	});
+
+
 	
 	function reqError(err) {
 	   let elrefTests = document.getElementById('refTests');

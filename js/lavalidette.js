@@ -52,7 +52,6 @@ document.getElementById('import').onclick = function() {
 	});
 
 
-	
 	function reqError(err) {
 	   let elrefTests = document.getElementById('refTests');
 	   elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
@@ -101,16 +100,18 @@ document.getElementById('import').onclick = function() {
 		return arrCond;
 	}
 	
-function reqListener(responseFirst) {
+function reqListener(responseFirst, responseCriteria) {
 			
 	var data = JSON.parse(responseFirst);
+	var dataCriteria = JSON.parse(responseCriteria);
 	var currentPage = 0;
 	var idPageIndex = 0;
 	
 	
 	// Récupération des données
 	var refPages = data.checklist;	
-	var refTests = data.checklist.page[currentPage].items;				 
+	//var refTests = data.checklist.page[currentPage].items;
+	var refTests = dataCriteria;
 	
 	var uniqueTypes = [];
 
@@ -639,11 +640,46 @@ function reqListener(responseFirst) {
 	  this.FetchAll = function(currentRefTests) {
 	 
 		  // Selection de l'élément
+		  currentRefTests = currentRefTests.topics;
 		  let elrefTests = document.getElementById('refTests');
 		  let htmlrefTests = '';
 		  let headingTheme = '';
 		
 		  //on boucle dans le tableau passé en paramètre de la fonction
+		  for (let i in currentRefTests) {
+			if(headingTheme!=currentRefTests[i].topic){
+				headingTheme=currentRefTests[i].topic;
+				htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].topic)+'">'+currentRefTests[i].topic+'</h2>';
+			}
+			
+			for (let j in currentRefTests[i].criteria) {
+				
+				htmlrefTests +='<h3>'+currentRefTests[i].criteria[j].criterium.title+'</h3>';
+				currentRefTests[i].criteria[j].criterium["result"] = [];
+				let currentID = currentRefTests[i].criteria[j].criterium.number;
+				
+				for (let k in currentRefTests[i].criteria[j].criterium.tests) {
+					 
+					currentRefTests[i].criteria[j].criterium["result"][k] = "";
+
+					htmlrefTests += '<article class="" id="test'+currentID+'-'+k+'"><div class="card-header" id="heading'+currentID+'-'+k+'"><span class="accordion-title">' + currentRefTests[i].criteria[j].criterium.tests[k] + '</span><span id="resultID-'+currentID+'-'+k+'" class="badge badge-pill '+ this.getStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +' float-lg-right">'+ this.setStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +'</span>';
+					
+					htmlrefTests += '<div id="testForm"> <label for="conforme'+currentID+'-'+k+'">Conforme</label><input type="radio" id="conforme'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/>  ';
+					htmlrefTests += '<label for="non-conforme'+currentID+'-'+k+'">Non conforme</label><input type="radio" id="non-conforme'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" id="radio'+currentID+'-'+k+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>';
+					htmlrefTests += '<label for="na'+currentID+'-'+k+'">N/A</label><input type="radio" id="na'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>';
+					htmlrefTests += '<label for="nt'+currentID+'-'+k+'">Non testé</label><input type="radio" id="nt'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+					htmlrefTests += '</div></article>';
+				}
+				
+				
+			}
+		
+
+		  }
+		 // var result = JSON.parse(currentRefTests);
+		
+		  
+		  /* //on boucle dans le tableau passé en paramètre de la fonction
 		  for (let i in currentRefTests) {
 			if(headingTheme!=currentRefTests[i].themes){
 				headingTheme=currentRefTests[i].themes;
@@ -652,7 +688,9 @@ function reqListener(responseFirst) {
 			
 			htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
 			//à remplacer par un for sur filtres
+			
 			htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+			
 			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
 			htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 			htmlrefTests += '<div class="card-block"><div class="row">';
@@ -692,13 +730,13 @@ function reqListener(responseFirst) {
 			htmlrefTests += '</div>';
 			htmlrefTests += '</div></article>';
 
-		  }
+		  } */
 
 			// Affichage de l'ensemble des lignes en HTML
 			currentRefTests.length===0 ?  elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
 
 			// Event Handler
-			for (let i in currentRefTests) {
+			/* for (let i in currentRefTests) {
 				
 				//radio
 				var radios = document.getElementsByName("test"+i);
@@ -711,7 +749,7 @@ function reqListener(responseFirst) {
 				var comment = document.getElementById("commentBtn"+i);
 				comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
 				
-			}
+			} */
 			
 		};
 		

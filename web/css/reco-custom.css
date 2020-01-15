@@ -148,6 +148,7 @@ h2::before {
     display: inline-block;
 	max-width: 33rem;
 	font-weight: bold;
+	color:#000;
 }
 
 

@@ -656,19 +656,21 @@ function reqListener(responseFirst, responseCriteria) {
 				
 				htmlrefTests +='<h3>'+currentRefTests[i].criteria[j].criterium.title+'</h3>';
 				currentRefTests[i].criteria[j].criterium["result"] = [];
+				currentRefTests[i].criteria[j].criterium["testID"] = [];
+				
 				let currentID = currentRefTests[i].criteria[j].criterium.number;
 				
 				for (let k in currentRefTests[i].criteria[j].criterium.tests) {
 					 
 					currentRefTests[i].criteria[j].criterium["result"][k] = "";
-
-					htmlrefTests += '<article class="" id="test'+currentID+'-'+k+'"><div class="card-header" id="heading'+currentID+'-'+k+'"><span class="accordion-title">' + currentRefTests[i].criteria[j].criterium.tests[k] + '</span><span id="resultID-'+currentID+'-'+k+'" class="badge badge-pill '+ this.getStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +' float-lg-right">'+ this.setStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +'</span>';
+					currentRefTests[i].criteria[j].criterium["testID"][k] = currentID+"-"+k;
 					
-					htmlrefTests += '<div id="testForm"> <label for="conforme'+currentID+'-'+k+'">Conforme</label><input type="radio" id="conforme'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/>  ';
-					htmlrefTests += '<label for="non-conforme'+currentID+'-'+k+'">Non conforme</label><input type="radio" id="non-conforme'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" id="radio'+currentID+'-'+k+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>';
-					htmlrefTests += '<label for="na'+currentID+'-'+k+'">N/A</label><input type="radio" id="na'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>';
-					htmlrefTests += '<label for="nt'+currentID+'-'+k+'">Non testé</label><input type="radio" id="nt'+currentID+'-'+k+'" name="test'+currentID+'-'+k+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
-					htmlrefTests += '</div></article>';
+					htmlrefTests += '<article class="" id="test-'+currentID+'-'+k+'"><p>' + marked(JSON.stringify(currentRefTests[i].criteria[j].criterium.tests[k])) + '<span id="resultID-'+currentID+'-'+k+'" class="badge badge-pill '+ this.getStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +' float-lg-right">'+ this.setStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +'</span></p>';
+					htmlrefTests += '<div id="testForm"> <label for="conforme'+currentID+'-'+k+'">Conforme</label><input type="radio" id="conforme'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="ok" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[0][1]) ? "checked" : "")+'/>  ';
+					htmlrefTests += '<label for="non-conforme'+currentID+'-'+k+'">Non conforme</label><input type="radio" id="non-conforme'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" id="radio'+currentID+'-'+k+'" value="ko" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[1][1]) ? "checked" : "")+'/>';
+					htmlrefTests += '<label for="na'+currentID+'-'+k+'">N/A</label><input type="radio" id="na'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="na" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[2][1]) ? "checked" : "")+'/>';
+					htmlrefTests += '<label for="nt'+currentID+'-'+k+'">Non testé</label><input type="radio" id="nt'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="nt" '+(((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[3][1]) || (currentRefTests[i].criteria[j].criterium["result"][k] == '')) ? 'checked="checked"' : "")+'/>';
+					htmlrefTests += '</article>';
 				}
 				
 				
@@ -676,8 +678,8 @@ function reqListener(responseFirst, responseCriteria) {
 		
 
 		  }
-		 // var result = JSON.parse(currentRefTests);
-		
+
+
 		  
 		  /* //on boucle dans le tableau passé en paramètre de la fonction
 		  for (let i in currentRefTests) {
@@ -735,8 +737,30 @@ function reqListener(responseFirst, responseCriteria) {
 			// Affichage de l'ensemble des lignes en HTML
 			currentRefTests.length===0 ?  elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
 
+			
+			for (let i in currentRefTests) {
+				for (let j in currentRefTests[i].criteria) {
+					for (let k in currentRefTests[i].criteria[j].criterium.tests) {
+					 
+						//radio
+						var radios = document.getElementsByName("inputTest-"+currentRefTests[i].criteria[j].criterium["testID"][k]);
+						var nodeArray = [];
+						for (var l = 0; l < radios.length; ++l) {
+							 radios[l].addEventListener('click', function(){checklistApp.setStates(this, currentRefTests[i].criteria[j].criterium["testID"][k])}, false);
+						}
+
+						//commentaires
+						//var comment = document.getElementById("commentBtn"+i);
+						//comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
+					
+					}
+	
+				}
+
+			}
+			
 			// Event Handler
-			/* for (let i in currentRefTests) {
+			 /* for (let i in currentRefTests) {
 				
 				//radio
 				var radios = document.getElementsByName("test"+i);
@@ -749,7 +773,7 @@ function reqListener(responseFirst, responseCriteria) {
 				var comment = document.getElementById("commentBtn"+i);
 				comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
 				
-			} */
+			}  */
 			
 		};
 		

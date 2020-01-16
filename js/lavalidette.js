@@ -38,7 +38,7 @@ document.getElementById('import').onclick = function() {
 	}
 
 	//appel des Json
-	doXHR('json/tests-web-wcag.json', function(errFirst, responseFirst) {
+	doXHR('json/lavallydette.json', function(errFirst, responseFirst) {
 	  if (errFirst) {
 		reqError(); 
 	  }
@@ -99,14 +99,59 @@ document.getElementById('import').onclick = function() {
 		}
 		return arrCond;
 	}
+
+
+function importRGAA(dataVallydette, dataRGAA) {
+	
+	dataRGAA.topics.forEach(function(topics){
+  
+		topics.criteria.forEach(function(criteria){
+		    
+				 for (let test of Object.keys(criteria.criterium.tests)) {
+					var testContent = criteria.criterium.tests[test];
+					
+					let vallydetteTest = {};
+					vallydetteTest.themes = topics.topic;
+					vallydetteTest.ID = "testID-"+topics.number+"-"+criteria.criterium.number+"-"+test;
+					
+					if (Array.isArray(criteria.criterium.tests[test])) {
+						vallydetteTest.title = criteria.criterium.tests[test][0];
+						vallydetteTest.verifier = [];
+	
+						for (let verify in criteria.criterium.tests[test]) {
+							
+							if(verify!=0){
+								vallydetteTest.verifier.push(criteria.criterium.tests[test][verify]);
+								
+							}
+							
+						}
+						
+					} else {
+						vallydetteTest.title = criteria.criterium.tests[test];
+					}
+					
+					
+					dataVallydette.checklist.page[0].items.push(vallydetteTest);
+					
+				}
+  
+		  
+		});
+		  
+ 
+	});
+
+}
 	
 function reqListener(responseFirst, responseCriteria) {
-			
+		
 	var data = JSON.parse(responseFirst);
 	var dataCriteria = JSON.parse(responseCriteria);
 	var currentPage = 0;
 	var idPageIndex = 0;
 	
+	importRGAA (data, dataCriteria);
 	
 	// Récupération des données
 	var refPages = data.checklist;	
@@ -662,8 +707,8 @@ function reqListener(responseFirst, responseCriteria) {
 				
 				for (let k in currentRefTests[i].criteria[j].criterium.tests) {
 					 
-					currentRefTests[i].criteria[j].criterium["result"][k] = "";
-					currentRefTests[i].criteria[j].criterium["testID"][k] = currentID+"-"+k;
+					/* currentRefTests[i].criteria[j].criterium["result"][k] = "";
+					currentRefTests[i].criteria[j].criterium["testID"][k] = currentID+"-"+k; */
 					
 					htmlrefTests += '<article class="" id="test-'+currentID+'-'+k+'"><p>' + marked(JSON.stringify(currentRefTests[i].criteria[j].criterium.tests[k])) + '<span id="resultID-'+currentID+'-'+k+'" class="badge badge-pill '+ this.getStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +' float-lg-right">'+ this.setStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +'</span></p>';
 					htmlrefTests += '<div id="testForm"> <label for="conforme'+currentID+'-'+k+'">Conforme</label><input type="radio" id="conforme'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="ok" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[0][1]) ? "checked" : "")+'/>  ';

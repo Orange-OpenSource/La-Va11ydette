@@ -1,0 +1,34 @@
+{
+	"checklist": {
+		"name": "Audit WCAG 2.1",
+		"page": [{
+				"IDPage": "pageID-0",
+				"name": "Nom de la page",
+				"items": [{
+					"themes": "Nom du theme",
+					"ID": "testID-001",
+					"title": "Nom du test",
+					"type": [
+						""
+					],
+					"tests": [
+						""
+					],
+					"verifier": [
+						"",
+						""
+					],
+					"resultat": [
+						""
+					],
+					"exception": "",
+					"raccourcis": "",
+					"profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+					"resultatTest": "",
+					"commentaire": ""
+				}]
+			}
+		]
+
+	}
+}

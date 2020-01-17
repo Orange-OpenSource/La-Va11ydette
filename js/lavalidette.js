@@ -1,3 +1,20 @@
+//test configuration rendu MARKED 
+
+// Get reference
+const renderer = new marked.Renderer();
+marked.setOptions({
+  renderer: renderer
+});
+
+// Override function link(string href, string title, string text)
+renderer.link = function (href, title, text) {
+  return text;
+};
+renderer.paragraph = function (text) {
+  return text;
+};
+
+// fin test marked
 
 document.getElementById('import').onclick = function() {
 	  var files = document.getElementById('selectFiles').files;
@@ -702,10 +719,10 @@ function reqListener(responseFirst, responseCriteria) {
 	  this.FetchAll = function(currentRefTests) {
 	 
 		  // Selection de l'élément
-		
-		
-		 
+
 		  let elrefTests = document.getElementById('refTests');
+		  //elrefTests.classList.remove("accordion");
+		   
 		  let htmlrefTests = '';
 		  let headingTheme = '';
 		  let headingCriterium = '';
@@ -719,18 +736,26 @@ function reqListener(responseFirst, responseCriteria) {
 			
 			if(headingCriterium!=currentRefTests[i].criterium){
 				headingCriterium=currentRefTests[i].criterium;
-				htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
+				 htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
+				
+				/* htmlrefTests +='<h3><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'">'+marked(currentRefTests[i].criterium)+'</a></h3>';
+				htmlrefTests +='<div id="collapse'+i+'">'; */
 			}
 			
-			htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h4 class="card-title"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></h4>';
+			htmlrefTests += '<article class="mb-1" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span>';
 			//à remplacer par un for sur filtres
 			
 			htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
 			
-			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
-			htmlrefTests += '</article>';
+			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div>';
+			htmlrefTests += '</div></article>';
 		
-
+			/* var k = i++;
+			
+			if((k!="undefined")&&(headingCriterium!=currentRefTests[k].criterium)){
+				htmlrefTests +='</div>';
+			} */
+			
 		  }
 
 

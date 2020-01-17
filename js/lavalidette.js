@@ -111,8 +111,15 @@ function importRGAA(dataVallydette, dataRGAA) {
 					var testContent = criteria.criterium.tests[test];
 					
 					let vallydetteTest = {};
-					vallydetteTest.themes = topics.topic;
+					
+					//propriétés obligatoires
 					vallydetteTest.ID = "testID-"+topics.number+"-"+criteria.criterium.number+"-"+test;
+					vallydetteTest.commentaire = "";
+					vallydetteTest.resultatTest = "";
+					
+					
+					vallydetteTest.themes = topics.topic;
+					vallydetteTest.criterium = criteria.criterium.title;
 					
 					if (Array.isArray(criteria.criterium.tests[test])) {
 						vallydetteTest.title = criteria.criterium.tests[test][0];
@@ -121,16 +128,22 @@ function importRGAA(dataVallydette, dataRGAA) {
 						for (let verify in criteria.criterium.tests[test]) {
 							
 							if(verify!=0){
-								vallydetteTest.verifier.push(criteria.criterium.tests[test][verify]);
-								
+								vallydetteTest.verifier.push(criteria.criterium.tests[test][verify]);	
 							}
-							
 						}
-						
 					} else {
 						vallydetteTest.title = criteria.criterium.tests[test];
 					}
 					
+					vallydetteTest.technicalNote = [];
+					for (let note in criteria.criterium.technicalNote) {
+						vallydetteTest.technicalNote.push(criteria.criterium.technicalNote[note]);	
+					}
+					
+					vallydetteTest.wcag = [];
+					for (let rules in criteria.criterium.references[0].wcag) {
+						vallydetteTest.wcag.push(criteria.criterium.references[0].wcag[rules]);	
+					}
 					
 					dataVallydette.checklist.page[0].items.push(vallydetteTest);
 					
@@ -141,22 +154,26 @@ function importRGAA(dataVallydette, dataRGAA) {
 		  
  
 	});
+	
+return dataVallydette;
 
 }
 	
 function reqListener(responseFirst, responseCriteria) {
 		
-	var data = JSON.parse(responseFirst);
-	var dataCriteria = JSON.parse(responseCriteria);
+	var data = importRGAA(JSON.parse(responseFirst), JSON.parse(responseCriteria));
+	//var dataCriteria = JSON.parse(responseCriteria);
+	
+	
 	var currentPage = 0;
 	var idPageIndex = 0;
 	
-	importRGAA (data, dataCriteria);
+	//importRGAA (data, dataCriteria);
 	
 	// Récupération des données
 	var refPages = data.checklist;	
-	//var refTests = data.checklist.page[currentPage].items;
-	var refTests = dataCriteria;
+	var refTests = data.checklist.page[currentPage].items;
+	//var refTests = dataCriteria;
 	
 	var uniqueTypes = [];
 
@@ -685,41 +702,33 @@ function reqListener(responseFirst, responseCriteria) {
 	  this.FetchAll = function(currentRefTests) {
 	 
 		  // Selection de l'élément
-		  currentRefTests = currentRefTests.topics;
+		
+		
+		 
 		  let elrefTests = document.getElementById('refTests');
 		  let htmlrefTests = '';
 		  let headingTheme = '';
-		
+		  let headingCriterium = '';
+		  
 		  //on boucle dans le tableau passé en paramètre de la fonction
 		  for (let i in currentRefTests) {
-			if(headingTheme!=currentRefTests[i].topic){
-				headingTheme=currentRefTests[i].topic;
-				htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].topic)+'">'+currentRefTests[i].topic+'</h2>';
+			if(headingTheme!=currentRefTests[i].themes){
+				headingTheme=currentRefTests[i].themes;
+				htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
 			}
 			
-			for (let j in currentRefTests[i].criteria) {
-				
-				htmlrefTests +='<h3>'+currentRefTests[i].criteria[j].criterium.title+'</h3>';
-				currentRefTests[i].criteria[j].criterium["result"] = [];
-				currentRefTests[i].criteria[j].criterium["testID"] = [];
-				
-				let currentID = currentRefTests[i].criteria[j].criterium.number;
-				
-				for (let k in currentRefTests[i].criteria[j].criterium.tests) {
-					 
-					/* currentRefTests[i].criteria[j].criterium["result"][k] = "";
-					currentRefTests[i].criteria[j].criterium["testID"][k] = currentID+"-"+k; */
-					
-					htmlrefTests += '<article class="" id="test-'+currentID+'-'+k+'"><p>' + marked(JSON.stringify(currentRefTests[i].criteria[j].criterium.tests[k])) + '<span id="resultID-'+currentID+'-'+k+'" class="badge badge-pill '+ this.getStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +' float-lg-right">'+ this.setStatutClass(currentRefTests[i].criteria[j].criterium["result"][k]) +'</span></p>';
-					htmlrefTests += '<div id="testForm"> <label for="conforme'+currentID+'-'+k+'">Conforme</label><input type="radio" id="conforme'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="ok" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[0][1]) ? "checked" : "")+'/>  ';
-					htmlrefTests += '<label for="non-conforme'+currentID+'-'+k+'">Non conforme</label><input type="radio" id="non-conforme'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" id="radio'+currentID+'-'+k+'" value="ko" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[1][1]) ? "checked" : "")+'/>';
-					htmlrefTests += '<label for="na'+currentID+'-'+k+'">N/A</label><input type="radio" id="na'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="na" '+((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[2][1]) ? "checked" : "")+'/>';
-					htmlrefTests += '<label for="nt'+currentID+'-'+k+'">Non testé</label><input type="radio" id="nt'+currentID+'-'+k+'" name="inputTest-'+currentID+'-'+k+'" value="nt" '+(((currentRefTests[i].criteria[j].criterium["result"][k] == filtres[3][1]) || (currentRefTests[i].criteria[j].criterium["result"][k] == '')) ? 'checked="checked"' : "")+'/>';
-					htmlrefTests += '</article>';
-				}
-				
-				
+			if(headingCriterium!=currentRefTests[i].criterium){
+				headingCriterium=currentRefTests[i].criterium;
+				htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
 			}
+			
+			htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h4 class="card-title"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></h4>';
+			//à remplacer par un for sur filtres
+			
+			htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+			
+			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
+			htmlrefTests += '</article>';
 		
 
 		  }
@@ -781,31 +790,10 @@ function reqListener(responseFirst, responseCriteria) {
 
 			// Affichage de l'ensemble des lignes en HTML
 			currentRefTests.length===0 ?  elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
-
-			
-			for (let i in currentRefTests) {
-				for (let j in currentRefTests[i].criteria) {
-					for (let k in currentRefTests[i].criteria[j].criterium.tests) {
-					 
-						//radio
-						var radios = document.getElementsByName("inputTest-"+currentRefTests[i].criteria[j].criterium["testID"][k]);
-						var nodeArray = [];
-						for (var l = 0; l < radios.length; ++l) {
-							 radios[l].addEventListener('click', function(){checklistApp.setStates(this, currentRefTests[i].criteria[j].criterium["testID"][k])}, false);
-						}
-
-						//commentaires
-						//var comment = document.getElementById("commentBtn"+i);
-						//comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
-					
-					}
 	
-				}
-
-			}
 			
 			// Event Handler
-			 /* for (let i in currentRefTests) {
+			 for (let i in currentRefTests) {
 				
 				//radio
 				var radios = document.getElementsByName("test"+i);
@@ -817,8 +805,7 @@ function reqListener(responseFirst, responseCriteria) {
 				//commentaires
 				var comment = document.getElementById("commentBtn"+i);
 				comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
-				
-			}  */
+			}  
 			
 		};
 		

@@ -726,6 +726,7 @@ function reqListener(responseFirst, responseCriteria) {
 		  let htmlrefTests = '';
 		  let headingTheme = '';
 		  let headingCriterium = '';
+		  let nextIndex = 1;
 		  
 		  //on boucle dans le tableau passé en paramètre de la fonction
 		  for (let i in currentRefTests) {
@@ -736,10 +737,10 @@ function reqListener(responseFirst, responseCriteria) {
 			
 			if(headingCriterium!=currentRefTests[i].criterium){
 				headingCriterium=currentRefTests[i].criterium;
-				 htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
-				
-				/* htmlrefTests +='<h3><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'">'+marked(currentRefTests[i].criterium)+'</a></h3>';
-				htmlrefTests +='<div id="collapse'+i+'">'; */
+				//htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
+		
+				htmlrefTests +='<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'">'+marked(currentRefTests[i].criterium)+'</a></h3></div>';
+				htmlrefTests +='<div id="collapse'+i+'" class="collapse">'; 
 			}
 			
 			htmlrefTests += '<article class="mb-1" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span>';
@@ -750,12 +751,12 @@ function reqListener(responseFirst, responseCriteria) {
 			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div>';
 			htmlrefTests += '</div></article>';
 		
-			/* var k = i++;
+			if((currentRefTests[nextIndex]!=undefined)&&(headingCriterium!=currentRefTests[nextIndex].criterium)){
+					htmlrefTests +='</div>';
+			} 
 			
-			if((k!="undefined")&&(headingCriterium!=currentRefTests[k].criterium)){
-				htmlrefTests +='</div>';
-			} */
-			
+			nextIndex = nextIndex+1;
+	
 		  }
 
 

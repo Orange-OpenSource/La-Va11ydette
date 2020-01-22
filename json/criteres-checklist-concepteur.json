@@ -1,7 +1,9 @@
-[
+{
+"items": [
   {
     "themes": "Contenu textuel",
     "title": "Donner un titre aux pages",
+	"ID": "testID-001",
     "type": [],
     "tests": [
       "Identifier toutes les pages / écrans composant la structure du site ou de l’application"
@@ -22,6 +24,7 @@
   {
     "themes": "Contenu textuel",
     "title": "Donner des titres aux rubriques",
+	"ID": "testID-002",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -47,6 +50,7 @@
   {
     "themes": "Contenu textuel",
     "title": "Structurer les tableaux de données",
+	"ID": "testID-003",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -78,6 +82,7 @@
   {
     "themes": "Contenu non-textuel",
     "title": "Définir des équivalents textuels",
+	"ID": "testID-004",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -101,6 +106,7 @@
   {
     "themes": "Contenu non-textuel",
     "title": "Rendre accessible les pistes audio, vidéo et les animations",
+	"ID": "testID-005",
     "type": [],
     "tests": [
       "Identifier les contenus audio, vidéo et animation du site ou de l’application",
@@ -130,6 +136,7 @@
   {
     "themes": "Contenu non-textuel",
     "title": "Éviter les captchas",
+	"ID": "testID-006",
     "type": [],
     "tests": [
       "Examiner le captcha"
@@ -150,6 +157,7 @@
   {
     "themes": "Couleurs et contrastes",
     "title": "Assurer un contraste suffisant entre texte et fond",
+	"ID": "testID-007",
     "type": [],
     "tests": [
       "Examiner les maquettes graphiques à l’aide de l’outil Color Contrast Analyser"
@@ -172,6 +180,7 @@
   {
     "themes": "Couleurs et contrastes",
     "title": "Ne pas utiliser la couleur ou tout autre information sensorielle comme seule source d’information",
+	"ID": "testID-008",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -194,6 +203,7 @@
   {
     "themes": "Navigation générale",
     "title": "Libeller les liens et boutons de façon concise et sans équivoque",
+	"ID": "testID-009",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -219,6 +229,7 @@
   {
     "themes": "Navigation générale",
     "title": "Éviter les boites de dialogues et l’ouverture de nouvelles fenêtres",
+	"ID": "testID-010",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques"
@@ -241,6 +252,7 @@
   {
     "themes": "Navigation générale",
     "title": "Fournir des liens d’évitement",
+	"ID": "testID-011",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques"
@@ -261,6 +273,7 @@
   {
     "themes": "Navigation générale",
     "title": "S’assurer que l’utilisateur garde le contrôle du système lors des interactions",
+	"ID": "testID-012",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -280,6 +293,7 @@
   {
     "themes": "Navigation générale",
     "title": "Permettre à l’utilisateur de contrôler les animations",
+	"ID": "testID-013",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -303,6 +317,7 @@
   {
     "themes": "Navigation générale",
     "title": "Situer explicitement la page dans le site et fournir plusieurs moyens d'y accéder ",
+	"ID": "testID-014",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -326,6 +341,7 @@
   {
     "themes": "Navigation générale",
     "title": "Rassurer l’utilisateur par des messages contextuels",
+	"ID": "testID-015",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -345,6 +361,7 @@
   {
     "themes": "Navigation clavier",
     "title": "Permettre une navigation uniquement clavier",
+	"ID": "testID-016",
     "type": [],
     "tests": [
       "Examiner les spécifications"
@@ -367,6 +384,7 @@
   {
     "themes": "Navigation clavier",
     "title": "Assurer une bonne visibilité du focus",
+	"ID": "testID-017",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -390,6 +408,7 @@
   {
     "themes": "Navigation clavier",
     "title": "S’assurer que l'ordre de lecture et les déplacements du focus sont logiques et cohérents",
+	"ID": "testID-018",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -413,6 +432,7 @@
   {
     "themes":"Mise en page",
     "title": "Utiliser des tailles relatives pour faire du web adaptatif",
+	"ID": "testID-019",
     "type": [],
     "tests": [
       "Examiner les spécifications associées aux wireframes et maquettes graphiques"
@@ -436,6 +456,7 @@
   {
     "themes":"Mise en page",
     "title": "Aérer ou rendre possible l’aération des textes",
+	"ID": "testID-020",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques"
@@ -460,6 +481,7 @@
     {
     "themes":"Mise en page",
     "title": "Identifier les différentes régions et éléments de la page  et veiller à la cohérence des regroupements",
+	"ID": "testID-021",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -486,6 +508,7 @@
    {
     "themes":"Mise en page",
     "title": "Définir des zones sensibles de taille suffisante",
+	"ID": "testID-022",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -505,6 +528,7 @@
   {
     "themes":"Formulaires",
     "title":"Faciliter la complétion des formulaires ",
+	"ID": "testID-023",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -534,6 +558,7 @@
    {
     "themes":"Formulaires",
     "title":"Protéger l’utilisateur des erreurs dans les formulaires",
+	"ID": "testID-024",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques"
@@ -566,6 +591,7 @@
    {
     "themes":"Tactile et interactions",
     "title":"Proposer une alternative aux gestuelles complexes",
+	"ID": "testID-025",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques",
@@ -585,6 +611,7 @@
    {
      "themes":"Tactile et interactions",
     "title":"Permettre à l’utilisateur de choisir l’orientation de l’écran",
+	"ID": "testID-026",
     "type": [],
     "tests": [
       "Examiner les wireframes et les maquettes graphiques"
@@ -601,3 +628,4 @@
 	"resultatTest": ""
   }
 ]
+}

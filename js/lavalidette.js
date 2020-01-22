@@ -183,6 +183,30 @@ return dataVallydette;
 
 }
 
+function importConcepteur(dataVallydette, dataChecklistExpert) {
+	
+	dataVallydette.checklist.name = "Audit Concepteur";
+	dataVallydette.checklist.referentiel = "concepteur";
+	dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
+		
+return dataVallydette;
+
+}
+
+//event handler
+	var btnRunRGAA = document.getElementById("runRGAA");
+	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
+	console.log(btnRunRGAA);
+	
+	var btnRunExpert = document.getElementById("runExpert");
+	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
+	
+	var btnRunIncontournables = document.getElementById("runIncontournables");
+	btnRunIncontournables.addEventListener('click', function(){initVallydette('incontournables')}, false);
+	
+	var btnRunConcepteur = document.getElementById("runConcepteur");
+	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
+	
 
 function initVallydette (referentiel) {
 	
@@ -190,6 +214,7 @@ function initVallydette (referentiel) {
 	const jsonRGAA = 'json/criteres-rgaa4.json';
 	const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
 	const jsonIncontournables = 'json/criteres-incontournables.json';
+	const jsonConcepteur = 'json/criteres-checklist-concepteur.json';
 	
 	//appel des Json
 	doXHR(jsonVallydette, function(errFirst, responseFirst) {
@@ -205,15 +230,6 @@ function initVallydette (referentiel) {
 	 
 	});
 
-	//event handler
-	var btnRunRGAA = document.getElementById("runRGAA");
-	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
-	
-	var btnRunExpert = document.getElementById("runExpert");
-	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
-	
-	var btnRunIncontournables = document.getElementById("runIncontournables");
-	btnRunIncontournables.addEventListener('click', function(){initVallydette('incontournables')}, false);
 	
 
 	if (referentiel=='RGAA') {
@@ -221,16 +237,25 @@ function initVallydette (referentiel) {
 		btnRunRGAA.classList.add("active");
 		btnRunExpert.classList.remove("active");
 		btnRunIncontournables.classList.remove("active");
+		btnRunConcepteur.classList.remove("active");
 	} else if (referentiel=='expert') {
 		jsonReferentiel = jsonChecklistExpert;
 		btnRunExpert.classList.add("active");
 		btnRunRGAA.classList.remove("active");
 		btnRunIncontournables.classList.remove("active");
-	} else {
+		btnRunConcepteur.classList.remove("active");
+	} else if (referentiel=='incontournables' ) {
 		jsonReferentiel = jsonIncontournables;
 		btnRunRGAA.classList.remove("active");
 		btnRunExpert.classList.remove("active");
 		btnRunIncontournables.classList.add("active");
+		btnRunConcepteur.classList.remove("active");
+	} else if (referentiel=='concepteur' ) {
+		jsonReferentiel = jsonConcepteur;
+		btnRunRGAA.classList.remove("active");
+		btnRunExpert.classList.remove("active");
+		btnRunIncontournables.classList.remove("active");
+		btnRunConcepteur.classList.add("active");
 	}
 }
 	
@@ -241,13 +266,14 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			var data = importRGAA(JSON.parse(responseFirst), JSON.parse(responseCriteria));
 		} else if (responseReferentiel=='expert'){
 			var data = importChecklistExpert(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
-		} else {
+		} else if (responseReferentiel=='incontournables') {
 			var data = importIncontournables(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
+		} else if (responseReferentiel=='concepteur') {
+			var data = importConcepteur(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
 		}
 	} else {
 		var data = JSON.parse(responseFirst);
 		responseReferentiel = data.checklist.referentiel;
-		console.log(responseReferentiel);
 	}
 	//var dataCriteria = JSON.parse(responseCriteria);
 	

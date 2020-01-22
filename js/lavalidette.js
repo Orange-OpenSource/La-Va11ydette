@@ -13,7 +13,6 @@ renderer.link = function (href, title, text) {
 renderer.paragraph = function (text) {
   return text;
 };
-
 // fin test marked
 
 document.getElementById('import').onclick = function() {
@@ -53,22 +52,7 @@ document.getElementById('import').onclick = function() {
 	  oReq.open('GET', url, true);
 	  oReq.send(null);
 	}
-
-	//appel des Json
-	doXHR('json/lavallydette.json', function(errFirst, responseFirst) {
-	  if (errFirst) {
-		reqError(); 
-	  }
-		return doXHR('json/criteres-rgaa4.json', function(errSecond, responseSecond) {
-			if (errSecond) {
-			  reqError(); 
-			}
-			return reqListener(responseFirst, responseSecond);
-		  });
-	 
-	});
-
-
+	
 	function reqError(err) {
 	   let elrefTests = document.getElementById('refTests');
 	   elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
@@ -119,6 +103,9 @@ document.getElementById('import').onclick = function() {
 
 
 function importRGAA(dataVallydette, dataRGAA) {
+	
+	dataVallydette.checklist.name = "Audit RGAA 4";
+	dataVallydette.checklist.referentiel = "RGAA";
 	
 	dataRGAA.topics.forEach(function(topics){
   
@@ -175,10 +162,93 @@ function importRGAA(dataVallydette, dataRGAA) {
 return dataVallydette;
 
 }
+
+function importChecklistExpert(dataVallydette, dataChecklistExpert) {
 	
-function reqListener(responseFirst, responseCriteria) {
+	dataVallydette.checklist.name = "Audit Checklist Expert";
+	dataVallydette.checklist.referentiel = "expert";
+	dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
 		
-	var data = importRGAA(JSON.parse(responseFirst), JSON.parse(responseCriteria));
+return dataVallydette;
+
+}
+
+function importIncontournables(dataVallydette, dataChecklistExpert) {
+	
+	dataVallydette.checklist.name = "Audit Incontournables";
+	dataVallydette.checklist.referentiel = "incontournables";
+	dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
+		
+return dataVallydette;
+
+}
+
+
+function initVallydette (referentiel) {
+	
+	const jsonVallydette = 'json/lavallydette.json';
+	const jsonRGAA = 'json/criteres-rgaa4.json';
+	const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
+	const jsonIncontournables = 'json/criteres-incontournables.json';
+	
+	//appel des Json
+	doXHR(jsonVallydette, function(errFirst, responseFirst) {
+	  if (errFirst) {
+		reqError(); 
+	  }
+		return doXHR(jsonReferentiel, function(errSecond, responseSecond) {
+			if (errSecond) {
+			  reqError(); 
+			}
+			return reqListener(responseFirst, responseSecond, referentiel);
+		  });
+	 
+	});
+
+	//event handler
+	var btnRunRGAA = document.getElementById("runRGAA");
+	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
+	
+	var btnRunExpert = document.getElementById("runExpert");
+	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
+	
+	var btnRunIncontournables = document.getElementById("runIncontournables");
+	btnRunIncontournables.addEventListener('click', function(){initVallydette('incontournables')}, false);
+	
+
+	if (referentiel=='RGAA') {
+		jsonReferentiel = jsonRGAA;
+		btnRunRGAA.classList.add("active");
+		btnRunExpert.classList.remove("active");
+		btnRunIncontournables.classList.remove("active");
+	} else if (referentiel=='expert') {
+		jsonReferentiel = jsonChecklistExpert;
+		btnRunExpert.classList.add("active");
+		btnRunRGAA.classList.remove("active");
+		btnRunIncontournables.classList.remove("active");
+	} else {
+		jsonReferentiel = jsonIncontournables;
+		btnRunRGAA.classList.remove("active");
+		btnRunExpert.classList.remove("active");
+		btnRunIncontournables.classList.add("active");
+	}
+}
+	
+function reqListener(responseFirst, responseCriteria, responseReferentiel) {
+	
+	if (responseCriteria) {
+		if (responseReferentiel=='RGAA') {
+			var data = importRGAA(JSON.parse(responseFirst), JSON.parse(responseCriteria));
+		} else if (responseReferentiel=='expert'){
+			var data = importChecklistExpert(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
+		} else {
+			var data = importIncontournables(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
+		}
+	} else {
+		var data = JSON.parse(responseFirst);
+		responseReferentiel = data.checklist.referentiel;
+		console.log(responseReferentiel);
+	}
 	//var dataCriteria = JSON.parse(responseCriteria);
 	
 	
@@ -728,91 +798,100 @@ function reqListener(responseFirst, responseCriteria) {
 		  let headingCriterium = '';
 		  let nextIndex = 1;
 		  
-		  //on boucle dans le tableau passé en paramètre de la fonction
-		  for (let i in currentRefTests) {
-			if(headingTheme!=currentRefTests[i].themes){
-				headingTheme=currentRefTests[i].themes;
-				htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
-			}
+		  // TEMPLATE
+		 
+	     if(responseReferentiel=='RGAA') {
+			 for (let i in currentRefTests) {
+				if(headingTheme!=currentRefTests[i].themes){
+					headingTheme=currentRefTests[i].themes;
+					htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
+				}
+				
+				if(headingCriterium!=currentRefTests[i].criterium){
+					headingCriterium=currentRefTests[i].criterium;
+					//htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
 			
-			if(headingCriterium!=currentRefTests[i].criterium){
-				headingCriterium=currentRefTests[i].criterium;
-				//htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
-		
-				htmlrefTests +='<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'">'+marked(currentRefTests[i].criterium)+'</a></h3></div>';
-				htmlrefTests +='<div id="collapse'+i+'" class="collapse">'; 
-			}
+					htmlrefTests +='<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'">'+marked(currentRefTests[i].criterium)+'</a></h3></div>';
+					htmlrefTests +='<div id="collapse'+i+'" class="collapse">'; 
+				}
+				
+				htmlrefTests += '<article class="mb-1" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span>';
+				//à remplacer par un for sur filtres
+				
+				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+				
+				htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div>';
+				htmlrefTests += '</div></article>';
 			
-			htmlrefTests += '<article class="mb-1" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span>';
-			//à remplacer par un for sur filtres
-			
-			htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
-			
-			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div>';
-			htmlrefTests += '</div></article>';
-		
-			if((currentRefTests[nextIndex]!=undefined)&&(headingCriterium!=currentRefTests[nextIndex].criterium)){
-					htmlrefTests +='</div>';
-			} 
-			
-			nextIndex = nextIndex+1;
+				if((currentRefTests[nextIndex]!=undefined)&&(headingCriterium!=currentRefTests[nextIndex].criterium)){
+						htmlrefTests +='</div>';
+				} 
+				
+				nextIndex = nextIndex+1;
 	
-		  }
+			}
+			 
+		 } else {
+			 
+			  //on boucle dans le tableau passé en paramètre de la fonction
+			  for (let i in currentRefTests) {
+				if(headingTheme!=currentRefTests[i].themes){
+					headingTheme=currentRefTests[i].themes;
+					htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
+				}
+				
+				htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
+				//à remplacer par un for sur filtres
+				
+				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+				
+				htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
+				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
+				htmlrefTests += '<div class="card-block"><div class="row">';
+				htmlrefTests += '<div class="col-lg-6"><h4>'+textContent.title1+'</h4><ol>';
+				for (let j in currentRefTests[i].tests) {
+					htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '<div class="col-lg-6"><h4>'+textContent.title2+'</h4><ol>';
+				for (let j in currentRefTests[i].verifier) {
+					htmlrefTests += '<li>' +  currentRefTests[i].verifier[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '</div>';
+				htmlrefTests += '<div class="row">';
+				htmlrefTests += '<div class="col-lg-12"><h4>'+((currentRefTests[i].profils[0] == 'Concepteur') ? textContent.title4 : textContent.title3)+'</h4><ol>';
+				for (let j in currentRefTests[i].resultat) {
+					htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '</div>';
+				if (currentRefTests[i].exception) {
+					htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
+					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
+					htmlrefTests += '</div>';
+					htmlrefTests += '</div>';
+				}		
+				htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
+				for (let j in currentRefTests[i].profils) {
+				  htmlrefTests += currentRefTests[i].profils[j];
+				  j != ((currentRefTests[i].profils).length-1) ? htmlrefTests +=',  ' : '';
+				}
+				htmlrefTests += '<br />'+((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
+				for (let j in currentRefTests[i].type) {
+				  htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
+				}
+				htmlrefTests += '</div>';
+				htmlrefTests += '</div></article>';
+
+			  } 
+		}
+		 
+		
 
 
 		  
-		  /* //on boucle dans le tableau passé en paramètre de la fonction
-		  for (let i in currentRefTests) {
-			if(headingTheme!=currentRefTests[i].themes){
-				headingTheme=currentRefTests[i].themes;
-				htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
-			}
-			
-			htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
-			//à remplacer par un for sur filtres
-			
-			htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
-			
-			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
-			htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
-			htmlrefTests += '<div class="card-block"><div class="row">';
-			htmlrefTests += '<div class="col-lg-6"><h4>'+textContent.title1+'</h4><ol>';
-			for (let j in currentRefTests[i].tests) {
-				htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '<div class="col-lg-6"><h4>'+textContent.title2+'</h4><ol>';
-			for (let j in currentRefTests[i].verifier) {
-				htmlrefTests += '<li>' +  currentRefTests[i].verifier[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '</div>';
-			htmlrefTests += '<div class="row">';
-			htmlrefTests += '<div class="col-lg-12"><h4>'+((currentRefTests[i].profils[0] == 'Concepteur') ? textContent.title4 : textContent.title3)+'</h4><ol>';
-			for (let j in currentRefTests[i].resultat) {
-				htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '</div>';
-			if (currentRefTests[i].exception) {
-				htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
-				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-				htmlrefTests += '</div>';
-				htmlrefTests += '</div>';
-			}		
-			htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
-			for (let j in currentRefTests[i].profils) {
-			  htmlrefTests += currentRefTests[i].profils[j];
-			  j != ((currentRefTests[i].profils).length-1) ? htmlrefTests +=',  ' : '';
-			}
-			htmlrefTests += '<br />'+((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
-			for (let j in currentRefTests[i].type) {
-			  htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
-			}
-			htmlrefTests += '</div>';
-			htmlrefTests += '</div></article>';
-
-		  } */
+		 
 
 			// Affichage de l'ensemble des lignes en HTML
 			currentRefTests.length===0 ?  elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
@@ -934,8 +1013,10 @@ function reqListener(responseFirst, responseCriteria) {
 }
 	// Affichage de tous les tests
 	checklistApp.FetchAll(refTests);
-			checklistApp.paginationPage(refPages);
+	checklistApp.paginationPage(refPages);
 	// Affiche les checkboxes et boutons radios
 	checklistApp.DisplayFilters();
 	checklistApp.UpdateFeedback(false, refTests.length);
 }
+
+initVallydette('RGAA');

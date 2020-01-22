@@ -1,6 +1,4 @@
 {
-	"checklist": {
-		"name": "ma checklist",
 		"items": [{
 				"themes": "Contenu textuel",
 				"ID": "testID-001",
@@ -779,5 +777,4 @@
 				"commentaire": ""
 			}
 		]
-	}
 }

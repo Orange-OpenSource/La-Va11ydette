@@ -31,8 +31,7 @@ document.getElementById('import').onclick = function() {
 	  }
 	  
 	 fr.readAsText(files.item(0));
-	 
-	 
+
 	  //doXHR( fr.readAsText(files.item(0)));
 	};
 
@@ -196,7 +195,7 @@ return dataVallydette;
 //event handler
 	var btnRunRGAA = document.getElementById("runRGAA");
 	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
-	console.log(btnRunRGAA);
+
 	
 	var btnRunExpert = document.getElementById("runExpert");
 	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
@@ -229,8 +228,6 @@ function initVallydette (referentiel) {
 		  });
 	 
 	});
-
-	
 
 	if (referentiel=='RGAA') {
 		jsonReferentiel = jsonRGAA;

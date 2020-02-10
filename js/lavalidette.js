@@ -205,8 +205,76 @@ return dataVallydette;
 	
 	var btnRunConcepteur = document.getElementById("runConcepteur");
 	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
+
+//matrice calcul	
+function getResultatTest(idTest, currentRefData, idPage) {
+
+	for (let i in currentRefData.checklist.page[idPage].items) {
+		
+			if (idTest == currentRefData.checklist.page[idPage].items[i].IDorigin) {
+	
+				return currentRefData.checklist.page[idPage].items[i].resultatTest;
+				
+			} 
+			
+	}
+	
+};
+
+
+function runMatriceCalcul(referentielMatrice, refData) {
+
+	var getPages = refData.checklist.page;
+	var refArrayInitial = referentielMatrice;
+	var resultatArray = [];
+ 
+	for (let i in  getPages) {
+		
+		console.log(refArrayInitial);
+		resultatArray.push(refArrayInitial);
+		
+		for (let j in resultatArray[i].items) {
+
+			for (let k in resultatArray[i].items[j].tests) {
+			
+			   currentResultat = getResultatTest(resultatArray[i].items[j].tests[k], refData, i);
+			   
+				console.log("resultat" + i +" : "+currentResultat);
+	
+				console.log("resultat array : "+resultatArray[i].items[j].resultat);
+				
+			   if (resultatArray[i].items[j].resultat) {
+ 
+				   if (currentResultat=="ok") {
+					
+						resultatArray[i].items[j].resultat = true;
+				   
+				   } else if (currentResultat=="ko") {
+					   
+					   resultatArray[i].items[j].resultat = false;
+					   
+				   } else if ((currentResultat=="na") && (resultatArray[i].items[j].resultat=="nt")) {
+					   
+					   resultatArray[i].items[j].resultat = "na";
+					   
+				   } 
+			   }
+
+			   
+				console.log("resultat array 2 : "+resultatArray[i].items[j].resultat);
+			}
+			
+			
+		}
+
+	}
+	
+	
+	console.log(resultatArray);
+}
 	
 
+	
 function initVallydette (referentiel) {
 	
 	const jsonVallydette = 'json/lavallydette.json';
@@ -214,6 +282,7 @@ function initVallydette (referentiel) {
 	const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
 	const jsonIncontournables = 'json/criteres-incontournables.json';
 	const jsonConcepteur = 'json/criteres-checklist-concepteur.json';
+	const jsonEase = 'json/criteres-wcag-ease.json';
 	
 	//appel des Json
 	doXHR(jsonVallydette, function(errFirst, responseFirst) {
@@ -253,6 +322,8 @@ function initVallydette (referentiel) {
 		btnRunExpert.classList.remove("active");
 		btnRunIncontournables.classList.remove("active");
 		btnRunConcepteur.classList.add("active");
+	} else if (referentiel=='ease' ) {
+		jsonReferentiel = jsonEase;
 	}
 }
 	
@@ -267,12 +338,30 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			var data = importIncontournables(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
 		} else if (responseReferentiel=='concepteur') {
 			var data = importConcepteur(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
+		} else if (responseReferentiel=='ease') {
+			var data = importConcepteur(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
 		}
 	} else {
 		var data = JSON.parse(responseFirst);
 		responseReferentiel = data.checklist.referentiel;
 	}
 	//var dataCriteria = JSON.parse(responseCriteria);
+	
+	
+	//initialisation matrice calcul wcag
+	const matriceVallydette = 'json/matrice-wcag-ease.json';
+	var matriceRequest = new XMLHttpRequest();
+	
+	matriceRequest.onreadystatechange = function(event) {
+		if (this.readyState === XMLHttpRequest.DONE) {
+			runMatriceCalcul(JSON.parse(this.responseText), data);
+	
+		}
+	  };
+	matriceRequest.open('GET', matriceVallydette);
+	matriceRequest.send(null);
+	
+	
 	
 	
 	var currentPage = 0;
@@ -284,6 +373,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	var refPages = data.checklist;	
 	var refTests = data.checklist.page[currentPage].items;
 	//var refTests = dataCriteria;
+
 	
 	var uniqueTypes = [];
 
@@ -910,11 +1000,6 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			  } 
 		}
 		 
-		
-
-
-		  
-		 
 
 			// Affichage de l'ensemble des lignes en HTML
 			currentRefTests.length===0 ?  elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
@@ -1042,4 +1127,4 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	checklistApp.UpdateFeedback(false, refTests.length);
 }
 
-initVallydette('RGAA');
+initVallydette('ease');

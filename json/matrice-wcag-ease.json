@@ -1,0 +1,19 @@
+{
+	"items": [{
+		"wcag": "1.1.1.",
+		"tests": [
+			"testID-001",
+			"testID-002",
+			"testID-003"
+		],
+		"resultat":"nt"
+	},
+	{
+		"wcag": "1.1.2.",
+		"tests": [
+			"testID-001"
+		], 
+		"resultat":"nt"
+	}
+	]
+}

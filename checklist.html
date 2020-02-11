@@ -41,7 +41,7 @@
    <a href="" aria-label="test"></a>
    </nav>
    
- <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+ <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="display:none !important;">
         <li class="nav-ite">
           <button id="runRGAA" class="btn btn-inverse btn-secondary active mr-md-2" type="button">
            RGAA 4
@@ -73,7 +73,7 @@
 		
 			<h1 id="checklistName">Ma checklist</h1>
 			<button class="btn btn-secondary btn-sm" id="btnChecklistName"  data-element="checklistName" data-property="checklist.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
-				
+			<button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalResult" id="btnShowResult">Afficher le résultat de l'audit</button> 	
 		</div>
 		
 	</div>
@@ -97,8 +97,8 @@
 	
 	<div class="col-md-2 text-right">
 		
-		<a href="#" id="export" role="button"  class="btn btn-primary disabled">Exporter</a> 
-
+		<a href="#" id="export" role="button" class="btn btn-primary disabled">Exporter</a> 
+		
 	</div>
   </div>
   

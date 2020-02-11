@@ -205,9 +205,36 @@ return dataVallydette;
 	
 	var btnRunConcepteur = document.getElementById("runConcepteur");
 	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
+	
+	
+	
+	
 
-//matrice calcul	
-function runMatriceCalcul(referentielMatrice, refData) {
+//début calcul résultat	
+
+function initComputation(refData) {
+
+	//initialisation matrice calcul wcag
+	const matriceVallydette = 'json/matrice-wcag-ease.json';
+	var matriceRequest = new XMLHttpRequest();
+	
+	matriceRequest.onreadystatechange = function(event) {
+		if (this.readyState === XMLHttpRequest.DONE) {
+			//runComputation(JSON.parse(this.responseText), refData);
+			var response = this.responseText;
+			//eventHandler show result
+			var btnShowResult = document.getElementById("btnShowResult");
+			btnShowResult.addEventListener('click', function(){runFinalComputation(JSON.parse(response), refData)}, false);
+
+	
+		}
+	  };
+	matriceRequest.open('GET', matriceVallydette);
+	matriceRequest.send(null);
+}
+
+
+function runComputation(referentielMatrice, refData) {
 
 	var currentResultArray = referentielMatrice;
 
@@ -250,16 +277,38 @@ function runMatriceCalcul(referentielMatrice, refData) {
 		}	
 		
 	}
-	
-	console.log("resultat");
-	console.log(currentResultArray);
 
-	runFinalResult(currentResultArray);
+	return currentResultArray;
 }
+
+function getNTtests(refData) {
 	
-function runFinalResult(finalResultArray) {
+	var nbNTtests = 0;
+	
+	for (let k in refData.checklist.page) {
+		
+		for (let l in refData.checklist.page[k].items) {
+			
+			if (refData.checklist.page[k].items[l].resultatTest=="nt") {
+							
+				nbNTtests++;
+						   
+			} 
+				
+		}
+	}
+
+	return 	nbNTtests;
+}
+
+function runFinalComputation(referentielMatrice, refData) {
+	
+	finalResultArray = runComputation(referentielMatrice, refData);
 	
 	var nbTrue = 0;
+	var nbFalse = 0;
+	var nbNA = 0;
+	var nbNT = getNTtests(refData);
 	var nbTotal = 0;
 	var FinalResult = 0;
 	
@@ -271,21 +320,61 @@ function runFinalResult(finalResultArray) {
 			nbTotal++;
 			
 		} else if (finalResultArray.items[i].resultat == false) {
-				
+			nbFalse++;	
 			nbTotal++;
 			
-		}
+		} else if (finalResultArray.items[i].resultat == 'na') {
+			nbNA++;	
+		
+		} 
 		
 	}
 	
-	FinalResult = (nbTrue / nbTotal) * 100;
-	
-	console.log(nbTrue);
-	console.log(nbTotal);
-	console.log(FinalResult + "%");
-	
+		
+	FinalResult = (nbTrue / nbTotal) * 100;	
+
+	let htmlModal = '';
+			 htmlModal = '<div id="modalResult" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
+			 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+			 htmlModal += '<div class="modal-content">';
+			 htmlModal += '<div class="modal-header">';
+			 htmlModal += '<h5>Résultat de conformité</h5>';
+			 htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
+			 htmlModal += '<span aria-hidden="true">&times;</span>';
+			 htmlModal += '</button>';
+			 htmlModal += '</div>';
+			 htmlModal += '<div class="modal-body">';
+			
+			if (nbNT>=1 && nbTotal>=1) {
+				htmlModal += '<div class="alert alert-warning" role="alert"><span class="alert-icon"><span class="sr-only">Attention</span></span><p>Il reste '+nbNT+' tests non-testés, certains critères WCAG ne peuvent donc pas encore être évalués. Merci de traiter tous les tests pour afficher le résultat.</p></div>';
+			 }
+			 
+			 if (nbTotal<1) {
+				htmlModal += '<p>Vous n\'avez pas débuter l\'audit :)</p>';
+			} else if (nbNT==0) {
+				htmlModal += '<span class="finalResult">'+FinalResult+'%</span>';
+			}
+			 
+			 
+			 if (nbNT==0 && nbTotal>=1) {
+				htmlModal += '<table class="table"><tr><th>Nombre de critères</th><th>Validés</th><th>Non validés</th><th>Non Applicables</th><th>Conformité</th></tr>';
+				htmlModal += '<tr><td>'+nbTotal+'</td><td>'+nbTrue+'</td><td>'+nbFalse+'</td><td>'+nbNA+'</td><td>'+FinalResult+'%</td></tr></table>';
+			 }
+			 
+			 htmlModal += '</div>';
+			 htmlModal += '<div class="modal-footer">';
+			 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+			 htmlModal += '</div>';
+			 htmlModal += '</div>';
+			 htmlModal += '</div>';
+			 htmlModal += '</div>';
+		
+			// Parent element
+			let elModal = document.getElementById('modal');
+			elModal.innerHTML = htmlModal;
 }
-	
+// fin calcul résultat	
+
 function initVallydette (referentiel) {
 	
 	const jsonVallydette = 'json/lavallydette.json';
@@ -357,24 +446,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		responseReferentiel = data.checklist.referentiel;
 	}
 	//var dataCriteria = JSON.parse(responseCriteria);
-	
-	
-	//initialisation matrice calcul wcag
-	const matriceVallydette = 'json/matrice-wcag-ease.json';
-	var matriceRequest = new XMLHttpRequest();
-	
-	matriceRequest.onreadystatechange = function(event) {
-		if (this.readyState === XMLHttpRequest.DONE) {
-			runMatriceCalcul(JSON.parse(this.responseText), data);
-	
-		}
-	  };
-	matriceRequest.open('GET', matriceVallydette);
-	matriceRequest.send(null);
-	
-	
-	
-	
+
 	var currentPage = 0;
 	var idPageIndex = 0;
 	
@@ -385,6 +457,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	var refTests = data.checklist.page[currentPage].items;
 	//var refTests = dataCriteria;
 
+	//init computation
+	initComputation(data);
 	
 	var uniqueTypes = [];
 
@@ -500,11 +574,14 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		//enabled delete button
 		var currentBtnDelPage = document.getElementById('btnDelPage');
 		currentBtnDelPage.disabled = false;
+		
+		//reinit computation
+		initComputation(data);
 	}	
 
 	this.initNewPage = function(item) {
 		item.ID = item.ID+'-p'+indexPage;
-		item.resultatTest = '';
+		item.resultatTest = 'nt';
 		item.commentaire = '';
 	}
 	
@@ -600,6 +677,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		
 		//on met à jour l'export
 		this.jsonUpdate();
+		
+		//reinit computation
+		initComputation(data);
 	}
 	
 	this.getIfFilter = function(name) {

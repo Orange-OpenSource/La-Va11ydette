@@ -207,56 +207,35 @@ return dataVallydette;
 	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
 
 //matrice calcul	
-function getResultatTest(idTest, currentRefData, idPage) {
-
-	for (let i in currentRefData.checklist.page[idPage].items) {
-		
-			if (idTest == currentRefData.checklist.page[idPage].items[i].IDorigin) {
-	
-				return currentRefData.checklist.page[idPage].items[i].resultatTest;
-				
-			} 
-			
-	}
-	
-};
-
-
 function runMatriceCalcul(referentielMatrice, refData) {
 
-	var getPages = refData.checklist.page;
-	
-	console.log(refData);
-	
-	var refArrayInitial = JSON.parse(JSON.stringify(referentielMatrice));
+	var currentResultArray = referentielMatrice;
 
-	var resultatArray = [];
-
-	for (let i in refArrayInitial.items) {
+	for (let i in currentResultArray.items) {
 		
-		console.log(refArrayInitial.items[i].wcag);
+		console.log(currentResultArray.items[i].wcag);
 		
-		for (let j in refArrayInitial.items[i].tests) {
+		for (let j in currentResultArray.items[i].tests) {
 			
 			for (let k in refData.checklist.page) {
 			
 				for (let l in refData.checklist.page[k].items) {
 			
-					if (refArrayInitial.items[i].tests[j] == refData.checklist.page[k].items[l].IDorigin) {
+					if (currentResultArray.items[i].tests[j] == refData.checklist.page[k].items[l].IDorigin) {
 	
-						if (refArrayInitial.items[i].resultat) {
+						if (currentResultArray.items[i].resultat) {
 
 						   if (refData.checklist.page[k].items[l].resultatTest=="ok") {
 							
-								refArrayInitial.items[i].resultat = true;
+								currentResultArray.items[i].resultat = true;
 						   
 						   } else if (refData.checklist.page[k].items[l].resultatTest=="ko") {
 							   
-							   refArrayInitial.items[i].resultat = false;
+							   currentResultArray.items[i].resultat = false;
 							   
-						   } else if ((refData.checklist.page[k].items[l].resultatTest=="na") && (refArrayInitial.items[i].resultat=="nt")) {
+						   } else if ((refData.checklist.page[k].items[l].resultatTest=="na") && (currentResultArray.items[i].resultat=="nt")) {
 							   
-							   refArrayInitial.items[i].resultat = "na";
+							   currentResultArray.items[i].resultat = "na";
 							   
 						   } 
 					   }
@@ -273,51 +252,39 @@ function runMatriceCalcul(referentielMatrice, refData) {
 	}
 	
 	console.log("resultat");
-	console.log(refArrayInitial);
-	
-	/* for (let i in  getPages) {
-		
-	
-		for (let j in resultatArray[i].items) {
+	console.log(currentResultArray);
 
-			for (let k in resultatArray[i].items[j].tests) {
-			
-			   currentResultat = getResultatTest(resultatArray[i].items[j].tests[k], refData, i);
-			   
-				console.log("resultat" + i +" : "+currentResultat);
-	
-				console.log("resultat array : "+resultatArray[i].items[j].resultat);
-				
-			   if (resultatArray[i].items[j].resultat) {
- 
-				   if (currentResultat=="ok") {
-					
-						resultatArray[i].items[j].resultat = true;
-				   
-				   } else if (currentResultat=="ko") {
-					   
-					   resultatArray[i].items[j].resultat = false;
-					   
-				   } else if ((currentResultat=="na") && (resultatArray[i].items[j].resultat=="nt")) {
-					   
-					   resultatArray[i].items[j].resultat = "na";
-					   
-				   } 
-			   }
-
-			   
-				console.log("resultat array 2 : "+resultatArray[i].items[j].resultat);
-			}
-			
-			
-		}
-
-	} */
-	
-	
+	runFinalResult(currentResultArray);
 }
 	
-
+function runFinalResult(finalResultArray) {
+	
+	var nbTrue = 0;
+	var nbTotal = 0;
+	var FinalResult = 0;
+	
+	for (let i in finalResultArray.items) {
+		
+		if (finalResultArray.items[i].resultat == true) {
+			
+			nbTrue++;
+			nbTotal++;
+			
+		} else if (finalResultArray.items[i].resultat == false) {
+				
+			nbTotal++;
+			
+		}
+		
+	}
+	
+	FinalResult = (nbTrue / nbTotal) * 100;
+	
+	console.log(nbTrue);
+	console.log(nbTotal);
+	console.log(FinalResult + "%");
+	
+}
 	
 function initVallydette (referentiel) {
 	

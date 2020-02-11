@@ -225,14 +225,59 @@ function getResultatTest(idTest, currentRefData, idPage) {
 function runMatriceCalcul(referentielMatrice, refData) {
 
 	var getPages = refData.checklist.page;
-	var refArrayInitial = referentielMatrice;
+	
+	console.log(refData);
+	
+	var refArrayInitial = JSON.parse(JSON.stringify(referentielMatrice));
+
 	var resultatArray = [];
- 
-	for (let i in  getPages) {
+
+	for (let i in refArrayInitial.items) {
 		
-		console.log(refArrayInitial);
-		resultatArray.push(refArrayInitial);
+		console.log(refArrayInitial.items[i].wcag);
 		
+		for (let j in refArrayInitial.items[i].tests) {
+			
+			for (let k in refData.checklist.page) {
+			
+				for (let l in refData.checklist.page[k].items) {
+			
+					if (refArrayInitial.items[i].tests[j] == refData.checklist.page[k].items[l].IDorigin) {
+	
+						if (refArrayInitial.items[i].resultat) {
+
+						   if (refData.checklist.page[k].items[l].resultatTest=="ok") {
+							
+								refArrayInitial.items[i].resultat = true;
+						   
+						   } else if (refData.checklist.page[k].items[l].resultatTest=="ko") {
+							   
+							   refArrayInitial.items[i].resultat = false;
+							   
+						   } else if ((refData.checklist.page[k].items[l].resultatTest=="na") && (refArrayInitial.items[i].resultat=="nt")) {
+							   
+							   refArrayInitial.items[i].resultat = "na";
+							   
+						   } 
+					   }
+
+				
+					}
+				
+				}
+				
+			}
+			
+		}	
+		
+	}
+	
+	console.log("resultat");
+	console.log(refArrayInitial);
+	
+	/* for (let i in  getPages) {
+		
+	
 		for (let j in resultatArray[i].items) {
 
 			for (let k in resultatArray[i].items[j].tests) {
@@ -267,10 +312,9 @@ function runMatriceCalcul(referentielMatrice, refData) {
 			
 		}
 
-	}
+	} */
 	
 	
-	console.log(resultatArray);
 }
 	
 

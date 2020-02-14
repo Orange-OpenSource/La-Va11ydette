@@ -1060,8 +1060,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				if(headingCriterium!=currentRefTests[i].criterium){
 					headingCriterium=currentRefTests[i].criterium;
 					//htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
-			
-<<<<<<< HEAD
+		
 			htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
 			//à remplacer par un for sur filtres
 			//initialisation si aucun tests n'est checké

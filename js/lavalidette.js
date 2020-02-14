@@ -192,6 +192,16 @@ return dataVallydette;
 
 }
 
+function importWcagEase(dataVallydette, dataChecklistExpert) {
+	
+	dataVallydette.checklist.name = "Audit Wcag by Ease";
+	dataVallydette.checklist.referentiel = "wcagEase";
+	dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
+		
+return dataVallydette;
+
+}
+
 //event handler
 	var btnRunRGAA = document.getElementById("runRGAA");
 	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
@@ -205,10 +215,6 @@ return dataVallydette;
 	
 	var btnRunConcepteur = document.getElementById("runConcepteur");
 	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
-	
-	
-	
-	
 
 //début calcul résultat	
 
@@ -331,7 +337,9 @@ function runFinalComputation(referentielMatrice, refData) {
 	}
 	
 		
-	FinalResult = (nbTrue / nbTotal) * 100;	
+	FinalResult = Math.round((nbTrue / nbTotal) * 100);	
+
+	
 
 	let htmlModal = '';
 			 htmlModal = '<div id="modalResult" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
@@ -382,7 +390,7 @@ function initVallydette (referentiel) {
 	const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
 	const jsonIncontournables = 'json/criteres-incontournables.json';
 	const jsonConcepteur = 'json/criteres-checklist-concepteur.json';
-	const jsonEase = 'json/criteres-wcag-ease.json';
+	const jsonWcagEase = 'json/criteres-wcag-ease.json';
 	
 	//appel des Json
 	doXHR(jsonVallydette, function(errFirst, responseFirst) {
@@ -422,8 +430,8 @@ function initVallydette (referentiel) {
 		btnRunExpert.classList.remove("active");
 		btnRunIncontournables.classList.remove("active");
 		btnRunConcepteur.classList.add("active");
-	} else if (referentiel=='ease' ) {
-		jsonReferentiel = jsonEase;
+	} else if (referentiel=='wcagEase' ) {
+		jsonReferentiel = jsonWcagEase;
 	}
 }
 	
@@ -438,8 +446,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			var data = importIncontournables(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
 		} else if (responseReferentiel=='concepteur') {
 			var data = importConcepteur(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
-		} else if (responseReferentiel=='ease') {
-			var data = importConcepteur(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
+		} else if (responseReferentiel=='wcagEase') {
+			var data = importWcagEase(JSON.parse(responseFirst), JSON.parse(responseCriteria));	
 		}
 	} else {
 		var data = JSON.parse(responseFirst);
@@ -1004,7 +1012,45 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		  
 		  // TEMPLATE
 		 
-	     if(responseReferentiel=='RGAA') {
+	     if(responseReferentiel=='wcagEase') {
+			  //on boucle dans le tableau passé en paramètre de la fonction
+			  for (let i in currentRefTests) {
+				if(headingTheme!=currentRefTests[i].themes){
+					headingTheme=currentRefTests[i].themes;
+					htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
+				}
+				
+				htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
+				//à remplacer par un for sur filtres
+				
+				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+				
+				htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
+				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
+				htmlrefTests += '<div class="card-block"><div class="row">';
+				
+				htmlrefTests += '<div class="col-lg-12"><h4>'+textContent.title2+'</h4>';
+				htmlrefTests += currentRefTests[i].verifier;
+				htmlrefTests += '</div></div>';
+				
+				if (currentRefTests[i].exception) {
+					htmlrefTests += '<div class="row"><div class="col-lg-12 mt-3" ><h4>Exceptions</h4>';
+					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
+					htmlrefTests += '</div></div>';
+					
+				}		
+				htmlrefTests += '<div class="card-footer text-muted"><b>Wcag : </b>';
+				for (let j in currentRefTests[i].wcag) {
+				  htmlrefTests += currentRefTests[i].wcag[j];
+				  j != ((currentRefTests[i].wcag).length-1) ? htmlrefTests +=',  ' : '';
+				}
+				
+				htmlrefTests += '</div>';
+				htmlrefTests += '</div></article>';
+
+			  } 
+			 
+		 } else if(responseReferentiel=='RGAA') {
 			 for (let i in currentRefTests) {
 				if(headingTheme!=currentRefTests[i].themes){
 					headingTheme=currentRefTests[i].themes;
@@ -1033,9 +1079,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				
 				nextIndex = nextIndex+1;
 	
-			}
-			 
-		 } else {
+			} 
+			
+		 }	else {
 			 
 			  //on boucle dans le tableau passé en paramètre de la fonction
 			  for (let i in currentRefTests) {
@@ -1218,4 +1264,4 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	checklistApp.UpdateFeedback(false, refTests.length);
 }
 
-initVallydette('ease');
+initVallydette('wcagEase');

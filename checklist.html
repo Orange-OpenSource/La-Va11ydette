@@ -8,25 +8,25 @@
     
 
       <!-- Copyright © 2014 Monotype Imaging Inc. All rights reserved -->
-      <link rel="stylesheet" href="/boosted/css/orangeHelvetica.css">
+      <link rel="stylesheet" href="./boosted/css/orangeHelvetica.css">
       <!-- Copyright © 2016 Orange SA. All rights reserved -->
-      <link rel="stylesheet" href="/boosted/css/orangeIcons.css">
-      <link rel="stylesheet" href="/boosted/css/boosted.css">
+      <link rel="stylesheet" href="./boosted/css/orangeIcons.css">
+      <link rel="stylesheet" href="./boosted/css/boosted.css">
 
       <!-- Style pour la mise en forme des exemples de code -->
-      <link rel="stylesheet" href="/css/dark.min.css">
+      <link rel="stylesheet" href="./css/dark.min.css">
 
       <!-- Styles perso -->
-      <link rel="stylesheet" href="/css/reco.css">
-      <link rel="stylesheet" href="/web/css/reco-custom.css">
+      <link rel="stylesheet" href="./css/reco.css">
+      <link rel="stylesheet" href="./web/css/reco-custom.css">
 
-      <script src="/js/jquery.min.js"></script>
-      <script src="/js/jquery.validate.min.js"></script>
+      <script src="./js/jquery.min.js"></script>
+      <script src="./js/jquery.validate.min.js"></script>
    
 
       <!-- Favicons -->
-      <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-      <link rel="icon" href="/images/favicon.ico">      
+      <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+      <link rel="icon" href="./images/favicon.ico">      
 
 </head>
 <body class="container" >
@@ -38,17 +38,42 @@
       <!-- end mod -->
     </a>
    <span class="h1">La va11ydette</span>
-   
+   <a href="" aria-label="test"></a>
    </nav>
    
+ <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="display:none !important;">
+        <li class="nav-ite">
+          <button id="runRGAA" class="btn btn-inverse btn-secondary active mr-md-2" type="button">
+           RGAA 4
+          </button>
+          
+        </li>
+        <li class="nav-ite">
+          <button id="runExpert" class="btn btn-inverse btn-secondary mr-md-2" type="button">
+            Checklist Expert
+          </button>
+        </li>
+        <li class="nav-ite">
+          <button id="runIncontournables"  class="btn btn-inverse btn-secondary mr-md-2" type="button">
+            Checklist Incontournables
+          </button>
+        </li>
+        <li class="nav-ite">
+          <button id="runConcepteur"  class="btn btn-inverse btn-secondary mr-md-2" type="button">
+            Checklist Concepteur
+          </button>
+        </li>
+       
+      </ul> 
 </header>
 <main role="main" class="container-fluid">
 
 	<div class="row" >
 		<div class="col-md-8">
 		
-			<h1 id="checklistName">Ma checklist ééé</h1>
-			<button class="btn btn-secondary btn-sm" id="btnChecklistName" data-toggle="modal" data-target="#modalChecklistName"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+			<h1 id="checklistName">Ma checklist</h1>
+			<button class="btn btn-secondary btn-sm" id="btnChecklistName"  data-element="checklistName" data-property="checklist.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+			<button class="btn btn-secondary btn-sm" type="button" data-toggle="modal" data-target="#modalResult" id="btnShowResult">Afficher le résultat de l'audit</button> 	
 		</div>
 		
 	</div>
@@ -72,21 +97,34 @@
 	
 	<div class="col-md-2 text-right">
 		
-		<a href="#" id="export" role="button"  class="btn btn-primary disabled">Exporter</a> 
-
+		<a href="#" id="export" role="button" class="btn btn-primary disabled">Exporter</a> 
+		
 	</div>
   </div>
-   <div class="row" >
-   
+  
+  <div class="row mt-3">
+	<div class="col-md-8" id="pageManager">
 	
 	
+	</div>
   </div>
-  <span id="count" class="alert-danger"></span>
+  
   <div class="row mt-5">
+	<div class="col-md-8" id="currentPageManager">
+		<h1 id="pageName">Nom de la page</h1>
+		<button class="btn btn-secondary btn-sm" id="btnPageName" data-element="pageName" data-secondary-element="pageID-0" data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>	
+		<button id="btnDelPage" class="btn btn-secondary btn-sm" data-element="pageName" data-property="checklist.page.0" data-toggle="modal" data-target="#modalDelete" disabled>Supprimer</button>
+	</div>
+  </div>
+	
+
+  <span id="count" class="alert-danger"></span>
+  <div class="row mt-3">
 
     <section id="refTests" class="col-md-8 accordion">
       <!-- Liste des tests -->
     </section>
+	
 	<aside id="filter" class="col-md-4">
 		<h2>Filtres</h2>
 		<div id="feedback"></div>
@@ -98,9 +136,10 @@
  </main>
  
 	<script src="./boosted/js/boosted.min.js"></script>
-    <script type="text/javascript" src="/js/highlight.min.js"></script>
-    <script type="text/javascript" src="/js/reco.js"></script>
-	<script src="js/lavalidette.js"></script>
+
+	<script type="text/javascript" src="./js/marked.min.js"></script>
+
+	<script src="./js/lavalidette.js"></script>
 	<div id="modal"></div>
 </body>
 </html>

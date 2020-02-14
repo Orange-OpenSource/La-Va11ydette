@@ -1060,7 +1060,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				if(headingCriterium!=currentRefTests[i].criterium){
 					headingCriterium=currentRefTests[i].criterium;
 					//htmlrefTests +='<h3>'+marked(currentRefTests[i].criterium)+'</h3>';
-		
+			
+
 			htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
 			//à remplacer par un for sur filtres
 			//initialisation si aucun tests n'est checké
@@ -1094,7 +1095,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			if (currentRefTests[i].exception) {
 				htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
 				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-=======
+
 					htmlrefTests +='<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'">'+marked(currentRefTests[i].criterium)+'</a></h3></div>';
 					htmlrefTests +='<div id="collapse'+i+'" class="collapse">'; 
 				}
@@ -1114,8 +1115,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				nextIndex = nextIndex+1;
 	
 			} 
-			
-		 }	else {
+		}		
+	}	else {
 			 
 			  //on boucle dans le tableau passé en paramètre de la fonction
 			  for (let i in currentRefTests) {
@@ -1142,7 +1143,6 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 					htmlrefTests += '<li>' +  currentRefTests[i].verifier[j] + '</li> ';
 				}
 				htmlrefTests += '</ol></div>';
->>>>>>> RGAA4
 				htmlrefTests += '</div>';
 				htmlrefTests += '<div class="row">';
 				htmlrefTests += '<div class="col-lg-12"><h4>'+((currentRefTests[i].profils[0] == 'Concepteur') ? textContent.title4 : textContent.title3)+'</h4><ol>';

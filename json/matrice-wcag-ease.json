@@ -175,7 +175,7 @@
 	{
 		"wcag": "2.4.4",
 		"level": "A",
-		"tests": ["testID-028"], 
+		"tests": ["testID-028", "testID-067"], 
 		"resultat":"nt"
 	},
 	{
@@ -235,13 +235,13 @@
 	{
 		"wcag": "3.2.1",
 		"level": "A",
-		"tests": ["testID-032"], 
+		"tests": ["testID-032", "testID-067"], 
 		"resultat":"nt"
 	},
 	{
 		"wcag": "3.2.2",
 		"level": "A",
-		"tests": ["testID-032"], 
+		"tests": ["testID-032", "testID-067"], 
 		"resultat":"nt"
 	},
 	{

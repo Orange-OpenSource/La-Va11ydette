@@ -328,7 +328,7 @@
 	"wcag": ["1.1.1"],
     "type": [],
     "tests": [],
-    "verifier": "<ul><li>vérifier l'accessible name des IMG, AREA, Canvas, input et object type='image', SVG, role='img'</li><li>vérifier que l'accessible name n'est pas défini par le title</li><li>vérifier pour les images complexes, qu'une alternative est fournie par un contenu adjacent</li><li>vérifier pour les contenu audio/video, qu'une alternative est fournie par un contenu adjacent</li></ul>",
+    "verifier": "<ul><li>vérifier l'accessible name des IMG, AREA, Canvas, input et object type='image', SVG, role='img'</li><li>vérifier que l'accessible name n'est pas défini par le title</li><li>pour les images décoratives, vérifier que l'alternative est vide</li><li>vérifier pour les images complexes, qu'une alternative est fournie par un contenu adjacent</li><li>vérifier pour les contenu audio/video, qu'une alternative est fournie par un contenu adjacent</li></ul>",
 	"complement": "",
 	"resultat": [],
     "exception": "",
@@ -514,6 +514,22 @@
 	"commentaire": ""
   },{
     "themes": "Navigation générale",
+    "title": "L'ouverture d'une nouvelle fenêtre est-elle mentionnée à l'utilisateur ?",
+	"ID": "testID-067",
+	"IDorigin": "testID-067",
+	"wcag": ["2.4.4", "3.2.1", "3.2.2"],
+    "type": [],
+    "tests": [],
+    "verifier": "<ul><li>vérifier la présence d'une mention précisant l'ouverture d'une nouvelle fenêtre. <br>En général, l'intitulé du lien suivi de la mention 'nouvelle fenêtre', sinon, l'attribut title et aria-label doivent contenir la mention 'nouvelle fenêtre'. <br>Exemple : google (nouvelle fenêtre)</li></ul>",
+	"complement": "",
+	"resultat": [],
+    "exception": "",
+    "raccourcis": "",
+    "profils": [],
+	"resultatTest": "nt",
+	"commentaire": ""
+  },{
+    "themes": "Navigation générale",
     "title": "Des liens d'évitement sont-ils présents (si nécessaire) pour permettre aux utilisateurs d'accéder aux principales zones de la page ?",
 	"ID": "testID-029",
 	"IDorigin": "testID-029",
@@ -594,13 +610,13 @@
 	"commentaire": ""
   },{
     "themes": "Navigation générale",
-    "title": "Le site dispose-t-il d'au moins d'un mécanisme de navigation ?",
+    "title": "Le site dispose-t-il d'au moins 2 mécanismes de navigation ?",
 	"ID": "testID-033",
 	"IDorigin": "testID-033",
 	"wcag": ["2.4.5"],
     "type": [],
     "tests": [],
-    "verifier": "Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site : <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un plan de site</li></ul>",
+    "verifier": "Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site : <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>",
 	"complement": "",
 	"resultat": [],
     "exception": "",
@@ -962,13 +978,13 @@
 	"commentaire": ""
   },{
     "themes": "Multimédia",
-    "title": "pré-enregistré - vidéo OU vidéo avec audio : une audio description ou une transcription textuelle est-elle présente ?",
+    "title": "pré-enregistré - vidéo OU vidéo avec audio : une transcription textuelle est-elle présente ?",
 	"ID": "testID-055",
 	"IDorigin": "testID-055",
 	"wcag": ["1.2.3"],
     "type": [],
     "tests": [],
-    "verifier": "<ul><li>vérifier qu’un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte brut ou html. <br> Cette transcription textuelle est alors : <ul><li>présente dans la page</li><li>ou disponible via un lien, positionné à proximité de la vidéo</li></ul></li><li>ou, vérifier la présence d’une audiodescription : <ul><li>l'audiodescription est correctement synchronisée </li><li>l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information) </li><li>l'audiodescription est pertinente (restitution de toutes les informations visuelles nécessaires à la compréhension) </li></ul></li></ul>",
+    "verifier": "<ul><li>vérifier qu’un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte brut ou html. <br> Cette transcription textuelle est alors : <ul><li>présente dans la page</li><li>ou disponible via un lien, positionné à proximité de la vidéo</li></ul></li></ul>",
 	"complement": "",
 	"resultat": [],
     "exception": "",

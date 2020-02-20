@@ -157,7 +157,7 @@
 	{
 		"wcag": "2.4.1",
 		"level": "A",
-		"tests": ["testID-010", "testID-029", "testID-061"], 
+		"tests": ["testID-010", "testID-029"], 
 		"resultat":"nt"
 	},
 	{
@@ -241,7 +241,7 @@
 	{
 		"wcag": "3.2.2",
 		"level": "A",
-		"tests": ["testID-032", "testID-067"], 
+		"tests": ["testID-032"], 
 		"resultat":"nt"
 	},
 	{

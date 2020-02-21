@@ -358,7 +358,7 @@ function runFinalComputation(referentielMatrice, refData) {
 			 }
 			 
 			 if (nbTotal<1) {
-				htmlModal += '<p>Vous n\'avez pas débuter l\'audit :)</p>';
+				htmlModal += '<p>Vous n\'avez pas débuté l\'audit :)</p>';
 			} else if (nbNT==0) {
 				htmlModal += '<span class="finalResult">'+FinalResult+'%</span>';
 			}

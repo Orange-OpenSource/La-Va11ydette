@@ -517,7 +517,7 @@
     "title": "L'ouverture d'une nouvelle fenêtre est-elle mentionnée à l'utilisateur ?",
 	"ID": "testID-067",
 	"IDorigin": "testID-067",
-	"wcag": ["2.4.4", "3.2.1"],
+	"wcag": ["2.4.4", "3.2.2"],
     "type": [],
     "tests": [],
     "verifier": "<ul><li>vérifier la présence d'une mention précisant l'ouverture d'une nouvelle fenêtre. <br>En général, l'intitulé du lien suivi de la mention 'nouvelle fenêtre', sinon, l'attribut title et aria-label doivent contenir la mention 'nouvelle fenêtre'. <br>Exemple : google (nouvelle fenêtre)</li></ul>",

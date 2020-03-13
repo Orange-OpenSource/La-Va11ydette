@@ -910,7 +910,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		}
 	
 		this.addComment = function(targetId, newComment) {
-			data.checklist.page[currentPage].items[targetId].commentaire = newComment;
+			for (let i in data.checklist.page[currentPage].items) {
+				if (data.checklist.page[currentPage].items[i].ID == targetId) {
+					data.checklist.page[currentPage].items[i].commentaire = newComment;
+				}	
+			}
 			
 			var currentBtnComment = document.getElementById("commentBtn"+targetId);
 			currentBtnComment.innerText = this.getCommentState(targetId);
@@ -920,13 +924,27 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		}	
 
 		this.getComment = function(targetId) {
-			currentComment = data.checklist.page[currentPage].items[targetId].commentaire;
+			var currentComment;
+			
+			for (let i in data.checklist.page[currentPage].items) {
+				if (data.checklist.page[currentPage].items[i].ID == targetId) {
+					currentComment = data.checklist.page[currentPage].items[i].commentaire;
+				}	
+			}
+
 			return (currentComment != "" ? currentComment : "");
 		}	
 
 		this.getCommentState = function(targetId) {
-			currentComment = data.checklist.page[currentPage].items[targetId].commentaire;
-			return (!currentComment ? "Ajouter un commentaire" : "Modifier le commentaire");
+			var currentComment;
+			
+			for (let i in data.checklist.page[currentPage].items) {
+				if (data.checklist.page[currentPage].items[i].ID == targetId) {
+					currentComment = data.checklist.page[currentPage].items[i].commentaire;
+				}	
+			}
+
+			return (currentComment == "" ? "Ajouter un commentaire" : "Modifier le commentaire");
 		}	
 
 		this.setCommentState = function(targetId) {
@@ -1025,7 +1043,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				
 				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
 				
-				htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
+				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 				htmlrefTests += '<div class="card-block"><div class="row">';
 				
@@ -1188,8 +1206,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				}
 
 				//commentaires
-				var comment = document.getElementById("commentBtn"+i);
-				comment.addEventListener('click', function(){checklistApp.setComment(i, currentRefTests[i].title)}, false);
+				var comment = document.getElementById("commentBtn"+currentRefTests[i].ID);
+				comment.addEventListener('click', function(){checklistApp.setComment(currentRefTests[i].ID, currentRefTests[i].title)}, false);
 			}  
 			
 		};

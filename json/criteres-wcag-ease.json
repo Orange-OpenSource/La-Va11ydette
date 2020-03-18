@@ -261,7 +261,7 @@
     "title": "Le code source vérifie-t-il les conditions ci-dessous ?",
 	"ID": "testID-064",
 	"IDorigin": "testID-064",
-	"wcag": ["4.4.1"],
+	"wcag": ["4.1.1"],
     "type": [],
     "tests": [],
     "verifier": "<ul><li>balises de début et de fin complètes</li><li>éléments imbriqués selon leurs spécifications</li><li>pas d'attributs en double</li><li>attributs définis correctement (ouverture et fermeture des guillemets)</li><li>ID uniques</li></ul>",

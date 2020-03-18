@@ -223,20 +223,25 @@ function initComputation(refData) {
 	//initialisation matrice calcul wcag
 	const matriceVallydette = 'json/matrice-wcag-ease.json';
 	var matriceRequest = new XMLHttpRequest();
+	var matriceWcag;
 	
 	matriceRequest.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
 			//runComputation(JSON.parse(this.responseText), refData);
-			var response = this.responseText;
+			//var response = this.responseText;
+			matriceWcag = JSON.parse(this.responseText);
+			
 			//eventHandler show result
 			var btnShowResult = document.getElementById("btnShowResult");
-			btnShowResult.addEventListener('click', function(){runFinalComputation(JSON.parse(response), refData)}, false);
+			btnShowResult.addEventListener('click', function(){runFinalComputation(matriceWcag, refData)}, false);
 
-	
 		}
 	  };
+	  
 	matriceRequest.open('GET', matriceVallydette);
 	matriceRequest.send(null);
+	
+	
 }
 
 
@@ -366,7 +371,6 @@ function runFinalComputation(referentielMatrice, refData) {
 	}
 	
 	finalResult = Math.round((finalTotal / nbPage));
-	//finalResult = Math.round((finalTotal / pagesResultsArray.length));
 
 	let htmlModal = '';
 			 htmlModal = '<div id="modalResult" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
@@ -613,7 +617,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		currentBtnDelPage.disabled = false;
 		
 		//reinit computation
-		initComputation(data);
+		//initComputation(data);
 	}	
 
 	this.initNewPage = function(item) {

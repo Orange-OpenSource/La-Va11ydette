@@ -242,49 +242,53 @@ function initComputation(refData) {
 
 function runComputation(referentielMatrice, refData) {
 
-	var currentResultArray = referentielMatrice;
+	const ogMatrice = referentielMatrice;
+	pagesResults = [];
 
-	for (let i in currentResultArray.items) {
+	for (let i in refData.checklist.page) {
 		
-		console.log(currentResultArray.items[i].wcag);
+		pagesResults[i] = [];
+		pagesResults[i].items = [];
+		pagesResults[i].name = refData.checklist.page[i].name;
 		
-		for (let j in currentResultArray.items[i].tests) {
+		for (let k in ogMatrice.items) {
+				
+				pagesResults[i].items[k] = {};
+				pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
+				pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
+				pagesResults[i].items[k].resultat = "nt";
+				
+			for (let l in ogMatrice.items[k].tests) {
 			
-			for (let k in refData.checklist.page) {
-			
-				for (let l in refData.checklist.page[k].items) {
-			
-					if (currentResultArray.items[i].tests[j] == refData.checklist.page[k].items[l].IDorigin) {
-	
-						if (currentResultArray.items[i].resultat) {
+				for (let j in refData.checklist.page[i].items) {		
 
-						   if (refData.checklist.page[k].items[l].resultatTest=="ok") {
-							
-								currentResultArray.items[i].resultat = true;
-						   
-						   } else if (refData.checklist.page[k].items[l].resultatTest=="ko") {
-							   
-							   currentResultArray.items[i].resultat = false;
-							   
-						   } else if ((refData.checklist.page[k].items[l].resultatTest=="na") && (currentResultArray.items[i].resultat=="nt")) {
-							   
-							   currentResultArray.items[i].resultat = "na";
-							   
-						   } 
-					   }
+					if (ogMatrice.items[k].tests[l] == refData.checklist.page[i].items[j].IDorigin) {
+					
+						if (pagesResults[i].items[k].resultat) {
+							   if (refData.checklist.page[i].items[j].resultatTest=="ok") {
+									
+									pagesResults[i].items[k].resultat = true;
 
-				
-					}
-				
-				}
-				
+							   } else if (refData.checklist.page[i].items[j].resultatTest=="ko") {
+								   
+								   pagesResults[i].items[k].resultat = false;
+								   
+							   } else if ((refData.checklist.page[i].items[j].resultatTest=="na") && (pagesResults[i].items[k].resultat=="nt")) {
+								   
+								   pagesResults[i].items[k].resultat = "na";
+								   
+							   } 
+						}
+					}	
+				}	
 			}
 			
-		}	
+		}
+		
 		
 	}
 
-	return currentResultArray;
+	return pagesResults;
 }
 
 function getNTtests(refData) {
@@ -307,71 +311,94 @@ function getNTtests(refData) {
 	return 	nbNTtests;
 }
 
+
 function runFinalComputation(referentielMatrice, refData) {
 	
-	finalResultArray = runComputation(referentielMatrice, refData);
-	
-	var nbTrue = 0;
-	var nbFalse = 0;
-	var nbNA = 0;
+	pagesResultsArray = runComputation(referentielMatrice, refData);
+
 	var nbNT = getNTtests(refData);
-	var nbTotal = 0;
-	var FinalResult = 0;
+	var finalTotal = 0;
+	var finalResult = 0;
+	var finalPagesResults = [];
+	var nbPage = 0;
 	
-	for (let i in finalResultArray.items) {
+	for (let i in pagesResultsArray) {
 		
-		if (finalResultArray.items[i].resultat == true) {
-			
-			nbTrue++;
-			nbTotal++;
-			
-		} else if (finalResultArray.items[i].resultat == false) {
-			nbFalse++;	
-			nbTotal++;
-			
-		} else if (finalResultArray.items[i].resultat == 'na') {
-			nbNA++;	
+		var nbTrue = 0;
+		var nbFalse = 0;
+		var nbNA = 0;
+		var nbTotal = 0;
 		
-		} 
+		for (let j in pagesResultsArray[i].items) {
+			
+			if (pagesResultsArray[i].items[j].resultat == true) {	
+				nbTrue++;
+				nbTotal++;
+				
+			} else if (pagesResultsArray[i].items[j].resultat == false) {
+				nbFalse++;	
+				nbTotal++;
+				
+			} else if (pagesResultsArray[i].items[j].resultat == 'na') {
+				nbNA++;	
+			} 
+				
+		}
+		
+		//pour le cas où tous les tests d'une page sont non-applicables
+		if (nbTotal==0 && nbNA>0) {
+			
+			pagesResultsArray[i].result = "NA";
+			
+		} else {
+			
+			pagesResultsArray[i].result = Math.round((nbTrue / nbTotal) * 100);
+			
+		}
 		
 	}
 	
-		
-	FinalResult = Math.round((nbTrue / nbTotal) * 100);	
-
+	for (let i in pagesResultsArray) {
+		if (pagesResultsArray[i].result!="NA") {
+			finalTotal = finalTotal + pagesResultsArray[i].result;
+			nbPage = nbPage+1;
+		}
+	}
 	
+	finalResult = Math.round((finalTotal / nbPage));
+	//finalResult = Math.round((finalTotal / pagesResultsArray.length));
 
 	let htmlModal = '';
 			 htmlModal = '<div id="modalResult" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
 			 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 			 htmlModal += '<div class="modal-content">';
 			 htmlModal += '<div class="modal-header">';
-			 htmlModal += '<h5>Résultat de conformité</h5>';
+			 htmlModal += '<h2>Résultat de conformité</h2>';
 			 htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
 			 htmlModal += '<span aria-hidden="true">&times;</span>';
 			 htmlModal += '</button>';
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-body">';
 			
-			if (nbNT>=1 && nbTotal>=1) {
+			if (nbNT>=1) {
 				htmlModal += '<div class="alert alert-warning" role="alert"><span class="alert-icon"><span class="sr-only">Attention</span></span><p>Il reste '+nbNT+' tests non-testés, certains critères WCAG ne peuvent donc pas encore être évalués. Merci de traiter tous les tests pour afficher le résultat.</p></div>';
-			 }
-			 
-			 if (nbTotal<1) {
-				htmlModal += '<p>Vous n\'avez pas débuté l\'audit :)</p>';
-			} else if (nbNT==0) {
-				htmlModal += '<span class="finalResult">'+FinalResult+'%</span>';
+			 } else if (nbNT==0) {
+				htmlModal += '<h3>Résultat global : </h3>';
+				htmlModal += '<span class="finalResult">'+finalResult+'%</span>';
 			}
 			 
-			 
 			 if (nbNT==0 && nbTotal>=1) {
-				htmlModal += '<table class="table"><tr><th>Nombre de critères</th><th>Validés</th><th>Non validés</th><th>Non Applicables</th><th>Conformité</th></tr>';
-				htmlModal += '<tr><td>'+nbTotal+'</td><td>'+nbTrue+'</td><td>'+nbFalse+'</td><td>'+nbNA+'</td><td>'+FinalResult+'%</td></tr></table>';
+				htmlModal += '<h3>Résultat par pages : </h3>';
+				htmlModal += '<ul>';
+				for (let i in pagesResultsArray) {
+					htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+pagesResultsArray[i].result+'% </li>'
+				}
+				htmlModal += '</ul>';
 			 }
 			 
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-footer">';
-			 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+			 htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>';
 			 htmlModal += '</div>';
 			 htmlModal += '</div>';
 			 htmlModal += '</div>';
@@ -380,7 +407,9 @@ function runFinalComputation(referentielMatrice, refData) {
 			// Parent element
 			let elModal = document.getElementById('modal');
 			elModal.innerHTML = htmlModal;
+	
 }
+
 // fin calcul résultat	
 
 function initVallydette (referentiel) {

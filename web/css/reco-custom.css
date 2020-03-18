@@ -175,6 +175,7 @@ h2::before {
 #testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}
 #testForm button::after{position: relative; background-image: none; }
 
+#modalResult h3 {margin:0;}
 #modalResult .finalResult {font-size: 3rem; color: #F16E00; font-weight: bold;}
 
 #feedback {margin-bottom: 2rem;}

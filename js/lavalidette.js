@@ -1080,17 +1080,20 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 				htmlrefTests += '<div class="card-block"><div class="row">';
 				
-				htmlrefTests += '<div class="col-lg-12"><h4>'+textContent.title2+'</h4>';
-				htmlrefTests += currentRefTests[i].verifier;
-				htmlrefTests += '</div></div>';
+				if (currentRefTests[i].verifier) {
+					htmlrefTests += '<div class="col-lg-12"><h4>'+textContent.title2+'</h4>';
+					htmlrefTests += currentRefTests[i].verifier;
+					htmlrefTests += currentRefTests[i].complement;
+					htmlrefTests += '</div></div>';
+				}
 				
 				if (currentRefTests[i].exception) {
 					htmlrefTests += '<div class="row"><div class="col-lg-12 mt-3" ><h4>Exceptions</h4>';
 					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-					htmlrefTests += '</div></div>';
-					
-				}		
-				htmlrefTests += '<div class="card-footer text-muted"><b>Wcag : </b>';
+					htmlrefTests += '</div></div>';	
+				}	
+				
+				htmlrefTests += '<div class="col-lg-12 card-footer text-muted"><b>Wcag : </b>';
 				for (let j in currentRefTests[i].wcag) {
 				  htmlrefTests += currentRefTests[i].wcag[j];
 				  j != ((currentRefTests[i].wcag).length-1) ? htmlrefTests +=',  ' : '';

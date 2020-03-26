@@ -169,7 +169,7 @@ h2::before {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-#testForm {padding: 0.6rem;}
+#testForm {padding: 0.6rem 1.2rem;}
 #testForm label{padding-top: 0.5rem; padding-right: 0.4rem;}
 #testForm input[type="radio"]{padding-top: 0.5rem; margin-right: 1.2rem;}
 #testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}

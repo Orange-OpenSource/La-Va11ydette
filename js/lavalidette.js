@@ -358,7 +358,7 @@ function runFinalComputation(referentielMatrice, refData) {
 		} else {
 			
 			pagesResultsArray[i].result = Math.round((nbTrue / nbTotal) * 100);
-			
+
 		}
 		
 	}

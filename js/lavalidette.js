@@ -743,7 +743,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 ///////////////// fin multipage //////////////////////	
 
 	//on prédéfini le tableau de filtres
-	var filtres = [["conforme","ok"], ["non-conforme","ko"], ["non-applicable","na"], ["non-teste","nt"]];
+	var filtres = [["conforme","ok"], ["non-conforme","ko"], ["non-applicable","na"], ["non-testé","nt"]];
 
 	  this.getStatutClass = function(lastResult) {
 
@@ -1025,7 +1025,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		let htmlFeedback = '';
 		if (activeFilter) {
 			elBtnReinit.disabled = false;
-			htmlFeedback = '<p><span><b>'+nbTests+'</b> tests dans filtres en cours</span> | <button type="button" class="btn btn-secondary btn-sm" id="reinitLink">reinitialiser</button></p>';
+			htmlFeedback = '<p><span><b>'+nbTests+'</b> tests dans filtres en cours</span> | <button type="button" class="btn btn-secondary" id="reinitLink">reinitialiser</button></p>';
 			elFeedback.innerHTML = htmlFeedback;
 			
 			let elreinitLink = document.getElementById('reinitLink');
@@ -1076,7 +1076,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				
 				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
 				
-				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
+				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary btn-sm float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 				htmlrefTests += '<div class="card-block"><div class="row">';
 				

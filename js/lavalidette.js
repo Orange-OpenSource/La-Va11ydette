@@ -227,8 +227,7 @@ function initComputation(refData) {
 	
 	matriceRequest.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
-			//runComputation(JSON.parse(this.responseText), refData);
-			//var response = this.responseText;
+			
 			matriceWcag = JSON.parse(this.responseText);
 			
 			//eventHandler show result
@@ -384,18 +383,20 @@ function runFinalComputation(referentielMatrice, refData) {
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-body">';
 			
+			console.log(finalResult);
 			if (nbNT>=1) {
 				htmlModal += '<div class="alert alert-warning" role="alert"><span class="alert-icon"><span class="sr-only">Attention</span></span><p>Il reste '+nbNT+' tests non-testés, certains critères WCAG ne peuvent donc pas encore être évalués. Merci de traiter tous les tests pour afficher le résultat.</p></div>';
-			 } else if (nbNT==0) {
+			 } 
+			 else if (nbNT==0 && !isNaN(finalResult)) {
 				htmlModal += '<h3>Résultat global : </h3>';
 				htmlModal += '<span class="finalResult">'+finalResult+'%</span>';
 			}
 			 
-			 if (nbNT==0 && nbTotal>=1) {
+			 if (nbNT==0) {
 				htmlModal += '<h3>Résultat par pages : </h3>';
 				htmlModal += '<ul>';
 				for (let i in pagesResultsArray) {
-					htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+pagesResultsArray[i].result+'% </li>'
+					htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+pagesResultsArray[i].result + ((pagesResultsArray[i].result!='NA') ? '%' : '' )+' </li>';
 				}
 				htmlModal += '</ul>';
 			 }
@@ -579,9 +580,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
 		var arr2 = JSON.parse(JSON.stringify(data.checklist.page[currentPage]));
 		data.checklist.page.push(arr2);
+		
 		indexPage = data.checklist.page.length - 1;
 		idPageIndex = idPageIndex + 1;
-		
 		
 		var newIdPage = new Uint32Array(1);
 		window.crypto.getRandomValues(newIdPage);
@@ -593,7 +594,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		
 		//a supprimer
 		data.checklist.page[indexPage].IDPage = newIdPage;
-		data.checklist.page[indexPage].name = "Nom de la page "+indexPage;
+		data.checklist.page[indexPage].name = "Nom de la page";
 		data.checklist.page[indexPage].items.forEach(this.initNewPage);
 		
 		jsonStr = JSON.stringify(data);
@@ -602,7 +603,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		var pageElement = document.getElementById("pageManager");
 		var newBtnPage = document.createElement("button");
 		
-		newBtnPage.innerHTML = "Nom de la page "+indexPage;
+		newBtnPage.innerHTML = "Nom de la page";
 		newBtnPage.setAttribute('id', newIdPage);
 		newBtnPage.classList.add("btn","btn-secondary","btn-sm","mr-1","mt-1");
 		pageElement.appendChild(newBtnPage);
@@ -1076,7 +1077,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				
 				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
 				
-				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary btn-sm float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
+				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 				htmlrefTests += '<div class="card-block"><div class="row">';
 				

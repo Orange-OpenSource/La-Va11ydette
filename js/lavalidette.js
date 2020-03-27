@@ -194,7 +194,7 @@ return dataVallydette;
 
 function importWcagEase(dataVallydette, dataChecklistExpert) {
 	
-	dataVallydette.checklist.name = "Audit Wcag 2.1 by Orange";
+	dataVallydette.checklist.name = "Grille Audit Wcag 2.1 par Orange";
 	dataVallydette.checklist.referentiel = "wcagEase";
 	dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
 		

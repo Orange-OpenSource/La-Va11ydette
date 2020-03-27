@@ -82,6 +82,8 @@ h1 {display:inline-block;}
 #filter ul{padding-left:1rem;}
 #filter .disabled {color: #666;}
 
+#export.btn-sm {padding: 0.5rem 1.125rem;}
+
 h2::before {
     display: block;
     content: " ";
@@ -130,7 +132,8 @@ h2::before {
 }
 
 .accordion .card-block {
-    padding: 0.75rem;
+    padding: 1.2rem;
+	background-color: #FFFFFF;
 }
 
 .accordion .card-block a {

@@ -194,7 +194,7 @@ return dataVallydette;
 
 function importWcagEase(dataVallydette, dataChecklistExpert) {
 	
-	dataVallydette.checklist.name = "Audit Wcag by Ease";
+	dataVallydette.checklist.name = "Audit Wcag 2.1 by Orange";
 	dataVallydette.checklist.referentiel = "wcagEase";
 	dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
 		
@@ -561,7 +561,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 					newBtnPage.innerHTML = getPages[i].name;
 					newBtnPage.setAttribute('id', getPages[i].IDPage);
 					newBtnPage.classList.add("btn","btn-secondary","btn-sm","mr-1","mt-1");
-					(i == 0) && (getPages.length==1) ? newBtnPage.disabled = true : "";
+					(i == 0) && (getPages.length==1) ? newBtnPage.classList.add("active") : "";
 					pageElement.appendChild(newBtnPage);
 
 					let thisNewBtn = document.getElementById(getPages[i].IDPage);
@@ -654,7 +654,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		currentBtnDelPage.dataset.property = "checklist.page."+currentPage;
 		currentBtnDelPage.dataset.pagination = id;
 		
-		var lastBtnPagination = document.getElementsByClassName("active");
+		var pagination = document.getElementById("pageManager");
+		var lastBtnPagination = pagination.getElementsByClassName("active");
 		lastBtnPagination[0] ? lastBtnPagination[0].classList.remove("active") : "";
 		
 		var currentBtnPagination = document.getElementById(data.checklist.page[currentPage].IDPage);
@@ -818,7 +819,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				 htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 				 htmlModal += '<div class="modal-content">';
 				 htmlModal += '<div class="modal-header">';
-				 htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de la checklist</h5>';
+				 htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : '+this.getValue(targetElement)+'</h5>';
 				 htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
 				 htmlModal += '<span aria-hidden="true">&times;</span>';
 				 htmlModal += '</button>';

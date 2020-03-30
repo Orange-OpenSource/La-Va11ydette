@@ -1,21 +1,15 @@
-//test configuration rendu MARKED 
 
-// Get reference
-const renderer = new marked.Renderer();
-marked.setOptions({
-  renderer: renderer
-});
-
-// Override function link(string href, string title, string text)
-renderer.link = function (href, title, text) {
-  return text;
-};
-renderer.paragraph = function (text) {
-  return text;
-};
-// fin test marked
-
-document.getElementById('import').onclick = function() {
+function initVallydette (referentiel) {
+	
+	const jsonVallydette = 'json/lavallydette.json';
+	const jsonRGAA = 'json/criteres-rgaa4.json';
+	const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
+	const jsonIncontournables = 'json/criteres-incontournables.json';
+	const jsonConcepteur = 'json/criteres-checklist-concepteur.json';
+	const jsonWcagEase = 'json/criteres-wcag-ease.json';	
+	
+	//event handler
+	document.getElementById('import').onclick = function() {
 	  var files = document.getElementById('selectFiles').files;
 
 	  var fr = new FileReader();
@@ -34,10 +28,68 @@ document.getElementById('import').onclick = function() {
 
 	  //doXHR( fr.readAsText(files.item(0)));
 	};
+	
+	/* menu changement checklist
+	var btnRunRGAA = document.getElementById("runRGAA");
+	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
 
-	//requête XMLHttpRequest
-	function doXHR(url, callback) {
-	  var oReq = new XMLHttpRequest();
+	
+	var btnRunExpert = document.getElementById("runExpert");
+	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
+	
+	var btnRunIncontournables = document.getElementById("runIncontournables");
+	btnRunIncontournables.addEventListener('click', function(){initVallydette('incontournables')}, false);
+	
+	var btnRunConcepteur = document.getElementById("runConcepteur");
+	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
+	*/
+
+	
+	//appel des Json
+	doXHR(jsonVallydette, function(errFirst, responseFirst) {
+	  if (errFirst) {
+		reqError(); 
+	  }
+		return doXHR(jsonReferentiel, function(errSecond, responseSecond) {
+			if (errSecond) {
+			  reqError(); 
+			}
+			return reqListener(responseFirst, responseSecond, referentiel);
+		  });
+	});
+
+	if (referentiel=='RGAA') {
+		jsonReferentiel = jsonRGAA;
+		btnRunRGAA.classList.add("active");
+		btnRunExpert.classList.remove("active");
+		btnRunIncontournables.classList.remove("active");
+		btnRunConcepteur.classList.remove("active");
+	} else if (referentiel=='expert') {
+		jsonReferentiel = jsonChecklistExpert;
+		btnRunExpert.classList.add("active");
+		btnRunRGAA.classList.remove("active");
+		btnRunIncontournables.classList.remove("active");
+		btnRunConcepteur.classList.remove("active");
+	} else if (referentiel=='incontournables' ) {
+		jsonReferentiel = jsonIncontournables;
+		btnRunRGAA.classList.remove("active");
+		btnRunExpert.classList.remove("active");
+		btnRunIncontournables.classList.add("active");
+		btnRunConcepteur.classList.remove("active");
+	} else if (referentiel=='concepteur' ) {
+		jsonReferentiel = jsonConcepteur;
+		btnRunRGAA.classList.remove("active");
+		btnRunExpert.classList.remove("active");
+		btnRunIncontournables.classList.remove("active");
+		btnRunConcepteur.classList.add("active");
+	} else if (referentiel=='wcagEase' ) {
+		jsonReferentiel = jsonWcagEase;
+	}
+}
+
+//requête XMLHttpRequest
+function doXHR(url, callback) {
+	var oReq = new XMLHttpRequest();
 
 	  oReq.onreadystatechange = function(event) {
 		if (this.readyState === XMLHttpRequest.DONE) {
@@ -50,55 +102,54 @@ document.getElementById('import').onclick = function() {
 	  };
 	  oReq.open('GET', url, true);
 	  oReq.send(null);
-	}
+}
 	
-	function reqError(err) {
-	   let elrefTests = document.getElementById('refTests');
-	   elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
-	}
+function reqError(err) {
+	let elrefTests = document.getElementById('refTests');
+	elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
+}
 	
-	function formatHeading(str){
-		str = str.toLowerCase();
-		str = str.replace(/é|è|ê/g,"e");
-		str = str.replace(/ /g,"-");
+function formatHeading(str){
+	str = str.toLowerCase();
+	str = str.replace(/é|è|ê/g,"e");
+	str = str.replace(/ /g,"-");
 	
-		return str;
-	}
+	return str;
+}
 	
-	function slugify(str) {
-		var map = {
-			'-' : '\'',
-			'-' : '_',
-			'a' : 'á|à|ã|â|À|Á|Ã|Â',
-			'e' : 'é|è|ê|É|È|Ê',
-			'i' : 'í|ì|î|Í|Ì|Î',
-			'o' : 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
-			'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
-			'c' : 'ç|Ç',
-			'n' : 'ñ|Ñ'
-		};
-		str = str.replace(/ /g,"-");
-		str = str.toLowerCase();
+function slugify(str) {
+	var map = {
+		'-' : '\'',
+		'-' : '_',
+		'a' : 'á|à|ã|â|À|Á|Ã|Â',
+		'e' : 'é|è|ê|É|È|Ê',
+		'i' : 'í|ì|î|Í|Ì|Î',
+		'o' : 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
+		'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
+		'c' : 'ç|Ç',
+		'n' : 'ñ|Ñ'
+	};
+	str = str.replace(/ /g,"-");
+	str = str.toLowerCase();
 		
-		for (var pattern in map) {
-			str = str.replace(new RegExp(map[pattern],'g'), pattern);
-		};
-
-		return str;
-	}
+	for (var pattern in map) {
+		str = str.replace(new RegExp(map[pattern],'g'), pattern);
+	};
+	return str;
+}
 	
-	//supprimer les doublons dans les filtres
-	function delDoublon(arrCond, inputId){
-		for (var i = 0; i < arrCond.length; i++) {
-		//for (let condition of arrCond) {
-			let condition = arrCond[i];
-			if (condition.name == inputId) {
-				let arrCondIndex = arrCond.indexOf(condition);
-				arrCond.splice(arrCondIndex , 1);	
-			}
+//supprimer les doublons dans les filtres
+function delDoublon(arrCond, inputId){
+	for (var i = 0; i < arrCond.length; i++) {
+	//for (let condition of arrCond) {
+		let condition = arrCond[i];
+		if (condition.name == inputId) {
+			let arrCondIndex = arrCond.indexOf(condition);
+			arrCond.splice(arrCondIndex , 1);	
 		}
-		return arrCond;
 	}
+	return arrCond;
+}
 
 
 function importRGAA(dataVallydette, dataRGAA) {
@@ -202,21 +253,6 @@ return dataVallydette;
 
 }
 
-//event handler
-	var btnRunRGAA = document.getElementById("runRGAA");
-	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
-
-	
-	var btnRunExpert = document.getElementById("runExpert");
-	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
-	
-	var btnRunIncontournables = document.getElementById("runIncontournables");
-	btnRunIncontournables.addEventListener('click', function(){initVallydette('incontournables')}, false);
-	
-	var btnRunConcepteur = document.getElementById("runConcepteur");
-	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
-
-//début calcul résultat	
 
 function initComputation(refData) {
 
@@ -239,8 +275,7 @@ function initComputation(refData) {
 	  
 	matriceRequest.open('GET', matriceVallydette);
 	matriceRequest.send(null);
-	
-	
+
 }
 
 
@@ -331,6 +366,7 @@ function runFinalComputation(referentielMatrice, refData) {
 		var nbTrue = 0;
 		var nbFalse = 0;
 		var nbNA = 0;
+		//var nbNT = 0;
 		var nbTotal = 0;
 		
 		for (let j in pagesResultsArray[i].items) {
@@ -342,9 +378,10 @@ function runFinalComputation(referentielMatrice, refData) {
 			} else if (pagesResultsArray[i].items[j].resultat == false) {
 				nbFalse++;	
 				nbTotal++;
-				
 			} else if (pagesResultsArray[i].items[j].resultat == 'na') {
 				nbNA++;	
+			} else if (pagesResultsArray[i].items[j].resultat == 'nt') {
+				pagesResultsArray[i].complete = false;	
 			} 
 				
 		}
@@ -383,23 +420,29 @@ function runFinalComputation(referentielMatrice, refData) {
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-body">';
 			
-			console.log(finalResult);
+			
 			if (nbNT>=1) {
-				htmlModal += '<div class="alert alert-warning" role="alert"><span class="alert-icon"><span class="sr-only">Attention</span></span><p>Il reste '+nbNT+' tests non-testés, certains critères WCAG ne peuvent donc pas encore être évalués. Merci de traiter tous les tests pour afficher le résultat.</p></div>';
-			 } 
+				//htmlModal += '<div class="alert alert-warning" role="alert"><span class="alert-icon"><span class="sr-only">Attention</span></span><p>Il reste '+nbNT+' tests non-testés, certains critères WCAG ne peuvent donc pas encore être évalués. Merci de traiter tous les tests pour afficher le résultat.</p></div>';
+				htmlModal += '<h3>Résultat global : </h3>';
+				htmlModal += '<p>Audit en cours.</p>';
+			} 
 			 else if (nbNT==0 && !isNaN(finalResult)) {
 				htmlModal += '<h3>Résultat global : </h3>';
 				htmlModal += '<span class="finalResult">'+finalResult+'%</span>';
 			}
 			 
-			 if (nbNT==0) {
+			//if (nbNT==0) {
 				htmlModal += '<h3>Résultat par pages : </h3>';
 				htmlModal += '<ul>';
 				for (let i in pagesResultsArray) {
-					htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+pagesResultsArray[i].result + ((pagesResultsArray[i].result!='NA') ? '%' : '' )+' </li>';
+					if (pagesResultsArray[i].complete == false) {
+						htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>en cours ('+nbNT+' non-testés)</li>';
+					} else {
+						htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+pagesResultsArray[i].result + ((pagesResultsArray[i].result!='NA') ? '%' : '' )+' </li>';
+					}
 				}
 				htmlModal += '</ul>';
-			 }
+			//} 
 			 
 			 htmlModal += '</div>';
 			 htmlModal += '<div class="modal-footer">';
@@ -417,57 +460,6 @@ function runFinalComputation(referentielMatrice, refData) {
 
 // fin calcul résultat	
 
-function initVallydette (referentiel) {
-	
-	const jsonVallydette = 'json/lavallydette.json';
-	const jsonRGAA = 'json/criteres-rgaa4.json';
-	const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
-	const jsonIncontournables = 'json/criteres-incontournables.json';
-	const jsonConcepteur = 'json/criteres-checklist-concepteur.json';
-	const jsonWcagEase = 'json/criteres-wcag-ease.json';
-	
-	//appel des Json
-	doXHR(jsonVallydette, function(errFirst, responseFirst) {
-	  if (errFirst) {
-		reqError(); 
-	  }
-		return doXHR(jsonReferentiel, function(errSecond, responseSecond) {
-			if (errSecond) {
-			  reqError(); 
-			}
-			return reqListener(responseFirst, responseSecond, referentiel);
-		  });
-	 
-	});
-
-	if (referentiel=='RGAA') {
-		jsonReferentiel = jsonRGAA;
-		btnRunRGAA.classList.add("active");
-		btnRunExpert.classList.remove("active");
-		btnRunIncontournables.classList.remove("active");
-		btnRunConcepteur.classList.remove("active");
-	} else if (referentiel=='expert') {
-		jsonReferentiel = jsonChecklistExpert;
-		btnRunExpert.classList.add("active");
-		btnRunRGAA.classList.remove("active");
-		btnRunIncontournables.classList.remove("active");
-		btnRunConcepteur.classList.remove("active");
-	} else if (referentiel=='incontournables' ) {
-		jsonReferentiel = jsonIncontournables;
-		btnRunRGAA.classList.remove("active");
-		btnRunExpert.classList.remove("active");
-		btnRunIncontournables.classList.add("active");
-		btnRunConcepteur.classList.remove("active");
-	} else if (referentiel=='concepteur' ) {
-		jsonReferentiel = jsonConcepteur;
-		btnRunRGAA.classList.remove("active");
-		btnRunExpert.classList.remove("active");
-		btnRunIncontournables.classList.remove("active");
-		btnRunConcepteur.classList.add("active");
-	} else if (referentiel=='wcagEase' ) {
-		jsonReferentiel = jsonWcagEase;
-	}
-}
 	
 function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	
@@ -1076,7 +1068,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
 				//à remplacer par un for sur filtres
 				
-				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+				htmlrefTests += '<div class="testForm"><ul class="list-inline"><li class="list-inline-item"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/></li><li class="list-inline-item"><label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/></li><li class="list-inline-item"><label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/></li><li class="list-inline-item"><label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/></li></ul>';
 				
 				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
@@ -1107,7 +1099,24 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			  } 
 			 
 		 } else if(responseReferentiel=='RGAA') {
-			 for (let i in currentRefTests) {
+			 
+			 //test configuration rendu MARKED 
+			// Get reference
+			const renderer = new marked.Renderer();
+			marked.setOptions({
+			  renderer: renderer
+			});
+
+			// Override function link(string href, string title, string text)
+			renderer.link = function (href, title, text) {
+			  return text;
+			};
+			renderer.paragraph = function (text) {
+			  return text;
+			};
+			// fin test marked
+			 
+			for (let i in currentRefTests) {
 				if(headingTheme!=currentRefTests[i].themes){
 					headingTheme=currentRefTests[i].themes;
 					htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
@@ -1126,7 +1135,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				data.checklist.items[i].resultatTest = "nt";
 			} 
 			
-			htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+((currentRefTests[i].resultatTest == filtres[3][1]) ? "checked" : "")+'/>';
+			htmlrefTests += '<div class="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+((currentRefTests[i].resultatTest == filtres[3][1]) ? "checked" : "")+'/>';
 			htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
 			htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 			htmlrefTests += '<div class="card-block"><div class="row">';
@@ -1159,7 +1168,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				htmlrefTests += '<article class="mb-1" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span>';
 				//à remplacer par un for sur filtres
 				
-				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+				htmlrefTests += '<div class="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
 				
 				htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div>';
 				htmlrefTests += '</div></article>';
@@ -1184,7 +1193,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
 				//à remplacer par un for sur filtres
 				
-				htmlrefTests += '<div id="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
+				htmlrefTests += '<div class="testForm"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/> <label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/>  <label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/>  <label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/>';
 				
 				htmlrefTests += '<button type="button" id="commentBtn'+i+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+i+'">'+this.getCommentState(i)+'</button></div></div>';
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';

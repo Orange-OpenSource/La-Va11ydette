@@ -74,7 +74,6 @@ h1 {display:inline-block;}
 #refTests h3{font-size: 1rem; margin:0.2rem 0 0 0;}
 #refTests .card-header{position: relative; background-color: #fff; border: none; padding: 0 0;}
 #refTests ol {list-style-type: decimal;}
-#refTests ul, #refTests ol {padding-left: 1rem;}
 #refTests ol ul{padding-top: 1rem;}
 
 #filter h2{margin:0;}
@@ -173,11 +172,12 @@ h2::before {
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-#testForm {padding: 0.6rem 1.2rem;}
-#testForm label{padding-top: 0.5rem; padding-right: 0.4rem;}
-#testForm input[type="radio"]{padding-top: 0.5rem; margin-right: 1.2rem;}
-#testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}
-#testForm button::after{position: relative; background-image: none; }
+.accordion .card-header .testForm {padding: 0.6rem 1.2rem;}
+.accordion .card-header .testForm label{padding-top: 0.5rem; padding-right: 0.4rem;}
+.accordion .card-header .testForm input[type="radio"]{padding-top: 0.5rem; margin-right: 1.2rem;}
+.accordion .card-header .testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}
+.accordion .card-header .testForm button::after{position: relative; background-image: none; }
+.accordion .card-header .testForm ul.list-inline{display: inline-block; padding-left: 0; margin-bottom: 0;}
 
 #modalResult h3 {margin:0;}
 #modalResult .finalResult {font-size: 3rem; color: #F16E00; font-weight: bold;}

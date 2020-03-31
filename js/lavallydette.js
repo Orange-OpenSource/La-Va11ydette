@@ -894,6 +894,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	
 			linkElement = document.getElementById("export");
 			linkElement.classList.remove("disabled");
+			linkElement.setAttribute('aria-disabled', false);
 			linkElement.setAttribute('href', dataUri);
 			linkElement.setAttribute('download', exportFileDefaultName);
 		}
@@ -1019,7 +1020,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		let htmlFeedback = '';
 		if (activeFilter) {
 			elBtnReinit.disabled = false;
-			htmlFeedback = '<p><span><b>'+nbTests+'</b> tests dans filtres en cours</span> | <button type="button" class="btn btn-secondary" id="reinitLink">reinitialiser</button></p>';
+			htmlFeedback = '<p><span><b>'+nbTests+'</b> tests dans filtres en cours</span></p>';
 			elFeedback.innerHTML = htmlFeedback;
 			
 			let elreinitLink = document.getElementById('reinitLink');
@@ -1087,13 +1088,13 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 					htmlrefTests += '</div></div>';	
 				}	
 				
-				htmlrefTests += '<div class="col-lg-12 card-footer text-muted"><b>Wcag : </b>';
+				htmlrefTests += '<div class="col-lg-12 card-footer text-muted"><p><b>Wcag : </b>';
 				for (let j in currentRefTests[i].wcag) {
 				  htmlrefTests += currentRefTests[i].wcag[j];
 				  j != ((currentRefTests[i].wcag).length-1) ? htmlrefTests +=',  ' : '';
 				}
 				
-				htmlrefTests += '</div>';
+				htmlrefTests += '</p></div>';
 				htmlrefTests += '</div></article>';
 
 			  } 

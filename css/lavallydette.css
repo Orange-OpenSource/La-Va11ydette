@@ -1,87 +1,18 @@
-/* Section dépliable dans les critères */
-.linkSection {
-  outline: none !important;
+body {  
+  padding-top: 9.5rem;
+  background-color: #f6f6f6;
+  line-height: 1.5;
 }
 
-.linkSection.AAA,
-.linkSection.AAA + .criteriaList {
-  display: none;
+
+.navbar {
+  padding: 1.4rem;
+  width: 100vw;
 }
 
-.criteriaList {
-  margin-left: 1rem;
-  background-color: #eee;
-  padding: 1rem;
-  margin-bottom: 4rem;
-}
 
-.criteriaList code {
-  background-color: #ddd;
-}
-
-/* Liste des chapitres sur la page index.html */
-.chaptersList {
-  font-size: 2rem;
-  font-weight: bold;
-  list-style: none;
-}
-
-.perso {
-    text-align: center;    
-}
-
-.perso .btn-info {
-    width: 100%;
-    white-space: normal;
-    min-height: 6.5rem;
-}
-
-.perso .btn-info:hover, .perso .btn-info:focus {
-  background: #666;
-  color: #fff;
-} 
-
-.perso div {
-    font-size: 1.2rem;
-}
-
-.examples-list {
-  list-style: none;
-}
-
-.examples-list img {
-  border: .1rem solid #888;
-  opacity: .75;
-  margin: 1rem;
-  width: 5rem;
-  height: 5rem;
-}
-
-.examples-list a:focus img,
-.examples-list a:hover img {
-  opacity: 1;
-}
-
-/* Custom css pour onglet TESTEURS */
+/* Custom css pour VALLYDETTE */
 h1 {display:inline-block;}
-#docs-navbar span {display: inline-block; color: #FFF;}
-
-
-#refTests {border-right: solid #ccc 1px; position: static;}
-#refTests h3::before, #refTests h4::before, #refTests h5::before, #refTests h6::before {content:none;}
-#refTests h2{margin:4rem 0 2rem 0;}
-#refTests h2:first-child{margin:0 0 2rem 0;}
-#refTests h3{font-size: 1rem; margin:0.2rem 0 0 0;}
-#refTests .card-header{position: relative; background-color: #fff; border: none; padding: 0 0;}
-#refTests ol {list-style-type: decimal;}
-#refTests ol ul{padding-top: 1rem;}
-
-#filter h2{margin:0;}
-#filter h3{margin:0.2rem 0;}
-#filter ul{padding-left:1rem;}
-#filter .disabled {color: #666;}
-
-#export.btn-sm {padding: 0.5rem 1.125rem;}
 
 h2::before {
     display: block;
@@ -91,6 +22,8 @@ h2::before {
     visibility: hidden;
     pointer-events: none;
 }
+
+input:focus{outline: 2px dotted #000; outline-offset: 2px;}
 
 .accordion .card-header a, .accordion .card-header button {
     position: relative;
@@ -146,6 +79,10 @@ h2::before {
 	border-bottom: 1px solid #ccc; 
 }
 
+.accordion .card-footer p{
+    margin: 0;
+}
+
 .accordion-title {
     display: inline-block;
 	max-width: 33rem;
@@ -179,6 +116,30 @@ h2::before {
 .accordion .card-header .testForm button::after{position: relative; background-image: none; }
 .accordion .card-header .testForm ul.list-inline{display: inline-block; padding-left: 0; margin-bottom: 0;}
 
+
+#docs-navbar span {display: inline-block; color: #FFF;}
+
+#refTests {border-right: solid #ccc 1px; position: static;}
+#refTests h3::before, #refTests h4::before, #refTests h5::before, #refTests h6::before {content:none;}
+#refTests h2{margin:4rem 0 2rem 0;}
+#refTests h2:first-child{margin:0 0 2rem 0;}
+#refTests h3{font-size: 1rem; margin:0.2rem 0 0 0;}
+#refTests .card-header{position: relative; background-color: #fff; border: none; padding: 0 0;}
+#refTests ol {list-style-type: decimal;}
+#refTests ol ul{padding-top: 1rem;}
+
+#filter h2{margin:0;}
+#filter h3{margin:0.2rem 0;}
+#filter ul{padding-left:1rem;}
+#filter .disabled {color: #666;}
+
+#export.btn-sm {padding: 0.5rem 1.125rem;}
+
+#pageManager .btn-secondary:hover, #pageManager .btn-secondary:focus, #pageManager .btn-light:hover, #pageManager .btn-light:focus {
+
+    color: #fff;
+    background-color: #000;
+    border-color: #000;
 #modalResult h3 {margin:0;}
 #modalResult .finalResult {font-size: 3rem; color: #F16E00; font-weight: bold;}
 

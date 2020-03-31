@@ -498,7 +498,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 	var btndelPage = document.getElementById("btnDelPage");
 	btndelPage.addEventListener('click', function(){checklistApp.setDeletePage(btnPage.dataset.element)}, false);											   
 	
-
+	
+	
 ///////////////// multipage //////////////////////	
 
 	this.paginationPage = function(pages){
@@ -525,7 +526,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 					newBtnPage.innerHTML = getPages[i].name;
 					newBtnPage.setAttribute('id', getPages[i].IDPage);
 					newBtnPage.classList.add("btn","btn-secondary","btn-sm","mr-1","mt-1");
-					(i == 0) && (getPages.length==1) ? newBtnPage.classList.add("active") : "";
+					//(i == 0) && (getPages.length==1) ? newBtnPage.classList.add("active") : "";
+					(i == 0)  ? newBtnPage.classList.add("active") : "";
 					pageElement.appendChild(newBtnPage);
 
 					let thisNewBtn = document.getElementById(getPages[i].IDPage);

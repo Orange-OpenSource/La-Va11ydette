@@ -607,9 +607,6 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			checklistApp.FetchAll(data.checklist.page[currentPage].items);
 		}
 		
-		var currentPageName = document.getElementById('pageName');
-		currentPageName.innerHTML = data.checklist.page[currentPage].name;
-		
 		var currentBtnPageName = document.getElementById('btnPageName');
 		currentBtnPageName.dataset.property = "checklist.page."+currentPage+".name";
 		currentBtnPageName.dataset.secondaryElement = id;	
@@ -1031,6 +1028,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		  // TEMPLATE
 		 
 	     if(responseReferentiel=='wcagEase') {
+			 
+			 
+				var currentPageName = document.getElementById('pageName');
+				currentPageName.innerHTML = data.checklist.page[currentPage].name;
+			 
 			  //on boucle dans le tableau passé en paramètre de la fonction
 			  for (let i in currentRefTests) {
 				if(headingTheme!=currentRefTests[i].themes){

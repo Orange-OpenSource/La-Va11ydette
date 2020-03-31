@@ -29,22 +29,6 @@ function initVallydette (referentiel) {
 	  //doXHR( fr.readAsText(files.item(0)));
 	};
 	
-	/* menu changement checklist
-	var btnRunRGAA = document.getElementById("runRGAA");
-	btnRunRGAA.addEventListener('click', function(){initVallydette('RGAA')}, false);
-
-	
-	var btnRunExpert = document.getElementById("runExpert");
-	btnRunExpert.addEventListener('click', function(){initVallydette('expert')}, false);
-	
-	var btnRunIncontournables = document.getElementById("runIncontournables");
-	btnRunIncontournables.addEventListener('click', function(){initVallydette('incontournables')}, false);
-	
-	var btnRunConcepteur = document.getElementById("runConcepteur");
-	btnRunConcepteur.addEventListener('click', function(){initVallydette('concepteur')}, false);
-	*/
-
-	
 	//appel des Json
 	doXHR(jsonVallydette, function(errFirst, responseFirst) {
 	  if (errFirst) {
@@ -118,24 +102,12 @@ function formatHeading(str){
 }
 	
 function slugify(str) {
-	var map = {
-		'-' : '\'',
-		'-' : '_',
-		'a' : 'á|à|ã|â|À|Á|Ã|Â',
-		'e' : 'é|è|ê|É|È|Ê',
-		'i' : 'í|ì|î|Í|Ì|Î',
-		'o' : 'ó|ò|ô|õ|Ó|Ò|Ô|Õ',
-		'u' : 'ú|ù|û|ü|Ú|Ù|Û|Ü',
-		'c' : 'ç|Ç',
-		'n' : 'ñ|Ñ'
-	};
-	str = str.replace(/ /g,"-");
-	str = str.toLowerCase();
-		
-	for (var pattern in map) {
-		str = str.replace(new RegExp(map[pattern],'g'), pattern);
-	};
-	return str;
+	return str.toString().toLowerCase()
+    .replace(/(\w)\'/g, '$1')           // Special case for apostrophes
+    .replace(/[^a-z0-9_\-]+/g, '-')     // Replace all non-word chars with -
+    .replace(/\-\-+/g, '-')             // Replace multiple - with single -
+    .replace(/^-+/, '')                 // Trim - from start of text
+    .replace(/-+$/, ''); 
 }
 	
 //supprimer les doublons dans les filtres
@@ -945,7 +917,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			}
 			
 			var currentBtnComment = document.getElementById("commentBtn"+targetId);
-			currentBtnComment.innerText = this.getCommentState(targetId);
+			currentBtnComment.innerHTML = this.getCommentState(targetId);
 			
 			//on met à jour l'export
 			this.jsonUpdate();
@@ -972,7 +944,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				}	
 			}
 
-			return (currentComment == "" ? "Ajouter un commentaire" : "Modifier le commentaire");
+			return (currentComment == "" ? "Ajouter un commentaire <span class='icon-Comments' aria-hidden=\"true\"></span>" : "Modifier le commentaire <span class='icon-Comments text-primary' aria-hidden=\"true\"></span>");
 		}	
 
 		this.setCommentState = function(targetId) {
@@ -1066,12 +1038,12 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 					htmlrefTests +='<h2 id="test-'+formatHeading(currentRefTests[i].themes)+'">'+currentRefTests[i].themes+'</h2>';
 				}
 				
-				htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill '+this.getStatutClass(currentRefTests[i].resultatTest)+' float-lg-right">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
+				htmlrefTests += '<article class="" id="'+currentRefTests[i].ID+'"><div class="card-header" id="heading'+i+'"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse'+i+'" aria-expanded="false" aria-controls="collapse'+i+'"><span id="title-'+currentRefTests[i].ID+'" class="accordion-title">' + currentRefTests[i].title + '</span> <span id="resultID-'+currentRefTests[i].ID+'" class="badge badge-pill float-lg-right '+this.getStatutClass(currentRefTests[i].resultatTest)+'">'+ this.setStatutClass(currentRefTests[i].resultatTest)+'</span></a></h3>';
 				//à remplacer par un for sur filtres
 				
 				htmlrefTests += '<div class="testForm"><ul class="list-inline"><li class="list-inline-item"><label for="conforme'+i+'">Conforme</label><input type="radio" id="conforme'+i+'" name="test'+i+'" value="ok" '+((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "")+'/></li><li class="list-inline-item"><label for="non-conforme'+i+'">Non conforme</label><input type="radio" id="non-conforme'+i+'" name="test'+i+'" id="radio'+i+'" value="ko" '+((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "")+'/></li><li class="list-inline-item"><label for="na'+i+'">N/A</label><input type="radio" id="na'+i+'" name="test'+i+'" value="na" '+((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "")+'/></li><li class="list-inline-item"><label for="nt'+i+'">Non testé</label><input type="radio" id="nt'+i+'" name="test'+i+'" value="nt" '+(((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "")+'/></li></ul>';
 				
-				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
+				htmlrefTests += '<button type="button" id="commentBtn'+currentRefTests[i].ID+'" class="btn btn-secondary float-lg-right" aria-labelledby="commentBtn'+currentRefTests[i].ID+' title-'+currentRefTests[i].ID+'" data-toggle="modal" data-target="#modal'+currentRefTests[i].ID+'">'+this.getCommentState(currentRefTests[i].ID)+'</button></div></div>';
 				htmlrefTests += '<div id="collapse'+i+'" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading'+i+'">';
 				htmlrefTests += '<div class="card-block"><div class="row">';
 				

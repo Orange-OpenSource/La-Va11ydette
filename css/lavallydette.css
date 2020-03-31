@@ -23,7 +23,7 @@ h2::before {
     pointer-events: none;
 }
 
-input:focus{outline: 2px dotted #000; outline-offset: 2px;}
+input:focus{outline: 2px solid #000; outline-offset: 2px;}
 
 .accordion .card-header a, .accordion .card-header button {
     position: relative;
@@ -34,7 +34,7 @@ input:focus{outline: 2px dotted #000; outline-offset: 2px;}
     text-align: left;
     border: 0;
 	font-weight:normal;
-	border-bottom: 1px solid #ccc; 
+	border-bottom: 1px solid #eee; 
 }
 
 .accordion .card-header > a::after, .accordion .card-header > button::after {
@@ -50,7 +50,7 @@ input:focus{outline: 2px dotted #000; outline-offset: 2px;}
 .accordion .card-header a[aria-expanded="true"], .accordion .card-header button[aria-expanded="true"] {
     color: #000;
 	background-color: #eee;
-	border-bottom: solid 2px #000;
+	border-bottom: solid 1px #000;
 }
 
 .accordion .card-header a[aria-expanded="true"]::after, .accordion .card-header button[aria-expanded="true"]::after {
@@ -112,10 +112,30 @@ input:focus{outline: 2px dotted #000; outline-offset: 2px;}
 .accordion .card-header .testForm {padding: 0.6rem 1.2rem;}
 .accordion .card-header .testForm label{padding-top: 0.5rem; padding-right: 0.4rem;}
 .accordion .card-header .testForm input[type="radio"]{padding-top: 0.5rem; margin-right: 1.2rem;}
-.accordion .card-header .testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}
+.accordion .card-header .testForm button{display: inline-block; padding: calc(.3125rem - 1px) .625rem calc(.3125rem + 1px); margin-right: 1rem; position: relative; width: auto; height: auto; border: 0;}
 .accordion .card-header .testForm button::after{position: relative; background-image: none; }
 .accordion .card-header .testForm ul.list-inline{display: inline-block; padding-left: 0; margin-bottom: 0;}
+.accordion .card-header .card-title > a:focus {
+	outline: 2px solid #000;
 
+}
+.accordion .card-header .card-title button::after, .accordion .card-header .card-title  a::after {
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1rem;
+    height: 100%;
+    content: "";
+    background-image: url("data:image/svg+xml;charset=utf8, %3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 7'%3e%3cpath d='M7 7L0 0h14L7 7z'/%3e%3c/svg%3e");
+    background-color: #eee;
+    color: #FFF;
+    background-repeat: no-repeat;
+    padding: 1rem;
+    background-size: 50%;
+    background-position: center;
+
+}
 
 #docs-navbar span {display: inline-block; color: #FFF;}
 
@@ -140,6 +160,8 @@ input:focus{outline: 2px dotted #000; outline-offset: 2px;}
     color: #fff;
     background-color: #000;
     border-color: #000;
+}
+
 #modalResult h3 {margin:0;}
 #modalResult .finalResult {font-size: 3rem; color: #F16E00; font-weight: bold;}
 

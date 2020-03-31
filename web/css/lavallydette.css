@@ -99,8 +99,8 @@ input:focus{outline: 2px dotted #000; outline-offset: 2px;}
 .badge {
     display: inline-block;
     padding: .1875rem .625rem;
-	margin: 0.6rem;
-    font-size: .875rem;
+	margin: 0;
+    font-size: .8rem;
     font-weight: 700;
     line-height: 1;
     text-align: center;
@@ -112,7 +112,7 @@ input:focus{outline: 2px dotted #000; outline-offset: 2px;}
 .accordion .card-header .testForm {padding: 0.6rem 1.2rem;}
 .accordion .card-header .testForm label{padding-top: 0.5rem; padding-right: 0.4rem;}
 .accordion .card-header .testForm input[type="radio"]{padding-top: 0.5rem; margin-right: 1.2rem;}
-.accordion .card-header .testForm button{display: inline-block; position: relative; width: auto; height: auto; padding:0.5rem 1.125rem; border: none;}
+.accordion .card-header .testForm button{display: inline-block; padding:0.5rem 1.125rem; border: 2px dotted #000;}
 .accordion .card-header .testForm button::after{position: relative; background-image: none; }
 .accordion .card-header .testForm ul.list-inline{display: inline-block; padding-left: 0; margin-bottom: 0;}
 

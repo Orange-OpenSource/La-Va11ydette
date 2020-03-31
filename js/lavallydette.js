@@ -266,14 +266,20 @@ function runComputation(referentielMatrice, refData) {
 				
 				pagesResults[i].items[k] = {};
 				pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
-				pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
 				pagesResults[i].items[k].resultat = "nt";
+				pagesResults[i].items[k].complete = true;
 				
 			for (let l in ogMatrice.items[k].tests) {
 			
 				for (let j in refData.checklist.page[i].items) {		
 
 					if (ogMatrice.items[k].tests[l] == refData.checklist.page[i].items[j].IDorigin) {
+					
+						if (refData.checklist.page[i].items[j].resultatTest=="nt") {
+							
+							pagesResults[i].items[k].complete = false;
+							
+						} 
 					
 						if (pagesResults[i].items[k].resultat) {
 							   if (refData.checklist.page[i].items[j].resultatTest=="ok") {
@@ -288,10 +294,17 @@ function runComputation(referentielMatrice, refData) {
 								   
 								   pagesResults[i].items[k].resultat = "na";
 								   
-							   } 
+							   }
 						}
+						
 					}	
 				}	
+				
+				if (pagesResults[i].items[k].complete==false) {
+							
+					pagesResults[i].items[k].resultat = "nt";
+							
+				} 
 			}
 			
 		}
@@ -327,6 +340,8 @@ function runFinalComputation(referentielMatrice, refData) {
 	
 	pagesResultsArray = runComputation(referentielMatrice, refData);
 
+	console.log(pagesResultsArray);
+	
 	var nbNT = getNTtests(refData);
 	var finalTotal = 0;
 	var finalResult = 0;
@@ -623,7 +638,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 		
 		var currentBtnPagination = document.getElementById(data.checklist.page[currentPage].IDPage);
 		currentBtnPagination.classList.add("active");
-		
+
 	}
 	
 	this.setDeletePage = function(targetElement) {
@@ -994,7 +1009,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 			htmlFeedback = '<p><span><b>'+nbTests+'</b> tests dans filtres en cours</span></p>';
 			elFeedback.innerHTML = htmlFeedback;
 			
-			let elreinitLink = document.getElementById('reinitLink');
+			/* let elreinitLink = document.getElementById('reinitLink');
 			 elreinitLink.addEventListener('click', function() {
 									
 				checklistApp.runFilter();
@@ -1004,7 +1019,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 				//reinitialisation du filtre en cours de sélection
 				var elToReinit = document.querySelector("#types input:checked");
 				elToReinit.checked = false;
-			 });
+			 }); */
 			 
 			 
 		} else {

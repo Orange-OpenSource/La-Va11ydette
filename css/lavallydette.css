@@ -99,7 +99,7 @@ input:focus{outline: 2px solid #000; outline-offset: 2px;}
 .badge {
     display: inline-block;
     padding: .1875rem .625rem;
-	margin: 0.6rem;
+	margin: 0.6rem .825rem;
     font-size: .875rem;
     font-weight: 700;
     line-height: 1;

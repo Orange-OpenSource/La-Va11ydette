@@ -268,7 +268,7 @@ function runComputation(referentielMatrice, refData) {
 				pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
 				pagesResults[i].items[k].resultat = "nt";
 				pagesResults[i].items[k].complete = true;
-				
+	
 			for (let l in ogMatrice.items[k].tests) {
 			
 				for (let j in refData.checklist.page[i].items) {		
@@ -308,8 +308,7 @@ function runComputation(referentielMatrice, refData) {
 			}
 			
 		}
-		
-		
+
 	}
 
 	return pagesResults;
@@ -317,32 +316,42 @@ function runComputation(referentielMatrice, refData) {
 
 function getNTtests(refData) {
 	
+	nbNTArray = {};
 	var nbNTtests = 0;
+	var nbNTtestsPage = 0;
 	
 	for (let k in refData.checklist.page) {
-		
+
 		for (let l in refData.checklist.page[k].items) {
 			
 			if (refData.checklist.page[k].items[l].resultatTest=="nt") {
 							
 				nbNTtests++;
-						   
+				nbNTtestsPage++;
+				
 			} 
 				
 		}
+
+		nbNTArray["page"+k] = nbNTtestsPage;
+		nbNTtestsPage = 0;
 	}
 
-	return 	nbNTtests;
+	nbNTArray.total = nbNTtests;
+
+	
+	return 	nbNTArray;
 }
 
 
 function runFinalComputation(referentielMatrice, refData) {
 	
 	pagesResultsArray = runComputation(referentielMatrice, refData);
-
-	console.log(pagesResultsArray);
 	
-	var nbNT = getNTtests(refData);
+	nbNTResultsArray = getNTtests(refData);
+	
+	var nbNT = nbNTResultsArray.total;
+
 	var finalTotal = 0;
 	var finalResult = 0;
 	var finalPagesResults = [];
@@ -360,8 +369,7 @@ function runFinalComputation(referentielMatrice, refData) {
 			
 			if (pagesResultsArray[i].items[j].resultat == true) {	
 				nbTrue++;
-				nbTotal++;
-				
+				nbTotal++;	
 			} else if (pagesResultsArray[i].items[j].resultat == false) {
 				nbFalse++;	
 				nbTotal++;
@@ -380,8 +388,10 @@ function runFinalComputation(referentielMatrice, refData) {
 			
 		} else {
 			
-			pagesResultsArray[i].result = Math.round((nbTrue / nbTotal) * 100);
-
+			//pagesResultsArray[i].result = Math.round((nbTrue / nbTotal) * 100);
+			
+			pagesResultsArray[i].result = (nbTrue / nbTotal) * 100;
+			
 		}
 		
 	}
@@ -423,9 +433,9 @@ function runFinalComputation(referentielMatrice, refData) {
 				htmlModal += '<ul>';
 				for (let i in pagesResultsArray) {
 					if (pagesResultsArray[i].complete == false) {
-						htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>en cours ('+nbNT+' non-testés)</li>';
+						htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>en cours ('+nbNTResultsArray['page'+i]+' non-testé(s))</li>';
 					} else {
-						htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+pagesResultsArray[i].result + ((pagesResultsArray[i].result!='NA') ? '%' : '' )+' </li>';
+						htmlModal += '<li><strong>'+pagesResultsArray[i].name+' : </strong>'+((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2)+' %' : pagesResultsArray[i].result)+' </li>';
 					}
 				}
 				htmlModal += '</ul>';

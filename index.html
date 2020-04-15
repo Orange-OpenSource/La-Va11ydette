@@ -18,26 +18,77 @@
               integrity="sha384-Zd5WIT6PZ7YtONlsULMAoLWo0iJi5GPix2LFrMhPQjMYjBA0FhvsKInWdLKM+9nW" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boosted@4.4.1/dist/css/boosted.min.css"
               integrity="sha384-OB/gcmnjN4zOvILOKtMqzd/ZUoKc/cgZDpn0c2C5FoQAJqmQdjX4ITe6XSK32JyO" crossorigin="anonymous">
-        <!-- Style pour la mise en forme des exemples de code -->
-        <link rel="stylesheet" href="./css/dark.min.css">
-        <!-- Styles perso -->
-        <!--<link rel="stylesheet" href="./css/lavallydette.css">-->
-        <!-- Favicons -->
+        <style>
+            .navbar-brand h1 {
+                letter-spacing: 0;
+                line-height: 1;
+                opacity: 1;
+                transition: visibility 0s ease, max-height .15s ease, opacity .15s ease;
+                max-height: 4em;
+                visibility: visible;
+                transition-delay: 0s;
+            }
+
+            .navbar-brand .h2 {
+                line-height: 1.2;
+            }
+
+            .minimized .navbar-brand h1 {
+                overflow: hidden;
+                max-height: 0;
+                opacity: 0;
+                visibility: hidden;
+                transition-delay: .15s, 0s, 0s;
+            }
+
+            .minimized .navbar-brand .h2 {
+                line-height: 1;
+            }
+
+            h2[id],
+            #filter,
+            #currentPageManager {
+                top: 3.75rem;
+            }
+        </style>
     </head>
     <body>
-        <header id="docs-navbar">
-            <nav class="navbar navbar-dark navbar-expand-md">
-                <div class="container">
-                    <a class="navbar-brand" href="/">
-                        <img src="./img/orange_logo.svg" alt="" width="50" height="50">
-                        <span class="display-4">La va11ydette</span>
-                    </a>
+        <header id="docs-navbar" class="navbar navbar-dark navbar-expand-md fixed-top flex-wrap">
+            <div class="container w-100">
+                <a class="navbar-brand" href="/">
+                    <img src="https://cdn.jsdelivr.net/npm/boosted@4.4.1/dist/img/orange_logo.svg" alt="" width="50" height="50">
+                    <span class="h2 align-self-end">
+                        La v<span class="text-primary">a11y</span>dette<br>
+                        <h1 class="small text-primary m-0">Grille d’audit WCAG 2.1 d’Orange</h1>
+                    </span>
+                </a>
+                <div class="ml-auto" id="importexport">
+                    <button type="button" class="btn btn-inverse btn-link mr-n3"
+                            data-toggle="collapse" data-target="#import-form"
+                            aria-expanded="false" aria-controls="import-form">
+                        <span class="icon-modifier-upload" aria-hidden="true"></span>
+                        Import
+                    </button>
                 </div>
-            </nav>
+            </div>
+            <div class="collapse w-100 border-top border-900" id="import-form">
+                <div class="container py-3">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input class="custom-file-input" id="selectFiles" value="Import" type="file" lang="fr">
+                            <label class="custom-file-label" for="selectFiles" data-browse="Parcourir">Sélectionner un audit</label>
+                        </div>
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary btn-inverse" type="button" id="import">Importer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </header>
+
         <main role="main" class="container mt-5">
             <div class="d-flex align-items-center mb-3">
-                <h1 id="checklistName" class="display-2 mb-0"></h1>
+                <h1 id="checklistName" class="mb-0"></h1>
                 <div class="btn-group ml-auto">
                     <button class="btn btn-secondary btn-icon" id="btnChecklistName"
                             aria-label="Modifier le nom de l’audit" title="Modifier le nom de l’audit"
@@ -49,63 +100,43 @@
                             data-toggle="modal" data-target="#modalResult"
                             id="btnShowResult">Afficher le résultat de l’audit
                     </button>
+                    <button id="export" type="button" class="btn btn-primary"
+                            disabled aria-disabled="true">
+                        <span class="icon-Modifier-download" aria-hidden="true"></span>
+                        Exporter
+                    </button>
                 </div>
             </div>
 
-            <div class="row bg-white py-3 border-top border-bottom border-light">
-                <div class="col-md-4" id="importexport">
-                    <div class="input-group">
-                        <div class="custom-file btn-sm">
-                            <input class="custom-file-input" id="selectFiles" value="Import" type="file" lang="fr">
-                            <label class="custom-file-label" for="selectFiles" data-browse="Parcourir">Sélectionner un
-                                audit</label>
-                        </div>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary btn-sm" type="button" id="import">Importer</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <a href="#" id="export" role="button" class="btn btn-primary btn-sm  float-lg-right disabled"
-                       aria-disabled="true">Exporter</a>
-                </div>
-            </div>
+            <div class="o-nav-local navbar-light mt-3 mb-0" id="pageManager"></div>
 
-            <div class="row mt-3">
-                <div class="col-md-8" id="pageManager">
-
-
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-md-8 d-flex" id="currentPageManager">
+            <div class="row align-items-start position-relative">
+                <div class="col-md-2 sticky-top pt-4" id="currentPageManager">
                     <h1 id="pageName" class="mb-0">Nom de la page</h1>
-                    <div class="btn-group ml-auto">
-                        <button class="btn btn-secondary btn-icon" id="btnPageName"
-                                aria-label="Modifier le nom de la page" title="Modifier le nom de la page"
-                                data-element="pageName" data-secondary-element="pageID-0"
-                                data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit">
-                            <span class="icon-Pencil" aria-hidden="true"></span>
-                        </button>
-                        <button id="btnDelPage" class="btn btn-secondary"
-                                data-element="pageName" data-property="checklist.page.0"
-                                data-toggle="modal" data-target="#modalDelete" disabled>
-                            Supprimer
-                        </button>
+                    <hr>
+                    <div class="d-flex w-100">
+                        <div class="btn-group ml-auto">
+                            <button class="btn btn-secondary btn-icon" id="btnPageName"
+                                    aria-label="Modifier le nom de la page" title="Modifier le nom de la page"
+                                    data-element="pageName" data-secondary-element="pageID-0"
+                                    data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit">
+                                <span class="icon-Pencil" aria-hidden="true"></span>
+                            </button>
+                            <button id="btnDelPage" class="btn btn-secondary btn-icon border-left-0"
+                                    aria-label="Supprimer la page" title="Supprimer la page"
+                                    data-element="pageName" data-property="checklist.page.0"
+                                    data-toggle="modal" data-target="#modalDelete" disabled>
+                                <span class="icon-delete" aria-hidden="true"></span>
+                            </button>
+                        </div>
                     </div>
+                    <hr>
                 </div>
-            </div>
-
-
-            <span id="count" class="alert-danger"></span>
-            <div class="row mt-3">
-
-                <section id="refTests" class="col-md-8 accordion">
-                    <!-- Liste des tests -->
-                </section>
-
-                <aside id="filter" class="col-md-4">
+                <div class="col-md-8">
+                    <span id="count" class="alert-danger"></span>
+                    <section id="refTests"></section>
+                </div>
+                <aside id="filter" class="col-md-2 sticky-top pt-4">
                     <h2>Filtres</h2>
                     <div id="feedback"></div>
                     <ul id="types" class="list-unstyled"></ul>
@@ -115,15 +146,16 @@
         </main>
         <footer class="o-footer" id="footer" role="contentinfo">
             <div class="o-footer-body">
-                <div class="container-fluid">
-                    <p class="m-0">Documentation sous <a
-                        href="https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE">licence CC BY SA 3.0</a>.
-                    </p>
-                    <p class="m-0">Le logo Orange ainsi que certaines images et captures sont la propriété d'Orange : Copyright
-                        (C) 2016 Orange SA All rights reserved.</p>
+                <div class="container py-3">
+                    <p class="mb-0">Documentation sous <a href="https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE">licence CC BY SA 3.0</a>.</p>
+                    <p class="mb-0">Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange&nbsp;: Copyright © 2016 Orange SA <em lang="en">All rights reserved</em>.</p>
                 </div>
             </div>
         </footer>
+
+        <a href="#" class="o-scroll-up">
+            <span class="d-none d-sm-inline-block">Retour en haut de page</span>
+        </a>
 
         <div id="modal"></div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

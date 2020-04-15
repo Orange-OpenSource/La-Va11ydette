@@ -1,3 +1,6 @@
+$('#docs-navbar').navbar({sticky: true, hideSupra: true});
+$('.o-nav-local').prioritynav();
+
 function initVallydette(referentiel) {
     const jsonVallydette = 'json/lavallydette.json';
     const jsonRGAA = 'json/criteres-rgaa4.json';
@@ -479,7 +482,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
         //this.refTests = refTests;
         var textContent = {
             title1: "Procédures",
-            title2: "A vérifier",
+            title2: "À vérifier",
             title3: "Résultats",
             title4: "Justification",
             statut1: "conforme",
@@ -516,29 +519,37 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             //init add button
 
             var pageElement = document.getElementById("pageManager");
-            pageElement.innerHTML = "";
+            pageElement.innerHTML = "<ul class='container nav'></ul>";
 
+            let AddPage = document.createElement("li");
+            AddPage.classList.add("nav-item");
             var btnAddPage = document.createElement("button");
-            btnAddPage.innerHTML = "Ajouter une page";
+            btnAddPage.innerHTML = "Ajouter une page&nbsp;<span class='icon-add-more' aria-hidden='true'></span>";
             btnAddPage.setAttribute('id', "btnAddPage");
-            btnAddPage.classList.add("btn", "btn-secondary", "btn-sm", "mr-1", "mt-1");
+            btnAddPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 
-            pageElement.appendChild(btnAddPage);
+            AddPage.appendChild(btnAddPage);
+            pageElement.querySelector(".nav").appendChild(AddPage);
+
             btnAddPage.addEventListener('click', function () {
                 checklistApp.addPage()
             }, false);
 
             for (let i in getPages) {
-
+                let newPage = document.createElement("li");
+                newPage.classList.add("nav-item");
                 //display pagination
                 let newBtnPage = document.createElement("button");
 
                 newBtnPage.innerHTML = getPages[i].name;
                 newBtnPage.setAttribute('id', getPages[i].IDPage);
-                newBtnPage.classList.add("btn", "btn-secondary", "btn-sm", "mr-1", "mt-1");
-                //(i == 0) && (getPages.length==1) ? newBtnPage.classList.add("active") : "";
-                (i == 0) ? newBtnPage.classList.add("active") : "";
-                pageElement.appendChild(newBtnPage);
+                newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
+                if (i == 0) {
+                    newBtnPage.classList.add("active");
+                    newBtnPage.setAttribute("aria-current", "true");
+                }
+                newPage.appendChild(newBtnPage);
+                pageElement.querySelector(".nav").appendChild(newPage);
 
                 let thisNewBtn = document.getElementById(getPages[i].IDPage);
                 thisNewBtn.addEventListener('click', function () {
@@ -565,7 +576,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             var btnFirstPage = document.getElementById(data.checklist.page[0].IDPage);
             btnFirstPage.disabled = false;
 
-            //a supprimer
+            // @todo a supprimer
             data.checklist.page[indexPage].IDPage = newIdPage;
             data.checklist.page[indexPage].name = "Nom de la page";
             data.checklist.page[indexPage].items.forEach(this.initNewPage);
@@ -573,14 +584,16 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             jsonStr = JSON.stringify(data);
 
             //display pagination
+            let newPage = document.createElement("li");
+            newPage.classList.add("nav-item");
             var pageElement = document.getElementById("pageManager");
             var newBtnPage = document.createElement("button");
 
             newBtnPage.innerHTML = "Nom de la page";
             newBtnPage.setAttribute('id', newIdPage);
-            newBtnPage.classList.add("btn", "btn-secondary", "btn-sm", "mr-1", "mt-1");
-            pageElement.appendChild(newBtnPage);
-
+            newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
+            newPage.appendChild(newBtnPage);
+            pageElement.querySelector(".nav").appendChild(newPage);
 
             var thisNewBtn = document.getElementById(newIdPage);
             var currentIdPage = thisNewBtn.getAttribute('id');
@@ -623,12 +636,15 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             currentBtnDelPage.dataset.pagination = id;
 
             var pagination = document.getElementById("pageManager");
-            var lastBtnPagination = pagination.getElementsByClassName("active");
-            lastBtnPagination[0] ? lastBtnPagination[0].classList.remove("active") : "";
+            var lastBtnPagination = pagination.querySelector(".active");
+            if (lastBtnPagination != undefined) {
+                lastBtnPagination.classList.remove("active");
+                lastBtnPagination.removeAttribute("aria-current");
+            }
 
             var currentBtnPagination = document.getElementById(data.checklist.page[currentPage].IDPage);
             currentBtnPagination.classList.add("active");
-
+            currentBtnPagination.setAttribute("aria-current", "true");
         }
 
         this.setDeletePage = function (targetElement) {
@@ -736,8 +752,6 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
         }
 
         this.setStates = function (ele, targetId) {
-            ele.parentNode.parentNode.classList.add("mystyle");
-
             for (let i in data.checklist.page[currentPage].items) {
                 if (data.checklist.page[currentPage].items[i].ID == targetId) {
                     lastResult = this.getStatutClass(data.checklist.page[currentPage].items[i].resultatTest);
@@ -941,7 +955,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 }
             }
 
-            return (currentComment == "" ? "Ajouter un commentaire <span class='icon-Comments' aria-hidden=\"true\"></span>" : "Modifier le commentaire <span class='icon-Comments text-primary' aria-hidden=\"true\"></span>");
+            return (currentComment == "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
         }
 
         //fin gestion commentaires
@@ -1011,32 +1025,51 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 for (let i in currentRefTests) {
                     if (headingTheme != currentRefTests[i].themes) {
                         headingTheme = currentRefTests[i].themes;
-                        htmlrefTests += '<h2 id="test-' + formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
+                        htmlrefTests += '<h2 class="sticky-top bg-white pt-4 pb-3 border-bottom" id="test-' + formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
                     }
 
-                    htmlrefTests += '<article class="card" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span id="title-' + currentRefTests[i].ID + '" class="accordion-title">' + currentRefTests[i].title + '</span> <span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill float-lg-right ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+                    htmlrefTests += '<article class="card mb-3" id="' + currentRefTests[i].ID + '"><div class="card-header"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="mr-3">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="ml-auto badge ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
                     // @todo à remplacer par un for sur filtres
 
-                    htmlrefTests += '<div class="testForm"><ul class="list-inline"><li class="list-inline-item"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/></li><li class="list-inline-item"><label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/></li><li class="list-inline-item"><label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/></li><li class="list-inline-item"><label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/></li></ul>';
+                    htmlrefTests += '<div class="card-body py-1 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
+                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
+                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
+                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
+                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
+                    htmlrefTests += '</ul>';
 
-                    htmlrefTests += '<button type="button" id="commentBtn' + currentRefTests[i].ID + '" class="btn btn-secondary float-lg-right" aria-labelledby="commentBtn' + currentRefTests[i].ID + ' title-' + currentRefTests[i].ID + '" data-toggle="modal" data-target="#modal' + currentRefTests[i].ID + '">' + this.getCommentState(currentRefTests[i].ID) + '</button></div></div>';
-                    htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
-                    htmlrefTests += '<div class="card-block"><div class="row">';
+                    htmlrefTests += '<button type="button" id="commentBtn' + currentRefTests[i].ID + '" class="btn btn-link" aria-labelledby="commentBtn' + currentRefTests[i].ID + ' title-' + currentRefTests[i].ID + '" data-toggle="modal" data-target="#modal' + currentRefTests[i].ID + '">' + this.getCommentState(currentRefTests[i].ID) + '</button></div>';
 
-                    if (currentRefTests[i].verifier) {
-                        htmlrefTests += '<div class="col-lg-12"><h4>' + textContent.title2 + '</h4>';
-                        htmlrefTests += currentRefTests[i].verifier;
-                        htmlrefTests += currentRefTests[i].complement;
-                        htmlrefTests += '</div></div>';
+                    if (currentRefTests[i].verifier || currentRefTests[i].exception) {
+                        htmlrefTests += '<div class="card-body py-0 accordion" id="accordion-' + currentRefTests[i].ID + '">';
+
+                        if (currentRefTests[i].verifier) {
+                            var border = '';
+
+                            if (!currentRefTests[i].exception) {
+                                var border = ' border-bottom-0';
+                            }
+
+                            htmlrefTests += '<div class="card' + border + '">';
+                            htmlrefTests += '<h4 class="card-header" id="check-' + currentRefTests[i].ID + '"><button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse-check-' + currentRefTests[i].ID + '" aria-expanded="false" aria-controls="collapse-check-' + currentRefTests[i].ID + '">' + textContent.title2 + '</button></h4>';
+                            htmlrefTests += '<div id="collapse-check-' + currentRefTests[i].ID + '" aria-labelledby="check-' + currentRefTests[i].ID + '" class="collapse" data-parent="#accordion-' + currentRefTests[i].ID + '">';
+                            htmlrefTests += currentRefTests[i].verifier;
+                            htmlrefTests += currentRefTests[i].complement;
+                            htmlrefTests += '</div></div>';
+                        }
+
+                        if (currentRefTests[i].exception) {
+                            htmlrefTests += '<div class="card">';
+                            htmlrefTests += '<h4 class="card-header" id="except-' + currentRefTests[i].ID + '"><button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse-except-' + currentRefTests[i].ID + '" aria-expanded="false" aria-controls="collapse-except-' + currentRefTests[i].ID + '">Exceptions</button></h4>';
+                            htmlrefTests += '<div id="collapse-except-' + currentRefTests[i].ID + '" aria-labelledby="except-' + currentRefTests[i].ID + '" class="collapse" data-parent="#accordion-' + currentRefTests[i].ID + '">';
+                            htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
+                            htmlrefTests += '</div></div>';
+                        }
+
+                        htmlrefTests += '</div>';
                     }
 
-                    if (currentRefTests[i].exception) {
-                        htmlrefTests += '<div class="row"><div class="col-lg-12 mt-3" ><h4>Exceptions</h4>';
-                        htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-                        htmlrefTests += '</div></div>';
-                    }
-
-                    htmlrefTests += '<div class="col-lg-12 card-footer text-muted"><p><b>Wcag : </b>';
+                    htmlrefTests += '<div class="card-footer"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
                     for (let j in currentRefTests[i].wcag) {
                         htmlrefTests += currentRefTests[i].wcag[j];
                         j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
@@ -1227,8 +1260,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             elTypes.innerHTML = "";
 
             for (let i in filtres) {
-                htmlTypes = '<input type="radio" id="type' + i + '" name="types" value="' + filtres[i][1] + '"> <label for="type' + i + '" id="labelType' + i + '">' + filtres[i][0] + '</label>';
+                htmlTypes = '<input type="radio" class="custom-control-input" id="type' + i + '" name="types" value="' + filtres[i][1] + '"><label class="custom-control-label" for="type' + i + '" id="labelType' + i + '">' + filtres[i][0] + '</label>';
                 var node = document.createElement("li");
+                node.classList.add('custom-control', 'custom-radio');
                 node.innerHTML = htmlTypes;
                 elTypes.appendChild(node);
 

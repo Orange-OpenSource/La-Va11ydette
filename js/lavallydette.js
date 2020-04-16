@@ -1,5 +1,5 @@
 $('#docs-navbar').navbar({sticky: true, hideSupra: true});
-$('.o-nav-local').prioritynav();
+$('.o-nav-local').prioritynav('Autres pages');
 
 function initVallydette(referentiel) {
     const jsonVallydette = 'json/lavallydette.json';
@@ -403,9 +403,7 @@ function runFinalComputation(referentielMatrice, refData) {
     htmlModal += '<div class="modal-content">';
     htmlModal += '<div class="modal-header">';
     htmlModal += '<h2>Résultat de conformité</h2>';
-    htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-    htmlModal += '<span aria-hidden="true">&times;</span>';
-    htmlModal += '</button>';
+    htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
     htmlModal += '</div>';
     htmlModal += '<div class="modal-body">';
 
@@ -519,7 +517,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             //init add button
 
             var pageElement = document.getElementById("pageManager");
-            pageElement.innerHTML = "<ul class='container nav'></ul>";
+            pageElement.innerHTML = "<div class='container'><ul class='nav'></ul></div>";
 
             let AddPage = document.createElement("li");
             AddPage.classList.add("nav-item");
@@ -532,7 +530,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             pageElement.querySelector(".nav").appendChild(AddPage);
 
             btnAddPage.addEventListener('click', function () {
-                checklistApp.addPage()
+                checklistApp.addPage();
             }, false);
 
             for (let i in getPages) {
@@ -655,9 +653,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             htmlModal += '<div class="modal-content">';
             htmlModal += '<div class="modal-header">';
             htmlModal += '<h5>Supprimer</h5>';
-            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-            htmlModal += '<span aria-hidden="true">&times;</span>';
-            htmlModal += '</button>';
+            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-body">';
             htmlModal += 'Supprimer la page ' + this.getValue(targetElement) + ' ?';
@@ -665,10 +661,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             htmlModal += '<div class="modal-footer">';
             htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
             htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">Valider</button>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
+            htmlModal += '</div></div></div></div>';
 
             // Parent element
             let elModal = document.getElementById('modal');
@@ -792,20 +785,15 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             htmlModal += '<div class="modal-content">';
             htmlModal += '<div class="modal-header">';
             htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : ' + this.getValue(targetElement) + '</h5>';
-            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-            htmlModal += '<span aria-hidden="true">&times;</span>';
-            htmlModal += '</button>';
+            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-body">';
-            htmlModal += '<input type="text" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + this.getValue(targetElement) + '">';
+            htmlModal += '<input type="text" class="form-control" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + this.getValue(targetElement) + '">';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-footer">';
             htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
             htmlModal += '<button type="button" id="saveValueBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
+            htmlModal += '</div></div></div></div>';
 
             // Parent element
             let elModal = document.getElementById('modal');
@@ -892,20 +880,15 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             htmlModal += '<div class="modal-content">';
             htmlModal += '<div class="modal-header">';
             htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">Commentaire pour : ' + titleModal + '</h5>';
-            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-            htmlModal += '<span aria-hidden="true">&times;</span>';
-            htmlModal += '</button>';
+            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-body">';
-            htmlModal += '<textArea id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + this.getComment(targetId) + '</textArea>';
+            htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + this.getComment(targetId) + '</textarea>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-footer">';
             htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
             htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
-            htmlModal += '</div>';
+            htmlModal += '</div></div></div></div>';
 
             // Parent element
             let elModal = document.getElementById('modal');
@@ -1024,11 +1007,17 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 //on boucle dans le tableau passé en paramètre de la fonction
                 for (let i in currentRefTests) {
                     if (headingTheme != currentRefTests[i].themes) {
+                        if (headingTheme !== '') {
+                            htmlrefTests += '</div>';
+                        }
+
                         headingTheme = currentRefTests[i].themes;
-                        htmlrefTests += '<h2 class="sticky-top bg-white pt-4 pb-3 border-bottom" id="test-' + formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
+                        let formattedHeadingTheme = formatHeading(headingTheme);
+                        htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="Plier la thématique"><span class="icon-arrow-down"></span></button></h2>';
+                        htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
                     }
 
-                    htmlrefTests += '<article class="card mb-3" id="' + currentRefTests[i].ID + '"><div class="card-header"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="mr-3">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="ml-auto badge ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+                    htmlrefTests += '<article class="card mb-3" id="' + currentRefTests[i].ID + '"><div class="card-header"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="ml-auto badge ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
                     // @todo à remplacer par un for sur filtres
 
                     htmlrefTests += '<div class="card-body py-1 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
@@ -1074,9 +1063,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                         htmlrefTests += currentRefTests[i].wcag[j];
                         j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
                     }
-
-                    htmlrefTests += '</p></div>';
-                    htmlrefTests += '</div></article>';
+                    htmlrefTests += '</p></div></article>';
                 }
             } else if (responseReferentiel == 'RGAA') {
                 //test configuration rendu MARKED
@@ -1238,7 +1225,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             let elFilterFooter = document.getElementById('filter-footer');
             let htmlFilterFooter = '';
 
-            htmlFilterFooter += '<button id="reinit" class="btn btn-secondary" disabled>Réinitialiser</button>';
+            htmlFilterFooter += '<button id="reinit" type="reset" class="btn btn-secondary" disabled>Réinitialiser</button>';
             elFilterFooter.innerHTML = htmlFilterFooter;
 
             let elBtnReinit = document.getElementById('reinit');

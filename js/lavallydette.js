@@ -256,6 +256,7 @@ function runComputation(referentielMatrice, refData) {
 	const ogMatrice = referentielMatrice;
 	pagesResults = [];
 
+	
 	for (let i in refData.checklist.page) {
 		
 		pagesResults[i] = [];
@@ -266,6 +267,7 @@ function runComputation(referentielMatrice, refData) {
 				
 				pagesResults[i].items[k] = {};
 				pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
+				pagesResults[i].items[k].level = ogMatrice.items[k].level;
 				pagesResults[i].items[k].resultat = "nt";
 				pagesResults[i].items[k].complete = true;
 	
@@ -305,6 +307,7 @@ function runComputation(referentielMatrice, refData) {
 					pagesResults[i].items[k].resultat = "nt";
 							
 				} 
+				
 			}
 			
 		}
@@ -357,6 +360,16 @@ function runFinalComputation(referentielMatrice, refData) {
 	var finalPagesResults = [];
 	var nbPage = 0;
 	
+	var nbTrueA = 0;
+	var nbFalseA = 0;
+	var nbNAA = 0;
+	var nbTrueAA = 0;
+	var nbFalseAA = 0;
+	var nbNAAA = 0;
+	var nbTotalA = 0;
+	var nbTotalAA = 0;
+	syntheseObj = {};
+	
 	for (let i in pagesResultsArray) {
 		
 		var nbTrue = 0;
@@ -364,23 +377,37 @@ function runFinalComputation(referentielMatrice, refData) {
 		var nbNA = 0;
 		//var nbNT = 0;
 		var nbTotal = 0;
-		
+
 		for (let j in pagesResultsArray[i].items) {
 			
 			if (pagesResultsArray[i].items[j].resultat == true) {	
 				nbTrue++;
 				nbTotal++;	
+				
+				pagesResultsArray[i].items[j].level == 'A' ? nbTrueA++ : nbTrueAA++;
+				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
+				
 			} else if (pagesResultsArray[i].items[j].resultat == false) {
 				nbFalse++;	
 				nbTotal++;
+				
+				pagesResultsArray[i].items[j].level == 'A' ? nbFalseA++ : nbFalseAA++;
+				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
+				
 			} else if (pagesResultsArray[i].items[j].resultat == 'na') {
 				nbNA++;	
+					
+				pagesResultsArray[i].items[j].level == 'A' ? nbNAA++ : nbNAAA++;
+				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
+				
 			} else if (pagesResultsArray[i].items[j].resultat == 'nt') {
 				pagesResultsArray[i].complete = false;	
 			} 
 				
 		}
-		
+
+
+	
 		//pour le cas où tous les tests d'une page sont non-applicables
 		if (nbTotal==0 && nbNA>0) {
 			
@@ -395,6 +422,34 @@ function runFinalComputation(referentielMatrice, refData) {
 		}
 		
 	}
+	
+	conformiteA = (nbTrueA / nbTotalA) * 100;
+		conformiteAA = (nbTrueAA / nbTotalAA) * 100;
+		
+		totalTrue = nbTrueA+nbTrueAA;
+		totalFalse =  nbFalseA+nbFalseAA;
+		totalNA =  nbNAA+nbNAAA;
+		totalAAA = totalTrue + totalFalse;
+		
+		conformiteAAA = (totalTrue / totalAAA) * 100;
+		
+		syntheseObj.conformeA = nbTrueA;
+		syntheseObj.conformeAA = nbTrueAA;
+		syntheseObj.conformetotal = totalTrue;
+		syntheseObj.nonconformeA = nbFalseA;
+		syntheseObj.nonconformeAA = nbFalseAA;
+		syntheseObj.nonconformetotal = totalFalse;
+		syntheseObj.naA = nbNAA;
+		syntheseObj.naAA = nbNAAA;
+		syntheseObj.natotal = totalNA;
+		syntheseObj.conformiteA = conformiteA;
+		syntheseObj.conformiteAA = conformiteAA;
+		syntheseObj.conformitetotal = conformiteAAA;
+		
+		console.table(syntheseObj);
+		
+	
+	
 	
 	for (let i in pagesResultsArray) {
 		if (pagesResultsArray[i].result!="NA") {

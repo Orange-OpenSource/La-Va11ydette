@@ -360,14 +360,7 @@ function runFinalComputation(referentielMatrice, refData) {
 	var finalPagesResults = [];
 	var nbPage = 0;
 	
-	var nbTrueA = 0;
-	var nbFalseA = 0;
-	var nbNAA = 0;
-	var nbTrueAA = 0;
-	var nbFalseAA = 0;
-	var nbNAAA = 0;
-	var nbTotalA = 0;
-	var nbTotalAA = 0;
+	
 	syntheseObj = {};
 	
 	for (let i in pagesResultsArray) {
@@ -378,6 +371,15 @@ function runFinalComputation(referentielMatrice, refData) {
 		//var nbNT = 0;
 		var nbTotal = 0;
 
+		var nbTrueA = 0;
+		var nbFalseA = 0;
+		var nbNAA = 0;
+		var nbTrueAA = 0;
+		var nbFalseAA = 0;
+		var nbNAAA = 0;
+		var nbTotalA = 0;
+		var nbTotalAA = 0;
+		
 		for (let j in pagesResultsArray[i].items) {
 			
 			if (pagesResultsArray[i].items[j].resultat == true) {	
@@ -421,7 +423,20 @@ function runFinalComputation(referentielMatrice, refData) {
 			
 		}
 		
+		pagesResultsArray[i].conformeA = nbTrueA;
+		pagesResultsArray[i].conformeAA = nbTrueAA;
+		pagesResultsArray[i].nonconformeA = nbFalseA;
+		pagesResultsArray[i].nonconformeAA = nbFalseAA;
+		pagesResultsArray[i].naA = nbNAA;
+		pagesResultsArray[i].naAA = nbNAAA;
+		pagesResultsArray[i].totalconforme = nbTrueA + nbTrueAA;
+		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
+		
 	}
+	
+	
+	
+	console.log(pagesResultsArray);
 	
 	conformiteA = (nbTrueA / nbTotalA) * 100;
 		conformiteAA = (nbTrueAA / nbTotalAA) * 100;
@@ -446,7 +461,7 @@ function runFinalComputation(referentielMatrice, refData) {
 		syntheseObj.conformiteAA = conformiteAA;
 		syntheseObj.conformitetotal = conformiteAAA;
 		
-		console.table(syntheseObj);
+		//console.table(syntheseObj);
 		
 	
 	

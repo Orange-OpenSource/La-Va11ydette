@@ -1006,6 +1006,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
                 //on boucle dans le tableau passé en paramètre de la fonction
                 for (let i in currentRefTests) {
+                    var currentTest = currentRefTests[i].ID;
                     if (headingTheme != currentRefTests[i].themes) {
                         if (headingTheme !== '') {
                             htmlrefTests += '</div>';
@@ -1017,53 +1018,42 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                         htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
                     }
 
-                    htmlrefTests += '<article class="card mb-3" id="' + currentRefTests[i].ID + '"><div class="card-header"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="ml-auto badge ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+                    htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
                     // @todo à remplacer par un for sur filtres
 
-                    htmlrefTests += '<div class="card-body py-1 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
+                    htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
                     htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
                     htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
                     htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
                     htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
                     htmlrefTests += '</ul>';
 
-                    htmlrefTests += '<button type="button" id="commentBtn' + currentRefTests[i].ID + '" class="btn btn-link" aria-labelledby="commentBtn' + currentRefTests[i].ID + ' title-' + currentRefTests[i].ID + '" data-toggle="modal" data-target="#modal' + currentRefTests[i].ID + '">' + this.getCommentState(currentRefTests[i].ID) + '</button></div>';
+                    htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + this.getCommentState(currentTest) + '</button>';
 
                     if (currentRefTests[i].verifier || currentRefTests[i].exception) {
-                        htmlrefTests += '<div class="card-body py-0 accordion" id="accordion-' + currentRefTests[i].ID + '">';
+                        htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
+                        htmlrefTests += '<div class="collapse border-top border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
 
                         if (currentRefTests[i].verifier) {
-                            var border = '';
-
-                            if (!currentRefTests[i].exception) {
-                                var border = ' border-bottom-0';
-                            }
-
-                            htmlrefTests += '<div class="card' + border + '">';
-                            htmlrefTests += '<h4 class="card-header" id="check-' + currentRefTests[i].ID + '"><button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse-check-' + currentRefTests[i].ID + '" aria-expanded="false" aria-controls="collapse-check-' + currentRefTests[i].ID + '">' + textContent.title2 + '</button></h4>';
-                            htmlrefTests += '<div id="collapse-check-' + currentRefTests[i].ID + '" aria-labelledby="check-' + currentRefTests[i].ID + '" class="collapse" data-parent="#accordion-' + currentRefTests[i].ID + '">';
+                            htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
                             htmlrefTests += currentRefTests[i].verifier;
                             htmlrefTests += currentRefTests[i].complement;
-                            htmlrefTests += '</div></div>';
                         }
 
                         if (currentRefTests[i].exception) {
-                            htmlrefTests += '<div class="card">';
-                            htmlrefTests += '<h4 class="card-header" id="except-' + currentRefTests[i].ID + '"><button class="btn btn-link btn-sm" type="button" data-toggle="collapse" data-target="#collapse-except-' + currentRefTests[i].ID + '" aria-expanded="false" aria-controls="collapse-except-' + currentRefTests[i].ID + '">Exceptions</button></h4>';
-                            htmlrefTests += '<div id="collapse-except-' + currentRefTests[i].ID + '" aria-labelledby="except-' + currentRefTests[i].ID + '" class="collapse" data-parent="#accordion-' + currentRefTests[i].ID + '">';
+                            htmlrefTests += '<h4 class="h5">Exceptions</h4>';
                             htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
-                            htmlrefTests += '</div></div>';
                         }
-
-                        htmlrefTests += '</div>';
                     }
 
-                    htmlrefTests += '<div class="card-footer"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
+                    htmlrefTests += '<div class="py-2 border-top border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
                     for (let j in currentRefTests[i].wcag) {
                         htmlrefTests += currentRefTests[i].wcag[j];
                         j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
                     }
-                    htmlrefTests += '</p></div></article>';
+                    htmlrefTests += '</p></div></div>';
+
+                    htmlrefTests += '</article>';
                 }
             } else if (responseReferentiel == 'RGAA') {
                 //test configuration rendu MARKED
@@ -1225,7 +1215,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             let elFilterFooter = document.getElementById('filter-footer');
             let htmlFilterFooter = '';
 
-            htmlFilterFooter += '<button id="reinit" type="reset" class="btn btn-secondary" disabled>Réinitialiser</button>';
+            htmlFilterFooter += '<button id="reinit" type="reset" class="btn btn-secondary" disabled>Tout afficher</button>';
             elFilterFooter.innerHTML = htmlFilterFooter;
 
             let elBtnReinit = document.getElementById('reinit');

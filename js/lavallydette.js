@@ -37,28 +37,12 @@ function initVallydette(referentiel) {
 
     if (referentiel == 'RGAA') {
         jsonReferentiel = jsonRGAA;
-        btnRunRGAA.classList.add("active");
-        btnRunExpert.classList.remove("active");
-        btnRunIncontournables.classList.remove("active");
-        btnRunConcepteur.classList.remove("active");
     } else if (referentiel == 'expert') {
         jsonReferentiel = jsonChecklistExpert;
-        btnRunExpert.classList.add("active");
-        btnRunRGAA.classList.remove("active");
-        btnRunIncontournables.classList.remove("active");
-        btnRunConcepteur.classList.remove("active");
     } else if (referentiel == 'incontournables') {
         jsonReferentiel = jsonIncontournables;
-        btnRunRGAA.classList.remove("active");
-        btnRunExpert.classList.remove("active");
-        btnRunIncontournables.classList.add("active");
-        btnRunConcepteur.classList.remove("active");
     } else if (referentiel == 'concepteur') {
         jsonReferentiel = jsonConcepteur;
-        btnRunRGAA.classList.remove("active");
-        btnRunExpert.classList.remove("active");
-        btnRunIncontournables.classList.remove("active");
-        btnRunConcepteur.classList.add("active");
     } else if (referentiel == 'wcagEase') {
         jsonReferentiel = jsonWcagEase;
     }
@@ -237,6 +221,7 @@ function runComputation(referentielMatrice, refData) {
         for (let k in ogMatrice.items) {
             pagesResults[i].items[k] = {};
             pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
+			pagesResults[i].items[k].level = ogMatrice.items[k].level;
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
 
@@ -302,8 +287,6 @@ function runFinalComputation(referentielMatrice, refData) {
     var finalResult = 0;
     var nbPage = 0;
 
-    syntheseObj = {};
-
 	for (let i in pagesResultsArray) {
         var nbTrue = 0;
         var nbFalse = 0;
@@ -311,10 +294,10 @@ function runFinalComputation(referentielMatrice, refData) {
         var nbTotal = 0;
 		var nbTrueA = 0;
 		var nbFalseA = 0;
-		var nbNAA = 0;
+		var nbNaA = 0;
 		var nbTrueAA = 0;
 		var nbFalseAA = 0;
-		var nbNAAA = 0;
+		var nbNaAA = 0;
 		var nbTotalA = 0;
 		var nbTotalAA = 0;
 
@@ -334,7 +317,7 @@ function runFinalComputation(referentielMatrice, refData) {
 			} else if (pagesResultsArray[i].items[j].resultat == 'na') {
 				nbNA++;
 
-				pagesResultsArray[i].items[j].level == 'A' ? nbNAA++ : nbNAAA++;
+				pagesResultsArray[i].items[j].level == 'A' ? nbNaA++ :nbNaAA++;
 				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
 			} else if (pagesResultsArray[i].items[j].resultat == 'nt') {
 				pagesResultsArray[i].complete = false;
@@ -352,41 +335,11 @@ function runFinalComputation(referentielMatrice, refData) {
 		pagesResultsArray[i].conformeAA = nbTrueAA;
 		pagesResultsArray[i].nonconformeA = nbFalseA;
 		pagesResultsArray[i].nonconformeAA = nbFalseAA;
-		pagesResultsArray[i].naA = nbNAA;
-		pagesResultsArray[i].naAA = nbNAAA;
+		pagesResultsArray[i].naA = nbNaA;
+		pagesResultsArray[i].naAA = nbNaAA;
 		pagesResultsArray[i].totalconforme = nbTrueA + nbTrueAA;
 		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
 	}
-
-	console.log(pagesResultsArray);
-
-	conformiteA = (nbTrueA / nbTotalA) * 100;
-		conformiteAA = (nbTrueAA / nbTotalAA) * 100;
-
-		totalTrue = nbTrueA+nbTrueAA;
-		totalFalse =  nbFalseA+nbFalseAA;
-		totalNA =  nbNAA+nbNAAA;
-		totalAAA = totalTrue + totalFalse;
-
-		conformiteAAA = (totalTrue / totalAAA) * 100;
-
-		syntheseObj.conformeA = nbTrueA;
-		syntheseObj.conformeAA = nbTrueAA;
-		syntheseObj.conformetotal = totalTrue;
-		syntheseObj.nonconformeA = nbFalseA;
-		syntheseObj.nonconformeAA = nbFalseAA;
-		syntheseObj.nonconformetotal = totalFalse;
-		syntheseObj.naA = nbNAA;
-		syntheseObj.naAA = nbNAAA;
-		syntheseObj.natotal = totalNA;
-		syntheseObj.conformiteA = conformiteA;
-		syntheseObj.conformiteAA = conformiteAA;
-		syntheseObj.conformitetotal = conformiteAAA;
-
-		//console.table(syntheseObj);
-
-
-
 
     for (let i in pagesResultsArray) {
         if (pagesResultsArray[i].result != "NA") {
@@ -409,23 +362,85 @@ function runFinalComputation(referentielMatrice, refData) {
 
 
     if (nbNT >= 1) {
-        htmlModal += '<h3>Résultat global : </h3>';
+        htmlModal += '<h3>Conformité globale : </h3>';
         htmlModal += '<p>Audit en cours.</p>';
+		htmlModal += '<h3>Résultat par pages : </h3>';
+		htmlModal += '<ul>';
+		for (let i in pagesResultsArray) {
+			if (pagesResultsArray[i].complete == false) {
+				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
+			} else {
+				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
+			}
+		}
+		htmlModal += '</ul>';
     } else if (nbNT == 0 && !isNaN(finalResult)) {
-        htmlModal += '<h3>Résultat global : </h3>';
-        htmlModal += '<span class="finalResult">' + finalResult + '%</span>';
+        htmlModal += '<h3>Conformité globale : </h3>';
+        htmlModal += '<span class="h1 text-primary">' + finalResult + '%</span>';
+		
+		
+		htmlModal += '<ul class="nav nav-tabs" role="tablist">';
+		htmlModal += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
+		htmlModal += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';
+		htmlModal += '</ul>';
+		
+		htmlModal += '<div class="tab-content border-0">';
+		htmlModal += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
+		htmlModal += '<ul>';
+		for (let i in pagesResultsArray) {
+			if (pagesResultsArray[i].complete == false) {
+				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
+			} else {
+				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
+			}
+		}
+		htmlModal += '</ul>';
+		htmlModal += '  </div>';
+		htmlModal += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
+		htmlModal += '<table class="table table-striped"><caption class="sr-only">Synthèse par niveau</caption>';
+		htmlModal += '<thead><tr>';
+		htmlModal += '<th scope="row">Critères</th>';
+		htmlModal += '<th scope="col" colspan="2" class="text-center">Conformes</th>';
+		htmlModal += '<th scope="col" colspan="2" class="text-center">Non-conformes</th>';
+		htmlModal += '<th scope="col" colspan="2" class="text-center">Non-applicables</th>';
+		htmlModal += '<th rowspan="2" class="text-center bg-light">Taux de conformité </th>';
+		htmlModal += '</tr><tr>';
+		htmlModal += '<th scope="col">Niveau</th>';
+		htmlModal += '<th scope="col" class="text-center">A</th>';
+		htmlModal += '<th scope="col" class="text-center">AA</th>';
+		htmlModal += '<th scope="col" class="text-center">A</th>';
+		htmlModal += '<th scope="col" class="text-center">AA</th>';
+		htmlModal += '<th scope="col" class="text-center">A</th>';
+		htmlModal += '<th scope="col" class="text-center">AA</th>';
+		htmlModal += '</tr></thead>';
+		htmlModal += '<tbody>';
+	
+		
+		for (let i in pagesResultsArray) {
+			
+			htmlModal += '<tr>';
+			htmlModal += '<th scope="row" class="font-weight-bold">' + pagesResultsArray[i].name + '</th>';
+			htmlModal += '<td class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
+			htmlModal += '<td class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
+			htmlModal += '<td class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';
+			htmlModal += '<td class="text-center">' + pagesResultsArray[i].nonconformeAA+ '</td>';
+			htmlModal += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
+			htmlModal += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
+			htmlModal += '<td class="text-center bg-light">' + pagesResultsArray[i].result.toFixed(2) + ' %</td>';
+			htmlModal += '</tr>';
+			
+		}
+		htmlModal += '</tbody>';
+		htmlModal += '</table>';
+		htmlModal += ' </div>';
+		  
+		htmlModal += '</div>';
+		
+		
+		
     }
 
-    htmlModal += '<h3>Résultat par pages : </h3>';
-    htmlModal += '<ul>';
-    for (let i in pagesResultsArray) {
-        if (pagesResultsArray[i].complete == false) {
-            htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
-        } else {
-            htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
-        }
-    }
-    htmlModal += '</ul>';
+   
 
     htmlModal += '</div>';
     htmlModal += '<div class="modal-footer">';
@@ -864,9 +879,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
             linkElement = document.getElementById("export");
             linkElement.classList.remove("disabled");
+			linkElement.removeAttribute('disabled');
             linkElement.setAttribute('aria-disabled', false);
             linkElement.setAttribute('href', dataUri);
             linkElement.setAttribute('download', exportFileDefaultName);
+			
         }
 
 

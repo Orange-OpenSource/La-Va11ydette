@@ -1254,9 +1254,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             elTypes.innerHTML = "";
 
             for (let i in filtres) {
-                htmlTypes = '<input type="radio" class="custom-control-input" id="type' + i + '" name="types" value="' + filtres[i][1] + '"><label class="custom-control-label" for="type' + i + '" id="labelType' + i + '">' + filtres[i][0] + '</label>';
+                htmlTypes = '<input type="checkbox" class="" id="type' + i + '" name="types'+i+'" value="' + filtres[i][1] + '"><label class="custom-control-label" for="type' + i + '" id="labelType' + i + '">' + filtres[i][0] + '</label>';
                 var node = document.createElement("li");
-                node.classList.add('custom-control', 'custom-radio');
+               // node.classList.add('custom-control', 'custom-radio');
                 node.innerHTML = htmlTypes;
                 elTypes.appendChild(node);
 
@@ -1269,13 +1269,14 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             //fin ajout input de filtre
 
         }
-
+ let arrType = [];
+  let conditions = [];
         this.runFilter = function (elRadio) {
             let runUpdateType = false;
-            let conditions = [];
-            let arrType = [];
+           
+           
             if (elRadio && elRadio.checked) {
-                arrType = [];
+                //arrType = [];
                 arrType.push(elRadio.value);
             }
 
@@ -1283,24 +1284,32 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
             if (indice > 0) {
                 //on supprime les doublons, nécessaire pour les boutons radio
-                delDoublon(conditions, elRadio.name);
+                //delDoublon(conditions, elRadio.name);
 
+				
                 conditions.unshift(function (item) {
-                    return item.resultatTest.indexOf(arrType[0]) !== -1;
+                    return item.resultatTest.indexOf(arrType[(arrType.length-1)]) !== -1;
                 });
 
                 //on nomme la fonction, pour les checkboxes on utilise this.id
-                Object.defineProperty(conditions[0], 'name', {value: elRadio.name, writable: false});
+                Object.defineProperty(conditions[arrType.length-1], 'name', {value: elRadio.id, writable: false});
 
                 runUpdateType = false;
 
+				console.table(conditions);
+				
                 //on applique tous les filtres stockés dans conditions
                 //filteredTest = self.refTests.filter(function(d) {
-                filteredTest = data.checklist.page[currentPage].items.filter(function (d) {
+					
+               /*  filteredTest = data.checklist.page[currentPage].items.filter(function (d) {
                     return conditions.every(function (c) {
                         return c(d);
                     });
                 });
+				 */
+			
+				const filteredTest = data.checklist.page[currentPage].items.filter(o => arrType.includes(o.resultatTest))
+				
 
                 //on met à jour la page
                 checklistApp.FetchAll(filteredTest);

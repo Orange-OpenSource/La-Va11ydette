@@ -1,68 +1,147 @@
 $('#docs-navbar').navbar({sticky: true, hideSupra: true});
 $('.o-nav-local').prioritynav('Autres pages');
 
-function initVallydette(referentiel) {
-    const jsonVallydette = 'json/lavallydette.json';
-    const jsonRGAA = 'json/criteres-rgaa4.json';
-    const jsonChecklistExpert = 'json/criteres-checklist-expert.json';
-    const jsonIncontournables = 'json/criteres-incontournables.json';
-    const jsonConcepteur = 'json/criteres-checklist-concepteur.json';
-    const jsonWcagEase = 'json/criteres-wcag-ease.json';
-
-    //event handler
-    document.getElementById('import').onclick = function () {
-        var files = document.getElementById('selectFiles').files;
-        var fr = new FileReader();
-
-        fr.onload = function (e) {
-            var result = JSON.parse(e.target.result);
-            reqListener(e.target.result);
-        }
-
-        fr.readAsText(files.item(0));
-    };
-
-    //appel des Json
-    doXHR(jsonVallydette, function (errFirst, responseFirst) {
-        if (errFirst) {
-            reqError();
-        }
-        return doXHR(jsonReferentiel, function (errSecond, responseSecond) {
-            if (errSecond) {
-                reqError();
-            }
-            return reqListener(responseFirst, responseSecond, referentiel);
-        });
-    });
-
-    if (referentiel == 'RGAA') {
-        jsonReferentiel = jsonRGAA;
-    } else if (referentiel == 'expert') {
-        jsonReferentiel = jsonChecklistExpert;
-    } else if (referentiel == 'incontournables') {
-        jsonReferentiel = jsonIncontournables;
-    } else if (referentiel == 'concepteur') {
-        jsonReferentiel = jsonConcepteur;
-    } else if (referentiel == 'wcagEase') {
-        jsonReferentiel = jsonWcagEase;
-    }
+function initObjectVallydette(name, IDpage, pageName) {
+	this.checklist = {};
+	this.checklist.name = name;
+	this.checklist.page = [];
+	this.checklist.page[0] = {};
+	this.checklist.page[0].IDPage = IDpage;
+	this.checklist.page[0].name = pageName;
+	this.checklist.page[0].items = [];
 }
 
-//requête XMLHttpRequest
-function doXHR(url, callback) {
-    var oReq = new XMLHttpRequest();
+var dataVallydette = new initObjectVallydette('Audit WCAG 2.1', 'pageID-0', 'Nom de la page');
+var currentPage;
+var idPageIndex;
+var uniqueTypes = []; // à supprimer ?
+var statutClass;
+var filtres = [];	
+var refPages; // à supprimer ?
+var refTests;	// à supprimer ?
+var arrType = []; // à supprimer ?
+var conditions = []; // à supprimer ?
+var currentCriteriaListName;
 
-    oReq.onreadystatechange = function (event) {
-        if (this.readyState === XMLHttpRequest.DONE) {
-            if (this.status === 200) {
-                return callback(null, this.responseText);
-            } else {
-                return callback({errCode: this.status, errMsg: this.statusText});
-            }
-        }
-    };
-    oReq.open('GET', url, true);
-    oReq.send(null);
+function initCriteriaVallydette(criteriaListName) {
+	
+	currentCriteriaListName = criteriaListName;
+	var jsonCriteria;
+	
+	switch(currentCriteriaListName) {
+	  case 'RGAA':
+		jsonCriteria = 'json/criteres-rgaa4.json';
+		break;
+	  case 'expert':
+		jsonCriteria = 'json/criteres-checklist-expert.json';
+		break;
+	  case 'incontournables':
+		jsonCriteria = 'json/criteres-incontournables.json';
+		break;
+	  case 'concepteur':
+		jsonCriteria = 'json/criteres-checklist-concepteur.json';
+		break;
+	  case 'wcagEase':
+		jsonCriteria = 'json/criteres-wcag-ease.json';
+		break;
+	  default:
+		jsonCriteria = 'json/criteres-wcag-ease.json';
+	} 
+
+	var xhr = new XMLHttpRequest(),
+    method = "GET",
+	url = 'json/criteres-wcag-ease.json';
+
+	xhr.open(method, url, true);
+	xhr.onreadystatechange = function () {
+	  if(xhr.readyState === 4 && xhr.status === 200) {
+		criteriaVallydette =  JSON.parse(xhr.responseText);
+		if (criteriaListName==="RGAA") {
+				return reqListener(responseFirst, responseSecond, referentiel);
+			} else {
+				return importCriteriaToVallydetteObj(criteriaVallydette, criteriaListName);
+			}
+	  }
+	};
+	xhr.send();
+}
+
+
+function importCriteriaToVallydetteObj (criteriaVallydette, criteriaListName) {
+    dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
+    dataVallydette.checklist.referentiel = criteriaListName;
+    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
+	
+    return initVallydetteApp();
+}
+
+function initVallydetteApp() {
+   
+	currentPage = 0;
+	idPageIndex = 0;
+
+//à déplacer
+    // Récupération des données
+   refPages = dataVallydette.checklist;
+    refTests = dataVallydette.checklist.page[currentPage].items;
+
+    //init computation
+    initComputation(dataVallydette);
+
+    //class statut
+    statutClass = "badge-light";
+		
+        textContent = {
+            title1: "Procédures",
+            title2: "À vérifier",
+            title3: "Résultats",
+            title4: "Justification",
+            statut1: "conforme",
+            statut2: "non-conforme",
+            statut3: "non-applicable",
+            statut4: "non-testé"
+        };
+ //on prédéfini le tableau de filtres
+filtres = [["conforme", "ok"], ["non-conforme", "ko"], ["non-applicable", "na"], ["non-testé", "nt"]];
+		//event handler
+		document.getElementById('import').onclick = function () {
+			var files = document.getElementById('selectFiles').files;
+			var fr = new FileReader();
+
+			fr.onload = function (e) {
+				dataVallydette = JSON.parse(e.target.result);
+				initVallydetteApp();
+			}
+
+			fr.readAsText(files.item(0));
+		};
+
+        var btnChecklist = document.getElementById("btnChecklistName");
+        btnChecklist.addEventListener('click', function () {
+            setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)
+        }, false);
+
+        var btnPage = document.getElementById("btnPageName");
+        btnPage.addEventListener('click', function () {
+            setValue(btnPage.dataset.element, btnPage.dataset.property, btnPage.dataset.secondaryElement)
+        }, false);
+
+        var HeadingChecklistName = document.getElementById("checklistName");
+        HeadingChecklistName.innerText = dataVallydette.checklist.name;
+
+        var btndelPage = document.getElementById("btnDelPage");
+        btndelPage.addEventListener('click', function () {
+            setDeletePage(btnPage.dataset.element)
+        }, false);
+		
+		
+			//A DEPLACER
+    // Affichage de tous les tests
+    FetchAll(refTests);
+    paginationPage(refPages);
+    // Affiche les checkboxes et boutons radios
+    DisplayFilters();
+    UpdateFeedback(false, refTests.length);
 }
 
 function reqError(err) {
@@ -153,59 +232,29 @@ function importRGAA(dataVallydette, dataRGAA) {
     return dataVallydette;
 }
 
-function importChecklistExpert(dataVallydette, dataChecklistExpert) {
-    dataVallydette.checklist.name = "Audit Checklist Expert";
-    dataVallydette.checklist.referentiel = "expert";
-    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
-
-    return dataVallydette;
-}
-
-function importIncontournables(dataVallydette, dataChecklistExpert) {
-
-    dataVallydette.checklist.name = "Audit Incontournables";
-    dataVallydette.checklist.referentiel = "incontournables";
-    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
-
-    return dataVallydette;
-
-}
-
-function importConcepteur(dataVallydette, dataChecklistExpert) {
-    dataVallydette.checklist.name = "Audit Concepteur";
-    dataVallydette.checklist.referentiel = "concepteur";
-    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
-
-    return dataVallydette;
-}
-
-function importWcagEase(dataVallydette, dataChecklistExpert) {
-    dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
-    dataVallydette.checklist.referentiel = "wcagEase";
-    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(dataChecklistExpert.items);
-
-    return dataVallydette;
-}
 
 function initComputation(refData) {
     //initialisation matrice calcul wcag
-    const matriceVallydette = 'json/matrice-wcag-ease.json';
-    var matriceRequest = new XMLHttpRequest();
-    var matriceWcag;
 
-    matriceRequest.onreadystatechange = function (event) {
-        if (this.readyState === XMLHttpRequest.DONE) {
-            matriceWcag = JSON.parse(this.responseText);
+	var matriceRequest = new XMLHttpRequest();
+	var matriceWcag;
+    method = "GET",
+	matriceVallydette = 'json/matrice-wcag-ease.json';
+
+	matriceRequest.open(method, matriceVallydette, true);
+	matriceRequest.onreadystatechange = function () {
+	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
+			matriceWcag = JSON.parse(matriceRequest.responseText);
             //eventHandler show result
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runFinalComputation(matriceWcag, refData)
             }, false);
-        }
-    };
-
-    matriceRequest.open('GET', matriceVallydette);
-    matriceRequest.send(null);
+	  }
+	};
+	matriceRequest.send();
+	
+	
 }
 
 
@@ -457,76 +506,10 @@ function runFinalComputation(referentielMatrice, refData) {
 
 // fin calcul résultat
 
-function reqListener(responseFirst, responseCriteria, responseReferentiel) {
-    if (responseCriteria) {
-        if (responseReferentiel == 'RGAA') {
-            var data = importRGAA(JSON.parse(responseFirst), JSON.parse(responseCriteria));
-        } else if (responseReferentiel == 'expert') {
-            var data = importChecklistExpert(JSON.parse(responseFirst), JSON.parse(responseCriteria));
-        } else if (responseReferentiel == 'incontournables') {
-            var data = importIncontournables(JSON.parse(responseFirst), JSON.parse(responseCriteria));
-        } else if (responseReferentiel == 'concepteur') {
-            var data = importConcepteur(JSON.parse(responseFirst), JSON.parse(responseCriteria));
-        } else if (responseReferentiel == 'wcagEase') {
-            var data = importWcagEase(JSON.parse(responseFirst), JSON.parse(responseCriteria));
-        }
-    } else {
-        var data = JSON.parse(responseFirst);
-        responseReferentiel = data.checklist.referentiel;
-    }
-
-    var currentPage = 0;
-    var idPageIndex = 0;
-
-    // Récupération des données
-    var refPages = data.checklist;
-    var refTests = data.checklist.page[currentPage].items;
-
-    //init computation
-    initComputation(data);
-
-    var uniqueTypes = [];
-
-    //class statut
-    var statutClass = "badge-light";
-
-    var checklistApp = new function () {
-        // Récupération des données
-        //this.refTests = refTests;
-        var textContent = {
-            title1: "Procédures",
-            title2: "À vérifier",
-            title3: "Résultats",
-            title4: "Justification",
-            statut1: "conforme",
-            statut2: "non-conforme",
-            statut3: "non-applicable",
-            statut4: "non-testé"
-        };
-
-        //init checklist name
-        var btnChecklist = document.getElementById("btnChecklistName");
-        btnChecklist.addEventListener('click', function () {
-            checklistApp.setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)
-        }, false);
-
-        var btnPage = document.getElementById("btnPageName");
-        btnPage.addEventListener('click', function () {
-            checklistApp.setValue(btnPage.dataset.element, btnPage.dataset.property, btnPage.dataset.secondaryElement)
-        }, false);
-
-        var HeadingChecklistName = document.getElementById("checklistName");
-        HeadingChecklistName.innerText = data.checklist.name;
-
-        var btndelPage = document.getElementById("btnDelPage");
-        btndelPage.addEventListener('click', function () {
-            checklistApp.setDeletePage(btnPage.dataset.element)
-        }, false);
-
 
 ///////////////// multipage //////////////////////
 
-        this.paginationPage = function (pages) {
+paginationPage = function (pages) {
             var getPages = pages.page;
 
             //init add button
@@ -545,7 +528,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             pageElement.querySelector(".nav").appendChild(AddPage);
 
             btnAddPage.addEventListener('click', function () {
-                checklistApp.addPage();
+                addPage();
             }, false);
 
             for (let i in getPages) {
@@ -566,7 +549,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
                 let thisNewBtn = document.getElementById(getPages[i].IDPage);
                 thisNewBtn.addEventListener('click', function () {
-                    checklistApp.showPage(thisNewBtn.id)
+                    showPage(thisNewBtn.id)
                 }, false);
 
                 let btnDelPage = document.getElementById("btnDelPage");
@@ -574,11 +557,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             }
         }
 
-        this.addPage = function () {
-            var arr2 = JSON.parse(JSON.stringify(data.checklist.page[currentPage]));
-            data.checklist.page.push(arr2);
+addPage = function () {
+            var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[currentPage]));
+            dataVallydette.checklist.page.push(arr2);
 
-            indexPage = data.checklist.page.length - 1;
+            indexPage = dataVallydette.checklist.page.length - 1;
             idPageIndex = idPageIndex + 1;
 
             var newIdPage = new Uint32Array(1);
@@ -586,15 +569,15 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
             newIdPage = "pageID-" + newIdPage;
 
-            var btnFirstPage = document.getElementById(data.checklist.page[0].IDPage);
+            var btnFirstPage = document.getElementById(dataVallydette.checklist.page[0].IDPage);
             btnFirstPage.disabled = false;
 
             // @todo a supprimer
-            data.checklist.page[indexPage].IDPage = newIdPage;
-            data.checklist.page[indexPage].name = "Nom de la page";
-            data.checklist.page[indexPage].items.forEach(this.initNewPage);
+            dataVallydette.checklist.page[indexPage].IDPage = newIdPage;
+            dataVallydette.checklist.page[indexPage].name = "Nom de la page";
+            dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
 
-            jsonStr = JSON.stringify(data);
+            jsonStr = JSON.stringify(dataVallydette);
 
             //display pagination
             let newPage = document.createElement("li");
@@ -611,7 +594,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             var thisNewBtn = document.getElementById(newIdPage);
             var currentIdPage = thisNewBtn.getAttribute('id');
             thisNewBtn.addEventListener('click', function () {
-                checklistApp.showPage(currentIdPage)
+                showPage(currentIdPage)
             }, false);
 
             //enabled delete button
@@ -619,25 +602,25 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             currentBtnDelPage.disabled = false;
         }
 
-        this.initNewPage = function (item) {
+initNewPage = function (item) {
             item.ID = item.ID + '-p' + indexPage;
             item.resultatTest = 'nt';
             item.commentaire = '';
         }
 
-        this.showPage = function (id) {
-            var index = data.checklist.page.findIndex(function (o) {
+showPage = function (id) {
+            var index = dataVallydette.checklist.page.findIndex(function (o) {
                 return o.IDPage == id;
             })
 
             currentPage = index;
 
-            [x, y] = this.getIfFilter("types");
+            [x, y] = getIfFilter("types");
 
             if (x) {
-                checklistApp.runFilter(y);
+                runFilter(y);
             } else {
-                checklistApp.FetchAll(data.checklist.page[currentPage].items);
+                FetchAll(dataVallydette.checklist.page[currentPage].items);
             }
 
             var currentBtnPageName = document.getElementById('btnPageName');
@@ -655,12 +638,12 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 lastBtnPagination.removeAttribute("aria-current");
             }
 
-            var currentBtnPagination = document.getElementById(data.checklist.page[currentPage].IDPage);
+            var currentBtnPagination = document.getElementById(dataVallydette.checklist.page[currentPage].IDPage);
             currentBtnPagination.classList.add("active");
             currentBtnPagination.setAttribute("aria-current", "true");
         }
 
-        this.setDeletePage = function (targetElement) {
+setDeletePage = function (targetElement) {
 
             let htmlModal = '';
             htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
@@ -671,7 +654,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-body">';
-            htmlModal += 'Supprimer la page ' + this.getValue(targetElement) + ' ?';
+            htmlModal += 'Supprimer la page ' + getValue(targetElement) + ' ?';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-footer">';
             htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
@@ -685,17 +668,17 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             // Event handler
             var deteleSaveBtn = document.getElementById("deteleSaveBtn");
             deteleSaveBtn.addEventListener('click', function () {
-                checklistApp.deletePage(currentPage, targetElement)
+                deletePage(currentPage, targetElement)
             });
         }
 
-        this.deletePage = function (currentPage, targetElement) {
+deletePage = function (currentPage, targetElement) {
             //remove from data
-            data.checklist.page.splice(currentPage, 1);
+            dataVallydette.checklist.page.splice(currentPage, 1);
 
             //remove from pagination
             var currentBtnDelPage = document.getElementById('btnDelPage');
-            data.checklist.page.length == 1 ? currentBtnDelPage.disabled = true : "";
+            dataVallydette.checklist.page.length == 1 ? currentBtnDelPage.disabled = true : "";
 
             var paginationBtnId = currentBtnDelPage.dataset.pagination;
             var paginationBtn = document.getElementById(paginationBtnId);
@@ -703,17 +686,17 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
             currentPage != 0 ? currentPage = currentPage - 1 : "";
 
-            newPageId = data.checklist.page[currentPage].IDPage;
-            this.showPage(newPageId);
+            newPageId = dataVallydette.checklist.page[currentPage].IDPage;
+            showPage(newPageId);
 
             //on met à jour l'export
-            this.jsonUpdate();
+            jsonUpdate();
 
             //reinit computation
-            initComputation(data);
+            //initComputation(dataVallydette);
         }
 
-        this.getIfFilter = function (name) {
+getIfFilter = function (name) {
             const filters = document.querySelectorAll('[name="' + name + '"]');
             let found = false;
             let foundItem;
@@ -730,10 +713,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
 ///////////////// fin multipage //////////////////////
 
-        //on prédéfini le tableau de filtres
-        var filtres = [["conforme", "ok"], ["non-conforme", "ko"], ["non-applicable", "na"], ["non-testé", "nt"]];
+       
 
-        this.getStatutClass = function (lastResult) {
+getStatutClass = function (lastResult) {
             if (lastResult == filtres[0][1]) {
                 statutClass = "badge-success";
             } else if (lastResult == filtres[1][1]) {
@@ -746,7 +728,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             return statutClass;
         }
 
-        this.setStatutClass = function (lastResult) {
+setStatutClass = function (lastResult) {
             if (lastResult == filtres[0][1]) {
                 statutText = textContent.statut1;
             } else if (lastResult == filtres[1][1]) {
@@ -759,11 +741,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             return statutText;
         }
 
-        this.setStates = function (ele, targetId) {
-            for (let i in data.checklist.page[currentPage].items) {
-                if (data.checklist.page[currentPage].items[i].ID == targetId) {
-                    lastResult = this.getStatutClass(data.checklist.page[currentPage].items[i].resultatTest);
-                    data.checklist.page[currentPage].items[i].resultatTest = ele.value;
+setStates = function (ele, targetId) {
+            for (let i in dataVallydette.checklist.page[currentPage].items) {
+                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
+                    lastResult = getStatutClass(dataVallydette.checklist.page[currentPage].items[i].resultatTest);
+                    dataVallydette.checklist.page[currentPage].items[i].resultatTest = ele.value;
                 }
             }
 
@@ -789,21 +771,21 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             testResult.classList.add(statutClass);
 
             //on met à jour l'export
-            this.jsonUpdate();
+            jsonUpdate();
         }
 
         ///////////Edition manager/////////////////
-        this.setValue = function (targetElement, targetProperty, targetSecondaryElement) {
+setValue = function (targetElement, targetProperty, targetSecondaryElement) {
             let htmlModal = '';
             htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
             htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
             htmlModal += '<div class="modal-content">';
             htmlModal += '<div class="modal-header">';
-            htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : ' + this.getValue(targetElement) + '</h5>';
+            htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : ' + getValue(targetElement) + '</h5>';
             htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-body">';
-            htmlModal += '<input type="text" class="form-control" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + this.getValue(targetElement) + '">';
+            htmlModal += '<input type="text" class="form-control" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + getValue(targetElement) + '">';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-footer">';
             htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
@@ -818,12 +800,12 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             var saveValueBtn = document.getElementById("saveValueBtn");
             var targetInput = document.getElementById("inputValue");
             saveValueBtn.addEventListener('click', function () {
-                checklistApp.updateValue(targetInput.value, targetElement, targetProperty, targetSecondaryElement)
+                updateValue(targetInput.value, targetElement, targetProperty, targetSecondaryElement)
             });
 
         }
 
-        this.updateValue = function (inputValue, targetElement, targetProperty, targetSecondaryElement) {
+updateValue = function (inputValue, targetElement, targetProperty, targetSecondaryElement) {
 
             function setToValue(obj, value, path) {
                 path = path.split('.');
@@ -839,8 +821,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 var currentTargetElement = document.getElementById(targetElement);
                 currentTargetElement.innerText = inputValue;
 
-                //data.checklist[targetProperty] = name;
-                setToValue(data, inputValue, targetProperty);
+                //dataVallydette.checklist[targetProperty] = name;
+                setToValue(dataVallydette, inputValue, targetProperty);
 
                 if (targetSecondaryElement) {
                     var currentTargetSecondaryElement = document.getElementById(targetSecondaryElement);
@@ -850,10 +832,10 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
 
             //on met à jour l'export
-            this.jsonUpdate();
+            jsonUpdate();
         }
 
-        this.getValue = function (target) {
+getValue = function (target) {
             var targetElement = document.getElementById(target);
             return targetElement.innerText;
         }
@@ -861,11 +843,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
         ///////////end edition manager/////////////////
 
-        this.jsonUpdate = function () {
+jsonUpdate = function () {
             let DefaultName = document.getElementById("checklistName");
             DefaultName = slugify(DefaultName.innerText);
 
-            let dataStr = JSON.stringify(data);
+            let dataStr = JSON.stringify(dataVallydette);
 
             let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
@@ -888,7 +870,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
 
         //gestion commentaires
-        this.setComment = function (targetId, title) {
+setComment = function (targetId, title) {
             let titleModal = title;
 
             let htmlModal = '';
@@ -900,7 +882,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-body">';
-            htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + this.getComment(targetId) + '</textarea>';
+            htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
             htmlModal += '</div>';
             htmlModal += '<div class="modal-footer">';
             htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
@@ -915,43 +897,43 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             var commentSave = document.getElementById("commentSaveBtn");
             var comment = document.getElementById('comment' + targetId);
             commentSave.addEventListener('click', function () {
-                checklistApp.addComment(targetId, comment.value)
+                addComment(targetId, comment.value)
             });
 
         }
 
-        this.addComment = function (targetId, newComment) {
-            for (let i in data.checklist.page[currentPage].items) {
-                if (data.checklist.page[currentPage].items[i].ID == targetId) {
-                    data.checklist.page[currentPage].items[i].commentaire = newComment;
+addComment = function (targetId, newComment) {
+            for (let i in dataVallydette.checklist.page[currentPage].items) {
+                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
+                    dataVallydette.checklist.page[currentPage].items[i].commentaire = newComment;
                 }
             }
 
             var currentBtnComment = document.getElementById("commentBtn" + targetId);
-            currentBtnComment.innerHTML = this.getCommentState(targetId);
+            currentBtnComment.innerHTML = getCommentState(targetId);
 
             //on met à jour l'export
-            this.jsonUpdate();
+            jsonUpdate();
         }
 
-        this.getComment = function (targetId) {
+getComment = function (targetId) {
             var currentComment;
 
-            for (let i in data.checklist.page[currentPage].items) {
-                if (data.checklist.page[currentPage].items[i].ID == targetId) {
-                    currentComment = data.checklist.page[currentPage].items[i].commentaire;
+            for (let i in dataVallydette.checklist.page[currentPage].items) {
+                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
+                    currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
                 }
             }
 
             return (currentComment != "" ? currentComment : "");
         }
 
-        this.getCommentState = function (targetId) {
+getCommentState = function (targetId) {
             var currentComment;
 
-            for (let i in data.checklist.page[currentPage].items) {
-                if (data.checklist.page[currentPage].items[i].ID == targetId) {
-                    currentComment = data.checklist.page[currentPage].items[i].commentaire;
+            for (let i in dataVallydette.checklist.page[currentPage].items) {
+                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
+                    currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
                 }
             }
 
@@ -960,7 +942,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
         //fin gestion commentaires
 
-        this.UpdateTypes = function (allTypes, updatedTypes) {
+UpdateTypes = function (allTypes, updatedTypes) {
             let elrefTypes = [];
 
             for (let i in updatedTypes) {
@@ -993,7 +975,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             }
         };
 
-        this.UpdateFeedback = function (activeFilter, nbTests) {
+UpdateFeedback = function (activeFilter, nbTests) {
             let elBtnReinit = document.getElementById('reinit');
             let elFeedback = document.getElementById('feedback');
             let htmlFeedback = '';
@@ -1008,7 +990,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             }
         };
 
-        this.FetchAll = function (currentRefTests) {
+        FetchAll = function (currentRefTests) {
             // Selection de l'élément
             let elrefTests = document.getElementById('refTests');
             let htmlrefTests = '';
@@ -1017,9 +999,9 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
             let nextIndex = 1;
 
             // TEMPLATE
-            if (responseReferentiel == 'wcagEase') {
+            if (currentCriteriaListName == 'wcagEase') {
                 var currentPageName = document.getElementById('pageName');
-                currentPageName.innerHTML = data.checklist.page[currentPage].name;
+                currentPageName.innerHTML = dataVallydette.checklist.page[currentPage].name;
 
                 //on boucle dans le tableau passé en paramètre de la fonction
                 for (let i in currentRefTests) {
@@ -1035,7 +1017,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                         htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
                     }
 
-                    htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + this.getStatutClass(currentRefTests[i].resultatTest) + '">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+                    htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
                     // @todo à remplacer par un for sur filtres
 
                     htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
@@ -1045,7 +1027,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                     htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
                     htmlrefTests += '</ul>';
 
-                    htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + this.getCommentState(currentTest) + '</button>';
+                    htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 
                     if (currentRefTests[i].verifier || currentRefTests[i].exception) {
                         htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
@@ -1072,7 +1054,7 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
                     htmlrefTests += '</article>';
                 }
-            } else if (responseReferentiel == 'RGAA') {
+            } else if (currentCriteriaListName == 'RGAA') {
                 //test configuration rendu MARKED
                 // Get reference
                 const renderer = new marked.Renderer();
@@ -1098,16 +1080,16 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                     if (headingCriterium != currentRefTests[i].criterium) {
                         headingCriterium = currentRefTests[i].criterium;
 
-                        htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + this.getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+                        htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
                         // @todo à remplacer par un for sur filtres
                         //initialisation si aucun tests n'est checké
                         if (currentRefTests[i].resultatTest == "") {
                             currentRefTests[i].resultatTest = "nt";
-                            data.checklist.items[i].resultatTest = "nt";
+                            dataVallydette.checklist.items[i].resultatTest = "nt";
                         }
 
                         htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + ((currentRefTests[i].resultatTest == filtres[3][1]) ? "checked" : "") + '/>';
-                        htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + this.getCommentState(i) + '</button></div></div>';
+                        htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
                         htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
                         htmlrefTests += '<div class="card-block"><div class="row">';
                         htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
@@ -1136,12 +1118,12 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                             htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
                         }
 
-                        htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + this.getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span>';
+                        htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
                         //à remplacer par un for sur filtres
 
                         htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/>';
 
-                        htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + this.getCommentState(i) + '</button></div>';
+                        htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div>';
                         htmlrefTests += '</div></article>';
 
                         if ((currentRefTests[nextIndex] != undefined) && (headingCriterium != currentRefTests[nextIndex].criterium)) {
@@ -1158,11 +1140,11 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                         headingTheme = currentRefTests[i].themes;
                         htmlrefTests += '<h2 id="test-' + formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
                     }
-                    htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + this.getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + this.setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+                    htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
                     // @todo à remplacer par un for sur filtres
 
                     htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/>';
-                    htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + this.getCommentState(i) + '</button></div></div>';
+                    htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
                     htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
                     htmlrefTests += '<div class="card-block"><div class="row">';
                     htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
@@ -1213,21 +1195,21 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 var nodeArray = [];
                 for (var j = 0; j < radios.length; ++j) {
                     radios[j].addEventListener('click', function () {
-                        checklistApp.setStates(this, currentRefTests[i].ID)
+                        setStates(this, currentRefTests[i].ID)
                     }, false);
                 }
 
                 //commentaires
                 var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
                 comment.addEventListener('click', function () {
-                    checklistApp.setComment(currentRefTests[i].ID, currentRefTests[i].title)
+                    setComment(currentRefTests[i].ID, currentRefTests[i].title)
                 }, false);
             }
         };
 
 
         // Retourne la liste des checkboxes
-        this.DisplayFilters = function () {
+DisplayFilters = function () {
             //debut gestion des boutons de reinitialisation
             let elFilterFooter = document.getElementById('filter-footer');
             let htmlFilterFooter = '';
@@ -1239,8 +1221,8 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
             elBtnReinit.addEventListener('click', function () {
 
-                checklistApp.runFilter();
-                checklistApp.UpdateFeedback(false, refTests.length);
+                runFilter();
+                UpdateFeedback(false, refTests.length);
 
                 //reinitialisation du filtre en cours de sélection
                 var elToReinit = document.querySelector("#types input:checked");
@@ -1262,16 +1244,16 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
 
                 var elRadio = document.getElementById("type" + i);
                 elRadio.addEventListener('click', function () {
-                    checklistApp.runFilter(this)
+                    runFilter(this)
                 }, false);
 
             }
             //fin ajout input de filtre
 
         }
- let arrType = [];
-  let conditions = [];
-        this.runFilter = function (elRadio) {
+		
+
+  runFilter = function (elRadio) {
             let runUpdateType = false;
            
            
@@ -1286,51 +1268,34 @@ function reqListener(responseFirst, responseCriteria, responseReferentiel) {
                 //on supprime les doublons, nécessaire pour les boutons radio
                 //delDoublon(conditions, elRadio.name);
 
-				
+				/* 
                 conditions.unshift(function (item) {
                     return item.resultatTest.indexOf(arrType[(arrType.length-1)]) !== -1;
-                });
+                }); */
 
-                //on nomme la fonction, pour les checkboxes on utilise this.id
-                Object.defineProperty(conditions[arrType.length-1], 'name', {value: elRadio.id, writable: false});
+                //on nomme la fonction, pour les checkboxes on utilise id
+                //Object.defineProperty(conditions[arrType.length-1], 'name', {value: elRadio.id, writable: false});
 
                 runUpdateType = false;
 
-				console.table(conditions);
-				
-                //on applique tous les filtres stockés dans conditions
-                //filteredTest = self.refTests.filter(function(d) {
-					
-               /*  filteredTest = data.checklist.page[currentPage].items.filter(function (d) {
-                    return conditions.every(function (c) {
-                        return c(d);
-                    });
-                });
-				 */
 			
-				const filteredTest = data.checklist.page[currentPage].items.filter(o => arrType.includes(o.resultatTest))
+			
+				const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrType.includes(o.resultatTest));
 				
 
                 //on met à jour la page
-                checklistApp.FetchAll(filteredTest);
+                FetchAll(filteredTest);
 
                 if (runUpdateType) {
-                    checklistApp.UpdateTypes(uniqueTypes, filteredTest);
+                    UpdateTypes(uniqueTypes, filteredTest);
                 }
 
-                checklistApp.UpdateFeedback(true, filteredTest.length);
+                UpdateFeedback(true, filteredTest.length);
             } else {
                 //aucun critère de sélectionné, on réinitialise la page
-                checklistApp.FetchAll(data.checklist.page[currentPage].items);
+                FetchAll(dataVallydette.checklist.page[currentPage].items);
             }
         }
-    }
-    // Affichage de tous les tests
-    checklistApp.FetchAll(refTests);
-    checklistApp.paginationPage(refPages);
-    // Affiche les checkboxes et boutons radios
-    checklistApp.DisplayFilters();
-    checklistApp.UpdateFeedback(false, refTests.length);
-}
+   
 
-initVallydette('wcagEase');
+initCriteriaVallydette('wcagEase');

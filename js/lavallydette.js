@@ -1,31 +1,39 @@
 $('#docs-navbar').navbar({sticky: true, hideSupra: true});
 $('.o-nav-local').prioritynav('Autres pages');
 
-function initObjectVallydette(name, IDpage, pageName) {
+
+/**
+ * Global vars
+ */
+var dataVallydette;
+var	currentPage = 0;
+var statutClass = "badge-light";
+var arrayFilterNameAndValue = [];	
+var arrayFilterActivated = [];
+var currentCriteriaListName;
+
+/**
+ * Vallydette object
+ */
+function initVallydetteApp (criteriaListName) {
+	currentCriteriaListName = criteriaListName;
+	createObjectAndRunVallydette();
+}
+
+function initObjectVallydette() {
 	this.checklist = {};
 	this.checklist.name = name;
 	this.checklist.page = [];
 	this.checklist.page[0] = {};
-	this.checklist.page[0].IDPage = IDpage;
-	this.checklist.page[0].name = pageName;
+	this.checklist.page[0].IDPage = 'pageID-0';
+	this.checklist.page[0].name = 'Nom de la page';
 	this.checklist.page[0].items = [];
 }
 
-var dataVallydette = new initObjectVallydette('Audit WCAG 2.1', 'pageID-0', 'Nom de la page');
-var currentPage;
-var idPageIndex;
-var uniqueTypes = []; // à supprimer ?
-var statutClass;
-var filtres = [];	
-var refPages; // à supprimer ?
-var refTests;	// à supprimer ?
-var arrType = []; // à supprimer ?
-var conditions = []; // à supprimer ?
-var currentCriteriaListName;
+function createObjectAndRunVallydette() {
 
-function initCriteriaVallydette(criteriaListName) {
-	
-	currentCriteriaListName = criteriaListName;
+	dataVallydette = new initObjectVallydette();
+
 	var jsonCriteria;
 	
 	switch(currentCriteriaListName) {
@@ -44,141 +52,32 @@ function initCriteriaVallydette(criteriaListName) {
 	  case 'wcagEase':
 		jsonCriteria = 'json/criteres-wcag-ease.json';
 		break;
-	  default:
-		jsonCriteria = 'json/criteres-wcag-ease.json';
 	} 
 
-	var xhr = new XMLHttpRequest(),
-    method = "GET",
-	url = 'json/criteres-wcag-ease.json';
-
-	xhr.open(method, url, true);
-	xhr.onreadystatechange = function () {
-	  if(xhr.readyState === 4 && xhr.status === 200) {
-		criteriaVallydette =  JSON.parse(xhr.responseText);
-		if (criteriaListName==="RGAA") {
-				return reqListener(responseFirst, responseSecond, referentiel);
-			} else {
-				return importCriteriaToVallydetteObj(criteriaVallydette, criteriaListName);
-			}
-	  }
+	var criteriaRequest = new XMLHttpRequest();
+	
+	criteriaRequest.open("GET", jsonCriteria, true);
+	criteriaRequest.onreadystatechange = function () {
+	  if(criteriaRequest.readyState === 4 && criteriaRequest.status === 200) {
+		criteriaVallydette = JSON.parse(criteriaRequest.responseText);
+	  
+		if (currentCriteriaListName==="RGAA") {
+			//return reqListener(responseFirst, responseSecond, referentiel);
+		} else {
+			return importCriteriaToVallydetteObj(criteriaVallydette);
+		}
+	  } 
 	};
-	xhr.send();
+	criteriaRequest.send();
 }
 
-
-function importCriteriaToVallydetteObj (criteriaVallydette, criteriaListName) {
+function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
-    dataVallydette.checklist.referentiel = criteriaListName;
+    dataVallydette.checklist.referentiel = currentCriteriaListName;
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
 	
-    return initVallydetteApp();
+	runVallydetteApp();
 }
-
-function initVallydetteApp() {
-   
-	currentPage = 0;
-	idPageIndex = 0;
-
-//à déplacer
-    // Récupération des données
-   refPages = dataVallydette.checklist;
-    refTests = dataVallydette.checklist.page[currentPage].items;
-
-    //init computation
-    initComputation(dataVallydette);
-
-    //class statut
-    statutClass = "badge-light";
-		
-        textContent = {
-            title1: "Procédures",
-            title2: "À vérifier",
-            title3: "Résultats",
-            title4: "Justification",
-            statut1: "conforme",
-            statut2: "non-conforme",
-            statut3: "non-applicable",
-            statut4: "non-testé"
-        };
- //on prédéfini le tableau de filtres
-filtres = [["conforme", "ok"], ["non-conforme", "ko"], ["non-applicable", "na"], ["non-testé", "nt"]];
-		//event handler
-		document.getElementById('import').onclick = function () {
-			var files = document.getElementById('selectFiles').files;
-			var fr = new FileReader();
-
-			fr.onload = function (e) {
-				dataVallydette = JSON.parse(e.target.result);
-				initVallydetteApp();
-			}
-
-			fr.readAsText(files.item(0));
-		};
-
-        var btnChecklist = document.getElementById("btnChecklistName");
-        btnChecklist.addEventListener('click', function () {
-            setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)
-        }, false);
-
-        var btnPage = document.getElementById("btnPageName");
-        btnPage.addEventListener('click', function () {
-            setValue(btnPage.dataset.element, btnPage.dataset.property, btnPage.dataset.secondaryElement)
-        }, false);
-
-        var HeadingChecklistName = document.getElementById("checklistName");
-        HeadingChecklistName.innerText = dataVallydette.checklist.name;
-
-        var btndelPage = document.getElementById("btnDelPage");
-        btndelPage.addEventListener('click', function () {
-            setDeletePage(btnPage.dataset.element)
-        }, false);
-		
-		
-			//A DEPLACER
-    // Affichage de tous les tests
-    FetchAll(refTests);
-    paginationPage(refPages);
-    // Affiche les checkboxes et boutons radios
-    DisplayFilters();
-    UpdateFeedback(false, refTests.length);
-}
-
-function reqError(err) {
-    let elrefTests = document.getElementById('refTests');
-    elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
-}
-
-function formatHeading(str) {
-    str = str.toLowerCase();
-    str = str.replace(/é|è|ê/g, "e");
-    str = str.replace(/ /g, "-");
-
-    return str;
-}
-
-function slugify(str) {
-    return str.toString().toLowerCase()
-        .replace(/(\w)\'/g, '$1')           // Special case for apostrophes
-        .replace(/[^a-z0-9_\-]+/g, '-')     // Replace all non-word chars with -
-        .replace(/\-\-+/g, '-')             // Replace multiple - with single -
-        .replace(/^-+/, '')                 // Trim - from start of text
-        .replace(/-+$/, '');
-}
-
-//supprimer les doublons dans les filtres
-function delDoublon(arrCond, inputId) {
-    for (var i = 0; i < arrCond.length; i++) {
-        //for (let condition of arrCond) {
-        let condition = arrCond[i];
-        if (condition.name == inputId) {
-            let arrCondIndex = arrCond.indexOf(condition);
-            arrCond.splice(arrCondIndex, 1);
-        }
-    }
-    return arrCond;
-}
-
 
 function importRGAA(dataVallydette, dataRGAA) {
     dataVallydette.checklist.name = "Audit RGAA 4";
@@ -229,12 +128,73 @@ function importRGAA(dataVallydette, dataRGAA) {
         });
     });
 
-    return dataVallydette;
+    runVallydetteApp();
 }
 
+function runVallydetteApp() {
+   	
+	textContent = {
+        title1: "Procédures",
+		title2: "À vérifier",
+		title3: "Résultats",
+		title4: "Justification",
+		statut1: "conforme",
+		statut2: "non-conforme",
+		statut3: "non-applicable",
+		statut4: "non-testé"
+     };
 
-function initComputation(refData) {
-    //initialisation matrice calcul wcag
+	arrayFilterNameAndValue = [["conforme", "ok"], ["non-conforme", "ko"], ["non-applicable", "na"], ["non-testé", "nt"]];
+	
+	var HeadingChecklistName = document.getElementById("checklistName");
+	HeadingChecklistName.innerText = dataVallydette.checklist.name;
+	
+	initComputation();
+    initPagination(dataVallydette.checklist);
+	initFilters();
+    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
+	eventHandler();
+    updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
+}
+
+function eventHandler() {
+
+	var btnImport = document.getElementById('import');
+	btnImport.onclick = function () {
+		var files = document.getElementById('selectFiles').files;
+		var fr = new FileReader();
+
+		fr.onload = function (e) {
+			dataVallydette = JSON.parse(e.target.result);
+			runVallydetteApp();
+		}
+
+		fr.readAsText(files.item(0));
+	};
+	
+	var btnChecklist = document.getElementById("btnChecklistName");
+	btnChecklist.addEventListener('click', function () {
+		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)
+	}, false);
+
+	var btnPage = document.getElementById("btnPageName");
+	btnPage.addEventListener('click', function () {
+		setValue(btnPage.dataset.element, btnPage.dataset.property, btnPage.dataset.secondaryElement)
+	}, false);
+
+	var btndelPage = document.getElementById("btnDelPage");
+	btndelPage.addEventListener('click', function () {
+		setDeletePage(btnPage.dataset.element)
+	}, false);
+	
+}
+
+/**
+ * Computation
+ */
+ 
+ 
+function initComputation() {
 
 	var matriceRequest = new XMLHttpRequest();
 	var matriceWcag;
@@ -245,55 +205,53 @@ function initComputation(refData) {
 	matriceRequest.onreadystatechange = function () {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
 			matriceWcag = JSON.parse(matriceRequest.responseText);
-            //eventHandler show result
+         
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
-                runFinalComputation(matriceWcag, refData)
+                runFinalComputation(matriceWcag, dataVallydette)
             }, false);
 	  }
 	};
 	matriceRequest.send();
 	
-	
 }
 
-
-function runComputation(referentielMatrice, refData) {
-    const ogMatrice = referentielMatrice;
+function runComputation(referentielMatrice) {
+    const matriceObject = referentielMatrice;
     pagesResults = [];
 
-    for (let i in refData.checklist.page) {
+    for (let i in dataVallydette.checklist.page) {
         pagesResults[i] = [];
         pagesResults[i].items = [];
-        pagesResults[i].name = refData.checklist.page[i].name;
+        pagesResults[i].name = dataVallydette.checklist.page[i].name;
 
-        for (let k in ogMatrice.items) {
+        for (let k in matriceObject.items) {
             pagesResults[i].items[k] = {};
-            pagesResults[i].items[k].wcag = ogMatrice.items[k].wcag;
-			pagesResults[i].items[k].level = ogMatrice.items[k].level;
+            pagesResults[i].items[k].wcag = matriceObject.items[k].wcag;
+			pagesResults[i].items[k].level = matriceObject.items[k].level;
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
 
-            for (let l in ogMatrice.items[k].tests) {
-                for (let j in refData.checklist.page[i].items) {
-                    if (ogMatrice.items[k].tests[l] == refData.checklist.page[i].items[j].IDorigin) {
-                        if (refData.checklist.page[i].items[j].resultatTest == "nt") {
+            for (let l in matriceObject.items[k].tests) {
+                for (let j in dataVallydette.checklist.page[i].items) {
+                    if (matriceObject.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
+                        if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
                             pagesResults[i].items[k].complete = false;
                         }
 
                         if (pagesResults[i].items[k].resultat) {
-                            if (refData.checklist.page[i].items[j].resultatTest == "ok") {
+                            if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
                                 pagesResults[i].items[k].resultat = true;
-                            } else if (refData.checklist.page[i].items[j].resultatTest == "ko") {
+                            } else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
                                 pagesResults[i].items[k].resultat = false;
-                            } else if ((refData.checklist.page[i].items[j].resultatTest == "na") && (pagesResults[i].items[k].resultat == "nt")) {
+                            } else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
                                 pagesResults[i].items[k].resultat = "na";
                             }
                         }
                     }
                 }
 
-                if (pagesResults[i].items[k].complete == false) {
+                if (pagesResults[i].items[k].complete === false) {
                     pagesResults[i].items[k].resultat = "nt";
                 }
             }
@@ -303,32 +261,9 @@ function runComputation(referentielMatrice, refData) {
     return pagesResults;
 }
 
-function getNTtests(refData) {
-    nbNTArray = {};
-    var nbNTtests = 0;
-    var nbNTtestsPage = 0;
-
-    for (let k in refData.checklist.page) {
-        for (let l in refData.checklist.page[k].items) {
-            if (refData.checklist.page[k].items[l].resultatTest == "nt") {
-                nbNTtests++;
-                nbNTtestsPage++;
-            }
-        }
-
-        nbNTArray["page" + k] = nbNTtestsPage;
-        nbNTtestsPage = 0;
-    }
-
-    nbNTArray.total = nbNTtests;
-
-    return nbNTArray;
-}
-
-
-function runFinalComputation(referentielMatrice, refData) {
-    pagesResultsArray = runComputation(referentielMatrice, refData);
-    nbNTResultsArray = getNTtests(refData);
+function runFinalComputation(referentielMatrice) {
+    pagesResultsArray = runComputation(referentielMatrice);
+    nbNTResultsArray = utils.getNbNotTested();
 
     var nbNT = nbNTResultsArray.total;
 
@@ -351,30 +286,30 @@ function runFinalComputation(referentielMatrice, refData) {
 		var nbTotalAA = 0;
 
 		for (let j in pagesResultsArray[i].items) {
-			if (pagesResultsArray[i].items[j].resultat == true) {
+			if (pagesResultsArray[i].items[j].resultat === true) {
 				nbTrue++;
 				nbTotal++;
 
-				pagesResultsArray[i].items[j].level == 'A' ? nbTrueA++ : nbTrueAA++;
-				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
-			} else if (pagesResultsArray[i].items[j].resultat == false) {
+				pagesResultsArray[i].items[j].level === 'A' ? nbTrueA++ : nbTrueAA++;
+				pagesResultsArray[i].items[j].level === 'A' ? nbTotalA++ : nbTotalAA++;
+			} else if (pagesResultsArray[i].items[j].resultat === false) {
 				nbFalse++;
 				nbTotal++;
 
-				pagesResultsArray[i].items[j].level == 'A' ? nbFalseA++ : nbFalseAA++;
-				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
-			} else if (pagesResultsArray[i].items[j].resultat == 'na') {
+				pagesResultsArray[i].items[j].level === 'A' ? nbFalseA++ : nbFalseAA++;
+				pagesResultsArray[i].items[j].level === 'A' ? nbTotalA++ : nbTotalAA++;
+			} else if (pagesResultsArray[i].items[j].resultat === 'na') {
 				nbNA++;
 
-				pagesResultsArray[i].items[j].level == 'A' ? nbNaA++ :nbNaAA++;
-				pagesResultsArray[i].items[j].level == 'A' ? nbTotalA++ : nbTotalAA++;
-			} else if (pagesResultsArray[i].items[j].resultat == 'nt') {
+				pagesResultsArray[i].items[j].level === 'A' ? nbNaA++ :nbNaAA++;
+				pagesResultsArray[i].items[j].level === 'A' ? nbTotalA++ : nbTotalAA++;
+			} else if (pagesResultsArray[i].items[j].resultat === 'nt') {
 				pagesResultsArray[i].complete = false;
 			}
 		}
 
 		//pour le cas où tous les tests d'une page sont non-applicables
-		if (nbTotal==0 && nbNA>0) {
+		if (nbTotal===0 && nbNA>0) {
 			pagesResultsArray[i].result = "NA";
 		} else {
 			pagesResultsArray[i].result = (nbTrue / nbTotal) * 100;
@@ -416,14 +351,14 @@ function runFinalComputation(referentielMatrice, refData) {
 		htmlModal += '<h3>Résultat par pages : </h3>';
 		htmlModal += '<ul>';
 		for (let i in pagesResultsArray) {
-			if (pagesResultsArray[i].complete == false) {
+			if (pagesResultsArray[i].complete === false) {
 				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
 			} else {
 				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
 			}
 		}
 		htmlModal += '</ul>';
-    } else if (nbNT == 0 && !isNaN(finalResult)) {
+    } else if (nbNT === 0 && !isNaN(finalResult)) {
         htmlModal += '<h3>Conformité globale : </h3>';
         htmlModal += '<span class="h1 text-primary">' + finalResult + '%</span>';
 		
@@ -437,7 +372,7 @@ function runFinalComputation(referentielMatrice, refData) {
 		htmlModal += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
 		htmlModal += '<ul>';
 		for (let i in pagesResultsArray) {
-			if (pagesResultsArray[i].complete == false) {
+			if (pagesResultsArray[i].complete === false) {
 				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
 			} else {
 				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
@@ -484,13 +419,9 @@ function runFinalComputation(referentielMatrice, refData) {
 		htmlModal += ' </div>';
 		  
 		htmlModal += '</div>';
-		
-		
-		
+			
     }
-
-   
-
+	
     htmlModal += '</div>';
     htmlModal += '<div class="modal-footer">';
     htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>';
@@ -499,803 +430,830 @@ function runFinalComputation(referentielMatrice, refData) {
     htmlModal += '</div>';
     htmlModal += '</div>';
 
-    // Parent element
+
     let elModal = document.getElementById('modal');
     elModal.innerHTML = htmlModal;
 }
 
-// fin calcul résultat
 
 
-///////////////// multipage //////////////////////
+/**
+ * Multipage manager
+ */
 
-paginationPage = function (pages) {
-            var getPages = pages.page;
+initPagination = function (pages) {
+	var getPages = pages.page;
 
-            //init add button
+	var pageElement = document.getElementById("pageManager");
+	pageElement.innerHTML = "<div class='container'><ul class='nav'></ul></div>";
 
-            var pageElement = document.getElementById("pageManager");
-            pageElement.innerHTML = "<div class='container'><ul class='nav'></ul></div>";
+	let AddPage = document.createElement("li");
+	AddPage.classList.add("nav-item");
+	var btnAddPage = document.createElement("button");
+	btnAddPage.innerHTML = "Ajouter une page&nbsp;<span class='icon-add-more' aria-hidden='true'></span>";
+	btnAddPage.setAttribute('id', "btnAddPage");
+	btnAddPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 
-            let AddPage = document.createElement("li");
-            AddPage.classList.add("nav-item");
-            var btnAddPage = document.createElement("button");
-            btnAddPage.innerHTML = "Ajouter une page&nbsp;<span class='icon-add-more' aria-hidden='true'></span>";
-            btnAddPage.setAttribute('id', "btnAddPage");
-            btnAddPage.classList.add("btn", "btn-link", "nav-link", "border-0");
+	AddPage.appendChild(btnAddPage);
+	pageElement.querySelector(".nav").appendChild(AddPage);
 
-            AddPage.appendChild(btnAddPage);
-            pageElement.querySelector(".nav").appendChild(AddPage);
+	btnAddPage.addEventListener('click', function () {
+		addPage();
+	}, false);
 
-            btnAddPage.addEventListener('click', function () {
-                addPage();
-            }, false);
+	for (let i in getPages) {
+		let newPage = document.createElement("li");
+		newPage.classList.add("nav-item");
+		//display pagination
+		let newBtnPage = document.createElement("button");
 
-            for (let i in getPages) {
-                let newPage = document.createElement("li");
-                newPage.classList.add("nav-item");
-                //display pagination
-                let newBtnPage = document.createElement("button");
+		newBtnPage.innerHTML = getPages[i].name;
+		newBtnPage.setAttribute('id', getPages[i].IDPage);
+		newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
+		if (i === 0) {
+			newBtnPage.classList.add("active");
+			newBtnPage.setAttribute("aria-current", "true");
+		}
+		newPage.appendChild(newBtnPage);
+		pageElement.querySelector(".nav").appendChild(newPage);
 
-                newBtnPage.innerHTML = getPages[i].name;
-                newBtnPage.setAttribute('id', getPages[i].IDPage);
-                newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
-                if (i == 0) {
-                    newBtnPage.classList.add("active");
-                    newBtnPage.setAttribute("aria-current", "true");
-                }
-                newPage.appendChild(newBtnPage);
-                pageElement.querySelector(".nav").appendChild(newPage);
+		let thisNewBtn = document.getElementById(getPages[i].IDPage);
+		thisNewBtn.addEventListener('click', function () {
+			showPage(thisNewBtn.id)
+		}, false);
 
-                let thisNewBtn = document.getElementById(getPages[i].IDPage);
-                thisNewBtn.addEventListener('click', function () {
-                    showPage(thisNewBtn.id)
-                }, false);
-
-                let btnDelPage = document.getElementById("btnDelPage");
-                getPages.length > 1 ? btnDelPage.disabled = false : btnDelPage.disabled = true;
-            }
-        }
+		let btnDelPage = document.getElementById("btnDelPage");
+		getPages.length > 1 ? btnDelPage.disabled = false : btnDelPage.disabled = true;
+	}
+}
 
 addPage = function () {
-            var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[currentPage]));
-            dataVallydette.checklist.page.push(arr2);
+	var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[currentPage]));
+	dataVallydette.checklist.page.push(arr2);
 
-            indexPage = dataVallydette.checklist.page.length - 1;
-            idPageIndex = idPageIndex + 1;
+	indexPage = dataVallydette.checklist.page.length - 1;
+   // idPageIndex = idPageIndex + 1;
 
-            var newIdPage = new Uint32Array(1);
-            window.crypto.getRandomValues(newIdPage);
+	var newIdPage = new Uint32Array(1);
+	window.crypto.getRandomValues(newIdPage);
 
-            newIdPage = "pageID-" + newIdPage;
+	newIdPage = "pageID-" + newIdPage;
 
-            var btnFirstPage = document.getElementById(dataVallydette.checklist.page[0].IDPage);
-            btnFirstPage.disabled = false;
+	var btnFirstPage = document.getElementById(dataVallydette.checklist.page[0].IDPage);
+	btnFirstPage.disabled = false;
 
-            // @todo a supprimer
-            dataVallydette.checklist.page[indexPage].IDPage = newIdPage;
-            dataVallydette.checklist.page[indexPage].name = "Nom de la page";
-            dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
+	// @todo a supprimer
+	dataVallydette.checklist.page[indexPage].IDPage = newIdPage;
+	dataVallydette.checklist.page[indexPage].name = "Nom de la page";
+	dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
 
-            jsonStr = JSON.stringify(dataVallydette);
+	jsonStr = JSON.stringify(dataVallydette);
 
-            //display pagination
-            let newPage = document.createElement("li");
-            newPage.classList.add("nav-item");
-            var pageElement = document.getElementById("pageManager");
-            var newBtnPage = document.createElement("button");
+	//display pagination
+	let newPage = document.createElement("li");
+	newPage.classList.add("nav-item");
+	var pageElement = document.getElementById("pageManager");
+	var newBtnPage = document.createElement("button");
 
-            newBtnPage.innerHTML = "Nom de la page";
-            newBtnPage.setAttribute('id', newIdPage);
-            newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
-            newPage.appendChild(newBtnPage);
-            pageElement.querySelector(".nav").appendChild(newPage);
+	newBtnPage.innerHTML = "Nom de la page";
+	newBtnPage.setAttribute('id', newIdPage);
+	newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
+	newPage.appendChild(newBtnPage);
+	pageElement.querySelector(".nav").appendChild(newPage);
 
-            var thisNewBtn = document.getElementById(newIdPage);
-            var currentIdPage = thisNewBtn.getAttribute('id');
-            thisNewBtn.addEventListener('click', function () {
-                showPage(currentIdPage)
-            }, false);
+	var thisNewBtn = document.getElementById(newIdPage);
+	var currentIdPage = thisNewBtn.getAttribute('id');
+	thisNewBtn.addEventListener('click', function () {
+		showPage(currentIdPage)
+	}, false);
 
-            //enabled delete button
-            var currentBtnDelPage = document.getElementById('btnDelPage');
-            currentBtnDelPage.disabled = false;
-        }
+	//enabled delete button
+	var currentBtnDelPage = document.getElementById('btnDelPage');
+	currentBtnDelPage.disabled = false;
+}
 
 initNewPage = function (item) {
-            item.ID = item.ID + '-p' + indexPage;
-            item.resultatTest = 'nt';
-            item.commentaire = '';
-        }
+	item.ID = item.ID + '-p' + indexPage;
+	item.resultatTest = 'nt';
+	item.commentaire = '';
+}
 
 showPage = function (id) {
-            var index = dataVallydette.checklist.page.findIndex(function (o) {
-                return o.IDPage == id;
-            })
+	var index = dataVallydette.checklist.page.findIndex(function (o) {
+		return o.IDPage === id;
+	})
 
-            currentPage = index;
+	currentPage = index;
 
-            [x, y] = getIfFilter("types");
+	onPageLoaded();
 
-            if (x) {
-                runFilter(y);
-            } else {
-                FetchAll(dataVallydette.checklist.page[currentPage].items);
-            }
+	var currentBtnPageName = document.getElementById('btnPageName');
+	currentBtnPageName.dataset.property = "checklist.page." + currentPage + ".name";
+	currentBtnPageName.dataset.secondaryElement = id;
 
-            var currentBtnPageName = document.getElementById('btnPageName');
-            currentBtnPageName.dataset.property = "checklist.page." + currentPage + ".name";
-            currentBtnPageName.dataset.secondaryElement = id;
+	var currentBtnDelPage = document.getElementById('btnDelPage');
+	currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
+	currentBtnDelPage.dataset.pagination = id;
 
-            var currentBtnDelPage = document.getElementById('btnDelPage');
-            currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
-            currentBtnDelPage.dataset.pagination = id;
+	var pagination = document.getElementById("pageManager");
+	var lastBtnPagination = pagination.querySelector(".active");
+	if (lastBtnPagination != undefined) {
+		lastBtnPagination.classList.remove("active");
+		lastBtnPagination.removeAttribute("aria-current");
+	}
 
-            var pagination = document.getElementById("pageManager");
-            var lastBtnPagination = pagination.querySelector(".active");
-            if (lastBtnPagination != undefined) {
-                lastBtnPagination.classList.remove("active");
-                lastBtnPagination.removeAttribute("aria-current");
-            }
-
-            var currentBtnPagination = document.getElementById(dataVallydette.checklist.page[currentPage].IDPage);
-            currentBtnPagination.classList.add("active");
-            currentBtnPagination.setAttribute("aria-current", "true");
-        }
+	var currentBtnPagination = document.getElementById(dataVallydette.checklist.page[currentPage].IDPage);
+	currentBtnPagination.classList.add("active");
+	currentBtnPagination.setAttribute("aria-current", "true");
+}
 
 setDeletePage = function (targetElement) {
 
-            let htmlModal = '';
-            htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
-            htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
-            htmlModal += '<div class="modal-content">';
-            htmlModal += '<div class="modal-header">';
-            htmlModal += '<h5>Supprimer</h5>';
-            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
-            htmlModal += '</div>';
-            htmlModal += '<div class="modal-body">';
-            htmlModal += 'Supprimer la page ' + getValue(targetElement) + ' ?';
-            htmlModal += '</div>';
-            htmlModal += '<div class="modal-footer">';
-            htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-            htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">Valider</button>';
-            htmlModal += '</div></div></div></div>';
+	let htmlModal = '';
+	htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5>Supprimer</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += 'Supprimer la page ' + getValue(targetElement) + ' ?';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">Valider</button>';
+	htmlModal += '</div></div></div></div>';
 
-            // Parent element
-            let elModal = document.getElementById('modal');
-            elModal.innerHTML = htmlModal;
+	// Parent element
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
 
-            // Event handler
-            var deteleSaveBtn = document.getElementById("deteleSaveBtn");
-            deteleSaveBtn.addEventListener('click', function () {
-                deletePage(currentPage, targetElement)
-            });
-        }
+	// Event handler
+	var deteleSaveBtn = document.getElementById("deteleSaveBtn");
+	deteleSaveBtn.addEventListener('click', function () {
+		deletePage(currentPage, targetElement)
+	});
+}
 
 deletePage = function (currentPage, targetElement) {
-            //remove from data
-            dataVallydette.checklist.page.splice(currentPage, 1);
 
-            //remove from pagination
-            var currentBtnDelPage = document.getElementById('btnDelPage');
-            dataVallydette.checklist.page.length == 1 ? currentBtnDelPage.disabled = true : "";
+	dataVallydette.checklist.page.splice(currentPage, 1);
 
-            var paginationBtnId = currentBtnDelPage.dataset.pagination;
-            var paginationBtn = document.getElementById(paginationBtnId);
-            paginationBtn.remove();
+	var currentBtnDelPage = document.getElementById('btnDelPage');
+	dataVallydette.checklist.page.length === 1 ? currentBtnDelPage.disabled = true : "";
 
-            currentPage != 0 ? currentPage = currentPage - 1 : "";
+	var paginationBtnId = currentBtnDelPage.dataset.pagination;
+	var paginationBtn = document.getElementById(paginationBtnId);
+	paginationBtn.remove();
 
-            newPageId = dataVallydette.checklist.page[currentPage].IDPage;
-            showPage(newPageId);
+	currentPage != 0 ? currentPage = currentPage - 1 : "";
 
-            //on met à jour l'export
-            jsonUpdate();
+	newPageId = dataVallydette.checklist.page[currentPage].IDPage;
+	
+	showPage(newPageId);
 
-            //reinit computation
-            //initComputation(dataVallydette);
-        }
+	jsonUpdate();
+
+}
 
 getIfFilter = function (name) {
-            const filters = document.querySelectorAll('[name="' + name + '"]');
-            let found = false;
-            let foundItem;
-            filters.forEach(function (filterItem) {
-                if (filterItem.checked) {
-                    found = true;
-                    foundItem = filterItem;
-                }
-            });
+	const filters = document.querySelectorAll('[name="' + name + '"]');
+	let found = false;
+	let foundItem;
+	filters.forEach(function (filterItem) {
+		if (filterItem.checked) {
+			found = true;
+			foundItem = filterItem;
+		}
+	});
 
-            return [found, foundItem];
-        }
+	return [found, foundItem];
+}
 
 
-///////////////// fin multipage //////////////////////
-
-       
+/**
+ * Tests status manager
+ */
+    
 
 getStatutClass = function (lastResult) {
-            if (lastResult == filtres[0][1]) {
-                statutClass = "badge-success";
-            } else if (lastResult == filtres[1][1]) {
-                statutClass = "badge-danger";
-            } else if (lastResult == filtres[2][1]) {
-                statutClass = "badge-info";
-            } else {
-                statutClass = "badge-light";
-            }
-            return statutClass;
-        }
+	if (lastResult === arrayFilterNameAndValue[0][1]) {
+		statutClass = "badge-success";
+	} else if (lastResult === arrayFilterNameAndValue[1][1]) {
+		statutClass = "badge-danger";
+	} else if (lastResult === arrayFilterNameAndValue[2][1]) {
+		statutClass = "badge-info";
+	} else {
+		statutClass = "badge-light";
+	}
+	return statutClass;
+}
 
 setStatutClass = function (lastResult) {
-            if (lastResult == filtres[0][1]) {
-                statutText = textContent.statut1;
-            } else if (lastResult == filtres[1][1]) {
-                statutText = textContent.statut2;
-            } else if (lastResult == filtres[2][1]) {
-                statutText = textContent.statut3;
-            } else {
-                statutText = textContent.statut4;
-            }
-            return statutText;
-        }
+	if (lastResult === arrayFilterNameAndValue[0][1]) {
+		statutText = textContent.statut1;
+	} else if (lastResult === arrayFilterNameAndValue[1][1]) {
+		statutText = textContent.statut2;
+	} else if (lastResult === arrayFilterNameAndValue[2][1]) {
+		statutText = textContent.statut3;
+	} else {
+		statutText = textContent.statut4;
+	}
+	return statutText;
+}
 
 setStates = function (ele, targetId) {
-            for (let i in dataVallydette.checklist.page[currentPage].items) {
-                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
-                    lastResult = getStatutClass(dataVallydette.checklist.page[currentPage].items[i].resultatTest);
-                    dataVallydette.checklist.page[currentPage].items[i].resultatTest = ele.value;
-                }
-            }
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			lastResult = getStatutClass(dataVallydette.checklist.page[currentPage].items[i].resultatTest);
+			dataVallydette.checklist.page[currentPage].items[i].resultatTest = ele.value;
+		}
+	}
 
-            //mise à jour de l'état du test
-            testResult = document.getElementById("resultID-" + targetId + "");
-            testResult.classList.remove(lastResult);
+	//mise à jour de l'état du test
+	testResult = document.getElementById("resultID-" + targetId + "");
+	testResult.classList.remove(lastResult);
 
 
-            if (ele.value == filtres[0][1]) {
-                testResult.innerText = textContent.statut1;
-                statutClass = "badge-success";
-            } else if (ele.value == filtres[1][1]) {
-                testResult.innerText = textContent.statut2;
-                statutClass = "badge-danger";
-            } else if (ele.value == filtres[2][1]) {
-                testResult.innerText = textContent.statut3;
-                statutClass = "badge-info";
-            } else {
-                testResult.innerText = textContent.statut4;
-                statutClass = "badge-light";
-            }
+	if (ele.value === arrayFilterNameAndValue[0][1]) {
+		testResult.innerText = textContent.statut1;
+		statutClass = "badge-success";
+	} else if (ele.value === arrayFilterNameAndValue[1][1]) {
+		testResult.innerText = textContent.statut2;
+		statutClass = "badge-danger";
+	} else if (ele.value === arrayFilterNameAndValue[2][1]) {
+		testResult.innerText = textContent.statut3;
+		statutClass = "badge-info";
+	} else {
+		testResult.innerText = textContent.statut4;
+		statutClass = "badge-light";
+	}
 
-            testResult.classList.add(statutClass);
+	testResult.classList.add(statutClass);
 
-            //on met à jour l'export
-            jsonUpdate();
-        }
+	jsonUpdate();
+}
 
-        ///////////Edition manager/////////////////
+/**
+ * Edition manager
+ */
 setValue = function (targetElement, targetProperty, targetSecondaryElement) {
-            let htmlModal = '';
-            htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
-            htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
-            htmlModal += '<div class="modal-content">';
-            htmlModal += '<div class="modal-header">';
-            htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : ' + getValue(targetElement) + '</h5>';
-            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
-            htmlModal += '</div>';
-            htmlModal += '<div class="modal-body">';
-            htmlModal += '<input type="text" class="form-control" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + getValue(targetElement) + '">';
-            htmlModal += '</div>';
-            htmlModal += '<div class="modal-footer">';
-            htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-            htmlModal += '<button type="button" id="saveValueBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
-            htmlModal += '</div></div></div></div>';
+	let htmlModal = '';
+	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : ' + getValue(targetElement) + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += '<input type="text" class="form-control" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + getValue(targetElement) + '">';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+	htmlModal += '<button type="button" id="saveValueBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
+	htmlModal += '</div></div></div></div>';
 
-            // Parent element
-            let elModal = document.getElementById('modal');
-            elModal.innerHTML = htmlModal;
+	// Parent element
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
 
-            // Event handler
-            var saveValueBtn = document.getElementById("saveValueBtn");
-            var targetInput = document.getElementById("inputValue");
-            saveValueBtn.addEventListener('click', function () {
-                updateValue(targetInput.value, targetElement, targetProperty, targetSecondaryElement)
-            });
+	// Event handler
+	var saveValueBtn = document.getElementById("saveValueBtn");
+	var targetInput = document.getElementById("inputValue");
+	saveValueBtn.addEventListener('click', function () {
+		updateValue(targetInput.value, targetElement, targetProperty, targetSecondaryElement)
+	});
 
-        }
+}
 
 updateValue = function (inputValue, targetElement, targetProperty, targetSecondaryElement) {
 
-            function setToValue(obj, value, path) {
-                path = path.split('.');
+	function setToValue(obj, value, path) {
+		path = path.split('.');
 
-                for (i = 0; i < path.length - 1; i++) {
-                    obj = obj[path[i]];
+		for (i = 0; i < path.length - 1; i++) {
+			obj = obj[path[i]];
 
-                }
-                obj[path[i]] = value;
-            }
+		}
+		obj[path[i]] = value;
+	}
 
-            if (inputValue) {
-                var currentTargetElement = document.getElementById(targetElement);
-                currentTargetElement.innerText = inputValue;
+	if (inputValue) {
+		var currentTargetElement = document.getElementById(targetElement);
+		currentTargetElement.innerText = inputValue;
 
-                //dataVallydette.checklist[targetProperty] = name;
-                setToValue(dataVallydette, inputValue, targetProperty);
+		//dataVallydette.checklist[targetProperty] = name;
+		setToValue(dataVallydette, inputValue, targetProperty);
 
-                if (targetSecondaryElement) {
-                    var currentTargetSecondaryElement = document.getElementById(targetSecondaryElement);
-                    currentTargetSecondaryElement.innerText = inputValue;
-                }
-            }
+		if (targetSecondaryElement) {
+			var currentTargetSecondaryElement = document.getElementById(targetSecondaryElement);
+			currentTargetSecondaryElement.innerText = inputValue;
+		}
+	}
 
 
-            //on met à jour l'export
-            jsonUpdate();
-        }
+	//on met à jour l'export
+	jsonUpdate();
+}
 
 getValue = function (target) {
-            var targetElement = document.getElementById(target);
-            return targetElement.innerText;
-        }
+	var targetElement = document.getElementById(target);
+	return targetElement.innerText;
+}
 
-
-        ///////////end edition manager/////////////////
 
 jsonUpdate = function () {
-            let DefaultName = document.getElementById("checklistName");
-            DefaultName = slugify(DefaultName.innerText);
+	let DefaultName = document.getElementById("checklistName");
+	DefaultName = utils.slugify(DefaultName.innerText);
 
-            let dataStr = JSON.stringify(dataVallydette);
+	let dataStr = JSON.stringify(dataVallydette);
 
-            let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
-            var todayDate = new Date();
-            var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+	var todayDate = new Date();
+	var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
 
-            var todayHour = new Date();
-            var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
+	var todayHour = new Date();
+	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
 
-            let exportFileDefaultName = DefaultName + '-' + date + '-' + time + '.json';
+	let exportFileDefaultName = DefaultName + '-' + date + '-' + time + '.json';
 
-            linkElement = document.getElementById("export");
-            linkElement.classList.remove("disabled");
-			linkElement.removeAttribute('disabled');
-            linkElement.setAttribute('aria-disabled', false);
-            linkElement.setAttribute('href', dataUri);
-            linkElement.setAttribute('download', exportFileDefaultName);
-			
-        }
+	linkElement = document.getElementById("export");
+	linkElement.classList.remove("disabled");
+	linkElement.removeAttribute('disabled');
+	linkElement.setAttribute('aria-disabled', false);
+	linkElement.setAttribute('href', dataUri);
+	linkElement.setAttribute('download', exportFileDefaultName);
+	
+}
 
 
-        //gestion commentaires
+/**
+ * Comment manager
+ */
 setComment = function (targetId, title) {
-            let titleModal = title;
+	let titleModal = title;
 
-            let htmlModal = '';
-            htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
-            htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
-            htmlModal += '<div class="modal-content">';
-            htmlModal += '<div class="modal-header">';
-            htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">Commentaire pour : ' + titleModal + '</h5>';
-            htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
-            htmlModal += '</div>';
-            htmlModal += '<div class="modal-body">';
-            htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
-            htmlModal += '</div>';
-            htmlModal += '<div class="modal-footer">';
-            htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-            htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
-            htmlModal += '</div></div></div></div>';
+	let htmlModal = '';
+	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">Commentaire pour : ' + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
+	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
+	htmlModal += '</div></div></div></div>';
 
-            // Parent element
-            let elModal = document.getElementById('modal');
-            elModal.innerHTML = htmlModal;
+	// Parent element
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
 
-            // Event handler
-            var commentSave = document.getElementById("commentSaveBtn");
-            var comment = document.getElementById('comment' + targetId);
-            commentSave.addEventListener('click', function () {
-                addComment(targetId, comment.value)
-            });
+	// Event handler
+	var commentSave = document.getElementById("commentSaveBtn");
+	var comment = document.getElementById('comment' + targetId);
+	commentSave.addEventListener('click', function () {
+		addComment(targetId, comment.value)
+	});
 
-        }
+}
 
 addComment = function (targetId, newComment) {
-            for (let i in dataVallydette.checklist.page[currentPage].items) {
-                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
-                    dataVallydette.checklist.page[currentPage].items[i].commentaire = newComment;
-                }
-            }
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			dataVallydette.checklist.page[currentPage].items[i].commentaire = newComment;
+		}
+	}
 
-            var currentBtnComment = document.getElementById("commentBtn" + targetId);
-            currentBtnComment.innerHTML = getCommentState(targetId);
+	var currentBtnComment = document.getElementById("commentBtn" + targetId);
+	currentBtnComment.innerHTML = getCommentState(targetId);
 
-            //on met à jour l'export
-            jsonUpdate();
-        }
+	//on met à jour l'export
+	jsonUpdate();
+}
 
 getComment = function (targetId) {
-            var currentComment;
+	var currentComment;
 
-            for (let i in dataVallydette.checklist.page[currentPage].items) {
-                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
-                    currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
-                }
-            }
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
+		}
+	}
 
-            return (currentComment != "" ? currentComment : "");
-        }
+	return (currentComment != "" ? currentComment : "");
+}
 
 getCommentState = function (targetId) {
-            var currentComment;
+	var currentComment;
 
-            for (let i in dataVallydette.checklist.page[currentPage].items) {
-                if (dataVallydette.checklist.page[currentPage].items[i].ID == targetId) {
-                    currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
-                }
-            }
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
+		}
+	}
 
-            return (currentComment == "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
-        }
-
-        //fin gestion commentaires
+	return (currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
+}
 
 UpdateTypes = function (allTypes, updatedTypes) {
-            let elrefTypes = [];
+	let elrefTypes = [];
 
-            for (let i in updatedTypes) {
-                for (let j in updatedTypes[i].type) {
-                    elrefTypes.push(updatedTypes[i].type[j]);
-                }
-            }
+	for (let i in updatedTypes) {
+		for (let j in updatedTypes[i].type) {
+			elrefTypes.push(updatedTypes[i].type[j]);
+		}
+	}
 
-            let uniqueUpdatedTypes = elrefTypes.filter(function (value, index, self) {
-                return self.indexOf(value) === index;
-            });
+	let uniqueUpdatedTypes = elrefTypes.filter(function (value, index, self) {
+		return self.indexOf(value) === index;
+	});
 
-            for (let i in allTypes) {
-                var elem = document.getElementById('type' + i);
-                elem.disabled = true;
-                var elemLabel = document.getElementById('labelType' + i);
-                elemLabel.classList.add("disabled");
+	for (let i in allTypes) {
+		var elem = document.getElementById('type' + i);
+		elem.disabled = true;
+		var elemLabel = document.getElementById('labelType' + i);
+		elemLabel.classList.add("disabled");
 
-            }
+	}
 
-            for (let i in allTypes) {
-                for (let j in uniqueUpdatedTypes) {
-                    if (allTypes[i] == uniqueUpdatedTypes[j]) {
-                        var elem = document.getElementById('type' + i);
-                        elem.disabled = false;
-                        var elemLabel = document.getElementById('labelType' + i);
-                        elemLabel.classList.remove("disabled");
-                    }
-                }
-            }
-        };
+	for (let i in allTypes) {
+		for (let j in uniqueUpdatedTypes) {
+			if (allTypes[i] === uniqueUpdatedTypes[j]) {
+				var elem = document.getElementById('type' + i);
+				elem.disabled = false;
+				var elemLabel = document.getElementById('labelType' + i);
+				elemLabel.classList.remove("disabled");
+			}
+		}
+	}
+};
 
-UpdateFeedback = function (activeFilter, nbTests) {
-            let elBtnReinit = document.getElementById('reinit');
-            let elFeedback = document.getElementById('feedback');
-            let htmlFeedback = '';
-            if (activeFilter) {
-                elBtnReinit.disabled = false;
-                htmlFeedback = '<p><span><b>' + nbTests + '</b> tests dans filtres en cours</span></p>';
-                elFeedback.innerHTML = htmlFeedback;
-            } else {
-                elBtnReinit.disabled = true;
-                htmlFeedback = '<p><b>' + nbTests + '</b> tests en cours</p>';
-                elFeedback.innerHTML = htmlFeedback;
-            }
-        };
+updateCounter = function (activeFilter, nbTests) {
+	let elFeedback = document.getElementById('feedback');
+	let htmlFeedback = '';
+	if (activeFilter) {
+		htmlFeedback = '<p><span><b>' + nbTests + '</b> tests dans filtres en cours</span></p>';
+		elFeedback.innerHTML = htmlFeedback;
+	} else {
+		htmlFeedback = '<p><b>' + nbTests + '</b> tests en cours</p>';
+		elFeedback.innerHTML = htmlFeedback;
+	}
+};
 
-        FetchAll = function (currentRefTests) {
-            // Selection de l'élément
-            let elrefTests = document.getElementById('refTests');
-            let htmlrefTests = '';
-            let headingTheme = '';
-            let headingCriterium = '';
-            let nextIndex = 1;
+runTestListMarkup = function (currentRefTests) {
 
-            // TEMPLATE
-            if (currentCriteriaListName == 'wcagEase') {
-                var currentPageName = document.getElementById('pageName');
-                currentPageName.innerHTML = dataVallydette.checklist.page[currentPage].name;
+	let elrefTests = document.getElementById('refTests');
+	let htmlrefTests = '';
+	let headingTheme = '';
+	let headingCriterium = '';
+	let nextIndex = 1;
 
-                //on boucle dans le tableau passé en paramètre de la fonction
-                for (let i in currentRefTests) {
-                    var currentTest = currentRefTests[i].ID;
-                    if (headingTheme != currentRefTests[i].themes) {
-                        if (headingTheme !== '') {
-                            htmlrefTests += '</div>';
-                        }
+	if (currentCriteriaListName === 'wcagEase') {
+		var currentPageName = document.getElementById('pageName');
+		currentPageName.innerHTML = dataVallydette.checklist.page[currentPage].name;
 
-                        headingTheme = currentRefTests[i].themes;
-                        let formattedHeadingTheme = formatHeading(headingTheme);
-                        htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="Plier la thématique"><span class="icon-arrow-down"></span></button></h2>';
-                        htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
-                    }
+		for (let i in currentRefTests) {
+			var currentTest = currentRefTests[i].ID;
+			if (headingTheme != currentRefTests[i].themes) {
+				if (headingTheme !== '') {
+					htmlrefTests += '</div>';
+				}
 
-                    htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
-                    // @todo à remplacer par un for sur filtres
+				headingTheme = currentRefTests[i].themes;
+				let formattedHeadingTheme = utils.formatHeading(headingTheme);
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="Plier la thématique"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
+			}
 
-                    htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
-                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
-                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
-                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
-                    htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
-                    htmlrefTests += '</ul>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			// @todo à remplacer par un for sur arrayFilterNameAndValue
 
-                    htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
+			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
+			htmlrefTests += '</ul>';
 
-                    if (currentRefTests[i].verifier || currentRefTests[i].exception) {
-                        htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
-                        htmlrefTests += '<div class="collapse border-top border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
+			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 
-                        if (currentRefTests[i].verifier) {
-                            htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
-                            htmlrefTests += currentRefTests[i].verifier;
-                            htmlrefTests += currentRefTests[i].complement;
-                        }
+			if (currentRefTests[i].verifier || currentRefTests[i].exception) {
+				htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
+				htmlrefTests += '<div class="collapse border-top border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
 
-                        if (currentRefTests[i].exception) {
-                            htmlrefTests += '<h4 class="h5">Exceptions</h4>';
-                            htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
-                        }
-                    }
+				if (currentRefTests[i].verifier) {
+					htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
+					htmlrefTests += currentRefTests[i].verifier;
+					htmlrefTests += currentRefTests[i].complement;
+				}
 
-                    htmlrefTests += '<div class="py-2 border-top border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
-                    for (let j in currentRefTests[i].wcag) {
-                        htmlrefTests += currentRefTests[i].wcag[j];
-                        j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
-                    }
-                    htmlrefTests += '</p></div></div>';
+				if (currentRefTests[i].exception) {
+					htmlrefTests += '<h4 class="h5">Exceptions</h4>';
+					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
+				}
+			}
 
-                    htmlrefTests += '</article>';
-                }
-            } else if (currentCriteriaListName == 'RGAA') {
-                //test configuration rendu MARKED
-                // Get reference
-                const renderer = new marked.Renderer();
-                marked.setOptions({
-                    renderer: renderer
-                });
+			htmlrefTests += '<div class="py-2 border-top border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
+			for (let j in currentRefTests[i].wcag) {
+				htmlrefTests += currentRefTests[i].wcag[j];
+				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
+			}
+			htmlrefTests += '</p></div></div>';
 
-                // Override function link(string href, string title, string text)
-                renderer.link = function (href, title, text) {
-                    return text;
-                };
-                renderer.paragraph = function (text) {
-                    return text;
-                };
-                // fin test marked
+			htmlrefTests += '</article>';
+		}
+	} else if (currentCriteriaListName === 'RGAA') {
+		//test configuration rendu MARKED
+		// Get reference
+		const renderer = new marked.Renderer();
+		marked.setOptions({
+			renderer: renderer
+		});
 
-                for (let i in currentRefTests) {
-                    if (headingTheme != currentRefTests[i].themes) {
-                        headingTheme = currentRefTests[i].themes;
-                        htmlrefTests += '<h2 id="test-' + formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
-                    }
+		// Override function link(string href, string title, string text)
+		renderer.link = function (href, title, text) {
+			return text;
+		};
+		renderer.paragraph = function (text) {
+			return text;
+		};
+		// fin test marked
 
-                    if (headingCriterium != currentRefTests[i].criterium) {
-                        headingCriterium = currentRefTests[i].criterium;
+		for (let i in currentRefTests) {
+			if (headingTheme != currentRefTests[i].themes) {
+				headingTheme = currentRefTests[i].themes;
+				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
+			}
 
-                        htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
-                        // @todo à remplacer par un for sur filtres
-                        //initialisation si aucun tests n'est checké
-                        if (currentRefTests[i].resultatTest == "") {
-                            currentRefTests[i].resultatTest = "nt";
-                            dataVallydette.checklist.items[i].resultatTest = "nt";
-                        }
+			if (headingCriterium != currentRefTests[i].criterium) {
+				headingCriterium = currentRefTests[i].criterium;
 
-                        htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + ((currentRefTests[i].resultatTest == filtres[3][1]) ? "checked" : "") + '/>';
-                        htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
-                        htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
-                        htmlrefTests += '<div class="card-block"><div class="row">';
-                        htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
-                        for (let j in currentRefTests[i].tests) {
-                            htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
-                        }
-                        htmlrefTests += '</ol></div>';
-                        htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
-                        for (let j in currentRefTests[i].verifier) {
-                            htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
-                        }
-                        htmlrefTests += '</ol></div>';
-                        htmlrefTests += '</div>';
-                        htmlrefTests += '<div class="row">';
-                        htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] == 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
-                        for (let j in currentRefTests[i].resultat) {
-                            htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
-                        }
-                        htmlrefTests += '</ol></div>';
-                        htmlrefTests += '</div>';
-                        if (currentRefTests[i].exception) {
-                            htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
-                            htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
+				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+				// @todo à remplacer par un for sur arrayFilterNameAndValue
+				//initialisation si aucun tests n'est checké
+				if (currentRefTests[i].resultatTest === "") {
+					currentRefTests[i].resultatTest = "nt";
+					dataVallydette.checklist.items[i].resultatTest = "nt";
+				}
 
-                            htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
-                            htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
-                        }
+				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) ? "checked" : "") + '/>';
+				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
+				htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
+				htmlrefTests += '<div class="card-block"><div class="row">';
+				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
+				for (let j in currentRefTests[i].tests) {
+					htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
+				for (let j in currentRefTests[i].verifier) {
+					htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '</div>';
+				htmlrefTests += '<div class="row">';
+				htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
+				for (let j in currentRefTests[i].resultat) {
+					htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '</div>';
+				if (currentRefTests[i].exception) {
+					htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
+					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
 
-                        htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
-                        //à remplacer par un for sur filtres
+					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
+					htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
+				}
 
-                        htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/>';
+				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
+				//à remplacer par un for sur arrayFilterNameAndValue
 
-                        htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div>';
-                        htmlrefTests += '</div></article>';
+				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 
-                        if ((currentRefTests[nextIndex] != undefined) && (headingCriterium != currentRefTests[nextIndex].criterium)) {
-                            htmlrefTests += '</div>';
-                        }
+				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div>';
+				htmlrefTests += '</div></article>';
 
-                        nextIndex = nextIndex + 1;
-                    }
-                }
-            } else {
-                //on boucle dans le tableau passé en paramètre de la fonction
-                for (let i in currentRefTests) {
-                    if (headingTheme != currentRefTests[i].themes) {
-                        headingTheme = currentRefTests[i].themes;
-                        htmlrefTests += '<h2 id="test-' + formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
-                    }
-                    htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
-                    // @todo à remplacer par un for sur filtres
+				if ((currentRefTests[nextIndex] != undefined) && (headingCriterium != currentRefTests[nextIndex].criterium)) {
+					htmlrefTests += '</div>';
+				}
 
-                    htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest == filtres[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest == filtres[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest == filtres[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest == filtres[3][1]) || (currentRefTests[i].resultatTest == '')) ? "checked" : "") + '/>';
-                    htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
-                    htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
-                    htmlrefTests += '<div class="card-block"><div class="row">';
-                    htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
-                    for (let j in currentRefTests[i].tests) {
-                        htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
-                    }
-                    htmlrefTests += '</ol></div>';
-                    htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
-                    for (let j in currentRefTests[i].verifier) {
-                        htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
-                    }
-                    htmlrefTests += '</ol></div>';
-                    htmlrefTests += '</div>';
-                    htmlrefTests += '<div class="row">';
-                    htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] == 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
-                    for (let j in currentRefTests[i].resultat) {
-                        htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
-                    }
-                    htmlrefTests += '</ol></div>';
-                    htmlrefTests += '</div>';
-                    if (currentRefTests[i].exception) {
-                        htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
-                        htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-                        htmlrefTests += '</div>';
-                        htmlrefTests += '</div>';
-                    }
-                    htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
-                    for (let j in currentRefTests[i].profils) {
-                        htmlrefTests += currentRefTests[i].profils[j];
-                        j != ((currentRefTests[i].profils).length - 1) ? htmlrefTests += ',  ' : '';
-                    }
-                    htmlrefTests += '<br />' + ((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
-                    for (let j in currentRefTests[i].type) {
-                        htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
-                    }
-                    htmlrefTests += '</div>';
-                    htmlrefTests += '</div></article>';
-                }
-            }
+				nextIndex = nextIndex + 1;
+			}
+		}
+	} else {
+		//on boucle dans le tableau passé en paramètre de la fonction
+		for (let i in currentRefTests) {
+			if (headingTheme != currentRefTests[i].themes) {
+				headingTheme = currentRefTests[i].themes;
+				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
+			}
+			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+			// @todo à remplacer par un for sur arrayFilterNameAndValue
 
-            // Affichage de l'ensemble des lignes en HTML
-            currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
+			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
+			htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
+			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
+			htmlrefTests += '<div class="card-block"><div class="row">';
+			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
+			for (let j in currentRefTests[i].tests) {
+				htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
+			}
+			htmlrefTests += '</ol></div>';
+			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
+			for (let j in currentRefTests[i].verifier) {
+				htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
+			}
+			htmlrefTests += '</ol></div>';
+			htmlrefTests += '</div>';
+			htmlrefTests += '<div class="row">';
+			htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
+			for (let j in currentRefTests[i].resultat) {
+				htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
+			}
+			htmlrefTests += '</ol></div>';
+			htmlrefTests += '</div>';
+			if (currentRefTests[i].exception) {
+				htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
+				htmlrefTests += '</div>';
+				htmlrefTests += '</div>';
+			}
+			htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
+			for (let j in currentRefTests[i].profils) {
+				htmlrefTests += currentRefTests[i].profils[j];
+				j != ((currentRefTests[i].profils).length - 1) ? htmlrefTests += ',  ' : '';
+			}
+			htmlrefTests += '<br />' + ((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
+			for (let j in currentRefTests[i].type) {
+				htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
+			}
+			htmlrefTests += '</div>';
+			htmlrefTests += '</div></article>';
+		}
+	}
 
-            // Event Handler
-            for (let i in currentRefTests) {
-                //radio
-                var radios = document.getElementsByName("test" + i);
-                var nodeArray = [];
-                for (var j = 0; j < radios.length; ++j) {
-                    radios[j].addEventListener('click', function () {
-                        setStates(this, currentRefTests[i].ID)
-                    }, false);
-                }
+	// Affichage de l'ensemble des lignes en HTML
+	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
 
-                //commentaires
-                var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
-                comment.addEventListener('click', function () {
-                    setComment(currentRefTests[i].ID, currentRefTests[i].title)
-                }, false);
-            }
-        };
+	// Event Handler
+	for (let i in currentRefTests) {
+		//radio
+		var radios = document.getElementsByName("test" + i);
+		var nodeArray = [];
+		for (var j = 0; j < radios.length; ++j) {
+			radios[j].addEventListener('click', function () {
+				setStates(this, currentRefTests[i].ID)
+			}, false);
+		}
 
 
-        // Retourne la liste des checkboxes
-DisplayFilters = function () {
-            //debut gestion des boutons de reinitialisation
-            let elFilterFooter = document.getElementById('filter-footer');
-            let htmlFilterFooter = '';
+		var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
+		comment.addEventListener('click', function () {
+			setComment(currentRefTests[i].ID, currentRefTests[i].title)
+		}, false);
+	}
+	
 
-            htmlFilterFooter += '<button id="reinit" type="reset" class="btn btn-secondary" disabled>Tout afficher</button>';
-            elFilterFooter.innerHTML = htmlFilterFooter;
+}
 
-            let elBtnReinit = document.getElementById('reinit');
 
-            elBtnReinit.addEventListener('click', function () {
+initFilters = function () {
+            
+	/* let elFilterFooter = document.getElementById('filter-footer');
+	let htmlFilterFooter = '';
 
-                runFilter();
-                UpdateFeedback(false, refTests.length);
+	htmlFilterFooter += '<button id="reinit" type="reset" class="btn btn-secondary" disabled>Tout afficher</button>';
+	elFilterFooter.innerHTML = htmlFilterFooter;
 
-                //reinitialisation du filtre en cours de sélection
-                var elToReinit = document.querySelector("#types input:checked");
-                elToReinit.checked = false;
-            });
-            //fin gestion des boutons de reinitialisation
+	let elBtnReinit = document.getElementById('reinit');
 
-            //debut ajout input de filtre
-            let htmlTypes = '';
-            let elTypes = document.getElementById('types');
-            elTypes.innerHTML = "";
+	elBtnReinit.addEventListener('click', function () {
 
-            for (let i in filtres) {
-                htmlTypes = '<input type="checkbox" class="" id="type' + i + '" name="types'+i+'" value="' + filtres[i][1] + '"><label class="custom-control-label" for="type' + i + '" id="labelType' + i + '">' + filtres[i][0] + '</label>';
-                var node = document.createElement("li");
-               // node.classList.add('custom-control', 'custom-radio');
-                node.innerHTML = htmlTypes;
-                elTypes.appendChild(node);
+		updateArrayFilter();
+		updateCounter(false, refTests.length);
 
-                var elRadio = document.getElementById("type" + i);
-                elRadio.addEventListener('click', function () {
-                    runFilter(this)
-                }, false);
+		var elToReinit = document.querySelector("#types input:checked");
+		elToReinit.checked = false;
+	}); */
 
-            }
-            //fin ajout input de filtre
+	let htmlTypes = '';
+	let elTypes = document.getElementById('types');
+	elTypes.innerHTML = "";
 
-        }
+	for (let i in arrayFilterNameAndValue) {
+		htmlTypes = '<label class="custom-control custom-checkbox"' + i + '" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '"><span class="custom-control-label">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+		var node = document.createElement("li");
+	    //node.classList.add('custom-control', 'custom-checkbox');
+		node.innerHTML = htmlTypes;
+		elTypes.appendChild(node);
+
+		var elRadio = document.getElementById("type" + i);
+		elRadio.addEventListener('click', function () {
+			updateArrayFilter(this)
+		}, false);
+
+	}
+	//fin ajout input de filtre
+
+}
 		
 
-  runFilter = function (elRadio) {
-            let runUpdateType = false;
-           
-           
-            if (elRadio && elRadio.checked) {
-                //arrType = [];
-                arrType.push(elRadio.value);
-            }
+onPageLoaded = function () {
+	if(arrayFilterActivated && arrayFilterActivated.length > 0){
+		runFilter();
+	} else {
+		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
+		updateCounter(true, dataVallydette.checklist.page[currentPage].items.length);
+	}
+}
 
-            let indice = arrType.length;
 
-            if (indice > 0) {
-                //on supprime les doublons, nécessaire pour les boutons radio
-                //delDoublon(conditions, elRadio.name);
+runFilter = function() {
+	const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrayFilterActivated.includes(o.resultatTest));
+	runTestListMarkup(filteredTest);
+	updateCounter(true, filteredTest.length);
+}
 
-				/* 
-                conditions.unshift(function (item) {
-                    return item.resultatTest.indexOf(arrType[(arrType.length-1)]) !== -1;
-                }); */
 
-                //on nomme la fonction, pour les checkboxes on utilise id
-                //Object.defineProperty(conditions[arrType.length-1], 'name', {value: elRadio.id, writable: false});
+updateArrayFilter = function (elInput) {
+	
+	if (elInput && elInput.checked) {
+		
+		arrayFilterActivated.push(elInput.value);
+		
+	} else {
+		
+		arrayFilterActivated = arrayFilterActivated.filter(function(filterValue) {
+			return filterValue !== elInput.value;
+		});
+		
+	}
 
-                runUpdateType = false;
+	onPageLoaded();
+	
+}
+ 
 
-			
-			
-				const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrType.includes(o.resultatTest));
-				
+const utils = {
+  delDoublon: function () {
+	 for (var i = 0; i < arrCond.length; i++) {
+        //for (let condition of arrCond) {
+        let condition = arrCond[i];
+        if (condition.name === inputId) {
+            let arrCondIndex = arrCond.indexOf(condition);
+            arrCond.splice(arrCondIndex, 1);
+        }
+    }
+    return arrCond;
+  },
+  reqError: function (err) {
+	let elrefTests = document.getElementById('refTests');
+    elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
+  },
+  formatHeading: function (str) {
+    return str.toLowerCase()
+		.replace(/é|è|ê/g, "e")
+		.replace(/ /g, "-");
+  },
+  slugify: function (str) {
+    return str.toString().toLowerCase()
+        .replace(/(\w)\'/g, '$1')       
+        .replace(/[^a-z0-9_\-]+/g, '-')
+        .replace(/\-\-+/g, '-') 
+        .replace(/^-+/, '')
+        .replace(/-+$/, '');
+	},
+  getNbNotTested: function () {
+	
+	nbNTArray = {};
+    var nbNTtests = 0;
+    var nbNTtestsPage = 0;
 
-                //on met à jour la page
-                FetchAll(filteredTest);
-
-                if (runUpdateType) {
-                    UpdateTypes(uniqueTypes, filteredTest);
-                }
-
-                UpdateFeedback(true, filteredTest.length);
-            } else {
-                //aucun critère de sélectionné, on réinitialise la page
-                FetchAll(dataVallydette.checklist.page[currentPage].items);
+    for (let k in dataVallydette.checklist.page) {
+        for (let l in dataVallydette.checklist.page[k].items) {
+            if (dataVallydette.checklist.page[k].items[l].resultatTest == "nt") {
+                nbNTtests++;
+                nbNTtestsPage++;
             }
         }
-   
 
-initCriteriaVallydette('wcagEase');
+        nbNTArray["page" + k] = nbNTtestsPage;
+        nbNTtestsPage = 0;
+    }
+
+    nbNTArray.total = nbNTtests;
+
+    return nbNTArray;
+	}
+}  
+
+initVallydetteApp('wcagEase');

@@ -19,20 +19,20 @@ function initVallydetteApp (criteriaListName) {
 	currentCriteriaListName = criteriaListName;
 	createObjectAndRunVallydette();
 }
-
-function initObjectVallydette() {
-	this.checklist = {};
-	this.checklist.name = name;
-	this.checklist.page = [];
-	this.checklist.page[0] = {};
-	this.checklist.page[0].IDPage = 'pageID-0';
-	this.checklist.page[0].name = 'Nom de la page';
-	this.checklist.page[0].items = [];
-}
-
 function createObjectAndRunVallydette() {
 
-	dataVallydette = new initObjectVallydette();
+	dataVallydette = {
+	"checklist": {
+		"name": "Audit WCAG 2.1",
+		"page": [{
+				"IDPage": "pageID-0",
+				"name": "Nom de la page",
+				"items": []
+			}
+		]
+
+	}
+}
 
 	var jsonCriteria;
 	
@@ -188,6 +188,226 @@ function eventHandler() {
 	}, false);
 	
 }
+
+
+runTestListMarkup = function (currentRefTests) {
+
+	let elrefTests = document.getElementById('refTests');
+	let htmlrefTests = '';
+	let headingTheme = '';
+	let headingCriterium = '';
+	let nextIndex = 1;
+
+	if (currentCriteriaListName === 'wcagEase') {
+		var currentPageName = document.getElementById('pageName');
+		currentPageName.innerHTML = dataVallydette.checklist.page[currentPage].name;
+
+		for (let i in currentRefTests) {
+			var currentTest = currentRefTests[i].ID;
+			if (headingTheme != currentRefTests[i].themes) {
+				if (headingTheme !== '') {
+					htmlrefTests += '</div>';
+				}
+
+				headingTheme = currentRefTests[i].themes;
+				let formattedHeadingTheme = utils.formatHeading(headingTheme);
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="Plier la thématique"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
+			}
+
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			// @todo à remplacer par un for sur arrayFilterNameAndValue
+
+			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
+			htmlrefTests += '</ul>';
+
+			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
+
+			//if (currentRefTests[i].verifier || currentRefTests[i].exception) {
+				htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
+				htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
+
+				if (currentRefTests[i].verifier) {
+					htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
+					htmlrefTests += currentRefTests[i].verifier;
+					htmlrefTests += currentRefTests[i].complement;
+				}
+
+				if (currentRefTests[i].exception) {
+					htmlrefTests += '<h4 class="h5">Exceptions</h4>';
+					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
+				}
+			//}
+
+			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
+			for (let j in currentRefTests[i].wcag) {
+				htmlrefTests += currentRefTests[i].wcag[j];
+				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
+			}
+			htmlrefTests += '</p></div></div>';
+
+			htmlrefTests += '</article>';
+		}
+	} else if (currentCriteriaListName === 'RGAA') {
+		//test configuration rendu MARKED
+		// Get reference
+		const renderer = new marked.Renderer();
+		marked.setOptions({
+			renderer: renderer
+		});
+
+		// Override function link(string href, string title, string text)
+		renderer.link = function (href, title, text) {
+			return text;
+		};
+		renderer.paragraph = function (text) {
+			return text;
+		};
+		// fin test marked
+
+		for (let i in currentRefTests) {
+			if (headingTheme != currentRefTests[i].themes) {
+				headingTheme = currentRefTests[i].themes;
+				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
+			}
+
+			if (headingCriterium != currentRefTests[i].criterium) {
+				headingCriterium = currentRefTests[i].criterium;
+
+				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+				// @todo à remplacer par un for sur arrayFilterNameAndValue
+				//initialisation si aucun tests n'est checké
+				if (currentRefTests[i].resultatTest === "") {
+					currentRefTests[i].resultatTest = "nt";
+					dataVallydette.checklist.items[i].resultatTest = "nt";
+				}
+
+				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) ? "checked" : "") + '/>';
+				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
+				htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
+				htmlrefTests += '<div class="card-block"><div class="row">';
+				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
+				for (let j in currentRefTests[i].tests) {
+					htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
+				for (let j in currentRefTests[i].verifier) {
+					htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '</div>';
+				htmlrefTests += '<div class="row">';
+				htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
+				for (let j in currentRefTests[i].resultat) {
+					htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
+				}
+				htmlrefTests += '</ol></div>';
+				htmlrefTests += '</div>';
+				if (currentRefTests[i].exception) {
+					htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
+					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
+
+					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
+					htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
+				}
+
+				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
+				//à remplacer par un for sur arrayFilterNameAndValue
+
+				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
+
+				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div>';
+				htmlrefTests += '</div></article>';
+
+				if ((currentRefTests[nextIndex] != undefined) && (headingCriterium != currentRefTests[nextIndex].criterium)) {
+					htmlrefTests += '</div>';
+				}
+
+				nextIndex = nextIndex + 1;
+			}
+		}
+	} else {
+		//on boucle dans le tableau passé en paramètre de la fonction
+		for (let i in currentRefTests) {
+			if (headingTheme != currentRefTests[i].themes) {
+				headingTheme = currentRefTests[i].themes;
+				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
+			}
+			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+			// @todo à remplacer par un for sur arrayFilterNameAndValue
+
+			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
+			htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
+			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
+			htmlrefTests += '<div class="card-block"><div class="row">';
+			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
+			for (let j in currentRefTests[i].tests) {
+				htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
+			}
+			htmlrefTests += '</ol></div>';
+			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
+			for (let j in currentRefTests[i].verifier) {
+				htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
+			}
+			htmlrefTests += '</ol></div>';
+			htmlrefTests += '</div>';
+			htmlrefTests += '<div class="row">';
+			htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
+			for (let j in currentRefTests[i].resultat) {
+				htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
+			}
+			htmlrefTests += '</ol></div>';
+			htmlrefTests += '</div>';
+			if (currentRefTests[i].exception) {
+				htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
+				htmlrefTests += '</div>';
+				htmlrefTests += '</div>';
+			}
+			htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
+			for (let j in currentRefTests[i].profils) {
+				htmlrefTests += currentRefTests[i].profils[j];
+				j != ((currentRefTests[i].profils).length - 1) ? htmlrefTests += ',  ' : '';
+			}
+			htmlrefTests += '<br />' + ((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
+			for (let j in currentRefTests[i].type) {
+				htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
+			}
+			htmlrefTests += '</div>';
+			htmlrefTests += '</div></article>';
+		}
+	}
+
+	// Affichage de l'ensemble des lignes en HTML
+	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
+
+	// Event Handler
+	for (let i in currentRefTests) {
+		//radio
+		var radios = document.getElementsByName("test" + i);
+		var nodeArray = [];
+		for (var j = 0; j < radios.length; ++j) {
+			radios[j].addEventListener('click', function () {
+				setStates(this, currentRefTests[i].ID)
+			}, false);
+		}
+
+
+		var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
+		comment.addEventListener('click', function () {
+			setComment(currentRefTests[i].ID, currentRefTests[i].title)
+		}, false);
+	}
+	
+
+}
+
+
 
 /**
  * Computation
@@ -505,6 +725,7 @@ addPage = function () {
 	// @todo a supprimer
 	dataVallydette.checklist.page[indexPage].IDPage = newIdPage;
 	dataVallydette.checklist.page[indexPage].name = "Nom de la page";
+	dataVallydette.checklist.page[indexPage].url = "";
 	dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
 
 	jsonStr = JSON.stringify(dataVallydette);
@@ -699,68 +920,111 @@ setStates = function (ele, targetId) {
  * Edition manager
  */
 setValue = function (targetElement, targetProperty, targetSecondaryElement) {
+
+	arrayPropertyValue = [];
+
 	let htmlModal = '';
-	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
+	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle">';
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier le nom de : ' + getValue(targetElement) + '</h5>';
+	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier : ' + getPropertyValue(targetProperty) + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
 	htmlModal += '</div>';
-	htmlModal += '<div class="modal-body">';
-	htmlModal += '<input type="text" class="form-control" id="inputValue" aria-labelledby="modalChecklistTitle" value="' + getValue(targetElement) + '">';
+		
+	htmlModal += '<form id="editForm"><div class="modal-body">';
+	htmlModal += '<div id="modal-alert"></div>';
+	htmlModal += '<div class="form-group">';
+	htmlModal += '<label class="is-required" for="nameValue">Nom <span class="sr-only"> (required)</span></label>';
+	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
+	htmlModal += '</div>';
+	if (targetElement === "pageName") {
+		htmlModal += '<div class="form-group">';
+		htmlModal += '<label  for="urlValue">URL</label>';
+		htmlModal += '<input type="text" class="form-control" id="urlValue" placeholder="URL" value="' + getPropertyValue("checklist.page." + currentPage + ".url") + '">';
+		htmlModal += '</div>';
+	}
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-	htmlModal += '<button type="button" id="saveValueBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
-	htmlModal += '</div></div></div></div>';
-
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>';
+	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">Enregistrer</button>';
+	htmlModal += '</div></form></div></div></div>';
+			
 	// Parent element
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	// Event handler
-	var saveValueBtn = document.getElementById("saveValueBtn");
-	var targetInput = document.getElementById("inputValue");
-	saveValueBtn.addEventListener('click', function () {
-		updateValue(targetInput.value, targetElement, targetProperty, targetSecondaryElement)
+	
+    var currentEditForm = document.getElementById('editForm');
+ 
+	currentEditForm.addEventListener('submit', function () {
+		event.preventDefault();
+		
+		var propertyName = document.getElementById("nameValue");
+		arrayPropertyValue[0] = propertyName.value;
+		
+		if (targetElement === "pageName") {
+			var propertyUrl = document.getElementById("urlValue");
+			arrayPropertyValue[1] = propertyUrl.value;	
+		}
+		
+		updateProperty(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement);
 	});
 
 }
 
-updateValue = function (inputValue, targetElement, targetProperty, targetSecondaryElement) {
+getPropertyValue = function (propertyPath) {
+	obj = dataVallydette;
+	propertyPath = propertyPath.split('.');
 
-	function setToValue(obj, value, path) {
-		path = path.split('.');
-
-		for (i = 0; i < path.length - 1; i++) {
-			obj = obj[path[i]];
-
-		}
-		obj[path[i]] = value;
+	for (i = 0; i < propertyPath.length - 1; i++) {
+		obj = obj[propertyPath[i]];
 	}
-
-	if (inputValue) {
-		var currentTargetElement = document.getElementById(targetElement);
-		currentTargetElement.innerText = inputValue;
-
-		//dataVallydette.checklist[targetProperty] = name;
-		setToValue(dataVallydette, inputValue, targetProperty);
-
-		if (targetSecondaryElement) {
-			var currentTargetSecondaryElement = document.getElementById(targetSecondaryElement);
-			currentTargetSecondaryElement.innerText = inputValue;
-		}
+	
+	if(obj[propertyPath[i]])  {
+		return obj[propertyPath[i]];
+	} else {
+		obj[propertyPath[i]] = "";
+		return obj[propertyPath[i]];
 	}
-
-
-	//on met à jour l'export
-	jsonUpdate();
+	
 }
 
-getValue = function (target) {
-	var targetElement = document.getElementById(target);
-	return targetElement.innerText;
+setPropertyValue = function (propertyValue, propertyPath) {
+	obj = dataVallydette;
+	propertyPath = propertyPath.split('.');
+
+	for (i = 0; i < propertyPath.length - 1; i++) {
+		obj = obj[propertyPath[i]];	
+	}
+	
+	obj[propertyPath[i]] = propertyValue;
+	
+}
+
+updateProperty = function(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement) {
+
+	setPropertyValue(arrayPropertyValue[0], targetProperty);
+	if (arrayPropertyValue[1]) {setPropertyValue(arrayPropertyValue[1], "checklist.page." + currentPage + ".url");}
+	
+	var currentTargetElement = document.getElementById(targetElement);
+	currentTargetElement.innerText = arrayPropertyValue[0];
+
+	if (targetSecondaryElement) {
+		var currentTargetSecondaryElement = document.getElementById(targetSecondaryElement);
+		currentTargetSecondaryElement.innerText = arrayPropertyValue[0];
+	}
+	
+	var feedbackHtml;
+	feedbackHtml = '<div class="alert alert-success alert-sm" role="alert">';
+	feedbackHtml += '<span class="alert-icon"><span class="sr-only">Success</span></span>';
+	feedbackHtml += '<p>Les données ont été enregistré avec succes.</p>';
+	feedbackHtml += '</div>';
+	
+	var feedbackMessage = document.getElementById('modal-alert');
+	feedbackMessage.innerHTML = feedbackHtml;
+	
+	jsonUpdate();
 }
 
 
@@ -908,224 +1172,6 @@ updateCounter = function (activeFilter, nbTests) {
 	}
 };
 
-runTestListMarkup = function (currentRefTests) {
-
-	let elrefTests = document.getElementById('refTests');
-	let htmlrefTests = '';
-	let headingTheme = '';
-	let headingCriterium = '';
-	let nextIndex = 1;
-
-	if (currentCriteriaListName === 'wcagEase') {
-		var currentPageName = document.getElementById('pageName');
-		currentPageName.innerHTML = dataVallydette.checklist.page[currentPage].name;
-
-		for (let i in currentRefTests) {
-			var currentTest = currentRefTests[i].ID;
-			if (headingTheme != currentRefTests[i].themes) {
-				if (headingTheme !== '') {
-					htmlrefTests += '</div>';
-				}
-
-				headingTheme = currentRefTests[i].themes;
-				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="Plier la thématique"><span class="icon-arrow-down"></span></button></h2>';
-				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
-			}
-
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
-			// @todo à remplacer par un for sur arrayFilterNameAndValue
-
-			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
-			htmlrefTests += '</ul>';
-
-			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
-
-			if (currentRefTests[i].verifier || currentRefTests[i].exception) {
-				htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
-				htmlrefTests += '<div class="collapse border-top border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
-
-				if (currentRefTests[i].verifier) {
-					htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
-					htmlrefTests += currentRefTests[i].verifier;
-					htmlrefTests += currentRefTests[i].complement;
-				}
-
-				if (currentRefTests[i].exception) {
-					htmlrefTests += '<h4 class="h5">Exceptions</h4>';
-					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
-				}
-			}
-
-			htmlrefTests += '<div class="py-2 border-top border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
-			for (let j in currentRefTests[i].wcag) {
-				htmlrefTests += currentRefTests[i].wcag[j];
-				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
-			}
-			htmlrefTests += '</p></div></div>';
-
-			htmlrefTests += '</article>';
-		}
-	} else if (currentCriteriaListName === 'RGAA') {
-		//test configuration rendu MARKED
-		// Get reference
-		const renderer = new marked.Renderer();
-		marked.setOptions({
-			renderer: renderer
-		});
-
-		// Override function link(string href, string title, string text)
-		renderer.link = function (href, title, text) {
-			return text;
-		};
-		renderer.paragraph = function (text) {
-			return text;
-		};
-		// fin test marked
-
-		for (let i in currentRefTests) {
-			if (headingTheme != currentRefTests[i].themes) {
-				headingTheme = currentRefTests[i].themes;
-				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
-			}
-
-			if (headingCriterium != currentRefTests[i].criterium) {
-				headingCriterium = currentRefTests[i].criterium;
-
-				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
-				// @todo à remplacer par un for sur arrayFilterNameAndValue
-				//initialisation si aucun tests n'est checké
-				if (currentRefTests[i].resultatTest === "") {
-					currentRefTests[i].resultatTest = "nt";
-					dataVallydette.checklist.items[i].resultatTest = "nt";
-				}
-
-				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) ? "checked" : "") + '/>';
-				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
-				htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
-				htmlrefTests += '<div class="card-block"><div class="row">';
-				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
-				for (let j in currentRefTests[i].tests) {
-					htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
-				}
-				htmlrefTests += '</ol></div>';
-				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
-				for (let j in currentRefTests[i].verifier) {
-					htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
-				}
-				htmlrefTests += '</ol></div>';
-				htmlrefTests += '</div>';
-				htmlrefTests += '<div class="row">';
-				htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
-				for (let j in currentRefTests[i].resultat) {
-					htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
-				}
-				htmlrefTests += '</ol></div>';
-				htmlrefTests += '</div>';
-				if (currentRefTests[i].exception) {
-					htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
-					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-
-					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
-					htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
-				}
-
-				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
-				//à remplacer par un for sur arrayFilterNameAndValue
-
-				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
-
-				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div>';
-				htmlrefTests += '</div></article>';
-
-				if ((currentRefTests[nextIndex] != undefined) && (headingCriterium != currentRefTests[nextIndex].criterium)) {
-					htmlrefTests += '</div>';
-				}
-
-				nextIndex = nextIndex + 1;
-			}
-		}
-	} else {
-		//on boucle dans le tableau passé en paramètre de la fonction
-		for (let i in currentRefTests) {
-			if (headingTheme != currentRefTests[i].themes) {
-				headingTheme = currentRefTests[i].themes;
-				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
-			}
-			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
-			// @todo à remplacer par un for sur arrayFilterNameAndValue
-
-			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
-			htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
-			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
-			htmlrefTests += '<div class="card-block"><div class="row">';
-			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
-			for (let j in currentRefTests[i].tests) {
-				htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
-			for (let j in currentRefTests[i].verifier) {
-				htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '</div>';
-			htmlrefTests += '<div class="row">';
-			htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
-			for (let j in currentRefTests[i].resultat) {
-				htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '</div>';
-			if (currentRefTests[i].exception) {
-				htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
-				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-				htmlrefTests += '</div>';
-				htmlrefTests += '</div>';
-			}
-			htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
-			for (let j in currentRefTests[i].profils) {
-				htmlrefTests += currentRefTests[i].profils[j];
-				j != ((currentRefTests[i].profils).length - 1) ? htmlrefTests += ',  ' : '';
-			}
-			htmlrefTests += '<br />' + ((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
-			for (let j in currentRefTests[i].type) {
-				htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
-			}
-			htmlrefTests += '</div>';
-			htmlrefTests += '</div></article>';
-		}
-	}
-
-	// Affichage de l'ensemble des lignes en HTML
-	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
-
-	// Event Handler
-	for (let i in currentRefTests) {
-		//radio
-		var radios = document.getElementsByName("test" + i);
-		var nodeArray = [];
-		for (var j = 0; j < radios.length; ++j) {
-			radios[j].addEventListener('click', function () {
-				setStates(this, currentRefTests[i].ID)
-			}, false);
-		}
-
-
-		var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
-		comment.addEventListener('click', function () {
-			setComment(currentRefTests[i].ID, currentRefTests[i].title)
-		}, false);
-	}
-	
-
-}
-
-
 initFilters = function () {
             
 	/* let elFilterFooter = document.getElementById('filter-footer');
@@ -1150,7 +1196,7 @@ initFilters = function () {
 	elTypes.innerHTML = "";
 
 	for (let i in arrayFilterNameAndValue) {
-		htmlTypes = '<label class="custom-control custom-checkbox"' + i + '" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '"><span class="custom-control-label">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+		htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '"><span class="custom-control-label">' + arrayFilterNameAndValue[i][0] + '</span></label>';
 		var node = document.createElement("li");
 	    //node.classList.add('custom-control', 'custom-checkbox');
 		node.innerHTML = htmlTypes;

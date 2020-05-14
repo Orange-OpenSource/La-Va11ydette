@@ -799,7 +799,7 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += 'Supprimer la page ' + getValue(targetElement) + ' ?';
+	htmlModal += 'Supprimer la page ' + getPropertyValue(targetElement) + ' ?';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';

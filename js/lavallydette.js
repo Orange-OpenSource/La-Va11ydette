@@ -12,6 +12,8 @@ var arrayFilterNameAndValue = [];
 var arrayFilterActivated = [];
 var currentCriteriaListName;
 
+var htmlFilterContent = document.getElementById('filter');
+
 /**
  * Vallydette object
  */
@@ -192,16 +194,15 @@ function eventHandler() {
 
 runTestListMarkup = function (currentRefTests) {
 
-	let elrefTests = document.getElementById('refTests');
+	let elrefTests = document.getElementById('mainContent');
 	let htmlrefTests = '';
 	let headingTheme = '';
 	let headingCriterium = '';
 	let nextIndex = 1;
 
 	if (currentCriteriaListName === 'wcagEase') {
-		var currentPageName = document.getElementById('pageName');
-		currentPageName.innerHTML = dataVallydette.checklist.page[currentPage].name;
-
+		setPageName(dataVallydette.checklist.page[currentPage].name);
+		
 		for (let i in currentRefTests) {
 			var currentTest = currentRefTests[i].ID;
 			if (headingTheme != currentRefTests[i].themes) {
@@ -554,105 +555,89 @@ function runFinalComputation(referentielMatrice) {
 
     finalResult = Math.round((finalTotal / nbPage));
 
-    let htmlModal = '';
-    htmlModal = '<div id="modalResult" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
-    htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
-    htmlModal += '<div class="modal-content">';
-    htmlModal += '<div class="modal-header">';
-    htmlModal += '<h2>Résultat de conformité</h2>';
-    htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
-    htmlModal += '</div>';
-    htmlModal += '<div class="modal-body">';
+   
+    let htmlMainContent = document.getElementById('mainContent');
+	let computationContent = '';
 
-
+	setPageName("Résultat de l'audit");
+	removeFilterSection();
+	
     if (nbNT >= 1) {
-        htmlModal += '<h3>Conformité globale : </h3>';
-        htmlModal += '<p>Audit en cours.</p>';
-		htmlModal += '<h3>Résultat par pages : </h3>';
-		htmlModal += '<ul>';
+        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : </h2>';
+        computationContent += '<p>Audit en cours.</p>';
+		computationContent += '<h3>Résultat par pages : </h3>';
+		computationContent += '<ul>';
 		for (let i in pagesResultsArray) {
 			if (pagesResultsArray[i].complete === false) {
-				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
 			} else {
-				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
 			}
 		}
-		htmlModal += '</ul>';
+		computationContent += '</ul>';
     } else if (nbNT === 0 && !isNaN(finalResult)) {
-        htmlModal += '<h3>Conformité globale : </h3>';
-        htmlModal += '<span class="h1 text-primary">' + finalResult + '%</span>';
+        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : </h2>';
+        computationContent += '<span class="h1 text-primary">' + finalResult + '%</span>';
 		
+		computationContent += '<ul class="nav nav-tabs" role="tablist">';
+		computationContent += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
+		computationContent += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';
+		computationContent += '</ul>';
 		
-		htmlModal += '<ul class="nav nav-tabs" role="tablist">';
-		htmlModal += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
-		htmlModal += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';
-		htmlModal += '</ul>';
-		
-		htmlModal += '<div class="tab-content border-0">';
-		htmlModal += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
-		htmlModal += '<ul>';
+		computationContent += '<div class="tab-content border-0">';
+		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
+		computationContent += '<ul>';
 		for (let i in pagesResultsArray) {
 			if (pagesResultsArray[i].complete === false) {
-				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
 			} else {
-				htmlModal += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
 			}
 		}
-		htmlModal += '</ul>';
-		htmlModal += '  </div>';
-		htmlModal += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
-		htmlModal += '<table class="table table-striped"><caption class="sr-only">Synthèse par niveau</caption>';
-		htmlModal += '<thead><tr>';
-		htmlModal += '<th scope="row">Critères</th>';
-		htmlModal += '<th scope="col" colspan="2" class="text-center">Conformes</th>';
-		htmlModal += '<th scope="col" colspan="2" class="text-center">Non-conformes</th>';
-		htmlModal += '<th scope="col" colspan="2" class="text-center">Non-applicables</th>';
-		htmlModal += '<th rowspan="2" class="text-center bg-light">Taux de conformité </th>';
-		htmlModal += '</tr><tr>';
-		htmlModal += '<th scope="col">Niveau</th>';
-		htmlModal += '<th scope="col" class="text-center">A</th>';
-		htmlModal += '<th scope="col" class="text-center">AA</th>';
-		htmlModal += '<th scope="col" class="text-center">A</th>';
-		htmlModal += '<th scope="col" class="text-center">AA</th>';
-		htmlModal += '<th scope="col" class="text-center">A</th>';
-		htmlModal += '<th scope="col" class="text-center">AA</th>';
-		htmlModal += '</tr></thead>';
-		htmlModal += '<tbody>';
+		computationContent += '</ul>';
+		computationContent += '  </div>';
+		computationContent += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
+		computationContent += '<table class="table table-striped"><caption class="sr-only">Synthèse par niveau</caption>';
+		computationContent += '<thead><tr>';
+		computationContent += '<th scope="row">Critères</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">Conformes</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">Non-conformes</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">Non-applicables</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">Taux de conformité </th>';
+		computationContent += '</tr><tr>';
+		computationContent += '<th scope="col">Niveau</th>';
+		computationContent += '<th scope="col" class="text-center">A</th>';
+		computationContent += '<th scope="col" class="text-center">AA</th>';
+		computationContent += '<th scope="col" class="text-center">A</th>';
+		computationContent += '<th scope="col" class="text-center">AA</th>';
+		computationContent += '<th scope="col" class="text-center">A</th>';
+		computationContent += '<th scope="col" class="text-center">AA</th>';
+		computationContent += '</tr></thead>';
+		computationContent += '<tbody>';
 	
 		
 		for (let i in pagesResultsArray) {
 			
-			htmlModal += '<tr>';
-			htmlModal += '<th scope="row" class="font-weight-bold">' + pagesResultsArray[i].name + '</th>';
-			htmlModal += '<td class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
-			htmlModal += '<td class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
-			htmlModal += '<td class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';
-			htmlModal += '<td class="text-center">' + pagesResultsArray[i].nonconformeAA+ '</td>';
-			htmlModal += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
-			htmlModal += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
-			htmlModal += '<td class="text-center bg-light">' + pagesResultsArray[i].result.toFixed(2) + ' %</td>';
-			htmlModal += '</tr>';
+			computationContent += '<tr>';
+			computationContent += '<th scope="row" class="font-weight-bold">' + pagesResultsArray[i].name + '</th>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeAA+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
+			computationContent += '<td class="text-center bg-light">' + pagesResultsArray[i].result.toFixed(2) + ' %</td>';
+			computationContent += '</tr>';
 			
 		}
-		htmlModal += '</tbody>';
-		htmlModal += '</table>';
-		htmlModal += ' </div>';
-		  
-		htmlModal += '</div>';
+		computationContent += '</tbody>';
+		computationContent += '</table>';
+		computationContent += ' </div>';
+
 			
     }
-	
-    htmlModal += '</div>';
-    htmlModal += '<div class="modal-footer">';
-    htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>';
-    htmlModal += '</div>';
-    htmlModal += '</div>';
-    htmlModal += '</div>';
-    htmlModal += '</div>';
 
-
-    let elModal = document.getElementById('modal');
-    elModal.innerHTML = htmlModal;
+    htmlMainContent.innerHTML = computationContent;
 }
 
 
@@ -799,7 +784,7 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += 'Supprimer la page ' + getValue(targetElement) + ' ?';
+	htmlModal += 'Supprimer la page ' + getPropertyValue(targetElement) + ' ?';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
@@ -836,6 +821,14 @@ deletePage = function (currentPage, targetElement) {
 
 	jsonUpdate();
 
+}
+
+
+function setPageName(value) {
+	
+	var currentPageName = document.getElementById('pageName');
+	currentPageName.innerHTML = value;
+	
 }
 
 getIfFilter = function (name) {
@@ -1061,7 +1054,7 @@ setComment = function (targetId, title) {
 	let titleModal = title;
 
 	let htmlModal = '';
-	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle">';
+	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
@@ -1173,52 +1166,56 @@ updateCounter = function (activeFilter, nbTests) {
 };
 
 initFilters = function () {
-            
-	/* let elFilterFooter = document.getElementById('filter-footer');
-	let htmlFilterFooter = '';
+    
+   if (htmlFilterContent.innerHTML.trim() !== '') {
 
-	htmlFilterFooter += '<button id="reinit" type="reset" class="btn btn-secondary" disabled>Tout afficher</button>';
-	elFilterFooter.innerHTML = htmlFilterFooter;
+	   return;
+	   
+   } else {
+	   
+	   let htmlFilterHeading = document.createElement('h2');
+		htmlFilterHeading.textContent = "Filtres";
+		htmlFilterContent.appendChild(htmlFilterHeading);
+   
+		let htmlFilterFeedback = document.createElement('div');
+		htmlFilterFeedback.setAttribute("id", "feedback"); 
+		htmlFilterContent.appendChild(htmlFilterFeedback);
+	
+		let htmlFilterList = document.createElement('ul');
+		htmlFilterList.classList.add("list-unstyled");
+		
+		for (let i in arrayFilterNameAndValue) {
+			var isChecked = "";
+			arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
+			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+			
+			var listItem = document.createElement("li");
+			listItem.innerHTML = htmlTypes;
+			htmlFilterList.appendChild(listItem);
+			htmlFilterContent.appendChild(htmlFilterList);
 
-	let elBtnReinit = document.getElementById('reinit');
+			var inputItem = document.getElementById("type" + i);
+			inputItem.addEventListener('click', function () {
+				updateArrayFilter(this)
+			}, false);
 
-	elBtnReinit.addEventListener('click', function () {
+		}
+   }
+   
+}
 
-		updateArrayFilter();
-		updateCounter(false, refTests.length);
-
-		var elToReinit = document.querySelector("#types input:checked");
-		elToReinit.checked = false;
-	}); */
-
-	let htmlTypes = '';
-	let elTypes = document.getElementById('types');
-	elTypes.innerHTML = "";
-
-	for (let i in arrayFilterNameAndValue) {
-		htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '"><span class="custom-control-label">' + arrayFilterNameAndValue[i][0] + '</span></label>';
-		var node = document.createElement("li");
-	    //node.classList.add('custom-control', 'custom-checkbox');
-		node.innerHTML = htmlTypes;
-		elTypes.appendChild(node);
-
-		var elRadio = document.getElementById("type" + i);
-		elRadio.addEventListener('click', function () {
-			updateArrayFilter(this)
-		}, false);
-
-	}
-	//fin ajout input de filtre
-
+removeFilterSection = function () {
+	htmlFilterContent.innerHTML = "";
 }
 		
 
 onPageLoaded = function () {
+	initFilters();
 	if(arrayFilterActivated && arrayFilterActivated.length > 0){
 		runFilter();
 	} else {
 		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
-		updateCounter(true, dataVallydette.checklist.page[currentPage].items.length);
+		updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
 	}
 }
 
@@ -1262,7 +1259,7 @@ const utils = {
     return arrCond;
   },
   reqError: function (err) {
-	let elrefTests = document.getElementById('refTests');
+	let elrefTests = document.getElementById('mainContent');
     elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
   },
   formatHeading: function (str) {

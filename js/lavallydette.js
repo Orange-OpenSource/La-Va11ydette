@@ -6,6 +6,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  * Global vars
  */
 var dataVallydette;
+var dataWCAG;
 var	currentPage = 0;
 var statutClass = "badge-light";
 var arrayFilterNameAndValue = [];	
@@ -426,10 +427,10 @@ function initComputation() {
 	matriceRequest.onreadystatechange = function () {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
 			matriceWcag = JSON.parse(matriceRequest.responseText);
-         
+
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
-                runFinalComputation(matriceWcag, dataVallydette)
+                runFinalComputation(matriceWcag);
             }, false);
 	  }
 	};
@@ -437,8 +438,9 @@ function initComputation() {
 	
 }
 
-function runComputation(referentielMatrice) {
-    const matriceObject = referentielMatrice;
+function runComputation(referentielWCAG) {
+	dataWCAG = referentielWCAG;
+	console.log(dataWCAG);
     pagesResults = [];
 
     for (let i in dataVallydette.checklist.page) {
@@ -446,16 +448,16 @@ function runComputation(referentielMatrice) {
         pagesResults[i].items = [];
         pagesResults[i].name = dataVallydette.checklist.page[i].name;
 
-        for (let k in matriceObject.items) {
+        for (let k in dataWCAG.items) {
             pagesResults[i].items[k] = {};
-            pagesResults[i].items[k].wcag = matriceObject.items[k].wcag;
-			pagesResults[i].items[k].level = matriceObject.items[k].level;
+            pagesResults[i].items[k].wcag = dataWCAG.items[k].wcag;
+			pagesResults[i].items[k].level = dataWCAG.items[k].level;
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
 
-            for (let l in matriceObject.items[k].tests) {
+            for (let l in dataWCAG.items[k].tests) {
                 for (let j in dataVallydette.checklist.page[i].items) {
-                    if (matriceObject.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
+                    if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
                         if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
                             pagesResults[i].items[k].complete = false;
                         }
@@ -465,6 +467,13 @@ function runComputation(referentielMatrice) {
                                 pagesResults[i].items[k].resultat = true;
                             } else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
                                 pagesResults[i].items[k].resultat = false;
+								
+								if (dataVallydette.checklist.page[i].items[j].commentaire) {
+								
+									dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
+										
+								}
+								
                             } else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
                                 pagesResults[i].items[k].resultat = "na";
                             }
@@ -482,8 +491,8 @@ function runComputation(referentielMatrice) {
     return pagesResults;
 }
 
-function runFinalComputation(referentielMatrice) {
-    pagesResultsArray = runComputation(referentielMatrice);
+function runFinalComputation(referentielWCAG) {
+    pagesResultsArray = runComputation(referentielWCAG);
     nbNTResultsArray = utils.getNbNotTested();
 
     var nbNT = nbNTResultsArray.total;
@@ -582,6 +591,8 @@ function runFinalComputation(referentielMatrice) {
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
 		computationContent += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
 		computationContent += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';
+		computationContent += '	<li class="nav-item "><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">Liste des non-conformités</a></li>';
+		
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
@@ -632,6 +643,25 @@ function runFinalComputation(referentielMatrice) {
 		}
 		computationContent += '</tbody>';
 		computationContent += '</table>';
+		computationContent += ' </div>';
+		
+		computationContent += '  <div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
+		for (let i in dataWCAG.items) {
+			
+			if (dataWCAG.items[i].comment) {
+				computationContent += '<h3>' + dataWCAG.items[i].wcag + '</h3>';
+
+				computationContent += '<ul>';
+				for (let j in dataWCAG.items[i].comment) {
+					computationContent += '<li>' + dataWCAG.items[i].comment[j] + '</li>';
+					
+				}
+				computationContent += '</ul>';
+				
+			}
+			
+		}
+		
 		computationContent += ' </div>';
 
 			

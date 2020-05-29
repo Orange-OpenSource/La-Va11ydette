@@ -426,11 +426,11 @@ function initComputation() {
 	matriceRequest.open(method, matriceVallydette, true);
 	matriceRequest.onreadystatechange = function () {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
-			matriceWcag = JSON.parse(matriceRequest.responseText);
+			dataWCAG = JSON.parse(matriceRequest.responseText);
 
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
-                runFinalComputation(matriceWcag);
+                runComputation();
             }, false);
 	  }
 	};
@@ -439,10 +439,10 @@ function initComputation() {
 }
 
 function runComputation(referentielWCAG) {
-	dataWCAG = referentielWCAG;
-	console.log(dataWCAG);
-    pagesResults = [];
 
+    pagesResults = [];
+	nonConformityList = {};
+	
     for (let i in dataVallydette.checklist.page) {
         pagesResults[i] = [];
         pagesResults[i].items = [];
@@ -454,30 +454,32 @@ function runComputation(referentielWCAG) {
 			pagesResults[i].items[k].level = dataWCAG.items[k].level;
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
-
+			
             for (let l in dataWCAG.items[k].tests) {
                 for (let j in dataVallydette.checklist.page[i].items) {
+					
                     if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
+						
                         if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
                             pagesResults[i].items[k].complete = false;
                         }
 
                         if (pagesResults[i].items[k].resultat) {
                             if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
-                                pagesResults[i].items[k].resultat = true;
+                                pagesResults[i].items[k].resultat = true;	
+								break;	
+								
                             } else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
                                 pagesResults[i].items[k].resultat = false;
+								break;	
 								
-								if (dataVallydette.checklist.page[i].items[j].commentaire) {
-								
-									dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
-										
-								}
 								
                             } else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
                                 pagesResults[i].items[k].resultat = "na";
+								break;	
                             }
-                        }
+                       }
+						
                     }
                 }
 
@@ -487,12 +489,14 @@ function runComputation(referentielWCAG) {
             }
         }
     }
-
-    return pagesResults;
+console.log(pagesResults);
+console.log(dataVallydette);
+	
+    return runFinalComputation(pagesResults);
 }
 
-function runFinalComputation(referentielWCAG) {
-    pagesResultsArray = runComputation(referentielWCAG);
+function runFinalComputation(pagesResultsArray) {
+    
     nbNTResultsArray = utils.getNbNotTested();
 
     var nbNT = nbNTResultsArray.total;

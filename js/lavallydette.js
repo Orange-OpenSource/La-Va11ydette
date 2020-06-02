@@ -431,6 +431,7 @@ function initComputation() {
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
+				utils.putTheFocus(document.getElementById("pageName"));
             }, false);
 	  }
 	};
@@ -441,12 +442,14 @@ function initComputation() {
 function runComputation(referentielWCAG) {
 
     pagesResults = [];
-	nonConformityList = {};
+	dataWCAG.items.forEach(initComments);
 	
     for (let i in dataVallydette.checklist.page) {
         pagesResults[i] = [];
         pagesResults[i].items = [];
         pagesResults[i].name = dataVallydette.checklist.page[i].name;
+		pagesResults[i].url = dataVallydette.checklist.page[i].url;
+		
 
         for (let k in dataWCAG.items) {
             pagesResults[i].items[k] = {};
@@ -455,6 +458,7 @@ function runComputation(referentielWCAG) {
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
 			
+
             for (let l in dataWCAG.items[k].tests) {
                 for (let j in dataVallydette.checklist.page[i].items) {
 					
@@ -464,6 +468,12 @@ function runComputation(referentielWCAG) {
                             pagesResults[i].items[k].complete = false;
                         }
 
+						if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
+							if (dataVallydette.checklist.page[i].items[j].commentaire!=="") {
+                               dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
+							}
+                         }
+						
                         if (pagesResults[i].items[k].resultat) {
                             if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
                                 pagesResults[i].items[k].resultat = true;	
@@ -478,7 +488,8 @@ function runComputation(referentielWCAG) {
                                 pagesResults[i].items[k].resultat = "na";
 								break;	
                             }
-                       }
+                        }
+						
 						
                     }
                 }
@@ -489,9 +500,7 @@ function runComputation(referentielWCAG) {
             }
         }
     }
-console.log(pagesResults);
-console.log(dataVallydette);
-	
+
     return runFinalComputation(pagesResults);
 }
 
@@ -582,7 +591,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<ul>';
 		for (let i in pagesResultsArray) {
 			if (pagesResultsArray[i].complete === false) {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))<br>'+ pagesResultsArray[i].url +'</li>';
 			} else {
 				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
 			}
@@ -604,12 +613,23 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<ul>';
 		for (let i in pagesResultsArray) {
 			if (pagesResultsArray[i].complete === false) {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))</li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))<br>'+ pagesResultsArray[i].url +'</li>';
 			} else {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
+				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' <br>'+ +'</li>';
 			}
 		}
 		computationContent += '</ul>';
+		
+		for (let i in pagesResultsArray) {
+			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
+			
+			computationContent += '<ul>';
+			(pagesResultsArray[i].complete === false) ? computationContent += '<li><strong>résultat :</strong> en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s)) </li>' : computationContent += '<li><strong>résultat :</strong> ' + pagesResultsArray[i].result.toFixed(2) + ' % </li>';
+			(pagesResultsArray[i].url!==undefined) ? computationContent += '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>' : '';
+			computationContent += '</ul>';
+		}
+		
+		
 		computationContent += '  </div>';
 		computationContent += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
 		computationContent += '<table class="table table-striped"><caption class="sr-only">Synthèse par niveau</caption>';
@@ -649,31 +669,30 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</table>';
 		computationContent += ' </div>';
 		
-		computationContent += '  <div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
-		for (let i in dataWCAG.items) {
+		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
+		
+			const listNonConformity = dataWCAG.items.filter(dataWcagComment => dataWcagComment.comment.length > 0);
 			
-			if (dataWCAG.items[i].comment) {
-				computationContent += '<h3>' + dataWCAG.items[i].wcag + '</h3>';
+			for (let i in listNonConformity) {
+				
+				computationContent += '<h3>' + listNonConformity[i].wcag + '</h3>';
 
 				computationContent += '<ul>';
-				for (let j in dataWCAG.items[i].comment) {
-					computationContent += '<li>' + dataWCAG.items[i].comment[j] + '</li>';
-					
+				for (let j in listNonConformity[i].comment) {
+					computationContent += '<li>' + listNonConformity[i].comment[j] + '</li>';
+						
 				}
 				computationContent += '</ul>';
-				
-			}
-			
-		}
 		
-		computationContent += ' </div>';
+			}
+		
+		computationContent += '</div>';
 
 			
     }
 
     htmlMainContent.innerHTML = computationContent;
 }
-
 
 
 /**
@@ -776,6 +795,10 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
+}
+
+initComments = function (item) {
+	item.comment = [];
 }
 
 showPage = function (id) {
@@ -1096,7 +1119,7 @@ setComment = function (targetId, title) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
+	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title" autofocus>' + getComment(targetId) + '</textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
@@ -1113,6 +1136,8 @@ setComment = function (targetId, title) {
 	commentSave.addEventListener('click', function () {
 		addComment(targetId, comment.value)
 	});
+	
+	utils.putTheFocus(document.getElementById('comment' + targetId));
 
 }
 
@@ -1330,7 +1355,12 @@ const utils = {
     nbNTArray.total = nbNTtests;
 
     return nbNTArray;
-	}
+	},
+  putTheFocus: function (e) {
+	e.setAttribute("tabindex", "-1");
+	e.focus();
+    }
+	
 }  
 
 initVallydetteApp('wcagEase');

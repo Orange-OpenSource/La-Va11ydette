@@ -13,6 +13,7 @@ var arrayFilterNameAndValue = [];
 var arrayFilterActivated = [];
 var currentCriteriaListName;
 
+var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 
 /**
@@ -431,6 +432,7 @@ function initComputation() {
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
+				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
             }, false);
 	  }
@@ -585,21 +587,22 @@ function runFinalComputation(pagesResultsArray) {
 	removeFilterSection();
 	
     if (nbNT >= 1) {
-        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : </h2>';
-        computationContent += '<p>Audit en cours.</p>';
+        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : <span class="text-primary">audit en cours</span></h2>';
+     
 		computationContent += '<h3>Résultat par pages : </h3>';
 		computationContent += '<ul>';
 		for (let i in pagesResultsArray) {
-			if (pagesResultsArray[i].complete === false) {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))<br>'+ pagesResultsArray[i].url +'</li>';
-			} else {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' </li>';
-			}
+			computationContent += '<h4 class="mt-4">' + pagesResultsArray[i].name + ' : </h4>';
+			
+			computationContent += '<ul>';
+			(pagesResultsArray[i].complete === false) ? computationContent += '<li><strong>résultat :</strong> en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s)) </li>' : computationContent += '<li><strong>résultat :</strong> ' + pagesResultsArray[i].result.toFixed(2) + ' % </li>';
+			(pagesResultsArray[i].url!==undefined) ? computationContent += '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>' : '';
+			computationContent += '</ul>';
 		}
+		
 		computationContent += '</ul>';
     } else if (nbNT === 0 && !isNaN(finalResult)) {
-        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : </h2>';
-        computationContent += '<span class="h1 text-primary">' + finalResult + '%</span>';
+        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : <span class="text-primary">' + finalResult + '%</span></h2>';
 		
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
 		computationContent += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
@@ -610,15 +613,7 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '<div class="tab-content border-0">';
 		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
-		computationContent += '<ul>';
-		for (let i in pagesResultsArray) {
-			if (pagesResultsArray[i].complete === false) {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s))<br>'+ pagesResultsArray[i].url +'</li>';
-			} else {
-				computationContent += '<li><strong>' + pagesResultsArray[i].name + ' : </strong>' + ((typeof pagesResultsArray[i].result === 'number') ? pagesResultsArray[i].result.toFixed(2) + ' %' : pagesResultsArray[i].result) + ' <br>'+ +'</li>';
-			}
-		}
-		computationContent += '</ul>';
+		
 		
 		for (let i in pagesResultsArray) {
 			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
@@ -722,15 +717,14 @@ initPagination = function (pages) {
 	for (let i in getPages) {
 		let newPage = document.createElement("li");
 		newPage.classList.add("nav-item");
-		//display pagination
+
 		let newBtnPage = document.createElement("button");
 
 		newBtnPage.innerHTML = getPages[i].name;
 		newBtnPage.setAttribute('id', getPages[i].IDPage);
 		newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 		if (i === 0) {
-			newBtnPage.classList.add("active");
-			newBtnPage.setAttribute("aria-current", "true");
+			utils.setActive(newBtnPage);
 		}
 		newPage.appendChild(newBtnPage);
 		pageElement.querySelector(".nav").appendChild(newPage);
@@ -750,7 +744,6 @@ addPage = function () {
 	dataVallydette.checklist.page.push(arr2);
 
 	indexPage = dataVallydette.checklist.page.length - 1;
-   // idPageIndex = idPageIndex + 1;
 
 	var newIdPage = new Uint32Array(1);
 	window.crypto.getRandomValues(newIdPage);
@@ -801,33 +794,35 @@ initComments = function (item) {
 	item.comment = [];
 }
 
+initContextualMenu = function (currentPageIndex, currentPageID) {
+	var htmlMenu = '';
+	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="Modifier le nom de la page" title="Modifier le nom de la page" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
+	htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="Supprimer la page" title="Supprimer la page" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
+	htmlContextualMenuContent.innerHTML = htmlMenu;
+}
+
 showPage = function (id) {
 	var index = dataVallydette.checklist.page.findIndex(function (o) {
 		return o.IDPage === id;
 	})
 
-	currentPage = index;
+	var currentPageIndex = index;
 
 	onPageLoaded();
 
+	//initContextualMenu(currentPageIndex, currentPageID);
 	var currentBtnPageName = document.getElementById('btnPageName');
-	currentBtnPageName.dataset.property = "checklist.page." + currentPage + ".name";
-	currentBtnPageName.dataset.secondaryElement = id;
+	currentBtnPageName.dataset.property = "checklist.page." + currentPageIndex + ".name";
+	currentBtnPageName.dataset.secondaryElement = currentPageID;
 
 	var currentBtnDelPage = document.getElementById('btnDelPage');
-	currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
-	currentBtnDelPage.dataset.pagination = id;
+	currentBtnDelPage.dataset.property = "checklist.page." + currentPageIndex;
+	currentBtnDelPage.dataset.pagination = currentPageID;
+	
+	utils.resetActive(document.getElementById("pageManager"));
 
-	var pagination = document.getElementById("pageManager");
-	var lastBtnPagination = pagination.querySelector(".active");
-	if (lastBtnPagination != undefined) {
-		lastBtnPagination.classList.remove("active");
-		lastBtnPagination.removeAttribute("aria-current");
-	}
-
-	var currentBtnPagination = document.getElementById(dataVallydette.checklist.page[currentPage].IDPage);
-	currentBtnPagination.classList.add("active");
-	currentBtnPagination.setAttribute("aria-current", "true");
+	utils.setActive(document.getElementById(dataVallydette.checklist.page[currentPageIndex].IDPage));
+	
 }
 
 setDeletePage = function (targetElement) {
@@ -1359,7 +1354,18 @@ const utils = {
   putTheFocus: function (e) {
 	e.setAttribute("tabindex", "-1");
 	e.focus();
-    }
+    },
+  resetActive: function (e) {
+	var btnActive = e.querySelector(".active");
+		if (btnActive != undefined) {
+			btnActive.classList.remove("active");
+			btnActive.removeAttribute("aria-current");
+		}
+	},
+  setActive: function (e) {
+	e.classList.add("active");
+	e.setAttribute("aria-current", "true");
+  }
 	
 }  
 

@@ -127,10 +127,10 @@
 
             <div class="container">
                 <div class="row align-items-start position-relative">
-                    <div class="col-md-2 sticky-top pt-4" id="currentPageManager">
+                    <div class="col-md-2 sticky-top pt-4 pr-0" id="currentPageManager">
                         <h1 id="pageName" class="mb-0">Nom de la page</h1>
-                        <hr class="border-light mr-n2">
-                        <div class="d-flex w-100">
+                        <hr class="border-light">
+                        <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap  w-100">
                             <button class="btn btn-secondary btn-icon" id="btnPageName"
                                     aria-label="Modifier le nom de la page" title="Modifier le nom de la page"
                                     data-element="pageName" data-secondary-element="pageID-0"
@@ -143,18 +143,16 @@
                                     data-toggle="modal" data-target="#modalDelete" disabled>
                                 <span class="icon-trash" aria-hidden="true"></span>
                             </button>
+							<hr class="border-light w-100">	
                         </div>
-                        <hr class="border-light mr-n2">
+                        
                     </div>
                     <div class="col-md-8 bg-white border border-light">
                         <span id="count" class="alert-danger"></span>
-                        <section id="refTests"></section>
+                        <section id="mainContent"></section>
                     </div>
                     <aside id="filter" class="col-md-2 sticky-top pt-4">
-                        <h2>Filtres</h2>
-                        <div id="feedback"></div>
-                        <ul id="types" class="list-unstyled"></ul>
-                        <div id="filter-footer"></div>
+                        
                     </aside>
                 </div>
             </div>

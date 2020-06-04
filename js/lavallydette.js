@@ -16,6 +16,8 @@ var currentCriteriaListName;
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 
+
+	
 /**
  * Vallydette object
  */
@@ -137,6 +139,8 @@ function importRGAA(dataVallydette, dataRGAA) {
 
 function runVallydetteApp() {
    	
+	currentPage = 0;
+	
 	textContent = {
         title1: "Procédures",
 		title2: "À vérifier",
@@ -159,6 +163,7 @@ function runVallydetteApp() {
     runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
 	eventHandler();
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
+	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
 }
 
 function eventHandler() {
@@ -181,18 +186,25 @@ function eventHandler() {
 		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)
 	}, false);
 
-	var btnPage = document.getElementById("btnPageName");
-	btnPage.addEventListener('click', function () {
-		setValue(btnPage.dataset.element, btnPage.dataset.property, btnPage.dataset.secondaryElement)
-	}, false);
-
-	var btndelPage = document.getElementById("btnDelPage");
-	btndelPage.addEventListener('click', function () {
-		setDeletePage(btnPage.dataset.element)
-	}, false);
+	btnActionPageEventHandler ();
 	
 }
 
+function btnActionPageEventHandler () {
+	
+	var currentBtnPageName = document.getElementById('btnPageName');
+	var currentBtnDelPage = document.getElementById('btnDelPage');
+	
+	currentBtnPageName.addEventListener('click', function () {
+		setValue(currentBtnPageName.dataset.element, currentBtnPageName.dataset.property, currentBtnPageName.dataset.secondaryElement)
+	}, false);
+
+	
+	currentBtnDelPage.addEventListener('click', function () {
+		setDeletePage(currentBtnPageName.dataset.element)
+	}, false);
+	
+}
 
 runTestListMarkup = function (currentRefTests) {
 
@@ -432,6 +444,7 @@ function initComputation() {
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
+				utils.setPageTitle("Résultat d'audit");
 				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
             }, false);
@@ -444,7 +457,7 @@ function initComputation() {
 function runComputation(referentielWCAG) {
 
     pagesResults = [];
-	dataWCAG.items.forEach(initComments);
+	dataWCAG.items.forEach(initProperties);
 	
     for (let i in dataVallydette.checklist.page) {
         pagesResults[i] = [];
@@ -471,7 +484,8 @@ function runComputation(referentielWCAG) {
                         }
 
 						if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
-							if (dataVallydette.checklist.page[i].items[j].commentaire!=="") {
+							dataWCAG.items[k].resultat = false;
+							if (dataVallydette.checklist.page[i].items[j].commentaire!=="") { 
                                dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
 							}
                          }
@@ -497,7 +511,7 @@ function runComputation(referentielWCAG) {
                 }
 
                 if (pagesResults[i].items[k].complete === false) {
-                    pagesResults[i].items[k].resultat = "nt";
+                    // pagesResults[i].items[k].resultat = "nt";
                 }
             }
         }
@@ -584,31 +598,20 @@ function runFinalComputation(pagesResultsArray) {
 	let computationContent = '';
 
 	setPageName("Résultat de l'audit");
+	removeContextualMenu();
 	removeFilterSection();
 	
     if (nbNT >= 1) {
         computationContent += '<h2 class="pt-4 pb-3">Conformité globale : <span class="text-primary">audit en cours</span></h2>';
-     
-		computationContent += '<h3>Résultat par pages : </h3>';
-		computationContent += '<ul>';
-		for (let i in pagesResultsArray) {
-			computationContent += '<h4 class="mt-4">' + pagesResultsArray[i].name + ' : </h4>';
-			
-			computationContent += '<ul>';
-			(pagesResultsArray[i].complete === false) ? computationContent += '<li><strong>résultat :</strong> en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s)) </li>' : computationContent += '<li><strong>résultat :</strong> ' + pagesResultsArray[i].result.toFixed(2) + ' % </li>';
-			(pagesResultsArray[i].url!==undefined) ? computationContent += '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>' : '';
-			computationContent += '</ul>';
-		}
 		
-		computationContent += '</ul>';
     } else if (nbNT === 0 && !isNaN(finalResult)) {
         computationContent += '<h2 class="pt-4 pb-3">Conformité globale : <span class="text-primary">' + finalResult + '%</span></h2>';
-		
+	}	
+	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
 		computationContent += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
-		computationContent += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';
+		computationContent += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';	
 		computationContent += '	<li class="nav-item "><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">Liste des non-conformités</a></li>';
-		
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
@@ -619,8 +622,11 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
 			
 			computationContent += '<ul>';
-			(pagesResultsArray[i].complete === false) ? computationContent += '<li><strong>résultat :</strong> en cours (' + nbNTResultsArray['page' + i] + ' non-testé(s)) </li>' : computationContent += '<li><strong>résultat :</strong> ' + pagesResultsArray[i].result.toFixed(2) + ' % </li>';
-			(pagesResultsArray[i].url!==undefined) ? computationContent += '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>' : '';
+			computationContent += '<li><strong>résultat :</strong> ';
+			computationContent += (!isNaN(pagesResultsArray[i].result.toFixed(2))) ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
+			computationContent += (pagesResultsArray[i].complete === false) ?  '(en cours / ' + nbNTResultsArray['page' + i] + ' non-testé(s))' : '';
+			computationContent += '</li>';
+			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
 			computationContent += '</ul>';
 		}
 		
@@ -656,7 +662,10 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeAA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
-			computationContent += '<td class="text-center bg-light">' + pagesResultsArray[i].result.toFixed(2) + ' %</td>';
+			computationContent += '<td class="text-center bg-light">';
+			computationContent += (!isNaN(pagesResultsArray[i].result.toFixed(2))) ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
+			computationContent += (pagesResultsArray[i].complete === false) ?  '(en cours)' : '';	
+			computationContent += '</td>';
 			computationContent += '</tr>';
 			
 		}
@@ -666,25 +675,38 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
 		
-			const listNonConformity = dataWCAG.items.filter(dataWcagComment => dataWcagComment.comment.length > 0);
+			const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
 			
-			for (let i in listNonConformity) {
+			if (listNonConformity.length > 0) {
 				
-				computationContent += '<h3>' + listNonConformity[i].wcag + '</h3>';
+				for (let i in listNonConformity) {
+				
+					computationContent += '<ul>';
+					computationContent += '<li><strong>Critère ' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', niveau ' + listNonConformity[i].level + '</strong>';
+				
+					if (listNonConformity[i].comment.length > 0) {
 
-				computationContent += '<ul>';
-				for (let j in listNonConformity[i].comment) {
-					computationContent += '<li>' + listNonConformity[i].comment[j] + '</li>';
-						
-				}
-				computationContent += '</ul>';
+							computationContent += '<ul>';
+							for (let j in listNonConformity[i].comment) {
+								computationContent += '<li>' + listNonConformity[i].comment[j] + '</li>';	
+							}
+							computationContent += '</ul>';	
+					} 
+					
+					computationContent += '</li>';
+					computationContent += '</ul>';
 		
+				}
+				
+			} else {
+				
+				computationContent += '<p>Absence de non-conformité</p>';
+				
 			}
+			
+			
 		
 		computationContent += '</div>';
-
-			
-    }
 
     htmlMainContent.innerHTML = computationContent;
 }
@@ -714,6 +736,8 @@ initPagination = function (pages) {
 		addPage();
 	}, false);
 
+	initContextualMenu(0, "pageID-0");
+	
 	for (let i in getPages) {
 		let newPage = document.createElement("li");
 		newPage.classList.add("nav-item");
@@ -790,7 +814,8 @@ initNewPage = function (item) {
 	item.commentaire = '';
 }
 
-initComments = function (item) {
+initProperties = function (item) {
+	item.resultat = 'nt';
 	item.comment = [];
 }
 
@@ -798,7 +823,15 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="Modifier le nom de la page" title="Modifier le nom de la page" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
 	htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="Supprimer la page" title="Supprimer la page" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
+	htmlMenu += '<hr class="border-light  w-100">';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
+	
+	
+	btnActionPageEventHandler ();
+}
+
+removeContextualMenu = function () {
+	htmlContextualMenuContent.innerHTML = "";
 }
 
 showPage = function (id) {
@@ -806,22 +839,31 @@ showPage = function (id) {
 		return o.IDPage === id;
 	})
 
-	var currentPageIndex = index;
+	currentPage = index;
 
 	onPageLoaded();
 
-	//initContextualMenu(currentPageIndex, currentPageID);
-	var currentBtnPageName = document.getElementById('btnPageName');
-	currentBtnPageName.dataset.property = "checklist.page." + currentPageIndex + ".name";
-	currentBtnPageName.dataset.secondaryElement = currentPageID;
+	if (!document.getElementById('btnPageName')) {
+		
+		initContextualMenu(currentPage, id);
+		
+	} else {
+		
+		var currentBtnPageName = document.getElementById('btnPageName'); 
+		currentBtnPageName.dataset.property = "checklist.page." + currentPage + ".name";
+		currentBtnPageName.dataset.secondaryElement = id;
 
-	var currentBtnDelPage = document.getElementById('btnDelPage');
-	currentBtnDelPage.dataset.property = "checklist.page." + currentPageIndex;
-	currentBtnDelPage.dataset.pagination = currentPageID;
+		var currentBtnDelPage = document.getElementById('btnDelPage');
+		currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
+		currentBtnDelPage.dataset.pagination = id;
+		
+	}
+	
+	utils.setPageTitle(dataVallydette.checklist.page[currentPage].name);
 	
 	utils.resetActive(document.getElementById("pageManager"));
 
-	utils.setActive(document.getElementById(dataVallydette.checklist.page[currentPageIndex].IDPage));
+	utils.setActive(document.getElementById(dataVallydette.checklist.page[currentPage].IDPage));
 	
 }
 
@@ -1068,6 +1110,8 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 	
 	var feedbackMessage = document.getElementById('modal-alert');
 	feedbackMessage.innerHTML = feedbackHtml;
+	
+	utils.setPageTitle(dataVallydette.checklist.page[currentPage].name);
 	
 	jsonUpdate();
 }
@@ -1365,6 +1409,9 @@ const utils = {
   setActive: function (e) {
 	e.classList.add("active");
 	e.setAttribute("aria-current", "true");
+  },
+  setPageTitle: function (e) {
+	document.title = e + " — Grille Audit Wcag 2.1 d’Orange — La va11ydette";
   }
 	
 }  

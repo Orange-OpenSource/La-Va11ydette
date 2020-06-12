@@ -243,7 +243,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 
 			//if (currentRefTests[i].verifier || currentRefTests[i].exception) {
-				htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
+				htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">Informations supplémentaires</span></button></div>';
 				htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
 
 				if (currentRefTests[i].verifier) {
@@ -615,7 +615,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
-		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
+		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tabResultatPage">';
 		
 		
 		for (let i in pagesResultsArray) {

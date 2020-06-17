@@ -80,12 +80,17 @@
                     </span>
                 </a>
                 <div class="ml-auto" id="importexport">
-                    <button type="button" class="btn btn-inverse btn-link mr-n3"
+                    <button type="button" class="btn btn-inverse btn-link ml-2 mr-n3"
                             data-toggle="collapse" data-target="#import-form"
                             aria-expanded="false" aria-controls="import-form">
                         <span class="icon-modifier-upload" aria-hidden="true"></span>
                         Import
                     </button>
+					 <a href="#" id="export" class="btn btn-inverse btn-link mr-n3 disabled"
+                        disabled aria-disabled="true">
+                    <span class="icon-Modifier-download" aria-hidden="true"></span>
+                    Télécharger
+                </a>
                 </div>
             </div>
             <div class="collapse w-100 border-top border-900" id="import-form">
@@ -116,11 +121,7 @@
                         data-toggle="modal" data-target="#modalResult"
                         id="btnShowResult">Afficher le résultat de l’audit
                 </button>
-                <a href="#" id="export" class="btn btn-primary ml-2 disabled"
-                        disabled aria-disabled="true">
-                    <span class="icon-Modifier-download" aria-hidden="true"></span>
-                    Télécharger
-                </a>
+               
             </div>
 
             <div class="o-nav-local bg-white navbar-light my-3" id="pageManager"></div>

@@ -806,6 +806,8 @@ addPage = function () {
 	//enabled delete button
 	var currentBtnDelPage = document.getElementById('btnDelPage');
 	currentBtnDelPage.disabled = false;
+	
+	showPage(currentIdPage);
 }
 
 initNewPage = function (item) {
@@ -864,6 +866,8 @@ showPage = function (id) {
 	utils.resetActive(document.getElementById("pageManager"));
 
 	utils.setActive(document.getElementById(dataVallydette.checklist.page[currentPage].IDPage));
+	
+	utils.putTheFocus(document.getElementById("pageName"));
 	
 }
 

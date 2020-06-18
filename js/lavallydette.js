@@ -249,21 +249,21 @@ runTestListMarkup = function (currentRefTests) {
 
 			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 
-			//if (currentRefTests[i].verifier || currentRefTests[i].exception) {
-				htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"><span class="sr-only">Informations supplémentaires</span></button></div>';
-				htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
+			
+			htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">Informations supplémentaires</span></button></div>';
+			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
 
-				if (currentRefTests[i].verifier) {
-					htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
-					htmlrefTests += currentRefTests[i].verifier;
-					htmlrefTests += currentRefTests[i].complement;
-				}
+			if (currentRefTests[i].verifier) {
+				htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
+				htmlrefTests += currentRefTests[i].verifier;
+				htmlrefTests += currentRefTests[i].complement;
+			}
 
-				if (currentRefTests[i].exception) {
-					htmlrefTests += '<h4 class="h5">Exceptions</h4>';
-					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
-				}
-			//}
+			if (currentRefTests[i].exception) {
+				htmlrefTests += '<h4 class="h5">Exceptions</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
+			}
+			
 
 			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
 			for (let j in currentRefTests[i].wcag) {
@@ -616,13 +616,13 @@ function runFinalComputation(pagesResultsArray) {
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
-		computationContent += '	<li class="nav-item"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
-		computationContent += '	<li class="nav-item "><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';	
-		computationContent += '	<li class="nav-item "><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">Liste des non-conformités</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">Liste des non-conformités</a></li>';
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
-		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tab456843">';
+		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tabResultatPage">';
 		
 		
 		for (let i in pagesResultsArray) {
@@ -813,6 +813,8 @@ addPage = function () {
 	//enabled delete button
 	var currentBtnDelPage = document.getElementById('btnDelPage');
 	currentBtnDelPage.disabled = false;
+	
+	showPage(currentIdPage);
 }
 
 initNewPage = function (item) {
@@ -832,7 +834,6 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="Supprimer la page" title="Supprimer la page" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
 	htmlMenu += '<hr class="border-light  w-100">';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
-	
 	
 	btnActionPageEventHandler ();
 }
@@ -871,6 +872,8 @@ showPage = function (id) {
 	utils.resetActive(document.getElementById("pageManager"));
 
 	utils.setActive(document.getElementById(dataVallydette.checklist.page[currentPage].IDPage));
+	
+	utils.putTheFocus(document.getElementById("pageName"));
 	
 }
 
@@ -1185,6 +1188,8 @@ setComment = function (targetId, title) {
 	
 	utils.putTheFocus(document.getElementById('comment' + targetId));
 
+	
+	
 }
 
 addComment = function (targetId, newComment) {

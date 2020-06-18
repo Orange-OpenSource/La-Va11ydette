@@ -17,13 +17,17 @@ var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 
 dataThemes = {
-	"themes": [{
-		"name": "Captcha",
-		"idTests": ['testID-014', 'testID-015']
-			
-		}]
+		"Captcha": {
+			"idTests": ['testID-014', 'testID-015'],
+			"checked": true
+		},
+		
+		"Formulaire": {
+			"idTests": ['testID-001'],
+			"checked": true
+}};
 
-	}
+
 	
 /**
  * Vallydette object
@@ -32,6 +36,7 @@ function initVallydetteApp (criteriaListName) {
 	currentCriteriaListName = criteriaListName;
 	createObjectAndRunVallydette();
 }
+
 function createObjectAndRunVallydette() {
 
 	dataVallydette = {
@@ -40,6 +45,16 @@ function createObjectAndRunVallydette() {
 		"page": [{
 				"IDPage": "pageID-0",
 				"name": "Nom de la page",
+				"themes" : {
+						"Captcha": {
+							"idTests": ['testID-014', 'testID-015'],
+							"checked": true
+						},
+						
+						"Formulaire": {
+							"idTests": ['testID-001'],
+							"checked": true
+					}}, 
 				"items": []
 			}
 		]
@@ -430,9 +445,121 @@ runTestListMarkup = function (currentRefTests) {
 }
 
 
+/**
+ * themes manager
+ 
+ 
+ 
+ dataThemes = [
+		{
+		"Captcha": {
+			"idTests": ['testID-014', 'testID-015'],
+			"checked": false
+		},
+		{
+		"Formulaire": {
+			"idTests": ['testID-001'],
+			"checked": false
+		}
+]
+ 
+ */
+ 
+
+function initThemes() {
+	
+	htmlThemes = "";
+	
+	for (var themeItem in dataVallydette.checklist.page[currentPage].themes)  {
+		htmlThemes += '<label for="' + themeItem + '">' + themeItem + '</label><input type="checkbox" id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].themes[themeItem].checked ? "checked" : "") + ' /> ';
+	};
+	
+	htlmThemesMarker = document.getElementById("themeManager");
+	htlmThemesMarker.innerHTML = htmlThemes;
+   	
+}
+
+
+function getThemes() {
+	
+	themeIsUpdated = false;
+	
+	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+		
+		if (document.getElementById(themeItem).checked !== dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+			themeIsUpdated = true;
+			dataVallydette.checklist.page[currentPage].themes[themeItem].checked = document.getElementById(themeItem).checked;
+		
+		}
+	}
+	
+	if (themeIsUpdated) {
+		applyThemes();
+	}
+	
+}
+
+
+function applyThemes() {
+	
+	var radioToUpdate;
+	var testValue;
+	
+	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+		
+		dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
+			
+			dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
+	
+			
+				if (themeIdTest === itemTest.IDorigin) {
+						
+					const radioButtons = document.getElementsByName("test"+index);
+					
+					if (dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+			
+						testValue = "nt";
+						
+						radioButtons.forEach(function(button) {
+							button.disabled=false;
+							button.classList.remove("disabled");
+						});
+						
+					} else {
+						testValue = "na";
+	
+						radioButtons.forEach(function(button) {
+							button.disabled=true;
+							button.classList.add("disabled");
+						});
+												
+					}
+					
+					//test if not null in case of activated filter
+					radioToUpdate = document.getElementById(testValue+index);
+					
+					
+					if (radioToUpdate!==null) {
+						radioToUpdate.checked = true;
+						setStates(radioToUpdate, itemTest.ID);
+					} else {
+						dataVallydette.checklist.page[currentPage].items[index].resultatTest = testValue;
+					}
+					
+				
+				}
+			
+			}); 	
+			
+		}); 
+		
+	}	
+	
+}
+
 
 /**
- * Computation
+ * Computation manager
  */
  
  
@@ -790,6 +917,9 @@ addPage = function () {
 	dataVallydette.checklist.page[indexPage].url = "";
 	dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
 
+	initNewThemes(indexPage);
+	
+	
 	jsonStr = JSON.stringify(dataVallydette);
 
 	//display pagination
@@ -821,6 +951,12 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
+}
+
+initNewThemes = function () {
+	for (var themeItem in dataVallydette.checklist.page[indexPage].themes)  {
+		dataVallydette.checklist.page[indexPage].themes[themeItem].checked = true;
+	};
 }
 
 initProperties = function (item) {
@@ -1040,6 +1176,8 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		htmlModal += '<label  for="urlValue">URL</label>';
 		htmlModal += '<input type="text" class="form-control" id="urlValue" placeholder="URL" value="' + getPropertyValue("checklist.page." + currentPage + ".url") + '">';
 		htmlModal += '</div>';
+		htmlModal += '<div id="themeManager" class="form-group">';
+		htmlModal += '</div>';
 	}
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
@@ -1051,7 +1189,10 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	
+	if (targetElement === "pageName") {
+		initThemes();
+	}
+
     var currentEditForm = document.getElementById('editForm');
  
 	currentEditForm.addEventListener('submit', function () {
@@ -1062,10 +1203,14 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		
 		if (targetElement === "pageName") {
 			var propertyUrl = document.getElementById("urlValue");
-			arrayPropertyValue[1] = propertyUrl.value;	
+			arrayPropertyValue[1] = propertyUrl.value;
+			
+			getThemes();
+			
 		}
 		
 		updateProperty(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement);
+		
 	});
 
 }

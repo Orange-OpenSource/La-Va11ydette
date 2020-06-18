@@ -16,7 +16,14 @@ var currentCriteriaListName;
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 
+dataThemes = {
+	"themes": [{
+		"name": "Captcha",
+		"idTests": ['testID-014', 'testID-015']
+			
+		}]
 
+	}
 	
 /**
  * Vallydette object

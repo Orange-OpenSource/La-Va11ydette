@@ -420,7 +420,6 @@ runTestListMarkup = function (currentRefTests) {
 		}
 	}
 
-	// Affichage de l'ensemble des lignes en HTML
 	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
 
 	// Event Handler
@@ -441,7 +440,7 @@ runTestListMarkup = function (currentRefTests) {
 		}, false);
 	}
 	
-
+	applyDisabledThemes();
 }
 
 
@@ -498,6 +497,47 @@ function getThemes() {
 	}
 	
 }
+
+function applyDisabledThemes() {
+		
+	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+		
+		if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+		console.log(themeItem);
+			dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
+			
+				dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
+					console.log("itemTest");
+					if (themeIdTest === itemTest.IDorigin) {
+						
+						const radioButtons = document.getElementsByName("test"+index);
+						
+						if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+
+							radioButtons.forEach(function(button) {
+								button.disabled=true;
+								button.classList.add("disabled");
+							});
+													
+						}
+						
+						return true;
+				
+					}
+					
+					return false;
+					
+				});
+			
+			});
+									
+		}
+		
+	}
+	
+}
+
+
 
 
 function applyThemes() {

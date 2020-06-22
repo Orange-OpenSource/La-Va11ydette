@@ -52,7 +52,12 @@ function createObjectAndRunVallydette() {
 						},
 						
 						"Formulaire": {
-							"idTests": ['testID-001'],
+							"idTests": ['testID-001', 'testID-002', 'testID-003', 'testID-004', 'testID-005', 'testID-012', 'testID-006', 'testID-007', 'testID-008', 'testID-009'],
+							"checked": true,
+						},
+						
+						"Multimedia": {
+							"idTests": ['testID-052', 'testID-053', 'testID-055', 'testID-057', 'testID-054', 'testID-056', 'testID-063'],
 							"checked": true
 					}}, 
 				"items": []
@@ -252,14 +257,14 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + i + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			// @todo à remplacer par un for sur arrayFilterNameAndValue
 
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme' + i + '" class="custom-control-label">Conforme</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme' + i + '" class="custom-control-label">Non conforme</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na' + i + '" class="custom-control-label">N/A</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt' + i + '" class="custom-control-label">Non testé</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">Conforme</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">Non conforme</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">N/A</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">Non testé</label></li>';
 			htmlrefTests += '</ul>';
 
 			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
@@ -425,11 +430,11 @@ runTestListMarkup = function (currentRefTests) {
 	// Event Handler
 	for (let i in currentRefTests) {
 		//radio
-		var radios = document.getElementsByName("test" + i);
+		var radios = document.getElementsByName("test-" + currentRefTests[i].ID);
 		var nodeArray = [];
 		for (var j = 0; j < radios.length; ++j) {
 			radios[j].addEventListener('click', function () {
-				setStates(this, currentRefTests[i].ID)
+				setStates(this, currentRefTests[i].ID);
 			}, false);
 		}
 
@@ -468,10 +473,12 @@ runTestListMarkup = function (currentRefTests) {
 function initThemes() {
 	
 	htmlThemes = "";
-	
+	htmlThemes = "<h6>Pré-qualification</h6>";
+	htmlThemes += "<ul class=\"list-inline m-0\">";
 	for (var themeItem in dataVallydette.checklist.page[currentPage].themes)  {
-		htmlThemes += '<label for="' + themeItem + '">' + themeItem + '</label><input type="checkbox" id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].themes[themeItem].checked ? "checked" : "") + ' /> ';
+		htmlThemes += '<li class="custom-control custom-checkbox custom-control-inline mb-0"><input type="checkbox"  class="custom-control-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].themes[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="custom-control-label">' + themeItem + '</label></li>';
 	};
+	htmlThemes += "</ul>";
 	
 	htlmThemesMarker = document.getElementById("themeManager");
 	htlmThemesMarker.innerHTML = htmlThemes;
@@ -507,10 +514,10 @@ function applyDisabledThemes() {
 			dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
 			
 				dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
-					console.log("itemTest");
+					
 					if (themeIdTest === itemTest.IDorigin) {
 						
-						const radioButtons = document.getElementsByName("test"+index);
+						const radioButtons = document.getElementsByName("test-"+itemTest.ID);
 						
 						if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
 
@@ -554,7 +561,7 @@ function applyThemes() {
 			
 				if (themeIdTest === itemTest.IDorigin) {
 						
-					const radioButtons = document.getElementsByName("test"+index);
+					const radioButtons = document.getElementsByName("test-"+itemTest.ID);
 					
 					if (dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
 			
@@ -576,7 +583,7 @@ function applyThemes() {
 					}
 					
 					//test if not null in case of activated filter
-					radioToUpdate = document.getElementById(testValue+index);
+					radioToUpdate = document.getElementById(testValue+"-"+itemTest.ID);
 					
 					
 					if (radioToUpdate!==null) {

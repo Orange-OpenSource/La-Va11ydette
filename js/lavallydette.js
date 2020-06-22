@@ -801,10 +801,10 @@ function runFinalComputation(pagesResultsArray) {
 		
 		for (let i in pagesResultsArray) {
 			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
-			
+			console.log(pagesResultsArray[0].result);
 			computationContent += '<ul>';
 			computationContent += '<li><strong>résultat :</strong> ';
-			computationContent += (!isNaN(pagesResultsArray[i].result.toFixed(2))) ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
+			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(en cours / ' + nbNTResultsArray['page' + i] + ' non-testé(s))' : '';
 			computationContent += '</li>';
 			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
@@ -844,7 +844,7 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
 			computationContent += '<td class="text-center bg-light">';
-			computationContent += (!isNaN(pagesResultsArray[i].result.toFixed(2))) ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
+			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(en cours)' : '';	
 			computationContent += '</td>';
 			computationContent += '</tr>';

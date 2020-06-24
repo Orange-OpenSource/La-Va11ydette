@@ -16,19 +16,6 @@ var currentCriteriaListName;
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 
-dataThemes = {
-		"Captcha": {
-			"idTests": ['testID-014', 'testID-015'],
-			"checked": true
-		},
-		
-		"Formulaire": {
-			"idTests": ['testID-001'],
-			"checked": true
-}};
-
-
-	
 /**
  * Vallydette object
  */
@@ -58,6 +45,11 @@ function createObjectAndRunVallydette() {
 						
 						"Multimedia": {
 							"idTests": ['testID-052', 'testID-053', 'testID-055', 'testID-057', 'testID-054', 'testID-056', 'testID-063'],
+							"checked": true
+						},
+						
+						"Tactile": {
+							"idTests": ['testID-047', 'testID-049', 'testID-050'],
 							"checked": true
 					}}, 
 				"items": []
@@ -473,7 +465,7 @@ runTestListMarkup = function (currentRefTests) {
 function initThemes() {
 	
 	htmlThemes = "";
-	htmlThemes = "<h6>Pré-qualification</h6>";
+	htmlThemes = "<h6>Cette page possède : </h6>";
 	htmlThemes += "<ul class=\"list-inline m-0\">";
 	for (var themeItem in dataVallydette.checklist.page[currentPage].themes)  {
 		htmlThemes += '<li class="custom-control custom-checkbox custom-control-inline mb-0"><input type="checkbox"  class="custom-control-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].themes[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="custom-control-label">' + themeItem + '</label></li>';

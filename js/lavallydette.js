@@ -1,7 +1,6 @@
 $('#docs-navbar').navbar({sticky: true, hideSupra: true});
 $('.o-nav-local').prioritynav('Autres pages');
 
-
 /**
  * Global vars
  */
@@ -261,7 +260,6 @@ runTestListMarkup = function (currentRefTests) {
 
 			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 
-			
 			htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">Informations supplémentaires</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
 
@@ -443,22 +441,6 @@ runTestListMarkup = function (currentRefTests) {
 
 /**
  * themes manager
- 
- 
- 
- dataThemes = [
-		{
-		"Captcha": {
-			"idTests": ['testID-014', 'testID-015'],
-			"checked": false
-		},
-		{
-		"Formulaire": {
-			"idTests": ['testID-001'],
-			"checked": false
-		}
-]
- 
  */
  
 
@@ -1224,7 +1206,6 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">Enregistrer</button>';
 	htmlModal += '</div></form></div></div></div>';
 			
-	// Parent element
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
@@ -1250,6 +1231,11 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		
 		updateProperty(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement);
 		
+	});
+	
+	var name = document.getElementById('nameValue');
+	$('.modal').on('shown.bs.modal', function (event) {
+		name.focus()
 	});
 
 }
@@ -1352,27 +1338,27 @@ setComment = function (targetId, title) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title" autofocus>' + getComment(targetId) + '</textarea>';
+	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
 	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
 	htmlModal += '</div></div></div></div>';
 
-	// Parent element
+
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	// Event handler
 	var commentSave = document.getElementById("commentSaveBtn");
-	var comment = document.getElementById('comment' + targetId);
 	commentSave.addEventListener('click', function () {
 		addComment(targetId, comment.value)
 	});
 	
-	utils.putTheFocus(document.getElementById('comment' + targetId));
+	var comment = document.getElementById('comment' + targetId);
+	$('.modal').on('shown.bs.modal', function (event) {
+		comment.focus()
+	});
 
-	
 	
 }
 

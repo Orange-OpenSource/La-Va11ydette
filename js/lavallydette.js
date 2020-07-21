@@ -1355,10 +1355,10 @@ setComment = function (targetId, title) {
 	});
 	
 	var comment = document.getElementById('comment' + targetId);
-	$('.modal').on('shown.bs.modal', function (event) {
+
+	elModal.addEventListener('shown.bs.modal', function(event){
 		comment.focus()
 	});
-
 	
 }
 

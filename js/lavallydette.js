@@ -3,6 +3,15 @@ $('.o-nav-local').prioritynav('Autres pages');
 
 /**
  * Global vars
+ * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
+ * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
+ * @param {number} currentPage - Current page indice, updated each time user move to another page.
+ * @param {string} statutClass - Default class used by the html element displaying a test result.
+ * @param {array} arrayFilterNameAndValue - Initialization of filter labels and values.
+ * @param {array} arrayFilterActivated - Array that contains all the activated filters from the frontend component menu.
+ * @param {string} currentCriteriaListName - Selected checklist json file name.
+ * @param {object} htmlContextualMenuContent - Contextual page menu (edit page name, delete a page).
+ * @param {object} htmlFilterContent - Test filter menu.
  */
 var dataVallydette;
 var dataWCAG;
@@ -14,15 +23,23 @@ var currentCriteriaListName;
 
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
-
+	
 /**
  * Vallydette object
+ */
+ 
+/**
+ * Update global var currentCriteriaListName with the selected checklist json file name, and run the dataVallydette object completion
+ * @param {string} criteriaListName - Selected checklist json file name.
  */
 function initVallydetteApp (criteriaListName) {
 	currentCriteriaListName = criteriaListName;
 	createObjectAndRunVallydette();
 }
 
+/**
+ * Init the dataVallydette object and download the selected checklist json file
+ */
 function createObjectAndRunVallydette() {
 
 	dataVallydette = {
@@ -93,8 +110,13 @@ function createObjectAndRunVallydette() {
 	  } 
 	};
 	criteriaRequest.send();
+	
+
 }
 
+/**
+ *  update the dataVallydette object with the selected checklist object (ie the wcag ease object)
+ */
 function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
     dataVallydette.checklist.referentiel = currentCriteriaListName;
@@ -103,6 +125,10 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	runVallydetteApp();
 }
 
+/**
+ *  update the dataVallydette object with the selected checklist object.
+	Run some specific processing to fit the rgaa object to the vallydette object.
+ */
 function importRGAA(dataVallydette, dataRGAA) {
     dataVallydette.checklist.name = "Audit RGAA 4";
     dataVallydette.checklist.referentiel = "RGAA";
@@ -155,6 +181,10 @@ function importRGAA(dataVallydette, dataRGAA) {
     runVallydetteApp();
 }
 
+/**
+ *  Once the vallydette object is ready, the vallydette app can be run :
+	Initialization of some string var and run multiple init functions.
+ */
 function runVallydetteApp() {
    	
 	currentPage = 0;
@@ -184,6 +214,9 @@ function runVallydetteApp() {
 	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
 }
 
+/**
+ *  Initialization of events for import button, and checklist name edition button.
+ */
 function eventHandler() {
 
 	var btnImport = document.getElementById('import');
@@ -208,6 +241,10 @@ function eventHandler() {
 	
 }
 
+/**
+ *  Initialization of events for page name edit button and page delete button.
+	This function is running each time the user move to a new page 
+ */
 function btnActionPageEventHandler () {
 	
 	var currentBtnPageName = document.getElementById('btnPageName');
@@ -224,6 +261,11 @@ function btnActionPageEventHandler () {
 	
 }
 
+
+/**
+ *  Run the HTML marker for the tests list.
+  * @param {object} currentRefTests - Dynamic version of the vallydette object. Which means that it can be dynamically updated by the filters options.
+ */
 runTestListMarkup = function (currentRefTests) {
 
 	let elrefTests = document.getElementById('mainContent');
@@ -232,9 +274,11 @@ runTestListMarkup = function (currentRefTests) {
 	let headingCriterium = '';
 	let nextIndex = 1;
 
+	/** 'wcagEase' value correspond to the conformity checklist */
 	if (currentCriteriaListName === 'wcagEase') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		
+		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
 			var currentTest = currentRefTests[i].ID;
 			if (headingTheme != currentRefTests[i].themes) {
@@ -249,8 +293,7 @@ runTestListMarkup = function (currentRefTests) {
 			}
 
 			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
-			// @todo à remplacer par un for sur arrayFilterNameAndValue
-
+			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">Conforme</label></li>';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">Non conforme</label></li>';
@@ -284,23 +327,25 @@ runTestListMarkup = function (currentRefTests) {
 
 			htmlrefTests += '</article>';
 		}
+		
+		/** 'rgaa' value correspond to the RGGA4 checklist */
 	} else if (currentCriteriaListName === 'RGAA') {
-		//test configuration rendu MARKED
-		// Get reference
+		/** marked library is used to render md from RGAA json */
 		const renderer = new marked.Renderer();
 		marked.setOptions({
 			renderer: renderer
 		});
 
-		// Override function link(string href, string title, string text)
+		/** Override function link(string href, string title, string text) */
 		renderer.link = function (href, title, text) {
 			return text;
 		};
 		renderer.paragraph = function (text) {
 			return text;
 		};
-		// fin test marked
+		/** end of marked configuration */
 
+		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
 			if (headingTheme != currentRefTests[i].themes) {
 				headingTheme = currentRefTests[i].themes;
@@ -349,7 +394,6 @@ runTestListMarkup = function (currentRefTests) {
 				}
 
 				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
-				//à remplacer par un for sur arrayFilterNameAndValue
 
 				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 
@@ -364,7 +408,10 @@ runTestListMarkup = function (currentRefTests) {
 			}
 		}
 	} else {
-		//on boucle dans le tableau passé en paramètre de la fonction
+		/** 
+			*	default template, was used with the vallydette first version.
+			*	@todo Need to be uptaded or removed.
+		*/
 		for (let i in currentRefTests) {
 			if (headingTheme != currentRefTests[i].themes) {
 				headingTheme = currentRefTests[i].themes;
@@ -419,7 +466,7 @@ runTestListMarkup = function (currentRefTests) {
 
 	// Event Handler
 	for (let i in currentRefTests) {
-		//radio
+	
 		var radios = document.getElementsByName("test-" + currentRefTests[i].ID);
 		var nodeArray = [];
 		for (var j = 0; j < radios.length; ++j) {
@@ -441,9 +488,15 @@ runTestListMarkup = function (currentRefTests) {
 
 /**
  * themes manager
+ * Actually 'themes' are : captcha, form, multimedia, mobile
+ * Each theme own multiple tests
+ * If a theme is disabled by the user, then all of his tests pass to N/A
  */
  
-
+ 
+ /**
+ * Initialization of theme markdown
+ */
 function initThemes() {
 	
 	htmlThemes = "";
@@ -459,7 +512,10 @@ function initThemes() {
    	
 }
 
-
+ /**
+	* Get the themes checkboxes value from a page edition form, to determine if a theme has been updated or not.
+	* If true, then applyThemes is launched.
+ */
 function getThemes() {
 	
 	themeIsUpdated = false;
@@ -479,48 +535,9 @@ function getThemes() {
 	
 }
 
-function applyDisabledThemes() {
-		
-	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
-		
-		if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
-		console.log(themeItem);
-			dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
-			
-				dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
-					
-					if (themeIdTest === itemTest.IDorigin) {
-						
-						const radioButtons = document.getElementsByName("test-"+itemTest.ID);
-						
-						if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
-
-							radioButtons.forEach(function(button) {
-								button.disabled=true;
-								button.classList.add("disabled");
-							});
-													
-						}
-						
-						return true;
-				
-					}
-					
-					return false;
-					
-				});
-			
-			});
-									
-		}
-		
-	}
-	
-}
-
-
-
-
+ /**
+	* Update the tests value from current themes selection
+ */
 function applyThemes() {
 	
 	var radioToUpdate;
@@ -556,7 +573,7 @@ function applyThemes() {
 												
 					}
 					
-					//test if not null in case of activated filter
+					 /** testing if not null in case of an activated filter */
 					radioToUpdate = document.getElementById(testValue+"-"+itemTest.ID);
 					
 					
@@ -579,11 +596,58 @@ function applyThemes() {
 }
 
 
+ /**
+	* If a theme is unchecked then we applied a disabled style to the entire tests on the frontend component
+ */
+function applyDisabledThemes() {
+		
+	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+		
+		if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+	
+			dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
+			
+				dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
+					
+					if (themeIdTest === itemTest.IDorigin) {
+						
+						const radioButtons = document.getElementsByName("test-"+itemTest.ID);
+						
+						if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+
+							radioButtons.forEach(function(button) {
+								button.disabled=true;
+								button.classList.add("disabled");
+							});
+													
+						}
+						
+						return true;
+				
+					}
+					
+					return false;
+					
+				});
+			
+			});
+									
+		}
+		
+	}
+	
+}
+
+
 /**
  * Computation manager
- */
- 
- 
+ * Conformity computation functions
+*/
+
+/**
+ * Computation initialization. The dataWcag object is downloaded.
+ * @todo dynamically build this object directly from the vallydette object
+*/
 function initComputation() {
 
 	var matriceRequest = new XMLHttpRequest();
@@ -609,8 +673,15 @@ function initComputation() {
 	
 }
 
-function runComputation(referentielWCAG) {
+/**
+ * Pass through both dataVallydette et dataWCAG to build the pageResults array, which contains the wcag results for each pages.
+ *  @return {array} pagesResults - Contains all wcag results by pages.
+*/
+function runComputation() {
 
+	/**
+	* @param {array} pagesResults - Contains all wcag results by pages.
+	*/
     pagesResults = [];
 	dataWCAG.items.forEach(initProperties);
 	
@@ -628,8 +699,13 @@ function runComputation(referentielWCAG) {
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
 			
-
+			/**
+			* Pass through each test of a wcag.
+			*/
             for (let l in dataWCAG.items[k].tests) {
+				/**
+				* Gets each test value, and update the current wcag rules, basing on computation rules.
+				*/
                 for (let j in dataVallydette.checklist.page[i].items) {
 					
                     if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
@@ -665,9 +741,9 @@ function runComputation(referentielWCAG) {
                     }
                 }
 
-                if (pagesResults[i].items[k].complete === false) {
+                //if (pagesResults[i].items[k].complete === false) {
                     // pagesResults[i].items[k].resultat = "nt";
-                }
+                //}
             }
         }
     }
@@ -675,8 +751,19 @@ function runComputation(referentielWCAG) {
     return runFinalComputation(pagesResults);
 }
 
+/**
+ * 	Computes the conformity rate by pages and the final audit conformity rate (average rate).
+ *	Computes the wcag summary table (conformity, non-conformity and non-applicable tests by wcag levels).
+ *	Builds the non-conformity list
+ *	Builds the audit result markup.
+ *  @param {array} pagesResultsArray - Contains all wcag results by pages.
+*/
 function runFinalComputation(pagesResultsArray) {
-    
+  
+	/**
+	 * 	Gets the number of non-tested items.
+	 @param {number} nbNT - number of non-tested items.
+	*/  
     nbNTResultsArray = utils.getNbNotTested();
 
     var nbNT = nbNTResultsArray.total;
@@ -699,6 +786,10 @@ function runFinalComputation(pagesResultsArray) {
 		var nbTotalA = 0;
 		var nbTotalAA = 0;
 
+		/**
+		 * 	Gets the number of true, false, non-applicable and non-tested by wcag level.
+		 *  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
+		*/  
 		for (let j in pagesResultsArray[i].items) {
 			if (pagesResultsArray[i].items[j].resultat === true) {
 				nbTrue++;
@@ -722,13 +813,16 @@ function runFinalComputation(pagesResultsArray) {
 			}
 		}
 
-		//pour le cas où tous les tests d'une page sont non-applicables
+		/**
+		 * 	If all the tests of a page are non-applicables (hypothetical but tested)
+		*/  
 		if (nbTotal===0 && nbNA>0) {
 			pagesResultsArray[i].result = "NA";
 		} else {
 			pagesResultsArray[i].result = (nbTrue / nbTotal) * 100;
 		}
 
+		/** Adds the result to the pages result array. */  
 		pagesResultsArray[i].conformeA = nbTrueA;
 		pagesResultsArray[i].conformeAA = nbTrueAA;
 		pagesResultsArray[i].nonconformeA = nbFalseA;
@@ -739,6 +833,7 @@ function runFinalComputation(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
 	}
 
+	/** Adds the result to the pages result array. */  
     for (let i in pagesResultsArray) {
         if (pagesResultsArray[i].result != "NA") {
             finalTotal = finalTotal + pagesResultsArray[i].result;
@@ -746,9 +841,10 @@ function runFinalComputation(pagesResultsArray) {
         }
     }
 
+	/** Final conformity rate. */ 
     finalResult = Math.round((finalTotal / nbPage));
 
-   
+    /** Gets the mainContent and build the audit conformity markup. */ 
     let htmlMainContent = document.getElementById('mainContent');
 	let computationContent = '';
 
@@ -775,7 +871,7 @@ function runFinalComputation(pagesResultsArray) {
 		
 		for (let i in pagesResultsArray) {
 			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
-			console.log(pagesResultsArray[0].result);
+			
 			computationContent += '<ul>';
 			computationContent += '<li><strong>résultat :</strong> ';
 			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
@@ -784,7 +880,6 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
 			computationContent += '</ul>';
 		}
-		
 		
 		computationContent += '  </div>';
 		computationContent += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
@@ -830,6 +925,10 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
 		
+			/** 
+				*	Display the non-conformity list.
+				*	@param {object} listNonConformity - object of the falses wcag rules.
+			*/ 	
 			const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
 			
 			if (listNonConformity.length > 0) {
@@ -869,10 +968,15 @@ function runFinalComputation(pagesResultsArray) {
 
 /**
  * Multipage manager
- */
+*/
+
+/**
+ * Initialization of the pagination menu.
+ @param {object} pages - pages from dataVallydette
+*/
 
 initPagination = function (pages) {
-	var getPages = pages.page;
+	var allPages = pages.page;
 
 	var pageElement = document.getElementById("pageManager");
 	pageElement.innerHTML = "<div class='container'><ul class='nav'></ul></div>";
@@ -893,14 +997,14 @@ initPagination = function (pages) {
 
 	initContextualMenu(0, "pageID-0");
 	
-	for (let i in getPages) {
+	for (let i in allPages) {
 		let newPage = document.createElement("li");
 		newPage.classList.add("nav-item");
 
 		let newBtnPage = document.createElement("button");
 
-		newBtnPage.innerHTML = getPages[i].name;
-		newBtnPage.setAttribute('id', getPages[i].IDPage);
+		newBtnPage.innerHTML = allPages[i].name;
+		newBtnPage.setAttribute('id', allPages[i].IDPage);
 		newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 		if (i === 0) {
 			utils.setActive(newBtnPage);
@@ -908,13 +1012,13 @@ initPagination = function (pages) {
 		newPage.appendChild(newBtnPage);
 		pageElement.querySelector(".nav").appendChild(newPage);
 
-		let thisNewBtn = document.getElementById(getPages[i].IDPage);
+		let thisNewBtn = document.getElementById(allPages[i].IDPage);
 		thisNewBtn.addEventListener('click', function () {
 			showPage(thisNewBtn.id)
 		}, false);
 
 		let btnDelPage = document.getElementById("btnDelPage");
-		getPages.length > 1 ? btnDelPage.disabled = false : btnDelPage.disabled = true;
+		allPages.length > 1 ? btnDelPage.disabled = false : btnDelPage.disabled = true;
 	}
 }
 

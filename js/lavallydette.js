@@ -5,7 +5,8 @@ $('.o-nav-local').prioritynav('Autres pages');
  * Global vars
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
- * @param {number} currentPage - Current page indice, updated each time user move to another page.
+ * @param {number} checklistVersion - Contains the last checklist version
+ * @param {number} currentPage - Current page index, updated each time user move to another page.
  * @param {string} statutClass - Default class used by the html element displaying a test result.
  * @param {array} arrayFilterNameAndValue - Initialization of filter labels and values.
  * @param {array} arrayFilterActivated - Array that contains all the activated filters from the frontend component menu.
@@ -15,6 +16,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  */
 var dataVallydette;
 var dataWCAG;
+var checklistVersion;
 var	currentPage = 0;
 var statutClass = "badge-light";
 var arrayFilterNameAndValue = [];	
@@ -44,30 +46,10 @@ function createObjectAndRunVallydette() {
 
 	dataVallydette = {
 	"checklist": {
-		"name": "Audit WCAG 2.1",
+		"name": "",
 		"page": [{
 				"IDPage": "pageID-0",
 				"name": "Nom de la page",
-				"themes" : {
-						"Captcha": {
-							"idTests": ['testID-014', 'testID-015'],
-							"checked": true
-						},
-						
-						"Formulaire": {
-							"idTests": ['testID-001', 'testID-002', 'testID-003', 'testID-004', 'testID-005', 'testID-012', 'testID-006', 'testID-007', 'testID-008', 'testID-009'],
-							"checked": true,
-						},
-						
-						"Multimedia": {
-							"idTests": ['testID-052', 'testID-053', 'testID-055', 'testID-057', 'testID-054', 'testID-056', 'testID-063'],
-							"checked": true
-						},
-						
-						"Tactile": {
-							"idTests": ['testID-047', 'testID-049', 'testID-050'],
-							"checked": true
-					}}, 
 				"items": []
 			}
 		]
@@ -120,8 +102,29 @@ function createObjectAndRunVallydette() {
 function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
     dataVallydette.checklist.referentiel = currentCriteriaListName;
+	dataVallydette.checklist.page[0].themes = {
+						"Captcha": {
+							"idTests": ['testID-014', 'testID-015'],
+							"checked": true
+						},
+						
+						"Formulaire": {
+							"idTests": ['testID-001', 'testID-002', 'testID-003', 'testID-004', 'testID-005', 'testID-012', 'testID-006', 'testID-007', 'testID-008', 'testID-009'],
+							"checked": true,
+						},
+						
+						"Multimedia": {
+							"idTests": ['testID-052', 'testID-053', 'testID-055', 'testID-057', 'testID-054', 'testID-056', 'testID-063'],
+							"checked": true
+						},
+						
+						"Tactile": {
+							"idTests": ['testID-047', 'testID-049', 'testID-050'],
+							"checked": true
+					}};
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
-	
+	dataVallydette.checklist.version = criteriaVallydette.version;
+	checklistVersion = criteriaVallydette.version;
 	runVallydetteApp();
 }
 
@@ -277,6 +280,7 @@ runTestListMarkup = function (currentRefTests) {
 	/** 'wcagEase' value correspond to the conformity checklist */
 	if (currentCriteriaListName === 'wcagEase') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
+		checkTheVersion(dataVallydette.checklist.version);
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -328,7 +332,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '</article>';
 		}
 		
-		/** 'rgaa' value correspond to the RGGA4 checklist */
+	/** 'rgaa' value correspond to the RGGA4 checklist */
 	} else if (currentCriteriaListName === 'RGAA') {
 		/** marked library is used to render md from RGAA json */
 		const renderer = new marked.Renderer();
@@ -418,7 +422,6 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
 			}
 			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
-			// @todo à remplacer par un for sur arrayFilterNameAndValue
 
 			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 			htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
@@ -464,7 +467,8 @@ runTestListMarkup = function (currentRefTests) {
 
 	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
 
-	// Event Handler
+	 
+	/** event handler */
 	for (let i in currentRefTests) {
 	
 		var radios = document.getElementsByName("test-" + currentRefTests[i].ID);
@@ -489,13 +493,13 @@ runTestListMarkup = function (currentRefTests) {
 /**
  * themes manager
  * Actually 'themes' are : captcha, form, multimedia, mobile
- * Each theme own multiple tests
- * If a theme is disabled by the user, then all of his tests pass to N/A
+ * Each theme own multiple tests.
+ * If a theme is disabled by the user, then all of his tests are passed to N/A.
  */
  
  
  /**
- * Initialization of theme markdown
+ * Initialization of theme markup.
  */
 function initThemes() {
 	
@@ -638,6 +642,28 @@ function applyDisabledThemes() {
 	
 }
 
+/**
+ * Compares the current checklist version to the last version
+ * @param {number} currentChecklistVersion
+*/
+function checkTheVersion(currentChecklistVersion) {
+	
+	if (currentChecklistVersion !== checklistVersion) {
+		var versionHTML = '';
+		
+		versionHTML += '<div class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
+		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
+		versionHTML += ' <p>Cet audit n\'est pas basé sur la dernière version du référentiel (1.4). Votre taux de conformité sera calculé sur la version 1.3</p>';
+		versionHTML += ' <button type="button" class="close" data-dismiss="alert">';
+		versionHTML +=	'  <span class="sr-only">Fermer le message d\'information</span>';
+		versionHTML +=  '</button>';
+		versionHTML +='</div>';
+		
+		var mainHTML = document.getElementById("main");
+		mainHTML.insertAdjacentHTML("afterBegin", versionHTML);
+	}
+	
+}
 
 /**
  * Computation manager
@@ -653,13 +679,17 @@ function initComputation() {
 	var matriceRequest = new XMLHttpRequest();
 	var matriceWcag;
     method = "GET",
-	matriceVallydette = 'json/matrice-wcag-ease.json';
+	matriceVallydette = 'json/matrice-wcag-ease-2.json';
 
 	matriceRequest.open(method, matriceVallydette, true);
 	matriceRequest.onreadystatechange = function () {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
 			dataWCAG = JSON.parse(matriceRequest.responseText);
 
+			
+			dataWCAG.items.forEach(initRulesAndTests);
+			console.log(dataWCAG);
+			
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
@@ -674,6 +704,25 @@ function initComputation() {
 }
 
 /**
+ * Updates each wcag with necessary tests from the checklist
+ * @param {object} rules - object that contains all the wcags
+*/
+function initRulesAndTests (rules) {
+	
+	 for (let i in dataVallydette.checklist.page[0].items) {
+		 for (let j in dataVallydette.checklist.page[0].items[i].wcag) {
+			var testWCAG = dataVallydette.checklist.page[0].items[i].wcag[j].split(" ");
+			if (testWCAG[0] === rules.wcag) {
+				
+				rules.tests.push(dataVallydette.checklist.page[0].items[i].IDorigin);
+				
+			}
+		}
+	
+	}
+}
+
+/**
  * Pass through both dataVallydette et dataWCAG to build the pageResults array, which contains the wcag results for each pages.
  *  @return {array} pagesResults - Contains all wcag results by pages.
 */
@@ -683,6 +732,10 @@ function runComputation() {
 	* @param {array} pagesResults - Contains all wcag results by pages.
 	*/
     pagesResults = [];
+	
+	/**
+	* Initilization of the dataWCAG results, to be sure that the results are correctly re-computed each time the audit results are displayed.
+	*/
 	dataWCAG.items.forEach(initProperties);
 	
     for (let i in dataVallydette.checklist.page) {
@@ -1022,21 +1075,22 @@ initPagination = function (pages) {
 	}
 }
 
+/**  Adds a new page to the dataVallydette object and updates the page menu. */
 addPage = function () {
+	
+	/**  Duplicate the page object and push it to the dataVallydette as a new page. */
 	var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[currentPage]));
 	dataVallydette.checklist.page.push(arr2);
 
 	indexPage = dataVallydette.checklist.page.length - 1;
-
+	
 	var newIdPage = new Uint32Array(1);
 	window.crypto.getRandomValues(newIdPage);
-
 	newIdPage = "pageID-" + newIdPage;
 
 	var btnFirstPage = document.getElementById(dataVallydette.checklist.page[0].IDPage);
 	btnFirstPage.disabled = false;
 
-	// @todo a supprimer
 	dataVallydette.checklist.page[indexPage].IDPage = newIdPage;
 	dataVallydette.checklist.page[indexPage].name = "Nom de la page";
 	dataVallydette.checklist.page[indexPage].url = "";
@@ -1044,10 +1098,9 @@ addPage = function () {
 
 	initNewThemes(indexPage);
 	
-	
 	jsonStr = JSON.stringify(dataVallydette);
 
-	//display pagination
+	/**  Display the updated pagination */
 	let newPage = document.createElement("li");
 	newPage.classList.add("nav-item");
 	var pageElement = document.getElementById("pageManager");
@@ -1065,30 +1118,41 @@ addPage = function () {
 		showPage(currentIdPage)
 	}, false);
 
-	//enabled delete button
+	/**  Enabled delete button */
 	var currentBtnDelPage = document.getElementById('btnDelPage');
 	currentBtnDelPage.disabled = false;
 	
 	showPage(currentIdPage);
 }
 
+/**  Initialization of some properties */
 initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
 }
 
+/**  Initialization of themes */
 initNewThemes = function () {
 	for (var themeItem in dataVallydette.checklist.page[indexPage].themes)  {
 		dataVallydette.checklist.page[indexPage].themes[themeItem].checked = true;
 	};
 }
 
+/**  
+*	Initialization dataWCAG properties, needed for computation.
+*	@param {object} item - dataWCAG items (rules) 
+*/
 initProperties = function (item) {
 	item.resultat = 'nt';
 	item.comment = [];
 }
 
+/**  
+*	Initialization of page contextual menu, each time the user move to a new page.
+*	@param {number} currentPageIndex - page index into dataVallydette. 
+*	@param {number} currentPageID - page ID into dataVallydette. 
+*/
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="Modifier le nom de la page" title="Modifier le nom de la page" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
@@ -1099,19 +1163,30 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	btnActionPageEventHandler ();
 }
 
+
+/** Remove the page contextual menu (needed for audit results page). */
 removeContextualMenu = function () {
 	htmlContextualMenuContent.innerHTML = "";
 }
 
+/** 
+*	Shows a new page when using the pagination menu.
+*	@param {number} id - ID of the page into the dataVallydette.
+*/
 showPage = function (id) {
+	/** Gets the index from the ID. */
 	var index = dataVallydette.checklist.page.findIndex(function (o) {
 		return o.IDPage === id;
 	})
 
+	
+	/** Update the global var currentPage with the index */
 	currentPage = index;
 
+	/** Load the page content */
 	onPageLoaded();
 
+	/** Init the page contextual menu */
 	if (!document.getElementById('btnPageName')) {
 		
 		initContextualMenu(currentPage, id);
@@ -1127,7 +1202,7 @@ showPage = function (id) {
 		currentBtnDelPage.dataset.pagination = id;
 		
 	}
-	
+
 	utils.setPageTitle(dataVallydette.checklist.page[currentPage].name);
 	
 	utils.resetActive(document.getElementById("pageManager"));
@@ -1138,6 +1213,10 @@ showPage = function (id) {
 	
 }
 
+/** 
+*	Displays the delete popin confirmation
+*	@param {string} targetElement - html id element that contains the current page name.
+*/
 setDeletePage = function (targetElement) {
 
 	let htmlModal = '';
@@ -1156,39 +1235,52 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">Valider</button>';
 	htmlModal += '</div></div></div></div>';
 
-	// Parent element
+	/**  html modal container */
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	// Event handler
+	/**  popin event handler */
 	var deteleSaveBtn = document.getElementById("deteleSaveBtn");
 	deteleSaveBtn.addEventListener('click', function () {
 		deletePage(currentPage, targetElement)
 	});
 }
 
+/** 
+*	Deletes the current page, and item from the pagination menu
+*	@param {number} currentPage - global var that contains the current page index.
+*	@param {string} targetElement - html id element that contains the current page name.
+*/
 deletePage = function (currentPage, targetElement) {
 
+	/** Removes page from dataVallydette. */
 	dataVallydette.checklist.page.splice(currentPage, 1);
 
+	/** If there is only one page left, then delete button is disabled. */
 	var currentBtnDelPage = document.getElementById('btnDelPage');
 	dataVallydette.checklist.page.length === 1 ? currentBtnDelPage.disabled = true : "";
 
+	/** Removes page button from pagination menu. */
 	var paginationBtnId = currentBtnDelPage.dataset.pagination;
 	var paginationBtn = document.getElementById(paginationBtnId);
 	paginationBtn.remove();
 
+	/** Updates global var currentPage to load the previous page from pagination menu. */
 	currentPage != 0 ? currentPage = currentPage - 1 : "";
 
+	/** Shows the previous page from pagination menu */
 	newPageId = dataVallydette.checklist.page[currentPage].IDPage;
-	
 	showPage(newPageId);
 
+	/** Updates the json export */
 	jsonUpdate();
 
 }
 
-
+/** 
+*	Sets the current page name (main heading).
+*	@param {string} value - page name.
+*/
 function setPageName(value) {
 	
 	var currentPageName = document.getElementById('pageName');
@@ -1196,6 +1288,7 @@ function setPageName(value) {
 	
 }
 
+/** @todo to be removed, obsolete function */
 getIfFilter = function (name) {
 	const filters = document.querySelectorAll('[name="' + name + '"]');
 	let found = false;
@@ -1489,7 +1582,7 @@ getComment = function (targetId) {
 		}
 	}
 
-	return (currentComment != "" ? currentComment : "");
+	return (currentComment !== undefined  ? currentComment : "");
 }
 
 getCommentState = function (targetId) {
@@ -1501,7 +1594,7 @@ getCommentState = function (targetId) {
 		}
 	}
 
-	return (currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
+	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
 }
 
 UpdateTypes = function (allTypes, updatedTypes) {
@@ -1595,6 +1688,7 @@ removeFilterSection = function () {
 
 onPageLoaded = function () {
 	initFilters();
+	//initComputation();
 	if(arrayFilterActivated && arrayFilterActivated.length > 0){
 		runFilter();
 	} else {

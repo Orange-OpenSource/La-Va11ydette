@@ -102,7 +102,7 @@ function createObjectAndRunVallydette() {
 function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
     dataVallydette.checklist.referentiel = currentCriteriaListName;
-	dataVallydette.checklist.page[0].themes = {
+	dataVallydette.checklist.page[0].groups = {
 						"Captcha": {
 							"idTests": ['testID-014', 'testID-015'],
 							"checked": true
@@ -143,7 +143,7 @@ function importRGAA(dataVallydette, dataRGAA) {
 
                 let vallydetteTest = {};
 
-                //propriétés obligatoires
+
                 vallydetteTest.ID = "testID-" + topics.number + "-" + criteria.criterium.number + "-" + test;
                 vallydetteTest.commentaire = "";
                 vallydetteTest.resultatTest = "";
@@ -192,6 +192,7 @@ function runVallydetteApp() {
    	
 	currentPage = 0;
 	
+	/** @todo to be replaced by a localization object */
 	textContent = {
         title1: "Procédures",
 		title2: "À vérifier",
@@ -203,6 +204,7 @@ function runVallydetteApp() {
 		statut4: "non-testé"
      };
 
+	/** @todo to be replaced by a localization object */
 	arrayFilterNameAndValue = [["conforme", "ok"], ["non-conforme", "ko"], ["non-applicable", "na"], ["non-testé", "nt"]];
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
@@ -296,7 +298,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">Conforme</label></li>';
@@ -359,9 +361,8 @@ runTestListMarkup = function (currentRefTests) {
 			if (headingCriterium != currentRefTests[i].criterium) {
 				headingCriterium = currentRefTests[i].criterium;
 
-				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
-				// @todo à remplacer par un for sur arrayFilterNameAndValue
-				//initialisation si aucun tests n'est checké
+				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
+			
 				if (currentRefTests[i].resultatTest === "") {
 					currentRefTests[i].resultatTest = "nt";
 					dataVallydette.checklist.items[i].resultatTest = "nt";
@@ -397,7 +398,7 @@ runTestListMarkup = function (currentRefTests) {
 					htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
 				}
 
-				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span>';
+				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span>';
 
 				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 
@@ -421,7 +422,7 @@ runTestListMarkup = function (currentRefTests) {
 				headingTheme = currentRefTests[i].themes;
 				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
 			}
-			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutClass(currentRefTests[i].resultatTest) + '</span></a></h3>';
+			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
 
 			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 			htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
@@ -475,7 +476,7 @@ runTestListMarkup = function (currentRefTests) {
 		var nodeArray = [];
 		for (var j = 0; j < radios.length; ++j) {
 			radios[j].addEventListener('click', function () {
-				setStates(this, currentRefTests[i].ID);
+				setStatusAndResults(this, currentRefTests[i].ID);
 			}, false);
 		}
 
@@ -486,70 +487,70 @@ runTestListMarkup = function (currentRefTests) {
 		}, false);
 	}
 	
-	applyDisabledThemes();
+	applyDisabledGroups();
 }
 
 
 /**
- * themes manager
- * Actually 'themes' are : captcha, form, multimedia, mobile
- * Each theme own multiple tests.
- * If a theme is disabled by the user, then all of his tests are passed to N/A.
+ * Groups manager
+ * Actually 'groups' are : captcha, form, multimedia, mobile
+ * Each group own multiple tests.
+ * If a group is disabled by the user, then all of his tests are passed to N/A.
  */
  
  
  /**
- * Initialization of theme markup.
+ * Initialization of group markup.
  */
-function initThemes() {
+function initGroups() {
 	
-	htmlThemes = "";
-	htmlThemes = "<h6>Cette page possède : </h6>";
-	htmlThemes += "<ul class=\"list-inline m-0\">";
-	for (var themeItem in dataVallydette.checklist.page[currentPage].themes)  {
-		htmlThemes += '<li class="custom-control custom-checkbox custom-control-inline mb-0"><input type="checkbox"  class="custom-control-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].themes[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="custom-control-label">' + themeItem + '</label></li>';
+	htmlgroups = "";
+	htmlgroups = "<h6>Cette page possède : </h6>";
+	htmlgroups += "<ul class=\"list-inline m-0\">";
+	for (var themeItem in dataVallydette.checklist.page[currentPage].groups)  {
+		htmlgroups += '<li class="custom-control custom-checkbox custom-control-inline mb-0"><input type="checkbox"  class="custom-control-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].groups[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="custom-control-label">' + themeItem + '</label></li>';
 	};
-	htmlThemes += "</ul>";
+	htmlgroups += "</ul>";
 	
-	htlmThemesMarker = document.getElementById("themeManager");
-	htlmThemesMarker.innerHTML = htmlThemes;
+	htlmgroupsMarker = document.getElementById("themeManager");
+	htlmgroupsMarker.innerHTML = htmlgroups;
    	
 }
 
  /**
-	* Get the themes checkboxes value from a page edition form, to determine if a theme has been updated or not.
-	* If true, then applyThemes is launched.
+	* Get the groups checkboxes value from a page edition form, to determine if a group has been updated or not.
+	* If true, then applyGroups is launched.
  */
-function getThemes() {
+function getGroups() {
 	
 	themeIsUpdated = false;
 	
-	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+	for (var themeItem in dataVallydette.checklist.page[currentPage].groups) {
 		
-		if (document.getElementById(themeItem).checked !== dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+		if (document.getElementById(themeItem).checked !== dataVallydette.checklist.page[currentPage].groups[themeItem].checked) {
 			themeIsUpdated = true;
-			dataVallydette.checklist.page[currentPage].themes[themeItem].checked = document.getElementById(themeItem).checked;
+			dataVallydette.checklist.page[currentPage].groups[themeItem].checked = document.getElementById(themeItem).checked;
 		
 		}
 	}
 	
 	if (themeIsUpdated) {
-		applyThemes();
+		applyGroups();
 	}
 	
 }
 
  /**
-	* Update the tests value from current themes selection
+	* Update the tests value from current groups selection
  */
-function applyThemes() {
+function applyGroups() {
 	
 	var radioToUpdate;
 	var testValue;
 	
-	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+	for (var themeItem in dataVallydette.checklist.page[currentPage].groups) {
 		
-		dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
+		dataVallydette.checklist.page[currentPage].groups[themeItem].idTests.map(function(themeIdTest) {
 			
 			dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
 	
@@ -558,7 +559,7 @@ function applyThemes() {
 						
 					const radioButtons = document.getElementsByName("test-"+itemTest.ID);
 					
-					if (dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+					if (dataVallydette.checklist.page[currentPage].groups[themeItem].checked) {
 			
 						testValue = "nt";
 						
@@ -583,7 +584,7 @@ function applyThemes() {
 					
 					if (radioToUpdate!==null) {
 						radioToUpdate.checked = true;
-						setStates(radioToUpdate, itemTest.ID);
+						setStatusAndResults(radioToUpdate, itemTest.ID);
 					} else {
 						dataVallydette.checklist.page[currentPage].items[index].resultatTest = testValue;
 					}
@@ -603,13 +604,13 @@ function applyThemes() {
  /**
 	* If a theme is unchecked then we applied a disabled style to the entire tests on the frontend component
  */
-function applyDisabledThemes() {
+function applyDisabledGroups() {
 		
-	for (var themeItem in dataVallydette.checklist.page[currentPage].themes) {
+	for (var themeItem in dataVallydette.checklist.page[currentPage].groups) {
 		
-		if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+		if (!dataVallydette.checklist.page[currentPage].groups[themeItem].checked) {
 	
-			dataVallydette.checklist.page[currentPage].themes[themeItem].idTests.map(function(themeIdTest) {
+			dataVallydette.checklist.page[currentPage].groups[themeItem].idTests.map(function(themeIdTest) {
 			
 				dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
 					
@@ -617,7 +618,7 @@ function applyDisabledThemes() {
 						
 						const radioButtons = document.getElementsByName("test-"+itemTest.ID);
 						
-						if (!dataVallydette.checklist.page[currentPage].themes[themeItem].checked) {
+						if (!dataVallydette.checklist.page[currentPage].groups[themeItem].checked) {
 
 							radioButtons.forEach(function(button) {
 								button.disabled=true;
@@ -686,9 +687,7 @@ function initComputation() {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
 			dataWCAG = JSON.parse(matriceRequest.responseText);
 
-			
 			dataWCAG.items.forEach(initRulesAndTests);
-			console.log(dataWCAG);
 			
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
@@ -817,7 +816,7 @@ function runFinalComputation(pagesResultsArray) {
 	 * 	Gets the number of non-tested items.
 	 @param {number} nbNT - number of non-tested items.
 	*/  
-    nbNTResultsArray = utils.getNbNotTested();
+    nbNTResultsArray = getNbNotTested();
 
     var nbNT = nbNTResultsArray.total;
 
@@ -1018,6 +1017,32 @@ function runFinalComputation(pagesResultsArray) {
     htmlMainContent.innerHTML = computationContent;
 }
 
+/**
+ * Get the number of non-tested items per pages.
+ * @return {object} nbNTArray - number of non-tested items per pages.
+*/
+function getNbNotTested() {
+	nbNTArray = {};
+    var nbNTtests = 0;
+    var nbNTtestsPage = 0;
+
+    for (let k in dataVallydette.checklist.page) {
+        for (let l in dataVallydette.checklist.page[k].items) {
+            if (dataVallydette.checklist.page[k].items[l].resultatTest == "nt") {
+                nbNTtests++;
+                nbNTtestsPage++;
+            }
+        }
+
+        nbNTArray["page" + k] = nbNTtestsPage;
+        nbNTtestsPage = 0;
+		
+    }
+
+    nbNTArray.total = nbNTtests;
+
+    return nbNTArray;
+}
 
 /**
  * Multipage manager
@@ -1184,7 +1209,7 @@ showPage = function (id) {
 	currentPage = index;
 
 	/** Load the page content */
-	onPageLoaded();
+	loadChecklistObject();
 
 	/** Init the page contextual menu */
 	if (!document.getElementById('btnPageName')) {
@@ -1306,9 +1331,14 @@ getIfFilter = function (name) {
 
 /**
  * Tests status manager
- */
+ * Updates both tests results into the object and components states on the frontend side
+*/
     
-
+/**
+ * Gets the badge class from the badge element
+ * @param {string} lastResult - current result of a test.
+ * @return {string} statutClass - returns a badge class.
+*/
 getStatutClass = function (lastResult) {
 	if (lastResult === arrayFilterNameAndValue[0][1]) {
 		statutClass = "badge-success";
@@ -1322,7 +1352,12 @@ getStatutClass = function (lastResult) {
 	return statutClass;
 }
 
-setStatutClass = function (lastResult) {
+/**
+ * Sets the badge innerText
+ * @param {string} lastResult - current result of a test.
+ * @return {string} statutText - returns the badge innerText.
+*/
+setStatutText = function (lastResult) {
 	if (lastResult === arrayFilterNameAndValue[0][1]) {
 		statutText = textContent.statut1;
 	} else if (lastResult === arrayFilterNameAndValue[1][1]) {
@@ -1335,7 +1370,16 @@ setStatutClass = function (lastResult) {
 	return statutText;
 }
 
-setStates = function (ele, targetId) {
+
+/**
+ * Sets the test result into the vallydette object.
+ * Updates the badge status
+ * @param {object} ele - radio button checked from a test.
+ * @return {string} targetId - test ID that has been checked.
+*/
+setStatusAndResults = function (ele, targetId) {
+	
+	/** Updates the test result into the object	*/
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 			lastResult = getStatutClass(dataVallydette.checklist.page[currentPage].items[i].resultatTest);
@@ -1343,25 +1387,11 @@ setStates = function (ele, targetId) {
 		}
 	}
 
-	//mise à jour de l'état du test
+	/** Updates the status result into the badge element */
 	testResult = document.getElementById("resultID-" + targetId + "");
 	testResult.classList.remove(lastResult);
-
-
-	if (ele.value === arrayFilterNameAndValue[0][1]) {
-		testResult.innerText = textContent.statut1;
-		statutClass = "badge-success";
-	} else if (ele.value === arrayFilterNameAndValue[1][1]) {
-		testResult.innerText = textContent.statut2;
-		statutClass = "badge-danger";
-	} else if (ele.value === arrayFilterNameAndValue[2][1]) {
-		testResult.innerText = textContent.statut3;
-		statutClass = "badge-info";
-	} else {
-		testResult.innerText = textContent.statut4;
-		statutClass = "badge-light";
-	}
-
+	statutClass = getStatutClass(ele.value);
+	testResult.innerText = setStatutText(ele.value);
 	testResult.classList.add(statutClass);
 
 	jsonUpdate();
@@ -1369,7 +1399,15 @@ setStates = function (ele, targetId) {
 
 /**
  * Edition manager
+ * Used to update audit and pages properties
  */
+ 
+/**
+ * Initialization of the popin markup used to update audit or pages properties.
+ * @param {string} targetElement - Element to edit (audit or page).
+ * @param {string} targetProperty - Object property to edit.
+ * @param {string} targetSecondaryElement - Secondary element to edit (useful for pages).
+*/
 setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 
 	arrayPropertyValue = [];
@@ -1389,6 +1427,8 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<label class="is-required" for="nameValue">Nom <span class="sr-only"> (required)</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
 	htmlModal += '</div>';
+	
+	/** If it's a page properties edition, when add the URL input */
 	if (targetElement === "pageName") {
 		htmlModal += '<div class="form-group">';
 		htmlModal += '<label  for="urlValue">URL</label>';
@@ -1406,8 +1446,9 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
+	/** If it's a page properties edition, when add the groups */
 	if (targetElement === "pageName") {
-		initThemes();
+		initGroups();
 	}
 
     var currentEditForm = document.getElementById('editForm');
@@ -1422,7 +1463,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 			var propertyUrl = document.getElementById("urlValue");
 			arrayPropertyValue[1] = propertyUrl.value;
 			
-			getThemes();
+			getGroups();
 			
 		}
 		
@@ -1430,6 +1471,10 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		
 	});
 	
+	/** set the focus into the first popin field
+		* @todo jquery code from boosted 4.5.
+		* So it should be necessary to replace this code as soon as the vallydette will be updated to v5.
+	*/
 	var name = document.getElementById('nameValue');
 	$('.modal').on('shown.bs.modal', function (event) {
 		name.focus()
@@ -1437,6 +1482,10 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 
 }
 
+/**
+ * Get the property value from vallydette object
+ * @param {string} propertyPath - Object property to edit.
+*/
 getPropertyValue = function (propertyPath) {
 	obj = dataVallydette;
 	propertyPath = propertyPath.split('.');
@@ -1454,6 +1503,12 @@ getPropertyValue = function (propertyPath) {
 	
 }
 
+
+/**
+ * Set the property value into vallydette object.
+ * @param {string} propertyValue - new property value.
+ * @param {string} propertyPath - Object property to edit.
+*/
 setPropertyValue = function (propertyValue, propertyPath) {
 	obj = dataVallydette;
 	propertyPath = propertyPath.split('.');
@@ -1466,6 +1521,13 @@ setPropertyValue = function (propertyValue, propertyPath) {
 	
 }
 
+/**
+ * Run the set up of properties value, and display a feedback.
+ * @param {array} arrayPropertyValue - Array of properties to update.
+ * @param {string} targetElement - Element to edit (audit or page).
+ * @param {string} targetProperty - Object property to edit.
+ * @param {string} targetSecondaryElement - Secondary element to edit (useful for pages).
+*/
 updateProperty = function(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement) {
 
 	setPropertyValue(arrayPropertyValue[0], targetProperty);
@@ -1493,36 +1555,15 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 	jsonUpdate();
 }
 
-
-jsonUpdate = function () {
-	let DefaultName = document.getElementById("checklistName");
-	DefaultName = utils.slugify(DefaultName.innerText);
-
-	let dataStr = JSON.stringify(dataVallydette);
-
-	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-
-	var todayDate = new Date();
-	var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
-
-	var todayHour = new Date();
-	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
-
-	let exportFileDefaultName = DefaultName + '-' + date + '-' + time + '.json';
-
-	linkElement = document.getElementById("export");
-	linkElement.classList.remove("disabled");
-	linkElement.removeAttribute('disabled');
-	linkElement.setAttribute('aria-disabled', false);
-	linkElement.setAttribute('href', dataUri);
-	linkElement.setAttribute('download', exportFileDefaultName);
-	
-}
-
-
 /**
  * Comment manager
  */
+
+/**
+ * Comment popin initialization.
+ * @param {string} targetId - current test ID.
+ * @param {string} title - current test title.
+*/
 setComment = function (targetId, title) {
 	let titleModal = title;
 
@@ -1559,6 +1600,11 @@ setComment = function (targetId, title) {
 	
 }
 
+/**
+ * Add the comment to the vallydette object.
+ * @param {string} targetId - current test ID.
+ * @param {string} newComment.
+*/
 addComment = function (targetId, newComment) {
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
@@ -1569,10 +1615,14 @@ addComment = function (targetId, newComment) {
 	var currentBtnComment = document.getElementById("commentBtn" + targetId);
 	currentBtnComment.innerHTML = getCommentState(targetId);
 
-	//on met à jour l'export
 	jsonUpdate();
 }
 
+/**
+ * Get the comment from the vallydette object.
+ * @param {string} targetId - current test ID.
+ * @return {string} currentComment - current comment value
+*/
 getComment = function (targetId) {
 	var currentComment;
 
@@ -1585,63 +1635,26 @@ getComment = function (targetId) {
 	return (currentComment !== undefined  ? currentComment : "");
 }
 
+/**
+ * Return a markup depending on commant value
+ * @param {string} targetId - current test ID.
+ * @return {string} - markup depending on comment value
+*/
 getCommentState = function (targetId) {
-	var currentComment;
-
-	for (let i in dataVallydette.checklist.page[currentPage].items) {
-		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
-			currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
-		}
-	}
+	
+	var currentComment = getComment(targetId);
 
 	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
 }
 
-UpdateTypes = function (allTypes, updatedTypes) {
-	let elrefTypes = [];
 
-	for (let i in updatedTypes) {
-		for (let j in updatedTypes[i].type) {
-			elrefTypes.push(updatedTypes[i].type[j]);
-		}
-	}
+/**
+ * Filter manager
+ */
 
-	let uniqueUpdatedTypes = elrefTypes.filter(function (value, index, self) {
-		return self.indexOf(value) === index;
-	});
-
-	for (let i in allTypes) {
-		var elem = document.getElementById('type' + i);
-		elem.disabled = true;
-		var elemLabel = document.getElementById('labelType' + i);
-		elemLabel.classList.add("disabled");
-
-	}
-
-	for (let i in allTypes) {
-		for (let j in uniqueUpdatedTypes) {
-			if (allTypes[i] === uniqueUpdatedTypes[j]) {
-				var elem = document.getElementById('type' + i);
-				elem.disabled = false;
-				var elemLabel = document.getElementById('labelType' + i);
-				elemLabel.classList.remove("disabled");
-			}
-		}
-	}
-};
-
-updateCounter = function (activeFilter, nbTests) {
-	let elFeedback = document.getElementById('feedback');
-	let htmlFeedback = '';
-	if (activeFilter) {
-		htmlFeedback = '<p><span><b>' + nbTests + '</b> tests dans filtres en cours</span></p>';
-		elFeedback.innerHTML = htmlFeedback;
-	} else {
-		htmlFeedback = '<p><b>' + nbTests + '</b> tests en cours</p>';
-		elFeedback.innerHTML = htmlFeedback;
-	}
-};
-
+/**
+ * Filter initialization, filters HTML elements are build here from the global var arrayFilterNameAndValue.
+ */
 initFilters = function () {
     
    if (htmlFilterContent.innerHTML.trim() !== '') {
@@ -1671,6 +1684,7 @@ initFilters = function () {
 			htmlFilterList.appendChild(listItem);
 			htmlFilterContent.appendChild(htmlFilterList);
 
+			/** Filters event handler. */
 			var inputItem = document.getElementById("type" + i);
 			inputItem.addEventListener('click', function () {
 				updateArrayFilter(this)
@@ -1681,30 +1695,27 @@ initFilters = function () {
    
 }
 
-removeFilterSection = function () {
-	htmlFilterContent.innerHTML = "";
-}
-		
-
-onPageLoaded = function () {
-	initFilters();
-	//initComputation();
-	if(arrayFilterActivated && arrayFilterActivated.length > 0){
-		runFilter();
+/**
+ * Update the filter counter each an new filter is applied or disabled.
+ * @param {boolean} activeFilter - if at least one filter is activated => true, if not => false.
+ * @param {number} nbTests - total number of test depending on filters.
+ */
+updateCounter = function (activeFilter, nbTests) {
+	let elFeedback = document.getElementById('feedback');
+	let htmlFeedback = '';
+	if (activeFilter) {
+		htmlFeedback = '<p><span><b>' + nbTests + '</b> tests dans filtres en cours</span></p>';
+		elFeedback.innerHTML = htmlFeedback;
 	} else {
-		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
-		updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
+		htmlFeedback = '<p><b>' + nbTests + '</b> tests en cours</p>';
+		elFeedback.innerHTML = htmlFeedback;
 	}
-}
+};
 
-
-runFilter = function() {
-	const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrayFilterActivated.includes(o.resultatTest));
-	runTestListMarkup(filteredTest);
-	updateCounter(true, filteredTest.length);
-}
-
-
+/**
+ * Run when a filter swith button is activated. Update the array of enabled filters. 
+ * @param {object} elInput - switch button. 
+ */
 updateArrayFilter = function (elInput) {
 	
 	if (elInput && elInput.checked) {
@@ -1719,23 +1730,74 @@ updateArrayFilter = function (elInput) {
 		
 	}
 
-	onPageLoaded();
+	loadChecklistObject();
 	
 }
  
 
+/**
+ * Apply the filters to the vallydette object, and run display function r(unTestListMarkup) with the new filtered object
+ */	
+runFilter = function() {
+	const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrayFilterActivated.includes(o.resultatTest));
+	runTestListMarkup(filteredTest);
+	updateCounter(true, filteredTest.length);
+}
+
+
+/**
+ * Some pages (actually the audit result page) no need of the filter menu.
+ */
+removeFilterSection = function () {
+	htmlFilterContent.innerHTML = "";
+}
+	
+/**
+ * Run when the checklist display must be updated (when a filter is applied for example)
+ */		
+loadChecklistObject = function () {
+	initFilters();
+	//initComputation();
+	if(arrayFilterActivated && arrayFilterActivated.length > 0){
+		runFilter();
+	} else {
+		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
+		updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
+	}
+}
+
+/**
+ * Run each time an updated is made to the vallydette object, in order to update the export informations.
+ */
+jsonUpdate = function () {
+	let DefaultName = document.getElementById("checklistName");
+	DefaultName = utils.slugify(DefaultName.innerText);
+
+	let dataStr = JSON.stringify(dataVallydette);
+
+	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+
+	var todayDate = new Date();
+	var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+
+	var todayHour = new Date();
+	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
+
+	let exportFileDefaultName = DefaultName + '-' + date + '-' + time + '.json';
+
+	linkElement = document.getElementById("export");
+	linkElement.classList.remove("disabled");
+	linkElement.removeAttribute('disabled');
+	linkElement.setAttribute('aria-disabled', false);
+	linkElement.setAttribute('href', dataUri);
+	linkElement.setAttribute('download', exportFileDefaultName);
+	
+}
+
+ /**
+ * Some utilities funtions.
+ */
 const utils = {
-  delDoublon: function () {
-	 for (var i = 0; i < arrCond.length; i++) {
-        //for (let condition of arrCond) {
-        let condition = arrCond[i];
-        if (condition.name === inputId) {
-            let arrCondIndex = arrCond.indexOf(condition);
-            arrCond.splice(arrCondIndex, 1);
-        }
-    }
-    return arrCond;
-  },
   reqError: function (err) {
 	let elrefTests = document.getElementById('mainContent');
     elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
@@ -1752,28 +1814,6 @@ const utils = {
         .replace(/\-\-+/g, '-') 
         .replace(/^-+/, '')
         .replace(/-+$/, '');
-	},
-  getNbNotTested: function () {
-	
-	nbNTArray = {};
-    var nbNTtests = 0;
-    var nbNTtestsPage = 0;
-
-    for (let k in dataVallydette.checklist.page) {
-        for (let l in dataVallydette.checklist.page[k].items) {
-            if (dataVallydette.checklist.page[k].items[l].resultatTest == "nt") {
-                nbNTtests++;
-                nbNTtestsPage++;
-            }
-        }
-
-        nbNTArray["page" + k] = nbNTtestsPage;
-        nbNTtestsPage = 0;
-    }
-
-    nbNTArray.total = nbNTtests;
-
-    return nbNTArray;
 	},
   putTheFocus: function (e) {
 	e.setAttribute("tabindex", "-1");

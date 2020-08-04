@@ -4,6 +4,7 @@ $('.o-nav-local').prioritynav('Autres pages');
 /**
  * Global vars
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
+ * @param {object} langVallydette
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
  * @param {number} checklistVersion - Contains the last checklist version
  * @param {number} currentPage - Current page index, updated each time user move to another page.
@@ -15,6 +16,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  * @param {object} htmlFilterContent - Test filter menu.
  */
 var dataVallydette;
+var langVallydette;
 var dataWCAG;
 var checklistVersion;
 var	currentPage = 0;
@@ -34,10 +36,44 @@ var htmlFilterContent = document.getElementById('filter');
  * Update global var currentCriteriaListName with the selected checklist json file name, and run the dataVallydette object completion
  * @param {string} criteriaListName - Selected checklist json file name.
  */
-function initVallydetteApp (criteriaListName) {
-	currentCriteriaListName = criteriaListName;
-	createObjectAndRunVallydette();
+function initVallydetteApp (criteriaListName, lang) {
+	
+	finalLang = getLang(lang);
+	
+	var langRequest = new XMLHttpRequest();
+	langRequest.open("GET", "json/lang/"+finalLang+".json", true);
+	langRequest.onreadystatechange = function () {
+	  if(langRequest.readyState === 4 && langRequest.status === 200) {
+		langVallydette = JSON.parse(langRequest.responseText);
+		console.log(langVallydette);
+		currentCriteriaListName = criteriaListName;
+		createObjectAndRunVallydette();
+	  } 
+	};
+	langRequest.send();
+	
+	
 }
+
+function getLang(lang) {
+	
+	var currentLang;
+	const paramString = window.location.search;
+	const urlParams = new URLSearchParams(paramString);
+
+	if (urlParams.has('lang')) {
+		currentLang = urlParams.get('lang');
+	} else if (lang) {
+		currentLang = lang;
+		console.log('lang');
+	} else {
+		currentLang = 'fr';
+	}
+	
+	return currentLang;
+				
+}
+
 
 /**
  * Init the dataVallydette object and download the selected checklist json file
@@ -100,7 +136,7 @@ function createObjectAndRunVallydette() {
  *  update the dataVallydette object with the selected checklist object (ie the wcag ease object)
  */
 function importCriteriaToVallydetteObj (criteriaVallydette) {
-    dataVallydette.checklist.name = "Grille Audit WCAG 2.1 d’Orange";
+    dataVallydette.checklist.name = langVallydette.auditNameWcag;
     dataVallydette.checklist.referentiel = currentCriteriaListName;
 	dataVallydette.checklist.page[0].groups = {
 						"Captcha": {
@@ -294,32 +330,35 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="Plier la thématique"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '"><span class="icon-arrow-down"></span></button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
 			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">Conforme</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">Non conforme</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">N/A</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">Non testé</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.status1 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.status2 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status3 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 
 			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 
-			htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">Informations supplémentaires</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].verifier) {
-				htmlrefTests += '<h4 class="h5">' + textContent.title2 + '</h4>';
+				htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
 				htmlrefTests += currentRefTests[i].verifier;
+			}
+			
+			if (currentRefTests[i].complement) {
 				htmlrefTests += currentRefTests[i].complement;
 			}
 
 			if (currentRefTests[i].exception) {
-				htmlrefTests += '<h4 class="h5">Exceptions</h4>';
+				htmlrefTests += '<h4 class="h5">' + langVallydette.exceptionHeading + '</h4>';
 				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
 			}
 			
@@ -466,7 +505,7 @@ runTestListMarkup = function (currentRefTests) {
 		}
 	}
 
-	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">Aucun résultat ne correspond à votre sélection</div>' : elrefTests.innerHTML = htmlrefTests;
+	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">' + langVallydette.warningNoResult + '</div>' : elrefTests.innerHTML = htmlrefTests;
 
 	 
 	/** event handler */
@@ -505,7 +544,7 @@ runTestListMarkup = function (currentRefTests) {
 function initGroups() {
 	
 	htmlgroups = "";
-	htmlgroups = "<h6>Cette page possède : </h6>";
+	htmlgroups = '<h6>' + langVallydette.groupHeading + '</h6>';
 	htmlgroups += "<ul class=\"list-inline m-0\">";
 	for (var themeItem in dataVallydette.checklist.page[currentPage].groups)  {
 		htmlgroups += '<li class="custom-control custom-checkbox custom-control-inline mb-0"><input type="checkbox"  class="custom-control-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].groups[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="custom-control-label">' + themeItem + '</label></li>';
@@ -654,9 +693,9 @@ function checkTheVersion(currentChecklistVersion) {
 		
 		versionHTML += '<div class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
 		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
-		versionHTML += ' <p>Cet audit n\'est pas basé sur la dernière version du référentiel (1.4). Votre taux de conformité sera calculé sur la version 1.3</p>';
+		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' (1.4). ' + langVallydette.versionAlert2 + '</p>';
 		versionHTML += ' <button type="button" class="close" data-dismiss="alert">';
-		versionHTML +=	'  <span class="sr-only">Fermer le message d\'information</span>';
+		versionHTML +=	'  <span class="sr-only">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';
 		versionHTML +='</div>';
 		
@@ -692,7 +731,7 @@ function initComputation() {
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
-				utils.setPageTitle("Résultat d'audit");
+				utils.setPageTitle(langVallydette.auditResult);
 				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
             }, false);
@@ -900,21 +939,21 @@ function runFinalComputation(pagesResultsArray) {
     let htmlMainContent = document.getElementById('mainContent');
 	let computationContent = '';
 
-	setPageName("Résultat de l'audit");
+	setPageName(langVallydette.auditResult);
 	removeContextualMenu();
 	removeFilterSection();
 	
     if (nbNT >= 1) {
-        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : <span class="text-primary">audit en cours</span></h2>';
+        computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + 'audit en cours</span></h2>';
 		
     } else if (nbNT === 0 && !isNaN(finalResult)) {
-        computationContent += '<h2 class="pt-4 pb-3">Conformité globale : <span class="text-primary">' + finalResult + '%</span></h2>';
+        computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + finalResult + '%</span></h2>';
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">Résultats par page</a></li>';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">Synthèse par niveau</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">Liste des non-conformités</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">' + langVallydette.auditTxt3 + '</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">' + langVallydette.auditTxt4 + '</a></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">' + langVallydette.auditTxt5 + '</a></li>';
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
@@ -927,7 +966,7 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<ul>';
 			computationContent += '<li><strong>résultat :</strong> ';
 			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
-			computationContent += (pagesResultsArray[i].complete === false) ?  '(en cours / ' + nbNTResultsArray['page' + i] + ' non-testé(s))' : '';
+			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ' / ' + nbNTResultsArray['page' + i] + ' ' + langVallydette.auditTxt7 +')' : '';
 			computationContent += '</li>';
 			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
 			computationContent += '</ul>';
@@ -935,15 +974,15 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '  </div>';
 		computationContent += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
-		computationContent += '<table class="table table-striped"><caption class="sr-only">Synthèse par niveau</caption>';
+		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
-		computationContent += '<th scope="row">Critères</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">Conformes</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">Non-conformes</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">Non-applicables</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">Taux de conformité </th>';
+		computationContent += '<th scope="row">' + langVallydette.auditTxt4 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.status1 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.status2 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.status3 + '</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.status4 + '</th>';
 		computationContent += '</tr><tr>';
-		computationContent += '<th scope="col">Niveau</th>';
+		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
 		computationContent += '<th scope="col" class="text-center">AA</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
@@ -1006,7 +1045,7 @@ function runFinalComputation(pagesResultsArray) {
 				
 			} else {
 				
-				computationContent += '<p>Absence de non-conformité</p>';
+				computationContent += '<p>' + langVallydette.auditTxt11 + '</p>';
 				
 			}
 			
@@ -1062,7 +1101,7 @@ initPagination = function (pages) {
 	let AddPage = document.createElement("li");
 	AddPage.classList.add("nav-item");
 	var btnAddPage = document.createElement("button");
-	btnAddPage.innerHTML = "Ajouter une page&nbsp;<span class='icon-add-more' aria-hidden='true'></span>";
+	btnAddPage.innerHTML = langVallydette.addPage + "&nbsp;<span class='icon-add-more' aria-hidden='true'></span>";
 	btnAddPage.setAttribute('id', "btnAddPage");
 	btnAddPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 
@@ -1117,7 +1156,7 @@ addPage = function () {
 	btnFirstPage.disabled = false;
 
 	dataVallydette.checklist.page[indexPage].IDPage = newIdPage;
-	dataVallydette.checklist.page[indexPage].name = "Nom de la page";
+	dataVallydette.checklist.page[indexPage].name = langVallydette.pageName;
 	dataVallydette.checklist.page[indexPage].url = "";
 	dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
 
@@ -1131,7 +1170,7 @@ addPage = function () {
 	var pageElement = document.getElementById("pageManager");
 	var newBtnPage = document.createElement("button");
 
-	newBtnPage.innerHTML = "Nom de la page";
+	newBtnPage.innerHTML = langVallydette.pageName;
 	newBtnPage.setAttribute('id', newIdPage);
 	newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 	newPage.appendChild(newBtnPage);
@@ -1180,8 +1219,8 @@ initProperties = function (item) {
 */
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
-	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="Modifier le nom de la page" title="Modifier le nom de la page" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
-	htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="Supprimer la page" title="Supprimer la page" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
+	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
+	htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
 	htmlMenu += '<hr class="border-light  w-100">';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
@@ -1249,15 +1288,15 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5>Supprimer</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
+	htmlModal += '<h5>' + langVallydette.delete + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += 'Supprimer la page ' + getPropertyValue(targetElement) + ' ?';
+	htmlModal += langVallydette.deletePageName + getPropertyValue(targetElement) + ' ?';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">Valider</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 	/**  html modal container */
@@ -1836,4 +1875,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('wcagEase');
+initVallydetteApp('wcagEase', 'fr');

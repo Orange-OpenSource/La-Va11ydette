@@ -613,7 +613,7 @@
 		"wcag": [
 			"1.2.3 A"
 		],
-		"verifier": "<ul><li>vérifier qu’un transcrit complet (texte contenant l’ensemble des informations auditives) est fourni sous forme de texte brut ou HTML.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li></ul>",
+		"verifier": "<ul><li>vérifier qu’un transcrit complet (texte contenant l’ensemble des informations auditives et visuelles) est fourni sous forme de texte brut ou HTML.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l’audiodescription est correctement synchronisée</li><li>vérifier que l’audiodescription n’entre pas en conflit avec la piste audio de la vidéo (pas de perte d’information)</li><li>vérifier que l’audiodescription est pertinente</li></ul></li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",

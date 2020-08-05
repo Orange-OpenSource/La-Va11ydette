@@ -55,8 +55,7 @@ function initVallydetteApp (criteriaListName, lang) {
 		createObjectAndRunVallydette();
 	  } 
 	};
-	langRequest.send();
-	
+	langRequest.send();	
 	
 }
 
@@ -102,6 +101,7 @@ function initGlobalLang(lang) {
 		linkFr.removeAttribute('aria-current');
 		linkFr.classList.remove("active");
 	}
+	
 }
 
 /**
@@ -207,6 +207,9 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
 	dataVallydette.checklist.version = criteriaVallydette.version;
 	checklistVersion = criteriaVallydette.version;
+	
+	dataVallydette.checklist.lang = globalLang;
+	
 	runVallydetteApp();
 }
 
@@ -313,8 +316,18 @@ function eventHandler() {
 
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
-			initGlobalLang(dataVallydette.lang);
-			runVallydetteApp();
+			initGlobalLang(dataVallydette.checklist.lang);
+		
+			var langRequest = new XMLHttpRequest();
+				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
+				langRequest.onreadystatechange = function () {
+				  if(langRequest.readyState === 4 && langRequest.status === 200) {
+					langVallydette = JSON.parse(langRequest.responseText);
+					localizeHTML();
+					runVallydetteApp();
+			  } 
+			};
+			langRequest.send();
 		}
 
 		fr.readAsText(files.item(0));
@@ -1922,4 +1935,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('wcagEase', 'en');
+initVallydetteApp('wcagEase', 'fr');

@@ -4,7 +4,8 @@ $('.o-nav-local').prioritynav('Autres pages');
 /**
  * Global vars
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
- * @param {object} langVallydette
+ * @param {object} langVallydette - language object.
+ * @param {string} globalLang - language selected.
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
  * @param {number} checklistVersion - Contains the last checklist version
  * @param {number} currentPage - Current page index, updated each time user move to another page.
@@ -17,6 +18,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  */
 var dataVallydette;
 var langVallydette;
+var globalLang;
 var dataWCAG;
 var checklistVersion;
 var	currentPage = 0;
@@ -33,19 +35,22 @@ var htmlFilterContent = document.getElementById('filter');
  */
  
 /**
- * Update global var currentCriteriaListName with the selected checklist json file name, and run the dataVallydette object completion
+ * Update global var currentCriteriaListName with the selected checklist json file name.
+ * Init the localization.
+ * Run the dataVallydette object completion
  * @param {string} criteriaListName - Selected checklist json file name.
+ * @param {string} lang - Language can be defined in function params.
  */
 function initVallydetteApp (criteriaListName, lang) {
 	
-	finalLang = getLang(lang);
+	initGlobalLang(lang);
 	
 	var langRequest = new XMLHttpRequest();
-	langRequest.open("GET", "json/lang/"+finalLang+".json", true);
+	langRequest.open("GET", "json/lang/"+globalLang+".json", true);
 	langRequest.onreadystatechange = function () {
 	  if(langRequest.readyState === 4 && langRequest.status === 200) {
 		langVallydette = JSON.parse(langRequest.responseText);
-		console.log(langVallydette);
+		localizeHTML();
 		currentCriteriaListName = criteriaListName;
 		createObjectAndRunVallydette();
 	  } 
@@ -55,25 +60,66 @@ function initVallydetteApp (criteriaListName, lang) {
 	
 }
 
-function getLang(lang) {
+
+/**
+ * Update global var globalLang width the selected languages.
+ * Language ca be defined by a function parameter, or by a get parameter.
+ * @param {string} lang - Language can be defined in function params.
+ */
+function initGlobalLang(lang) {
 	
-	var currentLang;
 	const paramString = window.location.search;
 	const urlParams = new URLSearchParams(paramString);
 
 	if (urlParams.has('lang')) {
-		currentLang = urlParams.get('lang');
+		globalLang = urlParams.get('lang');
 	} else if (lang) {
-		currentLang = lang;
-		console.log('lang');
+		globalLang = lang;
 	} else {
-		currentLang = 'fr';
+		globalLang = 'fr';
 	}
 	
-	return currentLang;
-				
+	document.documentElement.setAttribute('lang', globalLang);
+	
+	var selectFilesLang = document.getElementById("selectFiles");
+	selectFilesLang.setAttribute('lang', globalLang);
+	
+	if (globalLang === "fr") {
+		var linkFr = document.getElementById("link-fr");
+		linkFr.setAttribute('aria-current', true);
+		linkFr.classList.add("active");
+		
+		var linkEn = document.getElementById("link-en");
+		linkEn.removeAttribute('aria-current');
+		linkEn.classList.remove("active");
+		
+	} else {
+		var linkEn = document.getElementById("link-en");
+		linkEn.setAttribute('aria-current', true);
+		linkEn.classList.add("active");
+		
+		var linkFr = document.getElementById("link-fr");
+		linkFr.removeAttribute('aria-current');
+		linkFr.classList.remove("active");
+	}
 }
 
+/**
+ * Run the HTML elements localizations.
+ */
+function localizeHTML() {
+	Object.keys(langVallydette.template).forEach(function (key) {
+		eleToLocalize = document.getElementById(key);
+		eleToLocalize.innerHTML = langVallydette.template[key];
+	});
+	
+	Object.keys(langVallydette.title).forEach(function (key) {
+		eleToLocalize = document.getElementById(key);
+		eleToLocalize.setAttribute('title', langVallydette.title[key]);
+		eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+	});
+	
+}
 
 /**
  * Init the dataVallydette object and download the selected checklist json file
@@ -109,7 +155,7 @@ function createObjectAndRunVallydette() {
 		jsonCriteria = 'json/criteres-checklist-concepteur.json';
 		break;
 	  case 'wcagEase':
-		jsonCriteria = 'json/criteres-wcag-ease.json';
+		jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
 		break;
 	} 
 
@@ -139,22 +185,22 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.name = langVallydette.auditNameWcag;
     dataVallydette.checklist.referentiel = currentCriteriaListName;
 	dataVallydette.checklist.page[0].groups = {
-						"Captcha": {
+						[langVallydette.groupsTxt1] : {
 							"idTests": ['testID-014', 'testID-015'],
 							"checked": true
 						},
 						
-						"Formulaire": {
+						[langVallydette.groupsTxt2] : {
 							"idTests": ['testID-001', 'testID-002', 'testID-003', 'testID-004', 'testID-005', 'testID-012', 'testID-006', 'testID-007', 'testID-008', 'testID-009'],
 							"checked": true,
 						},
 						
-						"Multimedia": {
+						[langVallydette.groupsTxt3] : {
 							"idTests": ['testID-052', 'testID-053', 'testID-055', 'testID-057', 'testID-054', 'testID-056', 'testID-063'],
 							"checked": true
 						},
 						
-						"Tactile": {
+						[langVallydette.groupsTxt4] : {
 							"idTests": ['testID-047', 'testID-049', 'testID-050'],
 							"checked": true
 					}};
@@ -267,6 +313,7 @@ function eventHandler() {
 
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
+			initGlobalLang(dataVallydette.lang);
 			runVallydetteApp();
 		}
 
@@ -1456,14 +1503,14 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">Modifier : ' + getPropertyValue(targetProperty) + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
+	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">' + langVallydette.edit + ' : ' + getPropertyValue(targetProperty) + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 		
 	htmlModal += '<form id="editForm"><div class="modal-body">';
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="is-required" for="nameValue">Nom <span class="sr-only"> (required)</span></label>';
+	htmlModal += '<label class="is-required" for="nameValue">Nom <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
 	htmlModal += '</div>';
 	
@@ -1478,8 +1525,8 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	}
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>';
-	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">Enregistrer</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></form></div></div></div>';
 			
 	let elModal = document.getElementById('modal');
@@ -1582,8 +1629,8 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 	
 	var feedbackHtml;
 	feedbackHtml = '<div class="alert alert-success alert-sm" role="alert">';
-	feedbackHtml += '<span class="alert-icon"><span class="sr-only">Success</span></span>';
-	feedbackHtml += '<p>Les données ont été enregistré avec succes.</p>';
+	feedbackHtml += '<span class="alert-icon"><span class="sr-only">' + langVallydette.success + '</span></span>';
+	feedbackHtml += '<p>' + langVallydette.successFeedback + '</p>';
 	feedbackHtml += '</div>';
 	
 	var feedbackMessage = document.getElementById('modal-alert');
@@ -1611,15 +1658,15 @@ setComment = function (targetId, title) {
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">Commentaire pour : ' + titleModal + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="Fermer"></button>';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.commentTxt1 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>';
-	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 
@@ -1683,7 +1730,7 @@ getCommentState = function (targetId) {
 	
 	var currentComment = getComment(targetId);
 
-	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;Ajouter un commentaire" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;Modifier le commentaire");
+	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;" + langVallydette.addComment + "" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;" + langVallydette.editComment + "");
 }
 
 
@@ -1703,7 +1750,7 @@ initFilters = function () {
    } else {
 	   
 	   let htmlFilterHeading = document.createElement('h2');
-		htmlFilterHeading.textContent = "Filtres";
+		htmlFilterHeading.textContent = langVallydette.filters;
 		htmlFilterContent.appendChild(htmlFilterHeading);
    
 		let htmlFilterFeedback = document.createElement('div');
@@ -1743,10 +1790,10 @@ updateCounter = function (activeFilter, nbTests) {
 	let elFeedback = document.getElementById('feedback');
 	let htmlFeedback = '';
 	if (activeFilter) {
-		htmlFeedback = '<p><span><b>' + nbTests + '</b> tests dans filtres en cours</span></p>';
+		htmlFeedback = '<p><span><b>' + nbTests + '</b> ' + langVallydette.filterFeedback2 + '</span></p>';
 		elFeedback.innerHTML = htmlFeedback;
 	} else {
-		htmlFeedback = '<p><b>' + nbTests + '</b> tests en cours</p>';
+		htmlFeedback = '<p><b>' + nbTests + '</b> ' + langVallydette.filterFeedback1 + '</p>';
 		elFeedback.innerHTML = htmlFeedback;
 	}
 };
@@ -1839,7 +1886,7 @@ jsonUpdate = function () {
 const utils = {
   reqError: function (err) {
 	let elrefTests = document.getElementById('mainContent');
-    elrefTests.innerHTML = '<div class="alert alert-warning">Erreur chargement ressource JSON</div>';
+    elrefTests.innerHTML = '<div class="alert alert-warning">' + langVallydette.errorJson + '</div>';
   },
   formatHeading: function (str) {
     return str.toLowerCase()
@@ -1870,9 +1917,9 @@ const utils = {
 	e.setAttribute("aria-current", "true");
   },
   setPageTitle: function (e) {
-	document.title = e + " — Grille Audit Wcag 2.1 d’Orange — La va11ydette";
+	document.title = e + " — " + langVallydette.auditNameWcag + " — La va11ydette";
   }
 	
 }  
 
-initVallydetteApp('wcagEase', 'fr');
+initVallydetteApp('wcagEase', 'en');

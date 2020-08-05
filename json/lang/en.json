@@ -58,5 +58,12 @@
 	"footerTxt1": "Documentation sous",
 	"footerTxt2": "licence CC BY SA 3.0",
 	"footerTxt3": "Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange : Copyright © 2016 Orange SA ",
-	"footerTxt4": "All rights reserved"
+	"footerTxt4": "All rights reserved",
+	"template": {
+		"btnShowResult": "Afficher le résultat de l'audit",
+		"btnImport": "Importer"
+	},
+	"title": {
+		"btnImport": "Importer en"
+	}
 }

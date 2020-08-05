@@ -31,7 +31,7 @@
 	"auditTxt9": "Critère",
 	"auditTxt10": "niveau",
 	"auditTxt11": "Absence de non-conformité",
-	"showAudit": "Addicher le résultat de l'audit",
+	"showAudit": "Afficher le résultat de l'audit",
 	"scrollUp": "Retour en haut de page",
 	"addPage": "Ajouter une page",
 	"editPageName": "Modifier le nom de la page",
@@ -58,5 +58,26 @@
 	"footerTxt1": "Documentation sous",
 	"footerTxt2": "licence CC BY SA 3.0",
 	"footerTxt3": "Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange : Copyright © 2016 Orange SA ",
-	"footerTxt4": "All rights reserved"
+	"footerTxt4": "All rights reserved",
+	"groupsTxt1": "Captcha",
+	"groupsTxt2": "Formulaire",
+	"groupsTxt3": "Multimedia",
+	"groupsTxt4": "Tactile",
+	
+	"template": {
+		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
+		"btnShowResult": "Afficher le résultat de l'audit",
+		"btnImportTxt": "Importer",
+		"btnExportTxt": "Télécharger",
+		"selectFilesLabel": "Sélectionner un audit",
+		"import": "Importer",
+		"scrollUpTxt": "Retour en haut de page"
+	},
+	"title": {
+		"btnImport": "importer un audit (json)",
+		"export": "télécharger l'audit (json)",
+		"btnChecklistName": "Modifier le nom de l’audit",
+		"btnPageName": "Modifier le nom de la page",
+		"btnDelPage": "Supprimer la page"
+	}
 }

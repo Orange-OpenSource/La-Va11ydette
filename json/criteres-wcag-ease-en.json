@@ -1,7 +1,7 @@
 {
 	"version":1.4,
 	"items":[{
-		"themes": "Formulaire",
+		"themes": "Forms",
 		"title": "Chaque champ de formulaire possède-t-il une étiquette&nbsp;?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",

@@ -1,7 +1,7 @@
 {
 	"items": [{
 		"wcag": "1.1.1",
-		"name": "Contenu non textuel",
+		"name": "Non-text Content",
 		"level": "A",
 		"tests": [],
 		"resultat":"nt",
@@ -9,7 +9,7 @@
 	},
 	{
 		"wcag": "1.2.1",
-		"name": "Contenu seulement audio ou vidéo (pré-enregistré)",
+		"name": "Audio-only and Video-only (Prerecorded)",
 		"level": "A",
 		"tests": [], 
 		"resultat":"nt",
@@ -18,7 +18,7 @@
 	{
 		"wcag": "1.2.2",
 		"level": "A",
-		"name": "Sous-titres (pré-enregistrés)",
+		"name": "Captions (Prerecorded)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -26,7 +26,7 @@
 	{
 		"wcag": "1.2.3",
 		"level": "A",
-		"name": "Audio-p ou version de remplacement pour un média temporel (pré-enregistré)",
+		"name": "Audio Description or Media Alternative (Prerecorded)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -34,7 +34,7 @@
 	{
 		"wcag": "1.2.4",
 		"level": "AA",
-		"name": "Sous-titres (en direct)",
+		"name": "Captions (Live)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -42,7 +42,7 @@
 	{
 		"wcag": "1.2.5",
 		"level": "AA",
-		"name": "Audio-p (pré-enregistrée)",
+		"name": "Audio Description (Prerecorded)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -50,7 +50,7 @@
 	{
 		"wcag": "1.3.1",
 		"level": "A",
-		"name": "Information et relations",
+		"name": "Info and Relationships",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -58,7 +58,7 @@
 	{
 		"wcag": "1.3.2",
 		"level": "A",
-		"name": "Ordre séquentiel logique",
+		"name": "Meaningful Sequence",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -66,7 +66,7 @@
 	{
 		"wcag": "1.3.3",
 		"level": "A",
-		"name": "Caractéristiques sensorielles",
+		"name": "Sensory Characteristics",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -82,7 +82,7 @@
 	{
 		"wcag": "1.3.5",
 		"level": "AA",
-		"name": "Identifier la fonction du champ",
+		"name": "Identify Input Purpose",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -90,7 +90,7 @@
 	{
 		"wcag": "1.4.1",
 		"level": "A",
-		"name": "Utilisation de la couleur",
+		"name": "Use of Color",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -98,7 +98,7 @@
 	{
 		"wcag": "1.4.2",
 		"level": "A",
-		"name": "Contrôle du son",
+		"name": "Audio Control",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -106,7 +106,7 @@
 	{
 		"wcag": "1.4.3",
 		"level": "AA",
-		"name": "Contraste (minimum)",
+		"name": "Contrast (Minimum)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -114,7 +114,7 @@
 	{
 		"wcag": "1.4.4",
 		"level": "AA",
-		"name": "Redimensionnement du texte",
+		"name": "Resize text",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -122,7 +122,7 @@
 	{
 		"wcag": "1.4.5",
 		"level": "AA",
-		"name": "Texte sous forme d'image",
+		"name": "Images of Text",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -138,7 +138,7 @@
 	{
 		"wcag": "1.4.11",
 		"level": "AA",
-		"name": "Contraste des éléments non-textuels",
+		"name": "Non-text Contrast",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -146,7 +146,7 @@
 	{
 		"wcag": "1.4.12",
 		"level": "AA",
-		"name": "Espacement du texte",
+		"name": "Text Spacing",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -154,7 +154,7 @@
 	{
 		"wcag": "1.4.13",
 		"level": "AA",
-		"name": "Contenus s’affichant au survol du pointeur ou lors d’une tabulation",
+		"name": "Content on Hover or Focus",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -162,7 +162,7 @@
 	{
 		"wcag": "2.1.1",
 		"level": "A",
-		"name": "Clavier",
+		"name": "Keyboard",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -170,14 +170,14 @@
 	{
 		"wcag": "2.1.2",
 		"level": "A",
-		"name": "Pas de piège au clavier",
+		"name": "No Keyboard Trap",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
 	},{
 		"wcag": "2.1.4",
 		"level": "A",
-		"name": "Raccourcis clavier",
+		"name": "Character Key Shortcuts",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -185,7 +185,7 @@
 	{
 		"wcag": "2.2.1",
 		"level": "A",
-		"name": "Réglage du délai",
+		"name": "Timing Adjustable",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -193,7 +193,7 @@
 	{
 		"wcag": "2.2.2",
 		"level": "A",
-		"name": "Mettre en pause, arrêter, masquer",
+		"name": "Pause, Stop, Hide",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -201,7 +201,7 @@
 	{
 		"wcag": "2.3.1",
 		"level": "A",
-		"name": "Pas plus de trois flashs ou sous le seuil critique",
+		"name": "Three Flashes or Below Threshold",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -209,7 +209,7 @@
 	{
 		"wcag": "2.4.1",
 		"level": "A",
-		"name": "Contourner des blocs",
+		"name": "Bypass Blocks",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -217,7 +217,7 @@
 	{
 		"wcag": "2.4.2",
 		"level": "A",
-		"name": "Titre de page",
+		"name": "Page Titled",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -225,7 +225,7 @@
 	{
 		"wcag": "2.4.3",
 		"level": "A",
-		"name": "Parcours du focus",
+		"name": "Focus Order",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -233,7 +233,7 @@
 	{
 		"wcag": "2.4.4",
 		"level": "A",
-		"name": "Fonction du lien (selon le contexte)",
+		"name": "Link Purpose (In Context)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -241,7 +241,7 @@
 	{
 		"wcag": "2.4.5",
 		"level": "AA",
-		"name": "Accès multiples",
+		"name": "Multiple Ways",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -249,7 +249,7 @@
 	{
 		"wcag": "2.4.6",
 		"level": "AA",
-		"name": "En-têtes et étiquettes",
+		"name": "Headings and Labels",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -257,7 +257,7 @@
 	{
 		"wcag": "2.4.7",
 		"level": "AA",
-		"name": "Visibilité du focus",
+		"name": "Focus Visible",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -265,7 +265,7 @@
 	{
 		"wcag": "2.5.1",
 		"level": "A",
-		"name": "Gestes multipoints ou trajectoires",
+		"name": "Pointer Gestures",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -273,7 +273,7 @@
 	{
 		"wcag": "2.5.2",
 		"level": "A",
-		"name": "Déclenchement d'une action",
+		"name": "Pointer Cancellation",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -281,7 +281,7 @@
 	{
 		"wcag": "2.5.3",
 		"level": "A",
-		"name": "Label dans le nom",
+		"name": "Label in Name",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -289,7 +289,7 @@
 	{
 		"wcag": "2.5.4",
 		"level": "A",
-		"name": "Mouvement de l'appareil ou de l'utilisateur",
+		"name": "Motion Actuation",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -297,7 +297,7 @@
 	{
 		"wcag": "3.1.1",
 		"level": "A",
-		"name": "Langue de la page",
+		"name": "Language of Page",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -305,7 +305,7 @@
 	{
 		"wcag": "3.1.2",
 		"level": "AA",
-		"name": "Langue d'un passage",
+		"name": "Language of Parts",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -313,7 +313,7 @@
 	{
 		"wcag": "3.2.1",
 		"level": "A",
-		"name": "Au focus",
+		"name": "On Focus",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -321,7 +321,7 @@
 	{
 		"wcag": "3.2.2",
 		"level": "A",
-		"name": "À la saisie",
+		"name": "On Input",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -329,7 +329,7 @@
 	{
 		"wcag": "3.2.3",
 		"level": "AA",
-		"name": "Navigation cohérente",
+		"name": "Consistent Navigation",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -337,7 +337,7 @@
 	{
 		"wcag": "3.2.4",
 		"level": "AA",
-		"name": "Identification cohérente",
+		"name": "Consistent Identification",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -345,7 +345,7 @@
 	{
 		"wcag": "3.3.1",
 		"level": "A",
-		"name": "Identification des erreurs",
+		"name": "Error Identification",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -353,7 +353,7 @@
 	{
 		"wcag": "3.3.2",
 		"level": "A",
-		"name": "Étiquettes ou instructions",
+		"name": "Labels or Instructions",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -361,7 +361,7 @@
 	{
 		"wcag": "3.3.3",
 		"level": "AA",
-		"name": "Suggestion après une erreur",
+		"name": "Error Suggestion",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -369,7 +369,7 @@
 	{
 		"wcag": "3.3.4",
 		"level": "AA",
-		"name": "Prévention des erreurs (juridiques, financières, de données)",
+		"name": "Error Prevention (Legal, Financial, Data)",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -377,7 +377,7 @@
 	{
 		"wcag": "4.1.1",
 		"level": "A",
-		"name": "Analyse syntaxique",
+		"name": "Parsing",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -385,7 +385,7 @@
 	{
 		"wcag": "4.1.2",
 		"level": "A",
-		"name": "Nom, rôle et valeur",
+		"name": "Name, Role, Value",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]
@@ -393,7 +393,7 @@
 	{
 		"wcag": "4.1.3",
 		"level": "AA",
-		"name": "Messages d’état",
+		"name": "Status Messages",
 		"tests": [], 
 		"resultat":"nt",
 		"comment":[]

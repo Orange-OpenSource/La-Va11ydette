@@ -119,6 +119,8 @@ function localizeHTML() {
 		eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
 	});
 	
+	utils.setPageTitle(langVallydette.auditNameWcag);
+	
 }
 
 /**
@@ -131,7 +133,7 @@ function createObjectAndRunVallydette() {
 		"name": "",
 		"page": [{
 				"IDPage": "pageID-0",
-				"name": "Nom de la page",
+				"name": langVallydette.pageName,
 				"items": []
 			}
 		]
@@ -290,7 +292,7 @@ function runVallydetteApp() {
      };
 
 	/** @todo to be replaced by a localization object */
-	arrayFilterNameAndValue = [["conforme", "ok"], ["non-conforme", "ko"], ["non-applicable", "na"], ["non-testé", "nt"]];
+	arrayFilterNameAndValue = [[langVallydette.status1, "ok"], [langVallydette.status2, "ko"], [langVallydette.status3, "na"], [langVallydette.status4, "nt"]];
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
@@ -399,7 +401,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.status1 + '</label></li>';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.status2 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status3 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status5 + '</label></li>';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 
@@ -779,7 +781,7 @@ function initComputation() {
 	var matriceRequest = new XMLHttpRequest();
 	var matriceWcag;
     method = "GET",
-	matriceVallydette = 'json/matrice-wcag-ease-2.json';
+	matriceVallydette = 'json/matrice-wcag-ease-' + globalLang+ '.json';
 
 	matriceRequest.open(method, matriceVallydette, true);
 	matriceRequest.onreadystatechange = function () {
@@ -1004,7 +1006,7 @@ function runFinalComputation(pagesResultsArray) {
 	removeFilterSection();
 	
     if (nbNT >= 1) {
-        computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + 'audit en cours</span></h2>';
+        computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></h2>';
 		
     } else if (nbNT === 0 && !isNaN(finalResult)) {
         computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + finalResult + '%</span></h2>';
@@ -1024,7 +1026,7 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
 			
 			computationContent += '<ul>';
-			computationContent += '<li><strong>résultat :</strong> ';
+			computationContent += '<li><strong>' + langVallydette.auditTxt12 + '</strong> ';
 			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ' / ' + nbNTResultsArray['page' + i] + ' ' + langVallydette.auditTxt7 +')' : '';
 			computationContent += '</li>';
@@ -1065,7 +1067,7 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
 			computationContent += '<td class="text-center bg-light">';
 			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
-			computationContent += (pagesResultsArray[i].complete === false) ?  '(en cours)' : '';	
+			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 			computationContent += '</td>';
 			computationContent += '</tr>';
 			
@@ -1087,10 +1089,13 @@ function runFinalComputation(pagesResultsArray) {
 				for (let i in listNonConformity) {
 				
 					computationContent += '<ul>';
-					computationContent += '<li><strong>Critère ' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', niveau ' + listNonConformity[i].level + '</strong>';
+					computationContent += '<li><strong>' + langVallydette.auditTxt9 + ' ' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', niveau ' + listNonConformity[i].level + '</strong>';
 				
+					/** Remove undefined values */
+					listNonConformity[i].comment = listNonConformity[i].comment.filter(x => x);
+					
 					if (listNonConformity[i].comment.length > 0) {
-
+					
 							computationContent += '<ul>';
 							for (let j in listNonConformity[i].comment) {
 								computationContent += '<li>' + listNonConformity[i].comment[j] + '</li>';	
@@ -1458,13 +1463,13 @@ getStatutClass = function (lastResult) {
 */
 setStatutText = function (lastResult) {
 	if (lastResult === arrayFilterNameAndValue[0][1]) {
-		statutText = textContent.statut1;
+		statutText = langVallydette.status1;
 	} else if (lastResult === arrayFilterNameAndValue[1][1]) {
-		statutText = textContent.statut2;
+		statutText = langVallydette.status2;
 	} else if (lastResult === arrayFilterNameAndValue[2][1]) {
-		statutText = textContent.statut3;
+		statutText = langVallydette.status3;
 	} else {
-		statutText = textContent.statut4;
+		statutText = langVallydette.status4;
 	}
 	return statutText;
 }
@@ -1726,7 +1731,7 @@ getComment = function (targetId) {
 	var currentComment;
 
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
-		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].commentaire !== undefined ) {
 			currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
 		}
 	}

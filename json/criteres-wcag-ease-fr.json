@@ -129,7 +129,7 @@
 		"verifier": "<ul><li>vérifier que des titres sont présents, et représentent la structure du document</li><li>vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres s'enchainent de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
 		"resultatTest": "nt"
 	},{
-		"themes": "Nouveau\nContenu",
+		"themes": "Contenu textuel",
 		"title": "Le contenu est-il structuré sémantiquement&nbsp; ?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",

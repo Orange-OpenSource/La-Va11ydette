@@ -1050,10 +1050,10 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt4 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.status1 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.status2 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.status3 + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.status4 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status1 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status2 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status3 + '</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.template.status4 + '</th>';
 		computationContent += '</tr><tr>';
 		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';

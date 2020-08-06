@@ -52,10 +52,6 @@
 	"filterFeedback1": "tests in progress",
 	"filterFeedback2": "tests meet the selected filter criteria", 
 	"errorJson": "Error loading JSON file", 
-	"footerTxt1": "Documentation under", 
-	"footerTxt2": "licence CC BY SA 3.0", 
-	"footerTxt3": "The Orange logo as well as certain images and screenshots are the property of Orange: Copyright © 2016 Orange SA ", 
-	"footerTxt4": "All rights reserved",
 	"groupsTxt1": "Captcha",
 	"groupsTxt2": "Form",
 	"groupsTxt3": "Multimedia",
@@ -72,7 +68,9 @@
 		"status2": "non-compliant",
 		"status3": "not applicable",
 		"status4": "not tested",
-		"filters": "Filters"
+		"filters": "Filters",
+		"footerTxt1": "Documentation under <a href=\"https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE\">licence CC BY SA 3.0</a>.", 
+		"footerTxt2": "The Orange logo as well as certain images and screenshots are the property of Orange: Copyright © 2016 Orange SA All rights reserved." 
 	},
 	"title": {
 		"btnImport": "import an audit (json)",

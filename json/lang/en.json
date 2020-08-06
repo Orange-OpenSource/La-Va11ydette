@@ -7,10 +7,6 @@
 	"justificationHeading": "Explanation", 
 	"exceptionHeading": "Exception",
 	"groupHeading": "This page has: ",
-	"status1": "compliant",
-	"status2": "non-compliant",
-	"status3": "not applicable",
-	"status4": "not tested",
 	"status5": "N/A",
 	"expanded": "Close theme", 
 	"informations": "Additional information",
@@ -53,7 +49,6 @@
 	"commentTxt1": "Comment for", 
 	"addComment": "Add a comment: ",
 	"editComment": "Edit the comment",
-	"filters": "Filters",
 	"filterFeedback1": "tests in progress",
 	"filterFeedback2": "tests meet the selected filter criteria", 
 	"errorJson": "Error loading JSON file", 
@@ -72,7 +67,12 @@
 		"btnExportTxt": "Download",
 		"selectFilesLabel": "Select an audit",
 		"import": "Import",
-		"scrollUpTxt": "Back to top"
+		"scrollUpTxt": "Back to top",
+		"status1": "compliant",
+		"status2": "non-compliant",
+		"status3": "not applicable",
+		"status4": "not tested",
+		"filters": "Filters"
 	},
 	"title": {
 		"btnImport": "import an audit (json)",

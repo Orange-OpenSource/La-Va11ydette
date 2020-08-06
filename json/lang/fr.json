@@ -7,10 +7,6 @@
 	"justificationHeading": "Justification",
 	"exceptionHeading": "Exception",
 	"groupHeading": "Cette page possède : ",
-	"status1": "conforme",
-	"status2": "non-conforme",
-	"status3": "non-applicable",
-	"status4": "non-testé",
 	"status5": "N/A",
 	"expanded": "Plier la thématique",
 	"informations": "Informations supplémentaires",
@@ -53,7 +49,6 @@
 	"commentTxt1": "Commentaire pour",
 	"addComment": "Ajouter un commentaire : ",
 	"editComment": "Modifer le commentaire",
-	"filters": "Filtres",
 	"filterFeedback1": "tests en cours",
 	"filterFeedback2": "tests dans filtres en cours",
 	"errorJson": "Erreur chargement ressource JSON",
@@ -72,7 +67,12 @@
 		"btnExportTxt": "Télécharger",
 		"selectFilesLabel": "Sélectionner un audit",
 		"import": "Importer",
-		"scrollUpTxt": "Retour en haut de page"
+		"scrollUpTxt": "Retour en haut de page",
+		"status1": "conforme",
+		"status2": "non-conforme",
+		"status3": "non-applicable",
+		"status4": "non-testé",
+		"filters": "Filtres"
 	},
 	"title": {
 		"btnImport": "importer un audit (json)",

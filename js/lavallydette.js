@@ -65,17 +65,25 @@ function initVallydetteApp (criteriaListName, lang) {
  * Language ca be defined by a function parameter, or by a get parameter.
  * @param {string} lang - Language can be defined in function params.
  */
-function initGlobalLang(lang) {
+function initGlobalLang(lang, fromImport) {
 	
 	const paramString = window.location.search;
 	const urlParams = new URLSearchParams(paramString);
 
-	if (urlParams.has('lang')) {
-		globalLang = urlParams.get('lang');
-	} else if (lang) {
-		globalLang = lang;
+	if (fromImport) {
+		if (lang) {
+			globalLang = lang;
+		} else {
+			globalLang = 'fr';
+		}
 	} else {
-		globalLang = 'fr';
+		if (urlParams.has('lang')) {
+		globalLang = urlParams.get('lang');
+		} else if (lang) {
+			globalLang = lang;
+		} else {
+			globalLang = 'fr';
+		}
 	}
 	
 	document.documentElement.setAttribute('lang', globalLang);
@@ -110,7 +118,9 @@ function initGlobalLang(lang) {
 function localizeHTML() {
 	Object.keys(langVallydette.template).forEach(function (key) {
 		eleToLocalize = document.getElementById(key);
-		eleToLocalize.innerHTML = langVallydette.template[key];
+		if (eleToLocalize !== null) {
+			eleToLocalize.innerHTML = langVallydette.template[key];
+		}
 	});
 	
 	Object.keys(langVallydette.title).forEach(function (key) {
@@ -291,8 +301,8 @@ function runVallydetteApp() {
 		statut4: "non-testé"
      };
 
-	/** @todo to be replaced by a localization object */
-	arrayFilterNameAndValue = [[langVallydette.status1, "ok"], [langVallydette.status2, "ko"], [langVallydette.status3, "na"], [langVallydette.status4, "nt"]];
+	
+	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
@@ -312,13 +322,14 @@ function runVallydetteApp() {
 function eventHandler() {
 
 	var btnImport = document.getElementById('import');
+	
 	btnImport.onclick = function () {
 		var files = document.getElementById('selectFiles').files;
 		var fr = new FileReader();
 
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
-			initGlobalLang(dataVallydette.checklist.lang);
+			initGlobalLang(dataVallydette.checklist.lang, true);
 		
 			var langRequest = new XMLHttpRequest();
 				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
@@ -1768,7 +1779,7 @@ initFilters = function () {
    } else {
 	   
 	   let htmlFilterHeading = document.createElement('h2');
-		htmlFilterHeading.textContent = langVallydette.filters;
+		htmlFilterHeading.textContent = langVallydette.template.filters;
 		htmlFilterContent.appendChild(htmlFilterHeading);
    
 		let htmlFilterFeedback = document.createElement('div');
@@ -1781,7 +1792,7 @@ initFilters = function () {
 		for (let i in arrayFilterNameAndValue) {
 			var isChecked = "";
 			arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
-			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label" id="status' + i + '">' + arrayFilterNameAndValue[i][0] + '</span></label>';
 			
 			var listItem = document.createElement("li");
 			listItem.innerHTML = htmlTypes;

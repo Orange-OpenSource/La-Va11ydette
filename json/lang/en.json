@@ -1,4 +1,5 @@
 {
+	"va11ydette": "The va11ydette",
 	"auditNameWcag": "Orange WCAG 2.1 Audit check list",
 	"pageName": "Page name",
 	"processHeading": "Procedures",
@@ -56,7 +57,9 @@
 	"groupsTxt2": "Form",
 	"groupsTxt3": "Multimedia",
 	"groupsTxt4": "Touch screen",
+	"dataBrowse": "Browse",
 	"template": {
+		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",
 		"btnShowResult": "Display the results of the audit",
 		"btnImportTxt": "Import",

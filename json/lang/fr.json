@@ -1,4 +1,5 @@
 {
+	"va11ydette": "La va11ydette",
 	"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
 	"pageName": "Nom de la page",
 	"processHeading": "Procédures",
@@ -56,7 +57,9 @@
 	"groupsTxt2": "Formulaire",
 	"groupsTxt3": "Multimedia",
 	"groupsTxt4": "Tactile",
+	"dataBrowse": "Parcourir",
 	"template": {
+		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
 		"btnShowResult": "Afficher le résultat de l'audit",
 		"btnImportTxt": "Importer",

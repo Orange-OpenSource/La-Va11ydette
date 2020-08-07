@@ -519,17 +519,19 @@
 		"wcag": [
 			"1.3.2 A"
 		],
-		"verifier": "<ul><li>check that there is no loss of information</li><li>check that when the content is read in a linear order, it remains understandable</li></ul>",
+		"verifier": "<p>Check that when the content is read in a linear order, it remains understandable.</p>",
+		"complement": "<h4>More details</h4><p>Examples of content to test:</p><ul><li>Multiple cols layout (CSS)</li><li>Layout table</li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Layout",
-		"title": "For each layout table, when the content is read in a linear manner is it still understandable?",
+		"title": "Is the informative content is still present after disabling CSS?",
 		"ID": "testID-060",
 		"IDorigin": "testID-060",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>check that layout tables have <code>role='presentation'</code></li><li>check that when the content is read in a linear order, it remains understandable (reading order)</li></ul>",
+		"verifier": "<p>Check that no information is lost</p>",
+		"complement": "<h4>More details</h4><ul><li>No information must be provided by CSS generated content (example : pseudo classes<code> ::before / :before</code> and <code>::after / :after</code> and <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Layout",
@@ -540,16 +542,6 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>Check that the <code>dir='rtl'</code> or <code>dir='ltr'</code> attributes are applied when necessary.</p>",
-		"resultatTest": "nt"
-	},{
-		"themes": "Layout",
-		"title": "For each layout table, when the content is read in a linear manner is it still understandable?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": [
-			"1.3.2 A"
-		],
-		"verifier": "<ul><li>check that layout tables have <code>role='presentation'</code></li><li>check that when the content is read in a linear order, it remains understandable (reading order)</li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Touch and interactions",

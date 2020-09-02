@@ -151,7 +151,7 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Textual Content",
-		"title": "Is the main language defined, and does it correspond to the document’s primary language?",
+		"title": "Is the main language defined, and does it correspond to the document's primary language?",
 		"ID": "testID-021",
 		"IDorigin": "testID-021",
 		"wcag": [
@@ -168,7 +168,7 @@
 			"3.1.2 AA"
 		],
 		"verifier": "<p>Check that a <code>lang</code> attribute is present for words and expressions in a foreign language.</p>",
-		"exceptions": "<p>For words and expressions in a foreign language which are in everyday use (déjà vu, hors d’oeuvre…) or for proper nouns, do not indicate a change of language.</p>",
+		"exceptions": "<p>For words and expressions in a foreign language which are in everyday use (déjà vu, hors d'oeuvre…) or for proper nouns, do not indicate a change of language.</p>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Textual Content",
@@ -301,7 +301,7 @@
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present (at the start, if possible) in the accessible name of this component (to find out more: <a href='https: //a11y-guidelines.orange.com/web/a11y-name.html’ target='_blank' title=’The accessible name in HTML (new window)' aria-label=’The accessible name in HTML (new window)'>The accessible name in HTML </a></p>\n<p>Not applicable, if no interface component has a visible label (icon without text, for example)</p>",
+		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present (at the start, if possible) in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/web/a11y-name.html' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a></p>\n<p>Not applicable, if no interface component has a visible label (icon without text, for example)</p>",
 		"complement": "<p>For example: for a «&nbsp;start&nbsp;» link, use an <code>aria-label</code> «&nbsp;start to play&nbsp;», but not «&nbsp;commence playing&nbsp;»</p>",
 		"resultatTest": "nt"
 	},{

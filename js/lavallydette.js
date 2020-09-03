@@ -53,6 +53,7 @@ function initVallydetteApp (criteriaListName, lang) {
 		localizeHTML();
 		currentCriteriaListName = criteriaListName;
 		createObjectAndRunVallydette();
+	
 	  } 
 	};
 	langRequest.send();	
@@ -140,56 +141,55 @@ function localizeHTML() {
  * Init the dataVallydette object and download the selected checklist json file
  */
 function createObjectAndRunVallydette() {
+		
+		dataVallydette = {
+		"checklist": {
+			"name": "",
+			"page": [{
+					"IDPage": "pageID-0",
+					"name": langVallydette.pageName,
+					"items": []
+				}
+			]
 
-	dataVallydette = {
-	"checklist": {
-		"name": "",
-		"page": [{
-				"IDPage": "pageID-0",
-				"name": langVallydette.pageName,
-				"items": []
-			}
-		]
-
-	}
-}
-
-	var jsonCriteria;
-	
-	switch(currentCriteriaListName) {
-	  case 'RGAA':
-		jsonCriteria = 'json/criteres-rgaa4.json';
-		break;
-	  case 'expert':
-		jsonCriteria = 'json/criteres-checklist-expert.json';
-		break;
-	  case 'incontournables':
-		jsonCriteria = 'json/criteres-incontournables.json';
-		break;
-	  case 'concepteur':
-		jsonCriteria = 'json/criteres-checklist-concepteur.json';
-		break;
-	  case 'wcagEase':
-		jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
-		break;
-	} 
-
-	var criteriaRequest = new XMLHttpRequest();
-	
-	criteriaRequest.open("GET", jsonCriteria, true);
-	criteriaRequest.onreadystatechange = function () {
-	  if(criteriaRequest.readyState === 4 && criteriaRequest.status === 200) {
-		criteriaVallydette = JSON.parse(criteriaRequest.responseText);
-	  
-		if (currentCriteriaListName==="RGAA") {
-			//return reqListener(responseFirst, responseSecond, referentiel);
-		} else {
-			return importCriteriaToVallydetteObj(criteriaVallydette);
 		}
-	  } 
-	};
-	criteriaRequest.send();
-	
+	}
+
+		var jsonCriteria;
+		
+		switch(currentCriteriaListName) {
+		  case 'RGAA':
+			jsonCriteria = 'json/criteres-rgaa4.json';
+			break;
+		  case 'expert':
+			jsonCriteria = 'json/criteres-checklist-expert.json';
+			break;
+		  case 'incontournables':
+			jsonCriteria = 'json/criteres-incontournables.json';
+			break;
+		  case 'concepteur':
+			jsonCriteria = 'json/criteres-checklist-concepteur.json';
+			break;
+		  case 'wcagEase':
+			jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
+			break;
+		} 
+
+		var criteriaRequest = new XMLHttpRequest();
+		
+		criteriaRequest.open("GET", jsonCriteria, true);
+		criteriaRequest.onreadystatechange = function () {
+		  if(criteriaRequest.readyState === 4 && criteriaRequest.status === 200) {
+			criteriaVallydette = JSON.parse(criteriaRequest.responseText);
+		  
+			if (currentCriteriaListName==="RGAA") {
+				//return reqListener(responseFirst, responseSecond, referentiel);
+			} else {
+				return importCriteriaToVallydetteObj(criteriaVallydette);
+			}
+		  } 
+		};
+		criteriaRequest.send();
 
 }
 
@@ -351,10 +351,68 @@ function eventHandler() {
 	
 	var btnChecklist = document.getElementById("btnChecklistName");
 	btnChecklist.addEventListener('click', function () {
-		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property)
+		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
+	}, false);
+	
+	var btnLocalStorage = document.getElementById("btnLocalStorage");
+	btnLocalStorage.addEventListener('click', function () {
+		runLocalStorage();
 	}, false);
 
-	btnActionPageEventHandler ();
+	if (localStorage.getItem("lavallydette")===null) {
+		btnLocalStorage.disabled=true;
+		btnLocalStorage.classList.add("disabled");
+	}
+	
+	btnActionPageEventHandler();
+	
+}
+
+function runLocalStorage() {
+	
+	let htmlModal = '';
+	htmlModal = '<div id="modalLocalStorage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLocalStorageTitle">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modalLocalStorageTitle">Localstorage</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += 'Souhaitez-vous récupérer le dernier audit sauvegardé ?';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">Récupérer</button>';
+	htmlModal += '</div></div></div></div>';
+
+
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+
+	var localStorageSaveBtn = document.getElementById("localStorageSaveBtn");
+	localStorageSaveBtn.addEventListener('click', function () {
+		getLocalStorage();
+	});
+}
+
+function getLocalStorage() {
+	
+	let objLocalStorage = localStorage.getItem("lavallydette");
+	dataVallydette = JSON.parse(objLocalStorage);
+	
+	initGlobalLang(dataVallydette.checklist.lang, true);
+		
+			var langRequest = new XMLHttpRequest();
+				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
+				langRequest.onreadystatechange = function () {
+				  if(langRequest.readyState === 4 && langRequest.status === 200) {
+					langVallydette = JSON.parse(langRequest.responseText);
+					localizeHTML();
+					runVallydetteApp();
+			  } 
+			};
+			langRequest.send();
 	
 }
 
@@ -1909,6 +1967,14 @@ jsonUpdate = function () {
 	linkElement.setAttribute('aria-disabled', false);
 	linkElement.setAttribute('href', dataUri);
 	linkElement.setAttribute('download', exportFileDefaultName);
+	
+	
+	window.localStorage.setItem('lavallydette', dataStr);
+	
+	var btnLocalStorage = document.getElementById("btnLocalStorage");
+	btnLocalStorage.disabled=false;
+	btnLocalStorage.classList.remove("disabled");
+	
 	
 }
 

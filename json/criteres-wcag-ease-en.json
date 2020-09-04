@@ -520,7 +520,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>Check that when the content is read in a linear order, it remains understandable.</p>",
-		"complement": "<h4>More details</h4><p>Examples of content to test:</p><ul><li>Multiple cols layout (CSS)</li><li>Layout table</li></ul>",
+		"complement": "<h4>More details</h4><p>The content order in the HTML code must be identical to the layout order of the content on the screen.</p><p>Examples of content to test:</p><ul><li>Layout with css <ul><li>Positioning properties (<code>top</code>, <code>left</code>…)</li><li><code>Float</code> in particular <code>right</code></li><li><code>Display:flex</code> or <code>display:grid</code></li></ul></li><li>Layout table</li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Layout",

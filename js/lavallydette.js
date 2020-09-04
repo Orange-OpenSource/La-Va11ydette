@@ -60,83 +60,6 @@ function initVallydetteApp (criteriaListName, lang) {
 	
 }
 
-
-/**
- * Update global var globalLang width the selected languages.
- * Language ca be defined by a function parameter, or by a get parameter.
- * @param {string} lang - Language can be defined in function params.
- */
-function initGlobalLang(lang, fromImport) {
-	
-	const paramString = window.location.search;
-	const urlParams = new URLSearchParams(paramString);
-
-	if (fromImport) {
-		if (lang) {
-			globalLang = lang;
-		} else {
-			globalLang = 'fr';
-		}
-	} else {
-		if (urlParams.has('lang')) {
-		globalLang = urlParams.get('lang');
-		} else if (lang) {
-			globalLang = lang;
-		} else {
-			globalLang = 'fr';
-		}
-	}
-	
-	document.documentElement.setAttribute('lang', globalLang);
-	
-	var selectFilesLang = document.getElementById("selectFiles");
-	selectFilesLang.setAttribute('lang', globalLang);
-	
-	if (globalLang === "fr") {
-		var linkFr = document.getElementById("link-fr");
-		linkFr.setAttribute('aria-current', true);
-		linkFr.classList.add("active");
-		
-		var linkEn = document.getElementById("link-en");
-		linkEn.removeAttribute('aria-current');
-		linkEn.classList.remove("active");
-		
-	} else {
-		var linkEn = document.getElementById("link-en");
-		linkEn.setAttribute('aria-current', true);
-		linkEn.classList.add("active");
-		
-		var linkFr = document.getElementById("link-fr");
-		linkFr.removeAttribute('aria-current');
-		linkFr.classList.remove("active");
-	}
-	
-}
-
-/**
- * Run the HTML elements localizations.
- */
-function localizeHTML() {
-	Object.keys(langVallydette.template).forEach(function (key) {
-		eleToLocalize = document.getElementById(key);
-		if (eleToLocalize !== null) {
-			eleToLocalize.innerHTML = langVallydette.template[key];
-		}
-		if (key === "selectFilesLabel") {
-			eleToLocalize.setAttribute('data-browse', langVallydette.dataBrowse);
-		}
-	});
-	
-	Object.keys(langVallydette.title).forEach(function (key) {
-		eleToLocalize = document.getElementById(key);
-		eleToLocalize.setAttribute('title', langVallydette.title[key]);
-		eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
-	});
-	
-	utils.setPageTitle(langVallydette.auditNameWcag);
-	
-}
-
 /**
  * Init the dataVallydette object and download the selected checklist json file
  */
@@ -333,17 +256,7 @@ function eventHandler() {
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
 			initGlobalLang(dataVallydette.checklist.lang, true);
-		
-			var langRequest = new XMLHttpRequest();
-				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
-				langRequest.onreadystatechange = function () {
-				  if(langRequest.readyState === 4 && langRequest.status === 200) {
-					langVallydette = JSON.parse(langRequest.responseText);
-					localizeHTML();
-					runVallydetteApp();
-			  } 
-			};
-			langRequest.send();
+			runLangRequest();
 		}
 
 		fr.readAsText(files.item(0));
@@ -368,6 +281,14 @@ function eventHandler() {
 	
 }
 
+
+/**
+ *  LocalStorage
+ */
+
+/**
+ *  Opening the localStorage dialog modal, and running the localStorage get function if acceptance
+ */
 function runLocalStorage() {
 	
 	let htmlModal = '';
@@ -396,25 +317,22 @@ function runLocalStorage() {
 	});
 }
 
+/**
+ *  Get the localstorage object
+ */
 function getLocalStorage() {
 	
 	let objLocalStorage = localStorage.getItem("lavallydette");
 	dataVallydette = JSON.parse(objLocalStorage);
 	
-	initGlobalLang(dataVallydette.checklist.lang, true);
-		
-			var langRequest = new XMLHttpRequest();
-				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
-				langRequest.onreadystatechange = function () {
-				  if(langRequest.readyState === 4 && langRequest.status === 200) {
-					langVallydette = JSON.parse(langRequest.responseText);
-					localizeHTML();
-					runVallydetteApp();
-			  } 
-			};
-			langRequest.send();
+	btnLocalStorage.disabled=true;
+	btnLocalStorage.classList.add("disabled");
 	
+	initGlobalLang(dataVallydette.checklist.lang, true);
+	runLangRequest();	
+				
 }
+
 
 /**
  *  Initialization of events for page name edit button and page delete button.
@@ -661,6 +579,105 @@ runTestListMarkup = function (currentRefTests) {
 	}
 	
 	applyDisabledGroups();
+}
+
+/**
+ * Localisation
+ */
+
+/**
+ * Update global var globalLang width the selected languages.
+ * Language ca be defined by a function parameter, or by a get parameter.
+ * @param {string} lang - Language can be defined in function params.
+ */
+function initGlobalLang(lang, fromImport) {
+	
+	const paramString = window.location.search;
+	const urlParams = new URLSearchParams(paramString);
+
+	if (fromImport) {
+		if (lang) {
+			globalLang = lang;
+		} else {
+			globalLang = 'fr';
+		}
+	} else {
+		if (urlParams.has('lang')) {
+		globalLang = urlParams.get('lang');
+		} else if (lang) {
+			globalLang = lang;
+		} else {
+			globalLang = 'fr';
+		}
+	}
+	
+	document.documentElement.setAttribute('lang', globalLang);
+	
+	var selectFilesLang = document.getElementById("selectFiles");
+	selectFilesLang.setAttribute('lang', globalLang);
+	
+	if (globalLang === "fr") {
+		var linkFr = document.getElementById("link-fr");
+		linkFr.setAttribute('aria-current', true);
+		linkFr.classList.add("active");
+		
+		var linkEn = document.getElementById("link-en");
+		linkEn.removeAttribute('aria-current');
+		linkEn.classList.remove("active");
+		
+	} else {
+		var linkEn = document.getElementById("link-en");
+		linkEn.setAttribute('aria-current', true);
+		linkEn.classList.add("active");
+		
+		var linkFr = document.getElementById("link-fr");
+		linkFr.removeAttribute('aria-current');
+		linkFr.classList.remove("active");
+	}
+	
+}
+
+/**
+ *  Useful for import and localstorage. Will load the interface localisation json depending on new object loaded, and run the vallydette app.
+ */
+function runLangRequest () {
+	
+	var langRequest = new XMLHttpRequest();
+				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
+				langRequest.onreadystatechange = function () {
+				  if(langRequest.readyState === 4 && langRequest.status === 200) {
+					langVallydette = JSON.parse(langRequest.responseText);
+					localizeHTML();
+					runVallydetteApp();
+			  } 
+			};
+			langRequest.send();
+	
+}
+
+
+/**
+ * Run the HTML elements localisations depending on file loaded by runLangRequest function.
+ */
+function localizeHTML() {
+	Object.keys(langVallydette.template).forEach(function (key) {
+		eleToLocalize = document.getElementById(key);
+		if (eleToLocalize !== null) {
+			eleToLocalize.innerHTML = langVallydette.template[key];
+		}
+		if (key === "selectFilesLabel") {
+			eleToLocalize.setAttribute('data-browse', langVallydette.dataBrowse);
+		}
+	});
+	
+	Object.keys(langVallydette.title).forEach(function (key) {
+		eleToLocalize = document.getElementById(key);
+		eleToLocalize.setAttribute('title', langVallydette.title[key]);
+		eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+	});
+	
+	utils.setPageTitle(langVallydette.auditNameWcag);
+	
 }
 
 
@@ -1833,11 +1850,7 @@ getCommentState = function (targetId) {
  */
 initFilters = function () {
     
-   if (htmlFilterContent.innerHTML.trim() !== '') {
-
-	   return;
-	   
-   } else {
+		htmlFilterContent.innerHTML = '';
 	   
 	   let htmlFilterHeading = document.createElement('h2');
 		htmlFilterHeading.textContent = langVallydette.template.filters;
@@ -1867,8 +1880,7 @@ initFilters = function () {
 			}, false);
 
 		}
-   }
-   
+
 }
 
 /**
@@ -1971,11 +1983,8 @@ jsonUpdate = function () {
 	
 	window.localStorage.setItem('lavallydette', dataStr);
 	
-	var btnLocalStorage = document.getElementById("btnLocalStorage");
-	btnLocalStorage.disabled=false;
-	btnLocalStorage.classList.remove("disabled");
-	
-	
+	btnLocalStorage.disabled=true;
+	btnLocalStorage.classList.add("disabled");
 }
 
  /**

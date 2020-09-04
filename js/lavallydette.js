@@ -15,6 +15,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  * @param {string} currentCriteriaListName - Selected checklist json file name.
  * @param {object} htmlContextualMenuContent - Contextual page menu (edit page name, delete a page).
  * @param {object} htmlFilterContent - Test filter menu.
+ * @param {object} htmlMainContent - Main content.
  */
 var dataVallydette;
 var langVallydette;
@@ -29,6 +30,8 @@ var currentCriteriaListName;
 
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
+var htmlMainContent = document.getElementById('mainContent');
+
 	
 /**
  * Vallydette object
@@ -913,9 +916,10 @@ function initRulesAndTests (rules) {
 
 /**
  * Pass through both dataVallydette et dataWCAG to build the pageResults array, which contains the wcag results for each pages.
- *  @return {array} pagesResults - Contains all wcag results by pages.
+ * @param {boolean} obj - if true, function returns only the full pagesResults object (with test title) whitout running the final computation
+ * @return {array} pagesResults - Contains all wcag results by pages.
 */
-function runComputation() {
+function runComputation(obj) {
 
 	/**
 	* @param {array} pagesResults - Contains all wcag results by pages.
@@ -940,7 +944,8 @@ function runComputation() {
 			pagesResults[i].items[k].level = dataWCAG.items[k].level;
             pagesResults[i].items[k].resultat = "nt";
             pagesResults[i].items[k].complete = true;
-			
+			pagesResults[i].items[k].test = [];
+			pagesResults[i].items[k].name = dataWCAG.items[k].name;
 			/**
 			* Pass through each test of a wcag.
 			*/
@@ -948,9 +953,17 @@ function runComputation() {
 				/**
 				* Gets each test value, and update the current wcag rules, basing on computation rules.
 				*/
+				
+				
                 for (let j in dataVallydette.checklist.page[i].items) {
 					
+					
                     if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
+						
+						testObj = {};
+						testObj.title = dataVallydette.checklist.page[i].items[j].title;
+						testObj.result = dataVallydette.checklist.page[i].items[j].resultatTest;
+						pagesResults[i].items[k].test.push(testObj);
 						
                         if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
                             pagesResults[i].items[k].complete = false;
@@ -990,7 +1003,13 @@ function runComputation() {
         }
     }
 
-    return runFinalComputation(pagesResults);
+	console.log(pagesResults);
+	if (obj) {
+		return pagesResults;
+	} else {		
+		return runFinalComputation(pagesResults);
+	}
+
 }
 
 /**
@@ -1086,8 +1105,8 @@ function runFinalComputation(pagesResultsArray) {
 	/** Final conformity rate. */ 
     finalResult = Math.round((finalTotal / nbPage));
 
-    /** Gets the mainContent and build the audit conformity markup. */ 
-    let htmlMainContent = document.getElementById('mainContent');
+    /**Build the audit conformity markup. */ 
+    
 	let computationContent = '';
 
 	setPageName(langVallydette.auditResult);
@@ -1533,9 +1552,9 @@ getIfFilter = function (name) {
  * @return {string} statutClass - returns a badge class.
 */
 getStatutClass = function (lastResult) {
-	if (lastResult === arrayFilterNameAndValue[0][1]) {
+	if (lastResult === arrayFilterNameAndValue[0][1] || lastResult === true) {
 		statutClass = "badge-success";
-	} else if (lastResult === arrayFilterNameAndValue[1][1]) {
+	} else if (lastResult === arrayFilterNameAndValue[1][1] || lastResult === false) {
 		statutClass = "badge-danger";
 	} else if (lastResult === arrayFilterNameAndValue[2][1]) {
 		statutClass = "badge-info";
@@ -1551,9 +1570,9 @@ getStatutClass = function (lastResult) {
  * @return {string} statutText - returns the badge innerText.
 */
 setStatutText = function (lastResult) {
-	if (lastResult === arrayFilterNameAndValue[0][1]) {
+	if (lastResult === arrayFilterNameAndValue[0][1] || lastResult === true) {
 		statutText = langVallydette.template.status1;
-	} else if (lastResult === arrayFilterNameAndValue[1][1]) {
+	} else if (lastResult === arrayFilterNameAndValue[1][1] || lastResult === false) {
 		statutText = langVallydette.template.status2;
 	} else if (lastResult === arrayFilterNameAndValue[2][1]) {
 		statutText = langVallydette.template.status3;
@@ -1880,7 +1899,57 @@ initFilters = function () {
 			}, false);
 
 		}
+		
+		let htmlWcagDisplay = '<label class="custom-control custom-switch pb-1" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">Affichage WCAG</span></label>';
+		let wcagDisplayItem = document.createElement("div");
+		wcagDisplayItem.innerHTML = htmlWcagDisplay;
+		htmlFilterContent.appendChild(wcagDisplayItem);
+		
+		var typeWcagDisplayInput = document.getElementById("typeWcagDisplay");
+		typeWcagDisplayInput.addEventListener('click', function () {
+				wcagDisplayMode(this)
+			}, false);
+}
 
+function wcagDisplayMode(wcagDisplayModeInput) {
+	
+	if (wcagDisplayModeInput.checked) {
+		
+		 let wcagDisplayObj = runComputation(true);
+
+			let wcagDisplayContent = '';
+			
+			for (let i in wcagDisplayObj[currentPage].items) {
+				wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +'</h2>';
+
+				wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">affichage Wcag</caption>';
+				wcagDisplayContent += '<thead><tr>';
+				wcagDisplayContent += '<th scope="col">Test</th>';
+				wcagDisplayContent += '<th scope="col">Résultat</th>';
+				wcagDisplayContent += '</tr></thead>';
+				wcagDisplayContent += '<tbody>';
+				for (let j in wcagDisplayObj[currentPage].items[i].test) {
+					wcagDisplayContent += '<tr>';
+					wcagDisplayContent += '<td>'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
+					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
+					wcagDisplayContent += '</tr>';
+				}
+				wcagDisplayContent += '<tr class="bg-light">';
+				wcagDisplayContent += '<th class="font-weight-bold" scope="row">Résultat</th>';
+				wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
+				wcagDisplayContent += '</tr>';
+				wcagDisplayContent += '</tbody></table>';
+				
+				
+			}
+			
+			htmlMainContent.innerHTML = wcagDisplayContent;
+			
+
+	} else {
+		showPage(dataVallydette.checklist.page[currentPage].IDPage);
+	}
+	
 }
 
 /**

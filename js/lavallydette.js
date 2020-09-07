@@ -1900,7 +1900,8 @@ initFilters = function () {
 
 		}
 		
-		let htmlWcagDisplay = '<label class="custom-control custom-switch pb-1" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">Affichage WCAG</span></label>';
+		let htmlWcagDisplay = '<hr class="border-light">';
+		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">affichage WCAG</span></label>';
 		let wcagDisplayItem = document.createElement("div");
 		wcagDisplayItem.innerHTML = htmlWcagDisplay;
 		htmlFilterContent.appendChild(wcagDisplayItem);
@@ -1919,8 +1920,11 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 
 			let wcagDisplayContent = '';
 			
+			wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-2">Affichage par WCAG</h2>';
+			
 			for (let i in wcagDisplayObj[currentPage].items) {
-				wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +'</h2>';
+				
+				wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +'</h3>';
 
 				wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">affichage Wcag</caption>';
 				wcagDisplayContent += '<thead><tr>';
@@ -1930,11 +1934,11 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 				wcagDisplayContent += '<tbody>';
 				for (let j in wcagDisplayObj[currentPage].items[i].test) {
 					wcagDisplayContent += '<tr>';
-					wcagDisplayContent += '<td>'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
+					wcagDisplayContent += '<td class="w-100">'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
 					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
 					wcagDisplayContent += '</tr>';
 				}
-				wcagDisplayContent += '<tr class="bg-light">';
+				wcagDisplayContent += '<tr style="background-color: #f6f6f6;">';
 				wcagDisplayContent += '<th class="font-weight-bold" scope="row">Résultat</th>';
 				wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
 				wcagDisplayContent += '</tr>';

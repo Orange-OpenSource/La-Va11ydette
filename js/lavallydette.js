@@ -418,11 +418,12 @@ runTestListMarkup = function (currentRefTests) {
 			}
 			
 
-			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:';
+			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
 			for (let j in currentRefTests[i].wcag) {
 				htmlrefTests += currentRefTests[i].wcag[j];
 				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
 			}
+			htmlrefTests += ' / Identifiant : ' + currentTest;
 			htmlrefTests += '</p></div></div>';
 
 			htmlrefTests += '</article>';
@@ -1938,7 +1939,7 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
 					wcagDisplayContent += '</tr>';
 				}
-				wcagDisplayContent += '<tr style="background-color: #f6f6f6;">';
+				wcagDisplayContent += '<tr class="bg-light2">';
 				wcagDisplayContent += '<th class="font-weight-bold" scope="row">Résultat</th>';
 				wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
 				wcagDisplayContent += '</tr>';

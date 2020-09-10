@@ -76,7 +76,14 @@
 			
 			.bg-light2 {background-color: #F6F6F6;}
 			
-			@media print { 
+			@media print {
+				body {padding-top: 0 !important;}
+			
+				.col-print-12{
+						flex: 0 0 100%;
+						max-width: 100%;
+				}
+				
 				.custom-switch .custom-control-label::before, .custom-control-label::before  {
 					content:none;
 				}
@@ -88,15 +95,9 @@
 				.custom-control-input {
 					position: relative;
 					z-index: 1;
-					opacity: 100;
-					
-					
+					opacity: 100;	
 				}
-				.col-print-12{
-						flex: 0 0 100%;
-
-max-width: 100%;
-					}
+				
 			 } 
         </style>
     </head>

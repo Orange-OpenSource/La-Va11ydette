@@ -299,15 +299,15 @@ function runLocalStorage() {
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modalLocalStorageTitle">Localstorage</h5>';
+	htmlModal += '<h5 class="modal-title" id="modalLocalStorageTitle">' + langVallydette.recoverTitle + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += 'Souhaitez-vous récupérer le dernier audit sauvegardé ?';
+	htmlModal += langVallydette.recoverMessage;
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
-	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">Récupérer</button>';
+	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 
@@ -1902,7 +1902,7 @@ initFilters = function () {
 		}
 		
 		let htmlWcagDisplay = '<hr class="border-light">';
-		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">affichage WCAG</span></label>';
+		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">' + langVallydette.wcagView + '</span></label>';
 		let wcagDisplayItem = document.createElement("div");
 		wcagDisplayItem.innerHTML = htmlWcagDisplay;
 		htmlFilterContent.appendChild(wcagDisplayItem);
@@ -1921,16 +1921,16 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 
 			let wcagDisplayContent = '';
 			
-			wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-2">Affichage par WCAG</h2>';
+			wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h2>';
 			
 			for (let i in wcagDisplayObj[currentPage].items) {
 				
 				wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +'</h3>';
 
-				wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">affichage Wcag</caption>';
+				wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.wcagView + '</caption>';
 				wcagDisplayContent += '<thead><tr>';
-				wcagDisplayContent += '<th scope="col">Test</th>';
-				wcagDisplayContent += '<th scope="col">Résultat</th>';
+				wcagDisplayContent += '<th scope="col">Tests</th>';
+				wcagDisplayContent += '<th scope="col">' + langVallydette.resultHeading + '</th>';
 				wcagDisplayContent += '</tr></thead>';
 				wcagDisplayContent += '<tbody>';
 				for (let j in wcagDisplayObj[currentPage].items[i].test) {
@@ -1940,7 +1940,7 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 					wcagDisplayContent += '</tr>';
 				}
 				wcagDisplayContent += '<tr class="bg-light2">';
-				wcagDisplayContent += '<th class="font-weight-bold" scope="row">Résultat</th>';
+				wcagDisplayContent += '<th class="font-weight-bold" scope="row">' + langVallydette.result + '</th>';
 				wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
 				wcagDisplayContent += '</tr>';
 				wcagDisplayContent += '</tbody></table>';

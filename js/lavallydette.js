@@ -75,11 +75,9 @@ function createObjectAndRunVallydette() {
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
 					"items": []
-				}
-			]
-
+					}]
+			}
 		}
-	}
 
 		var jsonCriteria;
 		
@@ -99,6 +97,9 @@ function createObjectAndRunVallydette() {
 		  case 'wcagEase':
 			jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
 			break;
+		  case 'audit':
+			jsonCriteria = 'json/tests-web.json';
+			break;
 		} 
 
 		var criteriaRequest = new XMLHttpRequest();
@@ -108,13 +109,17 @@ function createObjectAndRunVallydette() {
 		  if(criteriaRequest.readyState === 4 && criteriaRequest.status === 200) {
 			criteriaVallydette = JSON.parse(criteriaRequest.responseText);
 		  
-			if (currentCriteriaListName==="RGAA") {
+			if (currentCriteriaListName==="audit") {
 				//return reqListener(responseFirst, responseSecond, referentiel);
+				return importAuditCriteriaToVallydetteObj(criteriaVallydette);
+			} else if (currentCriteriaListName==="RGAA") {
+				return importRGAA(criteriaVallydette);
 			} else {
 				return importCriteriaToVallydetteObj(criteriaVallydette);
 			}
 		  } 
 		};
+		
 		criteriaRequest.send();
 
 }
@@ -155,10 +160,31 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 }
 
 /**
+ *  update the dataVallydette object with the selected checklist object (ie the audit object)
+ */
+function importAuditCriteriaToVallydetteObj (criteriaVallydette) {
+	 
+	 criteriaVallydette.forEach(function (criteria, key) {
+		 criteria.ID = "testWebID-"+key;
+	 })
+	
+    dataVallydette.checklist.name = langVallydette.auditNameWcag;
+    dataVallydette.checklist.referentiel = currentCriteriaListName;
+    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette);
+	dataVallydette.checklist.version = criteriaVallydette.version;
+	checklistVersion = criteriaVallydette.version;
+	
+	dataVallydette.checklist.lang = globalLang;
+
+	runVallydetteApp();
+
+}
+
+/**
  *  update the dataVallydette object with the selected checklist object.
 	Run some specific processing to fit the rgaa object to the vallydette object.
  */
-function importRGAA(dataVallydette, dataRGAA) {
+function importRGAA(dataRGAA) {
     dataVallydette.checklist.name = "Audit RGAA 4";
     dataVallydette.checklist.referentiel = "RGAA";
 
@@ -428,7 +454,77 @@ runTestListMarkup = function (currentRefTests) {
 
 			htmlrefTests += '</article>';
 		}
+	 /** 'audit' value correspond to the conformity checklist */
+	} else if (currentCriteriaListName === 'audit') {
+		setPageName(dataVallydette.checklist.page[currentPage].name);
+		checkTheVersion(dataVallydette.checklist.version);
 		
+		/** pass through the tests object to display each of them */
+		for (let i in currentRefTests) {
+			var currentTest = currentRefTests[i].ID;
+			if (headingTheme != currentRefTests[i].themes) {
+				if (headingTheme !== '') {
+					htmlrefTests += '</div>';
+				}
+
+				headingTheme = currentRefTests[i].themes;
+				let formattedHeadingTheme = utils.formatHeading(headingTheme);
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
+			}
+
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			
+			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status2 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status5 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
+			htmlrefTests += '</ul>';
+
+			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
+
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
+
+			
+			
+			if (currentRefTests[i].tests) {
+				htmlrefTests += '<h4 class="h5">Procédure</h4>';
+				htmlrefTests += utils.listOrParagraph(currentRefTests[i].tests);
+			}
+			
+			if (currentRefTests[i].verifier) {
+				htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
+				htmlrefTests += utils.listOrParagraph(currentRefTests[i].verifier);
+			}
+			
+			if (currentRefTests[i].resultat) {
+				htmlrefTests += '<h4 class="h5">Résultat</h4>';
+				htmlrefTests += utils.listOrParagraph(currentRefTests[i].resultat);
+			}
+			
+			if (currentRefTests[i].exception) {
+				htmlrefTests += '<h4 class="h5">' + langVallydette.exceptionHeading + '</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
+			}
+			
+			if (currentRefTests[i].raccourcis) {
+				htmlrefTests += '<h4 class="h5">Raccourci</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].raccourcis+ '</p>';
+			}
+
+			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
+			for (let j in currentRefTests[i].wcag) {
+				htmlrefTests += currentRefTests[i].wcag[j];
+				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
+			}
+			htmlrefTests += ' / Identifiant : ' + currentTest;
+			htmlrefTests += '</p></div></div>';
+
+			htmlrefTests += '</article>';
+		}
+	
 	/** 'rgaa' value correspond to the RGGA4 checklist */
 	} else if (currentCriteriaListName === 'RGAA') {
 		/** marked library is used to render md from RGAA json */
@@ -2099,8 +2195,21 @@ const utils = {
   },
   setPageTitle: function (e) {
 	document.title = e + " — " + langVallydette.auditNameWcag + " — " + langVallydette.va11ydette;
+  },
+  listOrParagraph: function (e) {
+	let htmlMarker;
+	if (e.length > 1) {
+		htmlMarker = "<ol>";
+		e.forEach(function(content){
+			htmlMarker += "<li>"+content+"</li>";
+		})
+		htmlMarker += "</ol>";
+	} else {
+		htmlMarker = "<p>"+e+"</p>";
+	}
+	return htmlMarker;
   }
 	
 }  
 
-initVallydetteApp('wcagEase', 'fr');
+initVallydetteApp('audit', 'fr');

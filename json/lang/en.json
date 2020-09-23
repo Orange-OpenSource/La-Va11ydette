@@ -1,6 +1,7 @@
 {
 	"va11ydette": "The va11ydette",
 	"auditNameWcag": "Orange WCAG 2.1 Audit check list",
+	"auditNameAuditor": "Orange auditor check list",
 	"pageName": "Page name",
 	"processHeading": "Procedures",
 	"toCheckHeading": "To be checked",
@@ -63,6 +64,7 @@
 	"recoverMessage": "Do you want to recover the last saved audit?",
 	"wcagView": "WCAG view",
 	"result": "result",
+	"goodPractice": "good practice",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",

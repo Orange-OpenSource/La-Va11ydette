@@ -54,7 +54,7 @@ function initVallydetteApp (criteriaListName, lang) {
 	  if(langRequest.readyState === 4 && langRequest.status === 200) {
 		langVallydette = JSON.parse(langRequest.responseText);
 		localizeHTML();
-		currentCriteriaListName = criteriaListName;
+		initGlobalCriteriaListName(criteriaListName),
 		createObjectAndRunVallydette();
 	
 	  } 
@@ -62,6 +62,22 @@ function initVallydetteApp (criteriaListName, lang) {
 	langRequest.send();	
 	
 }
+
+function initGlobalCriteriaListName(criteriaListName) {
+	
+	const paramString = window.location.search;
+	const urlParams = new URLSearchParams(paramString);
+
+	if (urlParams.has('list')) {
+		currentCriteriaListName = urlParams.get('list');
+	} else if (criteriaListName) {
+		currentCriteriaListName = criteriaListName;
+	} else {
+		currentCriteriaListName = 'wcagEase';
+	}
+
+}
+
 
 /**
  * Init the dataVallydette object and download the selected checklist json file
@@ -151,7 +167,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 							"checked": true
 					}};
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
-	dataVallydette.checklist.version = criteriaVallydette.version;
+	
 	checklistVersion = criteriaVallydette.version;
 	
 	dataVallydette.checklist.lang = globalLang;
@@ -166,9 +182,12 @@ function importAuditCriteriaToVallydetteObj (criteriaVallydette) {
 	 
 	 criteriaVallydette.forEach(function (criteria, key) {
 		 criteria.ID = "testWebID-"+key;
+		 criteria.IDorigin = "testWebID-"+key;
+		 criteria.resultatTest = "nt";
+		 
 	 })
 	
-    dataVallydette.checklist.name = langVallydette.auditNameWcag;
+    dataVallydette.checklist.name = langVallydette.auditNameAuditor;
     dataVallydette.checklist.referentiel = currentCriteriaListName;
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette);
 	dataVallydette.checklist.version = criteriaVallydette.version;
@@ -241,7 +260,7 @@ function importRGAA(dataRGAA) {
 	Initialization of some string var and run multiple init functions.
  */
 function runVallydetteApp() {
-   	
+  
 	currentPage = 0;
 	
 	/** @todo to be replaced by a localization object */
@@ -473,7 +492,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span>'+ (currentRefTests[i].wcag === undefined ? '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>' : '') + '<span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
@@ -1100,7 +1119,6 @@ function runComputation(obj) {
         }
     }
 
-	console.log(pagesResults);
 	if (obj) {
 		return pagesResults;
 	} else {		

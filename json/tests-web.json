@@ -19,7 +19,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+	"wcag": ["1.3.1","2.4.6","3.3.2"]
   },
   {
     "themes": "Contenu textuel",
@@ -42,7 +43,8 @@
     ],
     "exception": "Ne pas tenir compte des titres masqués (<code>visibility:hidden</code> ou <code>display:none</code>) via des directives CSS. Si un de ces titres masqués est susceptible d'apparaître, il faut refaire les observations sur la nouvelle structuration du titrage.",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+	"wcag": ["2.4.6 AA","3.3.2 A"]
   },
   {
     "themes": "Contenu textuel",

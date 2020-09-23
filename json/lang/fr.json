@@ -1,6 +1,7 @@
 {
 	"va11ydette": "La va11ydette",
 	"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
+	"auditNameAuditor": "Grille Auditeur d’Orange",
 	"pageName": "Nom de la page",
 	"processHeading": "Procédures",
 	"toCheckHeading": "À vérifier",
@@ -63,6 +64,7 @@
 	"recoverMessage": "Souhaitez-vous restaurer le dernier audit sauvegardé ?",
 	"wcagView": "affichage WCAG",
 	"result": "résultat",
+	"goodPractice": "bonne pratique",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",

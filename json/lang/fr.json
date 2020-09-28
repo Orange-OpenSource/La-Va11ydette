@@ -51,6 +51,8 @@
 	"commentTxt1": "Commentaire pour",
 	"addComment": "Ajouter un commentaire : ",
 	"editComment": "Modifer le commentaire",
+	"issueTxt1": "Saisir une anomalie pour : ",
+	"issueTxt2": "Anomalie(s) pour : ",
 	"filterFeedback1": "tests en cours",
 	"filterFeedback2": "tests dans filtres en cours",
 	"errorJson": "Erreur chargement ressource JSON",

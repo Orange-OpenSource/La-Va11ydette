@@ -184,6 +184,7 @@ function importAuditCriteriaToVallydetteObj (criteriaVallydette) {
 		 criteria.ID = "testWebID-"+key;
 		 criteria.IDorigin = "testWebID-"+key;
 		 criteria.resultatTest = "nt";
+		 criteria.issues = [];
 		 
 	 })
 	
@@ -194,7 +195,7 @@ function importAuditCriteriaToVallydetteObj (criteriaVallydette) {
 	checklistVersion = criteriaVallydette.version;
 	
 	dataVallydette.checklist.lang = globalLang;
-
+console.log(dataVallydette);
 	runVallydetteApp();
 
 }
@@ -462,7 +463,6 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
 			}
 			
-
 			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
 			for (let j in currentRefTests[i].wcag) {
 				htmlrefTests += currentRefTests[i].wcag[j];
@@ -500,8 +500,9 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status5 + '</label></li>';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
-
-			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
+			
+			htmlrefTests += '<button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="issueBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">Voir les anomalies</button>';
+			htmlrefTests += '<button type="button" id="issueBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="issueBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">Ajouter une anomalie</button>';
 
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
@@ -690,11 +691,27 @@ runTestListMarkup = function (currentRefTests) {
 			}, false);
 		}
 
-
 		var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
-		comment.addEventListener('click', function () {
-			setComment(currentRefTests[i].ID, currentRefTests[i].title)
-		}, false);
+		if (comment) {
+			comment.addEventListener('click', function () {
+				setComment(currentRefTests[i].ID, currentRefTests[i].title)
+			}, false);
+		}
+		
+		var issue = document.getElementById("issueBtn" + currentRefTests[i].ID);
+		if (issue) {
+			issue.addEventListener('click', function () {
+				setIssue(currentRefTests[i].ID, currentRefTests[i].title)
+			}, false);
+		}
+		
+		var issueDisplayBtn = document.getElementById("issueDisplayBtn" + currentRefTests[i].ID);
+		if (issueDisplayBtn) {
+			issueDisplayBtn.addEventListener('click', function () {
+				displayIssue(currentRefTests[i].ID, currentRefTests[i].title)
+			}, false);
+		}
+		
 	}
 	
 	applyDisabledGroups();
@@ -1910,7 +1927,6 @@ setComment = function (targetId, title) {
 	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></div></div></div>';
 
-
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
@@ -1972,6 +1988,154 @@ getCommentState = function (targetId) {
 	var currentComment = getComment(targetId);
 
 	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;" + langVallydette.addComment + "" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;" + langVallydette.editComment + "");
+}
+
+/**
+ * Issue manager
+ */
+
+/**
+ * Issue popin initialization.
+ * @param {string} targetId - current test ID.
+ * @param {string} title - current test title.
+*/
+setIssue = function (targetId, title) {
+	let titleModal = title;
+
+	let htmlModal = '';
+	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += '<label class="is-required" for="issueNameValue">Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required >';
+	htmlModal += '<label class="is-required" for="issueCommentValue">Commentaire <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueCommentValue"></textarea>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" id="issueSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '</div></div></div></div>';
+
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+
+	var issueSave = document.getElementById("issueSaveBtn");
+	issueSave.addEventListener('click', function () {
+		addIssue(targetId, issueNameValue.value, issueCommentValue.value)
+	});
+	
+	var issueNameValueInput = document.getElementById(issueNameValue);
+
+	elModal.addEventListener('shown.bs.modal', function(event){
+		issueNameValueInput.focus()
+	});
+	
+}
+
+/**
+ * Add the issue to the vallydette object.
+ * @param {string} targetId - current test ID.
+ * @param {string} issueTitle.
+ * @param {string} issueComment.
+*/
+addIssue = function (targetId, issueTitle, issueComment) {
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			
+			newIssue = {};
+			newIssue['issueTitle'] = issueTitle;
+			newIssue['issueComment'] = issueComment;
+			
+			dataVallydette.checklist.page[currentPage].items[i].issues.push(newIssue);
+			
+		}
+	}
+
+	jsonUpdate();
+}
+
+
+/**
+ * Get the comment from the vallydette object.
+ * @param {string} targetId - current test ID.
+ * @return {string} currentComment - current comment value
+*/
+getIssue = function (targetId) {
+	var currentIssue;
+
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
+			currentIssue = dataVallydette.checklist.page[currentPage].items[i].commentaire;
+		}
+	}
+
+	return (currentComment !== undefined  ? currentComment : "");
+}
+
+
+/**
+ * Issue popin initialization.
+ * @param {string} targetId - current test ID.
+ * @param {string} title - current test title.
+*/
+displayIssue = function (targetId, title) {
+	let titleModal = title;
+
+	let htmlModal = '';
+	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="">';
+	htmlModal += '<div id="issueList" class="accordion">';
+	
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
+			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
+				
+				htmlModal += '<div class="card">';
+				
+				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+j+'">';
+				htmlModal += ' <h5 class="mb-0">';
+				htmlModal += '  <a data-toggle="collapse" href="#collapse'+targetId+'-'+j+'"" aria-expanded="false" aria-controls="collapse'+targetId+'-'+j+'"" role="button" class="collapsed">';
+				htmlModal += '#' + j + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
+				htmlModal += ' </a>';
+				htmlModal += '</h5>';
+				htmlModal += ' </div>';
+
+				htmlModal += ' <div id="collapse'+targetId+'-'+j+'" data-parent="#issueList" class="collapse" aria-labelledby="issue'+targetId+'-'+j+'" >';
+				htmlModal += '   <div class="card-body">';
+				htmlModal += dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
+				htmlModal += '  </div>';
+				htmlModal += ' </div>';
+				
+				htmlModal += ' </div>';
+			}
+		}
+	}
+	
+	htmlModal += '</div>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-primary" data-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '</div></div></div></div>';
+
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+
+	
+
+	elModal.addEventListener('shown.bs.modal', function(event){
+		issueNameValueInput.focus()
+	});
 }
 
 

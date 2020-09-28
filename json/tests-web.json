@@ -20,7 +20,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-	"wcag": ["1.3.1","2.4.6","3.3.2"]
+    "wcag": ["2.4.2"]
   },
   {
     "themes": "Contenu textuel",
@@ -44,7 +44,7 @@
     "exception": "Ne pas tenir compte des titres masqués (<code>visibility:hidden</code> ou <code>display:none</code>) via des directives CSS. Si un de ces titres masqués est susceptible d'apparaître, il faut refaire les observations sur la nouvelle structuration du titrage.",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-	"wcag": ["2.4.6 AA","3.3.2 A"]
+    "wcag": ["2.4.6", "1.3.1"]
   },
   {
     "themes": "Contenu textuel",
@@ -58,40 +58,19 @@
       "Examiner les contenus"
     ],
     "verifier": [
-		"Vérifier que les sémantiques HTML appropriées sont utilisées pour le balisage des contenus, notamment : <ul><li>liste (cf détail étape suivante)</li><li>citation (présence de <code>&lt;blockquote&gt;</code> ou <code>&lt;q&gt;</code> lorsque nécessaire)</li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul>"
+		"Vérifier que les sémantiques HTML appropriées sont utilisées pour le balisage des contenus, notamment : <ul><li>afin que du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment <code>&lt;p&gt;</code>) pour en comprendre le sens ou sa relation au reste de la structure du document<li>liste</li><li>citation (présence de <code>&lt;blockquote&gt;</code> ou <code>&lt;q&gt;</code> lorsque nécessaire)</li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul>"
 		],
     "resultat": [
-		"Tous les contenus, traités visuellement comme des listes, possèdent une sémantique liste HTML (<code>&lt;ol&gt;</code> pour des listes ordonnées, <code>&lt;ul&gt;</code> pour des listes non ordonnées)",
-		"Toutes les citations possèdent une sémantique de liste citation HTML",
+    "Le balisage sémantique est présent lorsque nécessaire pour comprendre le sens ou sa relation au reste de la structure du document",
+		"Tous les contenus, traités visuellement comme des listes, possèdent une sémantique liste HTML (<code>&lt;ol&gt;</code> pour des listes ordonnées, <code>&lt;ul&gt;</code> pour des listes non ordonnées), <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> et <code>&lt;dd&gt;</code> pour les listes de définition",
+		"Toutes les citations possèdent une sémantique de citation HTML <code>&lt;q&gt;</code> et <code>&lt;blockquote&gt;</code>",
 		"Tous les éléments interactifs entraînant un changement de contexte via un chargement d'URL, possède une sémantique de lien HTML (<code>&lt;a&gt;</code>)",
 		"Tous les éléments interactifs permettant le déclenchement d'une action, une validation ou une sélection, possèdent une sémantique de bouton HTML (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>)"
 		],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
-  },
-  {
-    "themes": "Contenu textuel",
-    "title": "Respecter la sémantique HTML / liste",
-    "type": [
-      "Test manuel - Inspecteur de code"
-    ],
-    "tests": [
-		"Désactiver les styles de pages : Sous Firefox > Affichage > Style de la page > Aucun style",
-		"Lancer l'inspecteur de code du navigateur",
-		"Examiner les listes"
-	],
-    "verifier": [
-      "Vérifier que la page utilise des listes HTML",
-      "Vérifier l'absence de liste d'un seul élément",
-      "Vérifier l'absence de liste vide"
-    ],
-    "resultat": [
-      "Existence de listes d'énumération pertinentes"
-    ],
-    "exception": "",
-    "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["1.3.1"]
   },
   {
     "themes": "Contenu textuel",
@@ -113,7 +92,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["4.1.1"]
   },
   {
     "themes": "Contenu textuel",
@@ -135,7 +115,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["3.1.1"]
   },
   {
     "themes": "Contenu textuel",
@@ -155,7 +136,8 @@
 	],
     "exception": "Pour les mots ou les expressions en langue étrangère passés dans l’usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["3.1.2"]
   },
   {
     "themes": "Contenu textuel",
@@ -186,7 +168,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["1.3.1"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -210,7 +193,8 @@
       "Présence d'un attribut <code>title</code> pour toutes les <code>frame</code> et <code>iframe</code> "
     ],
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.1.1"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -229,7 +213,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.1.1"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -258,7 +243,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.1.1"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -278,7 +264,28 @@
     ],
     "exception": "",
     "raccourcis": "<a href='https://a11y-guidelines.orange.com/web/exemples/iframes-techniques/index.html'>Les iframes techniques</a>",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.1.1"]
+  },
+  {
+    "themes": "Contenu non-textuel",
+    "title": "Ne pas utiliser du texte sous forme d'image",
+    "type": [
+      "Test manuel"
+    ],
+    "tests": [
+		"Examiner les images contenant du texte"
+	],
+    "verifier": [
+      "Vérifier que le texte sous forme d'image ne puisse pas être mise en page via des CSS"
+    ],
+    "resultat": [
+      "Tous les textes sont mis en forme via CSS"
+    ],
+    "exception": "Images essentielles (logo, captcha, marque...)",
+    "raccourcis": "",
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.5"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -297,12 +304,32 @@
     "resultat": [
       "Présence d'un transcrit complet dans la même page ou dans une  autre via un lien",
 	  "Des sous-titres sous formats texte sont présents pour toutes vidéos et restituent l’ensemble des informations de la bande son",
-      "Une audio-description est présente en complément de la bande audio. <br/>Celle-ci présente sous format texte, les informations sont accessibles uniquement par l’image."																																												
+      "Une audio-description est présente en complément de la bande audio. <br/>Celle-ci présente sous format texte, les informations sont accessibles uniquement par l’image."																	
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
-  },
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"] },
+  {
+      "themes": "Contenu non-textuel",
+      "title": "Fournir un équivalent textuel pour les images et les cadres / alternatives aux cadres",
+      "type": [
+        "Test manuel - Inspecteur de code"
+      ],
+      "tests": [
+      "Lancer l'inspecteur de code du navigateur",
+      "Examiner les cadres"
+    ],
+      "verifier": [
+        "Vérifier que la valeur des attributs <code>title</code> décrit la contenu ou la fonction de <code>iframe</code> ou  <code>frame</code>"
+      ],
+      "resultat": [
+        "Tous les cadres possèdent un attribut <code>title</code> pertinent"
+      ],
+      "exception": "",
+      "raccourcis": "<a href='https://a11y-guidelines.orange.com/web/exemples/iframes-techniques/index.html'>Les iframes techniques</a>",
+      "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+      "wcag": ["1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5"]
+   },
   {
     "themes": "Contenu non-textuel",
     "title": "Rendre accessible les pistes audio ou vidéo / lancement auto",
@@ -320,7 +347,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.2.2"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -341,7 +369,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.2", "2.2.2"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -360,7 +389,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.3.1"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -381,7 +411,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["1.1.1"]
   },
   {
     "themes": "Couleurs et contrastes",
@@ -402,7 +433,8 @@
     ],
     "exception": "Exception sur le couple de couleurs #F16E00 / #FFFFFF, pour les interface mettant en œuvre la dernière version de la brand Orange.",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.3"]
   },
   {
     "themes": "Couleurs et contrastes",
@@ -421,7 +453,8 @@
     ],
     "exception": "Sont exclus du périmètre  : <ul><li>les logos</li><li>si un texte, comme un label, un tableau de donnée, apporte la même information que l’icône ou le graphique</li><li>si le manque de contraste de l’image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.3", "1.4.11"]
   },
   {
     "themes": "Couleurs et contrastes",
@@ -442,7 +475,30 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.1"]
+  },
+  {							 
+    "themes": "Couleurs et contrastes",
+    "title": "Ne pas utiliser la couleur ou l’information sensorielle comme seule source d’information / lien",
+    "type": [
+      "Test manuel - Color Contrast Analyser"
+    ],
+    "tests": [
+      "Parcourir la page",
+      "Identifier les liens dans le corps du texte"
+    ],
+    "verifier": [
+      "Vérifiez que les liens dans le corps du texte sont facilement identifiables visuellement par un moyen autre que la couleur (souligné, gras ...) par rapport au reste du texte",
+      "Si ce n'est pas le cas, s'assurer d'un contraste de 3:1 entre le texte, le fond et les liens et qu'il existe un autre moyen que la couleur pour les identifier au survol et au focus"
+    ],
+    "resultat": [
+      "Les liens sont identifiables visuellement dans du texte par un autre moyen que la couleur ou par un rapport de contraste suffisant avec le corps du texte"
+    ],
+    "exception":"",
+    "raccourcis":"",
+    "profils":  ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.1", "1.4.3"]
   },
   {
     "themes": "Couleurs et contrastes",
@@ -461,7 +517,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.3.3"]
   },
   {
     "themes": "Navigation générale",
@@ -482,7 +539,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.9"]
   },
   {
     "themes": "Navigation générale",
@@ -504,7 +562,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.9"]
   },
   {
     "themes": "Navigation générale",
@@ -525,7 +584,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["2.5.3"]
   },
   {
     "themes": "Navigation générale",		 																				
@@ -547,7 +607,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": [""]
   },
   {
     "themes": "Navigation générale",
@@ -566,7 +627,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.1"]
   },
   {
     "themes": "Navigation générale",
@@ -588,7 +650,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["3.2.1", "3.2.2"]
   },
   {
     "themes": "Navigation générale",
@@ -611,7 +674,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["1.4.13"]
   },
   {
     "themes": "Navigation générale",
@@ -630,7 +694,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.2.1"]
   },
   {
     "themes": "Navigation générale",
@@ -649,7 +714,8 @@
     ],
     "exception": "Ne sont pas concernés, les 'accesskey' et les raccourcis clavier utilisant une touche de modification.",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.1.4"]
   },
   {
     "themes": "Navigation générale",
@@ -669,7 +735,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.5", "2.4.8"]
   },
   {
     "themes": "Navigation générale",
@@ -689,7 +756,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.5"]
   },
   {
     "themes": "Navigation générale",
@@ -711,7 +779,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["4.1.3"]
   },
   {
     "themes": "Navigation générale",
@@ -730,7 +799,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.2.2"]
   },
   {
     "themes": "Navigation clavier",
@@ -750,7 +820,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.1.1"]
   },
   {
     "themes": "Navigation clavier",
@@ -763,14 +834,15 @@
 		"Parcourir la page au clavier à l'aide de la touche <kbd>tab</kbd>"
 	],
     "verifier": [
-      "Vérifier l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel)"
+      "Vérifier l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est exhaustif, cohérent et logique (souvent équivalent à l'ordre visuel)"
     ],
     "resultat": [
-      "Le parcours clavier à travers la page est logique et fait sens"
+      "Le parcours clavier à travers la page est logique et fait sens, sans piége clavier"
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.3", "2.1.2"]
   },
   {
     "themes": "Navigation clavier",
@@ -789,7 +861,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": [ "Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": [ "Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.2.2"]
   },
   {
     "themes": "Navigation clavier",
@@ -811,7 +884,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.11"]
   },
   {
     "themes": "Mise en page",
@@ -831,7 +905,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.4"]
   },
   {
     "themes": "Mise en page",
@@ -850,7 +925,8 @@
     ],
     "exception": "Certains contenus tels des cartes, tableaux de données, jeux, etc…, peuvent nécessiter un scroll à 2 dimensions.",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.10"]
   },
   {
     "themes": "Mise en page",
@@ -859,7 +935,7 @@
       "Bookmarklet"
     ],
     "tests": [
-      "Se rendre sur <a href='https://a11y.forge.orange-labs.fr/web/aerer-texte.html'>notre site de recommandation</a>",
+      "Se rendre sur <a href='https://a11y-guidelines.orange.com/web/inc-con-aerer-texte.html'>notre site de recommandation</a>",
       "Ajouter le bookmarklet à vos favoris",
       "Consulter la page",
       "Activer le bookmarklet"
@@ -873,7 +949,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.12"]
   },
   {
     "themes": "Mise en page",
@@ -895,30 +972,11 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["3.2.3", "3.2.4"]
   },
-  {							 
-    "themes": "Mise en page",
-    "title": "Identifier et conserver la cohérence des regroupements et des différentes régions de la page / liens",
-    "type": [
-      "Test manuel"
-    ],
-    "tests": [
-      "Parcourir la page",
-      "Identifier les liens dans le corps du texte"
-    ],
-    "verifier": [
-      "Vérifiez que les liens dans le corps du texte sont facilement identifiables visuellement par un moyen autre que la couleur (souligné, gras ...) par rapport au reste du texte"
-    ],
-    "resultat": [
-      "Les liens sont identifiables visuellement à partir du texte par un autre moyen que la couleur"
-    ],
-    "exception":"",
-    "raccourcis":"",
-    "profils":  ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
-  },
-  {
-    "themes": "Mise en page",
+  { 
+   "themes": "Mise en page", 
     "title": "Identifier et conserver la cohérence des regroupements et des différentes régions de la page / landmarks",
     "type": [
       "Test manuel - Inspecteur de code"
@@ -936,7 +994,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": [""]
   },
   {
     "themes": "Mise en page",
@@ -975,7 +1034,8 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["3.3.2", "1.3.5"]
   },
   {
     "themes": "Formulaires",
@@ -995,7 +1055,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.6", "3.3.2", "3.3.5"]
   },
   {
     "themes": "Formulaires",
@@ -1015,7 +1076,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.6", "3.3.5", "1.3.5"]
   },
   {
     "themes": "Formulaires",
@@ -1035,7 +1097,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.6", "3.3.5", "1.3.5"]
   },
   {
     "themes": "Formulaires",
@@ -1055,7 +1118,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Développeur", "Expert Accessibilité"]
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.6", "3.3.2", "3.3.5", "1.3.5"]
   },
   {
     "themes": "Formulaires",
@@ -1077,7 +1141,8 @@
     ],
     "exception": [],
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["3.3.5", "1.3.5"]
   },
   {
     "themes": "Formulaires",
@@ -1100,7 +1165,8 @@
 	],
     "exception": [],
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["3.3.5", "1.3.5"]
   },
   {
     "themes": "Tactile et interactions",
@@ -1121,67 +1187,31 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.4.4"]
   },
   {
     "themes": "Tactile et interactions",
-    "title": "Permettre d'annuler le déclenchement des interactions gestuelles 1",
+    "title": "Permettre d'annuler le déclenchement des interactions gestuelles",
     "type": [
-      "Test manuel - Basé sur le mobile"
+      "Test manuel"
     ],
     "tests": [
-      "Parcourir les éléments interactifs (hyperliens, bouton, input, composants UI), avec la souris"
-    ],
-    "verifier": [
-      "Vérifier qu'aucun évènement n'est déclenché au click down"
-    ],
-    "resultat": [
-      "Aucun évènement n'est déclenché avant d'avoir relâché le click souris"
-    ],
-    "exception": "",
-    "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
-  },
-  {
-    "themes": "Tactile et interactions",
-    "title": "Permettre d'annuler le déclenchement des interactions gestuelles 2",
-    "type": [
-      "Test manuel - Basé sur le mobile"
-    ],
-    "tests": [
-      "Parcourir les éléments interactifs  (hyperliens, bouton, input, composants UI) avec le clavier"
-    ],
-    "verifier": [
-      "Vérifier qu'aucun évènement n'est déclenché à la perte de focus"
-    ],
-    "resultat": [
-      "Aucun évènement n'est déclenché lorsque l'élément interactif perd le focus (onblur)"
-    ],
-    "exception": "",
-    "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
-  },
-  {
-    "themes": "Tactile et interactions",
-    "title": "Permettre d'annuler le déclenchement des interactions gestuelles 3",
-    "type": [
-      "Test manuel - Basé sur le mobile"
-    ],
-    "tests": [
-		"Identifier tous les éléments activables par mono-point (hyperliens, bouton, input, composants UI)",
+		"Identifier tous les éléments activables par mono-point (hyperliens, bouton, input, composants UI via la souris, le clavier et tactilement)",
 		"Vérifier qu'au moins une condition est vraie : <ul><li>Pas d'événement Down <br/>L'événement Down du pointeur n'est utilisé pour exécuter la fonction</li><li>Abandonner ou Annuler <br/>L'achèvement de la fonction est sur le Up, et un mécanisme est disponible pour abandonner la fonction avant la fin ou pour annuler la fonction une fois terminée</li><li>Inverser sur Up <br/>L'événement Up inverse tout résultat de l'événement Down précédent</li></ul>"
 	],
     "verifier": [
-      "Si une action doit être absolument déclenchée sur l'événement Down, vérifier alors qu'il existe un mécanisme pour annuler l'action"
+      "Pour toute interaction avec un seul point de contact (tap, click, click long...), vérifier alors qu'il existe un mécanisme pour annuler l'action"
     ],
     "resultat": [
-      "Une boîte modale apparaît demandant la confirmation de l'action"
+      "Toutes les interactions mono-point sont annulables"
     ],
     "exception": [
       "La fonction sur l'événement Down est essentielle, les fonctions qui émulent un appui clavier ou un pavé numérique sont considérées comme essentielles"
     ],
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["2.5.2"]
   },
   {
     "themes": "Tactile et interactions",
@@ -1191,17 +1221,19 @@
     ],
     "tests": [
       "Parcourir l'application",
-      "Identifier les interactions multi-points (nécessitant plusieurs doigts)"
+      "Identifier les interactions multi-points (nécessitant plusieurs doigts), et/ou nécessitant de suivre une trajectoire précise.",
+      "identifier les interactions par mouvement de l'utilisateur (hochement de tête...) ou de l'appareil lui-même (secouer, retourner un téléphone...)"
     ],
     "verifier": [
-      "Vérifier que pour tout geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles, pour réaliser une action, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible"
+      "Vérifier que pour tout geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil, pour réaliser une action, une alternative nécessitant un seul point (un seul doigt) et sans trajectoire gestuelle est disponible"
     ],
     "resultat": [
-      "Pour tout geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles, pour réaliser une action, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible. <br/>Pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <code>&lt;button&gt;</code> [+] et [-] est proposée"
+      "Pour tout geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil, pour réaliser une action, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible. <br/>Pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <code>&lt;button&gt;</code> [+] et [-] est proposée"
     ],
-    "exception": "",
+    "exception": "La fonction cttivée par le geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil est essentielle",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["2.5.1", "2.5.4"]
   },
   {
     "themes": "Tactile et interactions",
@@ -1221,7 +1253,8 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.3.4"]
   },
   {
     "themes": "Aides techniques",
@@ -1240,6 +1273,7 @@
 	],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["4.1.2"]
   }
 ]

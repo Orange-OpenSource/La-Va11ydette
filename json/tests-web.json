@@ -308,8 +308,9 @@
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"] },
-  {
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]  
+  },
+    {
       "themes": "Contenu non-textuel",
       "title": "Fournir un équivalent textuel pour les images et les cadres / alternatives aux cadres",
       "type": [
@@ -329,7 +330,7 @@
       "raccourcis": "<a href='https://a11y-guidelines.orange.com/web/exemples/iframes-techniques/index.html'>Les iframes techniques</a>",
       "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
       "wcag": ["1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5"]
-   },
+ },
   {
     "themes": "Contenu non-textuel",
     "title": "Rendre accessible les pistes audio ou vidéo / lancement auto",
@@ -522,6 +523,27 @@
   },
   {
     "themes": "Navigation générale",
+    "title": "Rendre l'ordre de lecture du contenu cohérent",
+    "type": [
+      "Test manuel - Inspecteur de code"
+    ],
+    "tests": [
+		"Lancer l'inspecteur de code du navigateur ou désactiver les CSS",
+		"Localiser le contenu qui n'est plus dans le même ordre d'apparition relatif que dans la page"
+	],
+    "verifier": [
+      "Vérifier que pour le contenu dont la compréhension dépendant d'un ordre de lecture spécifique, l'ordre  de présentation visuel est identique à l'ordre d'apparition dans le code"
+    ],
+    "resultat": [
+      "Le contenu reste compréhensible dans l'ordre d'apparition dans le code"
+    ],
+    "exception": "",
+    "raccourcis": "",
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["1.3.2"]
+  },
+  {
+    "themes": "Navigation générale",
     "title": "Rendre les intitulés des liens et des boutons compréhensibles hors contexte / libellés identiques",
     "type": [
       "Test manuel - Inspecteur de code"
@@ -541,6 +563,29 @@
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
     "wcag": ["2.4.9"]
+  },
+  {
+    "themes": "Navigation générale",
+    "title": "Rendre les intitulés des liens et des boutons compréhensibles en contexte / libellés",
+    "type": [
+      "Test manuel - Inspecteur de code"
+    ],
+    "tests": [
+      "Lancer l'inspecteur de code du navigateur",
+      "Localiser les liens, boutons et tout items de navigation",
+      "Inspecter le libellé texte de ces items et son contexte HTML",
+      "Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"
+    ],
+    "verifier": [
+      "Vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton grâce à des informations pouvant être déterminées par programme à partir du texte qui se trouve dans le même paragraphe, la même liste ou la même cellule de tableau ou dans une cellule d'en-tête de tableau associée à la cellule de tableau."
+    ],
+    "resultat": [
+      "Les liens, boutons et items de navigation sont compréhensibles en contextes"
+    ],
+    "exception": "",
+    "raccourcis": "",
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": ["2.4.4"]
   },
   {
     "themes": "Navigation générale",
@@ -834,7 +879,7 @@
 		"Parcourir la page au clavier à l'aide de la touche <kbd>tab</kbd>"
 	],
     "verifier": [
-      "Vérifier l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est exhaustif, cohérent et logique (souvent équivalent à l'ordre visuel)"
+      "Vérifier l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est exhaustif, cohérent et logique (souvent équivalent à l'ordre visuel, haut-bas, gauche-droite)"
     ],
     "resultat": [
       "Le parcours clavier à travers la page est logique et fait sens, sans piége clavier"
@@ -857,12 +902,12 @@
       "Vérifier que la prise de focus par les différents éléments (boutons, liens, champs de formulaires) est suffisamment  visible"
     ],
     "resultat": [
-      "La prise de focus est visible (par exemple, pour la propriété CSS <code>outline</code> a une taille suffisante >1px)"
+      "La prise de focus est visible et suffisamment contrasté (par exemple, pour la propriété CSS <code>outline</code> a une taille suffisante >1px et le contraste avec la couleur de fond est d'au moins 3:1)"
     ],
     "exception": "",
     "raccourcis": "",
     "profils": [ "Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["2.2.2"]
+    "wcag": ["2.4.7"]
   },
   {
     "themes": "Navigation clavier",
@@ -1035,7 +1080,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["3.3.2", "1.3.5"]
+    "wcag": ["2.4.6", "3.3.2"]
   },
   {
     "themes": "Formulaires",
@@ -1056,7 +1101,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.6", "3.3.2", "3.3.5"]
+    "wcag": ["2.4.6", "3.3.2"]
   },
   {
     "themes": "Formulaires",
@@ -1077,7 +1122,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.6", "3.3.5", "1.3.5"]
+    "wcag": ["2.4.6", "3.3.2"]
   },
   {
     "themes": "Formulaires",
@@ -1098,7 +1143,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.6", "3.3.5", "1.3.5"]
+    "wcag": ["2.4.6", "3.3.2"]
   },
   {
     "themes": "Formulaires",
@@ -1119,7 +1164,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.6", "3.3.2", "3.3.5", "1.3.5"]
+    "wcag": ["2.4.6", "3.3.2"]
   },
   {
     "themes": "Formulaires",
@@ -1142,7 +1187,7 @@
     "exception": [],
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["3.3.5", "1.3.5"]
+    "wcag": ["3.3.3"]
   },
   {
     "themes": "Formulaires",
@@ -1166,7 +1211,31 @@
     "exception": [],
     "raccourcis": "",
     "profils": ["Expert Accessibilité"],
-    "wcag": ["3.3.5", "1.3.5"]
+    "wcag": ["3.3.1"]
+  },
+  {
+    "themes": "Formulaires",
+    "title": "Prévention des erreurs (juridiques, financières, de données)",
+    "type": [
+      "Test manuel"
+    ],
+    "tests": [
+      "Test manuel",
+      "Parcourir les formulaires",
+	    "Renseigner les formulaires avec des données erronées",
+      "Soumettre les formulaires"
+    ],
+    "verifier": [
+      "Vérifier pour les pages Web qui entraînent des actions importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen...), que&nbsp;: <ul><li>l'action est réversible </li><li>ou, il existe une étape de confirmation permettant de vérifier ou rectifier la saisie en cas d'erreur."	  
+    ],
+    "resultat": [
+		"L'action peut être annulées",
+		"Une étape de confirmation permettant la vérification ou la modification est présente avant validation"
+	],
+    "exception": [],
+    "raccourcis": "",
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["3.3.4"]
   },
   {
     "themes": "Tactile et interactions",

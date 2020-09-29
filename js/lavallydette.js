@@ -2059,22 +2059,44 @@ addIssue = function (targetId, issueTitle, issueComment) {
 	jsonUpdate();
 }
 
+deleteConfirmationIssue = function (targetId, issueIndex) {
+	
+	let htmlIssueFeedback = '<div id="deleteIssueBtn-'+ targetId +'-'+ issueIndex +'-feedback">';
+	htmlIssueFeedback += 'Veuillez confirmer la suppression de l\'anomalie : ';
+	htmlIssueFeedback += '<button type="button" class="btn btn-secondary" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">Non</button>';
+	htmlIssueFeedback += '<button type="button" class="btn btn-secondary" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">Oui</button>';
+	htmlIssueFeedback += '</div>';
+	
+	let elButton = document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex);
+	elButton.insertAdjacentHTML("afterend", htmlIssueFeedback); 
+}
 
 /**
- * Get the comment from the vallydette object.
+ * Delete an issue from the vallydette object.
  * @param {string} targetId - current test ID.
- * @return {string} currentComment - current comment value
+ * @return {string} issueIndex - index of the issue to remove
 */
-getIssue = function (targetId) {
-	var currentIssue;
+deleteIssue = function (targetId, issueIndex, issueValidation) {
 
-	for (let i in dataVallydette.checklist.page[currentPage].items) {
-		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
-			currentIssue = dataVallydette.checklist.page[currentPage].items[i].commentaire;
+	if (issueValidation) {
+		
+		for (let i in dataVallydette.checklist.page[currentPage].items) {
+			if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+				dataVallydette.checklist.page[currentPage].items[i].issues.splice(issueIndex, 1);
+			}
 		}
+	
+		utils.removeElement(document.getElementById("cardIssue"+targetId+"-"+ issueIndex));
+		utils.putTheFocus(document.getElementById("modal" + targetId + "Title"));
+		
+	} else {
+		
+		utils.removeElement(document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex +"-feedback"));
+		document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex).focus();
+
 	}
 
-	return (currentComment !== undefined  ? currentComment : "");
+	
 }
 
 
@@ -2101,19 +2123,21 @@ displayIssue = function (targetId, title) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
 			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
 				
-				htmlModal += '<div class="card">';
+				htmlModal += '<div class="card" id="cardIssue'+targetId+'-'+ j +'">';
 				
-				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+j+'">';
+				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += '  <a data-toggle="collapse" href="#collapse'+targetId+'-'+j+'"" aria-expanded="false" aria-controls="collapse'+targetId+'-'+j+'"" role="button" class="collapsed">';
+				htmlModal += '  <a data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
 				htmlModal += '#' + j + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
 				htmlModal += ' </a>';
 				htmlModal += '</h5>';
 				htmlModal += ' </div>';
 
-				htmlModal += ' <div id="collapse'+targetId+'-'+j+'" data-parent="#issueList" class="collapse" aria-labelledby="issue'+targetId+'-'+j+'" >';
+				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-parent="#issueList" class="collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
+
 				htmlModal += '   <div class="card-body">';
-				htmlModal += dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
+				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueComment;
+				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">Supprimer</button>';
 				htmlModal += '  </div>';
 				htmlModal += ' </div>';
 				
@@ -2130,9 +2154,7 @@ displayIssue = function (targetId, title) {
 
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
-
 	
-
 	elModal.addEventListener('shown.bs.modal', function(event){
 		issueNameValueInput.focus()
 	});
@@ -2390,6 +2412,9 @@ const utils = {
 		htmlMarker = "<p>"+e+"</p>";
 	}
 	return htmlMarker;
+  },
+  removeElement: function (e) {  
+        e.parentNode.removeChild(e);
   }
 	
 }  

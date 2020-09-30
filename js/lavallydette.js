@@ -2018,14 +2018,14 @@ setIssue = function (targetId, title) {
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
-	htmlModal += '<button type="button" id="issueSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '<button type="button" id="saveIssueBtnBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	var issueSave = document.getElementById("issueSaveBtn");
-	issueSave.addEventListener('click', function () {
+	var saveIssueBtn = document.getElementById("saveIssueBtnBtn");
+	saveIssueBtn.addEventListener('click', function () {
 		addIssue(targetId, issueNameValue.value, issueCommentValue.value)
 	});
 	
@@ -2057,6 +2057,62 @@ addIssue = function (targetId, issueTitle, issueComment) {
 	}
 
 	jsonUpdate();
+}
+
+
+getIssue = function (targetId, issueProperty, issueIndex) {
+	let currentIssue;
+
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			currentIssue = dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex];
+		}
+	}
+
+	return currentIssue[issueProperty];
+}
+
+editIssue = function (targetId, issueIndex) {
+	
+	let htmlEditIssue = '';
+	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
+	htmlEditIssue += '<label class="is-required" for="issueCommentValue-' + issueIndex + '">Commentaire <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueCommentValue-' + issueIndex + '">' + getIssue(targetId, 'issueComment', issueIndex) + '</textarea>';
+	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" >Sauvegarder</button>';
+	
+	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
+	elIssueCard.innerHTML = htmlEditIssue;
+	
+	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
+	let elComment = document.getElementById('issueCommentValue-' + issueIndex);
+	
+	var saveIssueBtn = document.getElementById('saveIssueBtn-'+ targetId +'-'+ issueIndex);
+	saveIssueBtn.addEventListener('click', function () {
+		saveIssue(targetId, issueIndex, elTitle.value, elComment.value)
+	});
+	
+}
+
+saveIssue = function (targetId, issueIndex, issueTitle,issueComment) {
+	
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTitle'] = issueTitle;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueComment'] = issueComment;
+		}
+	}
+
+	let htmlEditIssue = '';
+	htmlEditIssue += issueComment;
+	htmlEditIssue += '<button id="editIssueBtn-'+ targetId +'-'+ issueIndex +'" onClick="editIssue(\''+ targetId +'\','+ issueIndex +')">Editer</button>';
+	
+	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
+	elIssueCard.innerHTML = htmlEditIssue;
+	
+	jsonUpdate();	
+	
 }
 
 deleteConfirmationIssue = function (targetId, issueIndex) {
@@ -2135,9 +2191,13 @@ displayIssue = function (targetId, title) {
 
 				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-parent="#issueList" class="collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
 
-				htmlModal += '   <div class="card-body">';
+				htmlModal += ' <div class="card-body">';
+				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
 				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueComment;
+				htmlModal += ' 		<button id="editIssueBtn-'+ targetId +'-'+ j +'" onClick="editIssue(\''+ targetId +'\','+ j +')">Editer</button>';
+				htmlModal += '  </div>';
 				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">Supprimer</button>';
+				
 				htmlModal += '  </div>';
 				htmlModal += ' </div>';
 				

@@ -24,8 +24,16 @@ var dataWCAG;
 var checklistVersion;
 var	currentPage = 0;
 var statutClass = "badge-light";
-var arrayFilterNameAndValue = [];	
+var arrayFilterNameAndValue = [];
+
+	
 var arrayFilterActivated = [];
+
+/**
+ * @todo
+ */
+var arrayProfileActivated = [];
+
 var currentCriteriaListName;
 
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
@@ -279,6 +287,10 @@ function runVallydetteApp() {
 	
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
+	/** @todo to be build from json directly */
+	arrayProfileNameAndValue = [["Développeur", "Développeur"], ["Qualifieur - checklist initiale", "Qualifieur - checklist initiale"]];
+	
+	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
 	
@@ -501,9 +513,14 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 			
-			htmlrefTests += '<button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="issueBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">Voir les anomalies</button>';
-			htmlrefTests += '<button type="button" id="issueBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="issueBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">Ajouter une anomalie</button>';
-
+			htmlrefTests += '<div class="btn-group" role="group" aria-label="Gestion des anomalies">';
+			htmlrefTests += '<ul class="list-inline m-0">';
+			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">Anomalie(s) : </li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="Editer les anomalies" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">Editer</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="Ajouter une anomalie" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">Ajouter</span></button></li>';
+			htmlrefTests += '</ul>';
+			htmlrefTests += '</div>';
+				
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
@@ -2003,38 +2020,48 @@ setIssue = function (targetId, title) {
 	let titleModal = title;
 
 	let htmlModal = '';
-	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
+	htmlModal = '<div id="modalAddIssue" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + ' : ' + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
+	htmlModal += '<form id="editForm">';
 	htmlModal += '<div class="modal-body">';
+	htmlModal += '<div class="form-group">';
 	htmlModal += '<label class="is-required" for="issueNameValue">Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
-	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required >';
+	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
 	htmlModal += '<label class="is-required" for="issueCommentValue">Commentaire <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
-	htmlModal += '<textarea class="form-control" id="issueCommentValue"></textarea>';
+	htmlModal += '<textarea class="form-control" id="issueCommentValue" required></textarea>';
+	htmlModal += '</div>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
-	htmlModal += '<button type="button" id="saveIssueBtnBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '</div>';
+	htmlModal += '</form>';
+	htmlModal += '</div></div></div>';
 
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	var saveIssueBtn = document.getElementById("saveIssueBtnBtn");
-	saveIssueBtn.addEventListener('click', function () {
-		addIssue(targetId, issueNameValue.value, issueCommentValue.value)
+	var currentEditForm = document.getElementById('editForm');
+ 
+	currentEditForm.addEventListener('submit', function () {
+		event.preventDefault();
+		
+		addIssue(targetId, issueNameValue.value, issueCommentValue.value);
+		
+		$('#modalAddIssue').modal('hide');
 	});
 	
-	var issueNameValueInput = document.getElementById(issueNameValue);
-
-	elModal.addEventListener('shown.bs.modal', function(event){
+	var issueNameValueInput = document.getElementById('issueNameValue');
+	
+	$('.modal').on('shown.bs.modal', function (event) {
 		issueNameValueInput.focus()
 	});
-	
+
 }
 
 /**
@@ -2052,6 +2079,8 @@ addIssue = function (targetId, issueTitle, issueComment) {
 			newIssue['issueComment'] = issueComment;
 			
 			dataVallydette.checklist.page[currentPage].items[i].issues.push(newIssue);
+			
+			document.getElementById("issueDisplayBtntestWebID-"+ i).removeAttribute("disabled");
 			
 		}
 	}
@@ -2075,16 +2104,22 @@ getIssue = function (targetId, issueProperty, issueIndex) {
 editIssue = function (targetId, issueIndex) {
 	
 	let htmlEditIssue = '';
+	
+	htmlEditIssue += '<form id="editIssueForm">';
 	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
 	htmlEditIssue += '<label class="is-required" for="issueCommentValue-' + issueIndex + '">Commentaire <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueCommentValue-' + issueIndex + '">' + getIssue(targetId, 'issueComment', issueIndex) + '</textarea>';
-	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" >Sauvegarder</button>';
+	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">Sauvegarder</button>';
+	htmlEditIssue += '<hr class="border-light">';
+	htmlEditIssue += '</form>';
 	
 	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
 	
+	
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
+	elTitle.focus();
 	let elComment = document.getElementById('issueCommentValue-' + issueIndex);
 	
 	var saveIssueBtn = document.getElementById('saveIssueBtn-'+ targetId +'-'+ issueIndex);
@@ -2094,7 +2129,7 @@ editIssue = function (targetId, issueIndex) {
 	
 }
 
-saveIssue = function (targetId, issueIndex, issueTitle,issueComment) {
+saveIssue = function (targetId, issueIndex, issueTitle, issueComment) {
 	
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
@@ -2106,10 +2141,12 @@ saveIssue = function (targetId, issueIndex, issueTitle,issueComment) {
 
 	let htmlEditIssue = '';
 	htmlEditIssue += issueComment;
-	htmlEditIssue += '<button id="editIssueBtn-'+ targetId +'-'+ issueIndex +'" onClick="editIssue(\''+ targetId +'\','+ issueIndex +')">Editer</button>';
 	
 	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
+	
+	let elIssueCardHeader = document.getElementById('btnIssue'+targetId+'-'+ issueIndex);
+	elIssueCardHeader.innerHTML = issueTitle;
 	
 	jsonUpdate();	
 	
@@ -2118,13 +2155,16 @@ saveIssue = function (targetId, issueIndex, issueTitle,issueComment) {
 deleteConfirmationIssue = function (targetId, issueIndex) {
 	
 	let htmlIssueFeedback = '<div id="deleteIssueBtn-'+ targetId +'-'+ issueIndex +'-feedback">';
-	htmlIssueFeedback += 'Veuillez confirmer la suppression de l\'anomalie : ';
-	htmlIssueFeedback += '<button type="button" class="btn btn-secondary" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">Non</button>';
-	htmlIssueFeedback += '<button type="button" class="btn btn-secondary" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">Oui</button>';
+	htmlIssueFeedback += '<span id="deleteIssueMessage-'+ targetId +'-'+ issueIndex +'">Veuillez confirmer la suppression de l\'anomalie : </span>';
+	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">Non</button>';
+	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm"  aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'"  onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">Oui</button>';
 	htmlIssueFeedback += '</div>';
 	
 	let elButton = document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex);
 	elButton.insertAdjacentHTML("afterend", htmlIssueFeedback); 
+	
+	document.getElementById("btnDeleteIssueNo-"+ targetId +"-"+ issueIndex).focus();
+	
 }
 
 /**
@@ -2139,6 +2179,9 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 		for (let i in dataVallydette.checklist.page[currentPage].items) {
 			if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 				dataVallydette.checklist.page[currentPage].items[i].issues.splice(issueIndex, 1);
+				if (dataVallydette.checklist.page[currentPage].items[i].issues.length === 0) {
+					document.getElementById("issueDisplayBtntestWebID-"+ i).setAttribute("disabled", true);
+				}
 			}
 		}
 	
@@ -2152,7 +2195,6 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 
 	}
 
-	
 }
 
 
@@ -2183,7 +2225,7 @@ displayIssue = function (targetId, title) {
 				
 				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += '  <a data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
+				htmlModal += '  <a id="btnIssue'+targetId+'-'+ j +'" data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
 				htmlModal += '#' + j + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
 				htmlModal += ' </a>';
 				htmlModal += '</h5>';
@@ -2194,9 +2236,10 @@ displayIssue = function (targetId, title) {
 				htmlModal += ' <div class="card-body">';
 				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
 				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueComment;
-				htmlModal += ' 		<button id="editIssueBtn-'+ targetId +'-'+ j +'" onClick="editIssue(\''+ targetId +'\','+ j +')">Editer</button>';
+			
 				htmlModal += '  </div>';
-				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">Supprimer</button>';
+				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">Editer</button>';
+				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">Supprimer</button>';
 				
 				htmlModal += '  </div>';
 				htmlModal += ' </div>';
@@ -2257,6 +2300,24 @@ initFilters = function () {
 			var inputItem = document.getElementById("type" + i);
 			inputItem.addEventListener('click', function () {
 				updateArrayFilter(this)
+			}, false);
+
+		}
+		
+		for (let i in arrayProfileNameAndValue) {
+			var isChecked = "";
+			//arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
+			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelProfile' + i + '"><input type="checkbox" class="custom-control-input" id="profile' + i + '" value="' + arrayProfileNameAndValue[i][1] + '" ><span class="custom-control-label" id="status' + i+1 + '">' + arrayProfileNameAndValue[i][0] + '</span></label>';
+			
+			var listItem = document.createElement("li");
+			listItem.innerHTML = htmlTypes;
+			htmlFilterList.appendChild(listItem);
+			htmlFilterContent.appendChild(htmlFilterList);
+
+			/** Filters event handler. */
+			var inputItem = document.getElementById("profile" + i);
+			inputItem.addEventListener('click', function () {
+				updateArrayProfile(this)
 			}, false);
 
 		}
@@ -2355,13 +2416,67 @@ updateArrayFilter = function (elInput) {
 	loadChecklistObject();
 	
 }
- 
+
+
+updateArrayProfile = function (elInput) {
+	
+	if (elInput && elInput.checked) {
+		
+		arrayProfileActivated.push(elInput.value);
+		
+	} else {
+		
+		arrayProfileActivated = arrayProfileActivated.filter(function(filterValue) {
+			return filterValue !== elInput.value;
+		});
+		
+	}
+
+	loadChecklistObject();
+	
+}
 
 /**
  * Apply the filters to the vallydette object, and run display function r(unTestListMarkup) with the new filtered object
  */	
 runFilter = function() {
-	const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrayFilterActivated.includes(o.resultatTest));
+	
+	function filtrerParID(obj) {
+		var isOK;
+		
+		obj.profils.forEach(function (current) {
+			if(arrayProfileActivated.includes(current)) {
+				console.log(current);				
+				isOK = true;	
+			} 
+			
+		})
+		
+		return isOK;
+	}
+	
+	filteredTest = dataVallydette.checklist.page[currentPage].items;
+	
+	if(arrayFilterActivated && arrayFilterActivated.length > 0){
+		
+		filteredTest = filteredTest.filter(o => arrayFilterActivated.includes(o.resultatTest));
+		console.log(filteredTest);
+	} 
+	
+	if(arrayProfileActivated && arrayProfileActivated.length > 0){
+		
+		filteredTest = filteredTest.filter(filtrerParID);
+		console.log(filteredTest);
+		
+		//filteredTest = filteredTest.checklist.page[currentPage].items.filter(o => arrayProfileActivated.includes(o.profils.forEach(function(current) { console.log (current) ; return current; })));
+		
+		
+		//filteredTest = filteredTest.checklist.page[currentPage].items.filter(o => o.profils.forEach(function(current) { return arrayProfileActivated.includes(current); }));
+		
+		
+	} 
+	
+	
 	runTestListMarkup(filteredTest);
 	updateCounter(true, filteredTest.length);
 }
@@ -2380,7 +2495,7 @@ removeFilterSection = function () {
 loadChecklistObject = function () {
 	initFilters();
 	//initComputation();
-	if(arrayFilterActivated && arrayFilterActivated.length > 0){
+	if((arrayFilterActivated && arrayFilterActivated.length > 0) || (arrayProfileActivated && arrayProfileActivated.length > 0)){
 		runFilter();
 	} else {
 		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);

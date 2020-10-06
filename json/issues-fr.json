@@ -1,0 +1,19 @@
+{
+	"testWebID-0": [
+		{
+			"title" : "Titre de page non renseigné",
+			"detail" : "Chaque page doit posséder un titre unique.",
+			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la  plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
+			"technicalSolution" : "<title>Acccueil - Espace client Orange</title>"
+		
+		},
+		{
+			"title" : "Titre de page non pertinent",
+			"detail" : "Chaque page doit posséder un titre unique, permettant de comprendre le rôle de celle-ci.",
+			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la  plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
+			"technicalSolution" : "<title>Acccueil - Espace client Orange</title>"
+		
+		}
+		
+	]
+}

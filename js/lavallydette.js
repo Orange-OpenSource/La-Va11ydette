@@ -19,6 +19,12 @@ $('.o-nav-local').prioritynav('Autres pages');
  */
 var dataVallydette;
 var langVallydette;
+
+/**
+ * @todo add comment
+ */
+var issuesVallydette;
+
 var globalLang;
 var dataWCAG;
 var checklistVersion;
@@ -30,7 +36,7 @@ var arrayFilterNameAndValue = [];
 var arrayFilterActivated = [];
 
 /**
- * @todo
+ * @todo add comment
  */
 var arrayProfileActivated = [];
 
@@ -68,6 +74,16 @@ function initVallydetteApp (criteriaListName, lang) {
 	  } 
 	};
 	langRequest.send();	
+	
+	var issuesRequest = new XMLHttpRequest();
+	issuesRequest.open("GET", "json/issues-"+globalLang+".json", true);
+	issuesRequest.onreadystatechange = function () {
+	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+		issuesVallydette = JSON.parse(issuesRequest.responseText);
+	  } 
+	};
+	issuesRequest.send();	
+
 	
 }
 
@@ -203,7 +219,7 @@ function importAuditCriteriaToVallydetteObj (criteriaVallydette) {
 	checklistVersion = criteriaVallydette.version;
 	
 	dataVallydette.checklist.lang = globalLang;
-console.log(dataVallydette);
+
 	runVallydetteApp();
 
 }
@@ -718,7 +734,7 @@ runTestListMarkup = function (currentRefTests) {
 		var issue = document.getElementById("issueBtn" + currentRefTests[i].ID);
 		if (issue) {
 			issue.addEventListener('click', function () {
-				setIssue(currentRefTests[i].ID, currentRefTests[i].title)
+				setIssue(currentRefTests[i].ID, currentRefTests[i].title, currentRefTests[i].IDorigin)
 			}, false);
 		}
 		
@@ -2016,12 +2032,12 @@ getCommentState = function (targetId) {
  * @param {string} targetId - current test ID.
  * @param {string} title - current test title.
 */
-setIssue = function (targetId, title) {
+setIssue = function (targetId, title, targetIdOrigin) {
 	let titleModal = title;
 
 	let htmlModal = '';
 	htmlModal = '<div id="modalAddIssue" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-dialog " role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + ' : ' + titleModal + '</h5>';
@@ -2029,13 +2045,19 @@ setIssue = function (targetId, title) {
 	htmlModal += '</div>';
 	htmlModal += '<form id="editForm">';
 	htmlModal += '<div class="modal-body">';
+	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
 	htmlModal += '<div class="form-group">';
 	htmlModal += '<label class="is-required" for="issueNameValue">Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
-	htmlModal += '<label class="is-required" for="issueCommentValue">Commentaire <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
-	htmlModal += '<textarea class="form-control" id="issueCommentValue" required></textarea>';
+	htmlModal += '<label class="is-required mt-2" for="issueDetailValue">Détail <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueDetailValue" required></textarea>';
+	htmlModal += '<label for="issueSolutionValue" class="mt-2">Solution <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueSolutionValue"></textarea>';
+	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">Solution technique <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueTechnicalSolutionValue"></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '</div>';
+
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
 	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
@@ -2043,6 +2065,7 @@ setIssue = function (targetId, title) {
 	htmlModal += '</form>';
 	htmlModal += '</div></div></div>';
 
+	
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
@@ -2051,10 +2074,27 @@ setIssue = function (targetId, title) {
 	currentEditForm.addEventListener('submit', function () {
 		event.preventDefault();
 		
-		addIssue(targetId, issueNameValue.value, issueCommentValue.value);
+		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);
 		
 		$('#modalAddIssue').modal('hide');
 	});
+	
+	
+	if (document.getElementById('btnValidatePredefined')) {
+		
+		document.getElementById('btnValidatePredefined').addEventListener('click', function () {
+		event.preventDefault();
+		
+		issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
+		issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
+		issueSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].solution;
+		issueTechnicalSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].technicalSolution;
+		
+		issueNameValue.focus();
+		
+	});
+		
+	}
 	
 	var issueNameValueInput = document.getElementById('issueNameValue');
 	
@@ -2068,15 +2108,17 @@ setIssue = function (targetId, title) {
  * Add the issue to the vallydette object.
  * @param {string} targetId - current test ID.
  * @param {string} issueTitle.
- * @param {string} issueComment.
+ * @param {string} issueDetail.
 */
-addIssue = function (targetId, issueTitle, issueComment) {
+addIssue = function (targetId, issueTitle, issueDetail, issueSolution, issueTechnicalSolution) {
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 			
 			newIssue = {};
 			newIssue['issueTitle'] = issueTitle;
-			newIssue['issueComment'] = issueComment;
+			newIssue['issueDetail'] = issueDetail;
+			newIssue['issueSolution'] = issueSolution;
+			newIssue['issueTechnicalSolution'] = issueTechnicalSolution;
 			
 			dataVallydette.checklist.page[currentPage].items[i].issues.push(newIssue);
 			
@@ -2088,6 +2130,25 @@ addIssue = function (targetId, issueTitle, issueComment) {
 	jsonUpdate();
 }
 
+getPredefinedIssues = function(targetId) {
+	
+	let htmlPredefinedIssues = '';
+	
+
+	htmlPredefinedIssues += '<div class="form-group row">';
+	htmlPredefinedIssues += '<div class="col-sm-10">';
+	
+	htmlPredefinedIssues += '<select class="custom-select" id="issuePredefined" aria-label="Selectionner une issue prédéfinie">';
+	htmlPredefinedIssues += '<option selected>Selectionner une issue prédéfinie</option>';
+	issuesVallydette[targetId].forEach(function (issue, index) {htmlPredefinedIssues +='<option value="' + index + '">' + issue.title + '</option>'});
+	htmlPredefinedIssues += '</select>';
+	htmlPredefinedIssues += '</div>';
+	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">Valider</button>';
+	htmlPredefinedIssues += '</div>';
+		
+	return htmlPredefinedIssues;
+	
+}
 
 getIssue = function (targetId, issueProperty, issueIndex) {
 	let currentIssue;
@@ -2108,8 +2169,12 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<form id="editIssueForm">';
 	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
-	htmlEditIssue += '<label class="is-required" for="issueCommentValue-' + issueIndex + '">Commentaire <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
-	htmlEditIssue += '<textarea class="form-control" id="issueCommentValue-' + issueIndex + '">' + getIssue(targetId, 'issueComment', issueIndex) + '</textarea>';
+	htmlEditIssue += '<label class="is-required mt-2" for="issueDetailValue-' + issueIndex + '">Détail <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
+	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">Solution</label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
+	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">Solution Technique</label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
 	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">Sauvegarder</button>';
 	htmlEditIssue += '<hr class="border-light">';
 	htmlEditIssue += '</form>';
@@ -2120,27 +2185,32 @@ editIssue = function (targetId, issueIndex) {
 	
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
 	elTitle.focus();
-	let elComment = document.getElementById('issueCommentValue-' + issueIndex);
+	let elDetail = document.getElementById('issueDetailValue-' + issueIndex);
+	let elSolution = document.getElementById('issueSolutionValue-' + issueIndex);
+	let elTechnicalSolution = document.getElementById('issueTechnicalSolutionValue-' + issueIndex);
 	
 	var saveIssueBtn = document.getElementById('saveIssueBtn-'+ targetId +'-'+ issueIndex);
 	saveIssueBtn.addEventListener('click', function () {
-		saveIssue(targetId, issueIndex, elTitle.value, elComment.value)
+		saveIssue(targetId, issueIndex, elTitle.value, elDetail.value, elSolution.value, elTechnicalSolution.value)
 	});
 	
 }
 
-saveIssue = function (targetId, issueIndex, issueTitle, issueComment) {
+saveIssue = function (targetId, issueIndex, issueTitle, issueDetail, issueSolution, issueTechnicalSolution) {
 	
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 
 			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTitle'] = issueTitle;
-			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueComment'] = issueComment;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueDetail'] = issueDetail;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueSolution'] = issueSolution;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTechnicalSolution'] = issueTechnicalSolution;
+			
 		}
 	}
 
 	let htmlEditIssue = '';
-	htmlEditIssue += issueComment;
+	htmlEditIssue += issueDetail;
 	
 	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
@@ -2235,7 +2305,7 @@ displayIssue = function (targetId, title) {
 
 				htmlModal += ' <div class="card-body">';
 				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
-				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueComment;
+				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail;
 			
 				htmlModal += '  </div>';
 				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">Editer</button>';

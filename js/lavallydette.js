@@ -220,6 +220,8 @@ function importAuditCriteriaToVallydetteObj (criteriaVallydette) {
 	
 	dataVallydette.checklist.lang = globalLang;
 
+	eventHandler();
+	
 	runVallydetteApp();
 
 }
@@ -314,7 +316,7 @@ function runVallydetteApp() {
     initPagination(dataVallydette.checklist);
 	initFilters();
     runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
-	eventHandler();
+
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
 	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
 }
@@ -325,6 +327,8 @@ function runVallydetteApp() {
 function eventHandler() {
 
 	var btnImport = document.getElementById('import');
+	
+	
 	
 	btnImport.onclick = function () {
 		var files = document.getElementById('selectFiles').files;
@@ -354,7 +358,15 @@ function eventHandler() {
 		btnLocalStorage.classList.add("disabled");
 	}
 	
+	
+	
+	var exportExcelBtn = document.getElementById('button-a');
+	exportExcelBtn.addEventListener('click', function () {
+		excelExport();
+	});
+	
 	btnActionPageEventHandler();
+	
 	
 }
 
@@ -428,7 +440,7 @@ function btnActionPageEventHandler () {
 	currentBtnDelPage.addEventListener('click', function () {
 		setDeletePage(currentBtnPageName.dataset.element)
 	}, false);
-	
+			
 }
 
 
@@ -576,6 +588,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '</p></div></div>';
 
 			htmlrefTests += '</article>';
+			
 		}
 	
 	/** 'rgaa' value correspond to the RGGA4 checklist */
@@ -746,7 +759,7 @@ runTestListMarkup = function (currentRefTests) {
 		}
 		
 	}
-	
+
 	applyDisabledGroups();
 }
 
@@ -1532,6 +1545,9 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
+	if(item.issues) {
+		item.issues = [];
+	}
 }
 
 /**  Initialization of themes */
@@ -2082,17 +2098,17 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	
 	if (document.getElementById('btnValidatePredefined')) {
 		
-		document.getElementById('btnValidatePredefined').addEventListener('click', function () {
-		event.preventDefault();
+			document.getElementById('btnValidatePredefined').addEventListener('click', function () {
+			event.preventDefault();
+			
+			issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
+			issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
+			issueSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].solution;
+			issueTechnicalSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].technicalSolution;
+			
+			issueNameValue.focus();
 		
-		issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
-		issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
-		issueSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].solution;
-		issueTechnicalSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].technicalSolution;
-		
-		issueNameValue.focus();
-		
-	});
+		});
 		
 	}
 	
@@ -2122,11 +2138,15 @@ addIssue = function (targetId, issueTitle, issueDetail, issueSolution, issueTech
 			
 			dataVallydette.checklist.page[currentPage].items[i].issues.push(newIssue);
 			
-			document.getElementById("issueDisplayBtntestWebID-"+ i).removeAttribute("disabled");
+			console.log(targetId);
+			
+			document.getElementById("issueDisplayBtn"+ targetId).removeAttribute("disabled");
 			
 		}
 	}
 
+	//excelExport();
+	
 	jsonUpdate();
 }
 
@@ -2577,8 +2597,8 @@ loadChecklistObject = function () {
  * Run each time an updated is made to the vallydette object, in order to update the export informations.
  */
 jsonUpdate = function () {
-	let DefaultName = document.getElementById("checklistName");
-	DefaultName = utils.slugify(DefaultName.innerText);
+	let defaultName = document.getElementById("checklistName");
+	defaultName = utils.slugify(defaultName.innerText);
 
 	let dataStr = JSON.stringify(dataVallydette);
 
@@ -2590,20 +2610,80 @@ jsonUpdate = function () {
 	var todayHour = new Date();
 	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
 
-	let exportFileDefaultName = DefaultName + '-' + date + '-' + time + '.json';
+	let exportFiledefaultName = defaultName + '-' + date + '-' + time + '.json';
 
 	linkElement = document.getElementById("export");
 	linkElement.classList.remove("disabled");
 	linkElement.removeAttribute('disabled');
 	linkElement.setAttribute('aria-disabled', false);
 	linkElement.setAttribute('href', dataUri);
-	linkElement.setAttribute('download', exportFileDefaultName);
+	linkElement.setAttribute('download', exportFiledefaultName);
 	
 	
 	window.localStorage.setItem('lavallydette', dataStr);
 	
 	btnLocalStorage.disabled=true;
 	btnLocalStorage.classList.add("disabled");
+}
+
+/**
+ * Run the excel export
+ */
+excelExport = function () {
+	let defaultName = document.getElementById("checklistName");
+	defaultName = utils.slugify(defaultName.innerText);
+	
+	var todayDate = new Date();
+	var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+
+	var todayHour = new Date();
+	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
+	
+	let exportFiledefaultName = defaultName + '-' + date + '-' + time + '-issues.xlsx';
+	
+
+	
+	var wb = XLSX.utils.book_new();
+	//var ws = XLSX.utils.aoa_to_sheet(data);
+	
+	let dataIssue = [];
+	let dataCurrentIssue = [];
+		
+	for (let i in dataVallydette.checklist.page) {
+		
+		dataIssue.splice(0, dataIssue.length);
+		dataIssue = [['Test', 'Titre', 'Détail', 'Solution', 'Solution Technique']];
+		
+		for (let j in dataVallydette.checklist.page[i].items) {
+			
+			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
+					
+				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
+					
+					dataCurrentIssue.splice(0, dataCurrentIssue.length);
+				
+					Object.entries(issue).forEach(([key, value]) => {
+						dataCurrentIssue.push(value);
+						
+					});
+					console.log(dataCurrentIssue);
+					dataIssue.push(dataCurrentIssue);
+					
+				})
+					
+			}
+			
+		}	
+		var ws_name = dataVallydette.checklist.page[i].name;
+		var ws = XLSX.utils.aoa_to_sheet(dataIssue);
+		XLSX.utils.book_append_sheet(wb, ws, ws_name);
+		
+		
+	}
+		
+		
+	XLSX.writeFile(wb, exportFiledefaultName);	
+		
 }
 
  /**

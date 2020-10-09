@@ -315,8 +315,8 @@ function runVallydetteApp() {
 	initComputation();
     initPagination(dataVallydette.checklist);
 	initFilters();
-    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
-
+  
+	
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
 	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
 }
@@ -532,7 +532,18 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-		htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span>'+ ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "") ? '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>' : '') + '<span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span>'
+			htmlrefTests += ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "") ? '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>' : '') 
+			if(currentRefTests[i].wcag) {
+				currentRefTests[i].wcag.forEach(function (currentWcag) {
+					
+					if(getAAA(currentWcag)) {
+						htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">AAA</span>';
+					}
+				});
+			}
+			htmlrefTests += '<span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
@@ -552,6 +563,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
+			
 			
 			
 			if (currentRefTests[i].tests) {
@@ -1068,6 +1080,9 @@ function initComputation() {
 				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
             }, false);
+		
+	    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
+
 	  }
 	};
 	matriceRequest.send();
@@ -1188,6 +1203,27 @@ function runComputation(obj) {
 		return runFinalComputation(pagesResults);
 	}
 
+}
+
+function getAAA(currentWcag) {
+	
+	let level = false;
+	
+	if (currentWcag) {
+		dataWCAG.items.forEach(function(current){
+			
+			if (current.wcag === currentWcag) {
+				
+				if (current.level === 'AAA') {
+					level = true;
+				} 
+			} 
+		
+		});
+		
+	}
+	return level;
+	
 }
 
 /**
@@ -1545,9 +1581,7 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
-	if(item.issues) {
-		item.issues = [];
-	}
+	item.issues.splice(0, item.issues.length);
 }
 
 /**  Initialization of themes */
@@ -2648,13 +2682,22 @@ excelExport = function () {
 	
 	let dataIssue = [];
 	let dataCurrentIssue = [];
+	//let dataProjet = [];
+	//let dataAuditInfo = [['Page', 'URL']];
+	//let dataUrl = [];
 		
 	for (let i in dataVallydette.checklist.page) {
 		
+		//dataUrl.push(dataVallydette.checklist.page[i].name);
+		//dataUrl.push(dataVallydette.checklist.page[i].url);
+		//dataAuditInfo.push(dataUrl);
+		
 		dataIssue.splice(0, dataIssue.length);
 		dataIssue = [['Test', 'Titre', 'Détail', 'Solution', 'Solution Technique']];
+			
 		
 		for (let j in dataVallydette.checklist.page[i].items) {
+			
 			
 			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
 					
@@ -2662,27 +2705,32 @@ excelExport = function () {
 					
 					dataCurrentIssue.splice(0, dataCurrentIssue.length);
 				
+					dataCurrentIssue.push(dataVallydette.checklist.page[i].items[j].title);
 					Object.entries(issue).forEach(([key, value]) => {
 						dataCurrentIssue.push(value);
 						
 					});
-					console.log(dataCurrentIssue);
+					
+					
 					dataIssue.push(dataCurrentIssue);
 					
 				})
 					
 			}
 			
-		}	
+		}
+
+		//var wsInfos = XLSX.utils.aoa_to_sheet(dataAuditInfo);
+		//XLSX.utils.book_prepend_sheet(wb, wsInfos, 'Infos générales');
+		
 		var ws_name = dataVallydette.checklist.page[i].name;
 		var ws = XLSX.utils.aoa_to_sheet(dataIssue);
 		XLSX.utils.book_append_sheet(wb, ws, ws_name);
 		
-		
 	}
+		console.log(wb);
 		
-		
-	XLSX.writeFile(wb, exportFiledefaultName);	
+	//XLSX.writeFile(wb, exportFiledefaultName);	
 		
 }
 

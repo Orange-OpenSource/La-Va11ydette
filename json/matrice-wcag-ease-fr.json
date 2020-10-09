@@ -263,6 +263,22 @@
 		"comment":[]
 	},
 	{
+		"wcag": "2.4.8",
+		"level": "AAA",
+		"name": "Localisation",
+		"tests": [], 
+		"resultat":"nt",
+		"comment":[]
+	},
+	{
+		"wcag": "2.4.9",
+		"level": "AAA",
+		"name": "Fonction du lien (lien uniquement)",
+		"tests": [], 
+		"resultat":"nt",
+		"comment":[]
+	},
+	{
 		"wcag": "2.5.1",
 		"level": "A",
 		"name": "Gestes multipoints ou trajectoires",

@@ -533,17 +533,26 @@ runTestListMarkup = function (currentRefTests) {
 			}
 
 			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span>'
-			htmlrefTests += ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "") ? '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>' : '') 
-			if(currentRefTests[i].wcag) {
+			
+			hasGoodPractice = false;
+			if ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "")) {
+				hasGoodPractice = true;
+				htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>';
+			}
+			
+			if (currentRefTests[i].wcag) {
+				hasAAA = false;
 				currentRefTests[i].wcag.forEach(function (currentWcag) {
 					
 					if(getAAA(currentWcag)) {
+						hasAAA = true;
 						htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">AAA</span>';
 					}
+					
 				});
 			}
-			htmlrefTests += '<span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
+			htmlrefTests += '<span id="resultID-' + currentTest + '" class="' + ((!hasAAA && !hasGoodPractice) ? 'ml-auto ' : '') + 'badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
@@ -2664,6 +2673,58 @@ jsonUpdate = function () {
  * Run the excel export
  */
 excelExport = function () {
+
+var excel = $JExcel.new();   
+
+for (let i in dataVallydette.checklist.page) {
+	
+		
+		if (i==0) {
+			excel.set( {sheet:0,value:dataVallydette.checklist.page[i].name} );
+		} else {
+			excel.addSheet(dataVallydette.checklist.page[i].name);
+		}
+
+		 dataHeaders = ['Test', 'Titre', 'Détail', 'Solution', 'Solution Technique'];
+		 var formatHeader=excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#F6F6F6"});   
+		for (var j=0;j<dataHeaders.length;j++){    
+		
+			excel.set(i,j,0,dataHeaders[j], formatHeader);    // Set CELL header text & header format
+			excel.set(i,j,undefined, "auto");             // Set COLUMN width to auto 
+		}	 
+		
+		let rowIssues = 0;
+		
+		for (let j in dataVallydette.checklist.page[i].items) {
+			
+			
+			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
+					
+				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
+					
+					rowIssues++;
+					excel.set(i,0,rowIssues, dataVallydette.checklist.page[i].items[j].title);
+					excel.set(i,1,rowIssues, issue.issueDetail);
+					excel.set(i,2,rowIssues, issue.issueSolution);
+					excel.set(i,3,rowIssues, issue.issueTechnicalSolution);
+					excel.set(i,4,rowIssues, issue.issueTitle);
+					
+				})
+					
+			}
+			
+		}
+		
+		
+	} 
+
+       excel.generate("SampleData.xlsx");
+}
+
+/**
+ * Run the excel export
+ */
+excelExportXLSX = function () {
 	let defaultName = document.getElementById("checklistName");
 	defaultName = utils.slugify(defaultName.innerText);
 	

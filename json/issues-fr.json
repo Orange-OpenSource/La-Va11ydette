@@ -22,7 +22,6 @@
 			"detail" : "La page doit être structurée à partir de titres de niveaux.",
 			"solution" : "Tous les contenus, traités visuellement comme des titres, doivent posséder une sémantique de titre (balises <h1> à <h6>)",
 			"technicalSolution" : ""
-		
 		},
 		{
 			"title" : "Hiérarchisation des niveaux de titres non logique",

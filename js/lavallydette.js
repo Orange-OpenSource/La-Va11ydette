@@ -97,7 +97,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 	} else if (criteriaListName) {
 		currentCriteriaListName = criteriaListName;
 	} else {
-		currentCriteriaListName = 'wcagEase';
+		currentCriteriaListName = 'wcag';
 	}
 
 }
@@ -134,7 +134,7 @@ function createObjectAndRunVallydette() {
 		  case 'concepteur':
 			jsonCriteria = 'json/criteres-checklist-concepteur.json';
 			break;
-		  case 'wcagEase':
+		  case 'wcag':
 			jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
 			break;
 		  case 'audit':
@@ -306,8 +306,10 @@ function runVallydetteApp() {
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
 	/** @todo to be build from json directly */
-	arrayProfileNameAndValue = [["Développeur", "Développeur"], ["Qualifieur - checklist initiale", "Qualifieur - checklist initiale"]];
-	
+	if (currentCriteriaListName==="audit") {
+		arrayProfileNameAndValue = [["Qualifieur - checklist initiale", "Qualifieur - checklist initiale"], ["Qualifieur - checklist avancée", "Qualifieur - checklist avancée"], ["Développeur", "Développeur"], ["Expert Accessibilité", "Expert Accessibilité"]];
+	}
+		
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
@@ -456,8 +458,8 @@ runTestListMarkup = function (currentRefTests) {
 	let headingCriterium = '';
 	let nextIndex = 1;
 
-	/** 'wcagEase' value correspond to the conformity checklist */
-	if (currentCriteriaListName === 'wcagEase') {
+	/** 'wcag' value correspond to the conformity checklist */
+	if (currentCriteriaListName === 'wcag') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
 		
@@ -2436,23 +2438,43 @@ initFilters = function () {
 			}, false);
 
 		}
-		
-		for (let i in arrayProfileNameAndValue) {
-			var isChecked = "";
-			//arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
-			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelProfile' + i + '"><input type="checkbox" class="custom-control-input" id="profile' + i + '" value="' + arrayProfileNameAndValue[i][1] + '" ><span class="custom-control-label" id="status' + i+1 + '">' + arrayProfileNameAndValue[i][0] + '</span></label>';
 			
-			var listItem = document.createElement("li");
-			listItem.innerHTML = htmlTypes;
-			htmlFilterList.appendChild(listItem);
-			htmlFilterContent.appendChild(htmlFilterList);
+		if(arrayProfileNameAndValue.length>0) {
+				
+			let htmlProfileList = document.createElement('ul');
+			htmlProfileList.classList.add("list-unstyled");
+			
+			let separator = document.createElement("hr");
+			separator.classList.add("border-light");
+			htmlFilterContent.appendChild(separator);
+			
+			for (let i in arrayProfileNameAndValue) {
+				var isChecked = "";
+				
+				arrayProfileActivated.forEach(element => {element === arrayProfileNameAndValue[i][1] ? isChecked = "checked" : ''});
+				htmlProfile = '<label class="custom-control custom-radio pb-1" id="labelProfile' + i + '"><input type="radio" name="profile" class="custom-control-input" id="profile' + i + '" value="' + arrayProfileNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label">' + arrayProfileNameAndValue[i][0] + '</span></label>';
+				
+				var listProfileItem = document.createElement("li");
+				listProfileItem.innerHTML = htmlProfile;
+				htmlProfileList.appendChild(listProfileItem);
+				htmlFilterContent.appendChild(htmlProfileList);
 
-			/** Filters event handler. */
-			var inputItem = document.getElementById("profile" + i);
-			inputItem.addEventListener('click', function () {
-				updateArrayProfile(this)
+				
+				var inputItem = document.getElementById("profile" + i);
+				inputItem.addEventListener('click', function () {
+					updateArrayProfile(this)
+				}, false);
+
+			}
+			
+			let buttonReset = document.createElement("button");
+			buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
+			buttonReset.innerHTML = "reset profile";
+			buttonReset.addEventListener('click', function () {
+				updateArrayProfile()
 			}, false);
-
+			
+			htmlFilterContent.appendChild(buttonReset);
 		}
 		
 		let htmlWcagDisplay = '<hr class="border-light">';
@@ -2529,7 +2551,7 @@ updateCounter = function (activeFilter, nbTests) {
 };
 
 /**
- * Run when a filter swith button is activated. Update the array of enabled filters. 
+ * Run when a filter switch button is activated. Update the array of enabled filters. 
  * @param {object} elInput - switch button. 
  */
 updateArrayFilter = function (elInput) {
@@ -2553,17 +2575,13 @@ updateArrayFilter = function (elInput) {
 
 updateArrayProfile = function (elInput) {
 	
+	arrayProfileActivated.splice(0, arrayProfileActivated.length);
+	
 	if (elInput && elInput.checked) {
 		
 		arrayProfileActivated.push(elInput.value);
 		
-	} else {
-		
-		arrayProfileActivated = arrayProfileActivated.filter(function(filterValue) {
-			return filterValue !== elInput.value;
-		});
-		
-	}
+	} 
 
 	loadChecklistObject();
 	
@@ -2578,8 +2596,7 @@ runFilter = function() {
 		var isOK;
 		
 		obj.profils.forEach(function (current) {
-			if(arrayProfileActivated.includes(current)) {
-				console.log(current);				
+			if(arrayProfileActivated.includes(current)) {				
 				isOK = true;	
 			} 
 			
@@ -2593,13 +2610,13 @@ runFilter = function() {
 	if(arrayFilterActivated && arrayFilterActivated.length > 0){
 		
 		filteredTest = filteredTest.filter(o => arrayFilterActivated.includes(o.resultatTest));
-		console.log(filteredTest);
+
 	} 
 	
 	if(arrayProfileActivated && arrayProfileActivated.length > 0){
 		
 		filteredTest = filteredTest.filter(filtrerParID);
-		console.log(filteredTest);
+	
 		
 		//filteredTest = filteredTest.checklist.page[currentPage].items.filter(o => arrayProfileActivated.includes(o.profils.forEach(function(current) { console.log (current) ; return current; })));
 		
@@ -2675,23 +2692,55 @@ jsonUpdate = function () {
 excelExport = function () {
 
 var excel = $JExcel.new();   
+var formatHeader = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#FFCC00"});
+var formatHeaderProject = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#C5D9F1"});
+var formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000"}); 
+var pageHeaders = ['Nom', 'URL'];
+var dataHeaders = ['ID', 'Test', 'Titre', 'Détail', 'Solution', 'Solution Technique', 'Suivi Validation', 'Etat / remarque équipe projet'];
+
+excel.set( {sheet:0,value:"Informations"} );
+excel.set(0,0,0,"Audit",formatHeader);
+excel.set(0,0,1,dataVallydette.checklist.name);
+excel.set(0,0,2,"");
+
+
+for (var j=0;j<pageHeaders.length;j++){    
+		
+			excel.set(0,j,3,pageHeaders[j], formatHeader);    
+			            
+}	
+
+let rowPages = 4;
+
+for (let i in dataVallydette.checklist.page) {
+
+	excel.set(0,0,rowPages, dataVallydette.checklist.page[i].name);
+	if (dataVallydette.checklist.page[i].url) {
+		excel.set(0,1,rowPages, dataVallydette.checklist.page[i].url);
+	}
+
+	rowPages++;
+}
+
+let setIndex = 1;
 
 for (let i in dataVallydette.checklist.page) {
 	
 		
-		if (i==0) {
-			excel.set( {sheet:0,value:dataVallydette.checklist.page[i].name} );
-		} else {
-			excel.addSheet(dataVallydette.checklist.page[i].name);
-		}
-
-		 dataHeaders = ['Test', 'Titre', 'Détail', 'Solution', 'Solution Technique'];
-		 var formatHeader=excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#F6F6F6"});   
+		excel.addSheet(dataVallydette.checklist.page[i].name);
+		
+		   
 		for (var j=0;j<dataHeaders.length;j++){    
 		
-			excel.set(i,j,0,dataHeaders[j], formatHeader);    // Set CELL header text & header format
-			excel.set(i,j,undefined, "auto");             // Set COLUMN width to auto 
+			if(j===7){
+				excel.set(setIndex,j,0,dataHeaders[j], formatHeaderProject); 
+			} else {
+				excel.set(setIndex,j,0,dataHeaders[j], formatHeader);	
+			}
+
+			excel.set(setIndex,j,undefined, "auto"); 
 		}	 
+		
 		
 		let rowIssues = 0;
 		
@@ -2703,96 +2752,24 @@ for (let i in dataVallydette.checklist.page) {
 				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
 					
 					rowIssues++;
-					excel.set(i,0,rowIssues, dataVallydette.checklist.page[i].items[j].title);
-					excel.set(i,1,rowIssues, issue.issueDetail);
-					excel.set(i,2,rowIssues, issue.issueSolution);
-					excel.set(i,3,rowIssues, issue.issueTechnicalSolution);
-					excel.set(i,4,rowIssues, issue.issueTitle);
-					
+					excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+					excel.set(setIndex,1,rowIssues, dataVallydette.checklist.page[i].items[j].title);
+					excel.set(setIndex,2,rowIssues, issue.issueDetail);
+					excel.set(setIndex,3,rowIssues, issue.issueSolution);
+					excel.set(setIndex,4,rowIssues, issue.issueTechnicalSolution);
+					excel.set(setIndex,5,rowIssues, issue.issueTitle);
+				
 				})
 					
 			}
 			
 		}
 		
+		setIndex++;
 		
 	} 
 
-       excel.generate("SampleData.xlsx");
-}
-
-/**
- * Run the excel export
- */
-excelExportXLSX = function () {
-	let defaultName = document.getElementById("checklistName");
-	defaultName = utils.slugify(defaultName.innerText);
-	
-	var todayDate = new Date();
-	var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
-
-	var todayHour = new Date();
-	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
-	
-	let exportFiledefaultName = defaultName + '-' + date + '-' + time + '-issues.xlsx';
-	
-
-	
-	var wb = XLSX.utils.book_new();
-	//var ws = XLSX.utils.aoa_to_sheet(data);
-	
-	let dataIssue = [];
-	let dataCurrentIssue = [];
-	//let dataProjet = [];
-	//let dataAuditInfo = [['Page', 'URL']];
-	//let dataUrl = [];
-		
-	for (let i in dataVallydette.checklist.page) {
-		
-		//dataUrl.push(dataVallydette.checklist.page[i].name);
-		//dataUrl.push(dataVallydette.checklist.page[i].url);
-		//dataAuditInfo.push(dataUrl);
-		
-		dataIssue.splice(0, dataIssue.length);
-		dataIssue = [['Test', 'Titre', 'Détail', 'Solution', 'Solution Technique']];
-			
-		
-		for (let j in dataVallydette.checklist.page[i].items) {
-			
-			
-			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
-					
-				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
-					
-					dataCurrentIssue.splice(0, dataCurrentIssue.length);
-				
-					dataCurrentIssue.push(dataVallydette.checklist.page[i].items[j].title);
-					Object.entries(issue).forEach(([key, value]) => {
-						dataCurrentIssue.push(value);
-						
-					});
-					
-					
-					dataIssue.push(dataCurrentIssue);
-					
-				})
-					
-			}
-			
-		}
-
-		//var wsInfos = XLSX.utils.aoa_to_sheet(dataAuditInfo);
-		//XLSX.utils.book_prepend_sheet(wb, wsInfos, 'Infos générales');
-		
-		var ws_name = dataVallydette.checklist.page[i].name;
-		var ws = XLSX.utils.aoa_to_sheet(dataIssue);
-		XLSX.utils.book_append_sheet(wb, ws, ws_name);
-		
-	}
-		console.log(wb);
-		
-	//XLSX.writeFile(wb, exportFiledefaultName);	
-		
+    excel.generate("SampleData.xlsx");
 }
 
  /**

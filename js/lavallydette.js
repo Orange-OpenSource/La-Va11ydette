@@ -39,6 +39,7 @@ var arrayFilterActivated = [];
  * @todo add comment
  */
 var arrayProfileActivated = [];
+var arrayTypeActivated = [];
 
 var currentCriteriaListName;
 
@@ -305,11 +306,11 @@ function runVallydetteApp() {
 	
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
-	/** @todo to be build from json directly */
 	if (currentCriteriaListName==="audit") {
-		arrayProfileNameAndValue = [["Qualifieur - checklist initiale", "Qualifieur - checklist initiale"], ["Qualifieur - checklist avancée", "Qualifieur - checklist avancée"], ["Développeur", "Développeur"], ["Expert Accessibilité", "Expert Accessibilité"]];
+		arrayProfileNameAndValue = uniqueEntry("profils");
+		arrayTypeNameAndValue = uniqueEntry("type");
 	}
-		
+	
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
@@ -322,6 +323,7 @@ function runVallydetteApp() {
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
 	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
 }
+
 
 /**
  *  Initialization of events for import button, and checklist name edition button.
@@ -574,9 +576,6 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
-			
-			
-			
 			if (currentRefTests[i].tests) {
 				htmlrefTests += '<h4 class="h5">Procédure</h4>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].tests);
@@ -612,6 +611,7 @@ runTestListMarkup = function (currentRefTests) {
 
 			htmlrefTests += '</article>';
 			
+
 		}
 	
 	/** 'rgaa' value correspond to the RGGA4 checklist */
@@ -2410,7 +2410,7 @@ initFilters = function () {
     
 		htmlFilterContent.innerHTML = '';
 	   
-	   let htmlFilterHeading = document.createElement('h2');
+		let htmlFilterHeading = document.createElement('h2');
 		htmlFilterHeading.textContent = langVallydette.template.filters;
 		htmlFilterContent.appendChild(htmlFilterHeading);
    
@@ -2438,44 +2438,10 @@ initFilters = function () {
 			}, false);
 
 		}
-			
-		if(arrayProfileNameAndValue.length>0) {
-				
-			let htmlProfileList = document.createElement('ul');
-			htmlProfileList.classList.add("list-unstyled");
-			
-			let separator = document.createElement("hr");
-			separator.classList.add("border-light");
-			htmlFilterContent.appendChild(separator);
-			
-			for (let i in arrayProfileNameAndValue) {
-				var isChecked = "";
-				
-				arrayProfileActivated.forEach(element => {element === arrayProfileNameAndValue[i][1] ? isChecked = "checked" : ''});
-				htmlProfile = '<label class="custom-control custom-radio pb-1" id="labelProfile' + i + '"><input type="radio" name="profile" class="custom-control-input" id="profile' + i + '" value="' + arrayProfileNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label">' + arrayProfileNameAndValue[i][0] + '</span></label>';
-				
-				var listProfileItem = document.createElement("li");
-				listProfileItem.innerHTML = htmlProfile;
-				htmlProfileList.appendChild(listProfileItem);
-				htmlFilterContent.appendChild(htmlProfileList);
-
-				
-				var inputItem = document.getElementById("profile" + i);
-				inputItem.addEventListener('click', function () {
-					updateArrayProfile(this)
-				}, false);
-
-			}
-			
-			let buttonReset = document.createElement("button");
-			buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
-			buttonReset.innerHTML = "reset profile";
-			buttonReset.addEventListener('click', function () {
-				updateArrayProfile()
-			}, false);
-			
-			htmlFilterContent.appendChild(buttonReset);
-		}
+		 
+		PropertyFilterMarkup("arrayProfileActivated", "arrayProfileNameAndValue", "profile");
+		PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type<");
+		
 		
 		let htmlWcagDisplay = '<hr class="border-light">';
 		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">' + langVallydette.wcagView + '</span></label>';
@@ -2487,6 +2453,44 @@ initFilters = function () {
 		typeWcagDisplayInput.addEventListener('click', function () {
 				wcagDisplayMode(this)
 			}, false);
+}
+
+function PropertyFilterMarkup(arrayActivatedFilter, arrayNameAndValue, inputName) {
+			let htmlProfileList = document.createElement('ul');
+			htmlProfileList.classList.add("list-unstyled");
+			
+			let separator = document.createElement("hr");
+			separator.classList.add("border-light");
+			htmlFilterContent.appendChild(separator);
+			
+				for (let i in window[arrayNameAndValue]) {
+					var isChecked = "";
+					
+					window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
+					htmlProfile = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
+					
+					var listProfileItem = document.createElement("li");
+					listProfileItem.innerHTML = htmlProfile;
+					htmlProfileList.appendChild(listProfileItem);
+					htmlFilterContent.appendChild(htmlProfileList);
+
+					
+					var inputItem = document.getElementById(inputName + i);
+					inputItem.addEventListener('click', function () {
+						updateRadioFilterArray(this, arrayActivatedFilter)
+					}, false);
+
+				}
+			
+			let buttonReset = document.createElement("button");
+			buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
+			buttonReset.innerHTML = "reset profile";
+			buttonReset.addEventListener('click', function () {
+				updateRadioFilterArray(false, arrayActivatedFilter)
+			}, false);
+			
+			htmlFilterContent.appendChild(buttonReset);
+	
 }
 
 function wcagDisplayMode(wcagDisplayModeInput) {
@@ -2572,14 +2576,17 @@ updateArrayFilter = function (elInput) {
 	
 }
 
-
-updateArrayProfile = function (elInput) {
+/**
+ * Run when a filter radio button is activated. Update the array of enabled filters. 
+ * @param {object} elInput - radio button. 
+ */
+updateRadioFilterArray = function (elInput, arrayToUpdate) {
 	
-	arrayProfileActivated.splice(0, arrayProfileActivated.length);
+	window[arrayToUpdate].splice(0, window[arrayToUpdate].length);
 	
 	if (elInput && elInput.checked) {
 		
-		arrayProfileActivated.push(elInput.value);
+		window[arrayToUpdate].push(elInput.value);
 		
 	} 
 
@@ -2588,21 +2595,58 @@ updateArrayProfile = function (elInput) {
 }
 
 /**
+ * Get the unique entry from an object property, in order to build a filter array
+ * @param {string} property - property from vallydette object. 
+ */
+function uniqueEntry(property) {
+	uniqueEntryArray = [];
+	dataVallydette.checklist.page[0].items.forEach(function(item){
+			item[property].forEach(function(entry){
+				uniqueEntryArray.push(entry);
+			});
+		})
+		
+		return [...new Set(uniqueEntryArray)];
+}
+
+
+/**
  * Apply the filters to the vallydette object, and run display function r(unTestListMarkup) with the new filtered object
  */	
 runFilter = function() {
 	
-	function filtrerParID(obj) {
+	/* function filtrerParID(obj, prop) {
 		var isOK;
-		
-		obj.profils.forEach(function (current) {
+	
+	if(obj[prop]) {
+		obj[prop].forEach(function (current) {
+			
+			
 			if(arrayProfileActivated.includes(current)) {				
 				isOK = true;	
 			} 
-			
+				
 		})
-		
+	}
 		return isOK;
+		
+	} */
+	
+	function filtrerParID(prop, arrayFilters) {
+		
+		return function(obj) {
+			var isOK;	
+			obj[prop].forEach(function(current) {
+				
+				if(window[arrayFilters].includes(current)) {				
+					isOK = true;	
+				} 
+					
+			})
+		
+			return isOK;
+		
+		}
 	}
 	
 	filteredTest = dataVallydette.checklist.page[currentPage].items;
@@ -2615,15 +2659,14 @@ runFilter = function() {
 	
 	if(arrayProfileActivated && arrayProfileActivated.length > 0){
 		
-		filteredTest = filteredTest.filter(filtrerParID);
+		filteredTest = filteredTest.filter(filtrerParID("profils", "arrayProfileActivated"));
 	
+	} 
+	
+	if(arrayTypeActivated && arrayTypeActivated.length > 0){
 		
-		//filteredTest = filteredTest.checklist.page[currentPage].items.filter(o => arrayProfileActivated.includes(o.profils.forEach(function(current) { console.log (current) ; return current; })));
-		
-		
-		//filteredTest = filteredTest.checklist.page[currentPage].items.filter(o => o.profils.forEach(function(current) { return arrayProfileActivated.includes(current); }));
-		
-		
+		filteredTest = filteredTest.filter(filtrerParID("type", "arrayTypeActivated"));
+	
 	} 
 	
 	

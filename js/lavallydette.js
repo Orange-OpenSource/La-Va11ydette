@@ -307,8 +307,8 @@ function runVallydetteApp() {
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
 	if (currentCriteriaListName==="audit") {
-		arrayProfileNameAndValue = uniqueEntry("profils");
-		arrayTypeNameAndValue = uniqueEntry("type");
+		arrayProfileNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items,"profils");
+		arrayTypeNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items, "type");
 	}
 	
 	
@@ -2440,7 +2440,7 @@ initFilters = function () {
 		}
 		 
 		PropertyFilterMarkup("arrayProfileActivated", "arrayProfileNameAndValue", "profile");
-		PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type<");
+		PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type");
 		
 		
 		let htmlWcagDisplay = '<hr class="border-light">';
@@ -2456,40 +2456,40 @@ initFilters = function () {
 }
 
 function PropertyFilterMarkup(arrayActivatedFilter, arrayNameAndValue, inputName) {
-			let htmlProfileList = document.createElement('ul');
-			htmlProfileList.classList.add("list-unstyled");
+	let htmlProfileList = document.createElement('ul');
+	htmlProfileList.classList.add("list-unstyled");
+	
+	let separator = document.createElement("hr");
+	separator.classList.add("border-light");
+	htmlFilterContent.appendChild(separator);
+	
+		for (let i in window[arrayNameAndValue]) {
+			var isChecked = "";
 			
-			let separator = document.createElement("hr");
-			separator.classList.add("border-light");
-			htmlFilterContent.appendChild(separator);
+			window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
+			htmlProfile = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
 			
-				for (let i in window[arrayNameAndValue]) {
-					var isChecked = "";
-					
-					window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
-					htmlProfile = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
-					
-					var listProfileItem = document.createElement("li");
-					listProfileItem.innerHTML = htmlProfile;
-					htmlProfileList.appendChild(listProfileItem);
-					htmlFilterContent.appendChild(htmlProfileList);
+			var listProfileItem = document.createElement("li");
+			listProfileItem.innerHTML = htmlProfile;
+			htmlProfileList.appendChild(listProfileItem);
+			htmlFilterContent.appendChild(htmlProfileList);
 
-					
-					var inputItem = document.getElementById(inputName + i);
-					inputItem.addEventListener('click', function () {
-						updateRadioFilterArray(this, arrayActivatedFilter)
-					}, false);
-
-				}
 			
-			let buttonReset = document.createElement("button");
-			buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
-			buttonReset.innerHTML = "reset profile";
-			buttonReset.addEventListener('click', function () {
-				updateRadioFilterArray(false, arrayActivatedFilter)
+			var inputItem = document.getElementById(inputName + i);
+			inputItem.addEventListener('click', function () {
+				updateRadioFilterArray(this, arrayActivatedFilter)
 			}, false);
-			
-			htmlFilterContent.appendChild(buttonReset);
+
+		}
+	
+	let buttonReset = document.createElement("button");
+	buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
+	buttonReset.innerHTML = "reset profile";
+	buttonReset.addEventListener('click', function () {
+		updateRadioFilterArray(false, arrayActivatedFilter)
+	}, false);
+	
+	htmlFilterContent.appendChild(buttonReset);
 	
 }
 
@@ -2596,11 +2596,12 @@ updateRadioFilterArray = function (elInput, arrayToUpdate) {
 
 /**
  * Get the unique entry from an object property, in order to build a filter array
+ * @param {object} objectToParse
  * @param {string} property - property from vallydette object. 
  */
-function uniqueEntry(property) {
+function uniqueEntry(objectToParse, property) {
 	uniqueEntryArray = [];
-	dataVallydette.checklist.page[0].items.forEach(function(item){
+	objectToParse.forEach(function(item){
 			item[property].forEach(function(entry){
 				uniqueEntryArray.push(entry);
 			});
@@ -2611,26 +2612,9 @@ function uniqueEntry(property) {
 
 
 /**
- * Apply the filters to the vallydette object, and run display function r(unTestListMarkup) with the new filtered object
+ * Apply the filters to the vallydette object, and run display function (runTestListMarkup) with the new filtered object
  */	
 runFilter = function() {
-	
-	/* function filtrerParID(obj, prop) {
-		var isOK;
-	
-	if(obj[prop]) {
-		obj[prop].forEach(function (current) {
-			
-			
-			if(arrayProfileActivated.includes(current)) {				
-				isOK = true;	
-			} 
-				
-		})
-	}
-		return isOK;
-		
-	} */
 	
 	function filtrerParID(prop, arrayFilters) {
 		
@@ -2660,7 +2644,7 @@ runFilter = function() {
 	if(arrayProfileActivated && arrayProfileActivated.length > 0){
 		
 		filteredTest = filteredTest.filter(filtrerParID("profils", "arrayProfileActivated"));
-	
+		
 	} 
 	
 	if(arrayTypeActivated && arrayTypeActivated.length > 0){

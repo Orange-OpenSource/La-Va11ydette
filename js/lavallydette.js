@@ -195,7 +195,9 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	
 	checklistVersion = criteriaVallydette.version;
 	
-	dataVallydette.checklist.lang = globalLang;
+	dataVallydette.checklist.lang = globalLang;	
+	
+	eventHandler();
 	
 	runVallydetteApp();
 }
@@ -2857,4 +2859,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('audit', 'fr');
+initVallydetteApp('wcag', 'fr');

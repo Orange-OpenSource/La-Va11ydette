@@ -29,7 +29,7 @@
       "Wave toolbar"
     ],
     "tests": [
-      "Launch Wave > Outline",
+      "Launch Wave > Structure",
       "Inspect the headings hierarchy"
     ],
     "verifier": [
@@ -640,7 +640,7 @@
       "Wave Toolbar"
     ],
     "tests":[
-      "Use Wave > Outline",
+      "Use Wave > Structure",
       "Consider the prioritization of ARIA landmarks"    ],
 		"verifier": ["<ul><li>check that each region of the page is semantically correct through the appropriate use of <code>header</code>, <code>nav</code>… HTML5 structure tags</li><li>check that the main content is included inside a <code>main</code> tag</li><li>check that the <code>main</code> element does not contain elements which are repeated elsewhere on the page (e.g. navigation)</li></ul>"],
     "resultat": [

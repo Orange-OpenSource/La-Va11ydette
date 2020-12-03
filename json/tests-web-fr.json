@@ -29,7 +29,7 @@
       "Wave toolbar"
     ],
     "tests": [
-      "Lancer Wave > Outline",
+      "Lancer Wave > Structure",
       "Examiner la hiérarchisation de titre"
     ],
     "verifier": [
@@ -39,9 +39,9 @@
     ],
     "resultat": [
       "Tous les contenus, traités visuellement comme des titres, possèdent une sémantique de titre (balises <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>)",
-      " Les titres de niveaux sont structurés de manière logique"
+      " Les titres de niveaux sont hiérarchisés de manière logique"
     ],
-    "exception": "Ne pas tenir compte des titres masqués (<code>visibility:hidden</code> ou <code>display:none</code>) via des directives CSS. Si un de ces titres masqués est susceptible d'apparaître, il faut refaire les observations sur la nouvelle structuration du titrage.",
+    "exception": "Ne pas tenir compte des titres masqués (<code>visibility:hidden</code>, <code>aria-hidden='true'</code> ou <code>display:none</code>). Si un de ces titres masqués est susceptible d'apparaître, il faut refaire les observations sur la nouvelle structuration du titrage.",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": ["2.4.6", "1.3.1"]
@@ -58,14 +58,15 @@
       "Examiner les contenus"
     ],
     "verifier": [
-		"Vérifier que les sémantiques HTML appropriées sont utilisées pour le balisage des contenus, notamment : <ul><li>afin que du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment <code>&lt;p&gt;</code>) pour en comprendre le sens ou sa relation au reste de la structure du document<li>liste</li><li>citation (présence de <code>&lt;blockquote&gt;</code> ou <code>&lt;q&gt;</code> lorsque nécessaire)</li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul>"
+		"Vérifier que les sémantiques HTML appropriées sont utilisées pour le balisage des contenus, notamment : <ul><li>afin que du contenu ne soit pas isolé sans être entouré d'une balise sémantique (notamment <code>&lt;p&gt;</code>) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>liste (<code>&lt;blockquote&gt;</code> ou <code>&lt;ol&gt;</code>)</li><li>citation (présence de <code>&lt;ul&gt;</code> ou <code>&lt;q&gt;</code> lorsque nécessaire)</li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul>"
 		],
     "resultat": [
     "Le balisage sémantique est présent lorsque nécessaire pour comprendre le sens ou sa relation au reste de la structure du document",
-		"Tous les contenus, traités visuellement comme des listes, possèdent une sémantique liste HTML (<code>&lt;ol&gt;</code> pour des listes ordonnées, <code>&lt;ul&gt;</code> pour des listes non ordonnées), <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> et <code>&lt;dd&gt;</code> pour les listes de définition",
-		"Toutes les citations possèdent une sémantique de citation HTML <code>&lt;q&gt;</code> et <code>&lt;blockquote&gt;</code>",
-		"Tous les éléments interactifs entraînant un changement de contexte via un chargement d'URL, possède une sémantique de lien HTML (<code>&lt;a&gt;</code>)",
-		"Tous les éléments interactifs permettant le déclenchement d'une action, une validation ou une sélection, possèdent une sémantique de bouton HTML (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>)"
+    "Lorsque nécessaire, le contenu texte est balisé sémantiquement, notamment avec des <code>&lt;p&gt;</code>",
+    "Tous les contenus traités visuellement comme des listes, possèdent une sémantique liste HTML (<code>&lt;ol&gt;</code> pour des listes ordonnées, <code>&lt;ul&gt;</code> pour des listes non ordonnées), <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code> et <code>&lt;dd&gt;</code> pour les listes de définition",
+    "Toutes les citations possèdent une sémantique de citation HTML <code>&lt;q&gt;</code> et <code>&lt;blockquote&gt;</code>",
+    "Tous les éléments interactifs entraînant un changement de contexte via un chargement d'URL, possède une sémantique de lien HTML (<code>&lt;a&gt;</code>)",
+    "Tous les éléments interactifs permettant le déclenchement d'une action, une validation ou une sélection possèdent une sémantique de bouton HTML (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>)"
 		],
     "exception": "",
     "raccourcis": "",
@@ -169,7 +170,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
-    "wcag": ["1.3.1"]
+    "wcag": ["3.1.1"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -189,8 +190,7 @@
       "Aucune erreur relative à l'absence d'attribut <code>title</code> sur <code>frame</code> et <code>iframe</code> "
     ],
     "exception": [
-      "Présence d'un attribut <code>alt</code> pour toutes les images",
-      "Présence d'un attribut <code>title</code> pour toutes les <code>frame</code> et <code>iframe</code> "
+      ""
     ],
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
@@ -282,7 +282,7 @@
     "resultat": [
       "Tous les textes sont mis en forme via CSS"
     ],
-    "exception": "Images essentielles (logo, captcha, marque...)",
+    "exception": "Images essentielles (logo, captcha, marque, etc.)",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": ["1.4.5"]
@@ -304,33 +304,13 @@
     "resultat": [
       "Présence d'un transcrit complet dans la même page ou dans une  autre via un lien",
 	  "Des sous-titres sous formats texte sont présents pour toutes vidéos et restituent l’ensemble des informations de la bande son",
-      "Une audio-description est présente en complément de la bande audio. <br/>Celle-ci présente sous format texte, les informations sont accessibles uniquement par l’image."																	
+      "Une audio-description est présente en complément de la bande audio, si besoin. <br/>Celle-ci présente, sous format texte, les informations convoyées uniquement par l’image."																	
     ],
     "exception": "",
     "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"]  
+    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": ["1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5"]  
   },
-    {
-      "themes": "Contenu non-textuel",
-      "title": "Fournir un équivalent textuel pour les images et les cadres / alternatives aux cadres",
-      "type": [
-        "Test manuel - Inspecteur de code"
-      ],
-      "tests": [
-      "Lancer l'inspecteur de code du navigateur",
-      "Examiner les cadres"
-    ],
-      "verifier": [
-        "Vérifier que la valeur des attributs <code>title</code> décrit la contenu ou la fonction de <code>iframe</code> ou  <code>frame</code>"
-      ],
-      "resultat": [
-        "Tous les cadres possèdent un attribut <code>title</code> pertinent"
-      ],
-      "exception": "",
-      "raccourcis": "<a href='https://a11y-guidelines.orange.com/web/exemples/iframes-techniques/index.html'>Les iframes techniques</a>",
-      "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-      "wcag": ["1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5"]
- },
   {
     "themes": "Contenu non-textuel",
     "title": "Rendre accessible les pistes audio ou vidéo / lancement auto",
@@ -341,37 +321,36 @@
       "Examiner les contenus audio et vidéos de la page"
     ],
     "verifier": [
-      "Vérifier qu'aucune piste audio ou vidéo ne lance automatiquement au lancement de la page"
+      "Vérifier que les pistes audio de la page automatiquement jouées plus de 3 secondes peuvent être stoppées, mises en pause ou leur volume peut être contrôlé indépendamment"
     ],
     "resultat": [
-      "Les pistes audios et vidéos ne se lancent pas automatiquement au chargement de la page"
+      "Les sons joués automatiquement plus de 3 secondes sont contrôlables par l'utilisateur"
     ],
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["2.2.2"]
+    "wcag": ["1.4.2"]
   },
   {
     "themes": "Contenu non-textuel",
-    "title": "Rendre accessible les pistes audio ou vidéo / mécanismes de contrôle",
+    "title": "Fournir des mécanismes de contrôle accessibles pour toute information en mouvement, clignotante, défilante ou mise à jour automatiquement",
     "type": [
       "Test manuel"
     ],
     "tests": [
-      "Examiner les contenus audio et vidéos de la page"
+      "Examiner les contenus en mouvement, clignotante, défilante ou mise à jour automatiquement de la page"
     ],
     "verifier": [
-      "Vérifier pour toute piste audio ou vidéo qu'un mécanisme de contrôle est présent (pause, lecture)",
-      "Vérifier manuellement, qu'il est possible de stopper/reprendre la lecture d'une piste audio ou vidéo, depuis une navigation souris",
-      "Vérifier manuellement, qu'il est possible de stopper/reprendre la lecture d'une piste audio ou vidéo, depuis une navigation clavier"
+      "Vérifier pour toute information en mouvement, clignotante, défilante qui démarre automatiquement, dure plus de cinq secondes et présentée conjointement avec un autre contenu, il y a un mécanisme de contrôle pour la mettre en pause, l'arrêter ou la masquer", 
+      "Vérifier pour toute information mise à jour automatiquement qui démarre automatiquement et présentée conjointement avec un autre contenu, il y a un mécanisme de contrôle pour la mettre en pause, l'arrêter ou pour en contrôler la fréquence des mises à jour"
     ],
     "resultat": [
-		"Un mécanisme de contrôle de la piste audio ou vidéo est présent. <br/>Ce mécanisme permet la lecture ou la mise en pause du média, quelque-soit l'aide technique utilisée"
+		"Un mécanisme de contrôle est présent pour tout contenu en mouvement, clignotante, défilante ou mise à jour automatiquement"
 	],
-    "exception": "",
+    "exception": "Sauf si le mouvement, le clignotement, le défilement ou la mise à jour  s'avère un élément essentiel",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["1.4.2", "2.2.2"]
+    "wcag": ["2.2.2"]
   },
   {
     "themes": "Contenu non-textuel",
@@ -472,7 +451,7 @@
     "resultat": [
       "L'information transmise par la couleur peut également être obtenue par un texte explicite",
       "L'information transmise par la couleur est complétée par une autre information visuelle (exemple : des icônes utilisent des couleurs, mais également des formes différentes)",
-      "Cas particulier des liens dans du texte : s'ils ne sont pas soulignés, sur le focus clavier et au survol souris, fournir un autre moyen que le couleur pour les distinguer."
+      "Cas particulier des liens dans du texte : s'ils ne sont pas soulignés, au focus clavier et au survol souris, fournir un autre moyen que le couleur pour les distinguer."
     ],
     "exception": "",
     "raccourcis": "",
@@ -490,7 +469,7 @@
       "Identifier les liens dans le corps du texte"
     ],
     "verifier": [
-      "Vérifiez que les liens dans le corps du texte sont facilement identifiables visuellement par un moyen autre que la couleur (souligné, gras ...) par rapport au reste du texte",
+      "Vérifiez que les liens dans le corps du texte sont facilement identifiables visuellement par un moyen autre que la couleur (souligné, gras, etc.) par rapport au reste du texte",
       "Si ce n'est pas le cas, s'assurer d'un contraste de 3:1 entre le texte, le fond et les liens et qu'il existe un autre moyen que la couleur pour les identifier au survol et au focus"
     ],
     "resultat": [
@@ -523,7 +502,7 @@
   },
   {
     "themes": "Navigation générale",
-    "title": "Rendre l'ordre de lecture du contenu cohérent",
+    "title": "S'assurer que l'ordre de lecture du contenu ets compréhensible",
     "type": [
       "Test manuel - Inspecteur de code"
     ],
@@ -532,7 +511,7 @@
 		"Localiser le contenu qui n'est plus dans le même ordre d'apparition relatif que dans la page"
 	],
     "verifier": [
-      "Vérifier que pour le contenu dont la compréhension dépendant d'un ordre de lecture spécifique, l'ordre  de présentation visuel est identique à l'ordre d'apparition dans le code"
+      "Vérifier que pour le contenu dont la compréhension dépendant d'un ordre de lecture spécifique, l'ordre  de présentation visuel est identique à l'ordre d'apparition dans le code ou que le contenu reste compréhensible"
     ],
     "resultat": [
       "Le contenu reste compréhensible dans l'ordre d'apparition dans le code"
@@ -654,8 +633,24 @@
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
     "wcag": [""]
-  },
-  {
+  },{
+		"themes": "Navigation générale",
+		"title": "La structure sémantique globale du document est-elle cohérente&nbsp;?",
+		"type": [
+      "Wave Toolbar"
+    ],
+    "tests":[
+      "Lancer Wave > Structure",
+      "Examiner la hiérarchisation des landmarks ARIA"    ],
+		"verifier": ["<ul><li>vérifier que chaque région de la page possède une sémantique pertinente à travers des balises de structure HTML5 <code>header</code>, <code>nav</code>…</li><li>vérifier que le contenu principal est inclus dans une balise <code>main</code></li><li>vérifier que l'élément <code>main</code> ne contient pas d'éléments répétés ailleurs dans la page (ex&nbsp;: navigation)</li></ul>"],
+    "resultat": [
+      "Les différentes régions sont clairement identifiables programmatiquement"
+    ],
+    "exception": "",
+    "raccourcis": "",
+    "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+    "wcag": [""]
+	},{
     "themes": "Navigation générale",
     "title": "Fournir des liens d’évitement",
     "type": [
@@ -882,7 +877,7 @@
       "Vérifier l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est exhaustif, cohérent et logique (souvent équivalent à l'ordre visuel, haut-bas, gauche-droite)"
     ],
     "resultat": [
-      "Le parcours clavier à travers la page est logique et fait sens, sans piége clavier"
+      "Le parcours clavier à travers la page est logique et fait sens, sans piège clavier"
     ],
     "exception": "",
     "raccourcis": "",
@@ -902,7 +897,7 @@
       "Vérifier que la prise de focus par les différents éléments (boutons, liens, champs de formulaires) est suffisamment  visible"
     ],
     "resultat": [
-      "La prise de focus est visible et suffisamment contrasté (par exemple, pour la propriété CSS <code>outline</code> a une taille suffisante >1px et le contraste avec la couleur de fond est d'au moins 3:1)"
+      "La prise de focus est visible et suffisamment contrasté (par exemple, pour la propriété CSS <code>outline</code> a une taille suffisante >1px)"
     ],
     "exception": "",
     "raccourcis": "",
@@ -951,7 +946,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["1.4.4"]
+    "wcag": ["1.4.11"]
   },
   {
     "themes": "Mise en page",
@@ -968,7 +963,7 @@
     "resultat": [
       "Les pages conçues pour scroll vertical (donc avec un texte horizontal), ne font par apparaître d'ascenseur horizontal lorsqu'on fixe une largeur d'affichage à 320px CSS"
     ],
-    "exception": "Certains contenus tels des cartes, tableaux de données, jeux, etc…, peuvent nécessiter un scroll à 2 dimensions.",
+    "exception": "Certains contenus tels des cartes, tableaux de données, jeux, etc. peuvent nécessiter un scroll à 2 dimensions.",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": ["1.4.10"]
@@ -1020,28 +1015,6 @@
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": ["3.2.3", "3.2.4"]
   },
-  { 
-   "themes": "Mise en page", 
-    "title": "Identifier et conserver la cohérence des regroupements et des différentes régions de la page / landmarks",
-    "type": [
-      "Test manuel - Inspecteur de code"
-    ],
-    "tests": [
-      "Parcourir la page",
-      "Identifier les regroupements et les principales régions de la page",
-      "Lancer l'inspecteur de code"
-    ],
-    "verifier": [
-      "Vérifier que chaque région de la page possède une sémantique à travers des balises de structure HTML5"
-    ],
-    "resultat": [
-      "Les différentes régions sont clairement identifiables programmatiquement"
-    ],
-    "exception": "",
-    "raccourcis": "",
-    "profils": ["Expert Accessibilité"],
-    "wcag": [""]
-  },
   {
     "themes": "Mise en page",
     "title": "Définir des zones sensibles de taille suffisante",
@@ -1060,9 +1033,9 @@
     ],
     "exception": "<ul><li>Ancre / lien interne à la page</li><li>Lien à l'intérieur d'un paragraphe</li><li>Lien à l'intérieur d'une phrase</li><li>Lien dans une note de pied de page (à la fin de paragraphe ou d'une phrase)</li><li>Un icône cliquable à l'intérieur d'une phrase ou d'un paragraphe</li></ul>",
     "raccourcis": "",
-    "profils": ["Expert Accessibilité"]
-  },
-  {
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["2.5.5"]
+  }, {
     "themes": "Formulaires",
     "title": "Associer une étiquette pertinente à chaque champ de formulaire - Label",
     "type": [
@@ -1229,7 +1202,7 @@
       "Vérifier pour les pages Web qui entraînent des actions importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen...), que&nbsp;: <ul><li>l'action est réversible </li><li>ou, il existe une étape de confirmation permettant de vérifier ou rectifier la saisie en cas d'erreur."	  
     ],
     "resultat": [
-		"L'action peut être annulées",
+		"L'action peut être annulée",
 		"Une étape de confirmation permettant la vérification ou la modification est présente avant validation"
 	],
     "exception": [],
@@ -1266,11 +1239,11 @@
       "Test manuel"
     ],
     "tests": [
-		"Identifier tous les éléments activables par mono-point (hyperliens, bouton, input, composants UI via la souris, le clavier et tactilement)",
+		"Identifier tous les éléments activables par mono-point (liens, boutons, input, composants UI via la souris, le clavier et tactilement)",
 		"Vérifier qu'au moins une condition est vraie : <ul><li>Pas d'événement Down <br/>L'événement Down du pointeur n'est utilisé pour exécuter la fonction</li><li>Abandonner ou Annuler <br/>L'achèvement de la fonction est sur le Up, et un mécanisme est disponible pour abandonner la fonction avant la fin ou pour annuler la fonction une fois terminée</li><li>Inverser sur Up <br/>L'événement Up inverse tout résultat de l'événement Down précédent</li></ul>"
 	],
     "verifier": [
-      "Pour toute interaction avec un seul point de contact (tap, click, click long...), vérifier alors qu'il existe un mécanisme pour annuler l'action"
+      "Pour toute interaction avec un seul point de contact (tap, click, click long, etc.), vérifier alors qu'il existe un mécanisme pour annuler l'action"
     ],
     "resultat": [
       "Toutes les interactions mono-point sont annulables"
@@ -1291,7 +1264,7 @@
     "tests": [
       "Parcourir l'application",
       "Identifier les interactions multi-points (nécessitant plusieurs doigts), et/ou nécessitant de suivre une trajectoire précise.",
-      "identifier les interactions par mouvement de l'utilisateur (hochement de tête...) ou de l'appareil lui-même (secouer, retourner un téléphone...)"
+      "identifier les interactions par mouvement de l'utilisateur (hochement de tête, etc.) ou de l'appareil lui-même (secouer, retourner un téléphone, etc.)"
     ],
     "verifier": [
       "Vérifier que pour tout geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil, pour réaliser une action, une alternative nécessitant un seul point (un seul doigt) et sans trajectoire gestuelle est disponible"
@@ -1299,7 +1272,7 @@
     "resultat": [
       "Pour tout geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil, pour réaliser une action, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible. <br/>Pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <code>&lt;button&gt;</code> [+] et [-] est proposée"
     ],
-    "exception": "La fonction cttivée par le geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil est essentielle",
+    "exception": "La fonction activée par le geste multi-points (nécessitant plusieurs doigts), et/ou nécessitant des trajectoires gestuelles ou un mouvement de l'utilisateur ou de l'appareil est essentielle",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": ["2.5.1", "2.5.4"]

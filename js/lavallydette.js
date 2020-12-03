@@ -139,7 +139,7 @@ function createObjectAndRunVallydette() {
 			jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
 			break;
 		  case 'audit':
-			jsonCriteria = 'json/tests-web.json';
+			jsonCriteria = 'json/tests-web-'+globalLang+'.json';
 			break;
 		} 
 

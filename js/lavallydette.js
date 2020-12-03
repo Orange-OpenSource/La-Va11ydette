@@ -2426,7 +2426,7 @@ initFilters = function () {
 		for (let i in arrayFilterNameAndValue) {
 			var isChecked = "";
 			arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
-			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label" id="status' + i+1 + '">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="result' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label" id="status' + i+1 + '">' + arrayFilterNameAndValue[i][0] + '</span></label>';
 			
 			var listItem = document.createElement("li");
 			listItem.innerHTML = htmlTypes;
@@ -2434,7 +2434,7 @@ initFilters = function () {
 			htmlFilterContent.appendChild(htmlFilterList);
 
 			/** Filters event handler. */
-			var inputItem = document.getElementById("type" + i);
+			var inputItem = document.getElementById("result" + i);
 			inputItem.addEventListener('click', function () {
 				updateArrayFilter(this)
 			}, false);
@@ -2478,6 +2478,7 @@ function PropertyFilterMarkup(arrayActivatedFilter, arrayNameAndValue, inputName
 
 			
 			var inputItem = document.getElementById(inputName + i);
+			
 			inputItem.addEventListener('click', function () {
 				updateRadioFilterArray(this, arrayActivatedFilter)
 			}, false);
@@ -2674,7 +2675,7 @@ removeFilterSection = function () {
 loadChecklistObject = function () {
 	initFilters();
 	//initComputation();
-	if((arrayFilterActivated && arrayFilterActivated.length > 0) || (arrayProfileActivated && arrayProfileActivated.length > 0)){
+	if((arrayFilterActivated && arrayFilterActivated.length > 0) || (arrayProfileActivated && arrayProfileActivated.length > 0) || (arrayTypeActivated && arrayTypeActivated.length > 0)){
 		runFilter();
 	} else {
 		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);

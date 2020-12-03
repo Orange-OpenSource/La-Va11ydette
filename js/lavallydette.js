@@ -54,7 +54,7 @@ function initVallydetteApp (criteriaListName, lang) {
 	  if(langRequest.readyState === 4 && langRequest.status === 200) {
 		langVallydette = JSON.parse(langRequest.responseText);
 		localizeHTML();
-		currentCriteriaListName = criteriaListName;
+		initGlobalCriteriaListName(criteriaListName);
 		createObjectAndRunVallydette();
 	
 	  } 
@@ -62,6 +62,23 @@ function initVallydetteApp (criteriaListName, lang) {
 	langRequest.send();	
 	
 }
+
+
+function initGlobalCriteriaListName(criteriaListName) {
+	
+	const paramString = window.location.search;
+	const urlParams = new URLSearchParams(paramString);
+
+	if (urlParams.has('list')) {
+		currentCriteriaListName = urlParams.get('list');
+	} else if (criteriaListName) {
+		currentCriteriaListName = criteriaListName;
+	} else {
+		currentCriteriaListName = 'wcagEase';
+	}
+
+}
+
 
 /**
  * Init the dataVallydette object and download the selected checklist json file
@@ -98,6 +115,9 @@ function createObjectAndRunVallydette() {
 			break;
 		  case 'wcagEase':
 			jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
+			break;
+		 case 'wcag-android':
+			jsonCriteria = 'json/criteres-wcag-android-'+globalLang+'.json';
 			break;
 		} 
 
@@ -371,7 +391,7 @@ runTestListMarkup = function (currentRefTests) {
 	let nextIndex = 1;
 
 	/** 'wcagEase' value correspond to the conformity checklist */
-	if (currentCriteriaListName === 'wcagEase') {
+	if (currentCriteriaListName === 'wcagEase' || currentCriteriaListName === 'wcag-android') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
 		

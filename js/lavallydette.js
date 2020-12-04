@@ -199,8 +199,10 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 			}
 			
 		}
+		
+		
 	}); 
-	console.log(dataVallydette.checklist.page[0].groups);
+	
 	dataVallydette.checklist.version = criteriaVallydette.version;
 	checklistVersion = criteriaVallydette.version;
 	
@@ -1730,7 +1732,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	elModal.innerHTML = htmlModal;
 
 	/** If it's a page properties edition, when add the groups */
-	if (targetElement === "pageName") {
+	if ((targetElement === "pageName") && (Object.keys(dataVallydette.checklist.page[currentPage].groups).length)) {
 		initGroups();
 	}
 

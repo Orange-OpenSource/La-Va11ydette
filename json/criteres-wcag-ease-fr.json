@@ -209,12 +209,14 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"group": "captcha",
 		"resultatTest": "nt"
 	},{
 		"themes": "Contenu non-textuel",
 		"title": "Si un CAPTCHA est utilisé, une alternative est-elle prévue pour les utilisateurs malvoyants, non-voyants et malentendants&nbsp;?",
 		"ID": "testID-015",
 		"IDorigin": "testID-015",
+		"group": "captcha",
 		"wcag": [
 			"1.1.1 A"
 		],

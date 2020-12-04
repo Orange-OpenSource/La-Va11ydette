@@ -5,6 +5,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  * Global vars
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
  * @param {object} langVallydette - language object.
+ * @param {object} checklistVallydette - checklists parameters (ex : url list param).
  * @param {string} globalLang - language selected.
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
  * @param {number} checklistVersion - Contains the last checklist version
@@ -19,6 +20,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  */
 var dataVallydette;
 var langVallydette;
+var checklistVallydette;
 var globalLang;
 var dataWCAG;
 var checklistVersion;
@@ -55,11 +57,13 @@ function initVallydetteApp (criteriaListName, lang) {
 		langVallydette = JSON.parse(langRequest.responseText);
 		localizeHTML();
 		initGlobalCriteriaListName(criteriaListName);
-		createObjectAndRunVallydette();
+		
 	
 	  } 
 	};
-	langRequest.send();	
+	langRequest.send();
+	
+
 	
 }
 
@@ -77,6 +81,16 @@ function initGlobalCriteriaListName(criteriaListName) {
 		currentCriteriaListName = 'wcagEase';
 	}
 
+	var checklistRequest = new XMLHttpRequest();
+		checklistRequest.open("GET", "json/config-checklist.json", true);
+		checklistRequest.onreadystatechange = function () {
+		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
+			checklistVallydette = JSON.parse(checklistRequest.responseText);
+			createObjectAndRunVallydette();
+		  } 
+		};
+		checklistRequest.send();
+	
 }
 
 
@@ -97,10 +111,14 @@ function createObjectAndRunVallydette() {
 
 		}
 	}
+	
+		
 
 		var jsonCriteria;
 		
-		switch(currentCriteriaListName) {
+		jsonCriteria = 'json/'+checklistVallydette[currentCriteriaListName].filename+'-'+globalLang+'.json';
+		
+		/* switch(currentCriteriaListName) {
 		  case 'RGAA':
 			jsonCriteria = 'json/criteres-rgaa4.json';
 			break;
@@ -119,7 +137,7 @@ function createObjectAndRunVallydette() {
 		 case 'wcag-android':
 			jsonCriteria = 'json/criteres-wcag-android-'+globalLang+'.json';
 			break;
-		} 
+		}  */
 
 		var criteriaRequest = new XMLHttpRequest();
 		
@@ -145,7 +163,9 @@ function createObjectAndRunVallydette() {
 function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.name = langVallydette.auditNameWcag;
     dataVallydette.checklist.referentiel = currentCriteriaListName;
-	dataVallydette.checklist.page[0].groups = {
+	dataVallydette.checklist.page[0].groups = {};
+	
+	/* dataVallydette.checklist.page[0].groups = {
 						[langVallydette.groupsTxt1] : {
 							"idTests": ['testID-014', 'testID-015'],
 							"checked": true
@@ -164,8 +184,23 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 						[langVallydette.groupsTxt4] : {
 							"idTests": ['testID-047', 'testID-049', 'testID-050'],
 							"checked": true
-					}};
+					}};  */
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
+	dataVallydette.checklist.page[0].items.forEach(function (test) {
+		console.log("group"+test.group);
+		if(test.group) {
+			if(dataVallydette.checklist.page[0].groups[test.group]){
+				dataVallydette.checklist.page[0].groups[test.group].idTests.push(test.IDorigin);
+			} else {
+				dataVallydette.checklist.page[0].groups[test.group] = {};
+				dataVallydette.checklist.page[0].groups[test.group].idTests = [];
+				dataVallydette.checklist.page[0].groups[test.group].checked = true;
+				dataVallydette.checklist.page[0].groups[test.group].idTests.push(test.IDorigin);
+			}
+			
+		}
+	}); 
+	console.log(dataVallydette.checklist.page[0].groups);
 	dataVallydette.checklist.version = criteriaVallydette.version;
 	checklistVersion = criteriaVallydette.version;
 	
@@ -391,7 +426,7 @@ runTestListMarkup = function (currentRefTests) {
 	let nextIndex = 1;
 
 	/** 'wcagEase' value correspond to the conformity checklist */
-	if (currentCriteriaListName === 'wcagEase' || currentCriteriaListName === 'wcag-android') {
+	if (checklistVallydette[currentCriteriaListName].template === 'wcag') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
 		
@@ -897,7 +932,6 @@ function checkTheVersion(currentChecklistVersion) {
 
 /**
  * Computation initialization. The dataWcag object is downloaded.
- * @todo dynamically build this object directly from the vallydette object
 */
 function initComputation() {
 
@@ -912,7 +946,7 @@ function initComputation() {
 			dataWCAG = JSON.parse(matriceRequest.responseText);
 
 			dataWCAG.items.forEach(initRulesAndTests);
-			
+			console.log(dataWCAG);
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
@@ -938,7 +972,7 @@ function initRulesAndTests (rules) {
 			if (testWCAG[0] === rules.wcag) {
 				
 				rules.tests.push(dataVallydette.checklist.page[0].items[i].IDorigin);
-				
+				rules.resultat = "nt";
 			}
 		}
 	
@@ -973,10 +1007,17 @@ function runComputation(obj) {
             pagesResults[i].items[k] = {};
             pagesResults[i].items[k].wcag = dataWCAG.items[k].wcag;
 			pagesResults[i].items[k].level = dataWCAG.items[k].level;
-            pagesResults[i].items[k].resultat = "nt";
+			
+			if (dataWCAG.items[k].tests.length > 0) {
+				pagesResults[i].items[k].resultat = "nt";
+			} else {
+				pagesResults[i].items[k].resultat = "na";
+			}
+            
             pagesResults[i].items[k].complete = true;
 			pagesResults[i].items[k].test = [];
 			pagesResults[i].items[k].name = dataWCAG.items[k].name;
+			
 			/**
 			* Pass through each test of a wcag.
 			*/
@@ -985,48 +1026,47 @@ function runComputation(obj) {
 				* Gets each test value, and update the current wcag rules, basing on computation rules.
 				*/
 				
-				
-                for (let j in dataVallydette.checklist.page[i].items) {
-					
-					
-                    if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
+					for (let j in dataVallydette.checklist.page[i].items) {
 						
-						testObj = {};
-						testObj.title = dataVallydette.checklist.page[i].items[j].title;
-						testObj.result = dataVallydette.checklist.page[i].items[j].resultatTest;
-						pagesResults[i].items[k].test.push(testObj);
 						
-                        if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
-                            pagesResults[i].items[k].complete = false;
-                        }
-
-						if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
-							dataWCAG.items[k].resultat = false;
-							if (dataVallydette.checklist.page[i].items[j].commentaire!=="") { 
-                               dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
+						if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
+							
+							testObj = {};
+							testObj.title = dataVallydette.checklist.page[i].items[j].title;
+							testObj.result = dataVallydette.checklist.page[i].items[j].resultatTest;
+							pagesResults[i].items[k].test.push(testObj);
+							
+							if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
+								pagesResults[i].items[k].complete = false;
 							}
-                         }
-						
-                        if (pagesResults[i].items[k].resultat) {
-                            if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
-                                pagesResults[i].items[k].resultat = true;	
-								break;	
-								
-                            } else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
-                                pagesResults[i].items[k].resultat = false;
-								break;	
-								
-								
-                            } else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
-                                pagesResults[i].items[k].resultat = "na";
-								break;	
-                            }
-                        }
-						
-						
-                    }
-                }
 
+							if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
+								dataWCAG.items[k].resultat = false;
+								if (dataVallydette.checklist.page[i].items[j].commentaire!=="") { 
+								   dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
+								}
+							 }
+							
+							if (pagesResults[i].items[k].resultat) {
+								if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
+									pagesResults[i].items[k].resultat = true;	
+									break;	
+									
+								} else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
+									pagesResults[i].items[k].resultat = false;
+									break;	
+									
+									
+								} else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
+									pagesResults[i].items[k].resultat = "na";
+									break;	
+								}
+							}
+							
+							
+						}
+					}
+				
                 //if (pagesResults[i].items[k].complete === false) {
                     // pagesResults[i].items[k].resultat = "nt";
                 //}
@@ -1034,7 +1074,7 @@ function runComputation(obj) {
         }
     }
 
-	console.log(pagesResults);
+	
 	if (obj) {
 		return pagesResults;
 	} else {		

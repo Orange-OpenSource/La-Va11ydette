@@ -1,0 +1,10 @@
+{
+	"wcagEase": {
+		"filename": "criteres-wcag-ease",
+		"template": "wcag"
+	},
+	"wcag-android": {
+		"filename": "criteres-wcag-android",
+		"template": "wcag"
+	}
+}

@@ -355,7 +355,7 @@
 			"3.2.1 A",
 			"3.2.2 A"
 		],
-		"verifier": "<p>Lors de l'utilisation de formulaires ou de tout composant interactif, vérifier l'absence de changement de contexte&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
+		"verifier": "<p>Lors de l'utilisation de formulaires ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
 		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter les utilisateurs incapables d'afficher la page dans sa totalité.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur</li><li><span lang=\"en\">viewport</span></li><li>focus</li><li>contenu qui modifie le sens de la page Web</li></ul>",
 		"resultatTest": "nt"
 	},{

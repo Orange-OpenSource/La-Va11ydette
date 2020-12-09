@@ -293,6 +293,7 @@
     "type": [
       "Test manuel"
     ],
+    -------------------------------
     "tests": [
       "Examiner les contenus audio et vidéos de la page"
     ],
@@ -333,27 +334,6 @@
   },
   {
     "themes": "Contenu non-textuel",
-    "title": "Fournir des mécanismes de contrôle accessibles pour toute information en mouvement, clignotante, défilante ou mise à jour automatiquement",
-    "type": [
-      "Test manuel"
-    ],
-    "tests": [
-      "Examiner les contenus en mouvement, clignotante, défilante ou mise à jour automatiquement de la page"
-    ],
-    "verifier": [
-      "Vérifier pour toute information en mouvement, clignotante, défilante qui démarre automatiquement, dure plus de cinq secondes et présentée conjointement avec un autre contenu, il y a un mécanisme de contrôle pour la mettre en pause, l'arrêter ou la masquer", 
-      "Vérifier pour toute information mise à jour automatiquement qui démarre automatiquement et présentée conjointement avec un autre contenu, il y a un mécanisme de contrôle pour la mettre en pause, l'arrêter ou pour en contrôler la fréquence des mises à jour"
-    ],
-    "resultat": [
-		"Un mécanisme de contrôle est présent pour tout contenu en mouvement, clignotante, défilante ou mise à jour automatiquement"
-	],
-    "exception": "Sauf si le mouvement, le clignotement, le défilement ou la mise à jour  s'avère un élément essentiel",
-    "raccourcis": "",
-    "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["2.2.2"]
-  },
-  {
-    "themes": "Contenu non-textuel",
     "title": "Rendre accessible les clignotements",
     "type": [
       "Test manuel"
@@ -381,11 +361,9 @@
     "tests": [
       "Examiner le captcha"
     ],
-    "verifier": 
-	[
+    "verifier": [
       "Vérifier que pour tout captcha uniquement visuel ou sonore, un alternative ci-dessous est proposée en complément : <ul><li>captcha audio + visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>Il existe une autre solution d’accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>"
-    ]
-	,
+    ],
     "resultat": [
       "La page propose une combinaison ci-dessous : <ul><li>captcha audio + visuel</li><li>captcha audio ou visuel + des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li></ul>"
     ],
@@ -612,6 +590,32 @@
     "wcag": ["2.5.3"]
   },
   {
+    "themes": "Navigation générale",
+    "title": "Rendre les intitulés des liens et des boutons compréhensibles hors contexte / téléchargement de documents",
+    "type": [
+      "Test manuel - Inspecteur de code"
+    ],
+    "tests": [
+      "Lancer l'inspecteur de code du navigateur",
+      "Localiser les liens (ou autre) permettant le téléchargement de documents (pdf, traitement de texte, vidéo, audio...)",
+      "Inspecter le libellé texte de ces items, <br/>Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"
+    ],
+    "verifier": [
+      "Vérifier que le nom (accessible) du lien contient&nbsp;",
+      "le nom/titre du document",
+      "le type de document&nbsp;: pdf, texte, mp3...",
+      "si besoin, la langue du document",      
+      "le poids approximatif du document"
+    ],
+    "resultat": [
+      "Les liens de téléchargement de documents sont pertinents et informatifs"
+    ],
+    "exception": "",
+    "raccourcis": "",
+    "profils": ["Développeur", "Expert Accessibilité"],
+    "wcag": []
+  },
+  {
     "themes": "Navigation générale",		 																				
     "title": "Prévenir l’utilisateur de l’ouverture d’une nouvelle fenêtre",
     "type": [
@@ -627,13 +631,14 @@
       "Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs"
     ],
     "resultat": [
-		"Présence d'une mention précisant l'ouverture d'une nouvelle fenêtre <br/>En général, l'intitulé du lien suivi de la mention 'nouvelle fenêtre', sinon, l'attribut <code>title</code> et <code>aria-label</code> doivent contenir la mention 'nouvelle fenêtre'. <br/>Exemple :  google (nouvelle fenêtre)"
+		"Présence d'une mention précisant l'ouverture d'une nouvelle fenêtre <br/>En général, l'intitulé du lien suivi de la mention 'nouvelle fenêtre', sinon, l'attribut <code>title</code> et <code>aria-label</code> doivent contenir la mention 'nouvelle fenêtre'. <br/>Exemple&nbsp;:  google (nouvelle fenêtre)"
 	],
     "exception": "",
     "raccourcis": "",
     "profils": ["Développeur", "Expert Accessibilité"],
     "wcag": [""]
-  },{
+  },
+  {
 		"themes": "Navigation générale",
 		"title": "La structure sémantique globale du document est-elle cohérente&nbsp;?",
 		"type": [
@@ -650,7 +655,8 @@
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": [""]
-	},{
+  },
+  {
     "themes": "Navigation générale",
     "title": "Fournir des liens d’évitement",
     "type": [
@@ -1035,7 +1041,8 @@
     "raccourcis": "",
     "profils": ["Expert Accessibilité"],
     "wcag": ["2.5.5"]
-  }, {
+  },
+   {
     "themes": "Formulaires",
     "title": "Associer une étiquette pertinente à chaque champ de formulaire - Label",
     "type": [
@@ -1209,6 +1216,30 @@
     "raccourcis": "",
     "profils": ["Expert Accessibilité"],
     "wcag": ["3.3.4"]
+  },
+  {
+    "themes": "Formulaires",
+    "title": "Détecter, identifier les erreurs et suggérer des corrections / éviter les erreurs de saisie",
+    "type": [
+      "Test manuel"
+    ],
+    "tests": [
+      "Test manuel",
+      "Parcourir les formulaires",
+      "Renseigner les formulaires avec des  informations spécifiques sur l'utilisateur"
+    ],
+    "verifier": [
+      "Pour tout champ qui permet de collecter des informations spécifiques sur l'utilisateur (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'>liste exhaustive</a>), l'attribut <code>autocomplete</code> du champ doit être présent et avoir une valeur adéquate"
+    ],
+    "resultat": [
+      "L'attribut <code>autocomplete</code> est&bsp;:",
+      "présent", 
+      "et la valeur de cet attribut est pertinente"
+    ],
+    "exception": [],
+    "raccourcis": "",
+    "profils": ["Expert Accessibilité"],
+    "wcag": ["1.3.5"]
   },
   {
     "themes": "Tactile et interactions",

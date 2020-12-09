@@ -137,8 +137,7 @@
     ],
     "exception": "For words or expressions in a foreign language that have passed into common use (déjà-vu, cul-de-sac..) or proper names, do not indicate a change of language.",
     "raccourcis":"",
-    "profils": ["Developer", "Accessibility Expert"]
-    ,
+    "profils": ["Developer", "Accessibility Expert"]    ,
     "wcag": ["3.1.2"]
   },
   {
@@ -277,15 +276,15 @@
     "tests": [
 "Examine text images"
 ],
-    "check": [
+    "verifier": [
       "Check that the text image cannot be laid out using CSS"
     ],
-    "result": [
+    "resultat": [
       "All texts are formatted via CSS"
     ],
     "exception": "Essential images (logo, captcha, brand, etc.)",
-    "shortcuts": "",
-    "profiles": ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
+    "raccourcis": "",
+    "profils": ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
     "wcag": ["1.4.5"]
   },
   {
@@ -294,6 +293,7 @@
     "type": [
       "Manual test"
     ],
+    --------------------------------------
     "tests": [
       "Inspect the audio and video content of the page"
     ],
@@ -331,27 +331,6 @@
     "raccourcis":"",
     "profils": ["Qualifier - initial checklist", "Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
     "wcag": ["1.4.2"]
-  },
-  {
-    "themes": "Non-text content",
-    "title": "Provide accessible control mechanisms for any moving, flashing, scrolling or automatically updating information",
-    "type": [
-      "Manual test"
-    ],
-    "tests": [
-      "Inspect moving, flashing, scrolling, or auto-updating page content"
-    ],
-    "verifier": [
-      "Check for any moving, flashing, scrolling information that starts automatically, lasts longer than five seconds and presented together with other content, there is a control mechanism to pause, stop or hide it",
-      "Check for any automatically updated information that starts automatically and presented in conjunction with other content, there is a control mechanism to pause, stop it or to control the frequency of updates"
-    ],
-    "resultat": [
-      "A control mechanism is present for any moving, flashing, scrolling or auto-updating information"
-    ],
-    "exception":"Unless movement, blinking, scrolling, or updating is essential",
-    "raccourcis":"",
-    "profils": ["Qualifier - initial checklist", "Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
-    "wcag": ["2.2.2"]
   },
   {
     "themes": "Non-text content",
@@ -611,6 +590,32 @@
     "wcag": ["2.5.3"]
   },
   {
+    "themes": "General navigation",
+    "title": "Make the text of links and buttons understandable without context / downloading of documents",
+    "type": [
+      "Manual testing - Code inspector"
+    ],
+    "tests": [
+      "Run the code inspector of tne browser",
+      "Locate the links (or other) allowing the downloading of documents (pdf, word processor, video, audio, etc.)",
+      "Inspect the text label of these items, <br/> If the test cannot be validated from step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"
+    ],
+    "verifier": [
+      "Check that the (accessible) name of the link contains:",
+      "the name/title of the document",
+      "the type of document: pdf, text, mp3, etc.",
+      "if necessary, the language of the document",
+      "the approximate weight of the document"
+    ],
+    "resultat": [
+      "Document download links are relevant and informative"
+    ],
+    "exception": "",
+    "raccourcis": "",
+    "profils": ["Developer", "Accessibility Expert"],
+    "wcag": []
+  },
+  {
     "themes": "Common navigation",
     "title": "Warn the user when opening a new window",
     "type": [
@@ -650,7 +655,8 @@
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
     "wcag": [""]
-	},{
+  },
+  {
 		"themes": "Common navigation",
     "title": "Provide skip links",
     "type": [
@@ -1212,6 +1218,30 @@
     "wcag": ["3.3.4"]
   },
   {
+    "themes": "Forms",
+    "title": "Detect, identify errors and suggest corrections / avoid entry errors",
+    "type": [
+      "Manual testing"
+    ],
+    "tests": [
+      "Manual test",
+      "Browse the forms",
+      "Fill in the forms with specific information about the user"
+    ],
+    "verifier": [
+      "For any field that collects specific information about the user (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'> exhaustive list </ a>), the <code> autocomplete </code> attribute of the field must be present and have an appropriate value "
+    ],
+    "resultat": [
+      "The <code>autocomplete</code> attribute is:",
+      "present",
+      "and the value of this attribute is relevant"
+    ],
+    "exception": [],
+    "raccourcis": "",
+    "profils": ["Accessibility Expert"],
+    "wcag": ["1.3.5"]
+  },
+  {
     "themes": "Touch and interactions",
     "title": "Allow zooming",
     "type": [
@@ -1249,7 +1279,9 @@
     "resultat": [
       "All single-point interactions can be canceled"
     ],
-    "exception":"",
+    "exception": [
+      "The function on the Down event is essential, the functions which emulate a keystroke or a numeric keypad are considered essential"
+    ],
     "raccourcis":"",
     "profils": ["Accessibility Expert"],
     "wcag": ["2.5.2"]

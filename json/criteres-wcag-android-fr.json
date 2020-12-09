@@ -12,6 +12,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Vérifier que chaque champ a un label associé et que celui-ci est pertinent</p>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -24,6 +25,7 @@
 		],
 		"verifier": "<ul><li>la présence de groupe <code>fieldset</code> ou <code>role='group'</code></li><li>chaque groupe possède une légende (<code>legend</code>, <code>aria-labelledby</code>)</li><li>chaque légende est pertinente</li></ul>",
 		"complement": "<h4>Complément&nbsp;: </h4><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende necessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -35,6 +37,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>vérifier la présence d'une identification visuelle du champ obligatoire ne reposant pas uniquement sur la couleur (ex&nbsp;: astérisque)</li><li>vérifier qu'une des techniques ci-dessous est implémentée pour transmettre l'information de manière programmatique&nbsp;:<ul><li>l'information visuelle est intégrée dans le <code>label</code></li><li>présence d'un attribut <code>required</code></li><li>présence d'un attribut <code>aria-required</code></li></ul></li></ul>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -46,6 +49,7 @@
 
 		],
 		"verifier": "<ul><li>vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné</li><li>vérifier que le format de saisie est présent dans l'<span lang=\"en\">accessible name</span> (<code>label</code>, <code>aria-label</code>, <code>aria-labelledby</code>) ou dans l'<span lang=\"en\">accessible description</span> du champ (<code>aria-describedby</code>)</li></ul>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -56,6 +60,7 @@
 			"1.3.5 AA"
 		],
 		"verifier": "<ul><li>pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de l'attribut <code>autocomplete</code></li><li>la valeur indiquée pour l'attribut <code>autocomplete</code> est pertinente au regard du type d'information attendue</li></ul>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -66,6 +71,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<ul><li>vérifier que le label du champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône)</li><li>si l'information visuelle ne possède pas d'alternative texte (ex&nbsp;: icône sans alternative), vérifier que le champ possède un attribut <code>aria-invalid='true'</code></li></ul>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -76,6 +82,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -86,6 +93,7 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies.</p>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
@@ -96,6 +104,7 @@
 			"3.3.4 AA"
 		],
 		"verifier": "<p>Pour les formulaires avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"group": "Formulaire",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Entêtes",
@@ -232,13 +241,23 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
-		"title": "Les changements de contenu au sein d'une 'page' sont-ils vocalisés ? ",
+		"title": "Les changements de contenu sont-ils vocalisés ? ",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>Les messages temporaires sont vocalisés</li><li>L'ouverture des dialogs sont vocalisés</li><li>L'ouverture d'une nouvelle activité est vocalisé par son titre</li><li>Les messages d'erreurs sont vocalisés</li><li>Les scrolls horizontaux sont vocalisés</li><li>L'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>Le changement d'un élément est vocalisé si il est utile pour l'utilisateur d'en être informé</li></ul>",
+		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>L'ouverture des dialogs sont vocalisés</li><li>L'ouverture d'une nouvelle activité est vocalisé par son titre</li><li>L'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>Les scrolls horizontaux sont vocalisés</li></ul>",
+		"resultatTest": "nt"
+	},{
+		"themes": "Navigation vocale",
+		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués ?",
+		"ID": "testID-049",
+		"IDorigin": "testID-049",
+		"wcag": [
+			"4.1.3 AA"
+		],
+		"verifier": "<p>Vérifier qu'un mécanisme reposant sur les régions live est implémenté. :</p><ul><li>Les messages temporaires sont vocalisés</li><li>Les messages d'erreurs sont vocalisés</li><li>Le changement d'un élément est vocalisé si il est utile pour l'utilisateur d'en être informé</li><li>La progression d'une mise à jour du contenu est vocalisée</li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -269,6 +288,16 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés</p>",
+		"resultatTest": "nt"
+	},{
+		"themes": "Navigation vocale",
+		"title": "La vocalisation d'un élément textuelle contient-il au minimum le libellé visible à l'écran pour ce même élément ? ",
+		"ID": "testID-051",
+		"IDorigin": "testID-051",
+		"wcag": [
+			"2.5.3 A"
+		],
+		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier, si possible) dans la vocalisation de ce composant. Non applicable, si l'élément n'a de libellé visible (icônes sans texte, par exemple).</p>",
 		"resultatTest": "nt"
 	},{
 
@@ -425,7 +454,27 @@
 		],
 		"verifier": "<p>Non applicable, si les clignottements flashent moins de 3 fois par seconde ou sur ne zone de moins de <code>21 824 px²</code></p>",
 		"resultatTest": "nt"
-	},{		
+	},{	
+		"themes": "Navigation générale",
+		"title": "Le mécanisme de navigation est cohérent avec les autres écrans de l'application",
+		"ID": "testID-050",
+		"IDorigin": "testID-050",
+		"wcag": [
+			"3.2.3 AA"
+		],
+		"verifier": "<p>Vérifier que les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écran.</p>",
+		"resultatTest": "nt"
+	},{
+		"themes": "Navigation générale",
+		"title": "Aucune image n'est utilisée pour présenter du texte ?",
+		"ID": "testID-052",
+		"IDorigin": "testID-052",
+		"wcag": [
+			"1.4.5 AA"
+		],
+		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte (hors cas particulier : logo, captcha, dénomination commerciale).</p>",
+		"resultatTest": "nt"
+	},{			
 		"themes": "Multimédia",
 		"title": "Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente&nbsp;?",
 		"ID": "testID-041",
@@ -434,6 +483,7 @@
 			"1.2.1 A"
 		],
 		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -444,6 +494,7 @@
 			"1.2.1 A"
 		],
 		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -454,6 +505,7 @@
 			"1.2.3 A"
 		],
 		"verifier": "<ul><li>vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -464,6 +516,7 @@
 			"1.2.5 AA"
 		],
 		"verifier": "<ul><li>vérifier que pour toute vidéo, une audiodescription est disponible</li><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -474,6 +527,7 @@
 			"1.2.2 A"
 		],
 		"verifier": "<ul><li>vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles</li><li>vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs)</li><li>vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo</li></ul>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -485,6 +539,7 @@
 		],
 		"verifier": "<ul><li>vérifier que des sous-titres sont disponibles</li><li>vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs)</li></ul>",
 		"complement": "<h4>Sous-titres transcrits</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -495,6 +550,7 @@
 			"1.4.2 A"
 		],
 		"verifier": "<ul><li>possibilité de mettre en pause ou d'arrêter le son</li><li>possibilité de régler le volume indépendamment du volume système</li></ul>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -505,6 +561,7 @@
 			"2.2.2 A"
 		],
 		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio, ou un média vidéo</p>",
+		"group": "Multimédia",		
 		"resultatTest": "nt"
 	}
 ]}

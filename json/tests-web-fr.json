@@ -1,7 +1,6 @@
 {
 	"version":1.1,
 	"lang":"fr",
-	"template":"audit",
 	"items":[{
 		"themes": "Contenu textuel",
 		"title": "Donner un titre aux pages",

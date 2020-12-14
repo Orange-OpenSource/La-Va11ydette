@@ -11,6 +11,7 @@
 	},
 	"web-audit": {
 		"filename": "tests-web",
-		"template": "audit"
+		"template": "audit",
+		"version": "1.0"
 	}
 }

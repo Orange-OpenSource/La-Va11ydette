@@ -337,7 +337,7 @@ function eventHandler() {
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
 			
-			if (dataVallydette.checklist.referentiel) {
+			if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
 				
 				if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
 					
@@ -430,8 +430,25 @@ function getLocalStorage() {
 	btnLocalStorage.classList.add("disabled");
 	
 	initGlobalLang(dataVallydette.checklist.lang, true);
-	runLangRequest();	
-				
+	initGlobalTemplate(dataVallydette.checklist.template);
+	
+	
+	if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
+		
+		if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
+			
+			globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
+			
+		} else {
+			globalVersion = checklistVallydette["wcag-web"].version;
+		}			
+		
+	} else {
+		globalVersion = checklistVallydette["wcag-web"].version;
+	}
+		
+
+	runLangRequest();						
 }
 
 
@@ -1066,7 +1083,7 @@ function checkTheVersion(currentChecklistVersion) {
 		
 		versionHTML += '<div class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
 		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
-		versionHTML += ' <p>' + langVallydette.versionAlert1 + checklistVallydette[currentCriteriaListName].version + '.' + langVallydette.versionAlert2 + '<strong>' + currentChecklistVersion +'</strong></p>';
+		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' <strong>' + globalVersion + '</strong>. ' + langVallydette.versionAlert2 + ' <strong>' + currentChecklistVersion +'</strong></p>';
 		versionHTML += ' <button type="button" class="close" data-dismiss="alert">';
 		versionHTML +=	'  <span class="sr-only">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';

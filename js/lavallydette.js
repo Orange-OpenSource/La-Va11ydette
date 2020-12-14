@@ -30,6 +30,8 @@ var issuesVallydette;
 
 var globalLang;
 var globalTemplate;
+var globalVersion;
+
 var dataWCAG;
 var checklistVersion;
 var	currentPage = 0;
@@ -103,6 +105,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 	} else {
 		currentCriteriaListName = 'wcagEase';
 	}
+	
 	var checklistRequest = new XMLHttpRequest();
 		checklistRequest.open("GET", "json/config-checklist.json", true);
 		checklistRequest.onreadystatechange = function () {
@@ -120,9 +123,15 @@ function initGlobalCriteriaListName(criteriaListName) {
  */
 function createObjectAndRunVallydette() {
 		
+		initGlobalTemplate(checklistVallydette[currentCriteriaListName].template);
+		globalVersion = checklistVallydette[currentCriteriaListName].version;
+		
 		dataVallydette = {
 		"checklist": {
 			"name": "",
+			"referentiel": currentCriteriaListName,
+			"version": globalVersion,
+			"template": globalTemplate,
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
@@ -134,7 +143,7 @@ function createObjectAndRunVallydette() {
 		var jsonCriteria;
 		jsonCriteria = 'json/' + checklistVallydette[currentCriteriaListName].filename + '-' + globalLang + '.json';
 
-		initGlobalTemplate(checklistVallydette[currentCriteriaListName].template);
+		
 		
 		var criteriaRequest = new XMLHttpRequest();
 		
@@ -171,7 +180,6 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	}
 
 	dataVallydette.checklist.name = langVallydette.auditNameWcag;
-    dataVallydette.checklist.referentiel = currentCriteriaListName;
 	
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
 
@@ -192,8 +200,8 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 		
 	}); 
 	
-	dataVallydette.checklist.version = criteriaVallydette.version;
-	checklistVersion = criteriaVallydette.version;
+	//dataVallydette.checklist.version = criteriaVallydette.version;
+	//checklistVersion = criteriaVallydette.version;
 	
 	dataVallydette.checklist.lang = globalLang;	
 	
@@ -269,7 +277,6 @@ function initGlobalTemplate (templateValue) {
 	
 }
 
-
 /**
  *  Once the vallydette object is ready, the vallydette app can be run :
 	Initialization of some string var and run multiple init functions.
@@ -329,7 +336,21 @@ function eventHandler() {
 			dataVallydette = JSON.parse(e.target.result);
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
-		
+			
+			if (dataVallydette.checklist.referentiel) {
+				
+				if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
+					
+					globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
+					
+				} else {
+					globalVersion = checklistVallydette["wcag-web"].version;
+				}			
+				
+			} else {
+				globalVersion = checklistVallydette["wcag-web"].version;
+			}
+			
 			runLangRequest();
 		}
 
@@ -350,9 +371,7 @@ function eventHandler() {
 		btnLocalStorage.disabled=true;
 		btnLocalStorage.classList.add("disabled");
 	}
-	
-	
-	
+
 	var exportExcelBtn = document.getElementById('button-a');
 	exportExcelBtn.addEventListener('click', function () {
 		excelExport();
@@ -1042,12 +1061,12 @@ function applyDisabledGroups() {
 */
 function checkTheVersion(currentChecklistVersion) {
 	
-	if (currentChecklistVersion !== checklistVersion) {
+	if ((currentChecklistVersion !== globalVersion) || (!currentChecklistVersion)) {
 		var versionHTML = '';
 		
 		versionHTML += '<div class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
 		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
-		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' (1.4). ' + langVallydette.versionAlert2 + '</p>';
+		versionHTML += ' <p>' + langVallydette.versionAlert1 + checklistVallydette[currentCriteriaListName].version + '.' + langVallydette.versionAlert2 + '<strong>' + currentChecklistVersion +'</strong></p>';
 		versionHTML += ' <button type="button" class="close" data-dismiss="alert">';
 		versionHTML +=	'  <span class="sr-only">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';
@@ -2877,4 +2896,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('wcagEase', 'fr');
+initVallydetteApp('wcag-android', 'fr');

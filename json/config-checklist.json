@@ -1,11 +1,13 @@
 {
-	"wcagEase": {
+	"wcag-web": {
 		"filename": "criteres-wcag-ease",
-		"template": "wcag"
+		"template": "wcag",
+		"version": "1.5"
 	},
 	"wcag-android": {
 		"filename": "criteres-wcag-android",
-		"template": "wcag"
+		"template": "wcag",
+		"version": "1.0"
 	},
 	"web-audit": {
 		"filename": "tests-web",

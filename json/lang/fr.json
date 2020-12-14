@@ -16,7 +16,7 @@
 	"successFeedback": "Les données ont été enregistrée avec succès.",
 	"warningNoResult": "Aucun résultat ne correspond à votre sélection",
 	"versionAlert1": "Cet audit n'est pas basé sur la dernière version du référentiel",
-	"versionAlert2": "Votre taux de conformité sera calculé sur la version 1.3",
+	"versionAlert2": "Votre taux de conformité sera calculé sur la version ",
 	"closeAlert": "Fermer le message d'information",
 	"auditResult": "Résultat de l'audit",
 	"auditTxt1": "Conformité globale",

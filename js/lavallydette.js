@@ -1164,7 +1164,7 @@ function runComputation(obj) {
 				*/
 				for (let l in dataWCAG.items[k].tests) {
 					/**
-					* Gets each test value, and update the current wcag rules, basing on computation rules.
+					* Gets each test value, and updates the current wcag rules, basing on computation rules.
 					*/
 					
 					for (let j in dataVallydette.checklist.page[i].items) {
@@ -1278,27 +1278,23 @@ function runFinalComputation(pagesResultsArray) {
 		var nbTotalA = 0;
 		var nbTotalAA = 0;
 
+
+		/**
+		 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
+		*/
+		var indexItem = 0;
+		for (let j in pagesResultsArray[i].items) {
+			if (pagesResultsArray[i].items[indexItem].level === 'AAA') {
+				pagesResultsArray[i].items.splice(indexItem,1);
+			} else {
+				indexItem = indexItem+1;
+			}
+		}
+
 		/**
 		 * 	Gets the number of true, false, non-applicable and non-tested by wcag level.
 		 *  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
 		*/
-		var indexItem = 0;
-		for (let j in pagesResultsArray[i].items) {
-			
-			console.log(indexItem);
-				console.log(pagesResultsArray[i].items[indexItem].name);
-			console.log(pagesResultsArray[i].items[indexItem].level);
-			if (pagesResultsArray[i].items[indexItem].level === 'AAA') {
-				console.log(pagesResultsArray[i].items[indexItem].name);
-				pagesResultsArray[i].items.splice(indexItem,1);
-			} else {
-			indexItem = indexItem+1;
-			}
-		}
-
-		console.log(pagesResultsArray);
-	
-		
 		for (let j in pagesResultsArray[i].items) {
 
 			if (pagesResultsArray[i].items[j].resultat === true) {
@@ -2528,26 +2524,27 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 			
 			for (let i in wcagDisplayObj[currentPage].items) {
 				
-				wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +'</h3>';
+				if ((globalTemplate==="wcag" && wcagDisplayObj[currentPage].items[i].level!="AAA") || globalTemplate!="wcag") {
+					wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
 
-				wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.wcagView + '</caption>';
-				wcagDisplayContent += '<thead><tr>';
-				wcagDisplayContent += '<th scope="col">Tests</th>';
-				wcagDisplayContent += '<th scope="col">' + langVallydette.resultHeading + '</th>';
-				wcagDisplayContent += '</tr></thead>';
-				wcagDisplayContent += '<tbody>';
-				for (let j in wcagDisplayObj[currentPage].items[i].test) {
-					wcagDisplayContent += '<tr>';
-					wcagDisplayContent += '<td class="w-100">'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
-					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
+					wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.wcagView + '</caption>';
+					wcagDisplayContent += '<thead><tr>';
+					wcagDisplayContent += '<th scope="col">Tests</th>';
+					wcagDisplayContent += '<th scope="col">' + langVallydette.resultHeading + '</th>';
+					wcagDisplayContent += '</tr></thead>';
+					wcagDisplayContent += '<tbody>';
+					for (let j in wcagDisplayObj[currentPage].items[i].test) {
+						wcagDisplayContent += '<tr>';
+						wcagDisplayContent += '<td class="w-100">'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
+						wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
+						wcagDisplayContent += '</tr>';
+					}
+					wcagDisplayContent += '<tr class="bg-light2">';
+					wcagDisplayContent += '<th class="font-weight-bold" scope="row">' + langVallydette.result + '</th>';
+					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
 					wcagDisplayContent += '</tr>';
+					wcagDisplayContent += '</tbody></table>';
 				}
-				wcagDisplayContent += '<tr class="bg-light2">';
-				wcagDisplayContent += '<th class="font-weight-bold" scope="row">' + langVallydette.result + '</th>';
-				wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
-				wcagDisplayContent += '</tr>';
-				wcagDisplayContent += '</tbody></table>';
-				
 				
 			}
 			

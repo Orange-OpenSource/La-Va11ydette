@@ -2070,7 +2070,7 @@ setComment = function (targetId, title) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
+	htmlModal += '<textarea class="form-control" id="comment' + targetId +'" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
@@ -2087,7 +2087,7 @@ setComment = function (targetId, title) {
 	
 	var comment = document.getElementById('comment' + targetId);
 
-	elModal.addEventListener('shown.bs.modal', function(event){
+	$('.modal').on('shown.bs.modal', function (event) {
 		comment.focus()
 	});
 	
@@ -2444,10 +2444,7 @@ displayIssue = function (targetId, title) {
 	htmlModal += '<button type="button" class="btn btn-primary" data-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '</div></div></div></div>';
 
-	let elModal = document.getElementById('modal');
-	elModal.innerHTML = htmlModal;
-	
-	elModal.addEventListener('shown.bs.modal', function(event){
+	$('.modal').on('shown.bs.modal', function (event) {
 		issueNameValueInput.focus()
 	});
 }

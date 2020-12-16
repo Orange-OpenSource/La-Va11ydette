@@ -300,7 +300,7 @@ function runVallydetteApp() {
 	
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
-	if (currentCriteriaListName==="audit") {
+	if (globalTemplate==="audit") {
 		arrayProfileNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items,"profils");
 		arrayTypeNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items, "type");
 	}
@@ -404,7 +404,7 @@ function runLocalStorage() {
 	htmlModal += langVallydette.recoverMessage;
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '</div></div></div></div>';
 
@@ -1431,7 +1431,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status1 + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status2 + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status3 + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.template.status4 + '</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.result + '</th>';
 		computationContent += '</tr><tr>';
 		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
@@ -1750,7 +1750,7 @@ setDeletePage = function (targetElement) {
 	htmlModal += langVallydette.deletePageName + getPropertyValue(targetElement) + ' ?';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
 	htmlModal += '</div></div></div></div>';
 
@@ -2073,7 +2073,7 @@ setComment = function (targetId, title) {
 	htmlModal += '<textarea class="form-control" id="comment' + targetId +'" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></div></div></div>';
 
@@ -2176,7 +2176,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '</div>';
 
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div>';
 	htmlModal += '</form>';
@@ -2507,42 +2507,48 @@ initFilters = function () {
 }
 
 function PropertyFilterMarkup(arrayActivatedFilter, arrayNameAndValue, inputName) {
-	let htmlProfileList = document.createElement('ul');
-	htmlProfileList.classList.add("list-unstyled");
 	
-	let separator = document.createElement("hr");
-	separator.classList.add("border-light");
-	htmlFilterContent.appendChild(separator);
-	
-		for (let i in window[arrayNameAndValue]) {
-			var isChecked = "";
-			
-			window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
-			htmlProfile = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
-			
-			var listProfileItem = document.createElement("li");
-			listProfileItem.innerHTML = htmlProfile;
-			htmlProfileList.appendChild(listProfileItem);
-			htmlFilterContent.appendChild(htmlProfileList);
+	if (window[arrayNameAndValue]) {
+		
+		let htmlPropertyList = document.createElement('ul');
+		htmlPropertyList.classList.add("list-unstyled");
+		
+		let separator = document.createElement("hr");
+		separator.classList.add("border-light");
+		htmlFilterContent.appendChild(separator);
+		
+			for (let i in window[arrayNameAndValue]) {
+				var isChecked = "";
+				
+				window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
+				htmlProperty = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
+				
+				var listPropertyItem = document.createElement("li");
+				listPropertyItem.innerHTML = htmlProperty;
+				htmlPropertyList.appendChild(listPropertyItem);
+				htmlFilterContent.appendChild(htmlPropertyList);
 
-			
-			var inputItem = document.getElementById(inputName + i);
-			
-			inputItem.addEventListener('click', function () {
-				updateRadioFilterArray(this, arrayActivatedFilter)
-			}, false);
+				
+				var inputItem = document.getElementById(inputName + i);
+				
+				inputItem.addEventListener('click', function () {
+					updateRadioFilterArray(this, arrayActivatedFilter)
+				}, false);
 
-		}
-	
-	let buttonReset = document.createElement("button");
-	buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
-	buttonReset.innerHTML = "reset profile";
-	buttonReset.addEventListener('click', function () {
-		updateRadioFilterArray(false, arrayActivatedFilter)
-	}, false);
-	
-	htmlFilterContent.appendChild(buttonReset);
-	
+			}
+		
+		listPropertyItem = document.createElement("li");
+		let buttonReset = document.createElement("button");
+		buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
+		buttonReset.innerHTML = langVallydette.reset;
+		buttonReset.addEventListener('click', function () {
+			updateRadioFilterArray(false, arrayActivatedFilter)
+		}, false);
+		listPropertyItem.appendChild(buttonReset);
+		htmlPropertyList.appendChild(listPropertyItem);
+		htmlFilterContent.appendChild(htmlPropertyList);
+		
+	}
 }
 
 function wcagDisplayMode(wcagDisplayModeInput) {

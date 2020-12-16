@@ -66,6 +66,8 @@
                 top: 3.75rem;
             }
 
+			#filter {max-height: calc(100vh - 9.6rem);}
+			
             [aria-expanded="true"] .icon-arrow-down {
                 transform: rotate(180deg);
             }
@@ -223,7 +225,7 @@
                         <span id="count" class="alert-danger"></span>
                         <section id="mainContent"></section>
                     </div>
-                    <aside id="filter" class="col-md-2 sticky-top pt-4 col-print-12">
+                    <aside id="filter" class="col-md-2 sticky-top pt-4 col-print-12 overflow-auto">
                         
                     </aside>
                 </div>

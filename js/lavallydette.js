@@ -213,6 +213,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	
 	dataVallydette.checklist.lang = globalLang;
 	dataVallydette.checklist.version = globalVersion;
+	dataVallydette.checklist.template = globalTemplate;
 	
 	utils.setPageTitle();
 	

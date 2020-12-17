@@ -93,6 +93,7 @@
 		"btnPageName": "Modifier le nom de la page",
 		"btnDelPage": "Supprimer la page",
 		"btnLocalStorage": "Restaurer le dernier audit",
+		"btnExportExcel": "exporter les anomalies (excel)",
 		"link-about": "À propos (nouvelle fenêtre)"
 	},
 	"ariaLabelOnly": {

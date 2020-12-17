@@ -163,11 +163,12 @@
                 <div class="container py-3">
                     <div class="input-group">
                         <div class="custom-file">
-                            <input class="custom-file-input" id="selectFiles" value="Import" type="file" lang="fr">
-                            <label class="custom-file-label" id="selectFilesLabel" for="selectFiles" data-browse="Parcourir">Sélectionner un audit</label>
+                            <input class="custom-file-input" id="selectFiles" type="file">
+                            <label class="custom-file-label" id="selectFilesLabel" for="selectFiles" aria-describedby="import">Sélectionner un audit</label>
                         </div>
                         <div class="input-group-append">
-                            <button class="btn btn-secondary btn-inverse" type="button" id="import">Importer</button>
+                            <button class="btn btn-secondary btn-inverse" type="button" id="import" data-toggle="collapse" data-target="#import-form"
+                            aria-expanded="false" aria-controls="import-form">Importer</button>
                         </div>
                     </div>
                 </div>
@@ -194,7 +195,7 @@
                         data-toggle="modal" data-target="#modalResult"
                         id="btnShowResult">Afficher le résultat de l’audit
                 </button>
-               <button id="button-a">excel</button>
+              
             </div>
 
             <div class="o-nav-local bg-white navbar-light my-3 d-print-none" id="pageManager"></div>

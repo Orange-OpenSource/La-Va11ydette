@@ -91,6 +91,7 @@
 		"btnPageName": "Edit the page name",
 		"btnDelPage": "Delete the page",
 		"btnLocalStorage": "Recover the last audit",
+		"btnExportExcel": "export issues (excel)",
 		"link-about": "About (new window)"
 	},
 	"ariaLabelOnly": {

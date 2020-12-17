@@ -1,6 +1,5 @@
 {
-	"version":1.4,
-	"lang":"fr",
+	"name": "Audit conformité WCAG / WEB",
 	"template":"wcag",
 	"items":[{
 		"themes": "Formulaire",

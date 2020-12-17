@@ -103,18 +103,22 @@ function initGlobalCriteriaListName(criteriaListName) {
 	} else if (criteriaListName) {
 		currentCriteriaListName = criteriaListName;
 	} else {
-		currentCriteriaListName = 'wcagEase';
+		currentCriteriaListName = 'wcag-web';
 	}
 	
 	var checklistRequest = new XMLHttpRequest();
 		checklistRequest.open("GET", "json/config-checklist.json", true);
 		checklistRequest.onreadystatechange = function () {
+			
 		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
 			checklistVallydette = JSON.parse(checklistRequest.responseText);
 			createObjectAndRunVallydette();
 		  } 
 		};
+		
 		checklistRequest.send();
+		
+	initLangMenu();
 	
 }										 
 
@@ -123,8 +127,13 @@ function initGlobalCriteriaListName(criteriaListName) {
  */
 function createObjectAndRunVallydette() {
 		
-		initGlobalTemplate(checklistVallydette[currentCriteriaListName].template);
-		globalVersion = checklistVallydette[currentCriteriaListName].version;
+		
+		if (checklistVallydette[currentCriteriaListName]) {
+			initGlobalTemplate(checklistVallydette[currentCriteriaListName].template);
+			globalVersion = checklistVallydette[currentCriteriaListName].version;
+		} else {
+			utils.reqError();
+		}
 		
 		dataVallydette = {
 		"checklist": {
@@ -143,8 +152,6 @@ function createObjectAndRunVallydette() {
 		var jsonCriteria;
 		jsonCriteria = 'json/' + checklistVallydette[currentCriteriaListName].filename + '-' + globalLang + '.json';
 
-		
-		
 		var criteriaRequest = new XMLHttpRequest();
 		
 		criteriaRequest.open("GET", jsonCriteria, true);
@@ -157,7 +164,10 @@ function createObjectAndRunVallydette() {
 			} else {
 				return importCriteriaToVallydetteObj(criteriaVallydette);
 			}
-		  } 
+		  } else if (criteriaRequest.status === 404) {
+				utils.reqError();
+			
+			}
 		};
 		
 		criteriaRequest.send();
@@ -179,7 +189,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 		 })
 	}
 
-	dataVallydette.checklist.name = langVallydette.auditNameWcag;
+	dataVallydette.checklist.name = criteriaVallydette.name;
 	
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
 
@@ -200,10 +210,11 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 		
 	}); 
 	
-	//dataVallydette.checklist.version = criteriaVallydette.version;
-	//checklistVersion = criteriaVallydette.version;
 	
-	dataVallydette.checklist.lang = globalLang;	
+	dataVallydette.checklist.lang = globalLang;
+	dataVallydette.checklist.version = globalVersion;
+	
+	utils.setPageTitle();
 	
 	eventHandler();
 	
@@ -304,7 +315,7 @@ function runVallydetteApp() {
 		arrayProfileNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items,"profils");
 		arrayTypeNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items, "type");
 	}
-	
+
 	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
@@ -325,8 +336,6 @@ function runVallydetteApp() {
 function eventHandler() {
 
 	var btnImport = document.getElementById('import');
-	
-	
 	
 	btnImport.onclick = function () {
 		var files = document.getElementById('selectFiles').files;
@@ -351,11 +360,18 @@ function eventHandler() {
 				globalVersion = checklistVallydette["wcag-web"].version;
 			}
 			
+			utils.putTheFocus(document.getElementById("checklistName"));
 			runLangRequest();
 		}
 
 		fr.readAsText(files.item(0));
 	};
+	
+	var inputSelectFile = document.getElementById("selectFiles");
+	inputSelectFile.addEventListener('change', function () {
+		document.getElementById("selectFilesLabel").innerText = inputSelectFile.files[0].name;
+	}, false);
+	
 	
 	var btnChecklist = document.getElementById("btnChecklistName");
 	btnChecklist.addEventListener('click', function () {
@@ -371,14 +387,9 @@ function eventHandler() {
 		btnLocalStorage.disabled=true;
 		btnLocalStorage.classList.add("disabled");
 	}
-
-	var exportExcelBtn = document.getElementById('button-a');
-	exportExcelBtn.addEventListener('click', function () {
-		excelExport();
-	});
+	
 	
 	btnActionPageEventHandler();
-	
 	
 }
 
@@ -489,6 +500,8 @@ runTestListMarkup = function (currentRefTests) {
 	if (globalTemplate === 'wcag') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
+		utils.removeElement(document.getElementById('btnExcelExport'));
+		console.log(document.getElementById('btnExcelExport'));
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -546,6 +559,23 @@ runTestListMarkup = function (currentRefTests) {
 	} else if (globalTemplate === 'audit') {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
+		
+		if (!document.getElementById('btnExportExcel')) {
+			
+			var btnExportExcel = document.createElement("button");
+			btnExportExcel.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
+			btnExportExcel.setAttribute('id', "btnExcelExport");
+			btnExportExcel.setAttribute('title', langVallydette.title.btnExportExcel);
+			btnExportExcel.setAttribute('aria-label', langVallydette.title.btnExportExcel);
+			btnExportExcel.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+
+			document.getElementById("auditInfoManager").appendChild(btnExportExcel);
+			btnExportExcel.addEventListener('click', function () {
+				excelExport();
+			});
+			
+		}
+
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -846,25 +876,33 @@ function initGlobalLang(lang, fromImport) {
 	var selectFilesLang = document.getElementById("selectFiles");
 	selectFilesLang.setAttribute('lang', globalLang);
 	
+	initLangMenu()
+
+}
+
+function initLangMenu() {
 	if (globalLang === "fr") {
 		var linkFr = document.getElementById("link-fr");
 		linkFr.setAttribute('aria-current', true);
+		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkFr.classList.add("active");
 		
 		var linkEn = document.getElementById("link-en");
 		linkEn.removeAttribute('aria-current');
+		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 		linkEn.classList.remove("active");
 		
 	} else {
 		var linkEn = document.getElementById("link-en");
 		linkEn.setAttribute('aria-current', true);
+		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 		linkEn.classList.add("active");
 		
 		var linkFr = document.getElementById("link-fr");
 		linkFr.removeAttribute('aria-current');
+		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkFr.classList.remove("active");
 	}
-	
 }
 
 /**
@@ -902,8 +940,10 @@ function localizeHTML() {
 	
 	Object.keys(langVallydette.title).forEach(function (key) {
 		eleToLocalize = document.getElementById(key);
-		eleToLocalize.setAttribute('title', langVallydette.title[key]);
-		eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+		if(eleToLocalize){
+			eleToLocalize.setAttribute('title', langVallydette.title[key]);
+			eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+		}
 	});
 	
 	Object.keys(langVallydette.ariaLabelOnly).forEach(function (key) {
@@ -915,7 +955,7 @@ function localizeHTML() {
 		eleToLocalize = document.getElementById(key);
 		eleToLocalize.setAttribute('href', langVallydette.url[key]);
 	});							   
-	utils.setPageTitle(langVallydette.auditNameWcag);
+	
 	
 }
 
@@ -1109,7 +1149,7 @@ function initComputation() {
 	var matriceRequest = new XMLHttpRequest();
 	var matriceWcag;
     method = "GET",
-	matriceVallydette = 'json/matrice-wcag-ease-' + globalLang+ '.json';
+	matriceVallydette = 'json/wcag-' + globalLang+ '.json';
 
 	matriceRequest.open(method, matriceVallydette, true);
 	matriceRequest.onreadystatechange = function () {
@@ -2244,8 +2284,6 @@ addIssue = function (targetId, issueTitle, issueDetail, issueSolution, issueTech
 		}
 	}
 
-	//excelExport();
-	
 	jsonUpdate();
 }
 
@@ -2407,6 +2445,7 @@ displayIssue = function (targetId, title) {
 	htmlModal += '<div id="issueList" class="accordion">';
 	
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
 			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
 				
@@ -2444,9 +2483,10 @@ displayIssue = function (targetId, title) {
 	htmlModal += '<button type="button" class="btn btn-primary" data-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '</div></div></div></div>';
 
-	$('.modal').on('shown.bs.modal', function (event) {
-		issueNameValueInput.focus()
-	});
+	/**  html modal container */
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+	
 }
 
 
@@ -2489,10 +2529,12 @@ initFilters = function () {
 			}, false);
 
 		}
-		 
-		PropertyFilterMarkup("arrayProfileActivated", "arrayProfileNameAndValue", "profile");
-		PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type");
 		
+		if (globalTemplate==="audit") {
+			PropertyFilterMarkup("arrayProfileActivated", "arrayProfileNameAndValue", "profile");
+			PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type");
+		}
+
 		
 		let htmlWcagDisplay = '<hr class="border-light">';
 		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">' + langVallydette.wcagView + '</span></label>';
@@ -2864,7 +2906,7 @@ for (let i in dataVallydette.checklist.page) {
 const utils = {
   reqError: function (err) {
 	let elrefTests = document.getElementById('mainContent');
-    elrefTests.innerHTML = '<div class="alert alert-warning">' + langVallydette.errorJson + '</div>';
+    elrefTests.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only">Warning</span></span>' + langVallydette.errorJson + '</div>';
   },
   formatHeading: function (str) {
     return str.toLowerCase()
@@ -2895,7 +2937,7 @@ const utils = {
 	e.setAttribute("aria-current", "true");
   },
   setPageTitle: function (e) {
-	document.title = e + " — " + langVallydette.auditNameWcag + " — " + langVallydette.va11ydette;
+	document.title = e + " — " + dataVallydette.checklist.name + " — " + langVallydette.va11ydette;
   },
   listOrParagraph: function (e) {
 	let htmlMarker;
@@ -2910,8 +2952,11 @@ const utils = {
 	}
 	return htmlMarker;
   },
-  removeElement: function (e) {  
-        e.parentNode.removeChild(e);
+  removeElement: function (e) { 
+	if(e){
+		e.parentNode.removeChild(e); 
+	}
+       
   }
 	
 }  

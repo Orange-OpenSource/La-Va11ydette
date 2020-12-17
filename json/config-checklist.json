@@ -9,9 +9,9 @@
 		"template": "wcag",
 		"version": "1.0"
 	},
-	"web-audit": {
+	"audit-web": {
 		"filename": "tests-web",
 		"template": "audit",
-		"version": "1.0"
+		"version": "1.1"
 	}
 }

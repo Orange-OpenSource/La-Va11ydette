@@ -1,6 +1,5 @@
 {
 	"name": "Audit de tests WEB",
-	"template": "audit",
 	"items":[{
 		"themes": "Contenu textuel",
 		"title": "Donner un titre aux pages",

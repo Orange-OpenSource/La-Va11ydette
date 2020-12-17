@@ -1,6 +1,5 @@
 {
 	"name": "Conformity audit WCAG / WEB",
-	"template":"wcag",
 	"items":[{
 		"themes": "Form",
 		"title": "Does every input field in the form have a label?",

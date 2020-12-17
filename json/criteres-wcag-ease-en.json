@@ -1,6 +1,5 @@
 {
-	"version":1.4,
-	"lang":"en",
+	"name": "Conformity audit WCAG / WEB",
 	"items":[{
 		"themes": "Form",
 		"title": "Does every input field in the form have a label?",
@@ -368,7 +367,7 @@
 			"3.2.1 A",
 			"3.2.2 A"
 		],
-		"verifier": "<p>When using forms or any interactive component, check that there is no change of context:</p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul>",
+		"verifier": "<p>When using forms or any interactive component, check that there is no change of context witho$ut warning the user:</p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul>",
 		"complement": "<h4>Context changes</h4><p>Major change in the content of the Web page which, when made without the user being aware of it, may confuse users who are unable to view the complete page.</p><p> Changes in context include changes of:</p><ul><li>user agent</li><li>viewport</li><li>focus</li><li>content that changes the meaning of the Web page</li></ul>",
 		"resultatTest": "nt"
 	},{

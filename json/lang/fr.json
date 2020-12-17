@@ -1,6 +1,7 @@
 {
 	"va11ydette": "La va11ydette",
 	"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
+	"auditNameAuditor": "Grille Auditeur d’Orange",
 	"pageName": "Nom de la page",
 	"processHeading": "Procédures",
 	"toCheckHeading": "À vérifier",
@@ -15,7 +16,7 @@
 	"successFeedback": "Les données ont été enregistrée avec succès.",
 	"warningNoResult": "Aucun résultat ne correspond à votre sélection",
 	"versionAlert1": "Cet audit n'est pas basé sur la dernière version du référentiel",
-	"versionAlert2": "Votre taux de conformité sera calculé sur la version 1.3",
+	"versionAlert2": "Votre taux de conformité sera calculé sur la version ",
 	"closeAlert": "Fermer le message d'information",
 	"auditResult": "Résultat de l'audit",
 	"auditTxt1": "Conformité globale",
@@ -37,12 +38,13 @@
 	"deletePageName": "Supprimer la page",
 	"delete": "Supprimer",
 	"close": "Fermer",
-	"reset": "Annuler",
+	"cancel": "Annuler",
 	"validate": "Valider",
 	"edit": "Editer",
 	"save": "Enregistrer",
 	"import": "Importer",
 	"download": "Télécharger",
+	"reset": "Réinitialiser",
 	"selectAudit": "Sélectionner un audit",
 	"name": "Nom",
 	"required": "requis",
@@ -50,6 +52,8 @@
 	"commentTxt1": "Commentaire pour",
 	"addComment": "Ajouter un commentaire : ",
 	"editComment": "Modifer le commentaire",
+	"issueTxt1": "Saisir une anomalie pour : ",
+	"issueTxt2": "Anomalie(s) pour : ",
 	"filterFeedback1": "tests en cours",
 	"filterFeedback2": "tests dans filtres en cours",
 	"errorJson": "Erreur chargement ressource JSON",
@@ -63,6 +67,7 @@
 	"recoverMessage": "Souhaitez-vous restaurer le dernier audit sauvegardé ?",
 	"wcagView": "affichage WCAG",
 	"result": "résultat",
+	"goodPractice": "bonne pratique",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
@@ -78,8 +83,8 @@
 		"status4": "non-testé",
 		"filters": "Filtres",
 		"footerTxt1": "Documentation sous <a href=\"https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE\">licence CC BY SA 3.0</a>.", 
-		"footerTxt2": "Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange&nbsp;: Copyright © 2016 Orange SA <em lang=\"en\">All rights reserved</em>.",
-		"link-about-txt": "À propos"
+		"footerTxt2": "Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange&nbsp;: Copyright © 2016 Orange SA <em lang=\"en\">All rights reserved</em>.", 
+		"link-about-txt": "À propos"					   
 	},
 	"title": {
 		"btnImport": "importer un audit (json)",
@@ -88,6 +93,7 @@
 		"btnPageName": "Modifier le nom de la page",
 		"btnDelPage": "Supprimer la page",
 		"btnLocalStorage": "Restaurer le dernier audit",
+		"btnExportExcel": "exporter les anomalies (excel)",
 		"link-about": "À propos (nouvelle fenêtre)"
 	},
 	"ariaLabelOnly": {

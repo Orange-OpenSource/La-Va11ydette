@@ -5,8 +5,9 @@ $('.o-nav-local').prioritynav('Autres pages');
  * Global vars
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
  * @param {object} langVallydette - language object.
- * @param {object} checklistVallydette - checklists parameters (ex : url list param).
- * @param {string} globalLang - language selected.
+ * @param {object} checklistVallydette - checklists parameters (ex : url list param).																					 
+ * @param {string} globalLang - current selected language.
+ * @param {string} globalTemplate - actually 2 template are available, wcag for conformity audit et audit for test audit.
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
  * @param {number} checklistVersion - Contains the last checklist version
  * @param {number} currentPage - Current page index, updated each time user move to another page.
@@ -21,13 +22,31 @@ $('.o-nav-local').prioritynav('Autres pages');
 var dataVallydette;
 var langVallydette;
 var checklistVallydette;
+   
+/**
+ * @todo add comment
+ */
+var issuesVallydette;
+
 var globalLang;
+var globalTemplate;
+var globalVersion;
+
 var dataWCAG;
 var checklistVersion;
 var	currentPage = 0;
 var statutClass = "badge-light";
-var arrayFilterNameAndValue = [];	
+var arrayFilterNameAndValue = [];
+
+	
 var arrayFilterActivated = [];
+
+/**
+ * @todo add comment
+ */
+var arrayProfileActivated = [];
+var arrayTypeActivated = [];
+
 var currentCriteriaListName;
 
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
@@ -57,7 +76,6 @@ function initVallydetteApp (criteriaListName, lang) {
 		langVallydette = JSON.parse(langRequest.responseText);
 		localizeHTML();
 		initGlobalCriteriaListName(criteriaListName);
-		
 	
 	  } 
 	};
@@ -91,7 +109,45 @@ function initGlobalCriteriaListName(criteriaListName) {
 		};
 		checklistRequest.send();
 	
+	var issuesRequest = new XMLHttpRequest();
+	issuesRequest.open("GET", "json/issues-"+globalLang+".json", true);
+	issuesRequest.onreadystatechange = function () {
+	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+		issuesVallydette = JSON.parse(issuesRequest.responseText);
+	  } 
+	};
+	issuesRequest.send();	
+
+	
 }
+function initGlobalCriteriaListName(criteriaListName) {
+	
+	const paramString = window.location.search;
+	const urlParams = new URLSearchParams(paramString);
+
+	if (urlParams.has('list')) {
+		currentCriteriaListName = urlParams.get('list');
+	} else if (criteriaListName) {
+		currentCriteriaListName = criteriaListName;
+	} else {
+		currentCriteriaListName = 'wcag-web';
+	}
+	
+	var checklistRequest = new XMLHttpRequest();
+		checklistRequest.open("GET", "json/config-checklist.json", true);
+		checklistRequest.onreadystatechange = function () {
+			
+		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
+			checklistVallydette = JSON.parse(checklistRequest.responseText);
+			createObjectAndRunVallydette();
+		  } 
+		};
+		
+		checklistRequest.send();
+		
+	initLangMenu();
+	
+}										 
 
 
 /**
@@ -99,45 +155,32 @@ function initGlobalCriteriaListName(criteriaListName) {
  */
 function createObjectAndRunVallydette() {
 		
+		
+		if (checklistVallydette[currentCriteriaListName]) {
+			initGlobalTemplate(checklistVallydette[currentCriteriaListName].template);
+			globalVersion = checklistVallydette[currentCriteriaListName].version;
+		} else {
+			utils.reqError();
+		}
+		
 		dataVallydette = {
 		"checklist": {
 			"name": "",
+			"referentiel": currentCriteriaListName,
+			"version": globalVersion,
+			"template": globalTemplate,
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
 					"items": []
-				}
-			]
-
+					}]
+			}
 		}
-	}
-	
-		
+
 
 		var jsonCriteria;
-		
-		jsonCriteria = 'json/'+checklistVallydette[currentCriteriaListName].filename+'-'+globalLang+'.json';
-		
-		/* switch(currentCriteriaListName) {
-		  case 'RGAA':
-			jsonCriteria = 'json/criteres-rgaa4.json';
-			break;
-		  case 'expert':
-			jsonCriteria = 'json/criteres-checklist-expert.json';
-			break;
-		  case 'incontournables':
-			jsonCriteria = 'json/criteres-incontournables.json';
-			break;
-		  case 'concepteur':
-			jsonCriteria = 'json/criteres-checklist-concepteur.json';
-			break;
-		  case 'wcagEase':
-			jsonCriteria = 'json/criteres-wcag-ease-'+globalLang+'.json';
-			break;
-		 case 'wcag-android':
-			jsonCriteria = 'json/criteres-wcag-android-'+globalLang+'.json';
-			break;
-		}  */
+		jsonCriteria = 'json/' + checklistVallydette[currentCriteriaListName].filename + '-' + globalLang + '.json';
+
 
 		var criteriaRequest = new XMLHttpRequest();
 		
@@ -151,8 +194,12 @@ function createObjectAndRunVallydette() {
 			} else {
 				return importCriteriaToVallydetteObj(criteriaVallydette);
 			}
-		  } 
+		  } else if (criteriaRequest.status === 404) {
+				utils.reqError();
+			
+			}
 		};
+		
 		criteriaRequest.send();
 
 }
@@ -161,33 +208,23 @@ function createObjectAndRunVallydette() {
  *  update the dataVallydette object with the selected checklist object (ie the wcag ease object)
  */
 function importCriteriaToVallydetteObj (criteriaVallydette) {
-    dataVallydette.checklist.name = langVallydette.auditNameWcag;
-    dataVallydette.checklist.referentiel = currentCriteriaListName;
+ 
+	if (checklistVallydette[currentCriteriaListName].template === 'audit'){
+		criteriaVallydette.items.forEach(function (criteria, key) {
+			 criteria.ID = "testWebID-"+key;
+			 criteria.IDorigin = "testWebID-"+key;
+			 criteria.resultatTest = "nt";
+			 criteria.issues = [];
+			 
+		 })
+	}
+
+	dataVallydette.checklist.name = criteriaVallydette.name;
 	dataVallydette.checklist.page[0].groups = {};
-	
-	/* dataVallydette.checklist.page[0].groups = {
-						[langVallydette.groupsTxt1] : {
-							"idTests": ['testID-014', 'testID-015'],
-							"checked": true
-						},
-						
-						[langVallydette.groupsTxt2] : {
-							"idTests": ['testID-001', 'testID-002', 'testID-003', 'testID-004', 'testID-005', 'testID-012', 'testID-006', 'testID-007', 'testID-008', 'testID-009'],
-							"checked": true,
-						},
-						
-						[langVallydette.groupsTxt3] : {
-							"idTests": ['testID-052', 'testID-053', 'testID-055', 'testID-057', 'testID-054', 'testID-056', 'testID-063'],
-							"checked": true
-						},
-						
-						[langVallydette.groupsTxt4] : {
-							"idTests": ['testID-047', 'testID-049', 'testID-050'],
-							"checked": true
-					}};  */
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
+
 	dataVallydette.checklist.page[0].items.forEach(function (test) {
-		console.log("group"+test.group);
+
 		if(test.group) {
 			if(dataVallydette.checklist.page[0].groups[test.group]){
 				dataVallydette.checklist.page[0].groups[test.group].idTests.push(test.IDorigin);
@@ -202,11 +239,15 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 		
 		
 	}); 
-	
-	dataVallydette.checklist.version = criteriaVallydette.version;
-	checklistVersion = criteriaVallydette.version;
+
 	
 	dataVallydette.checklist.lang = globalLang;
+	dataVallydette.checklist.version = globalVersion;
+	dataVallydette.checklist.template = globalTemplate;
+	
+	utils.setPageTitle();
+	
+	eventHandler();
 	
 	runVallydetteApp();
 }
@@ -215,7 +256,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
  *  update the dataVallydette object with the selected checklist object.
 	Run some specific processing to fit the rgaa object to the vallydette object.
  */
-function importRGAA(dataVallydette, dataRGAA) {
+function importRGAA(dataRGAA) {
     dataVallydette.checklist.name = "Audit RGAA 4";
     dataVallydette.checklist.referentiel = "RGAA";
 
@@ -267,12 +308,23 @@ function importRGAA(dataVallydette, dataRGAA) {
     runVallydetteApp();
 }
 
+
+function initGlobalTemplate (templateValue) {
+	
+	if(templateValue) {
+		globalTemplate = templateValue;
+	} else {
+		globalTemplate = "wcag";
+	}
+	
+}
+
 /**
  *  Once the vallydette object is ready, the vallydette app can be run :
 	Initialization of some string var and run multiple init functions.
  */
 function runVallydetteApp() {
-   	
+  
 	currentPage = 0;
 	
 	/** @todo to be replaced by a localization object */
@@ -290,17 +342,24 @@ function runVallydetteApp() {
 	
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
+	if (globalTemplate==="audit") {
+		arrayProfileNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items,"profils");
+		arrayTypeNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items, "type");
+	}
+
+	
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
 	
 	initComputation();
     initPagination(dataVallydette.checklist);
 	initFilters();
-    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
-	eventHandler();
+  
+	
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
 	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
 }
+
 
 /**
  *  Initialization of events for import button, and checklist name edition button.
@@ -316,11 +375,34 @@ function eventHandler() {
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
 			initGlobalLang(dataVallydette.checklist.lang, true);
+			initGlobalTemplate(dataVallydette.checklist.template);
+			
+			if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
+				
+				if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
+					
+					globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
+					
+				} else {
+					globalVersion = checklistVallydette["wcag-web"].version;
+				}			
+				
+			} else {
+				globalVersion = checklistVallydette["wcag-web"].version;
+			}
+			
+			utils.putTheFocus(document.getElementById("checklistName"));
 			runLangRequest();
 		}
 
 		fr.readAsText(files.item(0));
 	};
+	
+	var inputSelectFile = document.getElementById("selectFiles");
+	inputSelectFile.addEventListener('change', function () {
+		document.getElementById("selectFilesLabel").innerText = inputSelectFile.files[0].name;
+	}, false);
+	
 	
 	var btnChecklist = document.getElementById("btnChecklistName");
 	btnChecklist.addEventListener('click', function () {
@@ -336,6 +418,7 @@ function eventHandler() {
 		btnLocalStorage.disabled=true;
 		btnLocalStorage.classList.add("disabled");
 	}
+	
 	
 	btnActionPageEventHandler();
 	
@@ -363,7 +446,7 @@ function runLocalStorage() {
 	htmlModal += langVallydette.recoverMessage;
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '</div></div></div></div>';
 
@@ -389,8 +472,25 @@ function getLocalStorage() {
 	btnLocalStorage.classList.add("disabled");
 	
 	initGlobalLang(dataVallydette.checklist.lang, true);
-	runLangRequest();	
-				
+	initGlobalTemplate(dataVallydette.checklist.template);
+	
+	
+	if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
+		
+		if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
+			
+			globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
+			
+		} else {
+			globalVersion = checklistVallydette["wcag-web"].version;
+		}			
+		
+	} else {
+		globalVersion = checklistVallydette["wcag-web"].version;
+	}
+		
+
+	runLangRequest();						
 }
 
 
@@ -411,7 +511,7 @@ function btnActionPageEventHandler () {
 	currentBtnDelPage.addEventListener('click', function () {
 		setDeletePage(currentBtnPageName.dataset.element)
 	}, false);
-	
+			
 }
 
 
@@ -427,10 +527,14 @@ runTestListMarkup = function (currentRefTests) {
 	let headingCriterium = '';
 	let nextIndex = 1;
 
-	/** 'wcagEase' value correspond to the conformity checklist */
-	if (checklistVallydette[currentCriteriaListName].template === 'wcag') {
+
+	/** 'wcag' value correspond to the conformity checklist */
+	if (globalTemplate === 'wcag') {
+
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
+		utils.removeElement(document.getElementById('btnExcelExport'));
+		console.log(document.getElementById('btnExcelExport'));
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -474,7 +578,6 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
 			}
 			
-
 			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
 			for (let j in currentRefTests[i].wcag) {
 				htmlrefTests += currentRefTests[i].wcag[j];
@@ -485,7 +588,120 @@ runTestListMarkup = function (currentRefTests) {
 
 			htmlrefTests += '</article>';
 		}
+	 /** 'audit' value correspond to the conformity checklist */
+	} else if (globalTemplate === 'audit') {
+		setPageName(dataVallydette.checklist.page[currentPage].name);
+		checkTheVersion(dataVallydette.checklist.version);
 		
+		if (!document.getElementById('btnExportExcel')) {
+			
+			var btnExportExcel = document.createElement("button");
+			btnExportExcel.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
+			btnExportExcel.setAttribute('id', "btnExcelExport");
+			btnExportExcel.setAttribute('title', langVallydette.title.btnExportExcel);
+			btnExportExcel.setAttribute('aria-label', langVallydette.title.btnExportExcel);
+			btnExportExcel.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+
+			document.getElementById("auditInfoManager").appendChild(btnExportExcel);
+			btnExportExcel.addEventListener('click', function () {
+				excelExport();
+			});
+			
+		}
+
+		
+		/** pass through the tests object to display each of them */
+		for (let i in currentRefTests) {
+			var currentTest = currentRefTests[i].ID;
+			if (headingTheme != currentRefTests[i].themes) {
+				if (headingTheme !== '') {
+					htmlrefTests += '</div>';
+				}
+
+				headingTheme = currentRefTests[i].themes;
+				let formattedHeadingTheme = utils.formatHeading(headingTheme);
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
+			}
+
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span>'
+			
+			hasGoodPractice = false;
+			if ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "")) {
+				hasGoodPractice = true;
+				htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>';
+			}
+			
+			if (currentRefTests[i].wcag) {
+				hasAAA = false;
+				currentRefTests[i].wcag.forEach(function (currentWcag) {
+					
+					if(getAAA(currentWcag)) {
+						hasAAA = true;
+						htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">AAA</span>';
+					}
+					
+				});
+			}
+			
+			htmlrefTests += '<span id="resultID-' + currentTest + '" class="' + ((!hasAAA && !hasGoodPractice) ? 'ml-auto ' : '') + 'badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			
+			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status2 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status5 + '</label></li>';
+			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
+			htmlrefTests += '</ul>';
+			
+			htmlrefTests += '<div class="btn-group" role="group" aria-label="Gestion des anomalies">';
+			htmlrefTests += '<ul class="list-inline m-0">';
+			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">Anomalie(s) : </li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="Editer les anomalies" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">Editer</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="Ajouter une anomalie" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">Ajouter</span></button></li>';
+			htmlrefTests += '</ul>';
+			htmlrefTests += '</div>';
+				
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
+
+			if (currentRefTests[i].tests) {
+				htmlrefTests += '<h4 class="h5">Procédure</h4>';
+				htmlrefTests += utils.listOrParagraph(currentRefTests[i].tests);
+			}
+			
+			if (currentRefTests[i].verifier) {
+				htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
+				htmlrefTests += utils.listOrParagraph(currentRefTests[i].verifier);
+			}
+			
+			if (currentRefTests[i].resultat) {
+				htmlrefTests += '<h4 class="h5">Résultat</h4>';
+				htmlrefTests += utils.listOrParagraph(currentRefTests[i].resultat);
+			}
+			
+			if (currentRefTests[i].exception) {
+				htmlrefTests += '<h4 class="h5">' + langVallydette.exceptionHeading + '</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
+			}
+			
+			if (currentRefTests[i].raccourcis) {
+				htmlrefTests += '<h4 class="h5">Raccourci</h4>';
+				htmlrefTests += '<p>' + currentRefTests[i].raccourcis+ '</p>';
+			}
+
+			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
+			for (let j in currentRefTests[i].wcag) {
+				htmlrefTests += currentRefTests[i].wcag[j];
+				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
+			}
+			htmlrefTests += ' / Identifiant : ' + currentTest;
+			htmlrefTests += '</p></div></div>';
+
+			htmlrefTests += '</article>';
+			
+
+		}
+	
 	/** 'rgaa' value correspond to the RGGA4 checklist */
 	} else if (currentCriteriaListName === 'RGAA') {
 		/** marked library is used to render md from RGAA json */
@@ -632,13 +848,29 @@ runTestListMarkup = function (currentRefTests) {
 			}, false);
 		}
 
-
 		var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
-		comment.addEventListener('click', function () {
-			setComment(currentRefTests[i].ID, currentRefTests[i].title)
-		}, false);
+		if (comment) {
+			comment.addEventListener('click', function () {
+				setComment(currentRefTests[i].ID, currentRefTests[i].title)
+			}, false);
+		}
+		
+		var issue = document.getElementById("issueBtn" + currentRefTests[i].ID);
+		if (issue) {
+			issue.addEventListener('click', function () {
+				setIssue(currentRefTests[i].ID, currentRefTests[i].title, currentRefTests[i].IDorigin)
+			}, false);
+		}
+		
+		var issueDisplayBtn = document.getElementById("issueDisplayBtn" + currentRefTests[i].ID);
+		if (issueDisplayBtn) {
+			issueDisplayBtn.addEventListener('click', function () {
+				displayIssue(currentRefTests[i].ID, currentRefTests[i].title)
+			}, false);
+		}
+		
 	}
-	
+
 	applyDisabledGroups();
 }
 
@@ -677,25 +909,33 @@ function initGlobalLang(lang, fromImport) {
 	var selectFilesLang = document.getElementById("selectFiles");
 	selectFilesLang.setAttribute('lang', globalLang);
 	
+	initLangMenu()
+
+}
+
+function initLangMenu() {
 	if (globalLang === "fr") {
 		var linkFr = document.getElementById("link-fr");
 		linkFr.setAttribute('aria-current', true);
+		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkFr.classList.add("active");
 		
 		var linkEn = document.getElementById("link-en");
 		linkEn.removeAttribute('aria-current');
+		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 		linkEn.classList.remove("active");
 		
 	} else {
 		var linkEn = document.getElementById("link-en");
 		linkEn.setAttribute('aria-current', true);
+		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 		linkEn.classList.add("active");
 		
 		var linkFr = document.getElementById("link-fr");
 		linkFr.removeAttribute('aria-current');
+		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkFr.classList.remove("active");
 	}
-	
 }
 
 /**
@@ -733,21 +973,22 @@ function localizeHTML() {
 	
 	Object.keys(langVallydette.title).forEach(function (key) {
 		eleToLocalize = document.getElementById(key);
-		eleToLocalize.setAttribute('title', langVallydette.title[key]);
-		eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+		if(eleToLocalize){
+			eleToLocalize.setAttribute('title', langVallydette.title[key]);
+			eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+		}
 	});
 	
 	Object.keys(langVallydette.ariaLabelOnly).forEach(function (key) {
 		eleToLocalize = document.getElementById(key);
 		eleToLocalize.setAttribute('aria-label', langVallydette.ariaLabelOnly[key]);
 	});
-	
+
 	Object.keys(langVallydette.url).forEach(function (key) {
 		eleToLocalize = document.getElementById(key);
 		eleToLocalize.setAttribute('href', langVallydette.url[key]);
-	});
+	});							   
 	
-	utils.setPageTitle(langVallydette.auditNameWcag);
 	
 }
 
@@ -910,12 +1151,12 @@ function applyDisabledGroups() {
 */
 function checkTheVersion(currentChecklistVersion) {
 	
-	if (currentChecklistVersion !== checklistVersion) {
+	if ((currentChecklistVersion !== globalVersion) || (!currentChecklistVersion)) {
 		var versionHTML = '';
 		
 		versionHTML += '<div class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
 		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
-		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' (1.4). ' + langVallydette.versionAlert2 + '</p>';
+		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' <strong>' + globalVersion + '</strong>. ' + langVallydette.versionAlert2 + ' <strong>' + currentChecklistVersion +'</strong></p>';
 		versionHTML += ' <button type="button" class="close" data-dismiss="alert">';
 		versionHTML +=	'  <span class="sr-only">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';
@@ -940,7 +1181,7 @@ function initComputation() {
 	var matriceRequest = new XMLHttpRequest();
 	var matriceWcag;
     method = "GET",
-	matriceVallydette = 'json/matrice-wcag-ease-' + globalLang+ '.json';
+	matriceVallydette = 'json/wcag-' + globalLang+ '.json';
 
 	matriceRequest.open(method, matriceVallydette, true);
 	matriceRequest.onreadystatechange = function () {
@@ -948,7 +1189,7 @@ function initComputation() {
 			dataWCAG = JSON.parse(matriceRequest.responseText);
 
 			dataWCAG.items.forEach(initRulesAndTests);
-			console.log(dataWCAG);
+
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
                 runComputation();
@@ -956,6 +1197,9 @@ function initComputation() {
 				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
             }, false);
+		
+	    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
+
 	  }
 	};
 	matriceRequest.send();
@@ -970,15 +1214,18 @@ function initRulesAndTests (rules) {
 	
 	 for (let i in dataVallydette.checklist.page[0].items) {
 		 for (let j in dataVallydette.checklist.page[0].items[i].wcag) {
+			
 			var testWCAG = dataVallydette.checklist.page[0].items[i].wcag[j].split(" ");
 			if (testWCAG[0] === rules.wcag) {
 				
 				rules.tests.push(dataVallydette.checklist.page[0].items[i].IDorigin);
 				rules.resultat = "nt";
 			}
+			
 		}
 	
 	}
+	
 }
 
 /**
@@ -1004,30 +1251,31 @@ function runComputation(obj) {
         pagesResults[i].name = dataVallydette.checklist.page[i].name;
 		pagesResults[i].url = dataVallydette.checklist.page[i].url;
 		
-
         for (let k in dataWCAG.items) {
-            pagesResults[i].items[k] = {};
-            pagesResults[i].items[k].wcag = dataWCAG.items[k].wcag;
-			pagesResults[i].items[k].level = dataWCAG.items[k].level;
-			
-			if (dataWCAG.items[k].tests.length > 0) {
-				pagesResults[i].items[k].resultat = "nt";
-			} else {
-				pagesResults[i].items[k].resultat = "na";
-			}
-            
-            pagesResults[i].items[k].complete = true;
-			pagesResults[i].items[k].test = [];
-			pagesResults[i].items[k].name = dataWCAG.items[k].name;
-			
-			/**
-			* Pass through each test of a wcag.
-			*/
-            for (let l in dataWCAG.items[k].tests) {
-				/**
-				* Gets each test value, and update the current wcag rules, basing on computation rules.
-				*/
+
+
+				pagesResults[i].items[k] = {};
+				pagesResults[i].items[k].wcag = dataWCAG.items[k].wcag;
+				pagesResults[i].items[k].level = dataWCAG.items[k].level;
+			   
+				if (dataWCAG.items[k].tests.length > 0) {
+					pagesResults[i].items[k].resultat = "nt";
+				} else {
+					pagesResults[i].items[k].resultat = "na";
+				}
 				
+				pagesResults[i].items[k].complete = true;
+				pagesResults[i].items[k].test = [];
+				pagesResults[i].items[k].name = dataWCAG.items[k].name;
+				
+				/**
+				* Pass through each test of a wcag.
+				*/
+				for (let l in dataWCAG.items[k].tests) {
+					/**
+					* Gets each test value, and updates the current wcag rules, basing on computation rules.
+					*/
+
 					for (let j in dataVallydette.checklist.page[i].items) {
 						
 						
@@ -1063,16 +1311,16 @@ function runComputation(obj) {
 									pagesResults[i].items[k].resultat = "na";
 									break;	
 								}
-							}
-							
-							
+
+							}	
 						}
 					}
-				
-                //if (pagesResults[i].items[k].complete === false) {
-                    // pagesResults[i].items[k].resultat = "nt";
-                //}
-            }
+
+					//if (pagesResults[i].items[k].complete === false) {
+						// pagesResults[i].items[k].resultat = "nt";
+					//}
+				}
+			
         }
     }
 
@@ -1083,6 +1331,27 @@ function runComputation(obj) {
 		return runFinalComputation(pagesResults);
 	}
 
+}
+
+function getAAA(currentWcag) {
+	
+	let level = false;
+	
+	if (currentWcag) {
+		dataWCAG.items.forEach(function(current){
+			
+			if (current.wcag === currentWcag) {
+				
+				if (current.level === 'AAA') {
+					level = true;
+				} 
+			} 
+		
+		});
+		
+	}
+	return level;
+	
 }
 
 /**
@@ -1120,11 +1389,25 @@ function runFinalComputation(pagesResultsArray) {
 		var nbTotalA = 0;
 		var nbTotalAA = 0;
 
+
+		/**
+		 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
+		*/
+		var indexItem = 0;
+		for (let j in pagesResultsArray[i].items) {
+			if (pagesResultsArray[i].items[indexItem].level === 'AAA') {
+				pagesResultsArray[i].items.splice(indexItem,1);
+			} else {
+				indexItem = indexItem+1;
+			}
+		}
+
 		/**
 		 * 	Gets the number of true, false, non-applicable and non-tested by wcag level.
 		 *  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
-		*/  
+		*/
 		for (let j in pagesResultsArray[i].items) {
+
 			if (pagesResultsArray[i].items[j].resultat === true) {
 				nbTrue++;
 				nbTotal++;
@@ -1223,7 +1506,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status1 + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status2 + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status3 + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.template.status4 + '</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.result + '</th>';
 		computationContent += '</tr><tr>';
 		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
@@ -1440,6 +1723,7 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
+	item.issues.splice(0, item.issues.length);
 }
 
 /**  Initialization of themes */
@@ -1541,7 +1825,7 @@ setDeletePage = function (targetElement) {
 	htmlModal += langVallydette.deletePageName + getPropertyValue(targetElement) + ' ?';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
 	htmlModal += '</div></div></div></div>';
 
@@ -1861,13 +2145,12 @@ setComment = function (targetId, title) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += '<textarea class="form-control" id="comment' + targetId + '" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
+	htmlModal += '<textarea class="form-control" id="comment' + targetId +'" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.reset + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></div></div></div>';
-
 
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
@@ -1879,7 +2162,7 @@ setComment = function (targetId, title) {
 	
 	var comment = document.getElementById('comment' + targetId);
 
-	elModal.addEventListener('shown.bs.modal', function(event){
+	$('.modal').on('shown.bs.modal', function (event) {
 		comment.focus()
 	});
 	
@@ -1932,6 +2215,315 @@ getCommentState = function (targetId) {
 	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;" + langVallydette.addComment + "" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;" + langVallydette.editComment + "");
 }
 
+/**
+ * Issue manager
+ */
+
+/**
+ * Issue popin initialization.
+ * @param {string} targetId - current test ID.
+ * @param {string} title - current test title.
+*/
+setIssue = function (targetId, title, targetIdOrigin) {
+	let titleModal = title;
+
+	let htmlModal = '';
+	htmlModal = '<div id="modalAddIssue" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
+	htmlModal += '<div class="modal-dialog " role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<form id="editForm">';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
+	htmlModal += '<div class="form-group">';
+	htmlModal += '<label class="is-required" for="issueNameValue">Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
+	htmlModal += '<label class="is-required mt-2" for="issueDetailValue">Détail <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueDetailValue" required></textarea>';
+	htmlModal += '<label for="issueSolutionValue" class="mt-2">Solution <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueSolutionValue"></textarea>';
+	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">Solution technique <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueTechnicalSolutionValue"></textarea>';
+	htmlModal += '</div>';
+	htmlModal += '</div>';
+
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '</div>';
+	htmlModal += '</form>';
+	htmlModal += '</div></div></div>';
+
+	
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+
+	var currentEditForm = document.getElementById('editForm');
+ 
+	currentEditForm.addEventListener('submit', function () {
+		event.preventDefault();
+		
+		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);
+		
+		$('#modalAddIssue').modal('hide');
+	});
+	
+	
+	if (document.getElementById('btnValidatePredefined')) {
+		
+			document.getElementById('btnValidatePredefined').addEventListener('click', function () {
+			event.preventDefault();
+			
+			issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
+			issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
+			issueSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].solution;
+			issueTechnicalSolutionValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].technicalSolution;
+			
+			issueNameValue.focus();
+		
+		});
+		
+	}
+	
+	var issueNameValueInput = document.getElementById('issueNameValue');
+	
+	$('.modal').on('shown.bs.modal', function (event) {
+		issueNameValueInput.focus()
+	});
+
+}
+
+/**
+ * Add the issue to the vallydette object.
+ * @param {string} targetId - current test ID.
+ * @param {string} issueTitle.
+ * @param {string} issueDetail.
+*/
+addIssue = function (targetId, issueTitle, issueDetail, issueSolution, issueTechnicalSolution) {
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			
+			newIssue = {};
+			newIssue['issueTitle'] = issueTitle;
+			newIssue['issueDetail'] = issueDetail;
+			newIssue['issueSolution'] = issueSolution;
+			newIssue['issueTechnicalSolution'] = issueTechnicalSolution;
+			
+			dataVallydette.checklist.page[currentPage].items[i].issues.push(newIssue);
+			
+			document.getElementById("issueDisplayBtn"+ targetId).removeAttribute("disabled");
+			
+		}
+	}
+
+	jsonUpdate();
+}
+
+getPredefinedIssues = function(targetId) {
+	
+	let htmlPredefinedIssues = '';
+	
+
+	htmlPredefinedIssues += '<div class="form-group row">';
+	htmlPredefinedIssues += '<div class="col-sm-10">';
+	
+	htmlPredefinedIssues += '<select class="custom-select" id="issuePredefined" aria-label="Selectionner une issue prédéfinie">';
+	htmlPredefinedIssues += '<option selected>Selectionner une issue prédéfinie</option>';
+	issuesVallydette[targetId].forEach(function (issue, index) {htmlPredefinedIssues +='<option value="' + index + '">' + issue.title + '</option>'});
+	htmlPredefinedIssues += '</select>';
+	htmlPredefinedIssues += '</div>';
+	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">Valider</button>';
+	htmlPredefinedIssues += '</div>';
+		
+	return htmlPredefinedIssues;
+	
+}
+
+getIssue = function (targetId, issueProperty, issueIndex) {
+	let currentIssue;
+
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+			currentIssue = dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex];
+		}
+	}
+
+	return currentIssue[issueProperty];
+}
+
+editIssue = function (targetId, issueIndex) {
+	
+	let htmlEditIssue = '';
+	
+	htmlEditIssue += '<form id="editIssueForm">';
+	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
+	htmlEditIssue += '<label class="is-required mt-2" for="issueDetailValue-' + issueIndex + '">Détail <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
+	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">Solution</label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
+	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">Solution Technique</label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
+	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">Sauvegarder</button>';
+	htmlEditIssue += '<hr class="border-light">';
+	htmlEditIssue += '</form>';
+	
+	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
+	elIssueCard.innerHTML = htmlEditIssue;
+	
+	
+	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
+	elTitle.focus();
+	let elDetail = document.getElementById('issueDetailValue-' + issueIndex);
+	let elSolution = document.getElementById('issueSolutionValue-' + issueIndex);
+	let elTechnicalSolution = document.getElementById('issueTechnicalSolutionValue-' + issueIndex);
+	
+	var saveIssueBtn = document.getElementById('saveIssueBtn-'+ targetId +'-'+ issueIndex);
+	saveIssueBtn.addEventListener('click', function () {
+		saveIssue(targetId, issueIndex, elTitle.value, elDetail.value, elSolution.value, elTechnicalSolution.value)
+	});
+	
+}
+
+saveIssue = function (targetId, issueIndex, issueTitle, issueDetail, issueSolution, issueTechnicalSolution) {
+	
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTitle'] = issueTitle;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueDetail'] = issueDetail;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueSolution'] = issueSolution;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTechnicalSolution'] = issueTechnicalSolution;
+			
+		}
+	}
+
+	let htmlEditIssue = '';
+	htmlEditIssue += issueDetail;
+	
+	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
+	elIssueCard.innerHTML = htmlEditIssue;
+	
+	let elIssueCardHeader = document.getElementById('btnIssue'+targetId+'-'+ issueIndex);
+	elIssueCardHeader.innerHTML = issueTitle;
+	
+	jsonUpdate();	
+	
+}
+
+deleteConfirmationIssue = function (targetId, issueIndex) {
+	
+	let htmlIssueFeedback = '<div id="deleteIssueBtn-'+ targetId +'-'+ issueIndex +'-feedback">';
+	htmlIssueFeedback += '<span id="deleteIssueMessage-'+ targetId +'-'+ issueIndex +'">Veuillez confirmer la suppression de l\'anomalie : </span>';
+	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">Non</button>';
+	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm"  aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'"  onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">Oui</button>';
+	htmlIssueFeedback += '</div>';
+	
+	let elButton = document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex);
+	elButton.insertAdjacentHTML("afterend", htmlIssueFeedback); 
+	
+	document.getElementById("btnDeleteIssueNo-"+ targetId +"-"+ issueIndex).focus();
+	
+}
+
+/**
+ * Delete an issue from the vallydette object.
+ * @param {string} targetId - current test ID.
+ * @return {string} issueIndex - index of the issue to remove
+*/
+deleteIssue = function (targetId, issueIndex, issueValidation) {
+
+	if (issueValidation) {
+		
+		for (let i in dataVallydette.checklist.page[currentPage].items) {
+			if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
+				dataVallydette.checklist.page[currentPage].items[i].issues.splice(issueIndex, 1);
+				if (dataVallydette.checklist.page[currentPage].items[i].issues.length === 0) {
+					document.getElementById("issueDisplayBtntestWebID-"+ i).setAttribute("disabled", true);
+				}
+			}
+		}
+	
+		utils.removeElement(document.getElementById("cardIssue"+targetId+"-"+ issueIndex));
+		utils.putTheFocus(document.getElementById("modal" + targetId + "Title"));
+		
+	} else {
+		
+		utils.removeElement(document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex +"-feedback"));
+		document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex).focus();
+
+	}
+
+}
+
+
+/**
+ * Issue popin initialization.
+ * @param {string} targetId - current test ID.
+ * @param {string} title - current test title.
+*/
+displayIssue = function (targetId, title) {
+	let titleModal = title;
+
+	let htmlModal = '';
+	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="">';
+	htmlModal += '<div id="issueList" class="accordion">';
+	
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
+			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
+				
+				htmlModal += '<div class="card" id="cardIssue'+targetId+'-'+ j +'">';
+				
+				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';
+				htmlModal += ' <h5 class="mb-0">';
+				htmlModal += '  <a id="btnIssue'+targetId+'-'+ j +'" data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
+				htmlModal += '#' + j + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
+				htmlModal += ' </a>';
+				htmlModal += '</h5>';
+				htmlModal += ' </div>';
+
+				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-parent="#issueList" class="collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
+
+				htmlModal += ' <div class="card-body">';
+				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
+				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail;
+			
+				htmlModal += '  </div>';
+				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">Editer</button>';
+				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">Supprimer</button>';
+				
+				htmlModal += '  </div>';
+				htmlModal += ' </div>';
+				
+				htmlModal += ' </div>';
+			}
+		}
+	}
+	
+	htmlModal += '</div>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-primary" data-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '</div></div></div></div>';
+
+	/**  html modal container */
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+	
+}
+
 
 /**
  * Filter manager
@@ -1944,7 +2536,7 @@ initFilters = function () {
     
 		htmlFilterContent.innerHTML = '';
 	   
-	   let htmlFilterHeading = document.createElement('h2');
+		let htmlFilterHeading = document.createElement('h2');
 		htmlFilterHeading.textContent = langVallydette.template.filters;
 		htmlFilterContent.appendChild(htmlFilterHeading);
    
@@ -1958,7 +2550,7 @@ initFilters = function () {
 		for (let i in arrayFilterNameAndValue) {
 			var isChecked = "";
 			arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
-			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="type' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label" id="status' + i+1 + '">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="result' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label" id="status' + i+1 + '">' + arrayFilterNameAndValue[i][0] + '</span></label>';
 			
 			var listItem = document.createElement("li");
 			listItem.innerHTML = htmlTypes;
@@ -1966,12 +2558,18 @@ initFilters = function () {
 			htmlFilterContent.appendChild(htmlFilterList);
 
 			/** Filters event handler. */
-			var inputItem = document.getElementById("type" + i);
+			var inputItem = document.getElementById("result" + i);
 			inputItem.addEventListener('click', function () {
 				updateArrayFilter(this)
 			}, false);
 
 		}
+		
+		if (globalTemplate==="audit") {
+			PropertyFilterMarkup("arrayProfileActivated", "arrayProfileNameAndValue", "profile");
+			PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type");
+		}
+
 		
 		let htmlWcagDisplay = '<hr class="border-light">';
 		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">' + langVallydette.wcagView + '</span></label>';
@@ -1983,6 +2581,51 @@ initFilters = function () {
 		typeWcagDisplayInput.addEventListener('click', function () {
 				wcagDisplayMode(this)
 			}, false);
+}
+
+function PropertyFilterMarkup(arrayActivatedFilter, arrayNameAndValue, inputName) {
+	
+	if (window[arrayNameAndValue]) {
+		
+		let htmlPropertyList = document.createElement('ul');
+		htmlPropertyList.classList.add("list-unstyled");
+		
+		let separator = document.createElement("hr");
+		separator.classList.add("border-light");
+		htmlFilterContent.appendChild(separator);
+		
+			for (let i in window[arrayNameAndValue]) {
+				var isChecked = "";
+				
+				window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
+				htmlProperty = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
+				
+				var listPropertyItem = document.createElement("li");
+				listPropertyItem.innerHTML = htmlProperty;
+				htmlPropertyList.appendChild(listPropertyItem);
+				htmlFilterContent.appendChild(htmlPropertyList);
+
+				
+				var inputItem = document.getElementById(inputName + i);
+				
+				inputItem.addEventListener('click', function () {
+					updateRadioFilterArray(this, arrayActivatedFilter)
+				}, false);
+
+			}
+		
+		listPropertyItem = document.createElement("li");
+		let buttonReset = document.createElement("button");
+		buttonReset.classList.add("btn", "btn-secondary", "btn-sm");
+		buttonReset.innerHTML = langVallydette.reset;
+		buttonReset.addEventListener('click', function () {
+			updateRadioFilterArray(false, arrayActivatedFilter)
+		}, false);
+		listPropertyItem.appendChild(buttonReset);
+		htmlPropertyList.appendChild(listPropertyItem);
+		htmlFilterContent.appendChild(htmlPropertyList);
+		
+	}
 }
 
 function wcagDisplayMode(wcagDisplayModeInput) {
@@ -1997,26 +2640,27 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 			
 			for (let i in wcagDisplayObj[currentPage].items) {
 				
-				wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +'</h3>';
+				if ((globalTemplate==="wcag" && wcagDisplayObj[currentPage].items[i].level!="AAA") || globalTemplate!="wcag") {
+					wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
 
-				wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.wcagView + '</caption>';
-				wcagDisplayContent += '<thead><tr>';
-				wcagDisplayContent += '<th scope="col">Tests</th>';
-				wcagDisplayContent += '<th scope="col">' + langVallydette.resultHeading + '</th>';
-				wcagDisplayContent += '</tr></thead>';
-				wcagDisplayContent += '<tbody>';
-				for (let j in wcagDisplayObj[currentPage].items[i].test) {
-					wcagDisplayContent += '<tr>';
-					wcagDisplayContent += '<td class="w-100">'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
-					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
+					wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.wcagView + '</caption>';
+					wcagDisplayContent += '<thead><tr>';
+					wcagDisplayContent += '<th scope="col">Tests</th>';
+					wcagDisplayContent += '<th scope="col">' + langVallydette.resultHeading + '</th>';
+					wcagDisplayContent += '</tr></thead>';
+					wcagDisplayContent += '<tbody>';
+					for (let j in wcagDisplayObj[currentPage].items[i].test) {
+						wcagDisplayContent += '<tr>';
+						wcagDisplayContent += '<td class="w-100">'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
+						wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
+						wcagDisplayContent += '</tr>';
+					}
+					wcagDisplayContent += '<tr class="bg-light2">';
+					wcagDisplayContent += '<th class="font-weight-bold" scope="row">' + langVallydette.result + '</th>';
+					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
 					wcagDisplayContent += '</tr>';
+					wcagDisplayContent += '</tbody></table>';
 				}
-				wcagDisplayContent += '<tr class="bg-light2">';
-				wcagDisplayContent += '<th class="font-weight-bold" scope="row">' + langVallydette.result + '</th>';
-				wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
-				wcagDisplayContent += '</tr>';
-				wcagDisplayContent += '</tbody></table>';
-				
 				
 			}
 			
@@ -2047,7 +2691,7 @@ updateCounter = function (activeFilter, nbTests) {
 };
 
 /**
- * Run when a filter swith button is activated. Update the array of enabled filters. 
+ * Run when a filter switch button is activated. Update the array of enabled filters. 
  * @param {object} elInput - switch button. 
  */
 updateArrayFilter = function (elInput) {
@@ -2067,13 +2711,85 @@ updateArrayFilter = function (elInput) {
 	loadChecklistObject();
 	
 }
- 
 
 /**
- * Apply the filters to the vallydette object, and run display function r(unTestListMarkup) with the new filtered object
+ * Run when a filter radio button is activated. Update the array of enabled filters. 
+ * @param {object} elInput - radio button. 
+ */
+updateRadioFilterArray = function (elInput, arrayToUpdate) {
+	
+	window[arrayToUpdate].splice(0, window[arrayToUpdate].length);
+	
+	if (elInput && elInput.checked) {
+		
+		window[arrayToUpdate].push(elInput.value);
+		
+	} 
+
+	loadChecklistObject();
+	
+}
+
+/**
+ * Get the unique entry from an object property, in order to build a filter array
+ * @param {object} objectToParse
+ * @param {string} property - property from vallydette object. 
+ */
+function uniqueEntry(objectToParse, property) {
+	uniqueEntryArray = [];
+	objectToParse.forEach(function(item){
+			item[property].forEach(function(entry){
+				uniqueEntryArray.push(entry);
+			});
+		})
+		
+		return [...new Set(uniqueEntryArray)];
+}
+
+
+/**
+ * Apply the filters to the vallydette object, and run display function (runTestListMarkup) with the new filtered object
  */	
 runFilter = function() {
-	const filteredTest = dataVallydette.checklist.page[currentPage].items.filter(o => arrayFilterActivated.includes(o.resultatTest));
+	
+	function filtrerParID(prop, arrayFilters) {
+		
+		return function(obj) {
+			var isOK;	
+			obj[prop].forEach(function(current) {
+				
+				if(window[arrayFilters].includes(current)) {				
+					isOK = true;	
+				} 
+					
+			})
+		
+			return isOK;
+		
+		}
+	}
+	
+	filteredTest = dataVallydette.checklist.page[currentPage].items;
+	
+	if(arrayFilterActivated && arrayFilterActivated.length > 0){
+		
+		filteredTest = filteredTest.filter(o => arrayFilterActivated.includes(o.resultatTest));
+
+	} 
+	
+	if(arrayProfileActivated && arrayProfileActivated.length > 0){
+		
+		filteredTest = filteredTest.filter(filtrerParID("profils", "arrayProfileActivated"));
+		
+	} 
+	
+	if(arrayTypeActivated && arrayTypeActivated.length > 0){
+		
+		filteredTest = filteredTest.filter(filtrerParID("type", "arrayTypeActivated"));
+	
+	} 
+	
+	
 	runTestListMarkup(filteredTest);
 	updateCounter(true, filteredTest.length);
 }
@@ -2092,7 +2808,7 @@ removeFilterSection = function () {
 loadChecklistObject = function () {
 	initFilters();
 	//initComputation();
-	if(arrayFilterActivated && arrayFilterActivated.length > 0){
+	if((arrayFilterActivated && arrayFilterActivated.length > 0) || (arrayProfileActivated && arrayProfileActivated.length > 0) || (arrayTypeActivated && arrayTypeActivated.length > 0)){
 		runFilter();
 	} else {
 		runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
@@ -2104,8 +2820,8 @@ loadChecklistObject = function () {
  * Run each time an updated is made to the vallydette object, in order to update the export informations.
  */
 jsonUpdate = function () {
-	let DefaultName = document.getElementById("checklistName");
-	DefaultName = utils.slugify(DefaultName.innerText);
+	let defaultName = document.getElementById("checklistName");
+	defaultName = utils.slugify(defaultName.innerText);
 
 	let dataStr = JSON.stringify(dataVallydette);
 
@@ -2117,14 +2833,14 @@ jsonUpdate = function () {
 	var todayHour = new Date();
 	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
 
-	let exportFileDefaultName = DefaultName + '-' + date + '-' + time + '.json';
+	let exportFiledefaultName = defaultName + '-' + date + '-' + time + '.json';
 
 	linkElement = document.getElementById("export");
 	linkElement.classList.remove("disabled");
 	linkElement.removeAttribute('disabled');
 	linkElement.setAttribute('aria-disabled', false);
 	linkElement.setAttribute('href', dataUri);
-	linkElement.setAttribute('download', exportFileDefaultName);
+	linkElement.setAttribute('download', exportFiledefaultName);
 	
 	
 	window.localStorage.setItem('lavallydette', dataStr);
@@ -2133,13 +2849,99 @@ jsonUpdate = function () {
 	btnLocalStorage.classList.add("disabled");
 }
 
+/**
+ * Run the excel export
+ */
+excelExport = function () {
+
+var excel = $JExcel.new();   
+var formatHeader = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#FFCC00"});
+var formatHeaderProject = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#C5D9F1"});
+var formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000"}); 
+var pageHeaders = ['Nom', 'URL'];
+var dataHeaders = ['ID', 'Test', 'Titre', 'Détail', 'Solution', 'Solution Technique', 'Suivi Validation', 'Etat / remarque équipe projet'];
+
+excel.set( {sheet:0,value:"Informations"} );
+excel.set(0,0,0,"Audit",formatHeader);
+excel.set(0,0,1,dataVallydette.checklist.name);
+excel.set(0,0,2,"");
+
+
+for (var j=0;j<pageHeaders.length;j++){    
+		
+			excel.set(0,j,3,pageHeaders[j], formatHeader);    
+			            
+}	
+
+let rowPages = 4;
+
+for (let i in dataVallydette.checklist.page) {
+
+	excel.set(0,0,rowPages, dataVallydette.checklist.page[i].name);
+	if (dataVallydette.checklist.page[i].url) {
+		excel.set(0,1,rowPages, dataVallydette.checklist.page[i].url);
+	}
+
+	rowPages++;
+}
+
+let setIndex = 1;
+
+for (let i in dataVallydette.checklist.page) {
+	
+		
+		excel.addSheet(dataVallydette.checklist.page[i].name);
+		
+		   
+		for (var j=0;j<dataHeaders.length;j++){    
+		
+			if(j===7){
+				excel.set(setIndex,j,0,dataHeaders[j], formatHeaderProject); 
+			} else {
+				excel.set(setIndex,j,0,dataHeaders[j], formatHeader);	
+			}
+
+			excel.set(setIndex,j,undefined, "auto"); 
+		}	 
+		
+		
+		let rowIssues = 0;
+		
+		for (let j in dataVallydette.checklist.page[i].items) {
+			
+			
+			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
+					
+				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
+					
+					rowIssues++;
+					excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+					excel.set(setIndex,1,rowIssues, dataVallydette.checklist.page[i].items[j].title);
+					excel.set(setIndex,2,rowIssues, issue.issueDetail);
+					excel.set(setIndex,3,rowIssues, issue.issueSolution);
+					excel.set(setIndex,4,rowIssues, issue.issueTechnicalSolution);
+					excel.set(setIndex,5,rowIssues, issue.issueTitle);
+				
+				})
+					
+			}
+			
+		}
+		
+		setIndex++;
+		
+	} 
+
+    excel.generate("SampleData.xlsx");
+}
+
  /**
  * Some utilities funtions.
  */
 const utils = {
   reqError: function (err) {
 	let elrefTests = document.getElementById('mainContent');
-    elrefTests.innerHTML = '<div class="alert alert-warning">' + langVallydette.errorJson + '</div>';
+    elrefTests.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only">Warning</span></span>' + langVallydette.errorJson + '</div>';
   },
   formatHeading: function (str) {
     return str.toLowerCase()
@@ -2170,9 +2972,28 @@ const utils = {
 	e.setAttribute("aria-current", "true");
   },
   setPageTitle: function (e) {
-	document.title = e + " — " + langVallydette.auditNameWcag + " — " + langVallydette.va11ydette;
+	document.title = e + " — " + dataVallydette.checklist.name + " — " + langVallydette.va11ydette;
+  },
+  listOrParagraph: function (e) {
+	let htmlMarker;
+	if (e.length > 1) {
+		htmlMarker = "<ol>";
+		e.forEach(function(content){
+			htmlMarker += "<li>"+content+"</li>";
+		})
+		htmlMarker += "</ol>";
+	} else {
+		htmlMarker = "<p>"+e+"</p>";
+	}
+	return htmlMarker;
+  },
+  removeElement: function (e) { 
+	if(e){
+		e.parentNode.removeChild(e); 
+	}
+       
   }
 	
 }  
 
-initVallydetteApp('wcagEase', 'fr');
+initVallydetteApp('wcag-android', 'fr');

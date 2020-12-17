@@ -1,6 +1,7 @@
 {
 	"va11ydette": "The va11ydette",
 	"auditNameWcag": "Orange WCAG 2.1 Audit check list",
+	"auditNameAuditor": "Orange auditor check list",
 	"pageName": "Page name",
 	"processHeading": "Procedures",
 	"toCheckHeading": "To be checked",
@@ -37,12 +38,13 @@
 	"deletePageName": "Delete the page",
 	"delete": "Delete",
 	"close": "Close",
-	"reset": "Cancel",
+	"cancel": "Cancel",
 	"validate": "Validate",
 	"edit": "Edit",
 	"save": "Save",
 	"import": "Import",
 	"download": "Download",
+	"reset": "Reset",
 	"selectAudit": "Select an audit",
 	"name": "Name", 
 	"required": "required",
@@ -63,6 +65,7 @@
 	"recoverMessage": "Do you want to recover the last saved audit?",
 	"wcagView": "WCAG view",
 	"result": "result",
+	"goodPractice": "good practice",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",
@@ -78,8 +81,8 @@
 		"status4": "not tested",
 		"filters": "Filters",
 		"footerTxt1": "Documentation under <a href=\"https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE\">licence CC BY SA 3.0</a>.", 
-		"footerTxt2": "The Orange logo as well as certain images and screenshots are the property of Orange: Copyright © 2016 Orange SA All rights reserved.",
-		"link-about-txt": "About"
+		"footerTxt2": "The Orange logo as well as certain images and screenshots are the property of Orange: Copyright © 2016 Orange SA All rights reserved.", 
+		"link-about-txt": "About"				   
 	},
 	"title": {
 		"btnImport": "import an audit (json)",
@@ -88,6 +91,7 @@
 		"btnPageName": "Edit the page name",
 		"btnDelPage": "Delete the page",
 		"btnLocalStorage": "Recover the last audit",
+		"btnExportExcel": "export issues (excel)",
 		"link-about": "About (new window)"
 	},
 	"ariaLabelOnly": {

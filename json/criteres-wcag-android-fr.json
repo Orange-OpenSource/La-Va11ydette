@@ -1,6 +1,5 @@
 ﻿{
-	"version":1.0,
-	"lang":"fr",
+	"name": "Audit conformité WCAG / ANDROID",
 	"items":[{
 		"themes": "Formulaire",
 		"title": "Chaque champ de formulaire possède-t-il une étiquette ?",

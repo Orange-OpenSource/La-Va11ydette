@@ -190,7 +190,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	}
 
 	dataVallydette.checklist.name = criteriaVallydette.name;
-	
+	dataVallydette.checklist.page[0].groups = {};
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
 
 	dataVallydette.checklist.page[0].items.forEach(function (test) {

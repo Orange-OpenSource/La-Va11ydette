@@ -11,6 +11,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "Verify that the accessible name of each input field is defined.",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -22,6 +23,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "Verify that the accessible name of each input field is appropriate.",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -34,6 +36,7 @@
 		],
 		"verifier": "<ul><li>the presence of a <code>fieldset</code> group or <code>role='group'</code></li><li>each group possesses a legend (<code>legend</code>, <code>aria-labelledby</code>)</li><li>each legend is appropriate</li></ul>",
 		"complement": "<h4>Additionally: </h4><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -45,6 +48,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>verify that color is not used as the only visual means for identifying that a form element is required (e.g. asterisk)</li><li>verify that one of the following techniques is used to convey programmatically the information:<ul><li>the visible information is provided within the <code>label</code></li><li>presence of <code>required</code> attribute</li><li>presence of <code>aria-required</code> property</li></ul></li></ul>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -55,6 +59,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>check that the input format is present visually, and that its position allows it to be associated with the appropriate field</li><li>check that the input format is present in the accessible name (<code>label</code>, <code>aria-label</code>, <code>aria-labelledby</code>) or in the accessible description of the input field (<code>aria-describedby</code>)</li></ul>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -65,6 +70,7 @@
 			"1.3.5 AA"
 		],
 		"verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -75,6 +81,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<ul><li>check that the label of the field that is in error is modified (e.g. by inserting an error message into the page prefixed by the word  'error ', or by the use of an error-icon)</li><li>if the visual information does not have a text alternative (e.g. icon without alternative) then check that the field has an <code>aria-invalid='true'</code> attribute</li></ul>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -85,6 +92,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Check that an error message is present visually, and that it allows the field in error to be precisely identified and the nature of the error to be understood.</p>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -95,6 +103,7 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors.</p>\n<p>If it's impossible to make a suggestion to correctm, te  Si il n'est pas possible de suggérer une correction , the criterion is not applicable</p>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
@@ -105,6 +114,7 @@
 			"3.3.4 AA"
 		],
 		"verifier": "<p>For forms that:</p><ul><li>modify or delete data,</li><li>submit user test responses,</li><li> cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of checkbox).</p>",
+		"group": "Form",
 		"resultatTest": "nt"
 	},{
 		"themes": "Textual Content",
@@ -209,6 +219,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (e.g.   'captcha (anti-spam image) ' ).</p>",
+		"group": "Captcha",
 		"resultatTest": "nt"
 	},{
 		"themes": "Non-text Content",
@@ -219,6 +230,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Check that for each captcha which is exclusively visual or audio, one of the following alternatives is provided in addition: </p><ul><li>audio and visual captcha</li><li>logic problems (question for which the response is obvious, simple maths test…)</li><li>there is another method to access the functionality that is protected by the CAPTCHA</li></ul>",
+		"group": "Captcha",
 		"resultatTest": "nt"
 	},{
 		"themes": "Non-text Content",
@@ -542,6 +554,7 @@
 		],
 		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
 		"complement": "<h4>For example</h4><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"group": "Touche Screen",
 		"resultatTest": "nt"
 	},{
 		"themes": "Touch and interactions",
@@ -564,6 +577,7 @@
 		],
 		"verifier": "<ul><li>check that these actions can also be operated by user interface components (e.g. button)</li><li>check that it is possible to disable the motion detection</li></ul>",
 		"exceptions": "<p>The motion is essential for the function (e.g. pedometer)</p>",
+		"group": "Touche Screen",
 		"resultatTest": "nt"
 	},{
 		"themes": "Touch and interactions",
@@ -574,6 +588,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Check that the content and functionalities are available in both orientations (no loss of information, no truncated elements).</p>",
+		"group": "Touche Screen",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -584,6 +599,7 @@
 			"1.2.1 A"
 		],
 		"verifier": "<p>Check that a complete transcript (text containing all the auditory information) is provided as plain text or HTML.<br> This text transcript should be:</p><ul><li>present in the page</li> <li>or available via a link immediately next to the link to the audio clip</li></ul>",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -594,6 +610,7 @@
 			"1.2.1 A"
 		],
 		"verifier": "<p>Check that a complete transcript (text that provides an equivalent to what is presented visually) is provided as plain text or HTML.<br> This text transcript should be: </p><ul><li> present in the page </li> <li> or available via a link immediately next to the link to the video clip</li></ul> ",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -604,6 +621,7 @@
 			"1.2.3 A"
 		],
 		"verifier": "<ul><li>Check that a complete transcript (all of the information - both visual and auditory - in text form) is provided as plain text or HTML.<br> This text transcript should be:<ul><li> present in the page </li> <li> or available via a link immediately next to the link to the video clip</li></ul></li><li>Or for all video content, check that an audio description is provided:<ul><li> check that the audio description is synchronized correctly </li><li> check that the audio description does not conflict with the audio track of the video (no loss of information)</li><li> check that the audio description is appropriate</li></ul>",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -614,6 +632,7 @@
 			"1.2.5 AA"
 		],
 		"verifier": "<ul><li>check that an audio description is provided for all video content</li><li>check that the audio description is synchronized correctly</li><li>check that the audio description does not conflict with the audio track of the video (no loss of information)</li><li>check that the audio description is appropriate</li></ul>",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -624,6 +643,7 @@
 			"1.2.2 A"
 		],
 		"verifier": "<ul><li>check that captions are available for all video with audio content</li><li>check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li><li>check that the captions are not covering important information in the video</li></ul>",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -635,6 +655,7 @@
 		],
 		"verifier": "<ul><li>check that captions are available</li><li>check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
 		"complement": "<h4>Captions</h4><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimedia",
@@ -645,6 +666,7 @@
 			"1.4.2 A"
 		],
 		"verifier": "<ul><li>possible to pause or stop the sound</li><li>possible to control audio volume independently from the overall system volume level</li></ul>",
+		"group": "Multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": " Assistive technology",

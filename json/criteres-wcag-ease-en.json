@@ -1,5 +1,5 @@
 {
-	"name": "Conformity audit WCAG / WEB",
+	"name": "Conformity audit WCAG / WEB",		 
 	"items":[{
 		"themes": "Form",
 		"title": "Does every input field in the form have a label?",
@@ -69,7 +69,7 @@
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+		"verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'> exhaustive list of allowed values </a>)</li></ul>",
 		"group": "Form",
 		"resultatTest": "nt"
 	},{

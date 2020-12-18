@@ -8,8 +8,8 @@ $('.o-nav-local').prioritynav('Autres pages');
  * @param {object} checklistVallydette - checklists parameters (ex : url list param).																					 
  * @param {string} globalLang - current selected language.
  * @param {string} globalTemplate - actually 2 template are available, wcag for conformity audit et audit for test audit.
+ * @param {number} globalVersion - Contains the last checklist version
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
- * @param {number} checklistVersion - Contains the last checklist version
  * @param {number} currentPage - Current page index, updated each time user move to another page.
  * @param {string} statutClass - Default class used by the html element displaying a test result.
  * @param {array} arrayFilterNameAndValue - Initialization of filter labels and values.
@@ -33,12 +33,11 @@ var globalTemplate;
 var globalVersion;
 
 var dataWCAG;
-var checklistVersion;
+
 var	currentPage = 0;
 var statutClass = "badge-light";
-var arrayFilterNameAndValue = [];
 
-	
+var arrayFilterNameAndValue = [];
 var arrayFilterActivated = [];
 
 /**
@@ -376,21 +375,7 @@ function eventHandler() {
 			dataVallydette = JSON.parse(e.target.result);
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
-			
-			if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
-				
-				if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
-					
-					globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
-					
-				} else {
-					globalVersion = checklistVallydette["wcag-web"].version;
-				}			
-				
-			} else {
-				globalVersion = checklistVallydette["wcag-web"].version;
-			}
-			
+			checkTheVersion(dataVallydette.checklist.version);
 			utils.putTheFocus(document.getElementById("checklistName"));
 			runLangRequest();
 		}
@@ -474,21 +459,7 @@ function getLocalStorage() {
 	initGlobalLang(dataVallydette.checklist.lang, true);
 	initGlobalTemplate(dataVallydette.checklist.template);
 	
-	
-	if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
-		
-		if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
-			
-			globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
-			
-		} else {
-			globalVersion = checklistVallydette["wcag-web"].version;
-		}			
-		
-	} else {
-		globalVersion = checklistVallydette["wcag-web"].version;
-	}
-		
+	checkTheVersion(dataVallydette.checklist.version);	
 
 	runLangRequest();						
 }
@@ -532,7 +503,7 @@ runTestListMarkup = function (currentRefTests) {
 	if (globalTemplate === 'wcag') {
 
 		setPageName(dataVallydette.checklist.page[currentPage].name);
-		checkTheVersion(dataVallydette.checklist.version);
+		
 		utils.removeElement(document.getElementById('btnExcelExport'));
 		console.log(document.getElementById('btnExcelExport'));
 		
@@ -590,8 +561,8 @@ runTestListMarkup = function (currentRefTests) {
 		}
 	 /** 'audit' value correspond to the conformity checklist */
 	} else if (globalTemplate === 'audit') {
+		
 		setPageName(dataVallydette.checklist.page[currentPage].name);
-		checkTheVersion(dataVallydette.checklist.version);
 		
 		if (document.getElementById('btnExcelExport') === null) {
 		
@@ -1151,19 +1122,36 @@ function applyDisabledGroups() {
 */
 function checkTheVersion(currentChecklistVersion) {
 	
+	if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
+				
+		if (checklistVallydette[dataVallydette.checklist.referentiel].version) {
+			
+			globalVersion = checklistVallydette[dataVallydette.checklist.referentiel].version;
+			
+		} else {
+			globalVersion = checklistVallydette["wcag-web"].version;
+		}			
+		
+	} else {
+		globalVersion = checklistVallydette["wcag-web"].version;
+	}
+	
 	if ((currentChecklistVersion !== globalVersion) || (!currentChecklistVersion)) {
 		var versionHTML = '';
 		
-		versionHTML += '<div class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
+		versionHTML += '<div id="alertVersion" class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
 		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
 		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' <strong>' + globalVersion + '</strong>. ' + langVallydette.versionAlert2 + ' <strong>' + currentChecklistVersion +'</strong></p>';
-		versionHTML += ' <button type="button" class="close" data-dismiss="alert">';
+		versionHTML += ' <button id="closeVersion" type="button" class="close" data-dismiss="alert">';
 		versionHTML +=	'  <span class="sr-only">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';
 		versionHTML +='</div>';
 		
 		var mainHTML = document.getElementById("main");
 		mainHTML.insertAdjacentHTML("afterBegin", versionHTML);
+		
+		var btnCloseVersion = document.getElementById("closeVersion");
+		btnCloseVersion.addEventListener('click', function(){ dismissVersionMsg = true;}, false);
 	}
 	
 }
@@ -1723,7 +1711,10 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	item.resultatTest = 'nt';
 	item.commentaire = '';
-	item.issues.splice(0, item.issues.length);
+	if(item.issues) {
+		item.issues.splice(0, item.issues.length);
+	}
+	
 }
 
 /**  Initialization of themes */

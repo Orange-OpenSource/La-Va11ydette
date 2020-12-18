@@ -593,17 +593,17 @@ runTestListMarkup = function (currentRefTests) {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		checkTheVersion(dataVallydette.checklist.version);
 		
-		if (!document.getElementById('btnExportExcel')) {
-			
-			var btnExportExcel = document.createElement("button");
-			btnExportExcel.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
-			btnExportExcel.setAttribute('id', "btnExcelExport");
-			btnExportExcel.setAttribute('title', langVallydette.title.btnExportExcel);
-			btnExportExcel.setAttribute('aria-label', langVallydette.title.btnExportExcel);
-			btnExportExcel.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+		if (document.getElementById('btnExcelExport') === null) {
+		
+			var btnExcelExport = document.createElement("button");
+			btnExcelExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
+			btnExcelExport.setAttribute('id', "btnExcelExport");
+			btnExcelExport.setAttribute('title', langVallydette.title.btnExcelExport);
+			btnExcelExport.setAttribute('aria-label', langVallydette.title.btnExcelExport);
+			btnExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
 
-			document.getElementById("auditInfoManager").appendChild(btnExportExcel);
-			btnExportExcel.addEventListener('click', function () {
+			document.getElementById("auditInfoManager").appendChild(btnExcelExport);
+			btnExcelExport.addEventListener('click', function () {
 				excelExport();
 			});
 			

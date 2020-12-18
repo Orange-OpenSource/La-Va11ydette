@@ -294,7 +294,6 @@
     "type": [
       "Manual test"
     ],
-    --------------------------------------
     "tests": [
       "Inspect the audio and video content of the page"
     ],

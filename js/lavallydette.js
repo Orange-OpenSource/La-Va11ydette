@@ -84,41 +84,6 @@ function initVallydetteApp (criteriaListName, lang) {
 	
 }
 
-
-function initGlobalCriteriaListName(criteriaListName) {
-	
-	const paramString = window.location.search;
-	const urlParams = new URLSearchParams(paramString);
-
-	if (urlParams.has('list')) {
-		currentCriteriaListName = urlParams.get('list');
-	} else if (criteriaListName) {
-		currentCriteriaListName = criteriaListName;
-	} else {
-		currentCriteriaListName = 'wcagEase';
-	}
-
-	var checklistRequest = new XMLHttpRequest();
-		checklistRequest.open("GET", "json/config-checklist.json", true);
-		checklistRequest.onreadystatechange = function () {
-		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
-			checklistVallydette = JSON.parse(checklistRequest.responseText);
-			createObjectAndRunVallydette();
-		  } 
-		};
-		checklistRequest.send();
-	
-	var issuesRequest = new XMLHttpRequest();
-	issuesRequest.open("GET", "json/issues-"+globalLang+".json", true);
-	issuesRequest.onreadystatechange = function () {
-	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
-		issuesVallydette = JSON.parse(issuesRequest.responseText);
-	  } 
-	};
-	issuesRequest.send();	
-
-	
-}
 function initGlobalCriteriaListName(criteriaListName) {
 	
 	const paramString = window.location.search;
@@ -144,6 +109,16 @@ function initGlobalCriteriaListName(criteriaListName) {
 		
 		checklistRequest.send();
 		
+	var issuesRequest = new XMLHttpRequest();
+	issuesRequest.open("GET", "json/issues-"+globalLang+".json", true);
+	issuesRequest.onreadystatechange = function () {
+	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+		issuesVallydette = JSON.parse(issuesRequest.responseText);
+	  } 
+	};
+	issuesRequest.send();		
+		
+	
 	initLangMenu();
 	
 }										 
@@ -505,7 +480,7 @@ runTestListMarkup = function (currentRefTests) {
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		
 		utils.removeElement(document.getElementById('btnExcelExport'));
-		console.log(document.getElementById('btnExcelExport'));
+		
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -624,11 +599,11 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 			
-			htmlrefTests += '<div class="btn-group" role="group" aria-label="Gestion des anomalies">';
+			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
-			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">Anomalie(s) : </li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="Editer les anomalies" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">Editer</span></button></li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="Ajouter une anomalie" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">Ajouter</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				
@@ -2223,7 +2198,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<div class="modal-dialog " role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<form id="editForm">';
@@ -2464,7 +2439,7 @@ displayIssue = function (targetId, title) {
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + ' : ' + titleModal + '</h5>';
+	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="">';
@@ -2492,8 +2467,8 @@ displayIssue = function (targetId, title) {
 				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail;
 			
 				htmlModal += '  </div>';
-				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">Editer</button>';
-				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">Supprimer</button>';
+				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">' + langVallydette.edit + '</button>';
+				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">' + langVallydette.delete + '</button>';
 				
 				htmlModal += '  </div>';
 				htmlModal += ' </div>';

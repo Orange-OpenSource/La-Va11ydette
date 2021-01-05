@@ -52,6 +52,12 @@
 	"commentTxt1": "Comment for", 
 	"addComment": "Add a comment: ",
 	"editComment": "Edit the comment",
+	"issueTxt1": "Enter an issue for : ",
+	"issueTxt2": "Issues for: ",
+	"issues": "Issues",
+	"editIssue": "Edit an issue",
+	"addIssue": "Add an issue",
+	"issueManagement": "Issues management",
 	"filterFeedback1": "tests in progress",
 	"filterFeedback2": "tests meet the selected filter criteria", 
 	"errorJson": "Error loading JSON file", 
@@ -91,7 +97,7 @@
 		"btnPageName": "Edit the page name",
 		"btnDelPage": "Delete the page",
 		"btnLocalStorage": "Recover the last audit",
-		"btnExportExcel": "export issues (excel)",
+		"btnExcelExport": "export issues (excel)",
 		"link-about": "About (new window)"
 	},
 	"ariaLabelOnly": {

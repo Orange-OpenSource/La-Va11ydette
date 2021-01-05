@@ -1229,7 +1229,7 @@
       "Fill in the forms with specific information about the user"
     ],
     "verifier": [
-      "For any field that collects specific information about the user (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'> exhaustive list </ a>), the <code> autocomplete </code> attribute of the field must be present and have an appropriate value "
+      "For any field that collects specific information about the user (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'> exhaustive list </a>), the <code> autocomplete </code> attribute of the field must be present and have an appropriate value "
     ],
     "resultat": [
       "The <code>autocomplete</code> attribute is:",

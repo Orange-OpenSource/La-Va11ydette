@@ -54,6 +54,10 @@
 	"editComment": "Modifer le commentaire",
 	"issueTxt1": "Saisir une anomalie pour : ",
 	"issueTxt2": "Anomalie(s) pour : ",
+	"issues": "Anomalies",
+	"editIssue": "Éditer une anomalie",
+	"addIssue": "Ajouter une anomalie",
+	"issueManagement": "Gestion des anomalies",
 	"filterFeedback1": "tests en cours",
 	"filterFeedback2": "tests dans filtres en cours",
 	"errorJson": "Erreur chargement ressource JSON",
@@ -93,7 +97,7 @@
 		"btnPageName": "Modifier le nom de la page",
 		"btnDelPage": "Supprimer la page",
 		"btnLocalStorage": "Restaurer le dernier audit",
-		"btnExportExcel": "exporter les anomalies (excel)",
+		"btnExcelExport": "exporter les anomalies (excel)",
 		"link-about": "À propos (nouvelle fenêtre)"
 	},
 	"ariaLabelOnly": {

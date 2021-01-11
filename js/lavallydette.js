@@ -5,7 +5,8 @@ $('.o-nav-local').prioritynav('Autres pages');
  * Global vars
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
  * @param {object} langVallydette - language object.
- * @param {object} checklistVallydette - checklists parameters (ex : url list param).																					 
+ * @param {object} checklistVallydette - checklists parameters (ex : url list param).
+ * @param {object} statementVallydette - statement object.
  * @param {string} globalLang - current selected language.
  * @param {string} globalTemplate - actually 2 template are available, wcag for conformity audit et audit for test audit.
  * @param {number} globalVersion - Contains the last checklist version
@@ -22,6 +23,7 @@ $('.o-nav-local').prioritynav('Autres pages');
 var dataVallydette;
 var langVallydette;
 var checklistVallydette;
+var statementVallydette;
    
 /**
  * @todo add comment
@@ -379,6 +381,8 @@ function eventHandler() {
 		btnLocalStorage.classList.add("disabled");
 	}
 	
+	document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
+ 
 	
 	btnActionPageEventHandler();
 	
@@ -2900,6 +2904,131 @@ for (let i in dataVallydette.checklist.page) {
 
     excel.generate("SampleData.xlsx");
 }
+
+	
+/**
+ * Statement manager
+ */
+
+function initStatementObject() {
+	
+	statementVallydette = {
+		"statement": {
+			"name": "",
+			"lang": "",
+			"status": "",
+			"technology": ["HTML 5", "CSS 3", "Javascript"]
+		}
+	}
+	
+	showStatementWizard();
+}
+
+function showStatementWizard() {
+	
+	var statementWizardContent;
+	
+	statementWizardContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-2">Configuration de la déclaration</h2>';
+	statementWizardContent += '<form role="form" id="myForm">';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputTitle" class="is-required">Titre</label>';
+    statementWizardContent += '<input type="text" class="form-control" id="inputTitle" required>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputLang" class="is-required">Langue</label>';
+    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
+    statementWizardContent += '<option value="" label="Sélectionner"></option>';
+    statementWizardContent += '<option value="FR">Français</option>';
+    statementWizardContent += '<option value="EN">Anglais</option>';
+    statementWizardContent += '</select>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputDate" class="is-required">Date</label>';
+    statementWizardContent += '<input type="text" class="form-control" id="inputDate" required>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
+	statementWizardContent += '<h3 id="technologyLegend">Technologies</h3>';
+	statementWizardContent += '<button class="btn btn-secondary btn-icon ml-auto d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement">';
+    statementWizardContent += 'Modifier la liste';
+    statementWizardContent += '</button>';
+    statementWizardContent += '<label class="custom-control custom-checkbox">';
+    statementWizardContent += '<input type="checkbox" class="custom-control-input" autocomplete="off">';
+    statementWizardContent += '<span class="custom-control-label">HTML 5</span>';
+    statementWizardContent += '</label>';
+	statementWizardContent += '<label class="custom-control custom-checkbox">';
+    statementWizardContent += '<input type="checkbox" class="custom-control-input" autocomplete="off">';
+    statementWizardContent += '<span class="custom-control-label">CSS 3</span>';
+    statementWizardContent += '</label>';
+	statementWizardContent += '<label class="custom-control custom-checkbox">';
+    statementWizardContent += '<input type="checkbox" class="custom-control-input" autocomplete="off">';
+    statementWizardContent += '<span class="custom-control-label">Javascript</span>';
+    statementWizardContent += '</label>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
+	statementWizardContent += '<h3 id="testLegend">Tests</h3>';
+    statementWizardContent += '<div class="input-group" role="group">';
+	statementWizardContent += '<div class="input-group-prepend">';
+    statementWizardContent += '<span class="input-group-text">Axe 1.0</span>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '<select class="custom-select">';
+    statementWizardContent += '<option value="" label="Sélectionner"></option>';
+    statementWizardContent += '<option value="auto">auto</option>';
+    statementWizardContent += '<option value="manual">manuel</option>';
+	statementWizardContent += '<option value="user">user</option>';
+    statementWizardContent += '</select>';
+	statementWizardContent += '<input type="text" aria-label="Nom" value="aXe" class="form-control">';
+	statementWizardContent += '<input type="text" aria-label="Version" value="1.1" class="form-control">';
+	statementWizardContent += '</div>';
+    statementWizardContent += '</div>';
+    htmlMainContent.innerHTML = statementWizardContent;
+	
+document.getElementById("btnEditTechList").addEventListener('click', function(){editStatementProperty("technology");});
+	
+	
+}
+ 
+/**
+ * Statement property edition
+ * @param {string} statementProperty - statement property to edit
+*/
+editStatementProperty = function (statementProperty) {
+	
+	let htmlModal = '';
+	htmlModal = '<div id="modalStatement" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalStatementTitle">';
+	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-content">';
+	htmlModal += '<div class="modal-header">';
+	htmlModal += '<h5 class="modal-title" id="modalStatementTitle">Edition</h5>';
+	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-body">';
+	htmlModal += '<ul id="listToEdit">';
+	statementVallydette.statement[statementProperty].forEach(function(listItem, index){
+		htmlModal += '<li><input type="text" value="'+listItem+'" aria-label="technology item '+index+'" title="technology item '+index+'" /></li>';
+	})
+	htmlModal += '</ul>';
+	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary">Ajouter un élément</button>';
+	htmlModal += '</div>';
+	htmlModal += '<div class="modal-footer">';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '</div></div></div></div>';
+
+	let elModal = document.getElementById('modal');
+	elModal.innerHTML = htmlModal;
+
+	document.getElementById("addElement").addEventListener('click', function(){addListElement();});
+} 
+
+addListElement = function() {
+
+	var listItem = document.createElement("li");
+	var listToEdit = document.getElementById("listToEdit");
+	listItem.innerHTML = '<input type="text" value="" aria-label="technology item '+listToEdit.querySelectorAll("li").length+'" title="technology item '+listToEdit.querySelectorAll("li").length+'" />';
+	listToEdit.appendChild(listItem);
+	
+}
+
 
  /**
  * Some utilities funtions.

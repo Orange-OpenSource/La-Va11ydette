@@ -3024,9 +3024,11 @@ addListElement = function() {
 
 	var listItem = document.createElement("li");
 	var listToEdit = document.getElementById("listToEdit");
-	listItem.innerHTML = '<input type="text" value="" aria-label="technology item '+listToEdit.querySelectorAll("li").length+'" title="technology item '+listToEdit.querySelectorAll("li").length+'" />';
+	var listIndex = listToEdit.querySelectorAll("li").length;
+	listItem.innerHTML = '<input type="text" value="" id="item'+listIndex+'" aria-label="technology item '+listIndex+'" title="technology item '+listIndex+'" />';
 	listToEdit.appendChild(listItem);
 	
+	document.getElementById("item"+listIndex).focus();
 }
 
 

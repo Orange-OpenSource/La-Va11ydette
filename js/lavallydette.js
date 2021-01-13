@@ -2936,7 +2936,11 @@ function initStatementObject() {
 				{	
 				"type": "manual",
 				"name": "NVDA",
-				"version": "2009"}
+				"version": "2009"},
+				{	
+				"type": "user",
+				"name": "Test utilisateur",
+				"version": ""}
 			
 			],
 		}
@@ -2947,30 +2951,37 @@ function initStatementObject() {
 
 function showStatementWizard() {
 	
-	setPageName(langVallydette.auditResult);
+	setPageName("Déclaration");
 	removeContextualMenu();
 	removeFilterSection();
+	
+	var userInput = false;
 	
 	let statementWizardContent = '';
 	
 	statementWizardContent += '<h2 class="pt-4 pb-3">Configuration de la déclaration</h2>';
-	statementWizardContent += '<form role="form" id="myForm">';
+	
+	statementWizardContent += '<form id="statementForm">';
+	
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputTitle" class="is-required">Titre</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="inputTitle" required>';
+    statementWizardContent += '<label for="inputName" class="is-required">Titre</label>';
+    statementWizardContent += '<input type="text" class="form-control" id="inputName" value="' + statementVallydette.statement.name + '" required>';
     statementWizardContent += '</div>';
+	
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputLang" class="is-required">Langue</label>';
-    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
+    statementWizardContent += '<label for="inputLang" >Langue</label>';
+    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang">';
     statementWizardContent += '<option value="" label="Sélectionner"></option>';
     statementWizardContent += '<option value="FR">Français</option>';
     statementWizardContent += '<option value="EN">Anglais</option>';
     statementWizardContent += '</select>';
     statementWizardContent += '</div>';
+	
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputDate" class="is-required">Date</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="inputDate" required>';
+    statementWizardContent += '<label for="inputDate">Date</label>';
+    statementWizardContent += '<input type="text" class="form-control" id="inputDate" >';
     statementWizardContent += '</div>';
+	
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
 	statementWizardContent += '<h3 id="technologyLegend">Technologies</h3>';
 	statementWizardContent += '<button class="btn btn-secondary btn-icon ml-auto d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement">';
@@ -2980,7 +2991,7 @@ function showStatementWizard() {
 
 	statementVallydette.statement.technology.forEach(function(listItem, index){
 		statementWizardContent += '<label class="custom-control custom-checkbox">';
-		statementWizardContent += '<input type="text" type="checkbox" class="custom-control-input" autocomplete="off" value="'+index+'"  />';
+		statementWizardContent += '<input type="checkbox" class="custom-control-input" name="technology'+index+'" autocomplete="off"  />';
 		statementWizardContent += '<span class="custom-control-label">'+listItem.name+' '+listItem.version+'</span>';
 		statementWizardContent += '</label>';
 	})
@@ -2994,19 +3005,49 @@ function showStatementWizard() {
     statementWizardContent += 'Modifier la liste';
     statementWizardContent += '</button>';
 	statementWizardContent += '<div id="testsList">';	
+	
     statementVallydette.statement.tests.forEach(function(listItem, index){
 		statementWizardContent += '<label class="custom-control custom-checkbox">';
-		statementWizardContent += '<input type="text" type="checkbox" class="custom-control-input" autocomplete="off" value="'+index+'"  />';
+		statementWizardContent += '<input type="checkbox" class="custom-control-input"  name="tests'+index+'" autocomplete="off" value="'+index+'"  />';
 		statementWizardContent += '<span class="custom-control-label">'+listItem.name+' '+listItem.version+'</span>';
 		statementWizardContent += '</label>';
+		
+		if (listItem.type==="user") {
+			userInput = true;
+		} 
 	})
+	
 	statementWizardContent += '</div>';	
-    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';	
+	
+	if (userInput) {
+		statementWizardContent += '<div id="userInfos">';	
+		statementWizardContent += '<h3 id="testLegend">Utilisateurs</h3>';
+		statementWizardContent += '<div class="form-group">';
+		statementWizardContent += '<label for="inputNbUser">Nombre d\'utilisateurs</label>';
+		statementWizardContent += '<input type="text" class="form-control" id="inputNbUser">';
+		
+		statementWizardContent += '<label for="inputBlockingPoint" >Nombre de point bloquant</label>';
+		statementWizardContent += '<input type="text" class="form-control" id="inputBlockingPoint" >';
+		statementWizardContent += '</div>';
+		statementWizardContent += '</div>';
+	}
+	
+  
+	statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
+	statementWizardContent += '</form>';
 	
     htmlMainContent.innerHTML = statementWizardContent;
 	
 	document.getElementById("btnEditTechList").addEventListener('click', function(){editStatementProperty("technology");});
-	document.getElementById("btnEditTestList").addEventListener('click', function(){editStatementProperty("tests");});	
+	document.getElementById("btnEditTestList").addEventListener('click', function(){editStatementProperty("tests");});
+	
+	
+	document.getElementById("statementForm").addEventListener('submit', function () {
+		event.preventDefault();
+		saveStatement(this);
+
+	});
 }
  
 /**
@@ -3026,6 +3067,7 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<form id="listEditForm">';
 	htmlModal += '<ul id="listToEdit">';
+	
 	statementVallydette.statement[statementProperty].forEach(function(listItem, index){
 	
 		htmlModal += '<li>';
@@ -3034,7 +3076,16 @@ editStatementProperty = function (statementProperty) {
 		htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">Item '+index+'</span>';
 		htmlModal += '  </span>';
 
-			listItem.type ? htmlModal += '<input type="text" id="type-'+index+'" class="form-control mb-1" value="'+listItem.type+'" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="type" title="type" />' : "";
+			if (listItem.type) {
+				
+				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="type" title="type" >';
+				htmlModal += '<option value="auto" ' + (listItem.type === "auto" ? "selected" : "") + ' >auto</option>';
+				htmlModal += '<option value="functional" ' + (listItem.type === "functional" ? "selected" : "") + ' >functional</option>';
+				htmlModal += '<option value="manual" ' + (listItem.type === "manual" ? "selected" : "") + ' >manual</option>';
+				htmlModal += '<option value="user" ' + (listItem.type === "user" ? "selected" : "") + ' >user</option>';	
+				htmlModal += '</select>';
+			}
+
 			htmlModal += '<input type="text" id="name-'+index+'" class="form-control mb-1" value="'+listItem.name+'" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="nom" title="nom" />';
 			htmlModal += '<input type="text" id="version-'+index+'" class="form-control mb-1" value="'+listItem.version+'" aria-labelledby="itemLegend-'+index+' version-'+index+'" aria-label="version" title="version" />';
 		
@@ -3043,7 +3094,7 @@ editStatementProperty = function (statementProperty) {
 
 	})
 	htmlModal += '</ul>';
-	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary">Ajouter un élément</button>';
+	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">Ajouter un élément</button>';
 	htmlModal += '</form>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
@@ -3060,7 +3111,7 @@ editStatementProperty = function (statementProperty) {
 
 saveListElement = function(listToEdit, statementProperty) {
 
-	statementVallydette.statement.technology = [];
+	statementVallydette.statement[statementProperty] = [];
 	let listMarkup = '';
 	let index = 0;
 			
@@ -3070,15 +3121,30 @@ saveListElement = function(listToEdit, statementProperty) {
 		if (listItem.children[0].children["name-"+index].value !== "") {
 			
 			itemObj = {};
+			
+			if (listItem.children[0].children["type-"+index]) {
+				itemObj.type = listItem.children[0].children["type-"+index].value;
+			}
+			
 			itemObj.name = listItem.children[0].children["name-"+index].value;
 			itemObj.version = listItem.children[0].children["version-"+index].value;
-			var test = listItem.children[0].children["name-"+index].value;
-			statementVallydette.statement.technology.push(itemObj);
+			
+			statementVallydette.statement[statementProperty].push(itemObj);
 			
 			listMarkup += '<label class="custom-control custom-checkbox">';
 			listMarkup += '<input type="checkbox" class="custom-control-input" autocomplete="off" value="'+index+'">';
 			listMarkup += '<span class="custom-control-label">'+itemObj.name+' '+itemObj.version+'</span>';
 			listMarkup += '</label>';
+
+				if (itemObj.type && itemObj.type==="user") {
+					if (document.getElementById("userInfos").style.display === "none") {
+						document.getElementById("userInfos").style.display = "block";
+					}
+					
+				} else {
+					document.getElementById("userInfos").style.display = "none";
+				}
+	
 			
 		}
 		index++;
@@ -3087,7 +3153,6 @@ saveListElement = function(listToEdit, statementProperty) {
 	
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
 }
-
 
 addListElement = function(statementProperty) {
 
@@ -3102,7 +3167,7 @@ addListElement = function(statementProperty) {
 		htmlItem += '	<span class="input-group-text" id="itemLegend-'+listIndex+'">Item '+listIndex+'</span>';
 		htmlItem += '  </span>';
 
-			statementProperty[0].type ? htmlItem += '<input type="text" id="type-'+listIndex+'" class="form-control mb-1" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="type" title="type" />' : "";
+			statementProperty[0].type ? htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="type" title="type" /><option value="" >Sélectionner un type</option><option value="auto" >auto</option><option value="manual">manual</option><option value="user">user</option></select>' : "";
 			htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="nom" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="nom" title="nom" />';
 			htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="version" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="version" title="version" />';
 		
@@ -3113,6 +3178,28 @@ addListElement = function(statementProperty) {
 	listToEdit.appendChild(listItem);
 	
 	document.getElementById("name-"+listIndex).focus();
+}
+
+saveStatement = function(statementForm) {
+	
+	statementVallydette.statement.name = statementForm.elements["inputName"].value;
+	statementVallydette.statement.lang = statementForm.elements["inputLang"].value;
+	statementVallydette.statement.status = "done";
+	
+	statementVallydette.statement.technology.forEach(function(item, index){
+		if(statementForm.elements["technology"+index].checked) {
+			item.checked = true;
+		}
+	})
+	
+	statementVallydette.statement.tests.forEach(function(item, index){
+		if(statementForm.elements["tests"+index].checked) {
+			item.checked = true;
+		}
+	})
+	
+	console.log(statementVallydette);
+	
 }
 
 

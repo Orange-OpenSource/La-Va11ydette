@@ -1154,7 +1154,7 @@ function initComputation() {
 	matriceRequest.onreadystatechange = function () {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
 			dataWCAG = JSON.parse(matriceRequest.responseText);
-
+			
 			dataWCAG.items.forEach(initRulesAndTests);
 
             var btnShowResult = document.getElementById("btnShowResult");
@@ -1454,6 +1454,8 @@ function runFinalComputation(pagesResultsArray) {
     var nbFalseWcagAA = 0;
 	var nbNaWcagAA = 0;
     var nbTotalWcagAA = 0;
+	
+	dataWCAG.complete = true;
 
 	/**
 	 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
@@ -1468,25 +1470,7 @@ function runFinalComputation(pagesResultsArray) {
 	}
 	
 	for (let i in dataWCAG.items) {
-
-			if (dataWCAG.items[i].resultat === true) {
-				nbTrueWcag++;
-				nbTotalWcag++;
-
-				dataWCAG.items[i].level === 'A' ? nbTrueWcagA++ : nbTrueWcagAA++;
-				dataWCAG.items[i].level === 'A' ? nbTotalWcagA++ : nbTotalWcagAA++;
-			} else if (dataWCAG.items[i].resultat === false) {
-				nbFalseWcag++;
-				nbTotalWcag++;
-
-				dataWCAG.items[i].level === 'A' ? nbFalseWcagA++ : nbFalseWcagAA++;
-				dataWCAG.items[i].level === 'A' ? nbTotalWcagA++ : nbTotalWcagAA++;
-			} else if (dataWCAG.items[i].resultat === 'na') {
-				nbNaWcag++;
-
-				dataWCAG.items[i].level === 'A' ? nbNaWcagA++ :nbNaWcagAA++;
-				
-			} else if (dataWCAG.items[i].resultat === 'nt') {
+		if (dataWCAG.items[i].resultat === 'nt') {
 				dataWCAG.complete = false;
 			}
 		}
@@ -1494,25 +1478,34 @@ function runFinalComputation(pagesResultsArray) {
 	/**
 		* 	If all the tests of a page are non-applicables (hypothetical but tested)
 	*/  
+	
+		/** Adds the results to the WCAG object. */  
+		dataWCAG.conformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === true).length;
+		dataWCAG.conformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === true).length;
+		dataWCAG.nonconformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === false).length;
+		dataWCAG.nonconformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === false).length;
+		dataWCAG.naA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === "na").length;
+		dataWCAG.naAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === "na").length;
+		dataWCAG.totalconforme = dataWCAG.conformeA + dataWCAG.conformeAA;
+		dataWCAG.totalnonconforme = dataWCAG.nonconformeA + dataWCAG.nonconformeAA;
+
+		dataWCAG.totalA = dataWCAG.items.filter(function(item){return item.level==="A"}).length;
+		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA"}).length;
+	
+		var nbTotalWcag = dataWCAG.items.filter(item => item.resultat === true || item.resultat === false).length;
+		var nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true).length;
+		var nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na").length;
+
+		
 		if (nbTotalWcag===0 && nbNaWcag>0) {
 			dataWCAG.result = "NA";
 		} else {
 			dataWCAG.result = (nbTrueWcag / nbTotalWcag) * 100;
-			dataWCAG.resultA = (nbTrueWcagA / nbTotalWcagA) * 100;
-			dataWCAG.resultAA = (nbTrueWcagAA / nbTotalWcagAA) * 100;
+			dataWCAG.resultA = (dataWCAG.conformeA / (dataWCAG.conformeA+dataWCAG.nonconformeA)) * 100;
+			dataWCAG.resultAA = (dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100;
 		}
 
-		/** Adds the result to the pages result array. */  
-		dataWCAG.conformeA = nbTrueA;
-		dataWCAG.conformeAA = nbTrueAA;
-		dataWCAG.nonconformeA = nbFalseA;
-		dataWCAG.nonconformeAA = nbFalseAA;
-		dataWCAG.naA = nbNaA;
-		dataWCAG.naAA = nbNaAA;
-		dataWCAG.totalconforme = nbTrueA + nbTrueAA;
-		dataWCAG.totalnonconforme = nbFalseA + nbFalseAA;
-	
-	
+
     /**Build the audit conformity markup. */ 
     
 	let computationContent = '';
@@ -1529,7 +1522,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
     } else if (nbNT === 0 && !isNaN(finalResult)) {
         computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + finalResult + '%</span></p>';
-		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataWCAG.result) + '</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataWCAG.result) + '%</span></p>';
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
@@ -1598,39 +1591,60 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</table>';
 		computationContent += ' </div>';
 		
-		computationContent += '  <div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
-		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt15 + '</caption>';
+		computationContent += '<div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
+		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt10 + '</caption>';
 		computationContent += '<thead><tr>';
-		computationContent += '<th scope="row">' + langVallydette.auditTxt15 + '</th>';
-		computationContent += '<th scope="col" class="text-center">' + langVallydette.template.status1 + '</th>';
-		computationContent += '<th scope="col" class="text-center">' + langVallydette.template.status2 + '</th>';
-		computationContent += '<th scope="col" class="text-center">' + langVallydette.template.status3 + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.result + '</th>';
+		computationContent += '<th scope="row">' + langVallydette.auditTxt10 + '</th>';
+		computationContent += '<th scope="col" class="text-center">A</th>';
+		computationContent += '<th scope="col" class="text-center">AA</th>';
+		computationContent += '<th scope="col" class="text-center">Total</th>';
 		computationContent += '</tr></thead>';
 		computationContent += '<tbody>';
-	
 		
 		computationContent += '<tr>';
-		computationContent += '<th scope="row" class="font-weight-bold">A</th>';
+		computationContent += '<th scope="row" class="font-weight-bold">Nombre de critères</th>';
+		computationContent += '<td class="text-center">' + dataWCAG.totalA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.totalAA + '</td>';
+		computationContent += '<td class="text-center">' + (dataWCAG.totalA+dataWCAG.totalAA) + '</td>';
+		computationContent += '</tr>';
+		
+		computationContent += '<tr>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.template.status1 + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.conformeA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.conformeAA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.totalconforme + '</td>';
+		computationContent += '</tr>';
+		
+		computationContent += '<tr>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.template.status2 + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.nonconformeA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.nonconformeAA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.totalnonconforme + '</td>';
+		computationContent += '</tr>';
+		
+		computationContent += '<tr>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.template.status3 + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.naA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.naAA + '</td>';
+		computationContent += '<td class="text-center">' + (dataWCAG.naA+dataWCAG.naAA) + '</td>';
+		computationContent += '</tr>';
+		
+		computationContent += '<tr>';
+		computationContent += '<th scope="row" class="font-weight-bold bg-light">' + langVallydette.auditTxt16 + '</th>';
 		computationContent += '<td class="text-center bg-light">';
 		computationContent += (!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? dataWCAG.resultA.toFixed(2) + ' % ' : '';
 		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 		computationContent += '</td>';
-		computationContent += '</tr>';
-		
-		computationContent += '<tr>';
-		computationContent += '<th scope="row" class="font-weight-bold">AA</th>';
-		computationContent += '<td class="text-center">' + dataWCAG.conformeAA + '</td>';
-		computationContent += '<td class="text-center">' + dataWCAG.nonconformeAA + '</td>';
-		computationContent += '<td class="text-center">' + dataWCAG.naAA + '</td>';
 		computationContent += '<td class="text-center bg-light">';
 		computationContent += (!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? dataWCAG.resultAA.toFixed(2) + ' % ' : '';
 		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 		computationContent += '</td>';
+		computationContent += '<td class="text-center bg-light">';
+		computationContent += (!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? dataWCAG.result.toFixed(2) + ' % ' : '';
+		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
+		computationContent += '</td>';
 		computationContent += '</tr>';
+		
 		computationContent += '</tbody>';
 		computationContent += '</table>';
 		computationContent += ' </div>';

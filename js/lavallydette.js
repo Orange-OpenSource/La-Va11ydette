@@ -1220,7 +1220,6 @@ function runComputation(obj) {
 		
         for (let k in dataWCAG.items) {
 
-
 				pagesResults[i].items[k] = {};
 				pagesResults[i].items[k].wcag = dataWCAG.items[k].wcag;
 				pagesResults[i].items[k].level = dataWCAG.items[k].level;
@@ -1245,7 +1244,6 @@ function runComputation(obj) {
 
 					for (let j in dataVallydette.checklist.page[i].items) {
 						
-						
 						if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
 							
 							testObj = {};
@@ -1263,10 +1261,14 @@ function runComputation(obj) {
 								   dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
 								}
 							 }
-							
+
 							if (pagesResults[i].items[k].resultat) {
 								if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
-									pagesResults[i].items[k].resultat = true;	
+									pagesResults[i].items[k].resultat = true;
+									if (dataWCAG.items[k].resultat !== false) {
+										dataWCAG.items[k].resultat = true;
+									}
+									
 									break;	
 									
 								} else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
@@ -1276,6 +1278,11 @@ function runComputation(obj) {
 									
 								} else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
 									pagesResults[i].items[k].resultat = "na";
+									
+									if (dataWCAG.items[k].resultat !== false || dataWCAG.items[k].resultat !== true ) {
+										dataWCAG.items[k].resultat = "na";
+									}
+									
 									break;	
 								}
 
@@ -1290,7 +1297,6 @@ function runComputation(obj) {
 			
         }
     }
-
 	
 	if (obj) {
 		return pagesResults;
@@ -1370,7 +1376,7 @@ function runFinalComputation(pagesResultsArray) {
 		}
 
 		/**
-		 * 	Gets the number of true, false, non-applicable and non-tested by wcag level.
+		 * 	Gets the number of true, false, non-applicable and non-tested by wcag level and by pages.
 		 *  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
 		*/
 		for (let j in pagesResultsArray[i].items) {
@@ -1417,6 +1423,7 @@ function runFinalComputation(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
 	}
 
+
 	/** Adds the result to the pages result array. */  
     for (let i in pagesResultsArray) {
         if (pagesResultsArray[i].result != "NA") {
@@ -1428,6 +1435,84 @@ function runFinalComputation(pagesResultsArray) {
 	/** Final conformity rate. */ 
     finalResult = Math.round((finalTotal / nbPage));
 
+	
+	/**
+		*  Gets the number of true, false, non-applicable and non-tested by wcag level only.
+		*  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
+	*/
+	var nbTrueWcag = 0;
+    var nbFalseWcag = 0;
+	var nbNaWcag = 0;
+    var nbTotalWcag = 0;
+	
+	var nbTrueWcagA = 0;
+    var nbFalseWcagA = 0;
+	var nbNaWcagA = 0;
+    var nbTotalWcagA = 0;
+
+	var nbTrueWcagAA = 0;
+    var nbFalseWcagAA = 0;
+	var nbNaWcagAA = 0;
+    var nbTotalWcagAA = 0;
+
+	/**
+	 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
+	*/
+	var indexItem = 0;
+	for (let i in dataWCAG.items) {
+		if (dataWCAG.items[indexItem].level === 'AAA') {
+			dataWCAG.items.splice(indexItem,1);
+		} else {
+			indexItem = indexItem+1;
+		}
+	}
+	
+	for (let i in dataWCAG.items) {
+
+			if (dataWCAG.items[i].resultat === true) {
+				nbTrueWcag++;
+				nbTotalWcag++;
+
+				dataWCAG.items[i].level === 'A' ? nbTrueWcagA++ : nbTrueWcagAA++;
+				dataWCAG.items[i].level === 'A' ? nbTotalWcagA++ : nbTotalWcagAA++;
+			} else if (dataWCAG.items[i].resultat === false) {
+				nbFalseWcag++;
+				nbTotalWcag++;
+
+				dataWCAG.items[i].level === 'A' ? nbFalseWcagA++ : nbFalseWcagAA++;
+				dataWCAG.items[i].level === 'A' ? nbTotalWcagA++ : nbTotalWcagAA++;
+			} else if (dataWCAG.items[i].resultat === 'na') {
+				nbNaWcag++;
+
+				dataWCAG.items[i].level === 'A' ? nbNaWcagA++ :nbNaWcagAA++;
+				
+			} else if (dataWCAG.items[i].resultat === 'nt') {
+				dataWCAG.complete = false;
+			}
+		}
+		
+	/**
+		* 	If all the tests of a page are non-applicables (hypothetical but tested)
+	*/  
+		if (nbTotalWcag===0 && nbNaWcag>0) {
+			dataWCAG.result = "NA";
+		} else {
+			dataWCAG.result = (nbTrueWcag / nbTotalWcag) * 100;
+			dataWCAG.resultA = (nbTrueWcagA / nbTotalWcagA) * 100;
+			dataWCAG.resultAA = (nbTrueWcagAA / nbTotalWcagAA) * 100;
+		}
+
+		/** Adds the result to the pages result array. */  
+		dataWCAG.conformeA = nbTrueA;
+		dataWCAG.conformeAA = nbTrueAA;
+		dataWCAG.nonconformeA = nbFalseA;
+		dataWCAG.nonconformeAA = nbFalseAA;
+		dataWCAG.naA = nbNaA;
+		dataWCAG.naAA = nbNaAA;
+		dataWCAG.totalconforme = nbTrueA + nbTrueAA;
+		dataWCAG.totalnonconforme = nbFalseA + nbFalseAA;
+	
+	
     /**Build the audit conformity markup. */ 
     
 	let computationContent = '';
@@ -1436,16 +1521,21 @@ function runFinalComputation(pagesResultsArray) {
 	removeContextualMenu();
 	removeFilterSection();
 	
+	
+	 computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt14 + '</h2>';
+	 
     if (nbNT >= 1) {
-        computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></h2>';
-		
+        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
     } else if (nbNT === 0 && !isNaN(finalResult)) {
-        computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + finalResult + '%</span></h2>';
+        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + finalResult + '%</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataWCAG.result) + '</span></p>';
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
 		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">' + langVallydette.auditTxt3 + '</a></li>';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveau" data-toggle="tab" id="tabSyntheseNiveau" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveau">' + langVallydette.auditTxt4 + '</a></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#synthesePages" data-toggle="tab" id="tabsynthesePages" role="tab" tabindex="-1" aria-selected="false" aria-controls="synthesePages">' + langVallydette.auditTxt4 + '</a></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveaux" data-toggle="tab" id="tabsyntheseNiveaux" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveaux">' + langVallydette.auditTxt15 + '</a></li>';	
 		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">' + langVallydette.auditTxt5 + '</a></li>';
 		computationContent += '</ul>';
 		
@@ -1466,7 +1556,8 @@ function runFinalComputation(pagesResultsArray) {
 		}
 		
 		computationContent += '  </div>';
-		computationContent += '  <div class="tab-pane" id="syntheseNiveau" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
+		
+		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsynthesePages">';
 		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt4 + '</th>';
@@ -1507,7 +1598,44 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</table>';
 		computationContent += ' </div>';
 		
-		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tab779525">';
+		computationContent += '  <div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
+		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt15 + '</caption>';
+		computationContent += '<thead><tr>';
+		computationContent += '<th scope="row">' + langVallydette.auditTxt15 + '</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.template.status1 + '</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.template.status2 + '</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.template.status3 + '</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.result + '</th>';
+		computationContent += '</tr></thead>';
+		computationContent += '<tbody>';
+	
+		
+		computationContent += '<tr>';
+		computationContent += '<th scope="row" class="font-weight-bold">A</th>';
+		computationContent += '<td class="text-center">' + dataWCAG.conformeA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.nonconformeA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.naA + '</td>';
+		computationContent += '<td class="text-center bg-light">';
+		computationContent += (!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? dataWCAG.resultA.toFixed(2) + ' % ' : '';
+		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
+		computationContent += '</td>';
+		computationContent += '</tr>';
+		
+		computationContent += '<tr>';
+		computationContent += '<th scope="row" class="font-weight-bold">AA</th>';
+		computationContent += '<td class="text-center">' + dataWCAG.conformeAA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.nonconformeAA + '</td>';
+		computationContent += '<td class="text-center">' + dataWCAG.naAA + '</td>';
+		computationContent += '<td class="text-center bg-light">';
+		computationContent += (!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? dataWCAG.resultAA.toFixed(2) + ' % ' : '';
+		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
+		computationContent += '</td>';
+		computationContent += '</tr>';
+		computationContent += '</tbody>';
+		computationContent += '</table>';
+		computationContent += ' </div>';
+		
+		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabNonConformites">';
 		
 			/** 
 				*	Display the non-conformity list.

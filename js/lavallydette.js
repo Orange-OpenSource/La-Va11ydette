@@ -1298,6 +1298,9 @@ function runComputation(obj) {
         }
     }
 	
+	pagesResults = pagesResultsComputation(pagesResults);
+	dataWCAGComputation();
+	
 	if (obj) {
 		return pagesResults;
 	} else {		
@@ -1306,47 +1309,9 @@ function runComputation(obj) {
 
 }
 
-function getAAA(currentWcag) {
-	
-	let level = false;
-	
-	if (currentWcag) {
-		dataWCAG.items.forEach(function(current){
-			
-			if (current.wcag === currentWcag) {
-				
-				if (current.level === 'AAA') {
-					level = true;
-				} 
-			} 
-		
-		});
-		
-	}
-	return level;
-	
-}
 
-/**
- * 	Computes the conformity rate by pages and the final audit conformity rate (average rate).
- *	Computes the wcag summary table (conformity, non-conformity and non-applicable tests by wcag levels).
- *	Builds the non-conformity list
- *	Builds the audit result markup.
- *  @param {array} pagesResultsArray - Contains all wcag results by pages.
-*/
-function runFinalComputation(pagesResultsArray) {
-  
-	/**
-	 * 	Gets the number of non-tested items.
-	 @param {number} nbNT - number of non-tested items.
-	*/  
-    nbNTResultsArray = getNbNotTested();
-
-    var nbNT = nbNTResultsArray.total;
-
-    var finalTotal = 0;
-    var finalResult = 0;
-    var nbPage = 0;
+function pagesResultsComputation(pagesResultsArray) {
+	
 
 	for (let i in pagesResultsArray) {
         var nbTrue = 0;
@@ -1423,62 +1388,29 @@ function runFinalComputation(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
 	}
 
+	return pagesResultsArray;
+}
 
-	/** Adds the result to the pages result array. */  
-    for (let i in pagesResultsArray) {
-        if (pagesResultsArray[i].result != "NA") {
-            finalTotal = finalTotal + pagesResultsArray[i].result;
-            nbPage = nbPage + 1;
-        }
-    }
 
-	/** Final conformity rate. */ 
-    finalResult = Math.round((finalTotal / nbPage));
-
+/**
+	*  Gets the number of true, false, non-applicable and non-tested by wcag level only.
+	*  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
+*/
+function dataWCAGComputation() {
 	
-	/**
-		*  Gets the number of true, false, non-applicable and non-tested by wcag level only.
-		*  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
-	*/
-	var nbTrueWcag = 0;
-    var nbFalseWcag = 0;
-	var nbNaWcag = 0;
-    var nbTotalWcag = 0;
-	
-	var nbTrueWcagA = 0;
-    var nbFalseWcagA = 0;
-	var nbNaWcagA = 0;
-    var nbTotalWcagA = 0;
 
-	var nbTrueWcagAA = 0;
-    var nbFalseWcagAA = 0;
-	var nbNaWcagAA = 0;
-    var nbTotalWcagAA = 0;
-	
 	dataWCAG.complete = true;
 
 	/**
 	 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
 	*/
-	var indexItem = 0;
-	for (let i in dataWCAG.items) {
-		if (dataWCAG.items[indexItem].level === 'AAA') {
-			dataWCAG.items.splice(indexItem,1);
-		} else {
-			indexItem = indexItem+1;
-		}
-	}
 	
-	for (let i in dataWCAG.items) {
-		if (dataWCAG.items[i].resultat === 'nt') {
+		for (let i in dataWCAG.items) {
+			if (dataWCAG.items[i].resultat === 'AAA' && dataWCAG.items[i].resultat === 'nt') {
 				dataWCAG.complete = false;
 			}
 		}
 		
-	/**
-		* 	If all the tests of a page are non-applicables (hypothetical but tested)
-	*/  
-	
 		/** Adds the results to the WCAG object. */  
 		dataWCAG.conformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === true).length;
 		dataWCAG.conformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === true).length;
@@ -1492,19 +1424,76 @@ function runFinalComputation(pagesResultsArray) {
 		dataWCAG.totalA = dataWCAG.items.filter(function(item){return item.level==="A"}).length;
 		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA"}).length;
 	
-		var nbTotalWcag = dataWCAG.items.filter(item => item.resultat === true || item.resultat === false).length;
-		var nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true).length;
-		var nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na").length;
+		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => item.resultat === true || item.resultat === false).length;
+		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true).length;
+		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false).length;
+		dataWCAG.nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na").length;
 
-		
-		if (nbTotalWcag===0 && nbNaWcag>0) {
+		/**
+		* 	If all the wcag are non-applicables (hypothetical but tested)
+		*/ 
+		if (dataWCAG.nbTotalWcag===0 && dataWCAG.nbNaWcag>0) {
 			dataWCAG.result = "NA";
 		} else {
-			dataWCAG.result = (nbTrueWcag / nbTotalWcag) * 100;
+			dataWCAG.result = (dataWCAG.nbTrueWcag / dataWCAG.nbTotalWcag) * 100;
 			dataWCAG.resultA = (dataWCAG.conformeA / (dataWCAG.conformeA+dataWCAG.nonconformeA)) * 100;
 			dataWCAG.resultAA = (dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100;
 		}
+	
+}
 
+function getAAA(currentWcag) {
+	
+	let level = false;
+	
+	if (currentWcag) {
+		dataWCAG.items.forEach(function(current){
+			
+			if (current.wcag === currentWcag) {
+				
+				if (current.level === 'AAA') {
+					level = true;
+				} 
+			} 
+		
+		});
+		
+	}
+	return level;
+	
+}
+
+/**
+ * 	Computes the conformity rate by pages and the final audit conformity rate (average rate).
+ *	Computes the wcag summary table (conformity, non-conformity and non-applicable tests by wcag levels).
+ *	Builds the non-conformity list
+ *	Builds the audit result markup.
+ *  @param {array} pagesResultsArray - Contains all wcag results by pages.
+*/
+function runFinalComputation(pagesResultsArray) {
+	
+	var finalTotal = 0;
+    var finalResult = 0;
+    var nbPage = 0;
+	
+	/** Adds the result to the pages result array. */  
+    for (let i in pagesResultsArray) {
+        if (pagesResultsArray[i].result != "NA") {
+            finalTotal = finalTotal + pagesResultsArray[i].result;
+            nbPage = nbPage + 1;
+        }
+    }
+
+	/** Final conformity rate. */ 
+    finalResult = Math.round((finalTotal / nbPage));
+  
+	/**
+	 * 	Gets the number of non-tested items.
+	 @param {number} nbNT - number of non-tested items.
+	*/  
+    nbNTResultsArray = getNbNotTested();
+
+    var nbNT = nbNTResultsArray.total;
 
     /**Build the audit conformity markup. */ 
     
@@ -3059,6 +3048,9 @@ function initStatementObject() {
 			"name": "",
 			"lang": "",
 			"status": "",
+			"date": "",
+			"users": 0,
+			"blockingPoints": 0,
 			"technology": [
 			{
 				"name": "HTML",
@@ -3156,7 +3148,7 @@ function showStatementWizard() {
 		
 		if (listItem.type==="user") {
 			userInput = true;
-		} 
+		}
 	})
 	
 	statementWizardContent += '</div>';	
@@ -3167,14 +3159,13 @@ function showStatementWizard() {
 		statementWizardContent += '<h3 id="testLegend">Utilisateurs</h3>';
 		statementWizardContent += '<div class="form-group">';
 		statementWizardContent += '<label for="inputNbUser">Nombre d\'utilisateurs</label>';
-		statementWizardContent += '<input type="text" class="form-control" id="inputNbUser">';
+		statementWizardContent += '<input type="text" class="form-control" id="inputNbUsers" value="' + statementVallydette.statement.users + '">';
 		
-		statementWizardContent += '<label for="inputBlockingPoint" >Nombre de point bloquant</label>';
-		statementWizardContent += '<input type="text" class="form-control" id="inputBlockingPoint" >';
+		statementWizardContent += '<label for="inputBlockingPoints" >Nombre de point bloquant</label>';
+		statementWizardContent += '<input type="text" class="form-control" id="inputBlockingPoints" value="' + statementVallydette.statement.blockingPoints + '">';
 		statementWizardContent += '</div>';
 		statementWizardContent += '</div>';
-	}
-	
+	} 
   
 	statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	statementWizardContent += '</form>';
@@ -3274,7 +3265,7 @@ saveListElement = function(listToEdit, statementProperty) {
 			statementVallydette.statement[statementProperty].push(itemObj);
 			
 			listMarkup += '<label class="custom-control custom-checkbox">';
-			listMarkup += '<input type="checkbox" class="custom-control-input" autocomplete="off" value="'+index+'">';
+			listMarkup += '<input type="checkbox" class="custom-control-input" name="' + statementProperty + index + '" autocomplete="off" value="'+index+'">';
 			listMarkup += '<span class="custom-control-label">'+itemObj.name+' '+itemObj.version+'</span>';
 			listMarkup += '</label>';
 
@@ -3326,7 +3317,10 @@ saveStatement = function(statementForm) {
 	
 	statementVallydette.statement.name = statementForm.elements["inputName"].value;
 	statementVallydette.statement.lang = statementForm.elements["inputLang"].value;
+	statementVallydette.statement.date = statementForm.elements["inputDate"].value;
 	statementVallydette.statement.status = "done";
+	statementVallydette.statement.users = statementForm.elements["inputNbUsers"].value;
+	statementVallydette.statement.blockingPoints = statementForm.elements["inputBlockingPoints"].value;
 	
 	statementVallydette.statement.technology.forEach(function(item, index){
 		if(statementForm.elements["technology"+index].checked) {
@@ -3340,7 +3334,195 @@ saveStatement = function(statementForm) {
 		}
 	})
 	
-	console.log(statementVallydette);
+	
+	exportStatement();
+}
+
+exportStatement = function() {
+	
+	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
+	xmlStatement += '<declaration>\n';
+	xmlStatement += '<!--\n ';
+	xmlStatement += 'TITLE\n ';
+	xmlStatement += 'This is the name for the site, or page, or section of a site that was audited\n ';
+	xmlStatement += '-->\n ';
+
+	xmlStatement += '<title><![CDATA[' + statementVallydette.statement.name + ']]></title>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'LANGUAGE\n';
+	xmlStatement += 'This declaration was done in this language:\n';
+	xmlStatement += '(please use proper HTML lang attribute)\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<lang>' + statementVallydette.statement.lang + '</lang>\n\n';
+
+	xmlStatement += '<!-- \n';
+	xmlStatement += 'STATUS\n';
+	xmlStatement += 'Either being audited or having been audited\n';
+	xmlStatement += 'So:\n';
+	xmlStatement += '[WIP|DONE]\n';
+	xmlStatement += '-->\n';
+
+	xmlStatement += '<status>' + statementVallydette.statement.status + '</status>\n\n';
+	xmlStatement += '<!--\n\n';
+	xmlStatement += ' below this line will not be read if we\'re WIP, so don\'t bother filling it up\n';
+	xmlStatement += '-->\n\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += '******************************************************\n';
+	xmlStatement += 'GENERAL DECLARATION INFORMATION\n';
+	xmlStatement += '******************************************************\n';
+	xmlStatement += '-->\n\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'AUDIT DATE\n';
+	xmlStatement += 'Format: YYYY-MM-DD\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<audit_date>' + statementVallydette.statement.date + '</audit_date>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'REFERENTIAL USED\n';
+	xmlStatement += '-->\n';
+
+	xmlStatement += '<referential>\n';
+	xmlStatement += '	<name>WCAG</name><!-- if it\'s an abbreviation, the document template must translate it to plain text -->\n';
+	xmlStatement += '	<version>2.1</version>\n';
+	xmlStatement += '	<level>AA</level>\n';
+	xmlStatement += '	<url>https://www.w3.org/Translations/WCAG20-fr/</url>\n';
+	xmlStatement += '</referential>\n\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'TECHNOLOGIES USED IN THE SITE\n';
+	xmlStatement += '-->\n';
+
+	xmlStatement += '<technologies>\n';
+	var technologiesArray = statementVallydette.statement.technology.filter(item => item.checked);
+	technologiesArray.forEach(item => xmlStatement += '	<technology>' + item.name + ' ' + item.version + '</technology>\n');
+	xmlStatement += '</technologies>\n\n';
+		
+	xmlStatement += '<!--\n';
+	xmlStatement += 'TESTS PERFORMED TO EVALUATE ACCESSIBILITY\n';
+	xmlStatement += 'a test can have the type [auto|manual|functional|user]:\n';
+	xmlStatement += '* automatic testing\n';
+	xmlStatement += '* manual testing\n';
+	xmlStatement += '* functional testing\n';
+	xmlStatement += '* test done by a real user\n';
+	xmlStatement += '-->\n';
+
+	xmlStatement += '<tests>\n';
+	var testsArray = statementVallydette.statement.tests.filter(item => item.checked);
+	testsArray.forEach(item => xmlStatement += '	<test type="' + item.type + '">\n		<name>' + item.name + '</name>\n		<version>' + item.version + '</version>\n	</test>\n');	
+	xmlStatement += '</tests>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'URLS\n';
+	xmlStatement += 'This is the list of URLs that were tested\n';
+	xmlStatement += 'This is CDATA-protected, please add properly formatted HTML.\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<urls>\n';
+	dataVallydette.checklist.page.forEach(item => xmlStatement += '	<url>\n		<name>' + item.name + '</name>\n		<location>' + item.url + '</location>\n	</url>\n');	
+	xmlStatement += '</urls>\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += '******************************************************\n';
+	xmlStatement += 'END GENERAL DECLARATION INFORMATION\n';
+	xmlStatement += '******************************************************\n';
+	xmlStatement += 'START SPECIFIC CONFORMITY NUMBERS\n';
+	xmlStatement += '******************************************************\n';
+	xmlStatement += '-->\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'USERS\n';
+	xmlStatement += 'Number of real users that tested the pages\n';
+	xmlStatement += 'and blocking points they found (if 0, the document will have to say “with no blocking points from a user\'s point of view”\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<users>' + statementVallydette.statement.users + '</users>\n';
+	xmlStatement += '<blocking_points>' + statementVallydette.statement.blockingPoints + '</blocking_points>\n\n';
+
+	var statementResult = runComputation(true);
+	console.log(statementResult);
+	xmlStatement += '<!--\n';
+	xmlStatement += 'RESULTS DETAILS\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<results>\n';
+	xmlStatement += '	<result type="a">\n';
+	xmlStatement += '		<criteria>' + dataWCAG.totalA + '</criteria>\n';
+	xmlStatement += '		<ok>' + dataWCAG.conformeA + '</ok><!-- valid -->\n';
+	xmlStatement += '		<nok>' + dataWCAG.nonconformeA + '</nok><!-- not valid -->\n';
+	xmlStatement += '		<na>' + dataWCAG.naA + '</na><!-- not applicable -->\n';
+	xmlStatement += '		<conformity>' + dataWCAG.resultA.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+	xmlStatement += '	</result>\n\n';
+
+	xmlStatement += '	<result type="aa">\n';
+	xmlStatement += '		<criteria>' + dataWCAG.totalAA + '</criteria>\n';
+	xmlStatement += '		<ok>' + dataWCAG.conformeAA + '</ok><!-- valid -->\n';
+	xmlStatement += '		<nok>' + dataWCAG.nonconformeAA + '</nok><!-- not valid -->\n';
+	xmlStatement += '		<na>' + dataWCAG.naAA + '</na><!-- not applicable -->\n';
+	xmlStatement += '		<conformity>' + dataWCAG.resultAA.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+	xmlStatement += '	</result>\n\n';
+
+	xmlStatement += '	<result type="total">\n';
+	xmlStatement += '		<criteria>' + (dataWCAG.totalA+dataWCAG.totalAA) + '</criteria>\n';
+	xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
+	xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
+	xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
+	xmlStatement += '		<conformity>' + dataWCAG.result.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+	xmlStatement += '	</result>\n';
+	xmlStatement += '</results>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'Pages results details\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<pages_results>\n';
+    xmlStatement += '<page name="maintenant">\n';
+    xmlStatement += '    <ok type="a">19</ok>\n';
+    xmlStatement += '    <!-- valid -->\n';
+    xmlStatement += '    <ok type="aa">19</ok>\n';
+    xmlStatement += '    <!-- valid -->\n';
+    xmlStatement += '    <nok type="a">19</nok>\n';
+    xmlStatement += '    <!-- not valid -->\n';
+    xmlStatement += '    <nok type="aa">19</nok>\n';
+    xmlStatement += '    <!-- not valid -->\n';
+    xmlStatement += '    <na type="a">19</na>\n';
+    xmlStatement += '    <!-- not applicable -->\n';
+    xmlStatement += '    <na type="aa">19</na>\n';
+    xmlStatement += '    <!-- not applicable -->\n';
+    xmlStatement += '    <conformity>95.0</conformity>\n';
+    xmlStatement += '    <!-- percentage, expressed as a number with no “%” sign -->\n';
+    xmlStatement += '</page>\n';
+	
+
+/* 
+<!--
+Non conformity details
+-->
+<details>
+	<detail>
+		<title>1.4.4, Redimensionnement du texte, Niveau AA</title>
+		<description><![CDATA[Les boutons «&nbsp;choisir&nbsp;» sont tronqués. ]]></description>
+	</detail>
+	<detail>
+		<title>3.3.3, Suggestion après une erreur, Niveau AA</title>
+		<description><![CDATA[La suggestion devrait contenir un exemple de format de saisie (adresse, CP, ville). ]]></description>
+	</detail>
+	<detail>
+		<title>4.1.2, Nom, rôle et valeur, Niveau A</title>
+		<description><![CDATA[L'état ouvert / fermé n'est pas géré sur le bon élément (positionné actuellement sur <code>li</code> et non sur bouton). ]]></description>
+	</detail>
+</details> */
+
+
+	
+	xmlStatement += '</declaration>';
+
+	var filename = "file.xml";
+	var pom = document.createElement('a');
+	pom.innerText = "export XML";
+	var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
+
+	pom.setAttribute('href', window.URL.createObjectURL(bb));
+	pom.setAttribute('download', filename);
+	document.getElementById("auditInfoManager").appendChild(pom);
 	
 }
 

@@ -1311,8 +1311,10 @@ function runComputation(obj) {
 
 
 function pagesResultsComputation(pagesResultsArray) {
+	var finalTotal = 0;
+    var finalResult = 0;
+    var nbPage = 0;
 	
-
 	for (let i in pagesResultsArray) {
         var nbTrue = 0;
         var nbFalse = 0;
@@ -1377,6 +1379,7 @@ function pagesResultsComputation(pagesResultsArray) {
 			pagesResultsArray[i].result = (nbTrue / nbTotal) * 100;
 		}
 
+
 		/** Adds the result to the pages result array. */  
 		pagesResultsArray[i].conformeA = nbTrueA;
 		pagesResultsArray[i].conformeAA = nbTrueAA;
@@ -1388,6 +1391,18 @@ function pagesResultsComputation(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
 	}
 
+	/** Final global pages result computation. */  
+    for (let i in pagesResultsArray) {
+        if (pagesResultsArray[i].result != "NA") {
+            finalTotal = finalTotal + pagesResultsArray[i].result;
+            nbPage = nbPage + 1;
+        }
+    }
+	
+	/** Final conformity rate. */ 
+    finalResult = Math.round((finalTotal / nbPage));
+	dataWCAG.globalPagesResult = finalResult;
+	
 	return pagesResultsArray;
 }
 
@@ -1472,20 +1487,7 @@ function getAAA(currentWcag) {
 */
 function runFinalComputation(pagesResultsArray) {
 	
-	var finalTotal = 0;
-    var finalResult = 0;
-    var nbPage = 0;
 	
-	/** Adds the result to the pages result array. */  
-    for (let i in pagesResultsArray) {
-        if (pagesResultsArray[i].result != "NA") {
-            finalTotal = finalTotal + pagesResultsArray[i].result;
-            nbPage = nbPage + 1;
-        }
-    }
-
-	/** Final conformity rate. */ 
-    finalResult = Math.round((finalTotal / nbPage));
   
 	/**
 	 * 	Gets the number of non-tested items.
@@ -1509,8 +1511,8 @@ function runFinalComputation(pagesResultsArray) {
     if (nbNT >= 1) {
         computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
 		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
-    } else if (nbNT === 0 && !isNaN(finalResult)) {
-        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + finalResult + '%</span></p>';
+    } else if (nbNT === 0 && !isNaN(dataWCAG.globalPagesResult)) {
+        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + dataWCAG.globalPagesResult + '%</span></p>';
 		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataWCAG.result) + '%</span></p>';
 	}	
 	
@@ -3440,7 +3442,7 @@ exportStatement = function() {
 	xmlStatement += '<blocking_points>' + statementVallydette.statement.blockingPoints + '</blocking_points>\n\n';
 
 	var statementResult = runComputation(true);
-	console.log(statementResult);
+
 	xmlStatement += '<!--\n';
 	xmlStatement += 'RESULTS DETAILS\n';
 	xmlStatement += '-->\n';
@@ -3473,45 +3475,45 @@ exportStatement = function() {
 	xmlStatement += '<!--\n';
 	xmlStatement += 'Pages results details\n';
 	xmlStatement += '-->\n';
-	xmlStatement += '<pages_results>\n';
-    xmlStatement += '<page name="maintenant">\n';
-    xmlStatement += '    <ok type="a">19</ok>\n';
-    xmlStatement += '    <!-- valid -->\n';
-    xmlStatement += '    <ok type="aa">19</ok>\n';
-    xmlStatement += '    <!-- valid -->\n';
-    xmlStatement += '    <nok type="a">19</nok>\n';
-    xmlStatement += '    <!-- not valid -->\n';
-    xmlStatement += '    <nok type="aa">19</nok>\n';
-    xmlStatement += '    <!-- not valid -->\n';
-    xmlStatement += '    <na type="a">19</na>\n';
-    xmlStatement += '    <!-- not applicable -->\n';
-    xmlStatement += '    <na type="aa">19</na>\n';
-    xmlStatement += '    <!-- not applicable -->\n';
-    xmlStatement += '    <conformity>95.0</conformity>\n';
-    xmlStatement += '    <!-- percentage, expressed as a number with no “%” sign -->\n';
-    xmlStatement += '</page>\n';
+	xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
+	statementResult.forEach(item => xmlStatement += '	<page name="' + item.name + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
+    xmlStatement += '</pages_results>\n\n';
 	
-
-/* 
-<!--
-Non conformity details
--->
-<details>
-	<detail>
-		<title>1.4.4, Redimensionnement du texte, Niveau AA</title>
-		<description><![CDATA[Les boutons «&nbsp;choisir&nbsp;» sont tronqués. ]]></description>
-	</detail>
-	<detail>
-		<title>3.3.3, Suggestion après une erreur, Niveau AA</title>
-		<description><![CDATA[La suggestion devrait contenir un exemple de format de saisie (adresse, CP, ville). ]]></description>
-	</detail>
-	<detail>
-		<title>4.1.2, Nom, rôle et valeur, Niveau A</title>
-		<description><![CDATA[L'état ouvert / fermé n'est pas géré sur le bon élément (positionné actuellement sur <code>li</code> et non sur bouton). ]]></description>
-	</detail>
-</details> */
-
-
+	xmlStatement += '<!--\n';
+	xmlStatement += 'Non conformity details\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<details>\n';
+	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
+			
+			if (listNonConformity.length > 0) {
+				
+				for (let i in listNonConformity) {
+				
+					xmlStatement += '	<detail>';
+					xmlStatement += '		<title>' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', ' + langVallydette.auditTxt10 + ' ' + listNonConformity[i].level + '</title>';
+					xmlStatement += '		<description><![CDATA[';
+					/** Remove undefined values */
+					
+					var last = 0;
+					listNonConformity[i].comment = listNonConformity[i].comment.filter(x => x);
+					
+					if (listNonConformity[i].comment.length > 0) {
+					
+							for (let j in listNonConformity[i].comment) {
+								last = last + 1;
+								console.log(last + ' ' + listNonConformity[i].comment.length);
+								xmlStatement += listNonConformity[i].comment[j] + (listNonConformity[i].comment.length !== last ? ' <br>' : '');
+								
+							}	
+					} 
+					
+					xmlStatement += ']]></description>';
+					xmlStatement += '	</detail>';
+		
+				}
+				
+			}
+	xmlStatement += '</details>\n';
 	
 	xmlStatement += '</declaration>';
 

@@ -311,6 +311,14 @@
 		"comment":[]
 	},
 	{
+		"wcag": "2.5.5",
+		"level": "AAA",
+		"name": "Taille minimum des zones sensibles",
+		"tests": [], 
+		"resultat":"na",
+		"comment":[]
+	},
+	{
 		"wcag": "3.1.1",
 		"level": "A",
 		"name": "Langue de la page",

@@ -146,7 +146,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li> </ul>  ",
+		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), for any triggering of an action, validation or selection</li></ul>  ",
 		"resultatTest": "nt"
 	},{
 		"themes": "Textual Content",

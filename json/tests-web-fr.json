@@ -674,7 +674,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.1"]
+    "wcag": [""]
   },
   {
     "themes": "Navigation générale",
@@ -782,7 +782,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.5", "2.4.8"]
+    "wcag": ["2.4.5"]
   },
   {
     "themes": "Navigation générale",
@@ -803,7 +803,7 @@
     "exception": "",
     "raccourcis": "",
     "profils": ["Qualifieur - checklist initiale", "Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
-    "wcag": ["2.4.5"]
+    "wcag": ["2.4.8"]
   },
   {
     "themes": "Navigation générale",

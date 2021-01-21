@@ -782,7 +782,7 @@
     "exception":"",
     "raccourcis":"",
     "profils": ["Qualifier - initial checklist", "Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
-    "wcag": ["2.4.5", "2.4.8"]
+    "wcag": ["2.4.5"]
   },
   {
     "themes": "Common navigation",
@@ -803,7 +803,7 @@
     "exception":"",
     "raccourcis":"",
     "profils": ["Qualifier - initial checklist", "Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
-    "wcag": ["2.4.5"]
+    "wcag": ["2.4.8"]
   },
   {
     "themes": "Common navigation",

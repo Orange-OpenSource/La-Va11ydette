@@ -6,7 +6,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  * @param {object} dataVallydette - Global main object, that contains all tests and result of the selected checklist.
  * @param {object} langVallydette - language object.
  * @param {object} checklistVallydette - checklists parameters (ex : url list param).
- * @param {object} statementVallydette - statement object.
+ * @param {object} dataVallydette - statement object.
  * @param {string} globalLang - current selected language.
  * @param {string} globalTemplate - actually 2 template are available, wcag for conformity audit et audit for test audit.
  * @param {number} globalVersion - Contains the last checklist version
@@ -23,7 +23,7 @@ $('.o-nav-local').prioritynav('Autres pages');
 var dataVallydette;
 var langVallydette;
 var checklistVallydette;
-var statementVallydette;
+var dataVallydette;
    
 /**
  * @todo add comment
@@ -3047,11 +3047,11 @@ function initStatementObject() {
 	
 	if (!dataVallydette.statement) {
 	
-		statementVallydette = {
-			"statement": {
+		dataVallydette.statement = {
+			
 				"name": "",
 				"lang": "",
-				"status": "",
+				"status": "WIP",
 				"date": "",
 				"users": 0,
 				"blockingPoints": 0,
@@ -3081,7 +3081,7 @@ function initStatementObject() {
 					"version": ""}
 				
 				],
-			}
+			
 		}
 	
 	}
@@ -3095,27 +3095,30 @@ function showStatementWizard() {
 	removeContextualMenu();
 	removeFilterSection();	
 	
-	var filename = "file.xml";
-	
 	var btnStatementExcelExport = document.createElement('a');
 	btnStatementExcelExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
 	btnStatementExcelExport.setAttribute('id', "btnStatementExcelExport");
 	//btnStatementExcelExport.setAttribute('title', langVallydette.title.btnStatementExcelExport);
 	//btnStatementExcelExport.setAttribute('aria-label', langVallydette.title.btnStatementExcelExport);
-	btnStatementExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none", "disabled");
-
+	btnStatementExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementExcelExport);
+	
+	console.log(dataWCAG.globalPagesResult);
+
+	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
+		
+		var statementResult = runComputation(true);
+		exportStatement(statementResult);
+		
+	} else {
+		
+		btnStatementExcelExport.classList.add("disabled");
+		
+	}
 	
 	btnStatementExcelExport.addEventListener('click', function () {
 		excelExport();
 	});
-	
-	/* var btnStatementExcel = document.createElement('a');
-	
-	var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
-
-	pom.setAttribute('href', window.URL.createObjectURL(bb));
-	pom.setAttribute('download', filename); */
 	
 	let statementWizardContent = '';
 	
@@ -3127,25 +3130,25 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="inputName" class="is-required">Titre</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="inputName" value="' + statementVallydette.statement.name + '" required>';
+    statementWizardContent += '<input type="text" class="form-control" id="inputName" value="' + dataVallydette.statement.name + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputLang" >Langue</label>';
-    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang">';
+    statementWizardContent += '<label for="inputLang" class="is-required">Langue</label>';
+    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
     statementWizardContent += '<option value="" label="Sélectionner"></option>';
-    statementWizardContent += '<option value="FR">Français</option>';
-    statementWizardContent += '<option value="EN">Anglais</option>';
+    statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>Français</option>';
+    statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>Anglais</option>';
     statementWizardContent += '</select>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputDate">Date</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="inputDate" >';
+    statementWizardContent += '<label for="inputDate"  class="is-required">Date</label>';
+    statementWizardContent += '<input type="text" class="form-control" id="inputDate" value="' + dataVallydette.statement.date + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3156,7 +3159,7 @@ function showStatementWizard() {
 	statementWizardContent += '<h3 id="technologyLegend">Technologies</h3>';
     statementWizardContent += '<ul id="technologyList">';	
 
-	statementVallydette.statement.technology.forEach(function(listItem, index){
+	dataVallydette.statement.technology.forEach(function(listItem, index){
 			statementWizardContent += '<li>'+listItem.name+' '+listItem.version+'</li>';
 	
 	})
@@ -3175,7 +3178,7 @@ function showStatementWizard() {
 
 	statementWizardContent += '<ul id="testsList">';	
 	
-    statementVallydette.statement.tests.forEach(function(listItem, index){
+    dataVallydette.statement.tests.forEach(function(listItem, index){
 
 		statementWizardContent += '<li>'+listItem.name+' '+listItem.version+'</li>';
 		
@@ -3191,12 +3194,12 @@ function showStatementWizard() {
 
 	statementWizardContent += '<div id="userInfos">';	
 	statementWizardContent += '<h3 id="testLegend">Utilisateurs</h3>';
-	statementWizardContent += '<div class="form-group">';
+	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="inputNbUser">Nombre d\'utilisateurs</label>';
 	statementWizardContent += '<select class="custom-select mb-1" id="inputNbUsers" name="inputNbUsers">';
 	
 	for (index = 0; index < 10; ++index) {
-		statementWizardContent += '<option value="' + index + '" ' + (index ===  statementVallydette.statement.users ? "selected" : "") + '>' + index + '</option>';
+		statementWizardContent += '<option value="' + index + '" ' + (index ===  parseInt(dataVallydette.statement.users) ? "selected" : "") + '>' + index + '</option>';
 	}
 	
 	statementWizardContent += '</select>';
@@ -3204,7 +3207,7 @@ function showStatementWizard() {
 	statementWizardContent += '<select class="custom-select" id="inputBlockingPoints" name="inputBlockingPoints">';
 	
 	for (index = 0; index < 10; ++index) {
-		statementWizardContent += '<option value="' + index + '" ' + (index ===  statementVallydette.statement.blockingPoints ? "selected" : "") + '>' + index + '</option>';
+		statementWizardContent += '<option value="' + index + '" ' + (index ===   parseInt(dataVallydette.statement.blockingPoints) ? "selected" : "") + '>' + index + '</option>';
 	}
 	
 	statementWizardContent += '</select>';
@@ -3254,7 +3257,7 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<form id="listEditForm">';
 	htmlModal += '<ul id="listToEdit">';
 	
-	statementVallydette.statement[statementProperty].forEach(function(listItem, index){
+	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
 	
 		htmlModal += '<li>';
 		htmlModal += '<span class="input-group">';
@@ -3272,14 +3275,15 @@ editStatementProperty = function (statementProperty) {
 				htmlModal += '</select>';
 			}
 
-			htmlModal += '<input type="text" id="name-'+index+'" class="form-control mb-1" value="'+listItem.name+'" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="nom" title="nom" />';
-			htmlModal += '<input type="text" id="version-'+index+'" class="form-control mb-1" value="'+listItem.version+'" aria-labelledby="itemLegend-'+index+' version-'+index+'" aria-label="version" title="version" />';
+			htmlModal += '<input type="text" id="name-'+index+'" class="form-control mb-1" value="'+listItem.name+'" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="nom" title="nom" aria-describedby="itemDesc" placeholder="nom" />';
+			htmlModal += '<input type="text" id="version-'+index+'" class="form-control mb-1" value="'+listItem.version+'" aria-labelledby="itemLegend-'+index+' version-'+index+'" aria-label="version" title="version" placeholder="version" />';
 		
 		htmlModal += '</span>';
 		htmlModal += '</li>';	
 
 	})
 	htmlModal += '</ul>';
+	htmlModal += '<p id="itemDesc" class="text-muted">Laisser vide le champ "nom", pour supprimer l\'item de la liste après enregistrement.</p>';
 	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">Ajouter un élément</button>';
 	htmlModal += '</form>';
 	htmlModal += '</div>';
@@ -3291,13 +3295,13 @@ editStatementProperty = function (statementProperty) {
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 	
-	document.getElementById("addElement").addEventListener('click', function(){addListElement(statementVallydette.statement[statementProperty]);});
+	document.getElementById("addElement").addEventListener('click', function(){addListElement(dataVallydette.statement[statementProperty]);});
 	document.getElementById("editionSaveBtn").addEventListener('click', function(){saveListElement(document.getElementById("listToEdit"), statementProperty);});
 } 
 
 saveListElement = function(listToEdit, statementProperty) {
 
-	statementVallydette.statement[statementProperty] = [];
+	dataVallydette.statement[statementProperty] = [];
 	let listMarkup = '';
 	let index = 0;
 			
@@ -3315,7 +3319,7 @@ saveListElement = function(listToEdit, statementProperty) {
 			itemObj.name = listItem.children[0].children["name-"+index].value;
 			itemObj.version = listItem.children[0].children["version-"+index].value;
 			
-			statementVallydette.statement[statementProperty].push(itemObj);
+			dataVallydette.statement[statementProperty].push(itemObj);
 			
 			listMarkup += '<li>'+itemObj.name+' '+itemObj.version+'</li>';	
 		}
@@ -3323,10 +3327,10 @@ saveListElement = function(listToEdit, statementProperty) {
 		
 	}
 	
-	var userTest = statementVallydette.statement.tests.filter(item => item.type ==="user");
+	var userTest = dataVallydette.statement.tests.filter(item => item.type ==="user");
 	if (userTest.length === 0) {
-		statementVallydette.statement.users = 0;
-		statementVallydette.statement.blockingPoints = 0;
+		dataVallydette.statement.users = 0;
+		dataVallydette.statement.blockingPoints = 0;
 	} 
 	
 	
@@ -3361,17 +3365,24 @@ addListElement = function(statementProperty) {
 
 saveStatement = function(statementForm) {
 	
-	statementVallydette.statement.name = statementForm.elements["inputName"].value;
-	statementVallydette.statement.lang = statementForm.elements["inputLang"].value;
-	statementVallydette.statement.date = statementForm.elements["inputDate"].value;
-	statementVallydette.statement.status = "done";
-	statementVallydette.statement.users = statementForm.elements["inputNbUsers"].value;
-	statementVallydette.statement.blockingPoints = statementForm.elements["inputBlockingPoints"].value;
+	var statementResult = runComputation(true);
+	
+	dataVallydette.statement.name = statementForm.elements["inputName"].value;
+	dataVallydette.statement.lang = statementForm.elements["inputLang"].value;
+	dataVallydette.statement.date = statementForm.elements["inputDate"].value;
+	dataVallydette.statement.users = statementForm.elements["inputNbUsers"].value;
+	dataVallydette.statement.blockingPoints = statementForm.elements["inputBlockingPoints"].value;
+	dataVallydette.statement.status = "done";
+	
+	if (dataWCAG.globalPagesResult) {
+		
+		exportStatement(statementResult);
+		
+	}
 
-	exportStatement();
 }
 
-exportStatement = function() {
+exportStatement = function(statementResult) {
 	
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
@@ -3380,14 +3391,14 @@ exportStatement = function() {
 	xmlStatement += 'This is the name for the site, or page, or section of a site that was audited\n ';
 	xmlStatement += '-->\n ';
 
-	xmlStatement += '<title><![CDATA[' + statementVallydette.statement.name + ']]></title>\n\n';
+	xmlStatement += '<title><![CDATA[' + dataVallydette.statement.name + ']]></title>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'LANGUAGE\n';
 	xmlStatement += 'This declaration was done in this language:\n';
 	xmlStatement += '(please use proper HTML lang attribute)\n';
 	xmlStatement += '-->\n';
-	xmlStatement += '<lang>' + statementVallydette.statement.lang + '</lang>\n\n';
+	xmlStatement += '<lang>' + dataVallydette.statement.lang + '</lang>\n\n';
 
 	xmlStatement += '<!-- \n';
 	xmlStatement += 'STATUS\n';
@@ -3396,7 +3407,7 @@ exportStatement = function() {
 	xmlStatement += '[WIP|DONE]\n';
 	xmlStatement += '-->\n';
 
-	xmlStatement += '<status>' + statementVallydette.statement.status + '</status>\n\n';
+	xmlStatement += '<status>' + dataVallydette.statement.status + '</status>\n\n';
 	xmlStatement += '<!--\n\n';
 	xmlStatement += ' below this line will not be read if we\'re WIP, so don\'t bother filling it up\n';
 	xmlStatement += '-->\n\n';
@@ -3411,7 +3422,7 @@ exportStatement = function() {
 	xmlStatement += 'AUDIT DATE\n';
 	xmlStatement += 'Format: YYYY-MM-DD\n';
 	xmlStatement += '-->\n';
-	xmlStatement += '<audit_date>' + statementVallydette.statement.date + '</audit_date>\n\n';
+	xmlStatement += '<audit_date>' + dataVallydette.statement.date + '</audit_date>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'REFERENTIAL USED\n';
@@ -3429,7 +3440,7 @@ exportStatement = function() {
 	xmlStatement += '-->\n';
 
 	xmlStatement += '<technologies>\n';
-	statementVallydette.statement.technology.forEach(item => xmlStatement += '	<technology>' + item.name + ' ' + item.version + '</technology>\n');
+	dataVallydette.statement.technology.forEach(item => xmlStatement += '	<technology>' + item.name + ' ' + item.version + '</technology>\n');
 	xmlStatement += '</technologies>\n\n';
 		
 	xmlStatement += '<!--\n';
@@ -3442,7 +3453,7 @@ exportStatement = function() {
 	xmlStatement += '-->\n';
 
 	xmlStatement += '<tests>\n';
-	statementVallydette.statement.tests.forEach(item => xmlStatement += '	<test type="' + item.type + '">\n		<name>' + item.name + '</name>\n		<version>' + item.version + '</version>\n	</test>\n');	
+	dataVallydette.statement.tests.forEach(item => xmlStatement += '	<test type="' + item.type + '">\n		<name>' + item.name + '</name>\n		<version>' + item.version + '</version>\n	</test>\n');	
 	xmlStatement += '</tests>\n\n';
 	
 	xmlStatement += '<!--\n';
@@ -3467,10 +3478,8 @@ exportStatement = function() {
 	xmlStatement += 'Number of real users that tested the pages\n';
 	xmlStatement += 'and blocking points they found (if 0, the document will have to say “with no blocking points from a user\'s point of view”\n';
 	xmlStatement += '-->\n';
-	xmlStatement += '<users>' + statementVallydette.statement.users + '</users>\n';
-	xmlStatement += '<blocking_points>' + statementVallydette.statement.blockingPoints + '</blocking_points>\n\n';
-
-	var statementResult = runComputation(true);
+	xmlStatement += '<users>' + dataVallydette.statement.users + '</users>\n';
+	xmlStatement += '<blocking_points>' + dataVallydette.statement.blockingPoints + '</blocking_points>\n\n';
 
 	xmlStatement += '<!--\n';
 	xmlStatement += 'RESULTS DETAILS\n';
@@ -3546,6 +3555,21 @@ exportStatement = function() {
 	
 	xmlStatement += '</declaration>';
 
+	if (dataVallydette.statement.status === "done") {
+		
+		var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
+
+		
+		var btnStatementExcelExport = document.getElementById("btnStatementExcelExport");
+		btnStatementExcelExport.classList.remove('disabled');
+		btnStatementExcelExport.setAttribute('href', window.URL.createObjectURL(bb));
+		btnStatementExcelExport.setAttribute('download', 'statement.xml'); 
+	
+		
+	}
+	
+	
+	
 }
 
 

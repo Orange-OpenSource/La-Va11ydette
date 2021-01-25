@@ -443,8 +443,7 @@
       "Color Contrast Analyser"
     ],
     "tests": [
-      "Parcourir la page",
-      "Identifier les liens dans le corps du texte"
+      "Identify links in the body text"
     ],
     "verifier": [
       "Check that the links in the body of the text are easily identifiable visually by an other means than the color (underlined, bold, etc.) compared to the rest of the text ",

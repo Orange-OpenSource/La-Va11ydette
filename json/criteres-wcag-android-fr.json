@@ -1,8 +1,8 @@
 ﻿{
 	"name": "Audit conformité WCAG / ANDROID",
 	"items":[{
-		"themes": "Formulaire",
-		"title": "Chaque champ de formulaire possède-t-il une étiquette ?",
+		"themes": "Écran de saisie",
+		"title": "Chaque champ de saisie possède-t-il une étiquette ?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
@@ -11,10 +11,10 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Vérifier que chaque champ a une étiquette (<code>TextView</code> associé) et que celle-ci est pertinente.</p>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
@@ -23,10 +23,10 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>RadioButton</code>, l'utilisation de la propriété <code>RadioGroup</code> étant nécessaire</li><li>pour une liste de <code>Checkbox</code></li></ul>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "Les champs obligatoires sont-ils identifiables&nbsp;?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
@@ -35,10 +35,10 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>Vérifier la présence d'une identification visuelle du champ obligatoire ne reposant pas uniquement sur la couleur (ex&nbsp;: astérisque).</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li><li>Vérifier que le formulaire ne peut être validé si le champ obligatoire n'est pas renseigné.</li></ul>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
 		"ID": "testID-004",
 		"IDorigin": "testID-004",
@@ -47,10 +47,10 @@
 
 		],
 		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "Un remplissage automatique est-il présent pour les champs de saisie destinés à contenir des informations sur l'utilisateur&nbsp;?",
 		"ID": "testID-005",
 		"IDorigin": "testID-005",
@@ -58,10 +58,10 @@
 			"1.3.5 AA"
 		],
 		"verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>autofill</code>.</li><li>La valeur indiquée pour la propriété <code>autofill</code> est pertinente au regard du type d'information attendue.</li></ul>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "Les champs en erreur sont-ils identifiables&nbsp;?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
@@ -69,10 +69,10 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge).</p>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "Les messages d'erreur sont-ils explicites&nbsp;?",
 		"ID": "testID-007",
 		"IDorigin": "testID-007",
@@ -80,10 +80,10 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
+		"themes": "Écran de saisie",
 		"title": "En cas d'erreur, est-ce qu'une suggestion de correction est proposée à l'utilisateur&nbsp;?",
 		"ID": "testID-008",
 		"IDorigin": "testID-008",
@@ -91,18 +91,18 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies.</p>",
-		"group": "Formulaire",		
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
-		"themes": "Formulaire",
-		"title": "Pour chaque formulaire sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
+		"themes": "Écran de saisie",
+		"title": "Si l'écran de saisie est sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>Pour les formulaires avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
-		"group": "Formulaire",		
+		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"group": "Écran de saisie",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Entêtes",
@@ -289,37 +289,37 @@
 		"resultatTest": "nt"
 	},{
 
-		"themes": "Navigation au focus",
-		"title": "Les fonctionnalités de la page sont-elles utilisables avec la navigation au focus ?",
+		"themes": "Navigation au clavier (Switch Access)",
+		"title": "Les fonctionnalités de la page sont-elles utilisables avec Switch Access ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec la navigation au focus</li><li>seuls les éléments interactifs sont accessibles avec la navigation au focus</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access</li><li>seuls les éléments interactifs sont accessibles avec Switch Access</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li></ul>",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au focus",
+		"themes": "Navigation au clavier (Switch Access)",
 		"title": "L'écran ne contient pas de piège clavier&nbsp;?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec la navigation au focus.</p>",
+		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec Switch Access.</p>",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au focus",
+		"themes": "Navigation au clavier (Switch Access)",
 		"title": "L'ordre de prise de focus des éléments est-il logique et cohérent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
 		"wcag": [
 			"2.4.3 A"
 		],
-		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec la navigation au focus.",
+		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access.",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au focus",
+		"themes": "Switch Access (navigation au clavier)",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
@@ -471,6 +471,17 @@
 			"3.1.1 A"
 		],
 		"verifier": "<p>Vérifier que les textes présents dans l'application s'adaptent à la langue choisie dans les paramètres du téléphone.</p>",
+		"resultatTest": "nt"
+	},{
+
+		"themes": "Navigation générale",
+		"title": "Chaque libellé de lien est-il explicite, au minimum dans son contexte ?",
+		"ID": "testID-054",
+		"IDorigin": "testID-054",
+		"wcag": [
+			"2.4.4 A"
+		],
+		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans l'écran pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si ce n'est pas le cas, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte direct.</li></ul>",
 		"resultatTest": "nt"
 	},{			
 		"themes": "Multimédia",

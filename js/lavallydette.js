@@ -611,7 +611,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
-				htmlrefTests += '<h4 class="h5">Procédure</h4>';
+				htmlrefTests += '<h4 class="h5">>' + langVallydette.processHeading + '</h4>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].tests);
 			}
 			
@@ -621,7 +621,7 @@ runTestListMarkup = function (currentRefTests) {
 			}
 			
 			if (currentRefTests[i].resultat) {
-				htmlrefTests += '<h4 class="h5">Résultat</h4>';
+				htmlrefTests += '<h4 class="h5">' + langVallydette.resultHeading + '</h4>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].resultat);
 			}
 			
@@ -631,7 +631,7 @@ runTestListMarkup = function (currentRefTests) {
 			}
 			
 			if (currentRefTests[i].raccourcis) {
-				htmlrefTests += '<h4 class="h5">Raccourci</h4>';
+				htmlrefTests += '<h4 class="h5">' + langVallydette.informations + '</h4>';
 				htmlrefTests += '<p>' + currentRefTests[i].raccourcis+ '</p>';
 			}
 
@@ -1959,7 +1959,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<form id="editForm"><div class="modal-body">';
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="is-required" for="nameValue">Nom <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<label class="is-required" for="nameValue">' + langVallydette.name + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
 	htmlModal += '</div>';
 	
@@ -2205,13 +2205,13 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<div class="modal-body">';
 	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
 	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="is-required" for="issueNameValue">Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<label class="is-required" for="issueNameValue">' + langVallydette.summary + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
-	htmlModal += '<label class="is-required mt-2" for="issueDetailValue">Détail <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<label class="is-required mt-2" for="issueDetailValue">' + langVallydette.description + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<textarea class="form-control" id="issueDetailValue" required></textarea>';
-	htmlModal += '<label for="issueSolutionValue" class="mt-2">Solution <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<label for="issueSolutionValue" class="mt-2">' + langVallydette.solution + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<textarea class="form-control" id="issueSolutionValue"></textarea>';
-	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">Solution technique <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">' + langVallydette.technical_solution + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<textarea class="form-control" id="issueTechnicalSolutionValue"></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '</div>';
@@ -2296,12 +2296,12 @@ getPredefinedIssues = function(targetId) {
 	htmlPredefinedIssues += '<div class="form-group row">';
 	htmlPredefinedIssues += '<div class="col-sm-10">';
 	
-	htmlPredefinedIssues += '<select class="custom-select" id="issuePredefined" aria-label="Selectionner une issue prédéfinie">';
-	htmlPredefinedIssues += '<option selected>Selectionner une issue prédéfinie</option>';
+	htmlPredefinedIssues += '<select class="custom-select" id="issuePredefined" aria-label="' + langVallydette.selectIssue + ' ">';
+	htmlPredefinedIssues += '<option selected>' + langVallydette.selectIssue + '</option>';
 	issuesVallydette[targetId].forEach(function (issue, index) {htmlPredefinedIssues +='<option value="' + index + '">' + issue.title + '</option>'});
 	htmlPredefinedIssues += '</select>';
 	htmlPredefinedIssues += '</div>';
-	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">Valider</button>';
+	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">' + langVallydette.validate + '</button>';
 	htmlPredefinedIssues += '</div>';
 		
 	return htmlPredefinedIssues;
@@ -2325,15 +2325,15 @@ editIssue = function (targetId, issueIndex) {
 	let htmlEditIssue = '';
 	
 	htmlEditIssue += '<form id="editIssueForm">';
-	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> Titre <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
-	htmlEditIssue += '<label class="is-required mt-2" for="issueDetailValue-' + issueIndex + '">Détail <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<label class="is-required mt-2" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
-	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">Solution</label>';
+	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
-	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">Solution Technique</label>';
+	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.technical_solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
-	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">Sauvegarder</button>';
+	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
 	htmlEditIssue += '<hr class="border-light">';
 	htmlEditIssue += '</form>';
 	
@@ -2383,9 +2383,9 @@ saveIssue = function (targetId, issueIndex, issueTitle, issueDetail, issueSoluti
 deleteConfirmationIssue = function (targetId, issueIndex) {
 	
 	let htmlIssueFeedback = '<div id="deleteIssueBtn-'+ targetId +'-'+ issueIndex +'-feedback">';
-	htmlIssueFeedback += '<span id="deleteIssueMessage-'+ targetId +'-'+ issueIndex +'">Veuillez confirmer la suppression de l\'anomalie : </span>';
-	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">Non</button>';
-	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm"  aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'"  onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">Oui</button>';
+	htmlIssueFeedback += '<span id="deleteIssueMessage-'+ targetId +'-'+ issueIndex +'">' + langVallydette.issueTxt3 + '</span>';
+	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">' + langVallydette.no + '</button>';
+	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm"  aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'"  onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">' + langVallydette.yes + '</button>';
 	htmlIssueFeedback += '</div>';
 	
 	let elButton = document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex);

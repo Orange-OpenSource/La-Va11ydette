@@ -2227,7 +2227,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
-	var currentEditForm = document.getElementById('editForm');
+	let currentEditForm = document.getElementById('editForm');
  
 	currentEditForm.addEventListener('submit', function () {
 		event.preventDefault();
@@ -2333,7 +2333,8 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
 	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.technical_solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
-	htmlEditIssue += '<button id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
+	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 mb-1">' + langVallydette.cancel + '</button>';
+	htmlEditIssue += '<button type="submit"  id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
 	htmlEditIssue += '<hr class="border-light">';
 	htmlEditIssue += '</form>';
 	
@@ -2343,40 +2344,51 @@ editIssue = function (targetId, issueIndex) {
 	
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
 	elTitle.focus();
-	let elDetail = document.getElementById('issueDetailValue-' + issueIndex);
-	let elSolution = document.getElementById('issueSolutionValue-' + issueIndex);
-	let elTechnicalSolution = document.getElementById('issueTechnicalSolutionValue-' + issueIndex);
+
+	let issueForm = document.getElementById('editIssueForm');
+	issueForm.addEventListener('submit', function () {
+		event.preventDefault();
+		
+		saveIssue(targetId, issueIndex, this);
+		
+	});
 	
-	var saveIssueBtn = document.getElementById('saveIssueBtn-'+ targetId +'-'+ issueIndex);
-	saveIssueBtn.addEventListener('click', function () {
-		saveIssue(targetId, issueIndex, elTitle.value, elDetail.value, elSolution.value, elTechnicalSolution.value)
+	document.getElementById('cancelIssueBtn-' + targetId + '-' + issueIndex).addEventListener('click', function () {
+		cancelIssue(targetId, issueIndex, getIssue(targetId, 'issueTitle', issueIndex), getIssue(targetId, 'issueDetail', issueIndex));	
 	});
 	
 }
 
-saveIssue = function (targetId, issueIndex, issueTitle, issueDetail, issueSolution, issueTechnicalSolution) {
-	
+saveIssue = function (targetId, issueIndex, issueEditForm) {
+
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 
-			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTitle'] = issueTitle;
-			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueDetail'] = issueDetail;
-			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueSolution'] = issueSolution;
-			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTechnicalSolution'] = issueTechnicalSolution;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTitle'] = issueEditForm.elements["issueNameValue-" + issueIndex].value;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueDetail'] = issueEditForm.elements["issueDetailValue-" + issueIndex].value;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueSolution'] = issueEditForm.elements["issueSolutionValue-" + issueIndex].value;
+			dataVallydette.checklist.page[currentPage].items[i].issues[issueIndex]['issueTechnicalSolution'] = issueEditForm.elements["issueTechnicalSolutionValue-" + issueIndex].value;
 			
 		}
 	}
 
+	cancelIssue(targetId, issueIndex, issueEditForm.elements["issueNameValue-" + issueIndex].value, issueEditForm.elements["issueDetailValue-" + issueIndex].value);
+	
+	jsonUpdate();	
+	
+}
+
+cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
+
 	let htmlEditIssue = '';
 	htmlEditIssue += issueDetail;
 	
-	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
+	let elIssueCard = document.getElementById('issue-body-' + targetId + '-' + issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
 	
-	let elIssueCardHeader = document.getElementById('btnIssue'+targetId+'-'+ issueIndex);
+	let elIssueCardHeader = document.getElementById('btnIssue' + targetId + '-' + issueIndex);
 	elIssueCardHeader.innerHTML = issueTitle;
-	
-	jsonUpdate();	
+
 	
 }
 
@@ -2786,27 +2798,18 @@ loadChecklistObject = function () {
  * Run each time an updated is made to the vallydette object, in order to update the export informations.
  */
 jsonUpdate = function () {
-	let defaultName = document.getElementById("checklistName");
-	defaultName = utils.slugify(defaultName.innerText);
 
+	let exportFileName = utils.fileName('json');
+	
 	let dataStr = JSON.stringify(dataVallydette);
-
 	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-
-	var todayDate = new Date();
-	var date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
-
-	var todayHour = new Date();
-	var time = todayHour.getHours() + ":" + todayHour.getMinutes() + ":" + todayHour.getSeconds();
-
-	let exportFiledefaultName = defaultName + '-' + date + '-' + time + '.json';
 
 	linkElement = document.getElementById("export");
 	linkElement.classList.remove("disabled");
 	linkElement.removeAttribute('disabled');
 	linkElement.setAttribute('aria-disabled', false);
 	linkElement.setAttribute('href', dataUri);
-	linkElement.setAttribute('download', exportFiledefaultName);
+	linkElement.setAttribute('download', exportFileName);
 	
 	
 	window.localStorage.setItem('lavallydette', dataStr);
@@ -2898,7 +2901,8 @@ for (let i in dataVallydette.checklist.page) {
 		
 	} 
 
-    excel.generate("SampleData.xlsx");
+	let exportFileName = utils.fileName("xlsx");
+    excel.generate(exportFileName);
 }
 
  /**
@@ -2956,6 +2960,23 @@ const utils = {
   removeElement: function (e) { 
 	if(e){
 		e.parentNode.removeChild(e); 
+	}
+       
+  },
+  fileName: function (ext) { 
+	if(ext){
+		let defaultName = document.getElementById("checklistName");
+		defaultName = utils.slugify(defaultName.innerText);
+
+		let todayDate = new Date();
+		let date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+
+		let todayHour = new Date();
+		let time = todayHour.getHours() + "-" + todayHour.getMinutes() + "-" + todayHour.getSeconds();
+
+		let exportFileDefaultName = defaultName + '-' + date + '-' + time + '.' + ext;
+		
+		return exportFileDefaultName;
 	}
        
   }

@@ -32,37 +32,98 @@
 		}
 		
 	],
+	"testWebID-2": [
+			{
+					"title" : "Absence de sémantique de liste HTML",
+					"detail" : "Les éléments présentés visuellement comme des listes doivent être structurés avec une sémantique de liste.",
+					"solution" : "Utiliser des sémantiques de listes appropriées <ul>, <ol> ou <dl>, <dt> et <dd>",
+					"technicalSolution" : ""
+			},
+			{
+					"title" : "Absence de sémantique de lien HTML ",
+					"detail" : "Les éléments interactifs entrainant un changement d'URL doivent utiliser une sémantique de lien HTML. ",
+					"solution" : "Utiliser la sémantique <a>.",
+					"technicalSolution" : ""
+			},
+			{
+					"title" : "Absence de sémantique de bouton HTML ",
+					"detail" : "Les éléments interactifs déclanchant une action doivent utiliser une sémantique de bouton HTML. ",
+					"solution" : "Utiliser la sémantique <button> ou <input type=\"button\"> ",
+					"technicalSolution" : ""
+			}
+	],
 	"testWebID-3": [
 		{
 			"title" : "Element incomplet",
-			"detail" : "Des balises de début ou de fin sont manquantes pour un ou plusieurs éléments",
+			"detail" : "Des balises de début ou de fin sont manquantes pour un ou plusieurs éléments.",
 			"solution" : "",
 			"technicalSolution" : ""
 		
 		},
 		{
 			"title" : "Erreur d'imbrication",
-			"detail" : "Des éléments ne respectent pas les règles d'imbrications (conformité HTML)",
+			"detail" : "Des éléments ne respectent pas les règles d'imbrications (conformité HTML).",
 			"solution" : "",
 			"technicalSolution" : ""
 		
 		},
 		{
 			"title" : "Attributs dupliqués",
-			"detail" : "Présence d'attributs dupliqués sur un même élément",
+			"detail" : "Présence d'attributs dupliqués sur un même élément.",
 			"solution" : "",
 			"technicalSolution" : ""
 		
 		},
 		{
 			"title" : "Présence d'ID dupliqués",
-			"detail" : "La page ne doit pas comporter des ID dupliqués",
+			"detail" : "La page ne doit pas comporter des ID dupliqués.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
 		
 	],
+	"testWebID-4": [
+		{
+			"title" : "Absence d'attribut lang",
+			"detail" : "Un attribut lang doit être présent sur l'élément HTML. De plus la valeur de l'attribut doit correspondre à la langue principale du document.",
+			"solution" : "",
+			"technicalSolution" : "<html lang=\"fr\" >"
+		
+		},
+		{
+			"title" : "La valeur de l'attribut lang est erronée",
+			"detail" : "La valeur de l'attribut doit correspondre à la langue principale du document.",
+			"solution" : "Si la langue principale du document est l'anglais, la valeur de l'attribut sera lang=\"en\"",
+			"technicalSolution" : "<html lang=\"en\" >"
+		
+		}
+	],
+	"testWebID-5": [
+		{
+			"title" : "Changement de langue non indiqué",
+			"detail" : "Les mots et expressions en langue étrangère doivent être indiqués aux utilisateurs.",
+			"solution" : "Ajouter un attribut lang aux termes en langue étrangère",
+			"technicalSolution" : "<q lang='en'>[…]</q>"
+		
+		}
+	],
 	"testWebID-6": [
+		{
+			"title" : "Absence d'entêtes de lignes ou de colonnes",
+			"detail" : "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",
+			"solution" : "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope='col'. Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope='row'. ",
+			"technicalSolution" : "<th scope='col'> / <th scope='row'> "
+		
+		},
+		{
+			"title" : "Présence de tableau de mise en forme",
+			"detail" : "Les tableaux ne doivent pas être utilisés pour de la mise en forme",
+			"solution" : "Ajouter un role='presentation' au tableau",
+			"technicalSolution" : "<table role='presentation'>"
+		
+		}
+	],
+	"testWebID-7": [
 		{
 			"title" : "Absence d'entêtes de lignes ou de colonnes",
 			"detail" : "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",

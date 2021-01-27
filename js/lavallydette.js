@@ -570,7 +570,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span>'
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>'
 			
 			hasGoodPractice = false;
 			if ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "")) {
@@ -611,7 +611,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
-				htmlrefTests += '<h4 class="h5">>' + langVallydette.processHeading + '</h4>';
+				htmlrefTests += '<h4 class="h5">' + langVallydette.processHeading + '</h4>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].tests);
 			}
 			
@@ -2333,14 +2333,13 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
 	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.technical_solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
-	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 mb-1">' + langVallydette.cancel + '</button>';
-	htmlEditIssue += '<button type="submit"  id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
+	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 mr-1 mb-1">' + langVallydette.cancel + '</button>';
+	htmlEditIssue += '<button type="submit" id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
 	htmlEditIssue += '<hr class="border-light">';
 	htmlEditIssue += '</form>';
 	
 	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
-	
 	
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
 	elTitle.focus();
@@ -2352,6 +2351,9 @@ editIssue = function (targetId, issueIndex) {
 		saveIssue(targetId, issueIndex, this);
 		
 	});
+	
+	document.getElementById('editIssueBtn-' + targetId + '-'+ issueIndex).style.display = "none";
+	document.getElementById('deleteIssueBtn-' + targetId + '-'+ issueIndex).style.display = "none";
 	
 	document.getElementById('cancelIssueBtn-' + targetId + '-' + issueIndex).addEventListener('click', function () {
 		cancelIssue(targetId, issueIndex, getIssue(targetId, 'issueTitle', issueIndex), getIssue(targetId, 'issueDetail', issueIndex));	
@@ -2388,7 +2390,11 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	
 	let elIssueCardHeader = document.getElementById('btnIssue' + targetId + '-' + issueIndex);
 	elIssueCardHeader.innerHTML = issueTitle;
+	
+	document.getElementById('editIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";
+	document.getElementById('deleteIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";
 
+	document.getElementById('editIssueBtn-' + targetId + '-' + issueIndex).focus();
 	
 }
 
@@ -2873,7 +2879,6 @@ for (let i in dataVallydette.checklist.page) {
 			excel.set(setIndex,j,undefined, "auto"); 
 		}	 
 		
-		
 		let rowIssues = 0;
 		
 		for (let j in dataVallydette.checklist.page[i].items) {
@@ -2883,13 +2888,15 @@ for (let i in dataVallydette.checklist.page) {
 					
 				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
 					
+					//@ ajout url tests
 					rowIssues++;
 					excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
-					excel.set(setIndex,1,rowIssues, dataVallydette.checklist.page[i].items[j].title);
-					excel.set(setIndex,2,rowIssues, issue.issueDetail);
-					excel.set(setIndex,3,rowIssues, issue.issueSolution);
-					excel.set(setIndex,4,rowIssues, issue.issueTechnicalSolution);
-					excel.set(setIndex,5,rowIssues, issue.issueTitle);
+					excel.set(setIndex,1,rowIssues, '=HYPERLINK("http://www.google.com","' + dataVallydette.checklist.page[i].items[j].title + '")');
+					excel.set(setIndex,2,rowIssues, issue.issueTitle);
+					excel.set(setIndex,3,rowIssues, issue.issueDetail);
+					excel.set(setIndex,4,rowIssues, issue.issueSolution);
+					excel.set(setIndex,5,rowIssues, issue.issueTechnicalSolution);
+					
 				
 				})
 					

@@ -80,6 +80,7 @@
 	"selectIssue": "select a pre-defined issue",
 	"yes": "yes",
 	"no": "no",
+	"anchorLink": "Anchor link",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",

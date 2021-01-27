@@ -81,6 +81,7 @@
 	"selectIssue": "sélectionner une anomalie pré-définie",
 	"yes": "oui",
 	"no": "non",
+	"anchorLink": "Lien pour ancrage",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",

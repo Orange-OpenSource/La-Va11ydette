@@ -88,14 +88,12 @@
 			"detail" : "Un attribut lang doit être présent sur l'élément HTML. De plus la valeur de l'attribut doit correspondre à la langue principale du document.",
 			"solution" : "",
 			"technicalSolution" : "<html lang=\"fr\" >"
-		
 		},
 		{
 			"title" : "La valeur de l'attribut lang est erronée",
 			"detail" : "La valeur de l'attribut doit correspondre à la langue principale du document.",
 			"solution" : "Si la langue principale du document est l'anglais, la valeur de l'attribut sera lang=\"en\"",
 			"technicalSolution" : "<html lang=\"en\" >"
-		
 		}
 	],
 	"testWebID-5": [
@@ -103,56 +101,150 @@
 			"title" : "Changement de langue non indiqué",
 			"detail" : "Les mots et expressions en langue étrangère doivent être indiqués aux utilisateurs.",
 			"solution" : "Ajouter un attribut lang aux termes en langue étrangère",
-			"technicalSolution" : "<q lang='en'>[…]</q>"
-		
+			"technicalSolution" : "<q lang=\"en\">[…]</q>"
 		}
 	],
 	"testWebID-6": [
 		{
 			"title" : "Absence d'entêtes de lignes ou de colonnes",
 			"detail" : "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",
-			"solution" : "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope='col'. Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope='row'. ",
-			"technicalSolution" : "<th scope='col'> / <th scope='row'> "
-		
+			"solution" : "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope='col'. Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope=\"row\". ",
+			"technicalSolution" : "<th scope=\"col\"> / <th scope=\"row\"> "
 		},
 		{
 			"title" : "Présence de tableau de mise en forme",
 			"detail" : "Les tableaux ne doivent pas être utilisés pour de la mise en forme",
-			"solution" : "Ajouter un role='presentation' au tableau",
-			"technicalSolution" : "<table role='presentation'>"
-		
+			"solution" : "Ajouter un role=\"presentation\" au tableau",
+			"technicalSolution" : "<table role=\"presentation\">"
 		}
 	],
 	"testWebID-7": [
 		{
-			"title" : "Absence d'entêtes de lignes ou de colonnes",
-			"detail" : "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",
-			"solution" : "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope='col'. Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope='row'. ",
-			"technicalSolution" : "<th scope='col'> / <th scope='row'> "
-		
+			"title" : "Absence de ALT sur des images",
+			"detail" : "Toutes les images doivent posséder un attribut ALT.",
+			"solution" : "Ajouter un attribut ALT aux images.",
+			"technicalSolution" : "<img alt=\"[...]\" [...]> "
 		},
 		{
-			"title" : "Présence de tableau de mise en forme",
-			"detail" : "Les tableaux ne doivent pas être utilisés pour de la mise en forme",
-			"solution" : "Ajouter un role='presentation' au tableau",
-			"technicalSolution" : "<table role='presentation'>"
-		
+			"title" : "Absence de TITLE sur les cadres",
+			"detail" : "Tous les cadres doivent posséder un attribut TITLE.",
+			"solution" : "Ajouter un attribut TITLE aux cadres.",
+			"technicalSolution" : "<iframe title=\"[...]\">"
+		}
+	],
+	"testWebID-8": [
+		{
+			"title" : "Une image porteuse d'information est intégrée en background (CSS)",
+			"detail" : "Les images intégrées par du CSS ne doivent pas porter d'information.",
+			"solution" : "Les images portant de l'information doivent être intégrées dans le HTML.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-9": [
+		{
+			"title" : "Le ALT d'une image-lien n'est pas renseigné ou non pertinent",
+			"detail" : "Le contenu de l'attribut alt de chaque image-lien est pertinent par rapport à sa fonction de lien.",
+			"solution" : "Renseigner la cible du lien dans le ALT.",
+			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[...]\" alt= \"Mon site\" > </a>"
+		},
+		{
+			"title" : "Le ALT d'une image porteuse d'information n'est pas renseigné ou non pertinent",
+			"detail" : "L'attribut alt de chaque image est pertinent par rapport au rôle de l'image dans la page.",
+			"solution" : "Renseigner dans le ALT, l'information portée par l'image..",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Le ALT d'une image contenant du texte n'est pas renseigné ou non pertinent",
+			"detail" : "L'attribut alt reprend au moins le texte de l’image.",
+			"solution" : "Reporter  dans la ALT le texte présenté par l'image.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Le ALT d'une image décorative n'est pas pertinent",
+			"detail" : "L'attribut alt d'une image décorative doit être vide, afin que l'image soit ignorée, notamment par les aides techniques.",
+			"solution" : "Renseigner un alt vide.",
+			"technicalSolution" : "<img src=\"[...]\" alt=\"\" >"
+		},
+		{
+			"title" : "Le ALT d'une image complexe (schémas, graphes ...) n'est pas pertinent",
+			"detail" : "",
+			"solution" : "Pour toute description d'image trop longue pour être mise dans un attribut alt, la description de l'image sous forme de texte html est, soit présente dans la page, soit, un lien pointe vers une page html contenant la description, et ceci, à proximité de l'image à décrire.",
+			"technicalSolution" : ""
 		}
 	],
 	"testWebID-10": [
-		{
-			"title" : "Absence d'attribut TITLE",
-			"detail" : "Les frame et iframe doivent comporter un attribut TITLE",
-			"solution" : "Ajouter un attribut TITLE, la valeur de l'attribut décrit le contenu de la frame ou iframe",
-			"technicalSolution" : ""
-		},
 		{
 			"title" : "Attribut TITLE non pertinent",
 			"detail" : "La valeur de l'attribut doit permettre aux utilisateurs de comprendre la nature de la frame ou iframe",
 			"solution" : "Ajouter un attribut TITLE, la valeur de l'attribut décrit le contenu de la frame ou iframe",
 			"technicalSolution" : ""
-		
 		}
 		
+	],
+	"testWebID-11": [
+		{
+			"title" : "Présence de texte sous forme d'image",
+			"detail" : "Les textes doivent être présent dans le HTML et mis en forme via CSS.",
+			"solution" : "Intégrer les textes dans le HTML et gérer la mise en forme via CSS",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-12": [
+		{
+			"title" : "Absence de transcrit complet",
+			"detail" : "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
+			"solution" : "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Absence de sous-titres",
+			"detail" : "Pour toute vidéo, des sous-titres sont disponibles",
+			"solution" : "Ajouter des sous-titres sous formats texte sont présents pour toutes vidéos et restituent l’ensemble des informations de la bande son",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Absence d'audiodescription",
+			"detail" : "Une audiodescription est nécessaire pour les vidéos présentant des informations sous forme visuelle.",
+			"solution" : "Ajouter une audio-description est présente en complément de la bande audio, si besoin. Celle-ci présente, sous format texte, les informations convoyées uniquement par l’image.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-13": [
+		{
+			"title" : "Impossible de stopper une piste audio ou vidéo",
+			"detail" : "Les pistes audio de la page automatiquement jouées plus de 3 secondes peuvent être stoppées, mises en pause ou leur volume peut être contrôlé indépendamment",
+			"solution" : "Fournir un mécanisme accessible, permettant aux utilisateurs de contrôler les sons joués plus de 3 secondes.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-14": [
+		{
+			"title" : "Présence de clignotements rapides",
+			"detail" : "Présence de contenu présentant des clignotements rapides (plus de 3 flash à la seconde) ou les flashs sont inférieurs au seuil général ou seuil de rouge.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-15": [
+		{
+			"title" : "Absence d'alternative au captcha",
+			"detail" : "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
+			"solution" : "Proposer en alternative : un captcha audio + visuel, ou  des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-16": [
+		{
+			"title" : "Contraste insuffisant entre texte et fond",
+			"detail" : "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
+			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Contraste insuffisant pour des liens non-soulignés",
+			"detail" : "Les liens non-soulignés doivent avoir un rapport de contraste suffisant avec le texte environnant",
+			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"technicalSolution" : ""
+		}
 	]
 }

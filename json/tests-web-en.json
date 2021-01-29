@@ -556,7 +556,7 @@
       "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"
     ],
     "verifier": [
-      "Verify that it is possible to determine the action or destination of a link or button, only from its <a href='http://a11y-guidelines.orange.com/web_EN/a11y-name.html'>accessible name</a>"
+      "Verify that it is possible to determine the action or destination of a link or button, only from its <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='blank' title='accessible name (new window)' aria-label='accessible name (new window)' >accessible name</a>"
     ],
     "resultat": [
       "Links, buttons and navigation items are understandable out of context"

@@ -557,7 +557,7 @@
       "Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"
     ],
     "verifier": [
-      "Vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton, uniquement à partir de son <a href='http://a11y-guidelines.orange.com/web/a11y-name.html'> nom accessible</a>)"
+      "Vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton, uniquement à partir de son <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='blank' title='nom accessible (nouvelle fenêtre)' aria-label='nom accessible (nouvelle fenêtre)' > nom accessible</a>)"
     ],
     "resultat": [
       "Les liens, boutons et items de navigation sont compréhensibles hors contextes"

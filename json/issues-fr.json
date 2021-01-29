@@ -246,5 +246,73 @@
 			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
 			"technicalSolution" : ""
 		}
+	],
+	"testWebID-17": [
+		{
+			"title" : "Contraste insuffisant pour des icônes porteur d'information",
+			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
+			"solution" : "Assurer un contraste de 3:1 minimum pour les icônes.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Contraste insuffisant pour des composants interactifs (boutons, boutons radios, ...)",
+			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
+			"solution" : "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Contraste insuffisant pour états de composants interactifs (focus, hover, ...)",
+			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
+			"solution" : "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-18": [
+		{
+			"title" : "La couleur est le seul moyen de convoyer de l'information",
+			"detail" : "La couleur ne doit pas être le seul moyen de convoyer d'information : au moins un autre moyen visuel est disponible pour obtenir la même information",
+			"solution" : "Compléter la couleur par un texte explicite, ou une autre information visuelle (exemple : des icônes utilisent des couleurs, mais également des formes différentes).",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-19": [
+		{
+			"title" : "Lien non identifiable dans un corps de texte",
+			"detail" : "Les liens dans le corps du texte doivent être facilement identifiables visuellement par un moyen autre que la couleur (souligné, gras, etc.)",
+			"solution" : "Appliquer un moyen visuellement identifiable (souligné, gras, etc.).  s'assurer d'un contraste de 3:1 entre le texte, le fond et les liens et qu'il existe un autre moyen que la couleur pour les identifier au survol et au focus.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-20": [
+		{
+			"title" : "Une information sensorielle est le seul moyen de convoyer de l'information",
+			"detail" : "Une l’information sensorielle (ex : position, taille, son) ne doit pas être le seul moyen pour transmettre de l'information",
+			"solution" : "Compléter linformation par un texte, ou un message explicite.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-22": [
+		{
+			"title" : "Présence de libellés identiques",
+			"detail" : "Des éléments interactifs avec des libellés identiques, mais des cibles différentes sont présents dans la page.",
+			"solution" : "Ajouter une information discriminante à chaque libellé afin de les différencier.",
+			"technicalSolution" : "Plusieurs solutions sont possibles pour compléter un libellé de lien ou de bouton : sr-only, aria-labelledby, aria-label"
+		}
+	],
+	"testWebID-24": [
+		{
+			"title" : "Présence de libellés identiques",
+			"detail" : "Des éléments interactifs avec des libellés identiques, mais des cibles différentes sont présents dans la page.",
+			"solution" : "Ajouter une information discriminante à chaque libellé afin de les différencier.",
+			"technicalSolution" : "Plusieurs solutions sont possibles pour compléter un libellé de lien ou de bouton : sr-only, aria-labelledby, aria-label"
+		}
+	],
+	"testWebID-25": [
+		{
+			"title" : "Absence du texte visible à l'écran dans l'accessible name",
+			"detail" : "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom (accessible) de ce composant.",
+			"solution" : "Modifier l'accessible name de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
+			"technicalSolution" : "Plusieurs solutions sont possibles pour redéfinir l'accessible name : aria-labelledby, aria-label, title, sr-only"
+		}
 	]
 }

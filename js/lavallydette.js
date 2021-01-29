@@ -2895,11 +2895,8 @@ for (let i in dataVallydette.checklist.page) {
 					excel.set(setIndex,2,rowIssues, issue.issueTitle);
 					excel.set(setIndex,3,rowIssues, issue.issueDetail);
 					excel.set(setIndex,4,rowIssues, issue.issueSolution);
-					//excel.set(setIndex,5,rowIssues, issue.issueTechnicalSolution);
-					excel.set(setIndex,1,rowIssues, '<img src="‪file://C:\Users\FBKX1585\Pictures\console.png" alt="" >');
-					
-					
-				
+					excel.set(setIndex,5,rowIssues, issue.issueTechnicalSolution);
+		
 				})
 					
 			}
@@ -2912,6 +2909,7 @@ for (let i in dataVallydette.checklist.page) {
 
 	let exportFileName = utils.fileName("xlsx");
     excel.generate(exportFileName);
+	
 	
 }
 

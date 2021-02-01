@@ -1376,7 +1376,7 @@ function pagesResultsComputation(pagesResultsArray) {
 		if (nbTotal===0 && nbNA>0) {
 			pagesResultsArray[i].result = "NA";
 		} else {
-			pagesResultsArray[i].result = (nbTrue / nbTotal) * 100;
+			pagesResultsArray[i].result = Math.round((nbTrue / nbTotal) * 100);
 		}
 
 
@@ -1450,9 +1450,9 @@ function dataWCAGComputation() {
 		if (dataWCAG.nbTotalWcag===0 && dataWCAG.nbNaWcag>0) {
 			dataWCAG.result = "NA";
 		} else {
-			dataWCAG.result = (dataWCAG.nbTrueWcag / dataWCAG.nbTotalWcag) * 100;
-			dataWCAG.resultA = (dataWCAG.conformeA / (dataWCAG.conformeA+dataWCAG.nonconformeA)) * 100;
-			dataWCAG.resultAA = (dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100;
+			dataWCAG.result = Math.round((dataWCAG.nbTrueWcag / dataWCAG.nbTotalWcag) * 100);
+			dataWCAG.resultA = Math.round((dataWCAG.conformeA / (dataWCAG.conformeA+dataWCAG.nonconformeA)) * 100);
+			dataWCAG.resultAA = Math.round((dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100);
 		}
 	
 }
@@ -1532,7 +1532,7 @@ function runFinalComputation(pagesResultsArray) {
 			
 			computationContent += '<ul>';
 			computationContent += '<li><strong>' + langVallydette.auditTxt12 + '</strong> ';
-			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
+			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ' / ' + nbNTResultsArray['page' + i] + ' ' + langVallydette.auditTxt7 +')' : '';
 			computationContent += '</li>';
 			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
@@ -1572,7 +1572,7 @@ function runFinalComputation(pagesResultsArray) {
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
 			computationContent += '<td class="text-center bg-light">';
-			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result.toFixed(2) + ' % ' : '';
+			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 			computationContent += '</td>';
 			computationContent += '</tr>';
@@ -1623,15 +1623,15 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<tr>';
 		computationContent += '<th scope="row" class="font-weight-bold bg-light">' + langVallydette.auditTxt16 + '</th>';
 		computationContent += '<td class="text-center bg-light">';
-		computationContent += (!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? dataWCAG.resultA.toFixed(2) + ' % ' : '';
+		computationContent += (!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? dataWCAG.resultA + ' % ' : '';
 		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 		computationContent += '</td>';
 		computationContent += '<td class="text-center bg-light">';
-		computationContent += (!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? dataWCAG.resultAA.toFixed(2) + ' % ' : '';
+		computationContent += (!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? dataWCAG.resultAA + ' % ' : '';
 		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 		computationContent += '</td>';
 		computationContent += '<td class="text-center bg-light">';
-		computationContent += (!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? dataWCAG.result.toFixed(2) + ' % ' : '';
+		computationContent += (!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? dataWCAG.result + ' % ' : '';
 		computationContent += (dataWCAG.complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 		computationContent += '</td>';
 		computationContent += '</tr>';
@@ -3103,11 +3103,10 @@ function showStatementWizard() {
 	btnStatementExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementExcelExport);
 	
-	console.log(dataWCAG.globalPagesResult);
+	var statementResult = runComputation(true);
 
 	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
 		
-		var statementResult = runComputation(true);
 		exportStatement(statementResult);
 		
 	} else {
@@ -3123,6 +3122,14 @@ function showStatementWizard() {
 	let statementWizardContent = '';
 	
 	statementWizardContent += '<h2 class="pt-4 pb-3">Configuration de la déclaration</h2>';
+	
+	statementWizardContent += '<div id="alertContainer">';
+	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
+		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>L\'export XML est disponible uniquement pour les audits terminés</p>';
+		statementWizardContent += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">Close information message</span></button>';   
+		statementWizardContent += '</div>';
+	}
+	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<form id="statementForm">';
 	
@@ -3379,6 +3386,13 @@ saveStatement = function(statementForm) {
 		exportStatement(statementResult);
 		
 	}
+	
+	alertMessage = '';
+	alertMessage += '<div class="alert alert-success alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>Enregistré avec succès</p>';
+	alertMessage += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">Close information message</span></button>';   
+	alertMessage += '</div>';
+	
+	document.getElementById('alertContainer').innerHTML += (alertMessage);
 
 }
 

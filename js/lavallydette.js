@@ -2119,7 +2119,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	elModal.innerHTML = htmlModal;
 
 	/** If it's a page properties edition, when add the groups */
-	if ((targetElement === "pageName") && (Object.keys(dataVallydette.checklist.page[currentPage].groups).length)) {
+	if ((targetElement === "pageName")) {
 		initGroups();
 	}
 
@@ -3048,7 +3048,6 @@ function initStatementObject() {
 	if (!dataVallydette.statement) {
 	
 		dataVallydette.statement = {
-			
 				"name": "",
 				"lang": "",
 				"status": "WIP",
@@ -3091,15 +3090,13 @@ function initStatementObject() {
 
 function showStatementWizard() {
 	
-	setPageName("Déclaration");
+	setPageName(langVallydette.statement);
 	removeContextualMenu();
 	removeFilterSection();	
 	
 	var btnStatementExcelExport = document.createElement('a');
 	btnStatementExcelExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
 	btnStatementExcelExport.setAttribute('id', "btnStatementExcelExport");
-	//btnStatementExcelExport.setAttribute('title', langVallydette.title.btnStatementExcelExport);
-	//btnStatementExcelExport.setAttribute('aria-label', langVallydette.title.btnStatementExcelExport);
 	btnStatementExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementExcelExport);
 	
@@ -3121,11 +3118,11 @@ function showStatementWizard() {
 	
 	let statementWizardContent = '';
 	
-	statementWizardContent += '<h2 class="pt-4 pb-3">Configuration de la déclaration</h2>';
+	statementWizardContent += '<h2 class="pt-4 pb-3">' + langVallydette.statementTxt1 + '</h2>';
 	
 	statementWizardContent += '<div id="alertContainer">';
 	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
-		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>L\'export XML est disponible uniquement pour les audits terminés</p>';
+		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
 		statementWizardContent += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">Close information message</span></button>';   
 		statementWizardContent += '</div>';
 	}
@@ -3136,26 +3133,26 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputName" class="is-required">Titre</label>';
+    statementWizardContent += '<label for="inputName" class="is-required">' + langVallydette.name + '</label>';
     statementWizardContent += '<input type="text" class="form-control" id="inputName" value="' + dataVallydette.statement.name + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputLang" class="is-required">Langue</label>';
+    statementWizardContent += '<label for="inputLang" class="is-required">' + langVallydette.lang + '</label>';
     statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
-    statementWizardContent += '<option value="" label="Sélectionner"></option>';
-    statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>Français</option>';
-    statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>Anglais</option>';
+    statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
+    statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>' + langVallydette.french + '</option>';
+    statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>' + langVallydette.english + '</option>';
     statementWizardContent += '</select>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputDate"  class="is-required">Date</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="inputDate" value="' + dataVallydette.statement.date + '" required>';
+    statementWizardContent += '<label for="inputDate"  class="is-required">' + langVallydette.date + '</label>';
+    statementWizardContent += '<input type="date" class="form-control" id="inputDate" value="' + dataVallydette.statement.date + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3163,7 +3160,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h3 id="technologyLegend">Technologies</h3>';
+	statementWizardContent += '<h3 id="technologyLegend">' + langVallydette.technologies + '</h3>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3173,7 +3170,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '</ul>';
     statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement">';
-    statementWizardContent += 'Modifier la liste';
+    statementWizardContent += langVallydette.modify-list;
 	statementWizardContent += '</button>';
     
 	statementWizardContent += '</div>';	
@@ -3181,18 +3178,18 @@ function showStatementWizard() {
 
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h3 id="testLegend">Tests</h3>';
+	statementWizardContent += '<h3 id="testLegend">' + langVallydette.tests + '</h3>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
     dataVallydette.statement.tests.forEach(function(listItem, index){
 
-		statementWizardContent += '<li>'+listItem.name+' '+listItem.version+'</li>';
+		statementWizardContent += '<li>' +listItem.name + ' ' + listItem.version + '</li>';
 		
 	})
 	statementWizardContent += '</ul>';
 	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement">';
-    statementWizardContent += 'Modifier la liste';
+    statementWizardContent += langVallydette.modify-list;
     statementWizardContent += '</button>';
 	statementWizardContent += '</div>';	
 	statementWizardContent += '</div>';	
@@ -3200,9 +3197,9 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="col-lg-4">';
 
 	statementWizardContent += '<div id="userInfos">';	
-	statementWizardContent += '<h3 id="testLegend">Utilisateurs</h3>';
+	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="inputNbUser">Nombre d\'utilisateurs</label>';
+	statementWizardContent += '<label for="inputNbUser">' + langVallydette.users-number + '</label>';
 	statementWizardContent += '<select class="custom-select mb-1" id="inputNbUsers" name="inputNbUsers">';
 	
 	for (index = 0; index < 10; ++index) {
@@ -3210,7 +3207,7 @@ function showStatementWizard() {
 	}
 	
 	statementWizardContent += '</select>';
-	statementWizardContent += '<label for="inputBlockingPoints" >Nombre de point bloquant</label>';
+	statementWizardContent += '<label for="inputBlockingPoints" >' + langVallydette.blocking-number + '</label>';
 	statementWizardContent += '<select class="custom-select" id="inputBlockingPoints" name="inputBlockingPoints">';
 	
 	for (index = 0; index < 10; ++index) {
@@ -3234,9 +3231,8 @@ function showStatementWizard() {
 	
     htmlMainContent.innerHTML = statementWizardContent;
 	
-	document.getElementById("btnEditTechList").addEventListener('click', function(){editStatementProperty("technology");});
-	document.getElementById("btnEditTestList").addEventListener('click', function(){editStatementProperty("tests");});
-	
+	document.getElementById("btnEditTechList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("technology");});
+	document.getElementById("btnEditTestList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("tests");});
 	
 	document.getElementById("statementForm").addEventListener('submit', function () {
 		event.preventDefault();
@@ -3257,7 +3253,7 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modalStatementTitle">Edition</h5>';
+	htmlModal += '<h5 class="modal-title" id="modalStatementTitle">' + langVallydette.edition + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
@@ -3290,8 +3286,8 @@ editStatementProperty = function (statementProperty) {
 
 	})
 	htmlModal += '</ul>';
-	htmlModal += '<p id="itemDesc" class="text-muted">Laisser vide le champ "nom", pour supprimer l\'item de la liste après enregistrement.</p>';
-	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">Ajouter un élément</button>';
+	htmlModal += '<p id="itemDesc" class="text-muted">' + langVallydette.statementTxt3 + '</p>';
+	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.add-element + '</button>';
 	htmlModal += '</form>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
@@ -3346,6 +3342,7 @@ saveListElement = function(listToEdit, statementProperty) {
 
 addListElement = function(statementProperty) {
 
+
 	var listItem = document.createElement("li");
 	var listToEdit = document.getElementById("listToEdit");
 	var listIndex = listToEdit.querySelectorAll("li").length;
@@ -3393,6 +3390,8 @@ saveStatement = function(statementForm) {
 	alertMessage += '</div>';
 	
 	document.getElementById('alertContainer').innerHTML += (alertMessage);
+
+	jsonUpdate();
 
 }
 
@@ -3504,7 +3503,7 @@ exportStatement = function(statementResult) {
 	xmlStatement += '		<ok>' + dataWCAG.conformeA + '</ok><!-- valid -->\n';
 	xmlStatement += '		<nok>' + dataWCAG.nonconformeA + '</nok><!-- not valid -->\n';
 	xmlStatement += '		<na>' + dataWCAG.naA + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.resultA.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+	xmlStatement += '		<conformity>' + dataWCAG.resultA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
 	xmlStatement += '	</result>\n\n';
 
 	xmlStatement += '	<result type="aa">\n';
@@ -3512,7 +3511,7 @@ exportStatement = function(statementResult) {
 	xmlStatement += '		<ok>' + dataWCAG.conformeAA + '</ok><!-- valid -->\n';
 	xmlStatement += '		<nok>' + dataWCAG.nonconformeAA + '</nok><!-- not valid -->\n';
 	xmlStatement += '		<na>' + dataWCAG.naAA + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.resultAA.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+	xmlStatement += '		<conformity>' + dataWCAG.resultAA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
 	xmlStatement += '	</result>\n\n';
 
 	xmlStatement += '	<result type="total">\n';
@@ -3520,7 +3519,7 @@ exportStatement = function(statementResult) {
 	xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
 	xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
 	xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.result.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+	xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
 	xmlStatement += '	</result>\n';
 	xmlStatement += '</results>\n\n';
 	
@@ -3528,7 +3527,7 @@ exportStatement = function(statementResult) {
 	xmlStatement += 'Pages results details\n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
-	statementResult.forEach(item => xmlStatement += '	<page name="' + item.name + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result.toFixed(2) + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
+	statementResult.forEach(item => xmlStatement += '	<page name="' + item.name + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
     xmlStatement += '</pages_results>\n\n';
 	
 	xmlStatement += '<!--\n';
@@ -3553,7 +3552,7 @@ exportStatement = function(statementResult) {
 					
 							for (let j in listNonConformity[i].comment) {
 								last = last + 1;
-								console.log(last + ' ' + listNonConformity[i].comment.length);
+								
 								xmlStatement += listNonConformity[i].comment[j] + (listNonConformity[i].comment.length !== last ? ' <br>' : '');
 								
 							}	
@@ -3572,18 +3571,15 @@ exportStatement = function(statementResult) {
 	if (dataVallydette.statement.status === "done") {
 		
 		var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
-
+		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.xml';
 		
 		var btnStatementExcelExport = document.getElementById("btnStatementExcelExport");
 		btnStatementExcelExport.classList.remove('disabled');
 		btnStatementExcelExport.setAttribute('href', window.URL.createObjectURL(bb));
-		btnStatementExcelExport.setAttribute('download', 'statement.xml'); 
+		btnStatementExcelExport.setAttribute('download', statementFileName); 
 	
-		
 	}
-	
-	
-	
+
 }
 
 

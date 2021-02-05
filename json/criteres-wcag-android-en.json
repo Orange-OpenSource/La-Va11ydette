@@ -352,13 +352,13 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",
-		"title": "Les erreurs de clic (ou de toucher) peuvent-elles être annulées&nbsp;?",
+		"title": "Can click (or touch) errors be cancelled?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": [
 			"2.5.2 A"
 		],
-		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>vérifier qu'aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément) et qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
+		"verifier": "<p>It must be possible to cancel actions triggered by a single pointer input that operates with one point of contact with the screen (e.g. single taps and clicks, double-taps and clicks):</p><ul><li>check that no action is triggered on the down-event (as soon as you touch or press an element) and that it is possible to abort the action by lifting the pointer outside that element.</li><li> if an action is triggered when an element is pressed, check that it is cancelled as soon as the pointer is released.</li><li>for complex actions (e.g. drag and drop), check that the user can cancel the action before completing the process through, for example, a confirmation dialog.</li></ul>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",
@@ -430,7 +430,7 @@
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>>Not applicable, if no movement, scrolling or flashing lasts more than 5 seconds</p>",
+		"verifier": "<p>Not applicable, if no movement, scrolling or flashing lasts more than 5 seconds</p>",
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",

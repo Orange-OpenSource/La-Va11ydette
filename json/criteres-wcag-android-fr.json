@@ -319,7 +319,7 @@
 		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access.",
 		"resultatTest": "nt"
 	},{
-		"themes": "Switch Access (navigation au clavier)",
+		"themes": "Navigation au clavier (Switch Access)",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",

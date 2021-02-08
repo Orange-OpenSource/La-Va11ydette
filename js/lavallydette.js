@@ -3661,7 +3661,8 @@ const utils = {
 		let exportFileDefaultName = defaultName + '-' + date + '-' + time + '.' + ext;
 		
 		return exportFileDefaultName;
-	},
+	}
+ },
  addElement: function (type,  id, innerText, icon, iconOnly, arrayClass) { 
 	var e = document.createElement(type);
 	

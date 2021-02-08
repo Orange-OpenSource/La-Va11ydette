@@ -380,10 +380,7 @@ function eventHandler() {
 		btnLocalStorage.disabled=true;
 		btnLocalStorage.classList.add("disabled");
 	}
-	
-	document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
  
-	
 	btnActionPageEventHandler();
 	
 }
@@ -485,6 +482,9 @@ runTestListMarkup = function (currentRefTests) {
 		
 		utils.removeElement(document.getElementById('btnExcelExport'));
 		
+		var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
+		document.getElementById("auditInfoManager").appendChild(btnStatement);
+		document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -542,16 +542,12 @@ runTestListMarkup = function (currentRefTests) {
 	} else if (globalTemplate === 'audit') {
 		
 		setPageName(dataVallydette.checklist.page[currentPage].name);
+		utils.removeElement(document.getElementById('btnShowStatement'));
 		
 		if (document.getElementById('btnExcelExport') === null) {
 		
-			var btnExcelExport = document.createElement("button");
-			btnExcelExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
-			btnExcelExport.setAttribute('id', "btnExcelExport");
-			btnExcelExport.setAttribute('title', langVallydette.title.btnExcelExport);
-			btnExcelExport.setAttribute('aria-label', langVallydette.title.btnExcelExport);
-			btnExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
-
+			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, 'icon-Excel', true, ["btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none"]);
+		
 			document.getElementById("auditInfoManager").appendChild(btnExcelExport);
 			btnExcelExport.addEventListener('click', function () {
 				excelExport();
@@ -1487,7 +1483,7 @@ function getAAA(currentWcag) {
 */
 function runFinalComputation(pagesResultsArray) {
 	
-	
+	console.log(dataWCAG);
   
 	/**
 	 * 	Gets the number of non-tested items.
@@ -3170,7 +3166,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '</ul>';
     statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement">';
-    statementWizardContent += langVallydette.modify-list;
+    statementWizardContent += langVallydette.modifyList;
 	statementWizardContent += '</button>';
     
 	statementWizardContent += '</div>';	
@@ -3189,7 +3185,7 @@ function showStatementWizard() {
 	})
 	statementWizardContent += '</ul>';
 	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement">';
-    statementWizardContent += langVallydette.modify-list;
+    statementWizardContent += langVallydette.modifyList;
     statementWizardContent += '</button>';
 	statementWizardContent += '</div>';	
 	statementWizardContent += '</div>';	
@@ -3199,7 +3195,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div id="userInfos">';	
 	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="inputNbUser">' + langVallydette.users-number + '</label>';
+	statementWizardContent += '<label for="inputNbUser">' + langVallydette.usersNumber + '</label>';
 	statementWizardContent += '<select class="custom-select mb-1" id="inputNbUsers" name="inputNbUsers">';
 	
 	for (index = 0; index < 10; ++index) {
@@ -3207,7 +3203,7 @@ function showStatementWizard() {
 	}
 	
 	statementWizardContent += '</select>';
-	statementWizardContent += '<label for="inputBlockingPoints" >' + langVallydette.blocking-number + '</label>';
+	statementWizardContent += '<label for="inputBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
 	statementWizardContent += '<select class="custom-select" id="inputBlockingPoints" name="inputBlockingPoints">';
 	
 	for (index = 0; index < 10; ++index) {
@@ -3265,21 +3261,21 @@ editStatementProperty = function (statementProperty) {
 		htmlModal += '<li>';
 		htmlModal += '<span class="input-group">';
 		htmlModal += ' <span class="input-group-prepend">';
-		htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">Item '+index+'</span>';
+		htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
 		htmlModal += '  </span>';
 
 			if (listItem.type) {
 				
-				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="type" title="type" >';
-				htmlModal += '<option value="auto" ' + (listItem.type === "auto" ? "selected" : "") + ' >auto</option>';
-				htmlModal += '<option value="functional" ' + (listItem.type === "functional" ? "selected" : "") + ' >functional</option>';
-				htmlModal += '<option value="manual" ' + (listItem.type === "manual" ? "selected" : "") + ' >manual</option>';
-				htmlModal += '<option value="user" ' + (listItem.type === "user" ? "selected" : "") + ' >user</option>';	
+				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + index + ' name-' + index + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlModal += '<option value="auto" ' + (listItem.type === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
+				htmlModal += '<option value="functional" ' + (listItem.type === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
+				htmlModal += '<option value="manual" ' + (listItem.type === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
+				htmlModal += '<option value="user" ' + (listItem.type === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';	
 				htmlModal += '</select>';
 			}
 
-			htmlModal += '<input type="text" id="name-'+index+'" class="form-control mb-1" value="'+listItem.name+'" aria-labelledby="itemLegend-'+index+' name-'+index+'" aria-label="nom" title="nom" aria-describedby="itemDesc" placeholder="nom" />';
-			htmlModal += '<input type="text" id="version-'+index+'" class="form-control mb-1" value="'+listItem.version+'" aria-labelledby="itemLegend-'+index+' version-'+index+'" aria-label="version" title="version" placeholder="version" />';
+			htmlModal += '<input type="text" id="name-' + index + '" class="form-control mb-1" value="' + listItem.name + '" aria-labelledby="itemLegend-' + index + ' name-' + index +'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" aria-describedby="itemDesc" placeholder="' + langVallydette.name + '" />';
+			htmlModal += '<input type="text" id="version-' + index + '" class="form-control mb-1" value="' + listItem.version + '" aria-labelledby="itemLegend-' + index + ' version-' + index + '" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" placeholder="' + langVallydette.version + '" />';
 		
 		htmlModal += '</span>';
 		htmlModal += '</li>';	
@@ -3287,7 +3283,7 @@ editStatementProperty = function (statementProperty) {
 	})
 	htmlModal += '</ul>';
 	htmlModal += '<p id="itemDesc" class="text-muted">' + langVallydette.statementTxt3 + '</p>';
-	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.add-element + '</button>';
+	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.addElement + '</button>';
 	htmlModal += '</form>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
@@ -3354,9 +3350,9 @@ addListElement = function(statementProperty) {
 		htmlItem += '	<span class="input-group-text" id="itemLegend-'+listIndex+'">Item '+listIndex+'</span>';
 		htmlItem += '  </span>';
 
-			statementProperty[0].type ? htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="type" title="type" /><option value="" >Sélectionner un type</option><option value="auto" >auto</option><option value="functional">functional</option><option value="manual">manual</option><option value="user">user</option></select>' : "";
-			htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="nom" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="nom" title="nom" />';
-			htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="version" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="version" title="version" />';
+			statementProperty[0].type ? htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" /><option value="" >' + langVallydette.selectType + '</option><option value="auto" >' + langVallydette.auto + '</option><option value="functional">' + langVallydette.functional + '</option><option value="manual">' + langVallydette.manual + '</option><option value="user">' + langVallydette.user + '</option></select>' : "";
+			htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.name + '" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" />';
+			htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.version + '" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + ' />';
 		
 		htmlItem += '</span>';	
 	
@@ -3385,8 +3381,8 @@ saveStatement = function(statementForm) {
 	}
 	
 	alertMessage = '';
-	alertMessage += '<div class="alert alert-success alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>Enregistré avec succès</p>';
-	alertMessage += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">Close information message</span></button>';   
+	alertMessage += '<div class="alert alert-success alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
+	alertMessage += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">' + langVallydette.closeInformations + '</span></button>';   
 	alertMessage += '</div>';
 	
 	document.getElementById('alertContainer').innerHTML += (alertMessage);
@@ -3553,7 +3549,7 @@ exportStatement = function(statementResult) {
 							for (let j in listNonConformity[i].comment) {
 								last = last + 1;
 								
-								xmlStatement += listNonConformity[i].comment[j] + (listNonConformity[i].comment.length !== last ? ' <br>' : '');
+								//xmlStatement += listNonConformity[i].comment[j] + (listNonConformity[i].comment.length !== last ? ' <br>' : '');
 								
 							}	
 					} 
@@ -3640,6 +3636,27 @@ const utils = {
 		e.parentNode.removeChild(e); 
 	}
        
+  },
+ addElement: function (type,  id, innerText, icon, iconOnly, arrayClass) { 
+	var e = document.createElement(type);
+	
+	if (icon) {
+		e.innerHTML = "<span class='" + icon + "' aria-hidden='true'></span>";
+	}
+	
+	if (!iconOnly) {
+		e.innerHTML += innerText;
+	} else {
+		e.setAttribute('aria-label', innerText);
+	}
+	
+	e.setAttribute('id', id);
+	e.setAttribute('title', innerText);
+
+	arrayClass.forEach(c => e.classList.add(c));
+	
+	return e;
+	
   }
 	
 }  

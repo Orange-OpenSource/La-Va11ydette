@@ -482,9 +482,11 @@ runTestListMarkup = function (currentRefTests) {
 		
 		utils.removeElement(document.getElementById('btnExcelExport'));
 		
-		var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
-		document.getElementById("auditInfoManager").appendChild(btnStatement);
-		document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
+		if(document.getElementById('btnShowStatement') === null) {
+			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
+			document.getElementById("auditInfoManager").appendChild(btnStatement);
+			document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
+		}
 		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
@@ -3075,12 +3077,18 @@ function initStatementObject() {
 				"tests": [{
 					"type": "auto",
 					"name": "aXe",
-					"version": "1.1"
+					"version": "3.5.1"
+					},
+					{	
+					"type": "manual",
+					"name": "La va11ydette d'Orange",
+					"version": ""
 					},
 					{	
 					"type": "manual",
 					"name": "NVDA",
-					"version": "2009"},
+					"version": "2009.2"
+					},
 					{	
 					"type": "user",
 					"name": "Test utilisateur",
@@ -3286,7 +3294,7 @@ editStatementProperty = function (statementProperty) {
 			}
 
 			htmlModal += '<input type="text" id="name-' + index + '" class="form-control mb-1" value="' + listItem.name + '" aria-labelledby="itemLegend-' + index + ' name-' + index +'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" aria-describedby="itemDesc" placeholder="' + langVallydette.name + '" />';
-			htmlModal += '<input type="text" id="version-' + index + '" class="form-control mb-1" value="' + listItem.version + '" aria-labelledby="itemLegend-' + index + ' version-' + index + '" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" placeholder="' + langVallydette.version + '" />';
+			htmlModal += '<input type="text" id="version-' + index + '" class="form-control mb-1" value="' + listItem.version + '" aria-labelledby="itemLegend-' + index + '  version-' + index + '" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" placeholder="' + langVallydette.version + '" />';
 		
 		htmlModal += '</span>';
 		htmlModal += '</li>';	
@@ -3361,11 +3369,12 @@ addListElement = function(statementProperty) {
 		htmlItem += '  </span>';
 
 			statementProperty[0].type ? htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" /><option value="" >' + langVallydette.selectType + '</option><option value="auto" >' + langVallydette.auto + '</option><option value="functional">' + langVallydette.functional + '</option><option value="manual">' + langVallydette.manual + '</option><option value="user">' + langVallydette.user + '</option></select>' : "";
+			
 			htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.name + '" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" />';
-			htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.version + '" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + ' />';
+			
+			htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.version + '" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" />';
 		
 		htmlItem += '</span>';	
-	
 	
 	listItem.innerHTML = htmlItem;
 	listToEdit.appendChild(listItem);
@@ -3405,6 +3414,8 @@ exportStatement = function(statementResult) {
 	
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
+	xmlStatement += '< !-- généré par la va11ydette -->\n\n';
+	
 	xmlStatement += '<!--\n ';
 	xmlStatement += 'TITLE\n ';
 	xmlStatement += 'This is the name for the site, or page, or section of a site that was audited\n ';

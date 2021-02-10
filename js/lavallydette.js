@@ -1825,6 +1825,13 @@ initNewPage = function (item) {
 		item.issues.splice(0, item.issues.length);
 	}
 	
+	/**  Initialization of the groups */
+	if(dataVallydette.checklist.page[indexPage].groups[item.group]){
+		dataVallydette.checklist.page[indexPage].groups[item.group].idTests.push(item.IDorigin);
+		dataVallydette.checklist.page[indexPage].groups[item.group].checked = true;
+	} 
+			
+	
 }
 
 /**  Initialization of themes */

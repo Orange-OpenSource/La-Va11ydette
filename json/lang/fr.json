@@ -112,6 +112,7 @@
 	"manual": "manuel",
 	"user": "utilisateur",
 	"version": "Version",
+	"keyboard": "Navigation clavier",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",

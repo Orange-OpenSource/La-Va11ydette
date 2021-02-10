@@ -110,7 +110,8 @@
 	"functional": "functional",
 	"manual": "manual",
 	"user": "user",
-	"version": "Version",  
+	"version": "Version",
+	"keyboard": "Keyboard",	
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",

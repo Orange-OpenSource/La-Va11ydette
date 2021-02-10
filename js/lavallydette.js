@@ -3066,10 +3066,10 @@ function initStatementObject() {
 				"technology": [
 				{
 					"name": "HTML",
-					"version": "5"
+					"version": ""
 				},{
 					"name": "CSS",
-					"version": "3"
+					"version": ""
 				},{
 					"name": "Javascript",
 					"version": ""
@@ -3079,6 +3079,11 @@ function initStatementObject() {
 					"name": "aXe",
 					"version": "3.5.1"
 					},
+					{
+					"type": "auto",
+					"name": "Wave",
+					"version": "3.1.3"
+					},
 					{	
 					"type": "manual",
 					"name": "La va11ydette d'Orange",
@@ -3087,11 +3092,11 @@ function initStatementObject() {
 					{	
 					"type": "manual",
 					"name": "NVDA",
-					"version": "2009.2"
+					"version": "2020.3"
 					},
 					{	
-					"type": "user",
-					"name": "Test utilisateur",
+					"type": "manual",
+					"name": langVallydette.keyboard,
 					"version": ""}
 				
 				],

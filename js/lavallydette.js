@@ -482,6 +482,9 @@ runTestListMarkup = function (currentRefTests) {
 		
 		utils.removeElement(document.getElementById('btnExcelExport'));
 		
+		/** Modify column number */ 
+		utils.columnDisplay(3);
+	
 		if(document.getElementById('btnShowStatement') === null) {
 			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
 			document.getElementById("auditInfoManager").appendChild(btnStatement);
@@ -1484,8 +1487,6 @@ function getAAA(currentWcag) {
  *  @param {array} pagesResultsArray - Contains all wcag results by pages.
 */
 function runFinalComputation(pagesResultsArray) {
-	
-	console.log(dataWCAG);
   
 	/**
 	 * 	Gets the number of non-tested items.
@@ -1503,6 +1504,8 @@ function runFinalComputation(pagesResultsArray) {
 	removeContextualMenu();
 	removeFilterSection();
 	
+	/** Modify column number */ 
+	utils.columnDisplay(2);
 	
 	 computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt14 + '</h2>';
 	 
@@ -3119,7 +3122,8 @@ function showStatementWizard() {
 	
 	setPageName(langVallydette.statement);
 	removeContextualMenu();
-	removeFilterSection();	
+	removeFilterSection();
+	utils.columnDisplay(2);
 	
 	var btnStatementExcelExport = document.createElement('a');
 	btnStatementExcelExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
@@ -3706,6 +3710,35 @@ const utils = {
 	
 	return e;
 	
+  },
+  columnDisplay: function (number) {
+	
+	let display;
+	let remove;
+	let add;
+	
+	if (number === 2) {
+		  
+		display = 'none';
+		remove = 'col-md-8';
+		add = 'col-md-10';
+		
+	} else if (number === 3) {
+		  
+		display = 'block';
+		remove = 'col-md-10';
+		add = 'col-md-8';
+		
+	} else {
+		
+		return
+		
+	}
+	 
+	 
+	document.getElementById('filter').style.display = display;
+	document.getElementById('currentPageContent').classList.remove(remove);
+	document.getElementById('currentPageContent').classList.add(add);
   }
 	
 }  

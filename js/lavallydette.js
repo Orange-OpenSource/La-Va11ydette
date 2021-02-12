@@ -54,7 +54,6 @@ var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 var htmlMainContent = document.getElementById('mainContent');
 
-var filePath;
 	
 /**
  * Vallydette object
@@ -67,14 +66,12 @@ var filePath;
  * @param {string} criteriaListName - Selected checklist json file name.
  * @param {string} lang - Language can be defined in function params.
  */
-function initVallydetteApp (criteriaListName, lang, filepath) {
+function initVallydetteApp (criteriaListName, lang) {
 	
 	initGlobalLang(lang);
 	
-	filePath = filepath;
-	
 	var langRequest = new XMLHttpRequest();
-	langRequest.open("GET", filePath+"json/lang/"+globalLang+".json", true);
+	langRequest.open("GET", "json/lang/"+globalLang+".json", true);
 	langRequest.onreadystatechange = function () {
 	  if(langRequest.readyState === 4 && langRequest.status === 200) {
 		langVallydette = JSON.parse(langRequest.responseText);
@@ -103,7 +100,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 	}
 	
 	var checklistRequest = new XMLHttpRequest();
-		checklistRequest.open("GET", filePath+"json/config-checklist.json", true);
+		checklistRequest.open("GET", "json/config-checklist.json", true);
 		checklistRequest.onreadystatechange = function () {
 			
 		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
@@ -115,7 +112,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 		checklistRequest.send();
 		
 	var issuesRequest = new XMLHttpRequest();
-	issuesRequest.open("GET", filePath+"json/issues-"+globalLang+".json", true);
+	issuesRequest.open("GET", "json/issues-"+globalLang+".json", true);
 	issuesRequest.onreadystatechange = function () {
 	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
 		issuesVallydette = JSON.parse(issuesRequest.responseText);
@@ -158,7 +155,7 @@ function createObjectAndRunVallydette() {
 
 
 		var jsonCriteria;
-		jsonCriteria = filePath + 'json/' + checklistVallydette[currentCriteriaListName].filename + '-' + globalLang + '.json';
+		jsonCriteria = 'json/' + checklistVallydette[currentCriteriaListName].filename + '-' + globalLang + '.json';
 
 
 		var criteriaRequest = new XMLHttpRequest();
@@ -898,7 +895,7 @@ function initLangMenu() {
 function runLangRequest () {
 	
 	var langRequest = new XMLHttpRequest();
-				langRequest.open("GET", filePath+"json/lang/"+globalLang+".json", true);
+				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
 				langRequest.onreadystatechange = function () {
 				  if(langRequest.readyState === 4 && langRequest.status === 200) {
 					langVallydette = JSON.parse(langRequest.responseText);
@@ -1152,7 +1149,7 @@ function initComputation() {
 	var matriceRequest = new XMLHttpRequest();
 	var matriceWcag;
     method = "GET",
-	matriceVallydette = filePath+'json/wcag-' + globalLang+ '.json';
+	matriceVallydette = 'json/wcag-' + globalLang+ '.json';
 
 	matriceRequest.open(method, matriceVallydette, true);
 	matriceRequest.onreadystatechange = function () {
@@ -3746,4 +3743,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('wcag-android', 'fr', '');
+initVallydetteApp('wcag-android', 'fr');

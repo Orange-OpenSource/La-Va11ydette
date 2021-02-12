@@ -54,7 +54,7 @@ var htmlContextualMenuContent = document.getElementById('contextualMenu');
 var htmlFilterContent = document.getElementById('filter');
 var htmlMainContent = document.getElementById('mainContent');
 
-var filePath = "";
+var filePath;
 	
 /**
  * Vallydette object
@@ -67,9 +67,11 @@ var filePath = "";
  * @param {string} criteriaListName - Selected checklist json file name.
  * @param {string} lang - Language can be defined in function params.
  */
-function initVallydetteApp (criteriaListName, lang) {
+function initVallydetteApp (criteriaListName, lang, filepath) {
 	
 	initGlobalLang(lang);
+	
+	filePath = filepath;
 	
 	var langRequest = new XMLHttpRequest();
 	langRequest.open("GET", filePath+"json/lang/"+globalLang+".json", true);
@@ -3744,4 +3746,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('wcag-android', 'fr');
+initVallydetteApp('wcag-android', 'fr', '');

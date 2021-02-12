@@ -1,5 +1,8 @@
 {
 
+	"vallydette": {
+		"filepath": "",
+	},
 	"wcag-web": {
 		"filename": "criteres-wcag-ease",
 		"template": "wcag",
@@ -14,7 +17,5 @@
 		"filename": "tests-web",
 		"template": "audit",
 		"version": "1.1"
-
-		
 	}
 }

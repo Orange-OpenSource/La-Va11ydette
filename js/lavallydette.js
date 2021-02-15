@@ -3136,6 +3136,7 @@ function showStatementWizard() {
 	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
 		
 		exportStatement(statementResult);
+		exportStatementHTML(statementResult);
 		
 	} else {
 		
@@ -3427,7 +3428,7 @@ saveStatement = function(statementForm) {
 }
 
 exportStatement = function(statementResult) {
-	
+
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
 	xmlStatement += '< !-- généré par la va11ydette -->\n\n';
@@ -3612,9 +3613,212 @@ exportStatement = function(statementResult) {
 		btnStatementExcelExport.setAttribute('download', statementFileName); 
 	
 	}
+	
+
 
 }
 
+
+exportStatementHTML = function(statementResult) {
+	
+	const arrayTypeTest = ["auto", "manual", "functional", "user"];
+	
+	htmlStatement = "";
+	htmlStatement = `<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <title>Déclaration d’Accessibilité</title>
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="boosted-grid.min.css">
+  <link rel="stylesheet" href="pie.css">
+
+</head>
+
+<body>    
+    <div class="container content">        
+        <h1>Déclaration d'Accessibilité : ${dataVallydette.statement.name}</h1>
+        
+        <div class="summary">
+        
+            <div class="row">
+        
+                <div class="col-lg-3">
+                        
+                    <h2 class="pie" data-value="86">
+                        <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span><br />conforme</div>
+                    </h2>
+                    
+                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>, avec X non-conformités.</p>
+
+                </div>
+        
+                <div class="col-lg-3">
+                    
+                    <h3>Date de l'audit</h3>
+                    <p>${dataWCAG.date}</p>
+                    
+                    <h3>Identité du déclarant</h3>
+                    <p>
+                        ORANGE SA<br />
+                        Siège social : 78, rue Olivier de Serres, 75 015 Paris<br />
+                    ou<br />	
+						<a href="http://a11y-guidelines.orange.com/">Centre de Compétences d'Accessibilité Numérique du Groupe</a> 
+					</p>
+					
+                    
+                    <h3>Référentiel</h3>
+                    <p>
+                        <a href="https://www.w3.org/TR/WCAG21/"><abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> version 2.1, niveau AA</a>.<br />
+                    </p>
+                    
+                </div>
+                
+                <div class="col-lg-6">
+                
+                    <h3>Technologies du site</h3>
+                    <ul>
+					 ${dataVallydette.statement.technology.map(e => `<li>${e.name} ${e.version}</li>`).join('\n')}
+                    </ul>
+                    
+                    <h3>Méthodes et outils utilisés pour vérifier l’accessibilité</h3>
+                    <ul>`;
+						
+					arrayTypeTest.forEach(function(t){
+						
+						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
+						let separator = ', '
+						
+						arrayTypeResult.length > 0 ? htmlStatement += `<li>${arrayTypeResult.map(e => `${e.name} ${e.version}`).join(separator)} </li>\n` : '';
+						
+					});	
+		
+	
+	htmlStatement += ` </ul>
+                
+                </div>
+            
+            </div>
+            
+        </div>
+        
+        <div class="row">
+        
+            <div class="col-md">
+            
+                <h2>Introduction</h2>
+                <p>
+                   	Cette page décrit le niveau d'accessibilité général constaté sur le site.<br />
+                    Il s'agit d'une déclaration de prise en compte des exigences internationales d'accessibilité, <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> : <i lang="en">Web Content Accessibility Guidelines</i>, recommandations d’Accessibilité des contenus Web.<br />
+                    Ces règles sont éditées par le <abbr lang="en" title="World Wide Web Consortium">W3C</abbr>, organisme de standardisation chargé de promouvoir la compatibilité des technologies du Web.<br />
+					Cette page fait partie du <a href="https://oran.ge/accessibilite-schema" title="schéma pluriannuel d’amélioration de l’accessibilité numérique (PDF, 230Ko)">schéma pluriannuel d’amélioration de l’accessibilité numérique</a> sur lequel s’engage Orange.<br />
+					Les tests ont été réalisés par le centre de compétences d’accessibilité numérique du groupe.
+				</p>
+					
+
+                <h2>Page(s) ayant fait l’objet de la vérification de conformité</h2>
+                
+                <p>L'audit a été effectué sur l'échantillon suivant :
+				
+                <ol>
+				${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>  <a href="${item.url}" target="_blank">${item.url}</a></li>\n`)}
+                </ol>
+				</p>
+            </div>
+            
+            
+            <div class="col-md">
+
+                <h2>Résultat des tests</h2>
+                <p>L'audit réalisé, complété par des tests d’accessibilité auprès de xx utilisateurs (de ZoomText, Jaws, XXX), révèle une conformité globale aux critères WCAG de XX%, avec X non-conformités.</p>
+                
+				<p>Un taux de conformité est calculé par page auditée : il est égal à la somme des critères conformes divisée par le nombre de critères applicables.</p>
+				
+                <table class="table table-striped">
+				<caption class="sr-only">${langVallydette.auditTxt4}</caption>'
+				  <tr>
+					<th scope="row">${langVallydette.auditTxt4}</th>
+					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status1}</th>
+					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status2}</th>;
+					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status3}</th>;
+					<th rowspan="2" class="text-center bg-light">${langVallydette.result}</th>;
+				  </tr>
+				  <tr>
+					<th scope="col">${langVallydette.auditTxt10}</th>
+					<th scope="col">A</th>
+					<th scope="col">AA</th>
+					<th scope="col">A</th>
+					<th scope="col">AA</th>
+					<th scope="col">A</th>
+					<th scope="col">AA</th>
+				  </tr>
+				 
+				
+				  ${statementResult.map(r => 
+					`<tr>
+						<th scope="row">${r.name}</th>
+						<td>${r.conformeA}</td>
+						<td>${r.conformeAA}</td>
+						<td>${r.nonconformeA}</td>
+						<td>${r.nonconformeAA}</td>
+						<td>${r.naA}</td>
+						<td>${r.naAA}</td>
+						<td style="background-color:#ddd !important;">${r.result} %</td>
+					</tr>`
+					  
+					).join('')}
+				  
+				</table>
+
+				<p><strong>Conformité globale (moyenne des pages) :</strong> ${dataWCAG.globalPagesResult}%</p>				
+				
+            </div>
+        </div>
+        
+        <div class="row">
+        
+            <div class="col-lg">
+        
+                <h2>Détail des non-conformités</h2>`;
+				
+				const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
+				
+				if (listNonConformity.length > 0) {
+					htmlStatement += `<ul>
+					${listNonConformity.map(nc => 
+						`<li>
+							${nc.wcag} ${nc.name}, ${langVallydette.auditTxt10} ${nc.level}
+						</li>`).join('')}
+					</ul>`;
+	
+				}
+				
+    htmlStatement += `
+            </div>
+        </div>
+		
+        <div class="row">
+        
+            <div class="col-lg">
+        
+                <h2>Amélioration et contact</h2>
+                <p>Vous pouvez nous aider à améliorer l'accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez. Pour ce faire, envoyez un <a href="mailto:accessibilite.france@orange.com">courriel à accessibilite.france@orange.com</a> OU <a href="mailto:accessibility.group@orange.com">courriel à accessibility.group@orange.com</a> OU @ du CP / Sponsor pour site interne 
+				</p>
+        
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>`
+	
+	
+	console.log(htmlStatement);
+}
 
  /**
  * Some utilities funtions.

@@ -3110,7 +3110,28 @@ function initStatementObject() {
 					"version": ""}
 				
 				],
-			
+				"approval": [
+				{
+					"name": "Orange SA",
+					"content": ""
+				},{
+					"name": "EASE",
+					"content": ""
+				}
+				],
+				"contact": [
+				{
+					"name": "Orange France",
+					"email": "accessibilite.france@orange.com"
+				},{
+					"name": "Orange Groupe",
+					"email": "accessibility.group@orange.com"
+				},{
+					"name": "0810 30 3000 mot clé \"accessibilité\"",
+					"email": ""
+				}
+				]
+
 		}
 	
 	}
@@ -3191,6 +3212,51 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<h3>Déclarant</h3>';
+	statementWizardContent += '<div class="form-group">';
+	
+	dataVallydette.statement.approval.forEach(function(a, index){ 
+		statementWizardContent += '<div class="custom-control custom-radio">';
+		statementWizardContent += '<input type="radio" id="' + utils.slugify(a.name) +  index + '" name="contactRadio" class="custom-control-input">';
+		statementWizardContent += '<label class="custom-control-label" for="' + utils.slugify(a.name) +  index + '">' + a.name + '</label>';
+		statementWizardContent += '</div>';
+	})
+	
+	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnAddApproval" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
+	
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<h3>Contact</h3>';
+	statementWizardContent += '<div class="form-group">';
+	
+	dataVallydette.statement.contact.forEach(function(c, index){ 
+		statementWizardContent += '<div class="custom-control custom-radio">';
+		statementWizardContent += '<input type="radio" id="' + utils.slugify(c.name) +  index + '" name="contactRadio" class="custom-control-input">';
+		statementWizardContent += '<label class="custom-control-label" for="' + utils.slugify(c.name) +  index + '">' + c.name + '</label>';
+		statementWizardContent += '</div>';
+	})
+	
+	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnAddContact" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
+	
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputLang" class="is-required">' + langVallydette.lang + '</label>';
+    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
+    statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
+    statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>' + langVallydette.french + '</option>';
+    statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>' + langVallydette.english + '</option>';
+    statementWizardContent += '</select>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<div class="row">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
 	statementWizardContent += '<h3 id="technologyLegend">' + langVallydette.technologies + '</h3>';
     statementWizardContent += '<ul id="technologyList">';	
@@ -3219,6 +3285,7 @@ function showStatementWizard() {
 		statementWizardContent += '<li>' +listItem.name + ' ' + listItem.version + '</li>';
 		
 	})
+	
 	statementWizardContent += '</ul>';
 	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement">';
     statementWizardContent += langVallydette.modifyList;
@@ -3649,7 +3716,7 @@ exportStatementHTML = function(statementResult) {
         
                 <div class="col-lg-3">
                         
-                    <h2 class="pie" data-value="86">
+                    <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span><br />conforme</div>
                     </h2>
                     

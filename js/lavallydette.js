@@ -3105,18 +3105,26 @@ function initStatementObject() {
 					"version": "2020.3"
 					},
 					{	
-					"type": "manual",
-					"name": langVallydette.keyboard,
+					"type": "user",
+					"name": "jaws",
+					"number": "5",
+					"version": ""
+					},
+					{	
+					"type": "user",
+					"name": "zoomtext",
+					"number": "2",
 					"version": ""}
 				
 				],
 				"approval": [
 				{
 					"name": "Orange SA",
-					"content": ""
+					"content": "ORANGE SA <br> Siège social : 78, rue Olivier de Serres,<br> 75 015 Paris"
 				},{
 					"name": "EASE",
-					"content": ""
+					"content": "[Centre de Compétences d'Accessibilité Numérique du Groupe](http://a11y-guidelines.orange.com)",
+					"checked": true
 				}
 				],
 				"contact": [
@@ -3126,9 +3134,11 @@ function initStatementObject() {
 				},{
 					"name": "Orange Groupe",
 					"email": "accessibility.group@orange.com"
+					
 				},{
 					"name": "0810 30 3000 mot clé \"accessibilité\"",
-					"email": ""
+					"email": "",
+					"checked": true
 				}
 				]
 
@@ -3153,7 +3163,7 @@ function showStatementWizard() {
 	document.getElementById("contextualMenu").appendChild(btnStatementExcelExport);
 	
 	var statementResult = runComputation(true);
-
+exportStatementHTML(statementResult);
 	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
 		
 		exportStatement(statementResult);
@@ -3213,44 +3223,36 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<h3>Déclarant</h3>';
-	statementWizardContent += '<div class="form-group">';
+	statementWizardContent += '<div class="form-group" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
 		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="' + utils.slugify(a.name) +  index + '" name="contactRadio" class="custom-control-input">';
-		statementWizardContent += '<label class="custom-control-label" for="' + utils.slugify(a.name) +  index + '">' + a.name + '</label>';
+		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'approval\', ' + index + ')">';
+		statementWizardContent += '<label class="custom-control-label" for="approval' +  index + '">' + a.name + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnAddApproval" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
-	
     statementWizardContent += '</div>';
+	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<h3>Contact</h3>';
-	statementWizardContent += '<div class="form-group">';
+	statementWizardContent += '<div class="form-group" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
 		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="' + utils.slugify(c.name) +  index + '" name="contactRadio" class="custom-control-input">';
-		statementWizardContent += '<label class="custom-control-label" for="' + utils.slugify(c.name) +  index + '">' + c.name + '</label>';
+		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'contact\', ' + index + ')">';
+		statementWizardContent += '<label class="custom-control-label" for="contact' +  index + '">' + c.name + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnAddContact" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
-	
     statementWizardContent += '</div>';
+	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
-	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputLang" class="is-required">' + langVallydette.lang + '</label>';
-    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
-    statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
-    statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>' + langVallydette.french + '</option>';
-    statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>' + langVallydette.english + '</option>';
-    statementWizardContent += '</select>';
+	
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3332,12 +3334,28 @@ function showStatementWizard() {
 	
 	document.getElementById("btnEditTechList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("technology");});
 	document.getElementById("btnEditTestList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("tests");});
-	
+	document.getElementById("btnEditContactList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("contact");});
+	document.getElementById("btnEditApprovalList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("approval");});
+
 	document.getElementById("statementForm").addEventListener('submit', function () {
 		event.preventDefault();
 		saveStatement(this);
 
 	});
+}
+
+radioIsChecked = function (statementProperty, propertyIndex) {
+	
+	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
+		
+		if (propertyIndex === index) {
+			listItem.checked = true;
+		} else {
+			listItem.checked = false;
+		}
+	
+	})
+	
 }
 
  
@@ -3367,7 +3385,7 @@ editStatementProperty = function (statementProperty) {
 		htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
 		htmlModal += '  </span>';
 
-			if (listItem.type) {
+			if (listItem.type !== undefined) {
 				
 				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + index + ' name-' + index + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
 				htmlModal += '<option value="auto" ' + (listItem.type === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
@@ -3377,9 +3395,26 @@ editStatementProperty = function (statementProperty) {
 				htmlModal += '</select>';
 			}
 
-			htmlModal += '<input type="text" id="name-' + index + '" class="form-control mb-1" value="' + listItem.name + '" aria-labelledby="itemLegend-' + index + ' name-' + index +'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" aria-describedby="itemDesc" placeholder="' + langVallydette.name + '" />';
-			htmlModal += '<input type="text" id="version-' + index + '" class="form-control mb-1" value="' + listItem.version + '" aria-labelledby="itemLegend-' + index + '  version-' + index + '" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" placeholder="' + langVallydette.version + '" />';
-		
+			if (listItem.name !== undefined) {
+				htmlModal += '<input type="text" id="name-' + index + '" class="form-control mb-1" value="' + listItem.name + '" aria-labelledby="itemLegend-' + index + ' name-' + index +'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" aria-describedby="itemDesc" placeholder="' + langVallydette.name + '" />';
+			}
+			
+			if (listItem.version !== undefined) {
+				htmlModal += '<input type="text" id="version-' + index + '" class="form-control mb-1" value="' + listItem.version + '" aria-labelledby="itemLegend-' + index + '  version-' + index + '" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" placeholder="' + langVallydette.version + '" />';
+			}
+			
+			if (listItem.email !== undefined) {
+				htmlModal += '<input type="text" id="email-' + index + '" class="form-control mb-1" value="' + listItem.email + '" aria-labelledby="itemLegend-' + index + '  email-' + index + '" aria-label="' + langVallydette.email + '" title="' + langVallydette.email + '" placeholder="' + langVallydette.email + '" />';
+			}
+			
+			if (listItem.content !== undefined) {
+				htmlModal += '<textarea  rows="4" cols="50" id="content-' + index + '" class="form-control mb-1" aria-labelledby="itemLegend-' + index + '  content-' + index + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+			}
+			
+			if (listItem.checked) {
+				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-labelledby="itemLegend-' + index + '  checked-' + index + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
+			}
+
 		htmlModal += '</span>';
 		htmlModal += '</li>';	
 
@@ -3418,12 +3453,50 @@ saveListElement = function(listToEdit, statementProperty) {
 				itemObj.type = listItem.children[0].children["type-"+index].value;
 			}
 			
-			itemObj.name = listItem.children[0].children["name-"+index].value;
-			itemObj.version = listItem.children[0].children["version-"+index].value;
+			if (listItem.children[0].children["name-"+index]) {
+				itemObj.name = listItem.children[0].children["name-"+index].value;
+			}
 			
+			if (listItem.children[0].children["version-"+index]) {
+				itemObj.version = listItem.children[0].children["version-"+index].value;
+			}
+			
+			if (listItem.children[0].children["email-"+index]) {
+				itemObj.email = listItem.children[0].children["email-"+index].value;
+			}
+			
+			if (listItem.children[0].children["content-"+index]) {
+				itemObj.content = listItem.children[0].children["content-"+index].value;
+			}
+
+			if (listItem.children[0].children["checked-"+index]) {
+				itemObj.checked = true;
+			}
+
 			dataVallydette.statement[statementProperty].push(itemObj);
 			
-			listMarkup += '<li>'+itemObj.name+' '+itemObj.version+'</li>';	
+			if (statementProperty === 'technology' || statementProperty === 'tests' ) {
+				
+				listMarkup += '<li>';
+				listMarkup += itemObj.name ? itemObj.name + ' ' : '';	
+				listMarkup += itemObj.version ? itemObj.version  + ' ' : '';
+				listMarkup += '</li>';
+				
+			}
+			
+			
+			if (statementProperty === 'contact' || statementProperty === 'approval' ) {
+				
+				listMarkup += '<div class="custom-control custom-radio">';
+				listMarkup += '<input type="radio" id="' + statementProperty +  index + '" name="' + statementProperty + 'Radio" class="custom-control-input" ';
+				listMarkup += itemObj.checked ? "checked" : "";
+				listMarkup += '>';
+				listMarkup += '<label class="custom-control-label" for="' + statementProperty +  index + '">' + itemObj.name + '</label>';
+				listMarkup += '</div>';
+			}
+			
+			
+			
 		}
 		index++;
 		
@@ -3435,8 +3508,8 @@ saveListElement = function(listToEdit, statementProperty) {
 		dataVallydette.statement.blockingPoints = 0;
 	} 
 	
-	
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
+		
 }
 
 addListElement = function(statementProperty) {
@@ -3453,11 +3526,25 @@ addListElement = function(statementProperty) {
 		htmlItem += '  </span>';
 
 			statementProperty[0].type ? htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" /><option value="" >' + langVallydette.selectType + '</option><option value="auto" >' + langVallydette.auto + '</option><option value="functional">' + langVallydette.functional + '</option><option value="manual">' + langVallydette.manual + '</option><option value="user">' + langVallydette.user + '</option></select>' : "";
+						
 			
-			htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.name + '" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" />';
+			if (statementProperty[0].name !== undefined) {
+				htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.name + '" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" />';
+			}
 			
-			htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.version + '" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" />';
-		
+			if (statementProperty[0].version !== undefined) {
+				htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.version + '" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" />';
+			}
+			
+			if (statementProperty[0].email !== undefined) {
+				htmlItem += '<input type="text" id="email-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.email + '" value="" aria-labelledby="itemLegend-'+listIndex+' email-'+listIndex+'" aria-label="' + langVallydette.email + '" title="' + langVallydette.email + '" />';
+			}
+			
+			if (statementProperty[0].content !== undefined) {
+				htmlItem += '<input type="text" id="content-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.content + '" value="" aria-labelledby="itemLegend-'+listIndex+' content-'+listIndex+'" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" />';
+			}
+			
+			
 		htmlItem += '</span>';	
 	
 	listItem.innerHTML = htmlItem;
@@ -3689,7 +3776,9 @@ exportStatement = function(statementResult) {
 exportStatementHTML = function(statementResult) {
 	
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
-	
+	var md = window.markdownit();
+	var resultApproval = md.render('# markdown-it rulezz!');
+
 	htmlStatement = "";
 	htmlStatement = `<!DOCTYPE html>
 <html lang="fr">
@@ -3730,14 +3819,8 @@ exportStatementHTML = function(statementResult) {
                     <p>${dataWCAG.date}</p>
                     
                     <h3>Identité du déclarant</h3>
-                    <p>
-                        ORANGE SA<br />
-                        Siège social : 78, rue Olivier de Serres, 75 015 Paris<br />
-                    ou<br />	
-						<a href="http://a11y-guidelines.orange.com/">Centre de Compétences d'Accessibilité Numérique du Groupe</a> 
-					</p>
+					<p>${dataVallydette.statement.approval.filter(a => a.checked).map(a => md.render(a.content)).join('')}</p>
 					
-                    
                     <h3>Référentiel</h3>
                     <p>
                         <a href="https://www.w3.org/TR/WCAG21/"><abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> version 2.1, niveau AA</a>.<br />
@@ -3801,7 +3884,7 @@ exportStatementHTML = function(statementResult) {
             <div class="col-md">
 
                 <h2>Résultat des tests</h2>
-                <p>L'audit réalisé, complété par des tests d’accessibilité auprès de xx utilisateurs (de ZoomText, Jaws, XXX), révèle une conformité globale aux critères WCAG de XX%, avec X non-conformités.</p>
+                <p>L'audit réalisé, ${dataVallydette.statement.users > 0 ? `complété par des tests d’accessibilité auprès de ${dataVallydette.statement.users} utilisateur(s) (de ${dataVallydette.statement.tests.filter(t => t.type === 'user').map(t => t.name)})` : ``} , révèle une conformité globale aux critères WCAG de XX%, avec X non-conformités.</p>
                 
 				<p>Un taux de conformité est calculé par page auditée : il est égal à la somme des critères conformes divisée par le nombre de critères applicables.</p>
 				
@@ -3872,16 +3955,23 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Amélioration et contact</h2>
-                <p>Vous pouvez nous aider à améliorer l'accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez. Pour ce faire, envoyez un <a href="mailto:accessibilite.france@orange.com">courriel à accessibilite.france@orange.com</a> OU <a href="mailto:accessibility.group@orange.com">courriel à accessibility.group@orange.com</a> OU @ du CP / Sponsor pour site interne 
-				</p>
-        
-            </div>
+                <h2>Amélioration et contact</h2>`;
+				
+				dataVallydette.statement.contact.filter(c => c.checked).map(function (c){
+				if (c.email !== "") {
+					htmlStatement += `<p>Vous pouvez nous aider à améliorer l'accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez. Pour ce faire, envoyez un <a href="mailto:${c.email}">courriel à ${c.email}</a>.</p>`
+				} else {
+					htmlStatement += `<p>Vous pouvez aider à améliorer l'accessibilité du site en signalant les problèmes éventuels que vous rencontrez : contactez le support au  ${c.name}.</p>`
+				}
+				}).join('');
+				
+
+    htmlStatement += `       </div>
         </div>
     </div>
 </body>
 
-</html>`
+</html>`;
 	
 	
 	console.log(htmlStatement);

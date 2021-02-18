@@ -3061,6 +3061,8 @@ for (let i in dataVallydette.checklist.page) {
 /**
  * Statement manager
  */
+ 
+const statementProperties = ["name", "type", "version", "content", "email", "checked"];
 
 function initStatementObject() {
 	
@@ -3071,7 +3073,7 @@ function initStatementObject() {
 				"lang": "",
 				"status": "WIP",
 				"date": "",
-				"users": 0,
+				"users": 5,
 				"blockingPoints": 0,
 				"technology": [
 				{
@@ -3103,6 +3105,11 @@ function initStatementObject() {
 					"type": "manual",
 					"name": "NVDA",
 					"version": "2020.3"
+					},
+					{	
+					"type": "functional",
+					"name": "Navigation clavier",
+					"version": ""
 					},
 					{	
 					"type": "user",
@@ -3139,6 +3146,15 @@ function initStatementObject() {
 					"name": "0810 30 3000 mot clé \"accessibilité\"",
 					"email": "",
 					"checked": true
+				}
+				],
+				"derogation": [
+				{
+					"content": ""
+				}],
+				"exemption": [
+				{
+					"content": ""
 				}
 				]
 
@@ -3358,7 +3374,6 @@ radioIsChecked = function (statementProperty, propertyIndex) {
 	
 }
 
- 
 /**
  * Statement property edition
  * @param {string} statementProperty - statement property to edit
@@ -3385,36 +3400,33 @@ editStatementProperty = function (statementProperty) {
 		htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
 		htmlModal += '  </span>';
 
-			if (listItem.type !== undefined) {
+		statementProperties.forEach(function(p){
+			
+			if (listItem[p] !== undefined && p === 'type') {
 				
 				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + index + ' name-' + index + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
-				htmlModal += '<option value="auto" ' + (listItem.type === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
-				htmlModal += '<option value="functional" ' + (listItem.type === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
-				htmlModal += '<option value="manual" ' + (listItem.type === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
-				htmlModal += '<option value="user" ' + (listItem.type === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';	
+				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
+				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
+				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
+				htmlModal += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';	
 				htmlModal += '</select>';
-			}
-
-			if (listItem.name !== undefined) {
-				htmlModal += '<input type="text" id="name-' + index + '" class="form-control mb-1" value="' + listItem.name + '" aria-labelledby="itemLegend-' + index + ' name-' + index +'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" aria-describedby="itemDesc" placeholder="' + langVallydette.name + '" />';
-			}
-			
-			if (listItem.version !== undefined) {
-				htmlModal += '<input type="text" id="version-' + index + '" class="form-control mb-1" value="' + listItem.version + '" aria-labelledby="itemLegend-' + index + '  version-' + index + '" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" placeholder="' + langVallydette.version + '" />';
-			}
-			
-			if (listItem.email !== undefined) {
-				htmlModal += '<input type="text" id="email-' + index + '" class="form-control mb-1" value="' + listItem.email + '" aria-labelledby="itemLegend-' + index + '  email-' + index + '" aria-label="' + langVallydette.email + '" title="' + langVallydette.email + '" placeholder="' + langVallydette.email + '" />';
-			}
-			
-			if (listItem.content !== undefined) {
-				htmlModal += '<textarea  rows="4" cols="50" id="content-' + index + '" class="form-control mb-1" aria-labelledby="itemLegend-' + index + '  content-' + index + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
-			}
-			
-			if (listItem.checked) {
+				
+			} else if (listItem[p] !== undefined && p === 'content') {
+				
+				htmlModal += '<textarea  rows="4" cols="50" id="' + p + '-' + index + '" class="form-control mb-1" aria-labelledby="itemLegend-' + index + ' ' + p + '-' + index + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+				
+			} else if (listItem[p] !== undefined && p === 'checked') {
+				
 				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-labelledby="itemLegend-' + index + '  checked-' + index + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
+				
+			} else if (listItem[p] !== undefined) {
+				
+				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" aria-labelledby="itemLegend-' + index + ' ' + p + '-' + index +'" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				
 			}
 
+		})
+		
 		htmlModal += '</span>';
 		htmlModal += '</li>';	
 
@@ -3449,31 +3461,15 @@ saveListElement = function(listToEdit, statementProperty) {
 			
 			itemObj = {};
 			
-			if (listItem.children[0].children["type-"+index]) {
-				itemObj.type = listItem.children[0].children["type-"+index].value;
-			}
+			statementProperties.forEach(function(p){
+				if (listItem.children[0].children[p+"-"+index]) {
+					itemObj[p] = listItem.children[0].children[p+"-"+index].value;
+				}
+			})
 			
-			if (listItem.children[0].children["name-"+index]) {
-				itemObj.name = listItem.children[0].children["name-"+index].value;
-			}
-			
-			if (listItem.children[0].children["version-"+index]) {
-				itemObj.version = listItem.children[0].children["version-"+index].value;
-			}
-			
-			if (listItem.children[0].children["email-"+index]) {
-				itemObj.email = listItem.children[0].children["email-"+index].value;
-			}
-			
-			if (listItem.children[0].children["content-"+index]) {
-				itemObj.content = listItem.children[0].children["content-"+index].value;
-			}
-
-			if (listItem.children[0].children["checked-"+index]) {
-				itemObj.checked = true;
-			}
-
 			dataVallydette.statement[statementProperty].push(itemObj);
+			
+			console.log(dataVallydette.statement);
 			
 			if (statementProperty === 'technology' || statementProperty === 'tests' ) {
 				
@@ -3484,18 +3480,15 @@ saveListElement = function(listToEdit, statementProperty) {
 				
 			}
 			
-			
 			if (statementProperty === 'contact' || statementProperty === 'approval' ) {
 				
 				listMarkup += '<div class="custom-control custom-radio">';
-				listMarkup += '<input type="radio" id="' + statementProperty +  index + '" name="' + statementProperty + 'Radio" class="custom-control-input" ';
-				listMarkup += itemObj.checked ? "checked" : "";
+				listMarkup += '<input type="radio" id="' + statementProperty +  index + '" name="' + statementProperty + 'Radio" class="custom-control-input" onClick="radioIsChecked(\'' + statementProperty + '\', ' + index + ')" ';
+				listMarkup += itemObj.checked === "true" ? "checked" : "";
 				listMarkup += '>';
 				listMarkup += '<label class="custom-control-label" for="' + statementProperty +  index + '">' + itemObj.name + '</label>';
 				listMarkup += '</div>';
 			}
-			
-			
 			
 		}
 		index++;
@@ -3509,7 +3502,7 @@ saveListElement = function(listToEdit, statementProperty) {
 	} 
 	
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
-		
+	
 }
 
 addListElement = function(statementProperty) {
@@ -3542,6 +3535,10 @@ addListElement = function(statementProperty) {
 			
 			if (statementProperty[0].content !== undefined) {
 				htmlItem += '<input type="text" id="content-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.content + '" value="" aria-labelledby="itemLegend-'+listIndex+' content-'+listIndex+'" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" />';
+			}
+			
+			if (statementProperty[0].number !== undefined) {
+				htmlItem += '<input type="text" id="number-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.number + '" value="" aria-labelledby="itemLegend-'+listIndex+' number-'+listIndex+'" aria-label="' + langVallydette.number + '" title="' + langVallydette.number + '" />';
 			}
 			
 			
@@ -3776,8 +3773,8 @@ exportStatement = function(statementResult) {
 exportStatementHTML = function(statementResult) {
 	
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
+	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
 	var md = window.markdownit();
-	var resultApproval = md.render('# markdown-it rulezz!');
 
 	htmlStatement = "";
 	htmlStatement = `<!DOCTYPE html>
@@ -3809,7 +3806,7 @@ exportStatementHTML = function(statementResult) {
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span><br />conforme</div>
                     </h2>
                     
-                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>, avec X non-conformités.</p>
+                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>, avec ${listNonConformity.length} non-conformités.</p>
 
                 </div>
         
@@ -3832,7 +3829,7 @@ exportStatementHTML = function(statementResult) {
                 
                     <h3>Technologies du site</h3>
                     <ul>
-					 ${dataVallydette.statement.technology.map(e => `<li>${e.name} ${e.version}</li>`).join('\n')}
+					 ${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n')}
                     </ul>
                     
                     <h3>Méthodes et outils utilisés pour vérifier l’accessibilité</h3>
@@ -3843,7 +3840,7 @@ exportStatementHTML = function(statementResult) {
 						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
 						let separator = ', '
 						
-						arrayTypeResult.length > 0 ? htmlStatement += `<li>${arrayTypeResult.map(e => `${e.name} ${e.version}`).join(separator)} </li>\n` : '';
+						arrayTypeResult.length > 0 ? htmlStatement += `<li><strong>${langVallydette[t + "Test"]} :</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n` : '';
 						
 					});	
 		
@@ -3884,7 +3881,7 @@ exportStatementHTML = function(statementResult) {
             <div class="col-md">
 
                 <h2>Résultat des tests</h2>
-                <p>L'audit réalisé, ${dataVallydette.statement.users > 0 ? `complété par des tests d’accessibilité auprès de ${dataVallydette.statement.users} utilisateur(s) (de ${dataVallydette.statement.tests.filter(t => t.type === 'user').map(t => t.name)})` : ``} , révèle une conformité globale aux critères WCAG de XX%, avec X non-conformités.</p>
+                <p>L'audit réalisé, ${dataVallydette.statement.users > 0 ? `complété par des tests d’accessibilité auprès de ${dataVallydette.statement.users} utilisateur(s) (de ${dataVallydette.statement.tests.filter(t => t.type === 'user').map(t => t.name)})` : ``}, révèle une conformité globale aux critères WCAG de ${dataWCAG.globalPagesResult}%, avec ${listNonConformity.length} non-conformités.</p>
                 
 				<p>Un taux de conformité est calculé par page auditée : il est égal à la somme des critères conformes divisée par le nombre de critères applicables.</p>
 				
@@ -3934,9 +3931,7 @@ exportStatementHTML = function(statementResult) {
             <div class="col-lg">
         
                 <h2>Détail des non-conformités</h2>`;
-				
-				const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
-				
+		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `<ul>
 					${listNonConformity.map(nc => 

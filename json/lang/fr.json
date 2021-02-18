@@ -111,6 +111,10 @@
 	"functional": "fonctionnel",
 	"manual": "manuel",
 	"user": "utilisateur",
+	"autoTest": "Tests automatiques",
+	"functionalTest": "Tests fonctionnels",
+	"manualTest": "Tests manuels",
+	"userTest": "Tests utilisateurs",
 	"version": "Version",
 	"keyboard": "Navigation clavier",
 	"template": {

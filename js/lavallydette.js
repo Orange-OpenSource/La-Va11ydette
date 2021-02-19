@@ -3063,6 +3063,7 @@ for (let i in dataVallydette.checklist.page) {
  */
  
 const statementProperties = ["name", "type", "version", "content", "email", "checked"];
+const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "derogation", "exemption"];
 
 function initStatementObject() {
 	
@@ -3126,37 +3127,35 @@ function initStatementObject() {
 				],
 				"approval": [
 				{
-					"name": "Orange SA",
-					"content": "ORANGE SA <br> Siège social : 78, rue Olivier de Serres,<br> 75 015 Paris"
+					"name": "Service client",
+					"content": ""
 				},{
-					"name": "EASE",
-					"content": "[Centre de Compétences d'Accessibilité Numérique du Groupe](http://a11y-guidelines.orange.com)",
+					"name": "Service interne",
+					"content": "",
 					"checked": true
 				}
 				],
 				"contact": [
 				{
 					"name": "Orange France",
-					"email": "accessibilite.france@orange.com"
+					"email": ""
 				},{
 					"name": "Orange Groupe",
-					"email": "accessibility.group@orange.com"
+					"email": ""
 					
 				},{
-					"name": "0810 30 3000 mot clé \"accessibilité\"",
+					"name": "Équipe Projet",
+					"email": ""
+					
+				},{
+					"name": "Support téléphonique",
 					"email": "",
 					"checked": true
 				}
 				],
-				"derogation": [
-				{
-					"content": ""
-				}],
-				"exemption": [
-				{
-					"content": ""
-				}
-				]
+				"derogation": "",
+				"exemption": ""
+				
 
 		}
 	
@@ -3212,15 +3211,15 @@ exportStatementHTML(statementResult);
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputName" class="is-required">' + langVallydette.name + '</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="inputName" value="' + dataVallydette.statement.name + '" required>';
+    statementWizardContent += '<label for="input-name" class="is-required">' + langVallydette.name + '</label>';
+    statementWizardContent += '<input type="text" class="form-control" id="input-name" value="' + dataVallydette.statement.name + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputLang" class="is-required">' + langVallydette.lang + '</label>';
-    statementWizardContent += '<select class="custom-select" id="inputLang" name="inputLang" required>';
+    statementWizardContent += '<label for="input-lang" class="is-required">' + langVallydette.lang + '</label>';
+    statementWizardContent += '<select class="custom-select" id="input-lang" required>';
     statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
     statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>' + langVallydette.french + '</option>';
     statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>' + langVallydette.english + '</option>';
@@ -3230,8 +3229,8 @@ exportStatementHTML(statementResult);
 	
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputDate"  class="is-required">' + langVallydette.date + '</label>';
-    statementWizardContent += '<input type="date" class="form-control" id="inputDate" value="' + dataVallydette.statement.date + '" required>';
+    statementWizardContent += '<label for="input-date"  class="is-required">' + langVallydette.date + '</label>';
+    statementWizardContent += '<input type="date" class="form-control" id="input-date" value="' + dataVallydette.statement.date + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3243,13 +3242,13 @@ exportStatementHTML(statementResult);
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
 		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'approval\', ' + index + ')">';
+		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="approvalRadio" class="custom-control-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked ? " checked " : "") + ' >';
 		statementWizardContent += '<label class="custom-control-label" for="approval' +  index + '">' + a.name + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
     statementWizardContent += '</div>';
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
+	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement">Modifier les déclarants</button>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
@@ -3258,13 +3257,13 @@ exportStatementHTML(statementResult);
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
 		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'contact\', ' + index + ')">';
+		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked ? " checked " : "") + ' >';
 		statementWizardContent += '<label class="custom-control-label" for="contact' +  index + '">' + c.name + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
     statementWizardContent += '</div>';
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement">Ajouter un contact</button>';
+	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement">Modifier les contacts</button>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-4">';
@@ -3316,16 +3315,16 @@ exportStatementHTML(statementResult);
 	statementWizardContent += '<div id="userInfos">';	
 	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="inputNbUser">' + langVallydette.usersNumber + '</label>';
-	statementWizardContent += '<select class="custom-select mb-1" id="inputNbUsers" name="inputNbUsers">';
+	statementWizardContent += '<label for="input-users">' + langVallydette.usersNumber + '</label>';
+	statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
 	
 	for (index = 0; index < 10; ++index) {
 		statementWizardContent += '<option value="' + index + '" ' + (index ===  parseInt(dataVallydette.statement.users) ? "selected" : "") + '>' + index + '</option>';
 	}
 	
 	statementWizardContent += '</select>';
-	statementWizardContent += '<label for="inputBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
-	statementWizardContent += '<select class="custom-select" id="inputBlockingPoints" name="inputBlockingPoints">';
+	statementWizardContent += '<label for="input-blockingPoints" >' + langVallydette.blockingNumber + '</label>';
+	statementWizardContent += '<select class="custom-select" id="input-blockingPoints" name="input-blockingPoints">';
 	
 	for (index = 0; index < 10; ++index) {
 		statementWizardContent += '<option value="' + index + '" ' + (index ===   parseInt(dataVallydette.statement.blockingPoints) ? "selected" : "") + '>' + index + '</option>';
@@ -3335,7 +3334,23 @@ exportStatementHTML(statementResult);
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
 	
+	statementWizardContent += '<div class="row">';
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputDerogation">Dérogation</label>';
+    statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5">' + dataVallydette.statement.derogation + '</textarea>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputExemption">Exemption</label>';
+    statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5">' + dataVallydette.statement.exemption + '</textarea>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row mb-2">';
 	statementWizardContent += '<div class="col-lg-12">';
@@ -3444,7 +3459,7 @@ editStatementProperty = function (statementProperty) {
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 	
-	document.getElementById("addElement").addEventListener('click', function(){addListElement(dataVallydette.statement[statementProperty]);});
+	document.getElementById("addElement").addEventListener('click', function(){addListElement(statementProperty);});
 	document.getElementById("editionSaveBtn").addEventListener('click', function(){saveListElement(document.getElementById("listToEdit"), statementProperty);});
 } 
 
@@ -3468,8 +3483,6 @@ saveListElement = function(listToEdit, statementProperty) {
 			})
 			
 			dataVallydette.statement[statementProperty].push(itemObj);
-			
-			console.log(dataVallydette.statement);
 			
 			if (statementProperty === 'technology' || statementProperty === 'tests' ) {
 				
@@ -3518,29 +3531,35 @@ addListElement = function(statementProperty) {
 		htmlItem += '	<span class="input-group-text" id="itemLegend-'+listIndex+'">Item '+listIndex+'</span>';
 		htmlItem += '  </span>';
 
-			statementProperty[0].type ? htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" /><option value="" >' + langVallydette.selectType + '</option><option value="auto" >' + langVallydette.auto + '</option><option value="functional">' + langVallydette.functional + '</option><option value="manual">' + langVallydette.manual + '</option><option value="user">' + langVallydette.user + '</option></select>' : "";
-						
-			
-			if (statementProperty[0].name !== undefined) {
-				htmlItem += '<input type="text" id="name-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.name + '" value="" aria-labelledby="itemLegend-'+listIndex+' name-'+listIndex+'" aria-label="' + langVallydette.name + '" title="' + langVallydette.name + '" />';
+		console.log(statementProperty);
+		console.log(dataVallydette.statement[statementProperty][0]);
+		
+		statementProperties.forEach(function(p){
+			console.log(dataVallydette.statement[statementProperty][0][p]);
+			if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'type') {
+				
+				htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + listIndex + ' name-' + listIndex + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlItem += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
+				htmlItem += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
+				htmlItem += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
+				htmlItem += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';	
+				htmlItem += '</select>';
+				
+			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'content') {
+				
+				htmlItem += '<textarea  rows="4" cols="50" id="' + p + '-' + listIndex + '" class="form-control mb-1" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+				
+			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'checked') {
+				
+				htmlItem += '<input type="hidden" id="checked-' + listIndex + '" class="form-control mb-1" value="' + listItem.checked + '" aria-labelledby="itemLegend-' + listIndex + '  checked-' + listIndex + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
+				
+			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p)) {
+				
+				htmlItem += '<input type="text" id="' + p + '-' + listIndex + '" class="form-control mb-1" value="' + listItem[p] + '" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex +'" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				
 			}
-			
-			if (statementProperty[0].version !== undefined) {
-				htmlItem += '<input type="text" id="version-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.version + '" value="" aria-labelledby="itemLegend-'+listIndex+' version-'+listIndex+'" aria-label="' + langVallydette.version + '" title="' + langVallydette.version + '" />';
-			}
-			
-			if (statementProperty[0].email !== undefined) {
-				htmlItem += '<input type="text" id="email-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.email + '" value="" aria-labelledby="itemLegend-'+listIndex+' email-'+listIndex+'" aria-label="' + langVallydette.email + '" title="' + langVallydette.email + '" />';
-			}
-			
-			if (statementProperty[0].content !== undefined) {
-				htmlItem += '<input type="text" id="content-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.content + '" value="" aria-labelledby="itemLegend-'+listIndex+' content-'+listIndex+'" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" />';
-			}
-			
-			if (statementProperty[0].number !== undefined) {
-				htmlItem += '<input type="text" id="number-'+listIndex+'" class="form-control mb-1" placeholder="' + langVallydette.number + '" value="" aria-labelledby="itemLegend-'+listIndex+' number-'+listIndex+'" aria-label="' + langVallydette.number + '" title="' + langVallydette.number + '" />';
-			}
-			
+
+		})
 			
 		htmlItem += '</span>';	
 	
@@ -3554,12 +3573,14 @@ saveStatement = function(statementForm) {
 	
 	var statementResult = runComputation(true);
 	
-	dataVallydette.statement.name = statementForm.elements["inputName"].value;
-	dataVallydette.statement.lang = statementForm.elements["inputLang"].value;
-	dataVallydette.statement.date = statementForm.elements["inputDate"].value;
-	dataVallydette.statement.users = statementForm.elements["inputNbUsers"].value;
-	dataVallydette.statement.blockingPoints = statementForm.elements["inputBlockingPoints"].value;
 	dataVallydette.statement.status = "done";
+	
+	statementInputs.forEach(function(input){
+		console.log(input);
+		dataVallydette.statement[input] = statementForm.elements["input-"+input].value;
+	});
+	
+	console.log(dataVallydette.statement);
 	
 	if (dataWCAG.globalPagesResult) {
 		

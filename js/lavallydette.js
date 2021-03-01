@@ -3138,18 +3138,18 @@ function initStatementObject() {
 				"contact": [
 				{
 					"name": "Orange France",
-					"email": ""
+					"content": ""
 				},{
 					"name": "Orange Groupe",
-					"email": ""
+					"content": ""
 					
 				},{
 					"name": "Équipe Projet",
-					"email": ""
+					"content": ""
 					
 				},{
 					"name": "Support téléphonique",
-					"email": "",
+					"content": "",
 					"checked": true
 				}
 				],
@@ -3235,9 +3235,11 @@ exportStatementHTML(statementResult);
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
+	statementWizardContent += '<hr class="border-light">';
+	
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-4">';
-	statementWizardContent += '<h3>Déclarant</h3>';
+	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<h3>Déclarant <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des déclarants" title="Modifier la liste des déclarants"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
 	statementWizardContent += '<div class="form-group" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
@@ -3248,11 +3250,10 @@ exportStatementHTML(statementResult);
 	})
 	
     statementWizardContent += '</div>';
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement">Modifier les déclarants</button>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-4">';
-	statementWizardContent += '<h3>Contact</h3>';
+	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<h3>Contact  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des contacts" title="Modifier la liste des contacts"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
 	statementWizardContent += '<div class="form-group" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
@@ -3263,19 +3264,11 @@ exportStatementHTML(statementResult);
 	})
 	
     statementWizardContent += '</div>';
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement">Modifier les contacts</button>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-4">';
-	
-    statementWizardContent += '</div>';
-	statementWizardContent += '</div>';
-	statementWizardContent += '</div>';
-	
-	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h3 id="technologyLegend">' + langVallydette.technologies + '</h3>';
+	statementWizardContent += '<h3 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des technologies" title="Modifier la liste des technologies"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3284,16 +3277,14 @@ exportStatementHTML(statementResult);
 	})
 	
 	statementWizardContent += '</ul>';
-    statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement">';
-    statementWizardContent += langVallydette.modifyList;
-	statementWizardContent += '</button>';
+ 
     
 	statementWizardContent += '</div>';	
     statementWizardContent += '</div>';
 
-	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h3 id="testLegend">' + langVallydette.tests + '</h3>';
+	statementWizardContent += '<h3 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des tests" title="Modifier la liste des tests"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
@@ -3304,13 +3295,15 @@ exportStatementHTML(statementResult);
 	})
 	
 	statementWizardContent += '</ul>';
-	statementWizardContent += '<button class="btn btn-secondary btn-sm ml-auto d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement">';
-    statementWizardContent += langVallydette.modifyList;
-    statementWizardContent += '</button>';
 	statementWizardContent += '</div>';	
 	statementWizardContent += '</div>';	
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<hr class="border-light">';
+	
+	statementWizardContent += '<div class="row">';
+	statementWizardContent += '<div class="col-lg-12">';
 
 	statementWizardContent += '<div id="userInfos">';	
 	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';
@@ -3336,18 +3329,22 @@ exportStatementHTML(statementResult);
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
+	statementWizardContent += '<hr class="border-light">';
+	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="inputDerogation">Dérogation</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5">' + dataVallydette.statement.derogation + '</textarea>';
+    statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
+	statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="inputExemption">Exemption</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5">' + dataVallydette.statement.exemption + '</textarea>';
+    statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' + dataVallydette.statement.exemption + '</textarea>';
+	statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3407,15 +3404,23 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<form id="listEditForm">';
 	htmlModal += '<ul id="listToEdit">';
 	
+	console.log(statementProperty);
+	
 	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
 	
 		htmlModal += '<li>';
-		htmlModal += '<span class="input-group">';
-		htmlModal += ' <span class="input-group-prepend">';
-		htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
-		htmlModal += '  </span>';
+		
+		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
+			htmlModal += '<span>';
+			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + index + '</span>';
+		} else {
+			htmlModal += '<span class="input-group">';
+			htmlModal += ' <span class="input-group-prepend">';
+			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
+			htmlModal += '  </span>';	
+		}
 
-		statementProperties.forEach(function(p){
+		statementProperties.forEach(function(p) {
 			
 			if (listItem[p] !== undefined && p === 'type') {
 				
@@ -3428,7 +3433,7 @@ editStatementProperty = function (statementProperty) {
 				
 			} else if (listItem[p] !== undefined && p === 'content') {
 				
-				htmlModal += '<textarea  rows="4" cols="50" id="' + p + '-' + index + '" class="form-control mb-1" aria-labelledby="itemLegend-' + index + ' ' + p + '-' + index + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" aria-labelledby="itemLegend-' + index + ' ' + p + '-' + index + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
 				
 			} else if (listItem[p] !== undefined && p === 'checked') {
 				
@@ -3447,7 +3452,7 @@ editStatementProperty = function (statementProperty) {
 
 	})
 	htmlModal += '</ul>';
-	htmlModal += '<p id="itemDesc" class="text-muted">' + langVallydette.statementTxt3 + '</p>';
+	htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
 	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.addElement + '</button>';
 	htmlModal += '</form>';
 	htmlModal += '</div>';
@@ -3526,13 +3531,16 @@ addListElement = function(statementProperty) {
 
 	let htmlItem = '';
 	
-		htmlItem += '<span class="input-group">';
-		htmlItem += ' <span class="input-group-prepend">';
-		htmlItem += '	<span class="input-group-text" id="itemLegend-'+listIndex+'">Item '+listIndex+'</span>';
-		htmlItem += '  </span>';
+		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
+			htmlItem += '<span>';
+			htmlItem += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + index + '</span>';
+		} else {
+			htmlItem += '<span class="input-group">';
+			htmlItem += ' <span class="input-group-prepend">';
+			htmlItem += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
+			htmlItem += '  </span>';	
+		}
 
-		console.log(statementProperty);
-		console.log(dataVallydette.statement[statementProperty][0]);
 		
 		statementProperties.forEach(function(p){
 			console.log(dataVallydette.statement[statementProperty][0][p]);
@@ -3601,6 +3609,8 @@ saveStatement = function(statementForm) {
 
 exportStatement = function(statementResult) {
 
+	var md = window.markdownit();
+
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
 	xmlStatement += '< !-- généré par la va11ydette -->\n\n';
@@ -3637,6 +3647,22 @@ exportStatement = function(statementResult) {
 	xmlStatement += '******************************************************\n';
 	xmlStatement += '-->\n\n';
 
+	xmlStatement += '<!--\n';
+	xmlStatement += 'APPROVAL\n';
+	xmlStatement += 'Name: approval name\n';
+	xmlStatement += 'Description: usefull for additional information like a postal address for example. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<approval>\n';
+	dataVallydette.statement.approval.filter(a => a.checked).map(a => xmlStatement += '	<name>' + a.name + '</name>\n	<description>\n<![CDATA[' + a.content + ']]>\n</description>\n');
+	xmlStatement += '</approval>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'CONTACT\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<contact>\n';
+	dataVallydette.statement.contact.filter(c => c.checked).map(c => xmlStatement += '	<name>' + c.name + '</name>\n	<email>\n' + c.email + '\n</email>\n');
+	xmlStatement += '</contact>\n\n';
+	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'AUDIT DATE\n';
 	xmlStatement += 'Format: YYYY-MM-DD\n';
@@ -3746,8 +3772,8 @@ exportStatement = function(statementResult) {
 				
 				for (let i in listNonConformity) {
 				
-					xmlStatement += '	<detail>';
-					xmlStatement += '		<title>' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', ' + langVallydette.auditTxt10 + ' ' + listNonConformity[i].level + '</title>';
+					xmlStatement += '	<detail>\n';
+					xmlStatement += '		<title>' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', ' + langVallydette.auditTxt10 + ' ' + listNonConformity[i].level + '</title>\n';
 					xmlStatement += '		<description><![CDATA[';
 					/** Remove undefined values */
 					
@@ -3764,15 +3790,22 @@ exportStatement = function(statementResult) {
 							}	
 					} 
 					
-					xmlStatement += ']]></description>';
-					xmlStatement += '	</detail>';
+					xmlStatement += ']]></description>\n';
+					xmlStatement += '	</detail>\n';
 		
 				}
 				
 			}
-	xmlStatement += '</details>\n';
+	xmlStatement += '</details>\n\n';
+	xmlStatement += '<derogations>\n<![CDATA[';
+	xmlStatement += md.render(dataVallydette.statement.derogation);
+	xmlStatement += ']]>\n</derogations>\n\n';
 	
-	xmlStatement += '</declaration>';
+	xmlStatement += '<exemptions>\n<![CDATA[';
+	xmlStatement += md.render(dataVallydette.statement.exemption);
+	xmlStatement += ']]>\n</exemptions>';
+	
+	xmlStatement += '\n\n</declaration>';
 
 	if (dataVallydette.statement.status === "done") {
 		

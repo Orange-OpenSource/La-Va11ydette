@@ -365,7 +365,6 @@ function eventHandler() {
 		document.getElementById("selectFilesLabel").innerText = inputSelectFile.files[0].name;
 	}, false);
 	
-	
 	var btnChecklist = document.getElementById("btnChecklistName");
 	btnChecklist.addEventListener('click', function () {
 		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
@@ -410,8 +409,7 @@ function runLocalStorage() {
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '</div></div></div></div>';
-
-
+	
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
@@ -3132,7 +3130,7 @@ function initStatementObject() {
 				},{
 					"name": "Service interne",
 					"content": "",
-					"checked": true
+					"checked": "true"
 				}
 				],
 				"contact": [
@@ -3150,7 +3148,7 @@ function initStatementObject() {
 				},{
 					"name": "Support téléphonique",
 					"content": "",
-					"checked": true
+					"checked": "true"
 				}
 				],
 				"derogation": "",
@@ -3178,7 +3176,9 @@ function showStatementWizard() {
 	document.getElementById("contextualMenu").appendChild(btnStatementExcelExport);
 	
 	var statementResult = runComputation(true);
-exportStatementHTML(statementResult);
+	
+	//exportStatementHTML(statementResult);
+
 	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
 		
 		exportStatement(statementResult);
@@ -3206,6 +3206,23 @@ exportStatementHTML(statementResult);
 	}
 	statementWizardContent += '</div>';
 	
+	statementWizardContent += '<div class="row">';
+	statementWizardContent += '<div class="col-lg-12">';
+	statementWizardContent += '<div class="input-group">';
+    statementWizardContent += '                    <div class="custom-file">';
+    statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file">';
+    statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData">Sélectionner des données</label>';
+    statementWizardContent += '                    </div>';
+    statementWizardContent += '                    <div class="input-group-append">';
+    statementWizardContent += '                        <button class="btn btn-secondary" type="button" id="importStatementData">Importer</button>';
+    statementWizardContent += '                    </div>';
+    statementWizardContent += '                </div>';
+    statementWizardContent += '            </div>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<hr class="border-light">';
+		
 	statementWizardContent += '<form id="statementForm">';
 	
 	statementWizardContent += '<div class="row">';
@@ -3365,6 +3382,22 @@ exportStatementHTML(statementResult);
 	document.getElementById("btnEditContactList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("contact");});
 	document.getElementById("btnEditApprovalList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("approval");});
 
+	document.getElementById('importStatementData').onclick = function () {
+		var files = document.getElementById('selectFilesStatement').files;
+		var fr = new FileReader();
+
+		fr.onload = function (e) {
+			dataVallydette.statement = JSON.parse(e.target.result);
+			showStatementWizard();
+		}
+
+		fr.readAsText(files.item(0));
+	};
+	
+	document.getElementById("selectFilesStatement").addEventListener('change', function () {
+		document.getElementById("selectFilesLabelStatement").innerText = document.getElementById("selectFilesStatement").files[0].name;
+	}, false);
+	
 	document.getElementById("statementForm").addEventListener('submit', function () {
 		event.preventDefault();
 		saveStatement(this);
@@ -3377,13 +3410,13 @@ radioIsChecked = function (statementProperty, propertyIndex) {
 	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
 		
 		if (propertyIndex === index) {
-			listItem.checked = true;
+			listItem.checked = "true";
 		} else {
-			listItem.checked = false;
+			listItem.checked = "false";
 		}
 	
 	})
-	
+	console.log(dataVallydette.statement);
 }
 
 /**
@@ -3520,7 +3553,7 @@ saveListElement = function(listToEdit, statementProperty) {
 	} 
 	
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
-	
+	console.log(dataVallydette.statement);
 }
 
 addListElement = function(statementProperty) {
@@ -3533,11 +3566,11 @@ addListElement = function(statementProperty) {
 	
 		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
 			htmlItem += '<span>';
-			htmlItem += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + index + '</span>';
+			htmlItem += '	<span id="itemLegend-' + listIndex + '" class="font-weight-bold">' + langVallydette.item + ' ' + listIndex + '</span>';
 		} else {
 			htmlItem += '<span class="input-group">';
 			htmlItem += ' <span class="input-group-prepend">';
-			htmlItem += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
+			htmlItem += '	<span class="input-group-text" id="itemLegend-' + listIndex + '">' + langVallydette.item + ' ' + listIndex + '</span>';
 			htmlItem += '  </span>';	
 		}
 
@@ -3613,7 +3646,7 @@ exportStatement = function(statementResult) {
 
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
-	xmlStatement += '< !-- généré par la va11ydette -->\n\n';
+	xmlStatement += '<!-- généré par la va11ydette -->\n\n';
 	
 	xmlStatement += '<!--\n ';
 	xmlStatement += 'TITLE\n ';
@@ -3650,17 +3683,19 @@ exportStatement = function(statementResult) {
 	xmlStatement += '<!--\n';
 	xmlStatement += 'APPROVAL\n';
 	xmlStatement += 'Name: approval name\n';
-	xmlStatement += 'Description: usefull for additional information like a postal address for example. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += 'Content: usefull for additional information like a postal address for example. This is CDATA-protected, please add properly formatted HTML. \n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<approval>\n';
-	dataVallydette.statement.approval.filter(a => a.checked).map(a => xmlStatement += '	<name>' + a.name + '</name>\n	<description>\n<![CDATA[' + a.content + ']]>\n</description>\n');
+	dataVallydette.statement.approval.filter(a => a.checked).map(a => xmlStatement += '	<name>' + a.name + '</name>\n	<content>\n<![CDATA[' +  md.render(a.content) + ']]>\n</content>\n');
 	xmlStatement += '</approval>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'CONTACT\n';
+	xmlStatement += 'Name: contact name\n';
+	xmlStatement += 'Content: full contact informations. This is CDATA-protected, please add properly formatted HTML. \n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<contact>\n';
-	dataVallydette.statement.contact.filter(c => c.checked).map(c => xmlStatement += '	<name>' + c.name + '</name>\n	<email>\n' + c.email + '\n</email>\n');
+	dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => xmlStatement += '	<name>' + c.name + '</name>\n	<content>\n<![CDATA[' + md.render(c.content) + ']]>\n</content>\n');
 	xmlStatement += '</contact>\n\n';
 	
 	xmlStatement += '<!--\n';

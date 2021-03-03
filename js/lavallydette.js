@@ -157,6 +157,8 @@ function createObjectAndRunVallydette() {
 		var jsonCriteria;
 		jsonCriteria = 'json/' + checklistVallydette[currentCriteriaListName].filename + '-' + globalLang + '.json';
 
+		//init about link href attribute from configuration input
+		document.getElementById("link-about").setAttribute('href', checklistVallydette[currentCriteriaListName]["about-" + globalLang]);
 
 		var criteriaRequest = new XMLHttpRequest();
 		
@@ -935,12 +937,6 @@ function localizeHTML() {
 		eleToLocalize.setAttribute('aria-label', langVallydette.ariaLabelOnly[key]);
 	});
 
-	Object.keys(langVallydette.url).forEach(function (key) {
-		eleToLocalize = document.getElementById(key);
-		eleToLocalize.setAttribute('href', langVallydette.url[key]);
-	});							   
-	
-	
 }
 
 

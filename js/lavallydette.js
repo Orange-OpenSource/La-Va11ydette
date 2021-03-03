@@ -3072,7 +3072,7 @@ function initStatementObject() {
 				"lang": "",
 				"status": "WIP",
 				"date": "",
-				"users": 5,
+				"users": 0,
 				"blockingPoints": 0,
 				"technology": [
 				{
@@ -3113,13 +3113,11 @@ function initStatementObject() {
 					{	
 					"type": "user",
 					"name": "jaws",
-					"number": "5",
 					"version": ""
 					},
 					{	
 					"type": "user",
 					"name": "zoomtext",
-					"number": "2",
 					"version": ""}
 				
 				],
@@ -3141,14 +3139,6 @@ function initStatementObject() {
 					"name": "Orange Groupe",
 					"content": ""
 					
-				},{
-					"name": "Équipe Projet",
-					"content": ""
-					
-				},{
-					"name": "Support téléphonique",
-					"content": "",
-					"checked": "true"
 				}
 				],
 				"derogation": "",
@@ -3211,7 +3201,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="input-group">';
     statementWizardContent += '                    <div class="custom-file">';
     statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file">';
-    statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData">Sélectionner des données</label>';
+    statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' + langVallydette.dataBrowse + '">Sélectionner des données</label>';
     statementWizardContent += '                    </div>';
     statementWizardContent += '                    <div class="input-group-append">';
     statementWizardContent += '                        <button class="btn btn-secondary" type="button" id="importStatementData">Importer</button>';
@@ -3295,7 +3285,6 @@ function showStatementWizard() {
 	
 	statementWizardContent += '</ul>';
  
-    
 	statementWizardContent += '</div>';	
     statementWizardContent += '</div>';
 
@@ -3320,10 +3309,9 @@ function showStatementWizard() {
 	statementWizardContent += '<hr class="border-light">';
 	
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-12">';
 
-	statementWizardContent += '<div id="userInfos">';	
-	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';	
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-users">' + langVallydette.usersNumber + '</label>';
 	statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
@@ -3333,6 +3321,8 @@ function showStatementWizard() {
 	}
 	
 	statementWizardContent += '</select>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-blockingPoints" >' + langVallydette.blockingNumber + '</label>';
 	statementWizardContent += '<select class="custom-select" id="input-blockingPoints" name="input-blockingPoints">';
 	
@@ -3341,9 +3331,10 @@ function showStatementWizard() {
 	}
 	
 	statementWizardContent += '</select>';
+
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
-	statementWizardContent += '</div>';
+	
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<hr class="border-light">';
@@ -3646,7 +3637,7 @@ exportStatement = function(statementResult) {
 
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
-	xmlStatement += '<!-- généré par la va11ydette -->\n\n';
+	xmlStatement += '<!-- from la va11ydette with love -->\n\n';
 	
 	xmlStatement += '<!--\n ';
 	xmlStatement += 'TITLE\n ';

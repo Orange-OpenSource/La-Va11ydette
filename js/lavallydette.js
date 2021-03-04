@@ -3026,7 +3026,6 @@ for (let i in dataVallydette.checklist.page) {
 		
 		for (let j in dataVallydette.checklist.page[i].items) {
 			
-			
 			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
 					
 				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
@@ -3159,11 +3158,19 @@ function showStatementWizard() {
 	removeFilterSection();
 	utils.columnDisplay(2);
 	
-	var btnStatementExcelExport = document.createElement('a');
-	btnStatementExcelExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
-	btnStatementExcelExport.setAttribute('id', "btnStatementExcelExport");
-	btnStatementExcelExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
-	document.getElementById("contextualMenu").appendChild(btnStatementExcelExport);
+	var btnStatementXmlExport = document.createElement('a');
+	//btnStatementXmlExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
+	btnStatementXmlExport.innerHTML = "XML";
+	btnStatementXmlExport.setAttribute('id', "btnStatementXmlExport");
+	btnStatementXmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+	document.getElementById("contextualMenu").appendChild(btnStatementXmlExport);
+	
+	var btnStatementHtmlExport = document.createElement('a');
+	btnStatementHtmlExport.innerHTML = "HTML";
+	btnStatementHtmlExport.setAttribute('id', "btnStatementHtmlExport");
+	btnStatementHtmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+	document.getElementById("contextualMenu").appendChild(btnStatementHtmlExport);
+	
 	
 	var statementResult = runComputation(true);
 	
@@ -3176,14 +3183,10 @@ function showStatementWizard() {
 		
 	} else {
 		
-		btnStatementExcelExport.classList.add("disabled");
-		
+		btnStatementXmlExport.classList.add("disabled");
+		btnStatementHtmlExport.classList.add("disabled");
 	}
-	
-	btnStatementExcelExport.addEventListener('click', function () {
-		excelExport();
-	});
-	
+
 	let statementWizardContent = '';
 	
 	statementWizardContent += '<h2 class="pt-4 pb-3">' + langVallydette.statementTxt1 + '</h2>';
@@ -3617,7 +3620,7 @@ saveStatement = function(statementForm) {
 	if (dataWCAG.globalPagesResult) {
 		
 		exportStatement(statementResult);
-		
+		exportStatementHTML(statementResult);
 	}
 	
 	alertMessage = '';
@@ -3838,14 +3841,12 @@ exportStatement = function(statementResult) {
 		var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
 		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.xml';
 		
-		var btnStatementExcelExport = document.getElementById("btnStatementExcelExport");
-		btnStatementExcelExport.classList.remove('disabled');
-		btnStatementExcelExport.setAttribute('href', window.URL.createObjectURL(bb));
-		btnStatementExcelExport.setAttribute('download', statementFileName); 
-	
+		var btnStatementXmlExport = document.getElementById("btnStatementXmlExport");
+		btnStatementXmlExport.classList.remove('disabled');
+		btnStatementXmlExport.setAttribute('href', window.URL.createObjectURL(bb));
+		btnStatementXmlExport.setAttribute('download', statementFileName); 
+		
 	}
-	
-
 
 }
 
@@ -3893,10 +3894,10 @@ exportStatementHTML = function(statementResult) {
                 <div class="col-lg-3">
                     
                     <h3>Date de l'audit</h3>
-                    <p>${dataWCAG.date}</p>
+                    <p>${dataVallydette.statement.date}</p>
                     
                     <h3>Identité du déclarant</h3>
-					<p>${dataVallydette.statement.approval.filter(a => a.checked).map(a => md.render(a.content)).join('')}</p>
+					<p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}</p>
 					
                     <h3>Référentiel</h3>
                     <p>
@@ -3961,18 +3962,18 @@ exportStatementHTML = function(statementResult) {
             <div class="col-md">
 
                 <h2>Résultat des tests</h2>
-                <p>L'audit réalisé, ${dataVallydette.statement.users > 0 ? `complété par des tests d’accessibilité auprès de ${dataVallydette.statement.users} utilisateur(s) (de ${dataVallydette.statement.tests.filter(t => t.type === 'user').map(t => t.name)})` : ``}, révèle une conformité globale aux critères WCAG de ${dataWCAG.globalPagesResult}%, avec ${listNonConformity.length} non-conformités.</p>
+                <p>L'audit réalisé, ${dataVallydette.statement.users > 0 ? `complété par des tests d’accessibilité auprès de ${dataVallydette.statement.users} utilisateur(s) (de ${dataVallydette.statement.tests.filter(t => t.type === 'user').map(t => t.name)} ), ` : ``} révèle une conformité globale aux critères WCAG de ${dataWCAG.globalPagesResult}%, avec ${listNonConformity.length} non-conformités.</p>
                 
 				<p>Un taux de conformité est calculé par page auditée : il est égal à la somme des critères conformes divisée par le nombre de critères applicables.</p>
 				
                 <table class="table table-striped">
-				<caption class="sr-only">${langVallydette.auditTxt4}</caption>'
+				<caption class="sr-only">${langVallydette.auditTxt4}</caption>
 				  <tr>
 					<th scope="row">${langVallydette.auditTxt4}</th>
 					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status1}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status2}</th>;
-					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status3}</th>;
-					<th rowspan="2" class="text-center bg-light">${langVallydette.result}</th>;
+					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status2}</th>
+					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status3}</th>
+					<th rowspan="2" class="text-center bg-light">${langVallydette.result}</th>
 				  </tr>
 				  <tr>
 					<th scope="col">${langVallydette.auditTxt10}</th>
@@ -4010,7 +4011,7 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Détail des non-conformités</h2>`;
+                <h2>Détail des non-conformités</h2>`
 		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `<ul>
@@ -4030,18 +4031,11 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Amélioration et contact</h2>`;
+                <h2>Amélioration et contact</h2>
 				
-				dataVallydette.statement.contact.filter(c => c.checked).map(function (c){
-				if (c.email !== "") {
-					htmlStatement += `<p>Vous pouvez nous aider à améliorer l'accessibilité du site en nous signalant les problèmes éventuels que vous rencontrez. Pour ce faire, envoyez un <a href="mailto:${c.email}">courriel à ${c.email}</a>.</p>`
-				} else {
-					htmlStatement += `<p>Vous pouvez aider à améliorer l'accessibilité du site en signalant les problèmes éventuels que vous rencontrez : contactez le support au  ${c.name}.</p>`
-				}
-				}).join('');
-				
+				${dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => md.render(c.content)).join('')}
 
-    htmlStatement += `       </div>
+   </div>
         </div>
     </div>
 </body>
@@ -4049,7 +4043,18 @@ exportStatementHTML = function(statementResult) {
 </html>`;
 	
 	
-	console.log(htmlStatement);
+	if (dataVallydette.statement.status === "done") {
+		
+		var bb = new Blob([htmlStatement], {type: 'application/octet-stream'});
+		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.html';
+		
+		var btnStatementHtmlExport = document.getElementById("btnStatementHtmlExport");
+		btnStatementHtmlExport.classList.remove('disabled');
+		btnStatementHtmlExport.setAttribute('href', window.URL.createObjectURL(bb));
+		btnStatementHtmlExport.setAttribute('download', statementFileName); 
+		
+	
+	}
 }
 
  /**

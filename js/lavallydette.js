@@ -3855,6 +3855,8 @@ exportStatementHTML = function(statementResult) {
 	
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
 	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
+	var statementDate = new Date(dataVallydette.statement.date)
+	var localeStatementDate = statementDate.toLocaleDateString(dataVallydette.statement.lang)
 	var md = window.markdownit();
 
 	htmlStatement = "";
@@ -3894,7 +3896,7 @@ exportStatementHTML = function(statementResult) {
                 <div class="col-lg-3">
                     
                     <h3>Date de l'audit</h3>
-                    <p>${dataVallydette.statement.date}</p>
+                    <p>${localeStatementDate}</p>
                     
                     <h3>Identité du déclarant</h3>
 					<p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}</p>

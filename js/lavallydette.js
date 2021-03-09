@@ -3060,7 +3060,7 @@ for (let i in dataVallydette.checklist.page) {
  */
  
 const statementProperties = ["name", "type", "version", "content", "email", "checked"];
-const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "derogation", "exemption"];
+const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "introduction", "derogation", "exemption"];
 
 function initStatementObject() {
 	
@@ -3071,6 +3071,7 @@ function initStatementObject() {
 				"lang": "",
 				"status": "WIP",
 				"date": "",
+				"introduction": "",
 				"users": 0,
 				"blockingPoints": 0,
 				"technology": [
@@ -3127,7 +3128,6 @@ function initStatementObject() {
 				},{
 					"name": "Service interne",
 					"content": "",
-					"checked": "true"
 				}
 				],
 				"contact": [
@@ -3200,10 +3200,12 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-12">';
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<h3>1. Préremplir le formulaire</h3>';
+	statementWizardContent += '<p id="descStatementImport">Importer les données d\'une déclaration sauvegardée au format JSON, ou renseigner les informations directement dans la partie "Saisie manuelle des données".</p>';
 	statementWizardContent += '<div class="input-group">';
     statementWizardContent += '                    <div class="custom-file">';
-    statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file">';
+    statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file" aria-describedby="descStatementImport">';
     statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' + langVallydette.dataBrowse + '">Sélectionner des données</label>';
     statementWizardContent += '                    </div>';
     statementWizardContent += '                    <div class="input-group-append">';
@@ -3211,12 +3213,18 @@ function showStatementWizard() {
     statementWizardContent += '                    </div>';
     statementWizardContent += '                </div>';
     statementWizardContent += '            </div>';
-    statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<hr class="border-light">';
 		
 	statementWizardContent += '<form id="statementForm">';
+	
+	statementWizardContent += '<div class="row">';
+	statementWizardContent += '<div class="col-lg-12">';
+	statementWizardContent += '<h3>2. Saisie manuelle des données</h3>';
+	statementWizardContent += '<p>Compléter ou modifier les données de la déclaration.</p>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
@@ -3246,10 +3254,10 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<hr class="border-light">';
-	
+
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h3>Déclarant <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des déclarants" title="Modifier la liste des déclarants"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
+	statementWizardContent += '<h4>Déclarant <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des déclarants" title="Modifier la liste des déclarants"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 	statementWizardContent += '<div class="form-group" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
@@ -3263,7 +3271,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h3>Contact  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des contacts" title="Modifier la liste des contacts"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
+	statementWizardContent += '<h4>Contact  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des contacts" title="Modifier la liste des contacts"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 	statementWizardContent += '<div class="form-group" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
@@ -3276,9 +3284,21 @@ function showStatementWizard() {
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="form-group">';
+    statementWizardContent += '<label for="inputDerogation">Schéma pluriannuel</label>';
+    statementWizardContent += '<textarea class="form-control" id="input-introduction" rows="5" aria-describedby="introductionDesc">' + dataVallydette.statement.introduction + '</textarea>';
+	statementWizardContent += '<small id="introductionDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<hr class="border-light">';
+	
+		statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h3 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des technologies" title="Modifier la liste des technologies"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des technologies" title="Modifier la liste des technologies"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3289,11 +3309,11 @@ function showStatementWizard() {
 	statementWizardContent += '</ul>';
  
 	statementWizardContent += '</div>';	
-    statementWizardContent += '</div>';
-
+	statementWizardContent += '</div>';
+	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h3 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des tests" title="Modifier la liste des tests"><span class="icon-Pencil" aria-hidden="true"></span></button></h3>';
+	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des tests" title="Modifier la liste des tests"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
@@ -3306,15 +3326,10 @@ function showStatementWizard() {
 	statementWizardContent += '</ul>';
 	statementWizardContent += '</div>';	
 	statementWizardContent += '</div>';	
-	statementWizardContent += '</div>';
-	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
-	
-	statementWizardContent += '<div class="row">';
-
+		
 	statementWizardContent += '<div class="col-lg-6">';
-	statementWizardContent += '<h3 id="testLegend">' + langVallydette.users + '</h3>';	
+	statementWizardContent += '<h4 id="testLegend">' + langVallydette.users + '</h4>';	
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-users">' + langVallydette.usersNumber + '</label>';
 	statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
@@ -3337,10 +3352,20 @@ function showStatementWizard() {
 
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
-	
 	statementWizardContent += '</div>';
 	
+	
+	statementWizardContent += '</div>';
+
+	
 	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="row">';
+	
+	
+	statementWizardContent += '<div class="col-lg-6">';
+	
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
@@ -3363,6 +3388,10 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row mb-2">';
 	statementWizardContent += '<div class="col-lg-12">';
 	statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary ml-2">' + langVallydette.save + '</button>';
+	statementWizardContent += '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ml-2">' + langVallydette.save + ' et télécharger au format JSON</button>';
+	statementWizardContent += '<a href="#" id="exportStatementData" class="btn btn-secondary" title="télécharger les données du formulaire de déclaration (json)" hidden>';      
+	statementWizardContent += ' <span id="btnExportTxt">Télécharger</span>';
+	statementWizardContent += '</a>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
@@ -3392,11 +3421,17 @@ function showStatementWizard() {
 		document.getElementById("selectFilesLabelStatement").innerText = document.getElementById("selectFilesStatement").files[0].name;
 	}, false);
 	
-	document.getElementById("statementForm").addEventListener('submit', function () {
+	let dataStr = JSON.stringify(dataVallydette.statement);
+	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+	document.getElementById("exportStatementData").setAttribute('href', dataUri);
+	let exportFileName = 'statementData.json';
+	document.getElementById("exportStatementData").setAttribute('download', exportFileName);
+	
+	document.getElementById("statementForm").addEventListener('submit', function (e) {
 		event.preventDefault();
-		saveStatement(this);
-
+		saveStatement(this, e.submitter.id);
 	});
+		
 }
 
 radioIsChecked = function (statementProperty, propertyIndex) {
@@ -3547,7 +3582,7 @@ saveListElement = function(listToEdit, statementProperty) {
 	} 
 	
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
-	console.log(dataVallydette.statement);
+
 }
 
 addListElement = function(statementProperty) {
@@ -3604,7 +3639,7 @@ addListElement = function(statementProperty) {
 	document.getElementById("name-"+listIndex).focus();
 }
 
-saveStatement = function(statementForm) {
+saveStatement = function(statementForm, submitterBtn) {
 	
 	var statementResult = runComputation(true);
 	
@@ -3630,6 +3665,16 @@ saveStatement = function(statementForm) {
 	
 	document.getElementById('alertContainer').innerHTML += (alertMessage);
 
+	if (submitterBtn === "statementSaveAndDownloadBtn") {
+		// dataStatement export update
+		let dataStr = JSON.stringify(dataVallydette.statement);
+		let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+		document.getElementById("exportStatementData").setAttribute('href', dataUri);
+		document.getElementById("exportStatementData").click();
+	}
+	
+	
+	// dataVallydette export update
 	jsonUpdate();
 
 }
@@ -3867,7 +3912,7 @@ exportStatementHTML = function(statementResult) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
-  <title>Déclaration d’Accessibilité</title>
+  <title>Déclaration d’Accessibilité - ${dataVallydette.statement.name}</title>
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="boosted-grid.min.css">
@@ -3941,14 +3986,11 @@ exportStatementHTML = function(statementResult) {
             <div class="col-md">
             
                 <h2>Introduction</h2>
-                <p>
-                   	Cette page décrit le niveau d'accessibilité général constaté sur le site.<br />
-                    Il s'agit d'une déclaration de prise en compte des exigences internationales d'accessibilité, <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> : <i lang="en">Web Content Accessibility Guidelines</i>, recommandations d’Accessibilité des contenus Web.<br />
-                    Ces règles sont éditées par le <abbr lang="en" title="World Wide Web Consortium">W3C</abbr>, organisme de standardisation chargé de promouvoir la compatibilité des technologies du Web.<br />
-					Cette page fait partie du <a href="https://oran.ge/accessibilite-schema" title="schéma pluriannuel d’amélioration de l’accessibilité numérique (PDF, 230Ko)">schéma pluriannuel d’amélioration de l’accessibilité numérique</a> sur lequel s’engage Orange.<br />
-					Les tests ont été réalisés par le centre de compétences d’accessibilité numérique du groupe.
-				</p>
+				<p>	Cette page décrit le niveau d'accessibilité général constaté sur le site.<br>
+                    Il s'agit d'une déclaration de prise en compte des exigences internationales d'accessibilité, <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> : <i lang="en">Web Content Accessibility Guidelines</i>, recommandations d’Accessibilité des contenus Web.<br>
+                    Ces règles sont éditées par le <abbr title="World Wide Web Consortium" lang="en">W3C</abbr>, organisme de standardisation chargé de promouvoir la compatibilité des technologies du Web.</p>
 					
+                ${md.render(dataVallydette.statement.introduction)}
 
                 <h2>Page(s) ayant fait l’objet de la vérification de conformité</h2>
                 
@@ -4013,7 +4055,7 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Détail des non-conformités</h2>`
+                <h2>Détail des non-conformités</h2>`;
 		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `<ul>
@@ -4023,8 +4065,37 @@ exportStatementHTML = function(statementResult) {
 						</li>`).join('')}
 					</ul>`;
 	
+				} else {
+					htmlStatement += `<p>Aucune non-conformités</p>`;
 				}
+	
+	if (dataVallydette.statement.derogation !== "") {
+		htmlStatement += `<div class="row">
+        
+            <div class="col-lg">
+        
+                <h2>Dérogations</h2>
 				
+				${md.render(dataVallydette.statement.derogation)}
+
+		</div>`;
+		
+	}
+	
+	if (dataVallydette.statement.exemption !== "") {
+		htmlStatement += `<div class="row">
+        
+            <div class="col-lg">
+        
+                <h2>Exemptions</h2>
+				
+				${md.render(dataVallydette.statement.exemption)}
+
+		</div>
+		</div>`;
+		
+	}
+	
     htmlStatement += `
             </div>
         </div>
@@ -4065,7 +4136,7 @@ exportStatementHTML = function(statementResult) {
 const utils = {
   reqError: function (err) {
 	let elrefTests = document.getElementById('mainContent');
-    elrefTests.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only">Warning</span></span>' + langVallydette.errorJson + '</div>';
+    elrefTests.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only" lang="en">Warning</span></span>' + langVallydette.errorJson + '</div>';
   },
   formatHeading: function (str) {
     return str.toLowerCase()

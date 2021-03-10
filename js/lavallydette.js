@@ -3059,8 +3059,8 @@ for (let i in dataVallydette.checklist.page) {
  * Statement manager
  */
  
-const statementProperties = ["name", "type", "version", "content", "email", "checked"];
-const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "introduction", "derogation", "exemption"];
+const statementProperties = ["name", "type", "version", "content", "email", "checked", "browser", "assistive_technology"];
+const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "plan", "derogation", "exemption"];
 
 function initStatementObject() {
 	
@@ -3071,8 +3071,8 @@ function initStatementObject() {
 				"lang": "",
 				"status": "WIP",
 				"date": "",
-				"introduction": "",
-				"users": 0,
+				"plan": "",
+				"users": "xx utilisateurs en situation de handicap (ZoomText, Jaws, XXX).",
 				"blockingPoints": 0,
 				"technology": [
 				{
@@ -3121,6 +3121,14 @@ function initStatementObject() {
 					"version": ""}
 				
 				],
+				"environment": [
+				{
+					"browser": "Chrome XX",
+					"assistive_technology": "JAWS 2019"
+				},{
+					"browser": "Firefox XX",
+					"assistive_technology": "NVDA 2020"
+				}],
 				"approval": [
 				{
 					"name": "Service client",
@@ -3287,8 +3295,8 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="inputDerogation">Schéma pluriannuel</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-introduction" rows="5" aria-describedby="introductionDesc">' + dataVallydette.statement.introduction + '</textarea>';
-	statementWizardContent += '<small id="introductionDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
+    statementWizardContent += '<textarea class="form-control" id="input-plan" rows="5" aria-describedby="planDesc">' + dataVallydette.statement.plan + '</textarea>';
+	statementWizardContent += '<small id="planDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3328,17 +3336,36 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';	
 	
 		
-	statementWizardContent += '<div class="col-lg-6">';
-	statementWizardContent += '<h4 id="testLegend">' + langVallydette.users + '</h4>';	
+	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="environmentLegend">';
+	statementWizardContent += '<h4 id="environmentLegend">Environnements <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des environnements de tests" title="Modifier la liste des environnements de tests"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+
+	statementWizardContent += '<ul id="environmentsList">';	
+	
+    dataVallydette.statement.environment.forEach(function(listItem, index){
+
+		statementWizardContent += '<li>' +listItem.browser + ' ' + listItem.assistive_technology + '</li>';
+		
+	})
+	
+	statementWizardContent += '</ul>';
+	statementWizardContent += '</div>';	
+	statementWizardContent += '</div>';	
+	
+		
+	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<h4 id="testLegend">Tests ' + langVallydette.users + '</h4>';	
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-users">' + langVallydette.usersNumber + '</label>';
-	statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
+	statementWizardContent += '<label for="input-users" class="sr-only">Détail</label>';
+	statementWizardContent += '<textarea class="form-control" id="input-users" rows="2">' + dataVallydette.statement.users + '</textarea>';
+
+	/* statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
 	
 	for (index = 0; index < 10; ++index) {
 		statementWizardContent += '<option value="' + index + '" ' + (index ===  parseInt(dataVallydette.statement.users) ? "selected" : "") + '>' + index + '</option>';
 	}
 	
-	statementWizardContent += '</select>';
+	statementWizardContent += '</select>'; */
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-blockingPoints" >' + langVallydette.blockingNumber + '</label>';
@@ -3400,11 +3427,13 @@ function showStatementWizard() {
 	
     htmlMainContent.innerHTML = statementWizardContent;
 	
-	document.getElementById("btnEditTechList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("technology");});
-	document.getElementById("btnEditTestList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("tests");});
 	document.getElementById("btnEditContactList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("contact");});
 	document.getElementById("btnEditApprovalList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("approval");});
-
+	
+	document.getElementById("btnEditTechList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("technology");});
+	document.getElementById("btnEditTestList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("tests");});
+	document.getElementById("btnEditEnvironmentList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("environment");});
+	
 	document.getElementById('importStatementData').onclick = function () {
 		var files = document.getElementById('selectFilesStatement').files;
 		var fr = new FileReader();
@@ -3617,15 +3646,11 @@ addListElement = function(statementProperty) {
 				
 			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'content') {
 				
-				htmlItem += '<textarea  rows="4" cols="50" id="' + p + '-' + listIndex + '" class="form-control mb-1" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
-				
-			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'checked') {
-				
-				htmlItem += '<input type="hidden" id="checked-' + listIndex + '" class="form-control mb-1" value="' + listItem.checked + '" aria-labelledby="itemLegend-' + listIndex + '  checked-' + listIndex + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
+				htmlItem += '<textarea  rows="4" cols="50" id="' + p + '-' + listIndex + '" class="form-control mb-1" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" ></textarea>';
 				
 			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p)) {
 				
-				htmlItem += '<input type="text" id="' + p + '-' + listIndex + '" class="form-control mb-1" value="' + listItem[p] + '" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex +'" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlItem += '<input type="text" id="' + p + '-' + listIndex + '" class="form-control mb-1" value="" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex +'" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
 				
 			}
 
@@ -3985,12 +4010,12 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-md">
             
-                <h2>Introduction</h2>
+                <h2>plan</h2>
 				<p>	Cette page décrit le niveau d'accessibilité général constaté sur le site.<br>
                     Il s'agit d'une déclaration de prise en compte des exigences internationales d'accessibilité, <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> : <i lang="en">Web Content Accessibility Guidelines</i>, recommandations d’Accessibilité des contenus Web.<br>
                     Ces règles sont éditées par le <abbr title="World Wide Web Consortium" lang="en">W3C</abbr>, organisme de standardisation chargé de promouvoir la compatibilité des technologies du Web.</p>
 					
-                ${md.render(dataVallydette.statement.introduction)}
+                ${md.render(dataVallydette.statement.plan)}
 
                 <h2>Page(s) ayant fait l’objet de la vérification de conformité</h2>
                 
@@ -4108,7 +4133,24 @@ exportStatementHTML = function(statementResult) {
 				
 				${dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => md.render(c.content)).join('')}
 
-   </div>
+			</div>
+        </div>
+		<div class="row">
+        
+            <div class="col-lg">
+        
+                <h2>Voies de recours</h2>
+				<p> Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante, dans ce cas&nbsp;: </p>
+				<ul>
+					<li>Écrire un message au <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a>.</li>
+					<li>Contacter le <a href="https://www.defenseurdesdroits.fr/saisir/delegues">délégué du Défenseur des droits
+							dans votre région</a>.</li>
+					<li>Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) <br>
+						<address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>
+					</li>
+				</ul>
+
+			</div>
         </div>
     </div>
 </body>

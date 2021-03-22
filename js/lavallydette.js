@@ -3059,7 +3059,7 @@ for (let i in dataVallydette.checklist.page) {
  * Statement manager
  */
  
-const statementProperties = ["name", "type", "version", "content", "email", "checked", "browser", "assistive_technology"];
+const statementProperties = ["name", "type", "version", "content", "email", "checked", "user_agent", "assistive_technology"];
 const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "plan", "derogation", "exemption"];
 
 function initStatementObject() {
@@ -3123,10 +3123,10 @@ function initStatementObject() {
 				],
 				"environment": [
 				{
-					"browser": "Chrome XX",
+					"user_agent": "Chrome XX",
 					"assistive_technology": "JAWS 2019"
 				},{
-					"browser": "Firefox XX",
+					"user_agent": "Firefox XX",
 					"assistive_technology": "NVDA 2020"
 				}],
 				"approval": [
@@ -3344,7 +3344,7 @@ function showStatementWizard() {
 	
     dataVallydette.statement.environment.forEach(function(listItem, index){
 
-		statementWizardContent += '<li>' +listItem.browser + ' ' + listItem.assistive_technology + '</li>';
+		statementWizardContent += '<li>' +listItem.user_agent + ' ' + listItem.assistive_technology + '</li>';
 		
 	})
 	
@@ -3604,12 +3604,7 @@ saveListElement = function(listToEdit, statementProperty) {
 		
 	}
 	
-	var userTest = dataVallydette.statement.tests.filter(item => item.type ==="user");
-	if (userTest.length === 0) {
-		dataVallydette.statement.users = 0;
-		dataVallydette.statement.blockingPoints = 0;
-	} 
-	
+
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
 
 }
@@ -3956,10 +3951,13 @@ exportStatementHTML = function(statementResult) {
                 <div class="col-lg-3">
                         
                     <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
+						<span class="sr-only">État de conformité&#8239;:</span> 
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span><br />conforme</div>
                     </h2>
                     
-                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>, avec ${listNonConformity.length} non-conformités.</p>
+                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
+					${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur.' : '' }
+					</p>
 
                 </div>
         
@@ -3980,9 +3978,15 @@ exportStatementHTML = function(statementResult) {
                 
                 <div class="col-lg-6">
                 
-                    <h3>Technologies du site</h3>
+                    <h3>Technologies utilisées pour la réalisation du site</h3>
                     <ul>
 					 ${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n')}
+                    </ul>
+					
+                    <h3>Environnement de test</h3>
+					<p>Les vérifications ont été réalisées avec les combinaisons logicielles suivantes&nbsp;:</p>
+                    <ul>
+					 ${dataVallydette.statement.environment.map(e => `<li>${e.user_agent} et ${e.assistive_technology}</li>`).join('\n')}
                     </ul>
                     
                     <h3>Méthodes et outils utilisés pour vérifier l’accessibilité</h3>
@@ -4010,19 +4014,15 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-md">
             
-                <h2>plan</h2>
-				<p>	Cette page décrit le niveau d'accessibilité général constaté sur le site.<br>
-                    Il s'agit d'une déclaration de prise en compte des exigences internationales d'accessibilité, <abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr> : <i lang="en">Web Content Accessibility Guidelines</i>, recommandations d’Accessibilité des contenus Web.<br>
-                    Ces règles sont éditées par le <abbr title="World Wide Web Consortium" lang="en">W3C</abbr>, organisme de standardisation chargé de promouvoir la compatibilité des technologies du Web.</p>
-					
+                <h2>Introduction</h2>	
                 ${md.render(dataVallydette.statement.plan)}
 
                 <h2>Page(s) ayant fait l’objet de la vérification de conformité</h2>
                 
-                <p>L'audit a été effectué sur l'échantillon suivant :
+                <p>L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange. </p>
 				
                 <ol>
-				${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>  <a href="${item.url}" target="_blank">${item.url}</a></li>\n`)}
+				${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>\n`)}
                 </ol>
 				</p>
             </div>
@@ -4031,9 +4031,10 @@ exportStatementHTML = function(statementResult) {
             <div class="col-md">
 
                 <h2>Résultat des tests</h2>
-                <p>L'audit réalisé, ${dataVallydette.statement.users > 0 ? `complété par des tests d’accessibilité auprès de ${dataVallydette.statement.users} utilisateur(s) (de ${dataVallydette.statement.tests.filter(t => t.type === 'user').map(t => t.name)} ), ` : ``} révèle une conformité globale aux critères WCAG de ${dataWCAG.globalPagesResult}%, avec ${listNonConformity.length} non-conformités.</p>
-                
-				<p>Un taux de conformité est calculé par page auditée : il est égal à la somme des critères conformes divisée par le nombre de critères applicables.</p>
+                <p>
+				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages) ${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints point(s) bloquant(s) d\'un point de vue utilisateur' : '' }.
+				Le taux de conformité de chaque page auditée est égal au nombre de critères conformes divisé par le nombre de critères applicables.
+				</p>
 				
                 <table class="table table-striped">
 				<caption class="sr-only">${langVallydette.auditTxt4}</caption>
@@ -4079,8 +4080,8 @@ exportStatementHTML = function(statementResult) {
         <div class="row">
         
             <div class="col-lg">
-        
-                <h2>Détail des non-conformités</h2>`;
+				<h2>Contenus non accessibles </h2>
+                <h3>Détail des non-conformités</h3>`;
 		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `<ul>
@@ -4094,15 +4095,22 @@ exportStatementHTML = function(statementResult) {
 					htmlStatement += `<p>Aucune non-conformités</p>`;
 				}
 	
-	if (dataVallydette.statement.derogation !== "") {
+	
+	
+    htmlStatement += `
+            </div>
+        </div>`;
+		
+if (dataVallydette.statement.derogation !== "") {
 		htmlStatement += `<div class="row">
         
             <div class="col-lg">
         
-                <h2>Dérogations</h2>
+                <h3>Dérogations pour charge disproportionnée</h3>
 				
 				${md.render(dataVallydette.statement.derogation)}
 
+		</div>
 		</div>`;
 		
 	}
@@ -4112,24 +4120,19 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Exemptions</h2>
+                <h3>Contenus non soumis à l’obligation d’accessibilité</h3>
 				
 				${md.render(dataVallydette.statement.exemption)}
 
 		</div>
 		</div>`;
 		
-	}
-	
-    htmlStatement += `
-            </div>
-        </div>
-		
-        <div class="row">
+	}		
+    htmlStatement += `    <div class="row">
         
             <div class="col-lg">
         
-                <h2>Amélioration et contact</h2>
+                <h2>Retour d’information et contact</h2>
 				
 				${dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => md.render(c.content)).join('')}
 

@@ -3958,6 +3958,8 @@ exportStatementHTML = function(statementResult) {
                     <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
 					${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur.' : '' }
 					</p>
+					
+					<p>${md.render(dataVallydette.statement.plan)}</p>
 
                 </div>
         
@@ -4013,24 +4015,21 @@ exportStatementHTML = function(statementResult) {
         <div class="row">
         
             <div class="col-md">
-            
-                <h2>Introduction</h2>	
-                ${md.render(dataVallydette.statement.plan)}
-
-                <h2>Page(s) ayant fait l’objet de la vérification de conformité</h2>
+				
+				<h3 class="display-2">Page(s) ayant fait l’objet de la vérification de conformité</h3>
                 
                 <p>L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange. </p>
 				
                 <ol>
-				${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>\n`)}
+				${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>\n`).join('')}
                 </ol>
-				</p>
+						
+               
             </div>
             
             
             <div class="col-md">
-
-                <h2>Résultat des tests</h2>
+				<h2>Résultat des tests</h2>
                 <p>
 				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages) ${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints point(s) bloquant(s) d\'un point de vue utilisateur' : '' }.
 				Le taux de conformité de chaque page auditée est égal au nombre de critères conformes divisé par le nombre de critères applicables.
@@ -4072,15 +4071,14 @@ exportStatementHTML = function(statementResult) {
 				  
 				</table>
 
-				<p><strong>Conformité globale (moyenne des pages) :</strong> ${dataWCAG.globalPagesResult}%</p>				
-				
+				<p><strong>Conformité globale (moyenne des pages) :</strong> ${dataWCAG.globalPagesResult}%</p>		
+               
             </div>
         </div>
         
         <div class="row">
         
             <div class="col-lg">
-				<h2>Contenus non accessibles </h2>
                 <h3>Détail des non-conformités</h3>`;
 		
 				if (listNonConformity.length > 0) {

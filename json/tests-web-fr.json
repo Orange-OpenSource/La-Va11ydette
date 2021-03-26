@@ -1,5 +1,3 @@
-// penser à rajouter une id unique pour chaque test afin de pointer dessus de façon certaine
-// rajouter un lien vers les wcag pour chaque test
 {
 	"name": "Audit de tests WEB",
 	"items":[{
@@ -589,7 +587,7 @@
     "profils": ["Expert Accessibilité"],
     "wcag": ["2.5.3"]
   },
-  {visible écran + bonne pratique
+  {
     "themes": "Navigation générale",
     "title": "Rendre les intitulés des liens et des boutons compréhensibles hors contexte / téléchargement de documents",
     "type": [

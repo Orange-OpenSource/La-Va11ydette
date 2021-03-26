@@ -3434,7 +3434,7 @@ exportStatement = function(statementResult) {
 	
 	var xmlStatement = '<?xml version="1.0" encoding="UTF-8"?>\n';
 	xmlStatement += '<declaration>\n';
-	xmlStatement += '< !-- généré par la va11ydette -->\n\n';
+	xmlStatement += '<!-- généré par la va11ydette -->\n\n';
 	
 	xmlStatement += '<!--\n ';
 	xmlStatement += 'TITLE\n ';

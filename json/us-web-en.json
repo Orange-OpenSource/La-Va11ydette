@@ -1,0 +1,111 @@
+{
+	"name": "US for the WEB",
+	"items":[{
+    "themes": ["Keyboard navigation", "As an user not using a mouse, I want to browse with keyboard only"],
+    "title": "Use the application functionalities with a keyboard",
+    "type": [
+      ""
+    ],
+    "attendu": [
+      "As a keyboard only user, I want to use the application" 
+    ],
+    "gestion": [
+      "All the interactive elements must be reachable via a Keyboard navigation",
+      "All the interactive elements must be usable via a Keyboard navigation"
+    ],
+    "acceptance": [
+		"<p><b>Given that</b> I use a keyboard, <p><b>When</b> I use any functionality,</p><p><b>Then</b> I get a equivalent result with mouse or keyboard navigation</p>"
+	],
+    "personae": [""],
+    "dev": [["Be able to use all the functionalities with the keyboard", "navigation-clavier/#permettre-dutiliser-les-principales-fonctionnalites-de-lapplication-au-clavier"]],
+    "test": ["#collapse34"],
+    "profils": [""],
+    "wcag": ["2.1.1"]
+  },
+  {
+    "themes": ["Keyboard navigation", "As a keyboard user, I want to browse with keyboard only"],
+    "title": "Make the focus pathway sequential and logical without keyboard trap",
+    "type": [
+      ""
+    ],
+    "attendu": [
+      "As a keyboard user, I can browse logically and sequentially without keyboard trap in the page with keyboard" 
+    ],
+    "gestion": [
+      "The focus pathway thought the page is logical and make sense"
+    ],
+    "acceptance": [
+		"<p><b>Given that</b> I browse with keyboard <p><b>When</b>I'm in the page </p><p><b>Then</b> the focus order of the elements (buttons, links, form fields...) is consistent and logical (often equivalent to the visual order) without keyboard trap</p>"
+	],
+    "personae": [""],
+    "dev": [["Provide a logical focus order", "navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier"]],
+    "test": ["#collapse35"],
+    "profils": [""],
+    "wcag": ["2.4.3", "2.1.2"]
+  },
+ {
+    "themes": ["Keyboard navigation", "As a keyboard user, I want to browse with keyboard only"],
+    "title": "Provide a visible focus",
+    "type": [
+      ""
+    ],
+    "attendu": [
+      "As a keyboard user, I want to identify the focus indicator" 
+    ],
+    "gestion": [
+        "The focus is always visible (for example, the CSS property outline has a minimum size >1px)", 
+        "The contrast level is at least of 3:1 between the focus indicator and the background color"
+    ],
+    "acceptance": [
+		"<p><b>Given that</b> I browse with keyboard <p><b>When</b> the focus is on an interactive</p><p><b>Then</b> the focus is visible enough and the contrast level is sufficient between the focus indicator and the background color</p>"
+	],
+    "personae": [""],
+    "dev": [["Rendre le focus visible", "navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance"]],
+    "test": ["#collapse36", "#collapse37"],
+    "profils": [""],
+    "wcag": ["2.4.7", "1.4.11"]
+  },
+  {
+    "themes": ["Single Page App", "As a disabled user, I want to use a Single Page Application (SAP)"],
+    "title": "Maintain adequate page title and headings",
+    "type": [
+      "composant"
+    ],
+    "attendu": [
+      "As a screen reader user, I want to identify a change in context/content/page with a page title and headings" 
+    ],
+    "gestion": [
+      "Voir la User Story 'titre de page'",
+      "Voir la User Story 'titre de rubrique'"
+    ],
+    "acceptance": [
+		"<p><b>Given that</b> I able to identify changes in context/content/page je dois pouvoir identifier chaque changement de contexte/contenu/page <p><b>When</b> they happen <p><b>Then</b> the page title is unique and pertinent And headings are also pertinent without skip in hierarchy level"
+	],
+    "personae": [""],
+    "dev": [["Give a page title", "contenu-textuel/#donner-un-titre-aux-pages"], ["Donner des titres au rubriques", "contenu-textuel/#donner-des-titres-aux-rubriques"]],
+    "test": ["#collapse0", "collapse1"],
+    "profils": [""],
+    "wcag": ["2.4.2", "2.4.6", "1.3.1"]
+  },
+  {
+    "themes": ["Single Page App", "As a disabled user, I want to use a Single Page Application (SAP)"],
+    "title": "Allow a dynamic focus management une gestion dynamique et un parcours logique du focus",
+    "type": [
+      "composant"
+    ],
+    "attendu": [
+      "As an user naviguant au clavier, je bénéficie d'une gestion dynamique et parcours logique du focus" 
+    ],
+    "gestion": [
+      "Voir la Usser Story 'Keyboard navigation'"
+    ],
+    "acceptance": [
+		"<p><b>Given that</b> je dois pouvoir naviguer au clavier <p><b>When</b> se produisent des changements de contexte/contenu/page <p><b>Then</b> le focus se positionne de façon dynamique et son parcours reste logique"
+	],
+    "personae": [""],
+    "dev": [["Rendre le parcours du focus logique", "navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier"], ["Gérer le focus", "exemples-de-composants/gestion-dynamique-du-focus/"]],
+    "test": ["#collapse35"],
+    "profils": [""],
+    "wcag": ["2.4.3", "2.1.2"]
+  }
+]}

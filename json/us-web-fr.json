@@ -1,0 +1,111 @@
+{
+	"name": "US pour le WEB",
+	"items":[{
+    "themes": ["Navigation clavier", "En tant qu'utilisateur naviguant au clavier, je dois pouvoir naviguer uniquement au clavier"],
+    "title": "Permettre d’utiliser les fonctionnalités de l’application au clavier",
+    "type": [
+      ""
+    ],
+    "attendu": [
+      "En tant qu'utilisateur naviguant au clavier, je peux utiliser les fonctionnalités de l'application" 
+    ],
+    "gestion": [
+      "Tous les éléments interactifs sont atteignables depuis une navigation clavier",
+      "Tous les éléments interactifs sont utilisables depuis des interactions clavier"
+    ],
+    "acceptance": [
+		"<p><b>Étant donné que</b> je navigue au clavier, Lorsque j'utilise n'importe quelle fonctionnalité,</p><p> <b>Alors</b> on obtient un résultat équivalent à la navigation au moyen de la souris et de la navigation clavier</p>"
+	],
+    "personae": [""],
+    "dev": [["Pouvoir utiliser les fonctionnalités au clavier", "navigation-clavier/#permettre-dutiliser-les-principales-fonctionnalites-de-lapplication-au-clavier"]],
+    "test": ["#collapse34"],
+    "profils": [""],
+    "wcag": ["2.1.1"]
+  },
+  {
+    "themes": ["Navigation clavier", "En tant qu'utilisateur naviguant au clavier, je dois pouvoir naviguer uniquement au clavier"],
+    "title": "Rendre le parcours du focus séquentiel et logique sans piège clavier",
+    "type": [
+      ""
+    ],
+    "attendu": [
+      "En tant qu'utilisateur naviguant au clavier, je peux parcourir au clavier ma page de façon séquentielle, logique et sans piège clavier" 
+    ],
+    "gestion": [
+      "Le parcours clavier à travers toute la page est logique et fait sens"
+    ],
+    "acceptance": [
+		"<p><b>Étant donné que</b> je navigue au clavier Lorsque j'utilise une fonctionnalité</p><p><b>Alors</b> l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) sans piège clavier</p>"
+	],
+    "personae": [""],
+    "dev": [["Rendre le parcours du focus logique", "navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier"]],
+    "test": ["#collapse35"],
+    "profils": [""],
+    "wcag": ["2.4.3", "2.1.2"]
+  },
+ {
+    "themes": ["Navigation clavier", "En tant qu'utilisateur naviguant au clavier, je dois pouvoir naviguer uniquement au clavier"],
+    "title": "Rendre visible le focus en toute circonstance",
+    "type": [
+      ""
+    ],
+    "attendu": [
+      "En tant qu'utilisateur naviguant au clavier, je peux identifier l'indicateur de prise de focus" 
+    ],
+    "gestion": [
+        "La prise de focus est visible (par exemple, la propriété CSS outline a une taille minimum >1px)", 
+        "Le niveau de contraste est suffisant 3:1 entre la couleur de l'indicateur de focus et le fond de l'élément"
+    ],
+    "acceptance": [
+		"<p><b>Étant donné que</b> je navigue au clavier </p><p><b>Lorsque</b> le focus est sur un élément </p><p><b>Alors</b> le focus est suffisamment visible et le niveau de contraste entre la couleur de l'indicateur de focus et le fond est suffisante</p>"
+	],
+    "personae": [""],
+    "dev": [["Rendre le focus visible", "navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance"]],
+    "test": ["#collapse36", "#collapse37"],
+    "profils": [""],
+    "wcag": ["2.4.7", "1.4.11"]
+  },
+  {
+    "themes": ["Single Page App", "En tant qu'utilisateur en situation de handicap, je dois pouvoir utiliser une single page app (SAP)"],
+    "title": "Conserver un titre de page et des titres de rubriques adéquats",
+    "type": [
+      "composant"
+    ],
+    "attendu": [
+      "En tant qu'utilisateur de lecteur d'écran, je peux identifier le changement de contexte/contenu/page via un titre de page et des titres rubriques" 
+    ],
+    "gestion": [
+      "Voir la User Story 'titre de page'",
+      "Voir la User Story 'titre de rubrique'"
+    ],
+    "acceptance": [
+		"<p><b>Étant donné que</b>je dois pouvoir identifier chaque changement de contexte/contenu/page Lorsqu'ils se produisent </p><p><b>Alors</b>le titre de la page est spécifique et pertinent Et les titres des rubriques sont pertinents et sans saut de hiérarchie"
+	],
+    "personae": [""],
+    "dev": [["Donner un titre aux pages", "contenu-textuel/#donner-un-titre-aux-pages"], ["Donner des titres au rubriques", "contenu-textuel/#donner-des-titres-aux-rubriques"]],
+    "test": ["#collapse0", "collapse1"],
+    "profils": [""],
+    "wcag": ["2.4.2", "2.4.6", "1.3.1"]
+  },
+  {
+    "themes": ["Single Page App", "En tant qu'utilisateur en situation de handicap, je dois pouvoir utiliser une single page app (SAP)"],
+    "title": "Permettre une gestion dynamique et un parcours logique du focus",
+    "type": [
+      "composant"
+    ],
+    "attendu": [
+      "En tant qu'utilisateur naviguant au clavier, je bénéficie d'une gestion dynamique et parcours logique du focus" 
+    ],
+    "gestion": [
+      "Voir la User Story 'navigation clavier'"
+    ],
+    "acceptance": [
+		"<p><b>Étant donné que</b>je dois pouvoir naviguer au clavier </p><p><b>Lorsque</b> se produisent des changements de contexte/contenu/page </p><p><b>Alors</b> le focus se positionne de façon dynamique et son parcours reste logique"
+	],
+    "personae": [""],
+    "dev": [["Rendre le parcours du focus logique", "navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier"], ["Gérer le focus", "exemples-de-composants/gestion-dynamique-du-focus/"]],
+    "test": ["#collapse35"],
+    "profils": [""],
+    "wcag": ["2.4.3", "2.1.2"]
+  }
+]}

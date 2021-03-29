@@ -3059,7 +3059,7 @@ for (let i in dataVallydette.checklist.page) {
  * Statement manager
  */
  
-const statementProperties = ["name", "type", "version", "content", "email", "checked", "user_agent", "assistive_technology"];
+const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
 const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "plan", "derogation", "exemption"];
 
 function initStatementObject() {
@@ -3121,13 +3121,11 @@ function initStatementObject() {
 					"version": ""}
 				
 				],
-				"environment": [
+				"environments": [
 				{
-					"user_agent": "Chrome XX",
-					"assistive_technology": "JAWS 2019"
+					"environment": "Chrome XX et JAWS 2019"
 				},{
-					"user_agent": "Firefox XX",
-					"assistive_technology": "NVDA 2020"
+					"environment": "Firefox XX et NVDA 2020.4"
 				}],
 				"approval": [
 				{
@@ -3342,9 +3340,9 @@ function showStatementWizard() {
 
 	statementWizardContent += '<ul id="environmentsList">';	
 	
-    dataVallydette.statement.environment.forEach(function(listItem, index){
+    dataVallydette.statement.environments.forEach(function(listItem, index){
 
-		statementWizardContent += '<li>' +listItem.user_agent + ' ' + listItem.assistive_technology + '</li>';
+		statementWizardContent += '<li>' + listItem.environment + '</li>';
 		
 	})
 	
@@ -3432,7 +3430,7 @@ function showStatementWizard() {
 	
 	document.getElementById("btnEditTechList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("technology");});
 	document.getElementById("btnEditTestList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("tests");});
-	document.getElementById("btnEditEnvironmentList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("environment");});
+	document.getElementById("btnEditEnvironmentList").addEventListener('click', function(){event.preventDefault(); editStatementProperty("environments");});
 	
 	document.getElementById('importStatementData').onclick = function () {
 		var files = document.getElementById('selectFilesStatement').files;
@@ -3568,7 +3566,8 @@ saveListElement = function(listToEdit, statementProperty) {
 	//vérifier les value
 	for (let listItem of listToEdit.children) {
 		
-		if (listItem.children[0].children["name-"+index].value !== "") {
+		
+		if ((listItem.children[0].children["name-"+index] !== undefined && listItem.children[0].children["name-"+index].value !== "") || (listItem.children[0].children["environment-"+index] !== undefined && listItem.children[0].children["environment-"+index].value !== "")) {
 			
 			itemObj = {};
 			
@@ -3597,6 +3596,14 @@ saveListElement = function(listToEdit, statementProperty) {
 				listMarkup += '>';
 				listMarkup += '<label class="custom-control-label" for="' + statementProperty +  index + '">' + itemObj.name + '</label>';
 				listMarkup += '</div>';
+			}
+			
+			if (statementProperty === 'environments') {
+				
+				listMarkup += '<li>';
+				listMarkup += itemObj.environment ? itemObj.environment + ' ' : '';	
+				listMarkup += '</li>';
+				
 			}
 			
 		}
@@ -3764,6 +3771,12 @@ exportStatement = function(statementResult) {
 	xmlStatement += '<audit_date>' + dataVallydette.statement.date + '</audit_date>\n\n';
 	
 	xmlStatement += '<!--\n';
+	xmlStatement += 'DIGITAL ACCESSIBILITY PLAN\n';
+	xmlStatement += 'Plan: Paragraph for the digital accessibility plan. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<plan>\n<![CDATA[' +  md.render(dataVallydette.statement.plan) + ']]>\n</plan>\n\n';
+	
+	xmlStatement += '<!--\n';
 	xmlStatement += 'REFERENTIAL USED\n';
 	xmlStatement += '-->\n';
 
@@ -3794,6 +3807,15 @@ exportStatement = function(statementResult) {
 	xmlStatement += '<tests>\n';
 	dataVallydette.statement.tests.forEach(item => xmlStatement += '	<test type="' + item.type + '">\n		<name>' + item.name + '</name>\n		<version>' + item.version + '</version>\n	</test>\n');	
 	xmlStatement += '</tests>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'ENVIRONMENTS USED TO EVALUATE ACCESSIBILITY\n';
+	xmlStatement += 'Environment: an environment should indicate a user agent and an assistive technologie. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
+
+	xmlStatement += '<environments>\n';
+	dataVallydette.statement.environments.forEach(item => xmlStatement += '	<environment><![CDATA[' + item.environment + ']]></environment>\n');
+	xmlStatement += '</environments>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'URLS\n';
@@ -3891,10 +3913,19 @@ exportStatement = function(statementResult) {
 				
 			}
 	xmlStatement += '</details>\n\n';
+	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'DEROGATIONS\n';
+	xmlStatement += 'Derogations list. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
 	xmlStatement += '<derogations>\n<![CDATA[';
 	xmlStatement += md.render(dataVallydette.statement.derogation);
 	xmlStatement += ']]>\n</derogations>\n\n';
 	
+	xmlStatement += '<!--\n';
+	xmlStatement += 'DEROGATIONS\n';
+	xmlStatement += 'Exemptions list. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
 	xmlStatement += '<exemptions>\n<![CDATA[';
 	xmlStatement += md.render(dataVallydette.statement.exemption);
 	xmlStatement += ']]>\n</exemptions>';
@@ -3952,15 +3983,13 @@ exportStatementHTML = function(statementResult) {
                         
                     <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
 						<span class="sr-only">État de conformité&#8239;:</span> 
-                        <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span><br />conforme</div>
+                        <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
                     </h2>
                     
                     <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
 					${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur.' : '' }
 					</p>
 					
-					<p>${md.render(dataVallydette.statement.plan)}</p>
-
                 </div>
         
                 <div class="col-lg-3">
@@ -3988,7 +4017,7 @@ exportStatementHTML = function(statementResult) {
                     <h3>Environnement de test</h3>
 					<p>Les vérifications ont été réalisées avec les combinaisons logicielles suivantes&nbsp;:</p>
                     <ul>
-					 ${dataVallydette.statement.environment.map(e => `<li>${e.user_agent} et ${e.assistive_technology}</li>`).join('\n')}
+					 ${dataVallydette.statement.environments.map(e => `<li>${e.environment}</li>`).join('\n')}
                     </ul>
                     
                     <h3>Méthodes et outils utilisés pour vérifier l’accessibilité</h3>
@@ -4016,7 +4045,10 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-md">
 				
-				<h3 class="display-2">Page(s) ayant fait l’objet de la vérification de conformité</h3>
+				<h2 class="h4 mt-4">Contexte</h2>
+				<p>${md.render(dataVallydette.statement.plan)}</p>
+				
+				<h2 class="h4 mt-4">Page(s) ayant fait l’objet de la vérification de conformité</h2>
                 
                 <p>L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange. </p>
 				

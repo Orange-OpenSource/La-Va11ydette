@@ -1667,7 +1667,7 @@ function runFinalComputation(pagesResultsArray) {
 					
 							computationContent += '<ul>';
 							for (let j in listNonConformity[i].comment) {
-								computationContent += '<li>' + listNonConformity[i].comment[j] + '</li>';	
+								computationContent += '<li>' + utils.htmlEntities(listNonConformity[i].comment[j]) + '</li>';	
 							}
 							computationContent += '</ul>';	
 					} 
@@ -3743,6 +3743,9 @@ const utils = {
 	document.getElementById('filter').style.display = display;
 	document.getElementById('currentPageContent').classList.remove(remove);
 	document.getElementById('currentPageContent').classList.add(add);
+  },
+  htmlEntities: function (str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 	
 }  

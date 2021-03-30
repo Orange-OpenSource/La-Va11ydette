@@ -3072,7 +3072,7 @@ function initStatementObject() {
 				"status": "WIP",
 				"date": "",
 				"plan": "",
-				"users": "xx utilisateurs en situation de handicap (ZoomText, Jaws, XXX).",
+				"users": langVallydette.userTestingContent,
 				"blockingPoints": 0,
 				"technology": [
 				{
@@ -3097,42 +3097,37 @@ function initStatementObject() {
 					},
 					{	
 					"type": "manual",
-					"name": "La va11ydette d'Orange",
-					"version": ""
-					},
-					{	
-					"type": "manual",
 					"name": "NVDA",
 					"version": "2020.3"
 					},
 					{	
 					"type": "functional",
-					"name": "Navigation clavier",
+					"name":  langVallydette.keyboardNavigation,
 					"version": ""
 					},
 					{	
 					"type": "user",
-					"name": "jaws",
+					"name": "Jaws",
 					"version": ""
 					},
 					{	
 					"type": "user",
-					"name": "zoomtext",
+					"name": "Zoomtext",
 					"version": ""}
 				
 				],
 				"environments": [
 				{
-					"environment": "Chrome XX et JAWS 2019"
+					"environment": langVallydette.environmentEx1
 				},{
-					"environment": "Firefox XX et NVDA 2020.4"
+					"environment": langVallydette.environmentEx2
 				}],
 				"approval": [
 				{
-					"name": "Service client",
+					"name": langVallydette.customerService,
 					"content": ""
 				},{
-					"name": "Service interne",
+					"name": langVallydette.internalService,
 					"content": "",
 				}
 				],
@@ -3141,7 +3136,7 @@ function initStatementObject() {
 					"name": "Orange France",
 					"content": ""
 				},{
-					"name": "Orange Groupe",
+					"name": langVallydette.orangeGroup,
 					"content": ""
 					
 				}
@@ -3165,15 +3160,16 @@ function showStatementWizard() {
 	utils.columnDisplay(2);
 	
 	var btnStatementXmlExport = document.createElement('a');
-	//btnStatementXmlExport.innerHTML = "<span class='icon-Excel' aria-hidden='true'></span>";
 	btnStatementXmlExport.innerHTML = "XML";
 	btnStatementXmlExport.setAttribute('id', "btnStatementXmlExport");
+	btnStatementXmlExport.setAttribute('title', langVallydette.xmlBtn);
 	btnStatementXmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementXmlExport);
 	
 	var btnStatementHtmlExport = document.createElement('a');
 	btnStatementHtmlExport.innerHTML = "HTML";
 	btnStatementHtmlExport.setAttribute('id', "btnStatementHtmlExport");
+	btnStatementHtmlExport.setAttribute('title', langVallydette.htmlBtn);
 	btnStatementHtmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementHtmlExport);
 	
@@ -3207,15 +3203,15 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
-	statementWizardContent += '<h3>1. Préremplir le formulaire</h3>';
-	statementWizardContent += '<p id="descStatementImport">Importer les données d\'une déclaration sauvegardée au format JSON, ou renseigner les informations directement dans la partie "Saisie manuelle des données".</p>';
+	statementWizardContent += '<h3>1. ' + langVallydette.formPrefill + '</h3>';
+	statementWizardContent += '<p id="descStatementImport">' + langVallydette.formPrefill + '</p>';
 	statementWizardContent += '<div class="input-group">';
     statementWizardContent += '                    <div class="custom-file">';
     statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file" aria-describedby="descStatementImport">';
-    statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' + langVallydette.dataBrowse + '">Sélectionner des données</label>';
+    statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' + langVallydette.dataBrowse + '">' + langVallydette.selectData + '</label>';
     statementWizardContent += '                    </div>';
     statementWizardContent += '                    <div class="input-group-append">';
-    statementWizardContent += '                        <button class="btn btn-secondary" type="button" id="importStatementData">Importer</button>';
+    statementWizardContent += '                        <button class="btn btn-secondary" type="button" id="importStatementData">' + langVallydette.template.btnImportTxt + '</button>';
     statementWizardContent += '                    </div>';
     statementWizardContent += '                </div>';
     statementWizardContent += '            </div>';
@@ -3227,15 +3223,15 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-12">';
-	statementWizardContent += '<h3>2. Saisie manuelle des données</h3>';
-	statementWizardContent += '<p>Compléter ou modifier les données de la déclaration.</p>';
+	statementWizardContent += '<h3>2. ' + langVallydette.manualDataEntry + '</h3>';
+	statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="input-name" class="is-required">' + langVallydette.name + '</label>';
+    statementWizardContent += '<label for="input-name" class="is-required">' + langVallydette.projectName + '</label>';
     statementWizardContent += '<input type="text" class="form-control" id="input-name" value="' + dataVallydette.statement.name + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3263,7 +3259,7 @@ function showStatementWizard() {
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>Déclarant <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des déclarants" title="Modifier la liste des déclarants"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 	statementWizardContent += '<div class="form-group" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
@@ -3277,7 +3273,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>Contact  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des contacts" title="Modifier la liste des contacts"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 	statementWizardContent += '<div class="form-group" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
@@ -3292,9 +3288,9 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputDerogation">Schéma pluriannuel</label>';
+    statementWizardContent += '<label for="input-plan">' + langVallydette.accessibilityPlan + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-plan" rows="5" aria-describedby="planDesc">' + dataVallydette.statement.plan + '</textarea>';
-	statementWizardContent += '<small id="planDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
+	statementWizardContent += '<small id="planDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3304,7 +3300,7 @@ function showStatementWizard() {
 		statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des technologies" title="Modifier la liste des technologies"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3319,7 +3315,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des tests" title="Modifier la liste des tests"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
@@ -3336,7 +3332,7 @@ function showStatementWizard() {
 		
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="environmentLegend">';
-	statementWizardContent += '<h4 id="environmentLegend">Environnements <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="Modifier la liste des environnements de tests" title="Modifier la liste des environnements de tests"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
 
 	statementWizardContent += '<ul id="environmentsList">';	
 	
@@ -3352,10 +3348,9 @@ function showStatementWizard() {
 	
 		
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4 id="testLegend">Tests ' + langVallydette.users + '</h4>';	
+	statementWizardContent += '<h4 id="usersTestsHeading">' + langVallydette.userTesting + '</h4>';	
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-users" class="sr-only">Détail</label>';
-	statementWizardContent += '<textarea class="form-control" id="input-users" rows="2">' + dataVallydette.statement.users + '</textarea>';
+	statementWizardContent += '<textarea class="form-control" id="input-users" rows="2" aria-labelledby="usersTestsHeading">' + dataVallydette.statement.users + '</textarea>';
 
 	/* statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
 	
@@ -3395,17 +3390,17 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputDerogation">Dérogation</label>';
+    statementWizardContent += '<label for="input-derogation">' + langVallydette.derogations + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
-	statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
+	statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="inputExemption">Exemption</label>';
+    statementWizardContent += '<label for="input-exemption">' + langVallydette.exemptions + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' + dataVallydette.statement.exemption + '</textarea>';
-	statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">Ce champ supporte les markdowns </small>';
+	statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3413,9 +3408,9 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row mb-2">';
 	statementWizardContent += '<div class="col-lg-12">';
 	statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary ml-2">' + langVallydette.save + '</button>';
-	statementWizardContent += '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ml-2">' + langVallydette.save + ' et télécharger au format JSON</button>';
-	statementWizardContent += '<a href="#" id="exportStatementData" class="btn btn-secondary" title="télécharger les données du formulaire de déclaration (json)" hidden>';      
-	statementWizardContent += ' <span id="btnExportTxt">Télécharger</span>';
+	statementWizardContent += '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ml-2">' + langVallydette.saveDownloadJson + '</button>';
+	statementWizardContent += '<a href="#" id="exportStatementData" class="btn btn-secondary" hidden>';      
+	statementWizardContent += langVallydette.downloadJson;
 	statementWizardContent += '</a>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3472,7 +3467,6 @@ radioIsChecked = function (statementProperty, propertyIndex) {
 		}
 	
 	})
-	console.log(dataVallydette.statement);
 }
 
 /**
@@ -3986,8 +3980,7 @@ exportStatementHTML = function(statementResult) {
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
                     </h2>
                     
-                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>
-					${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur.' : '' }
+                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d'un point de vue utilisateur` : `` }.
 					</p>
 					
                 </div>
@@ -3998,7 +3991,7 @@ exportStatementHTML = function(statementResult) {
                     <p>${localeStatementDate}</p>
                     
                     <h3>Identité du déclarant</h3>
-					<p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}</p>
+					${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}
 					
                     <h3>Référentiel</h3>
                     <p>
@@ -4011,29 +4004,30 @@ exportStatementHTML = function(statementResult) {
                 
                     <h3>Technologies utilisées pour la réalisation du site</h3>
                     <ul>
-					 ${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n')}
+						${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n						')}
                     </ul>
 					
                     <h3>Environnement de test</h3>
 					<p>Les vérifications ont été réalisées avec les combinaisons logicielles suivantes&nbsp;:</p>
                     <ul>
-					 ${dataVallydette.statement.environments.map(e => `<li>${e.environment}</li>`).join('\n')}
+						${dataVallydette.statement.environments.map(e => `<li>${e.environment}</li>`).join('\n						')}
                     </ul>
                     
                     <h3>Méthodes et outils utilisés pour vérifier l’accessibilité</h3>
-                    <ul>`;
+                    <ul>
+					`;
 						
 					arrayTypeTest.forEach(function(t){
 						
 						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
 						let separator = ', '
 						
-						arrayTypeResult.length > 0 ? htmlStatement += `<li><strong>${langVallydette[t + "Test"]} :</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n` : '';
+						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langVallydette[t + "Test"]} :</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n					` : '';
 						
 					});	
 		
 	
-	htmlStatement += ` </ul>
+	htmlStatement += `</ul>
                 
                 </div>
             
@@ -4046,25 +4040,23 @@ exportStatementHTML = function(statementResult) {
             <div class="col-md">
 				
 				<h2 class="h4 mt-4">Contexte</h2>
-				<p>${md.render(dataVallydette.statement.plan)}</p>
+				${md.render(dataVallydette.statement.plan)}
 				
 				<h2 class="h4 mt-4">Page(s) ayant fait l’objet de la vérification de conformité</h2>
                 
                 <p>L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange. </p>
 				
                 <ol>
-				${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>\n`).join('')}
-                </ol>
+					${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>`).join('\n					')}
+				</ol>
+                
 						
-               
             </div>
-            
             
             <div class="col-md">
 				<h2>Résultat des tests</h2>
                 <p>
-				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages) ${dataVallydette.statement.blockingPoints > 0 ? ', avec ${dataVallydette.statement.blockingPoints point(s) bloquant(s) d\'un point de vue utilisateur' : '' }.
-				Le taux de conformité de chaque page auditée est égal au nombre de critères conformes divisé par le nombre de critères applicables.
+				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages)${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur` : `` }. Le taux de conformité de chaque page auditée est égal au nombre de critères conformes divisé par le nombre de critères applicables.
 				</p>
 				
                 <table class="table table-striped">
@@ -4111,14 +4103,15 @@ exportStatementHTML = function(statementResult) {
         <div class="row">
         
             <div class="col-lg">
-                <h3>Détail des non-conformités</h3>`;
+                <h3>Non-conformités</h3>`;
 		
 				if (listNonConformity.length > 0) {
-					htmlStatement += `<ul>
+					htmlStatement += `
+					<ul>
 					${listNonConformity.map(nc => 
-						`<li>
+						`	<li>
 							${nc.wcag} ${nc.name}, ${langVallydette.auditTxt10} ${nc.level}
-						</li>`).join('')}
+						</li>`).join('\n					')}
 					</ul>`;
 	
 				} else {

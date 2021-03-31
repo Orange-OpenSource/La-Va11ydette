@@ -4183,56 +4183,53 @@ exportStatementHTML = function(statementResult) {
 				<p><strong>Conformité globale (moyenne des pages) :</strong> ${dataWCAG.globalPagesResult}%</p>		
 
 				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt10}</caption>
-				<thead><tr>
-				<th scope="row">${langVallydette.auditTxt10}</th>
-				<th scope="col" class="text-center">A</th>
-				<th scope="col" class="text-center">AA</th>
-				<th scope="col" class="text-center">Total</th>
-				</tr></thead>
+					<thead><tr>
+						<th scope="row">${langVallydette.auditTxt10}</th>
+						<th scope="col" class="text-center">A</th>
+						<th scope="col" class="text-center">AA</th>
+						<th scope="col" class="text-center">Total</th>
+					</tr></thead>
 				<tbody>
 				
 				<tr>
-				<th scope="row" class="font-weight-bold">Nombre de critères</th>
-				<td class="text-center">${dataWCAG.totalA}</td>
-				<td class="text-center">${dataWCAG.totalAA}</td>
-				<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
+					<th scope="row" class="font-weight-bold">Nombre de critères</th>
+					<td class="text-center">${dataWCAG.totalA}</td>
+					<td class="text-center">${dataWCAG.totalAA}</td>
+					<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
 				</tr>
 				
 				<tr>
-				<th scope="row" class="font-weight-bold">${langVallydette.template.status1}</th>
-				<td class="text-center">${dataWCAG.conformeA}</td>
-				<td class="text-center">${dataWCAG.conformeAA}</td>
-				<td class="text-center">${dataWCAG.totalconforme}</td>
+					<th scope="row" class="font-weight-bold">${langVallydette.template.status1}</th>
+					<td class="text-center">${dataWCAG.conformeA}</td>
+					<td class="text-center">${dataWCAG.conformeAA}</td>
+					<td class="text-center">${dataWCAG.totalconforme}</td>
 				</tr>
 				
 				<tr>
-				<th scope="row" class="font-weight-bold">${langVallydette.template.status2}</th>
-				<td class="text-center">${dataWCAG.nonconformeA}</td>
-				<td class="text-center">${dataWCAG.nonconformeAA}</td>
-				<td class="text-center">${dataWCAG.totalnonconforme}</td>
+					<th scope="row" class="font-weight-bold">${langVallydette.template.status2}</th>
+					<td class="text-center">${dataWCAG.nonconformeA}</td>
+					<td class="text-center">${dataWCAG.nonconformeAA}</td>
+					<td class="text-center">${dataWCAG.totalnonconforme}</td>
 				</tr>
 				
 				<tr>
-				<th scope="row" class="font-weight-bold">${langVallydette.template.status3}</th>
-				<td class="text-center">${dataWCAG.naA}</td>
-				<td class="text-center">${dataWCAG.naAA}</td>
-				<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
+					<th scope="row" class="font-weight-bold">${langVallydette.template.status3}</th>
+					<td class="text-center">${dataWCAG.naA}</td>
+					<td class="text-center">${dataWCAG.naAA}</td>
+					<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
 				</tr>
 				
 				<tr>
-				<th scope="row" class="font-weight-bold bg-light">${langVallydette.auditTxt16}</th>
-				<td class="text-center bg-light">`;
-					${dataWCAG.result!=="NA" ? `${dataWCAG.resultA} % ` : ``}
-					//${(${dataWCAG.complete} === false) ? `${langVallydette.auditTxt6}` : ``}	
-				</td>
-				<td class="text-center bg-light">
-					${(!isNaN(${dataWCAG.resultAA}) && ${dataWCAG.result}!=="NA") ? `${dataWCAG.resultAA} % ` : ``}
-					//${(${dataWCAG.complete} === false) ? `${langVallydette.auditTxt6}` : ``}
-				</td>
-				<td class="text-center bg-light">
-					${(!isNaN(${dataWCAG.result}) && ${dataWCAG.result}!=="NA") ? `${dataWCAG.result}  % ` : ``}
-					//${(${dataWCAG.complete} === false) ? `${langVallydette.auditTxt6}` : ``}	
-				</td>
+					<th scope="row" class="font-weight-bold bg-light">${langVallydette.auditTxt16}</th>
+					<td class="text-center bg-light">
+						${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
+					</td>
+					<td class="text-center bg-light">
+						${(!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultAA}% ` : ``}	
+					</td>
+					<td class="text-center bg-light">
+						${(!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? `${dataWCAG.result}% ` : ``}
+					</td>
 				</tr>
 				
 				</tbody>

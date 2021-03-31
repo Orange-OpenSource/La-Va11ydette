@@ -8,7 +8,7 @@ $('.o-nav-local').prioritynav('Autres pages');
  * @param {object} checklistVallydette - checklists parameters (ex : url list param).
  * @param {object} dataVallydette - statement object.
  * @param {string} globalLang - current selected language.
- * @param {string} globalTemplate - actually 2 template are available, wcag for conformity audit et audit for test audit.
+ * @param {string} globalTemplate - actually 2 templates are available, wcag for conformity audit et audit for test audit.
  * @param {number} globalVersion - Contains the last checklist version
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
  * @param {number} currentPage - Current page index, updated each time user move to another page.
@@ -3071,57 +3071,18 @@ function initStatementObject() {
 				"lang": "",
 				"status": "WIP",
 				"date": "",
-				"plan": "",
-				"users": langVallydette.userTestingContent,
-				"blockingPoints": 0,
-				"technology": [
-				{
-					"name": "HTML",
-					"version": ""
-				},{
-					"name": "CSS",
-					"version": ""
-				},{
-					"name": "Javascript",
-					"version": ""
-				}],
-				"tests": [{
-					"type": "auto",
-					"name": "aXe",
-					"version": "3.5.1"
+				"results": [
+					{
+						"type" : "pagesAverage",
+						"checked" : "true"
 					},
 					{
-					"type": "auto",
-					"name": "Wave",
-					"version": "3.1.3"
-					},
-					{	
-					"type": "manual",
-					"name": "NVDA",
-					"version": "2020.3"
-					},
-					{	
-					"type": "functional",
-					"name":  langVallydette.keyboardNavigation,
-					"version": ""
-					},
-					{	
-					"type": "user",
-					"name": "Jaws",
-					"version": ""
-					},
-					{	
-					"type": "user",
-					"name": "Zoomtext",
-					"version": ""}
-				
+						"type" : "criteriaPercentage",
+					}
+					
 				],
-				"environments": [
-				{
-					"environment": langVallydette.environmentEx1
-				},{
-					"environment": langVallydette.environmentEx2
-				}],
+				"plan": "",
+				"blockingPoints": 0,
 				"approval": [
 				{
 					"name": langVallydette.customerService,
@@ -3143,8 +3104,106 @@ function initStatementObject() {
 				],
 				"derogation": "",
 				"exemption": ""
-				
 
+		}
+		
+		if (currentCriteriaListName === "wcag-web") {
+				
+				dataVallydette.statement.users = langVallydette.userTestingContent + langVallydette.userTestingContentWeb;
+				
+				dataVallydette.statement.technology = [
+				{
+					"name": "HTML",
+					"version": ""
+				},{
+					"name": "CSS",
+					"version": ""
+				},{
+					"name": "Javascript",
+					"version": ""
+				}];
+				dataVallydette.statement.tests = [
+				{
+					"type": "auto",
+					"name": "aXe",
+					"version": "3.5.1"
+					},
+					{
+					"type": "auto",
+					"name": "Wave",
+					"version": "3.1.3"
+					},
+					{	
+					"type": "functional",
+					"name": "NVDA",
+					"version": "2020.3"
+					},
+					{	
+					"type": "functional",
+					"name":  langVallydette.keyboardNavigation,
+					"version": ""
+					},
+					{	
+					"type": "user",
+					"name": "Jaws",
+					"version": ""
+					},
+					{	
+					"type": "user",
+					"name": "Zoomtext",
+					"version": ""}
+				
+				];
+				dataVallydette.statement.environments = [
+				{
+					"environment": langVallydette.environmentEx1
+				},{
+					"environment": langVallydette.environmentEx2
+				}];
+			
+		} else if (currentCriteriaListName === "wcag-android") {
+			dataVallydette.statement.users = langVallydette.userTestingContent + langVallydette.userTestingContentAndroid;
+			dataVallydette.statement.technology = [
+				{
+					"name": "Java",
+					"version": ""
+				},{
+					"name": "Kotlin",
+					"version": ""
+				},{
+					"name": "XML",
+					"version": ""
+				}];
+				dataVallydette.statement.tests = [
+				{
+					"type": "auto",
+					"name": "aXe",
+					"version": "0.10.2"
+					},
+					{
+					"type": "auto",
+					"name": "Accessibility Scanner",
+					"version": ""
+					},
+					{	
+					"type": "functional",
+					"name": "Talkback",
+					"version": ""
+					},
+					{	
+					"type": "functional",
+					"name":  "Switch Access",
+					"version": ""
+					}
+				
+				];
+				dataVallydette.statement.environments = [
+				{
+					"environment": langVallydette.environmentEx1
+				},{
+					"environment": langVallydette.environmentEx2
+				}];
+			
 		}
 	
 	}
@@ -3220,23 +3279,19 @@ function showStatementWizard() {
 	statementWizardContent += '<hr class="border-light">';
 		
 	statementWizardContent += '<form id="statementForm">';
-	
-	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-12">';
+
 	statementWizardContent += '<h3>2. ' + langVallydette.manualDataEntry + '</h3>';
 	statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
-	statementWizardContent += '</div>';
-	statementWizardContent += '</div>';
-	
+
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="input-name" class="is-required">' + langVallydette.projectName + '</label>';
     statementWizardContent += '<input type="text" class="form-control" id="input-name" value="' + dataVallydette.statement.name + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="input-lang" class="is-required">' + langVallydette.lang + '</label>';
     statementWizardContent += '<select class="custom-select" id="input-lang" required>';
@@ -3247,10 +3302,24 @@ function showStatementWizard() {
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="input-date"  class="is-required">' + langVallydette.date + '</label>';
     statementWizardContent += '<input type="date" class="form-control" id="input-date" value="' + dataVallydette.statement.date + '" required>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+	
+	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="form-group" role="group">';
+	statementWizardContent += '<span class="d-block"><strong>Type de résultat</strong></span>';
+    statementWizardContent += '<label class="mt-1 font-weight-normal">';
+    statementWizardContent += '<input id="input-pagesAverage"  name="input-pagesAverage" class="mr-1" type="checkbox" autocomplete="off" ' + (dataVallydette.statement.results[0].checked === "true" ? " checked " : "") + '>';
+    statementWizardContent += '<span>Taux moyen</span>';
+    statementWizardContent += '</label>';
+	statementWizardContent += '<label class="font-weight-normal">';
+    statementWizardContent += '<input id="input-criteriaPercentage"  name="input-criteriaPercentage"  class="mr-1" type="checkbox" autocomplete="off" '+ (dataVallydette.statement.results[1].checked === "true" ? " checked " : "") + '>';
+    statementWizardContent += '<span>Pourcentage de critères respectés</span>';
+    statementWizardContent += '</label>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3264,7 +3333,7 @@ function showStatementWizard() {
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
 		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="approvalRadio" class="custom-control-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked ? " checked " : "") + ' >';
+		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="approvalRadio" class="custom-control-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked === "true" ? " checked " : "") + ' >';
 		statementWizardContent += '<label class="custom-control-label" for="approval' +  index + '">' + a.name + '</label>';
 		statementWizardContent += '</div>';
 	})
@@ -3278,7 +3347,7 @@ function showStatementWizard() {
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
 		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked ? " checked " : "") + ' >';
+		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked === "true" ? " checked " : "") + ' >';
 		statementWizardContent += '<label class="custom-control-label" for="contact' +  index + '">' + c.name + '</label>';
 		statementWizardContent += '</div>';
 	})
@@ -3487,17 +3556,15 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<form id="listEditForm">';
 	htmlModal += '<ul id="listToEdit">';
 	
-	console.log(statementProperty);
-	
 	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
 	
 		htmlModal += '<li>';
 		
 		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
-			htmlModal += '<span>';
+			htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
 			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + index + '</span>';
 		} else {
-			htmlModal += '<span class="input-group">';
+			htmlModal += '<span class="input-group"  role="group"  aria-labelledby="itemLegend-' + index + '">';
 			htmlModal += ' <span class="input-group-prepend">';
 			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
 			htmlModal += '  </span>';	
@@ -3507,7 +3574,7 @@ editStatementProperty = function (statementProperty) {
 			
 			if (listItem[p] !== undefined && p === 'type') {
 				
-				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + index + ' name-' + index + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
 				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
@@ -3516,15 +3583,15 @@ editStatementProperty = function (statementProperty) {
 				
 			} else if (listItem[p] !== undefined && p === 'content') {
 				
-				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" aria-labelledby="itemLegend-' + index + ' ' + p + '-' + index + '" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
 				
 			} else if (listItem[p] !== undefined && p === 'checked') {
 				
-				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-labelledby="itemLegend-' + index + '  checked-' + index + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
+				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
 				
 			} else if (listItem[p] !== undefined) {
 				
-				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" aria-labelledby="itemLegend-' + index + ' ' + p + '-' + index +'" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
 				
 			}
 
@@ -3535,7 +3602,13 @@ editStatementProperty = function (statementProperty) {
 
 	})
 	htmlModal += '</ul>';
-	htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
+
+	if (statementProperty === "environments") {
+		htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt5 + '</p>';
+	} else {
+		htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
+	}
+	
 	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.addElement + '</button>';
 	htmlModal += '</form>';
 	htmlModal += '</div>';
@@ -3667,12 +3740,21 @@ saveStatement = function(statementForm, submitterBtn) {
 	dataVallydette.statement.status = "done";
 	
 	statementInputs.forEach(function(input){
-		console.log(input);
 		dataVallydette.statement[input] = statementForm.elements["input-"+input].value;
 	});
 	
-	console.log(dataVallydette.statement);
+	if (statementForm.elements["input-pagesAverage"].checked) {
+		dataVallydette.statement.results[0].checked = "true";
+	} else {
+		dataVallydette.statement.results[0].checked = "false";
+	}
 	
+	if (statementForm.elements["input-criteriaPercentage"].checked) {
+		dataVallydette.statement.results[1].checked = "true";
+	} else {
+		dataVallydette.statement.results[1].checked = "false";
+	}
+
 	if (dataWCAG.globalPagesResult) {
 		
 		exportStatement(statementResult);
@@ -3693,8 +3775,7 @@ saveStatement = function(statementForm, submitterBtn) {
 		document.getElementById("exportStatementData").setAttribute('href', dataUri);
 		document.getElementById("exportStatementData").click();
 	}
-	
-	
+
 	// dataVallydette export update
 	jsonUpdate();
 
@@ -3746,7 +3827,7 @@ exportStatement = function(statementResult) {
 	xmlStatement += 'Content: usefull for additional information like a postal address for example. This is CDATA-protected, please add properly formatted HTML. \n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<approval>\n';
-	dataVallydette.statement.approval.filter(a => a.checked).map(a => xmlStatement += '	<name>' + a.name + '</name>\n	<content>\n<![CDATA[' +  md.render(a.content) + ']]>\n</content>\n');
+	dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => xmlStatement += '	<name>' + a.name + '</name>\n	<content>\n<![CDATA[' +  md.render(a.content) + ']]>\n</content>\n');
 	xmlStatement += '</approval>\n\n';
 	
 	xmlStatement += '<!--\n';
@@ -3817,7 +3898,7 @@ exportStatement = function(statementResult) {
 	xmlStatement += 'This is CDATA-protected, please add properly formatted HTML.\n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<urls>\n';
-	dataVallydette.checklist.page.forEach(item => xmlStatement += '	<url>\n		<name>' + item.name + '</name>\n		<location>' + item.url + '</location>\n	</url>\n');	
+	dataVallydette.checklist.page.forEach(item => xmlStatement += '	<url>\n		<name><![CDATA[' + item.name + ']]></name>\n		<location><![CDATA[' + item.url + ']]></location>\n	</url>\n');	
 	xmlStatement += '</urls>\n';
 
 	xmlStatement += '<!--\n';
@@ -3836,41 +3917,45 @@ exportStatement = function(statementResult) {
 	xmlStatement += '<users>' + dataVallydette.statement.users + '</users>\n';
 	xmlStatement += '<blocking_points>' + dataVallydette.statement.blockingPoints + '</blocking_points>\n\n';
 
-	xmlStatement += '<!--\n';
-	xmlStatement += 'RESULTS DETAILS\n';
-	xmlStatement += '-->\n';
-	xmlStatement += '<results>\n';
-	xmlStatement += '	<result type="a">\n';
-	xmlStatement += '		<criteria>' + dataWCAG.totalA + '</criteria>\n';
-	xmlStatement += '		<ok>' + dataWCAG.conformeA + '</ok><!-- valid -->\n';
-	xmlStatement += '		<nok>' + dataWCAG.nonconformeA + '</nok><!-- not valid -->\n';
-	xmlStatement += '		<na>' + dataWCAG.naA + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.resultA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
-	xmlStatement += '	</result>\n\n';
+	if (dataVallydette.statement.results[1].checked === "true") {
+		xmlStatement += '<!--\n';
+		xmlStatement += 'RESULTS DETAILS\n';
+		xmlStatement += '-->\n';
+		xmlStatement += '<results>\n';
+		xmlStatement += '	<result type="a">\n';
+		xmlStatement += '		<criteria>' + dataWCAG.totalA + '</criteria>\n';
+		xmlStatement += '		<ok>' + dataWCAG.conformeA + '</ok><!-- valid -->\n';
+		xmlStatement += '		<nok>' + dataWCAG.nonconformeA + '</nok><!-- not valid -->\n';
+		xmlStatement += '		<na>' + dataWCAG.naA + '</na><!-- not applicable -->\n';
+		xmlStatement += '		<conformity>' + dataWCAG.resultA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n\n';
 
-	xmlStatement += '	<result type="aa">\n';
-	xmlStatement += '		<criteria>' + dataWCAG.totalAA + '</criteria>\n';
-	xmlStatement += '		<ok>' + dataWCAG.conformeAA + '</ok><!-- valid -->\n';
-	xmlStatement += '		<nok>' + dataWCAG.nonconformeAA + '</nok><!-- not valid -->\n';
-	xmlStatement += '		<na>' + dataWCAG.naAA + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.resultAA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
-	xmlStatement += '	</result>\n\n';
+		xmlStatement += '	<result type="aa">\n';
+		xmlStatement += '		<criteria>' + dataWCAG.totalAA + '</criteria>\n';
+		xmlStatement += '		<ok>' + dataWCAG.conformeAA + '</ok><!-- valid -->\n';
+		xmlStatement += '		<nok>' + dataWCAG.nonconformeAA + '</nok><!-- not valid -->\n';
+		xmlStatement += '		<na>' + dataWCAG.naAA + '</na><!-- not applicable -->\n';
+		xmlStatement += '		<conformity>' + dataWCAG.resultAA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n\n';
 
-	xmlStatement += '	<result type="total">\n';
-	xmlStatement += '		<criteria>' + (dataWCAG.totalA+dataWCAG.totalAA) + '</criteria>\n';
-	xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
-	xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
-	xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
-	xmlStatement += '	</result>\n';
-	xmlStatement += '</results>\n\n';
+		xmlStatement += '	<result type="total">\n';
+		xmlStatement += '		<criteria>' + (dataWCAG.totalA+dataWCAG.totalAA) + '</criteria>\n';
+		xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
+		xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
+		xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
+		xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n';
+		xmlStatement += '</results>\n\n';
+	}
 	
-	xmlStatement += '<!--\n';
-	xmlStatement += 'Pages results details\n';
-	xmlStatement += '-->\n';
-	xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
-	statementResult.forEach(item => xmlStatement += '	<page name="' + item.name + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
-    xmlStatement += '</pages_results>\n\n';
+	if (dataVallydette.statement.results[0].checked === "true") {
+		xmlStatement += '<!--\n';
+		xmlStatement += 'Pages results details\n';
+		xmlStatement += '-->\n';
+		xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
+		statementResult.forEach(item => xmlStatement += '	<page name="' + utils.escape_html(item.name) + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
+		xmlStatement += '</pages_results>\n\n';
+	}
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'Non conformity details\n';
@@ -4096,7 +4181,63 @@ exportStatementHTML = function(statementResult) {
 				</table>
 
 				<p><strong>Conformité globale (moyenne des pages) :</strong> ${dataWCAG.globalPagesResult}%</p>		
-               
+
+				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt10}</caption>
+				<thead><tr>
+				<th scope="row">${langVallydette.auditTxt10}</th>
+				<th scope="col" class="text-center">A</th>
+				<th scope="col" class="text-center">AA</th>
+				<th scope="col" class="text-center">Total</th>
+				</tr></thead>
+				<tbody>
+				
+				<tr>
+				<th scope="row" class="font-weight-bold">Nombre de critères</th>
+				<td class="text-center">${dataWCAG.totalA}</td>
+				<td class="text-center">${dataWCAG.totalAA}</td>
+				<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
+				</tr>
+				
+				<tr>
+				<th scope="row" class="font-weight-bold">${langVallydette.template.status1}</th>
+				<td class="text-center">${dataWCAG.conformeA}</td>
+				<td class="text-center">${dataWCAG.conformeAA}</td>
+				<td class="text-center">${dataWCAG.totalconforme}</td>
+				</tr>
+				
+				<tr>
+				<th scope="row" class="font-weight-bold">${langVallydette.template.status2}</th>
+				<td class="text-center">${dataWCAG.nonconformeA}</td>
+				<td class="text-center">${dataWCAG.nonconformeAA}</td>
+				<td class="text-center">${dataWCAG.totalnonconforme}</td>
+				</tr>
+				
+				<tr>
+				<th scope="row" class="font-weight-bold">${langVallydette.template.status3}</th>
+				<td class="text-center">${dataWCAG.naA}</td>
+				<td class="text-center">${dataWCAG.naAA}</td>
+				<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
+				</tr>
+				
+				<tr>
+				<th scope="row" class="font-weight-bold bg-light">${langVallydette.auditTxt16}</th>
+				<td class="text-center bg-light">`;
+					${dataWCAG.result!=="NA" ? `${dataWCAG.resultA} % ` : ``}
+					//${(${dataWCAG.complete} === false) ? `${langVallydette.auditTxt6}` : ``}	
+				</td>
+				<td class="text-center bg-light">
+					${(!isNaN(${dataWCAG.resultAA}) && ${dataWCAG.result}!=="NA") ? `${dataWCAG.resultAA} % ` : ``}
+					//${(${dataWCAG.complete} === false) ? `${langVallydette.auditTxt6}` : ``}
+				</td>
+				<td class="text-center bg-light">
+					${(!isNaN(${dataWCAG.result}) && ${dataWCAG.result}!=="NA") ? `${dataWCAG.result}  % ` : ``}
+					//${(${dataWCAG.complete} === false) ? `${langVallydette.auditTxt6}` : ``}	
+				</td>
+				</tr>
+				
+				</tbody>
+				</table>
+				
             </div>
         </div>
         
@@ -4124,7 +4265,7 @@ exportStatementHTML = function(statementResult) {
             </div>
         </div>`;
 		
-if (dataVallydette.statement.derogation !== "") {
+	if (dataVallydette.statement.derogation !== "") {
 		htmlStatement += `<div class="row">
         
             <div class="col-lg">
@@ -4218,18 +4359,29 @@ const utils = {
         .replace(/\-\-+/g, '-') 
         .replace(/^-+/, '')
         .replace(/-+$/, '');
-	},
+  },
+  escape_html: function (str) {
+    var map = {
+    '&': '&amp;',
+	'<': '&lt;',
+	'>': '&gt;',
+	'"': '&quot;',
+	"'": '&#039;'
+	};
+
+	return str.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
+  },
   putTheFocus: function (e) {
 	e.setAttribute("tabindex", "-1");
 	e.focus();
-    },
+  },
   resetActive: function (e) {
 	var btnActive = e.querySelector(".active");
 		if (btnActive != undefined) {
 			btnActive.classList.remove("active");
 			btnActive.removeAttribute("aria-current");
 		}
-	},
+  },
   setActive: function (e) {
 	e.classList.add("active");
 	e.setAttribute("aria-current", "true");
@@ -4271,7 +4423,7 @@ const utils = {
 		
 		return exportFileDefaultName;
 	}
- },
+  },
  addElement: function (type,  id, innerText, icon, iconOnly, arrayClass) { 
 	var e = document.createElement(type);
 	

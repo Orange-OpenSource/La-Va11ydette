@@ -1544,9 +1544,9 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt4 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status1 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status2 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.template.status3 + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.compliant + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.nonCompliant + '</th>';
+		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.notApplicable + '</th>';
 		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.result + '</th>';
 		computationContent += '</tr><tr>';
 		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
@@ -1582,7 +1582,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += ' </div>';
 		
 		computationContent += '<div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
-		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt10 + '</caption>';
+		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt15 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
@@ -1599,21 +1599,21 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</tr>';
 		
 		computationContent += '<tr>';
-		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.template.status1 + '</th>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.compliant + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.conformeA + '</td>';
 		computationContent += '<td class="text-center">' + dataWCAG.conformeAA + '</td>';
 		computationContent += '<td class="text-center">' + dataWCAG.totalconforme + '</td>';
 		computationContent += '</tr>';
 		
 		computationContent += '<tr>';
-		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.template.status2 + '</th>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.nonCompliant + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.nonconformeA + '</td>';
 		computationContent += '<td class="text-center">' + dataWCAG.nonconformeAA + '</td>';
 		computationContent += '<td class="text-center">' + dataWCAG.totalnonconforme + '</td>';
 		computationContent += '</tr>';
 		
 		computationContent += '<tr>';
-		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.template.status3 + '</th>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.notApplicable + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.naA + '</td>';
 		computationContent += '<td class="text-center">' + dataWCAG.naAA + '</td>';
 		computationContent += '<td class="text-center">' + (dataWCAG.naA+dataWCAG.naAA) + '</td>';
@@ -4139,8 +4139,10 @@ exportStatementHTML = function(statementResult) {
             </div>
             
             <div class="col-md">
-				<h2>Résultat des tests</h2>
-                <p>
+				<h2>Résultat des tests</h2>`;
+				
+			if (dataVallydette.statement.results[0].checked === "true") {
+               htmlStatement += ` <p>
 				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages)${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur` : `` }. Le taux de conformité de chaque page auditée est égal au nombre de critères conformes divisé par le nombre de critères applicables.
 				</p>
 				
@@ -4148,9 +4150,9 @@ exportStatementHTML = function(statementResult) {
 				<caption class="sr-only">${langVallydette.auditTxt4}</caption>
 				  <tr>
 					<th scope="row">${langVallydette.auditTxt4}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status1}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status2}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.template.status3}</th>
+					<th scope="col" colspan="2" class="text-center">${langVallydette.compliant}</th>
+					<th scope="col" colspan="2" class="text-center">${langVallydette.nonCompliant}</th>
+					<th scope="col" colspan="2" class="text-center">${langVallydette.notApplicable}</th>
 					<th rowspan="2" class="text-center bg-light">${langVallydette.result}</th>
 				  </tr>
 				  <tr>
@@ -4178,11 +4180,16 @@ exportStatementHTML = function(statementResult) {
 					  
 					).join('')}
 				  
-				</table>
+				</table>`;
+			}
+			
+			if (dataVallydette.statement.results[1].checked === "true") {
+               htmlStatement += `
+				<p>
+				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages)${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur` : `` }.
+				</p>	
 
-				<p><strong>Conformité globale (moyenne des pages) :</strong> ${dataWCAG.globalPagesResult}%</p>		
-
-				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt10}</caption>
+				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt15}</caption>
 					<thead><tr>
 						<th scope="row">${langVallydette.auditTxt10}</th>
 						<th scope="col" class="text-center">A</th>
@@ -4233,8 +4240,10 @@ exportStatementHTML = function(statementResult) {
 				</tr>
 				
 				</tbody>
-				</table>
-				
+				</table>`;
+			}
+			
+		htmlStatement += `		
             </div>
         </div>
         

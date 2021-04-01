@@ -152,6 +152,10 @@
 	"userTest": "Tests utilisateurs",
 	"version": "Version",
 	"keyboard": "Navigation clavier",
+	"compliant": "conformes",
+	"nonCompliant": "non-conformes",
+	"notApplicable": "non-applicables",
+	"notTested": "non-testés",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",

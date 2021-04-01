@@ -146,6 +146,10 @@
 	"user": "user",
 	"version": "Version",
 	"keyboard": "Keyboard",	
+	"compliant": "compliant",
+	"nonCompliant": "non-compliant",
+	"notApplicable": "not applicable",
+	"notTested": "not tested",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",

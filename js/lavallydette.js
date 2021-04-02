@@ -1592,7 +1592,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '<tbody>';
 		
 		computationContent += '<tr>';
-		computationContent += '<th scope="row" class="font-weight-bold">Nombre de critères</th>';
+		computationContent += '<th scope="row" class="font-weight-bold">' + langVallydette.criteriaNumber + '</th>';
 		computationContent += '<td class="text-center">' + dataWCAG.totalA + '</td>';
 		computationContent += '<td class="text-center">' + dataWCAG.totalAA + '</td>';
 		computationContent += '<td class="text-center">' + (dataWCAG.totalA+dataWCAG.totalAA) + '</td>';
@@ -3199,9 +3199,7 @@ function initStatementObject() {
 				];
 				dataVallydette.statement.environments = [
 				{
-					"environment": langVallydette.environmentEx1
-				},{
-					"environment": langVallydette.environmentEx2
+					"environment": langVallydette.environmentEx3
 				}];
 			
 		}
@@ -3754,12 +3752,27 @@ saveStatement = function(statementForm, submitterBtn) {
 	} else {
 		dataVallydette.statement.results[1].checked = "false";
 	}
-
+	
 	if (dataWCAG.globalPagesResult) {
+		if (dataVallydette.statement.lang !== globalLang) {
+			var langRequest = new XMLHttpRequest();
+			langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
+			langRequest.onreadystatechange = function () {
+			  if(langRequest.readyState === 4 && langRequest.status === 200) {
+				langStatement = JSON.parse(langRequest.responseText);
+				exportStatementHTML(statementResult, langStatement.statementTemplate);
+			  } 
+			};
+			langRequest.send();
+		} else {
+			var langStatement = langVallydette.statementTemplate;
+			exportStatementHTML(statementResult, langStatement);
+		}
 		
 		exportStatement(statementResult);
-		exportStatementHTML(statementResult);
 	}
+	
+	
 	
 	alertMessage = '';
 	alertMessage += '<div class="alert alert-success alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
@@ -4026,23 +4039,23 @@ exportStatement = function(statementResult) {
 }
 
 
-exportStatementHTML = function(statementResult) {
+exportStatementHTML = function(statementResult, langStatement) {
 	
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
 	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
-	var statementDate = new Date(dataVallydette.statement.date)
-	var localeStatementDate = statementDate.toLocaleDateString(dataVallydette.statement.lang)
+	var statementDate = new Date(dataVallydette.statement.date);
+	var localeStatementDate = statementDate.toLocaleDateString(dataVallydette.statement.lang);
 	var md = window.markdownit();
-
+	
 	htmlStatement = "";
 	htmlStatement = `<!DOCTYPE html>
-<html lang="fr">
+<html lang="${dataVallydette.statement.lang}">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
-  <title>Déclaration d’Accessibilité - ${dataVallydette.statement.name}</title>
+  <title>${langStatement.title} - ${dataVallydette.statement.name}</title>
   
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="boosted-grid.min.css">
@@ -4052,7 +4065,7 @@ exportStatementHTML = function(statementResult) {
 
 <body>    
     <div class="container content">        
-        <h1>Déclaration d'Accessibilité : ${dataVallydette.statement.name}</h1>
+        <h1>test ${langStatement.title} : ${dataVallydette.statement.name}</h1>
         
         <div class="summary">
         
@@ -4061,44 +4074,44 @@ exportStatementHTML = function(statementResult) {
                 <div class="col-lg-3">
                         
                     <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
-						<span class="sr-only">État de conformité&#8239;:</span> 
+						<span class="sr-only">${langStatement.state}</span> 
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
                     </h2>
                     
-                    <p class="lead">Ce site est conforme à ${dataWCAG.globalPagesResult}% aux critères <abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr>${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d'un point de vue utilisateur` : `` }.
+                    <p class="lead">${langStatement.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.compliantContent2}${dataVallydette.statement.blockingPoints > 0 ? `${langStatement.blockingPoint1} ${dataVallydette.statement.blockingPoints} ${langStatement.blockingPoint2}` : `` }.
 					</p>
 					
                 </div>
         
                 <div class="col-lg-3">
                     
-                    <h3>Date de l'audit</h3>
+                    <h3>${langStatement.auditDate}</h3>
                     <p>${localeStatementDate}</p>
                     
-                    <h3>Identité du déclarant</h3>
+                    <h3>${langStatement.approvalHeading}</h3>
 					${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}
 					
-                    <h3>Référentiel</h3>
+                    <h3>${langStatement.standardHeading}</h3>
                     <p>
-                        <a href="https://www.w3.org/TR/WCAG21/"><abbr lang="en" title="Web Content Accessibility Guidelines">WCAG</abbr> version 2.1, niveau AA</a>.<br />
+                       ${langStatement.wcagVersion}
                     </p>
                     
                 </div>
                 
                 <div class="col-lg-6">
                 
-                    <h3>Technologies utilisées pour la réalisation du site</h3>
+                    <h3>${langStatement.technologyHeading}</h3>
                     <ul>
 						${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n						')}
                     </ul>
 					
-                    <h3>Environnement de test</h3>
-					<p>Les vérifications ont été réalisées avec les combinaisons logicielles suivantes&nbsp;:</p>
+                    <h3>${langStatement.environmentHeading}</h3>
+					<p>${langStatement.environmentContent}</p>
                     <ul>
 						${dataVallydette.statement.environments.map(e => `<li>${e.environment}</li>`).join('\n						')}
                     </ul>
                     
-                    <h3>Méthodes et outils utilisés pour vérifier l’accessibilité</h3>
+                    <h3>${langStatement.methodsHeading}</h3>
                     <ul>
 					`;
 						
@@ -4124,12 +4137,12 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-md">
 				
-				<h2 class="h4 mt-4">Contexte</h2>
+				<h2 class="h4 mt-4">${langStatement.contextHeading}</h2>
 				${md.render(dataVallydette.statement.plan)}
 				
-				<h2 class="h4 mt-4">Page(s) ayant fait l’objet de la vérification de conformité</h2>
+				<h2 class="h4 mt-4">${langStatement.pagesHeading}</h2>
                 
-                <p>L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange. </p>
+                <p>${langStatement.pagesContent}</p>
 				
                 <ol>
 					${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>`).join('\n					')}
@@ -4139,11 +4152,11 @@ exportStatementHTML = function(statementResult) {
             </div>
             
             <div class="col-md">
-				<h2>Résultat des tests</h2>`;
+				<h2 class="h4 mt-4">${langStatement.resultsHeading}</h2>`;
 				
 			if (dataVallydette.statement.results[0].checked === "true") {
                htmlStatement += ` <p>
-				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages)${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur` : `` }. Le taux de conformité de chaque page auditée est égal au nombre de critères conformes divisé par le nombre de critères applicables.
+				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.blockingPoints > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.blockingPoints}${langStatement.resultsContent4}` : `` }${langStatement.resultsContent5}
 				</p>
 				
                 <table class="table table-striped">
@@ -4180,13 +4193,19 @@ exportStatementHTML = function(statementResult) {
 					  
 					).join('')}
 				  
-				</table>`;
+				</table>
+				
+				<p><strong>${langStatement.resultsContent6}</strong> ${dataWCAG.globalPagesResult}${langStatement.resultsContent7}</p>
+				`;
+				
+				
+				
 			}
 			
 			if (dataVallydette.statement.results[1].checked === "true") {
                htmlStatement += `
 				<p>
-				L'audit révèle que le taux moyen de conformité du site s’élève à ${dataWCAG.globalPagesResult}% (moyenne des taux de conformité des pages)${dataVallydette.statement.blockingPoints > 0 ? `, avec ${dataVallydette.statement.blockingPoints} point(s) bloquant(s) d\'un point de vue utilisateur` : `` }.
+				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.blockingPoints > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.blockingPoints}${langStatement.resultsContent4}` : `` }${langStatement.resultsContent5}
 				</p>	
 
 				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt15}</caption>
@@ -4199,7 +4218,7 @@ exportStatementHTML = function(statementResult) {
 				<tbody>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">Nombre de critères</th>
+					<th scope="row" class="font-weight-bold">${langVallydette.criteriaNumber}</th>
 					<td class="text-center">${dataWCAG.totalA}</td>
 					<td class="text-center">${dataWCAG.totalAA}</td>
 					<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
@@ -4250,7 +4269,7 @@ exportStatementHTML = function(statementResult) {
         <div class="row">
         
             <div class="col-lg">
-                <h3>Non-conformités</h3>`;
+                <h3 class="h6 mt-4">${langStatement.noncompliancesHeading}</h3>`;
 		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `
@@ -4262,7 +4281,7 @@ exportStatementHTML = function(statementResult) {
 					</ul>`;
 	
 				} else {
-					htmlStatement += `<p>Aucune non-conformités</p>`;
+					htmlStatement += `<p>${langStatement.noNonCompliance}</p>`;
 				}
 	
 	
@@ -4276,7 +4295,7 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h3>Dérogations pour charge disproportionnée</h3>
+                <h3 class="h6 mt-4">${langStatement.derogationsHeading}</h3>
 				
 				${md.render(dataVallydette.statement.derogation)}
 
@@ -4290,7 +4309,7 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h3>Contenus non soumis à l’obligation d’accessibilité</h3>
+                <h3 class="h6 mt-4">${langStatement.exemptionsHeading}</h3>
 				
 				${md.render(dataVallydette.statement.exemption)}
 
@@ -4302,7 +4321,7 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Retour d’information et contact</h2>
+                <h2 class="h4 mt-4">${langStatement.contactsHeading}</h2>
 				
 				${dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => md.render(c.content)).join('')}
 
@@ -4312,15 +4331,12 @@ exportStatementHTML = function(statementResult) {
         
             <div class="col-lg">
         
-                <h2>Voies de recours</h2>
-				<p> Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante, dans ce cas&nbsp;: </p>
+                <h2 class="h4 mt-4">${langStatement.legalHeading}</h2>
+				<p>${langStatement.legalContent}</p>
 				<ul>
-					<li>Écrire un message au <a href="https://formulaire.defenseurdesdroits.fr/">Défenseur des droits</a>.</li>
-					<li>Contacter le <a href="https://www.defenseurdesdroits.fr/saisir/delegues">délégué du Défenseur des droits
-							dans votre région</a>.</li>
-					<li>Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) <br>
-						<address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>
-					</li>
+					<li>${langStatement.legalList1}</li>
+					<li>${langStatement.legalList2}</li>
+					<li>${langStatement.legalList3}</li>
 				</ul>
 
 			</div>

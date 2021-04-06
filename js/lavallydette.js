@@ -484,7 +484,7 @@ runTestListMarkup = function (currentRefTests) {
 		utils.columnDisplay(3);
 	
 		if(document.getElementById('btnShowStatement') === null) {
-			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
+			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statementBtn, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
 			document.getElementById("auditInfoManager").appendChild(btnStatement);
 			document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
 		}
@@ -3261,7 +3261,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<h3>1. ' + langVallydette.formPrefill + '</h3>';
-	statementWizardContent += '<p id="descStatementImport">' + langVallydette.formPrefill + '</p>';
+	statementWizardContent += '<p id="descStatementImport">' + langVallydette.formPrefillDesc + '</p>';
 	statementWizardContent += '<div class="input-group">';
     statementWizardContent += '                    <div class="custom-file">';
     statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file" aria-describedby="descStatementImport">';
@@ -4057,8 +4057,6 @@ exportStatementHTML = function(statementResult, langStatement) {
  
   <title>${langStatement.title} - ${dataVallydette.statement.name}</title>
   
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="boosted-grid.min.css">
   <link rel="stylesheet" href="pie.css">
 
 </head>

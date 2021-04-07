@@ -3750,4 +3750,4 @@ const utils = {
 	
 }  
 
-initVallydetteApp('wcag-android', 'fr');
+initVallydetteApp('wcag-ios', 'fr');

@@ -139,6 +139,7 @@
 	"environmentEx1": "Chrome XX and JAWS 2019",
 	"environmentEx2": "Firefox XX and NVDA 2020.4",
 	"environmentEx3": "Android 10 and Talkback",
+	"environmentEx4": "IOS and Voice Over",
 	"keyboardNavigation": "Keyboard navigation",
 	"xmlBtn": "Export the statement in XML format",
 	"htmlBtn": "Export the statement in HTML format",

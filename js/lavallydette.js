@@ -3202,6 +3202,31 @@ function initStatementObject() {
 					"environment": langVallydette.environmentEx3
 				}];
 			
+		} else if (currentCriteriaListName === "wcag-ios") {
+			dataVallydette.statement.users = langVallydette.userTestingContent + langVallydette.userTestingContentIOS;
+			dataVallydette.statement.technology = [
+				{
+					"name": "Swift",
+					"version": ""
+				}];
+				dataVallydette.statement.tests = [
+				{
+					"type": "auto",
+					"name": "Accessibility Inspector",
+					"version": ""
+					},
+					{	
+					"type": "functional",
+					"name": "Voice Over",
+					"version": ""
+					}
+				
+				];
+				dataVallydette.statement.environments = [
+				{
+					"environment": langVallydette.environmentEx4
+				}];
+			
 		}
 	
 	}

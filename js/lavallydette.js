@@ -476,13 +476,23 @@ runTestListMarkup = function (currentRefTests) {
 	let headingCriterium = '';
 	let nextIndex = 1;
 
+	if (document.getElementById('btnExcelExport') === null) {
+		
+			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, 'icon-Excel', true, ["btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none"]);
+		
+			document.getElementById("auditInfoManager").appendChild(btnExcelExport);
+			btnExcelExport.addEventListener('click', function () {
+				excelExport(globalTemplate);
+			});
+			
+	}
 
 	/** 'wcag' value correspond to the conformity checklist */
 	if (globalTemplate === 'wcag') {
 
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		
-		utils.removeElement(document.getElementById('btnExcelExport'));
+		//utils.removeElement(document.getElementById('btnExcelExport'));
 		
 		/** Modify column number */ 
 		utils.columnDisplay(3);
@@ -550,19 +560,7 @@ runTestListMarkup = function (currentRefTests) {
 		
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		utils.removeElement(document.getElementById('btnShowStatement'));
-		
-		if (document.getElementById('btnExcelExport') === null) {
-		
-			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, 'icon-Excel', true, ["btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none"]);
-		
-			document.getElementById("auditInfoManager").appendChild(btnExcelExport);
-			btnExcelExport.addEventListener('click', function () {
-				excelExport();
-			});
-			
-		}
 
-		
 		/** pass through the tests object to display each of them */
 		for (let i in currentRefTests) {
 			var currentTest = currentRefTests[i].ID;
@@ -2976,14 +2974,15 @@ jsonUpdate = function () {
 /**
  * Run the excel export
  */
-excelExport = function () {
+excelExport = function (type) {
 
 var excel = $JExcel.new();   
-var formatHeader = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#FFCC00"});
-var formatHeaderProject = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#C5D9F1"});
-var formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000"}); 
-var pageHeaders = ['Nom', 'URL'];
-var dataHeaders = ['ID', 'Test', 'Titre', 'Détail', 'Solution', 'Solution Technique', 'Suivi Validation', 'Etat / remarque équipe projet'];
+const formatHeader = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#FFCC00"});
+const formatHeaderProject = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#C5D9F1"});
+const formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000"}); 
+const pageHeaders = ['Nom', 'URL'];
+const dataHeaders = ['ID', 'Test', 'Titre', 'Détail', 'Solution', 'Solution Technique', 'Suivi Validation', 'Etat / remarque équipe projet'];
+
 
 excel.set( {sheet:0,value:"Informations"} );
 excel.set(0,0,0,"Audit",formatHeader);
@@ -3030,34 +3029,51 @@ for (let i in dataVallydette.checklist.page) {
 		
 		let rowIssues = 0;
 		
-		for (let j in dataVallydette.checklist.page[i].items) {
-			
-			
-			if (dataVallydette.checklist.page[i].items[j].issues.length > 0) {
-					
-				dataVallydette.checklist.page[i].items[j].issues.forEach(function (issue, key) {
-					
-					//@ ajout url tests
-					rowIssues++;
-					excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
-					excel.set(setIndex,1,rowIssues, dataVallydette.checklist.page[i].items[j].title);
-					excel.set(setIndex,2,rowIssues, issue.issueTitle);
-					excel.set(setIndex,3,rowIssues, issue.issueDetail);
-					excel.set(setIndex,4,rowIssues, issue.issueSolution);
-					excel.set(setIndex,5,rowIssues, issue.issueTechnicalSolution);
+		console.log(dataVallydette.checklist.page);
 		
-				})
-					
+		const listNonConformity = dataVallydette.checklist.page[i].items.filter(item => item.resultatTest === "ko").map(function(item) {
+			
+			rowIssues++;
+			excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+			
+			console.log(item);
+			
+			if (type === "audit") {
+				
+				if (item.issues.length > 0) {
+						
+					item.issues.forEach(function (issue, key) {
+						
+						//@ ajout url tests
+						
+						excel.set(setIndex,1,rowIssues, dataVallydette.checklist.page[i].items[j].title);
+						excel.set(setIndex,2,rowIssues, issue.issueTitle);
+						excel.set(setIndex,3,rowIssues, issue.issueDetail);
+						excel.set(setIndex,4,rowIssues, issue.issueSolution);
+						excel.set(setIndex,5,rowIssues, issue.issueTechnicalSolution);
+			
+					})
+						
+				}
+				
+			} else {
+
+					excel.set(setIndex,1,rowIssues, item.title);
+					excel.set(setIndex,2,rowIssues, '');
+					excel.set(setIndex,3,rowIssues, item.commentaire);
+					excel.set(setIndex,4,rowIssues, '');
+					excel.set(setIndex,5,rowIssues, '');
+
 			}
 			
-		}
+		});
 		
 		setIndex++;
 		
 	} 
 
-	let exportFileName = utils.fileName("xlsx");
-    excel.generate(exportFileName);
+		let exportFileName = utils.fileName("xlsx");
+		excel.generate(exportFileName);
 	
 }
 

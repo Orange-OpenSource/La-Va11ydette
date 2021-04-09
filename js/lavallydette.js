@@ -3109,8 +3109,14 @@ function initStatementObject() {
 		
 		if (currentCriteriaListName === "wcag-web") {
 				
-				dataVallydette.statement.users = langVallydette.userTestingContent + langVallydette.userTestingContentWeb;
-				
+				dataVallydette.statement.userTest = {
+		
+					"users": langVallydette.userTestingContent + langVallydette.userTestingContentWeb,
+					"blockingPoints": 0,
+					"checked": "false"
+			
+				},
+
 				dataVallydette.statement.technology = [
 				{
 					"name": "HTML",
@@ -3142,16 +3148,7 @@ function initStatementObject() {
 					"type": "functional",
 					"name":  langVallydette.keyboardNavigation,
 					"version": ""
-					},
-					{	
-					"type": "user",
-					"name": "Jaws",
-					"version": ""
-					},
-					{	
-					"type": "user",
-					"name": "Zoomtext",
-					"version": ""}
+					}
 				
 				];
 				dataVallydette.statement.environments = [
@@ -3389,7 +3386,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<hr class="border-light">';
 	
-		statementWizardContent += '<div class="row">';
+	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
 	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
@@ -3440,9 +3437,14 @@ function showStatementWizard() {
 	
 		
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4 id="usersTestsHeading">' + langVallydette.userTesting + '</h4>';	
+	statementWizardContent += '<h4 id="usersTestsHeading">';
+	statementWizardContent += '<div class="custom-control custom-switch">';
+	statementWizardContent += '<input type="checkbox" class="custom-control-input" id="userSwitch" ' + (dataVallydette.statement.userTest.checked === "true" ? "checked" : "") + '>';
+	statementWizardContent += '<label class="custom-control-label" for="userSwitch">' + langVallydette.userTesting + '</label>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</h4>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<textarea class="form-control" id="input-users" rows="2" aria-labelledby="usersTestsHeading">' + dataVallydette.statement.users + '</textarea>';
+	statementWizardContent += '<textarea class="form-control" id="input-users" rows="2" aria-labelledby="usersTestsHeading" ' + (dataVallydette.statement.userTest.checked === "true" ? "" : "disabled") + '>' + dataVallydette.statement.userTest.users + '</textarea>';
 
 	/* statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
 	
@@ -3454,10 +3456,10 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-blockingPoints" >' + langVallydette.blockingNumber + '</label>';
-	statementWizardContent += '<select class="custom-select" id="input-blockingPoints" name="input-blockingPoints">';
+	statementWizardContent += '<select class="custom-select" id="input-blockingPoints" name="input-blockingPoints" ' + (dataVallydette.statement.userTest.checked === "true" ? "" : "disabled") + '>';
 	
 	for (index = 0; index < 10; ++index) {
-		statementWizardContent += '<option value="' + index + '" ' + (index ===   parseInt(dataVallydette.statement.blockingPoints) ? "selected" : "") + '>' + index + '</option>';
+		statementWizardContent += '<option value="' + index + '" ' + (index ===   parseInt(dataVallydette.statement.userTest.blockingPoints) ? "selected" : "") + '>' + index + '</option>';
 	}
 	
 	statementWizardContent += '</select>';
@@ -3601,7 +3603,6 @@ editStatementProperty = function (statementProperty) {
 				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
-				htmlModal += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';	
 				htmlModal += '</select>';
 				
 			} else if (listItem[p] !== undefined && p === 'content') {
@@ -3733,7 +3734,6 @@ addListElement = function(statementProperty) {
 				htmlItem += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlItem += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlItem += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
-				htmlItem += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';	
 				htmlItem += '</select>';
 				
 			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'content') {

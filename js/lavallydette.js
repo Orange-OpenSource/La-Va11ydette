@@ -3012,10 +3012,8 @@ let setIndex = 1;
 
 for (let i in dataVallydette.checklist.page) {
 	
-		
 		excel.addSheet(dataVallydette.checklist.page[i].name);
-		
-		   
+  
 		for (var j=0;j<dataHeaders.length;j++){    
 		
 			if(j===7){
@@ -3029,14 +3027,10 @@ for (let i in dataVallydette.checklist.page) {
 		
 		let rowIssues = 0;
 		
-		console.log(dataVallydette.checklist.page);
-		
 		const listNonConformity = dataVallydette.checklist.page[i].items.filter(item => item.resultatTest === "ko").map(function(item) {
 			
 			rowIssues++;
 			excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
-			
-			console.log(item);
 			
 			if (type === "audit") {
 				

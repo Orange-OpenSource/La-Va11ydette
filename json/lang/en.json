@@ -111,7 +111,8 @@
 	"manual": "manual",
 	"user": "user",
 	"version": "Version",
-	"keyboard": "Keyboard",	
+	"keyboard": "Keyboard",
+	"auditWarning": "These results are not exhaustive. The cases noted are given by way of example, in order to illustrate the issues. It is the project team's responsibility to apply these fixes systematically to all similar cases.",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",

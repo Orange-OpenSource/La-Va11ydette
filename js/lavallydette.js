@@ -2980,6 +2980,7 @@ var excel = $JExcel.new();
 const formatHeader = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#FFCC00"});
 const formatHeaderProject = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000 B", fill: "#C5D9F1"});
 const formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000"}); 
+const formatWarning = excel.addStyle ( {font: "Calibri 11 #ff0000 B"}); 
 const pageHeaders = ['Nom', 'URL'];
 const dataHeaders = ['ID', 'Test', 'Titre', 'Détail', 'Solution', 'Solution Technique', 'Suivi Validation', 'Etat / remarque équipe projet'];
 
@@ -3007,6 +3008,11 @@ for (let i in dataVallydette.checklist.page) {
 
 	rowPages++;
 }
+
+rowPages++;
+
+excel.set(0,0,rowPages, langVallydette.auditWarning, formatWarning);
+
 
 let setIndex = 1;
 

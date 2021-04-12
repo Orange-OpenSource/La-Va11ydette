@@ -333,7 +333,7 @@ function runVallydetteApp() {
   
 	
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
-	utils.setPageTitle ( dataVallydette.checklist.page[currentPage].name);
+	utils.setPageTitle( dataVallydette.checklist.page[currentPage].name);
 }
 
 
@@ -3060,7 +3060,7 @@ for (let i in dataVallydette.checklist.page) {
  */
  
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
-const statementInputs = ["name", "lang", "date", "users", "blockingPoints", "plan", "derogation", "exemption"];
+const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
 
 function initStatementObject() {
 	
@@ -3082,7 +3082,14 @@ function initStatementObject() {
 					
 				],
 				"plan": "",
-				"blockingPoints": 0,
+				"userNumber": 0,
+				"userBlockingPoints": 0,
+				"userTestDescription": "",
+				"userTest": {
+		
+					"checked": "false"
+			
+				},
 				"approval": [
 				{
 					"name": langVallydette.customerService,
@@ -3109,14 +3116,6 @@ function initStatementObject() {
 		
 		if (currentCriteriaListName === "wcag-web") {
 				
-				dataVallydette.statement.userTest = {
-		
-					"users": langVallydette.userTestingContent + langVallydette.userTestingContentWeb,
-					"blockingPoints": 0,
-					"checked": "false"
-			
-				},
-
 				dataVallydette.statement.technology = [
 				{
 					"name": "HTML",
@@ -3234,6 +3233,7 @@ function initStatementObject() {
 function showStatementWizard() {
 	
 	setPageName(langVallydette.statement);
+	utils.setPageTitle(langVallydette.statementTxt1);
 	removeContextualMenu();
 	removeFilterSection();
 	utils.columnDisplay(2);
@@ -3254,13 +3254,11 @@ function showStatementWizard() {
 	
 	
 	var statementResult = runComputation(true);
-	
-	//exportStatementHTML(statementResult);
 
 	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
 		
-		exportStatement(statementResult);
-		exportStatementHTML(statementResult);
+		//exportStatement(statementResult);
+		//exportStatementHTML(statementResult);
 		
 	} else {
 		
@@ -3436,34 +3434,29 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';	
 	
 		
-	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4 id="usersTestsHeading">';
-	statementWizardContent += '<div class="custom-control custom-switch">';
-	statementWizardContent += '<input type="checkbox" class="custom-control-input" id="userSwitch" ' + (dataVallydette.statement.userTest.checked === "true" ? "checked" : "") + '>';
-	statementWizardContent += '<label class="custom-control-label" for="userSwitch">' + langVallydette.userTesting + '</label>';
-	statementWizardContent += '</div>';
-	statementWizardContent += '</h4>';
+	statementWizardContent += '<div class="col-lg-3" role="group" aria-labelledby="usersTestsHeading">';
+	statementWizardContent += '<h4 id="usersTestsHeading">' + langVallydette.userTesting + '</h4>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<textarea class="form-control" id="input-users" rows="2" aria-labelledby="usersTestsHeading" ' + (dataVallydette.statement.userTest.checked === "true" ? "" : "disabled") + '>' + dataVallydette.statement.userTest.users + '</textarea>';
-
-	/* statementWizardContent += '<select class="custom-select mb-1" id="input-users">';
-	
-	for (index = 0; index < 10; ++index) {
-		statementWizardContent += '<option value="' + index + '" ' + (index ===  parseInt(dataVallydette.statement.users) ? "selected" : "") + '>' + index + '</option>';
-	}
-	
-	statementWizardContent += '</select>'; */
+	statementWizardContent += '<label for="input-userNumber" >' + langVallydette.userNumber + '</label>';
+	statementWizardContent += '<input type="number" class="form-control" id="input-userNumber" value="' + dataVallydette.statement.userNumber +'">';
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-blockingPoints" >' + langVallydette.blockingNumber + '</label>';
-	statementWizardContent += '<select class="custom-select" id="input-blockingPoints" name="input-blockingPoints" ' + (dataVallydette.statement.userTest.checked === "true" ? "" : "disabled") + '>';
+	statementWizardContent += '<label for="input-userBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
+	statementWizardContent += '<input type="number" class="form-control" id="input-userBlockingPoints" value="' + dataVallydette.statement.userBlockingPoints +'">';
+	statementWizardContent += '</div>';
+	statementWizardContent += '<div class="form-group input-group-sm">';
+	statementWizardContent += '<label for="input-input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
+	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription;
 	
-	for (index = 0; index < 10; ++index) {
-		statementWizardContent += '<option value="' + index + '" ' + (index ===   parseInt(dataVallydette.statement.userTest.blockingPoints) ? "selected" : "") + '>' + index + '</option>';
+	if (currentCriteriaListName === "wcag-web") {
+		statementWizardContent += langVallydette.userTestingContent + langVallydette.userTestingContentWeb;
+	} else if (currentCriteriaListName === "wcag-android") {
+		statementWizardContent += langVallydette.userTestingContent + langVallydette.userTestingContentAndroid;
+	} else if (currentCriteriaListName === "wcag-ios") {
+		statementWizardContent += langVallydette.userTestingContent + langVallydette.userTestingContentIOS;
 	}
 	
-	statementWizardContent += '</select>';
-
+	statementWizardContent += '</textarea>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3532,6 +3525,7 @@ function showStatementWizard() {
 
 		fr.readAsText(files.item(0));
 	};
+	
 	
 	document.getElementById("selectFilesStatement").addEventListener('change', function () {
 		document.getElementById("selectFilesLabelStatement").innerText = document.getElementById("selectFilesStatement").files[0].name;
@@ -3603,6 +3597,7 @@ editStatementProperty = function (statementProperty) {
 				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
+				htmlModal += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';
 				htmlModal += '</select>';
 				
 			} else if (listItem[p] !== undefined && p === 'content') {
@@ -3702,7 +3697,6 @@ saveListElement = function(listToEdit, statementProperty) {
 		
 	}
 	
-
 	document.getElementById(statementProperty+"List").innerHTML = listMarkup;
 
 }
@@ -3734,6 +3728,7 @@ addListElement = function(statementProperty) {
 				htmlItem += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlItem += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlItem += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
+				htmlItem += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';
 				htmlItem += '</select>';
 				
 			} else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'content') {
@@ -3918,7 +3913,12 @@ exportStatement = function(statementResult) {
 	xmlStatement += '-->\n';
 
 	xmlStatement += '<tests>\n';
-	dataVallydette.statement.tests.forEach(item => xmlStatement += '	<test type="' + item.type + '">\n		<name>' + item.name + '</name>\n		<version>' + item.version + '</version>\n	</test>\n');	
+	dataVallydette.statement.tests.forEach(item => xmlStatement += '	<test type="' + item.type + '">\n		<name>' + item.name + '</name>\n		<version>' + item.version + '</version>\n	</test>\n');
+	
+	if (dataVallydette.statement.userNumber > 0 && dataVallydette.statement.userTestDescription !== '') {
+		xmlStatement += '	<test type="user">\n		<name>' + dataVallydette.statement.userTestDescription + '</name>\n		<version></version>\n	</test>\n'
+	}
+	
 	xmlStatement += '</tests>\n\n';
 	
 	xmlStatement += '<!--\n';
@@ -3952,8 +3952,8 @@ exportStatement = function(statementResult) {
 	xmlStatement += 'Number of real users that tested the pages\n';
 	xmlStatement += 'and blocking points they found (if 0, the document will have to say “with no blocking points from a user\'s point of view”\n';
 	xmlStatement += '-->\n';
-	xmlStatement += '<users>' + dataVallydette.statement.users + '</users>\n';
-	xmlStatement += '<blocking_points>' + dataVallydette.statement.blockingPoints + '</blocking_points>\n\n';
+	xmlStatement += '<users>' + dataVallydette.statement.userNumber + '</users>\n';
+	xmlStatement += '<blocking_points>' + dataVallydette.statement.userBlockingPoints + '</blocking_points>\n\n';
 
 	if (dataVallydette.statement.results[1].checked === "true") {
 		xmlStatement += '<!--\n';
@@ -4513,8 +4513,7 @@ const utils = {
 		return
 		
 	}
-	 
-	 
+	  
 	document.getElementById('filter').style.display = display;
 	document.getElementById('currentPageContent').classList.remove(remove);
 	document.getElementById('currentPageContent').classList.add(add);

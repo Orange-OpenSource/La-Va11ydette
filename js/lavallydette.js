@@ -3046,7 +3046,7 @@ for (let i in dataVallydette.checklist.page) {
 						
 						//@ ajout url tests
 						
-						excel.set(setIndex,1,rowIssues, dataVallydette.checklist.page[i].items[j].title);
+						excel.set(setIndex,1,rowIssues, item.title);
 						excel.set(setIndex,2,rowIssues, issue.issueTitle);
 						excel.set(setIndex,3,rowIssues, issue.issueDetail);
 						excel.set(setIndex,4,rowIssues, issue.issueSolution);

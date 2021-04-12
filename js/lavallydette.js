@@ -3085,11 +3085,6 @@ function initStatementObject() {
 				"userNumber": 0,
 				"userBlockingPoints": 0,
 				"userTestDescription": "",
-				"userTest": {
-		
-					"checked": "false"
-			
-				},
 				"approval": [
 				{
 					"name": langVallydette.customerService,
@@ -3103,10 +3098,10 @@ function initStatementObject() {
 				{
 					"name": "Orange France",
 					"content": ""
-				},{
+				},
+				{
 					"name": langVallydette.orangeGroup,
 					"content": ""
-					
 				}
 				],
 				"derogation": "",
@@ -3158,7 +3153,7 @@ function initStatementObject() {
 				}];
 			
 		} else if (currentCriteriaListName === "wcag-android") {
-			dataVallydette.statement.users = langVallydette.userTestingContent + langVallydette.userTestingContentAndroid;
+		
 			dataVallydette.statement.technology = [
 				{
 					"name": "Java",
@@ -3199,7 +3194,7 @@ function initStatementObject() {
 				}];
 			
 		} else if (currentCriteriaListName === "wcag-ios") {
-			dataVallydette.statement.users = langVallydette.userTestingContent + langVallydette.userTestingContentIOS;
+			
 			dataVallydette.statement.technology = [
 				{
 					"name": "Swift",
@@ -3721,7 +3716,7 @@ addListElement = function(statementProperty) {
 
 		
 		statementProperties.forEach(function(p){
-			console.log(dataVallydette.statement[statementProperty][0][p]);
+			
 			if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'type') {
 				
 				htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + listIndex + ' name-' + listIndex + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
@@ -4101,7 +4096,7 @@ exportStatementHTML = function(statementResult, langStatement) {
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
                     </h2>
                     
-                    <p class="lead">${langStatement.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.compliantContent2}${dataVallydette.statement.blockingPoints > 0 ? `${langStatement.blockingPoint1} ${dataVallydette.statement.blockingPoints} ${langStatement.blockingPoint2}` : `` }.
+                    <p class="lead">${langStatement.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.blockingPoint1} ${dataVallydette.statement.userBlockingPoints} ${langStatement.blockingPoint2}` : `` }.
 					</p>
 					
                 </div>
@@ -4179,7 +4174,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 				
 			if (dataVallydette.statement.results[0].checked === "true") {
                htmlStatement += ` <p>
-				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.blockingPoints > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.blockingPoints}${langStatement.resultsContent4}` : `` }${langStatement.resultsContent5}
+				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }${langStatement.resultsContent5}
 				</p>
 				
                 <table class="table table-striped">
@@ -4220,15 +4215,13 @@ exportStatementHTML = function(statementResult, langStatement) {
 				
 				<p><strong>${langStatement.resultsContent6}</strong> ${dataWCAG.globalPagesResult}${langStatement.resultsContent7}</p>
 				`;
-				
-				
-				
+	
 			}
 			
 			if (dataVallydette.statement.results[1].checked === "true") {
                htmlStatement += `
 				<p>
-				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.blockingPoints > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.blockingPoints}${langStatement.resultsContent4}` : `` }${langStatement.resultsContent5}
+				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }.
 				</p>	
 
 				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt15}</caption>

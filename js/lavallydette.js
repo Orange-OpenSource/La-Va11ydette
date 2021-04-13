@@ -145,6 +145,7 @@ function createObjectAndRunVallydette() {
 			"referentiel": currentCriteriaListName,
 			"version": globalVersion,
 			"template": globalTemplate,
+			"autoCheckIDs": [],
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
@@ -531,6 +532,15 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
+			if (currentPage === 0) {
+				htmlrefTests += '<div class="custom-control custom-checkbox">';
+				htmlrefTests += '	<input type="checkbox" class="custom-control-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '">';
+				htmlrefTests += '	<label class="custom-control-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">Appliquer automatiquement ce résultat aux nouvelles pages.</label>';
+				htmlrefTests += '</div>';
+
+				htmlrefTests += '<hr class="border-light w-100">';
+			}
+			
 			if (currentRefTests[i].verifier) {
 				htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
 				htmlrefTests += currentRefTests[i].verifier;
@@ -820,9 +830,38 @@ runTestListMarkup = function (currentRefTests) {
 			}, false);
 		}
 		
+		var autoCheck = document.getElementById("autoCheck-" + currentRefTests[i].ID);
+		if (autoCheck) {
+			autoCheck.addEventListener('click', function () {
+				setAutoCheckID(this, currentRefTests[i].IDorigin)
+			}, false);
+		}
 	}
 
 	applyDisabledGroups();
+}
+
+
+/**
+ * Auto Check manager
+ */
+
+function setAutoCheckID(e, testIDorigin) {
+	
+	if (e.checked) {
+		dataVallydette.checklist.autoCheckIDs.push(testIDorigin);
+	} else {
+		dataVallydette.checklist.autoCheckIDs = dataVallydette.checklist.autoCheckIDs.filter(item => item !== testIDorigin);
+	}
+
+}
+
+function getTestResult(pageId, testIDorigin) {
+	
+	const result = dataVallydette.checklist.page[pageId].items.filter(item => item.IDorigin === testIDorigin).map(item => item.resultatTest);
+console.log(result[0]);
+	return result[0];
+
 }
 
 /**
@@ -1792,6 +1831,8 @@ addPage = function () {
 	dataVallydette.checklist.page[indexPage].url = "";
 	dataVallydette.checklist.page[indexPage].items.forEach(initNewPage);
 
+	
+	
 	initNewThemes(indexPage);
 	
 	jsonStr = JSON.stringify(dataVallydette);
@@ -1824,8 +1865,14 @@ addPage = function () {
 /**  Initialization of some properties */
 initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
-	item.resultatTest = 'nt';
-	item.commentaire = '';
+	
+	/**  Auto checker */
+	const autoUpdate = dataVallydette.checklist.autoCheckIDs.filter(a => a === item.IDorigin);
+	if (autoUpdate.length === 0) {
+		item.resultatTest = 'nt';
+		item.commentaire = '';
+	}
+	
 	if(item.issues) {
 		item.issues.splice(0, item.issues.length);
 	}
@@ -1836,7 +1883,6 @@ initNewPage = function (item) {
 		dataVallydette.checklist.page[indexPage].groups[item.group].checked = true;
 	} 
 			
-	
 }
 
 /**  Initialization of themes */
@@ -1863,7 +1909,13 @@ initProperties = function (item) {
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
-	htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
+	
+	if (currentPage === 0) {
+		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '" disabled><span class="icon-trash" aria-hidden="true"></span></button>';
+	} else {
+		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '"><span class="icon-trash" aria-hidden="true"></span></button>';
+	}
+
 	htmlMenu += '<hr class="border-light  w-100">';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
@@ -1885,7 +1937,6 @@ showPage = function (id) {
 	var index = dataVallydette.checklist.page.findIndex(function (o) {
 		return o.IDPage === id;
 	})
-
 	
 	/** Update the global var currentPage with the index */
 	currentPage = index;
@@ -1905,11 +1956,19 @@ showPage = function (id) {
 		currentBtnPageName.dataset.secondaryElement = id;
 
 		var currentBtnDelPage = document.getElementById('btnDelPage');
-		currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
-		currentBtnDelPage.dataset.pagination = id;
+		
+		if (currentPage === 0) {
+			currentBtnDelPage.disabled = true;
+			currentBtnDelPage.dataset.property = "";
+			currentBtnDelPage.dataset.pagination = "";
+		} else {
+			currentBtnDelPage.disabled = false;
+			currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
+			currentBtnDelPage.dataset.pagination = id;
+		}
 		
 	}
-
+	
 	utils.setPageTitle(dataVallydette.checklist.page[currentPage].name);
 	
 	utils.resetActive(document.getElementById("pageManager"));

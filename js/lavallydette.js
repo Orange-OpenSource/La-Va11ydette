@@ -3433,11 +3433,11 @@ function showStatementWizard() {
 	statementWizardContent += '<h4 id="usersTestsHeading">' + langVallydette.userTesting + '</h4>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-userNumber" >' + langVallydette.userNumber + '</label>';
-	statementWizardContent += '<input type="number" class="form-control" id="input-userNumber" value="' + dataVallydette.statement.userNumber +'">';
+	statementWizardContent += '<input type="number" class="form-control" id="input-userNumber" value="' + dataVallydette.statement.userNumber +'" min="0" max="100">';
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-userBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
-	statementWizardContent += '<input type="number" class="form-control" id="input-userBlockingPoints" value="' + dataVallydette.statement.userBlockingPoints +'">';
+	statementWizardContent += '<input type="number" class="form-control" id="input-userBlockingPoints" value="' + dataVallydette.statement.userBlockingPoints +'" min="0" max="100">';
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
@@ -4098,8 +4098,7 @@ exportStatementHTML = function(statementResult, langStatement) {
                     
                     <p class="lead">${langStatement.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.blockingPoint1} ${dataVallydette.statement.userBlockingPoints} ${langStatement.blockingPoint2}` : `` }.
 					</p>
-					
-                </div>
+				</div>
         
                 <div class="col-lg-3">
                     
@@ -4138,10 +4137,13 @@ exportStatementHTML = function(statementResult, langStatement) {
 						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
 						let separator = ', '
 						
-						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langVallydette[t + "Test"]} :</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n					` : '';
+						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langVallydette[t + "Test"]}:</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n					` : '';
 						
-					});	
-		
+					});
+					
+					if (dataVallydette.statement.userNumber > 0 && dataVallydette.statement.userTestDescription !== '') {
+						htmlStatement += `<li><strong>${langVallydette.userTest}:</strong> ${dataVallydette.statement.userTestDescription}</li>`
+					}
 	
 	htmlStatement += `</ul>
                 
@@ -4174,7 +4176,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 				
 			if (dataVallydette.statement.results[0].checked === "true") {
                htmlStatement += ` <p>
-				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }${langStatement.resultsContent5}
+				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }.${langStatement.resultsContent5}
 				</p>
 				
                 <table class="table table-striped">

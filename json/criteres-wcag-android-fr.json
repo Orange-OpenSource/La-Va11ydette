@@ -464,17 +464,6 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
-		"title": "Les textes sont-ils internationalisés ?",
-		"ID": "testID-053",
-		"IDorigin": "testID-053",
-		"wcag": [
-			"3.1.1 A"
-		],
-		"verifier": "<p>Vérifier que les textes présents dans l'application s'adaptent à la langue choisie dans les paramètres du téléphone.</p>",
-		"resultatTest": "nt"
-	},{
-
-		"themes": "Navigation générale",
 		"title": "Chaque libellé de lien est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",

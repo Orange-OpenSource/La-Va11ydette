@@ -464,17 +464,6 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",
-		"title": "Are texts internationalized?",
-		"ID": "testID-053",
-		"IDorigin": "testID-053",
-		"wcag": [
-			"3.1.1 A"
-		],
-		"verifier": "<p>Verify that the texts adapt to the language selected in the phone settings.</p>",
-		"resultatTest": "nt"
-	},{
-
-		"themes": "Common navigation",
 		"title": "Is each link label explicit, at least if the user takes its context into consideration?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",

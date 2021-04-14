@@ -216,7 +216,6 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 			
 		}
 		
-		
 	}); 
 
 	
@@ -518,7 +517,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75">' + currentRefTests[i].title + '</span><span id="resultID-' + currentTest + '" class="ml-auto badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75 mr-auto">' + currentRefTests[i].title + '</span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + currentRefTests[i].ID + '"><span class="sr-only">Ce test est lié à la première page</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ml-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
@@ -534,7 +533,7 @@ runTestListMarkup = function (currentRefTests) {
 
 			if (currentPage === 0) {
 				htmlrefTests += '<div class="custom-control custom-checkbox">';
-				htmlrefTests += '	<input type="checkbox" class="custom-control-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '">';
+				htmlrefTests += '	<input type="checkbox" class="custom-control-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '" ' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? "checked" : "" )  + '>';
 				htmlrefTests += '	<label class="custom-control-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">Appliquer automatiquement ce résultat aux nouvelles pages.</label>';
 				htmlrefTests += '</div>';
 
@@ -797,7 +796,6 @@ runTestListMarkup = function (currentRefTests) {
 
 	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">' + langVallydette.warningNoResult + '</div>' : elrefTests.innerHTML = htmlrefTests;
 
-	 
 	/** event handler */
 	for (let i in currentRefTests) {
 	
@@ -833,7 +831,7 @@ runTestListMarkup = function (currentRefTests) {
 		var autoCheck = document.getElementById("autoCheck-" + currentRefTests[i].ID);
 		if (autoCheck) {
 			autoCheck.addEventListener('click', function () {
-				setAutoCheckID(this, currentRefTests[i].IDorigin)
+				setAutoCheckID(this, currentRefTests[i].IDorigin, currentRefTests[i].ID)
 			}, false);
 		}
 	}
@@ -846,12 +844,22 @@ runTestListMarkup = function (currentRefTests) {
  * Auto Check manager
  */
 
-function setAutoCheckID(e, testIDorigin) {
+function setAutoCheckID(e, testIDorigin, testID) {
 	
 	if (e.checked) {
 		dataVallydette.checklist.autoCheckIDs.push(testIDorigin);
+		
+		const iconHtml = '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + testID + '"><span class="sr-only">Ce test est lié à la première page</span></span>';
+		const iconNode = new DOMParser().parseFromString(iconHtml, 'text/html').body.firstElementChild;
+		let headingNode = document.getElementById('heading' + testID);
+		headingNode.insertBefore(iconNode, headingNode.children[1]);
+		
+		
 	} else {
+		
 		dataVallydette.checklist.autoCheckIDs = dataVallydette.checklist.autoCheckIDs.filter(item => item !== testIDorigin);
+		document.getElementById('link-' + testID).remove();
+		
 	}
 
 }
@@ -859,9 +867,21 @@ function setAutoCheckID(e, testIDorigin) {
 function getTestResult(pageId, testIDorigin) {
 	
 	const result = dataVallydette.checklist.page[pageId].items.filter(item => item.IDorigin === testIDorigin).map(item => item.resultatTest);
-console.log(result[0]);
 	return result[0];
 
+}
+
+function getIfAutoCheck(currentIDorigin) {
+	
+	let autoUpdateResult = false;
+	const autoUpdate = dataVallydette.checklist.autoCheckIDs.filter(a => a === currentIDorigin);
+	
+	if (autoUpdate.length > 0) {
+		autoUpdateResult = true;
+	}
+
+	return autoUpdateResult;
+	
 }
 
 /**
@@ -1866,9 +1886,8 @@ addPage = function () {
 initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	
-	/**  Auto checker */
-	const autoUpdate = dataVallydette.checklist.autoCheckIDs.filter(a => a === item.IDorigin);
-	if (autoUpdate.length === 0) {
+	/**  auto check */
+	if (!getIfAutoCheck(item.IDorigin)) {
 		item.resultatTest = 'nt';
 		item.commentaire = '';
 	}
@@ -2113,28 +2132,42 @@ setStatutText = function (lastResult) {
 
 
 /**
- * Sets the test result into the vallydette object.
- * Updates the badge status
+ * Set the test result into the vallydette object.
+ * Update the badge status
  * @param {object} ele - radio button checked from a test.
  * @return {string} targetId - test ID that has been checked.
 */
 setStatusAndResults = function (ele, targetId) {
+	let isAutoChecked;
+	var itemIndice;
 	
-	/** Updates the test result into the object	*/
+	/** Update the test result into the object	*/
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 			lastResult = getStatutClass(dataVallydette.checklist.page[currentPage].items[i].resultatTest);
 			dataVallydette.checklist.page[currentPage].items[i].resultatTest = ele.value;
+			
+			//auto checked
+			isAutoChecked = dataVallydette.checklist.autoCheckIDs.filter(id => id === dataVallydette.checklist.page[currentPage].items[i].IDorigin);
+			itemIndice = i;
 		}
 	}
 
-	/** Updates the status result into the badge element */
+	/** Update the status result into the badge element */
 	testResult = document.getElementById("resultID-" + targetId + "");
 	testResult.classList.remove(lastResult);
 	statutClass = getStatutClass(ele.value);
 	testResult.innerText = setStatutText(ele.value);
 	testResult.classList.add(statutClass);
 
+	if (currentPage === 0 && isAutoChecked.length > 0) {
+		if (dataVallydette.checklist.autoCheckIDs.length > 0) {
+			dataVallydette.checklist.page.forEach(function(p){
+				p.items[itemIndice].resultatTest = ele.value;
+			});
+		}
+	}
+	
 	jsonUpdate();
 }
 

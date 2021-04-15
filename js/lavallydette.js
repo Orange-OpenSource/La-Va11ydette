@@ -3058,7 +3058,7 @@ for (let i in dataVallydette.checklist.page) {
 /**
  * Statement manager
  */
-const statementObjectProperties = ["name", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environment"];
+const statementObjectProperties = ["name", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environments"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
 const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
 
@@ -3101,6 +3101,9 @@ function initStatementObject() {
 			}
 			if (p === "userBlockingPoints") {
 				dataVallydette.statement.userBlockingPoints = 0;
+			}
+			if (p === "userTestDescription") {
+				dataVallydette.statement.userTestDescription = "";
 			}
 			if (p === "approval") {
 				dataVallydette.statement.approval = [{
@@ -3219,7 +3222,7 @@ function initStatementObject() {
 					}];
 				}
 			}
-			if (p === "environment") {
+			if (p === "environments") {
 				if (currentCriteriaListName === "wcag-web") {
 					dataVallydette.statement.environments = [{
 						"environment": langVallydette.environmentEx1
@@ -3238,6 +3241,7 @@ function initStatementObject() {
 					}];
 				}
 			}
+		
 	
 		}
 	});

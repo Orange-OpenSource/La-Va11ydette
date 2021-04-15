@@ -3058,21 +3058,32 @@ for (let i in dataVallydette.checklist.page) {
 /**
  * Statement manager
  */
- 
+const statementObjectProperties = ["name", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environment"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
 const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
 
 function initStatementObject() {
 	
 	if (!dataVallydette.statement) {
+		dataVallydette.statement = {};
+	}
 	
-		dataVallydette.statement = {
-				"name": "",
-				"lang": "",
-				"status": "WIP",
-				"date": "",
-				"results": [
-					{
+	statementObjectProperties.forEach(function(p){
+		if (!dataVallydette.statement.hasOwnProperty(p)) {
+			if (p === "name") {
+				dataVallydette.statement.name = "";
+			}
+			if (p === "lang") {
+				dataVallydette.statement.lang = "";
+			}
+			if (p === "status") {
+				dataVallydette.statement.status = "WIP";
+			}
+			if (p === "date") {
+				dataVallydette.statement.date = "";
+			}
+			if (p === "results") {
+				dataVallydette.statement.results = [{
 						"type" : "pagesAverage",
 						"checked" : "true"
 					},
@@ -3080,22 +3091,29 @@ function initStatementObject() {
 						"type" : "criteriaPercentage",
 					}
 					
-				],
-				"plan": "",
-				"userNumber": 0,
-				"userBlockingPoints": 0,
-				"userTestDescription": "",
-				"approval": [
-				{
+				];
+			}
+			if (p === "plan") {
+				dataVallydette.statement.plan = "";
+			}
+			if (p === "userNumber") {
+				dataVallydette.statement.userNumber = 0;
+			}
+			if (p === "userBlockingPoints") {
+				dataVallydette.statement.userBlockingPoints = 0;
+			}
+			if (p === "approval") {
+				dataVallydette.statement.approval = [{
 					"name": langVallydette.customerService,
 					"content": ""
 				},{
 					"name": langVallydette.internalService,
 					"content": "",
 				}
-				],
-				"contact": [
-				{
+				];
+			}
+			if (p === "contact") {
+				dataVallydette.statement.contact = [{
 					"name": "Orange France",
 					"content": ""
 				},
@@ -3103,27 +3121,49 @@ function initStatementObject() {
 					"name": langVallydette.orangeGroup,
 					"content": ""
 				}
-				],
-				"derogation": "",
-				"exemption": ""
-
-		}
-		
-		if (currentCriteriaListName === "wcag-web") {
-				
-				dataVallydette.statement.technology = [
-				{
-					"name": "HTML",
-					"version": ""
-				},{
-					"name": "CSS",
-					"version": ""
-				},{
-					"name": "Javascript",
-					"version": ""
-				}];
-				dataVallydette.statement.tests = [
-				{
+				];
+			}
+			if (p === "derogation") {
+				dataVallydette.statement.derogation = "";
+			}
+			if (p === "exemption") {
+				dataVallydette.statement.exemption = "";
+			}
+			if (p === "technology") {
+				if (currentCriteriaListName === "wcag-web") {
+					dataVallydette.statement.technology = [{
+						"name": "HTML",
+						"version": ""
+					},{
+						"name": "CSS",
+						"version": ""
+					},{
+						"name": "Javascript",
+						"version": ""
+					}];
+				}
+				if (currentCriteriaListName === "wcag-android") {
+					dataVallydette.statement.technology = [{
+						"name": "Java",
+						"version": ""
+					},{
+						"name": "Kotlin",
+						"version": ""
+					},{
+						"name": "XML",
+						"version": ""
+					}];
+				}
+				if (currentCriteriaListName === "wcag-ios") {
+					dataVallydette.statement.technology = [{
+						"name": "Swift",
+						"version": ""
+					}];
+				}
+			}
+			if (p === "tests") {
+				if (currentCriteriaListName === "wcag-web") {
+					dataVallydette.statement.tests = [{
 					"type": "auto",
 					"name": "aXe",
 					"version": "3.5.1"
@@ -3142,31 +3182,10 @@ function initStatementObject() {
 					"type": "functional",
 					"name":  langVallydette.keyboardNavigation,
 					"version": ""
-					}
-				
-				];
-				dataVallydette.statement.environments = [
-				{
-					"environment": langVallydette.environmentEx1
-				},{
-					"environment": langVallydette.environmentEx2
-				}];
-			
-		} else if (currentCriteriaListName === "wcag-android") {
-		
-			dataVallydette.statement.technology = [
-				{
-					"name": "Java",
-					"version": ""
-				},{
-					"name": "Kotlin",
-					"version": ""
-				},{
-					"name": "XML",
-					"version": ""
-				}];
-				dataVallydette.statement.tests = [
-				{
+					}];
+				}
+				if (currentCriteriaListName === "wcag-android") {
+					dataVallydette.statement.technology = dataVallydette.statement.tests = [{
 					"type": "auto",
 					"name": "aXe",
 					"version": "0.10.2"
@@ -3185,23 +3204,10 @@ function initStatementObject() {
 					"type": "functional",
 					"name":  "Switch Access",
 					"version": ""
-					}
-				
-				];
-				dataVallydette.statement.environments = [
-				{
-					"environment": langVallydette.environmentEx3
-				}];
-			
-		} else if (currentCriteriaListName === "wcag-ios") {
-			
-			dataVallydette.statement.technology = [
-				{
-					"name": "Swift",
-					"version": ""
-				}];
-				dataVallydette.statement.tests = [
-				{
+					}];
+				}
+				if (currentCriteriaListName === "wcag-ios") {
+					dataVallydette.statement.tests = [{
 					"type": "auto",
 					"name": "Accessibility Inspector",
 					"version": ""
@@ -3210,17 +3216,31 @@ function initStatementObject() {
 					"type": "functional",
 					"name": "Voice Over",
 					"version": ""
-					}
-				
-				];
-				dataVallydette.statement.environments = [
-				{
-					"environment": langVallydette.environmentEx4
-				}];
-			
-		}
+					}];
+				}
+			}
+			if (p === "environment") {
+				if (currentCriteriaListName === "wcag-web") {
+					dataVallydette.statement.environments = [{
+						"environment": langVallydette.environmentEx1
+					},{
+						"environment": langVallydette.environmentEx2
+					}];
+				}
+				if (currentCriteriaListName === "wcag-android") {
+					dataVallydette.statement.environments = [{
+						"environment": langVallydette.environmentEx3
+					}];
+				}
+				if (currentCriteriaListName === "wcag-ios") {
+					dataVallydette.statement.environments = [{
+						"environment": langVallydette.environmentEx4
+					}];
+				}
+			}
 	
-	}
+		}
+	});
 	
 	showStatementWizard();
 }
@@ -3515,7 +3535,7 @@ function showStatementWizard() {
 
 		fr.onload = function (e) {
 			dataVallydette.statement = JSON.parse(e.target.result);
-			showStatementWizard();
+			initStatementObject();
 		}
 
 		fr.readAsText(files.item(0));

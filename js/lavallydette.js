@@ -3132,6 +3132,15 @@ function initStatementObject() {
 			if (p === "exemption") {
 				dataVallydette.statement.exemption = "";
 			}
+			if (p === "userTestDescription") {
+				if (currentCriteriaListName === "wcag-web") {
+					dataVallydette.statement.userTestDescription = langVallydette.userTestingContent + langVallydette.userTestingContentWeb;
+				} else if (currentCriteriaListName === "wcag-android") {
+					dataVallydette.statement.userTestDescription = langVallydette.userTestingContent + langVallydette.userTestingContentAndroid;
+				} else if (currentCriteriaListName === "wcag-ios") {
+					dataVallydette.statement.userTestDescription = langVallydette.userTestingContent + langVallydette.userTestingContentIOS;
+				}
+			}
 			if (p === "technology") {
 				if (currentCriteriaListName === "wcag-web") {
 					dataVallydette.statement.technology = [{
@@ -3465,17 +3474,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
-	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription;
-	
-	if (currentCriteriaListName === "wcag-web") {
-		statementWizardContent += langVallydette.userTestingContent + langVallydette.userTestingContentWeb;
-	} else if (currentCriteriaListName === "wcag-android") {
-		statementWizardContent += langVallydette.userTestingContent + langVallydette.userTestingContentAndroid;
-	} else if (currentCriteriaListName === "wcag-ios") {
-		statementWizardContent += langVallydette.userTestingContent + langVallydette.userTestingContentIOS;
-	}
-	
-	statementWizardContent += '</textarea>';
+	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription + '</textarea>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';

@@ -350,6 +350,9 @@ function eventHandler() {
 
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
+			if (dataVallydette.checklist.referentiel) {
+				currentCriteriaListName = dataVallydette.checklist.referentiel;
+			}
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
 			checkTheVersion(dataVallydette.checklist.version);
@@ -3064,6 +3067,8 @@ const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoin
 
 function initStatementObject() {
 	
+	console.log(currentCriteriaListName);
+	
 	if (!dataVallydette.statement) {
 		dataVallydette.statement = {};
 	}
@@ -3197,7 +3202,7 @@ function initStatementObject() {
 					}];
 				}
 				if (currentCriteriaListName === "wcag-android") {
-					dataVallydette.statement.technology = dataVallydette.statement.tests = [{
+					dataVallydette.statement.tests = [{
 					"type": "auto",
 					"name": "aXe",
 					"version": "0.10.2"
@@ -3737,7 +3742,6 @@ addListElement = function(statementProperty) {
 			htmlItem += '  </span>';	
 		}
 
-		
 		statementProperties.forEach(function(p){
 			
 			if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'type') {
@@ -4246,7 +4250,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 			if (dataVallydette.statement.results[1].checked === "true") {
                htmlStatement += `
 				<p>
-				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }.
+				${langStatement.resultsContent1}${dataWCAG.result}${langStatement.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }.
 				</p>	
 
 				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt15}</caption>

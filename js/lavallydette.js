@@ -3079,7 +3079,7 @@ function initStatementObject() {
 				dataVallydette.statement.name = "";
 			}
 			if (p === "lang") {
-				dataVallydette.statement.lang = "";
+				dataVallydette.statement.lang = globalLang;
 			}
 			if (p === "status") {
 				dataVallydette.statement.status = "WIP";
@@ -3347,8 +3347,8 @@ function showStatementWizard() {
     statementWizardContent += '<label for="input-lang" class="is-required">' + langVallydette.lang + '</label>';
     statementWizardContent += '<select class="custom-select" id="input-lang" required>';
     statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
-    statementWizardContent += '<option value="FR" ' + (dataVallydette.statement.lang === "FR" ? "selected" : "") + '>' + langVallydette.french + '</option>';
-    statementWizardContent += '<option value="EN" ' + (dataVallydette.statement.lang === "EN" ? "selected" : "") + '>' + langVallydette.english + '</option>';
+    statementWizardContent += '<option value="fr" ' + (dataVallydette.statement.lang === "fr" ? "selected" : "") + '>' + langVallydette.french + '</option>';
+    statementWizardContent += '<option value="en" ' + (dataVallydette.statement.lang === "en" ? "selected" : "") + '>' + langVallydette.english + '</option>';
     statementWizardContent += '</select>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -3796,26 +3796,47 @@ saveStatement = function(statementForm, submitterBtn) {
 	}
 	
 	if (dataWCAG.globalPagesResult) {
+		
+		var langStatement = {};
+		
+		
 		if (dataVallydette.statement.lang !== globalLang) {
+			console.log(dataVallydette.statement.lang);
+		console.log(globalLang);
+		
 			var langRequest = new XMLHttpRequest();
 			langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
 			langRequest.onreadystatechange = function () {
 			  if(langRequest.readyState === 4 && langRequest.status === 200) {
-				langStatement = JSON.parse(langRequest.responseText);
-				exportStatementHTML(statementResult, langStatement.statementTemplate);
+				langStatementRequest = JSON.parse(langRequest.responseText);
+				console.log(langStatementRequest.statementTemplate);
+				langStatement.statementTemplate = {};
+				langStatement.wcag = {};
+				langStatement.statementTemplate = langStatementRequest.statementTemplate;
+				langStatement.wcag = langStatementRequest.wcag;
+	
+				exportStatementHTML(statementResult, langStatement);
+				exportStatement(statementResult, langStatement);
+	
 			  } 
 			};
 			langRequest.send();
+			
 		} else {
-			var langStatement = langVallydette.statementTemplate;
+			langStatement.statementTemplate = {};
+			langStatement.wcag = {};
+			langStatement.statementTemplate = langVallydette.statementTemplate;
+			langStatement.wcag = langVallydette.wcag;
+			
 			exportStatementHTML(statementResult, langStatement);
+			exportStatement(statementResult, langStatement);
+			
 		}
 		
-		exportStatement(statementResult);
+
+		
 	}
-	
-	
-	
+
 	alertMessage = '';
 	alertMessage += '<div class="alert alert-success alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
 	alertMessage += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">' + langVallydette.closeInformations + '</span></button>';   
@@ -3836,7 +3857,7 @@ saveStatement = function(statementForm, submitterBtn) {
 
 }
 
-exportStatement = function(statementResult) {
+exportStatement = function(statementResult, langStatement) {
 
 	var md = window.markdownit();
 
@@ -4028,7 +4049,7 @@ exportStatement = function(statementResult) {
 				for (let i in listNonConformity) {
 				
 					xmlStatement += '	<detail>\n';
-					xmlStatement += '		<title>' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', ' + langVallydette.auditTxt10 + ' ' + listNonConformity[i].level + '</title>\n';
+					xmlStatement += '		<title>' + listNonConformity[i].wcag + ', ' + langStatement.wcag[listNonConformity[i].wcag] + ', ' + langVallydette.auditTxt10 + ' ' + listNonConformity[i].level + '</title>\n';
 					xmlStatement += '		<description><![CDATA[';
 					/** Remove undefined values */
 					
@@ -4101,16 +4122,20 @@ exportStatementHTML = function(statementResult, langStatement) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-  <title>${langStatement.title} - ${dataVallydette.statement.name}</title>
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="boosted-grid.min.css">
+  <link rel="stylesheet" href="pie.css">
+  
+  <title>${langStatement.statementTemplate.title} - ${dataVallydette.statement.name}</title>
   
   <link rel="stylesheet" href="pie.css">
 
 </head>
 
 <body>    
-    <div class="container content">        
-        <h1>test ${langStatement.title} : ${dataVallydette.statement.name}</h1>
+    <main class="container content">        
+        <h1>${langStatement.statementTemplate.title} : ${dataVallydette.statement.name}</h1>
         
         <div class="summary">
         
@@ -4119,43 +4144,43 @@ exportStatementHTML = function(statementResult, langStatement) {
                 <div class="col-lg-3">
                         
                     <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
-						<span class="sr-only">${langStatement.state}</span> 
+						<span class="sr-only">${langStatement.statementTemplate.state}</span> 
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
                     </h2>
                     
-                    <p class="lead">${langStatement.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.blockingPoint1} ${dataVallydette.statement.userBlockingPoints} ${langStatement.blockingPoint2}` : `` }.
+                    <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.blockingPoint1} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint2}` : `` }.
 					</p>
 				</div>
         
                 <div class="col-lg-3">
                     
-                    <h3>${langStatement.auditDate}</h3>
+                    <h3>${langStatement.statementTemplate.auditDate}</h3>
                     <p>${localeStatementDate}</p>
                     
-                    <h3>${langStatement.approvalHeading}</h3>
+                    <h3>${langStatement.statementTemplate.approvalHeading}</h3>
 					${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}
 					
-                    <h3>${langStatement.standardHeading}</h3>
+                    <h3>${langStatement.statementTemplate.standardHeading}</h3>
                     <p>
-                       ${langStatement.wcagVersion}
+                       ${langStatement.statementTemplate.wcagVersion}
                     </p>
                     
                 </div>
                 
                 <div class="col-lg-6">
                 
-                    <h3>${langStatement.technologyHeading}</h3>
+                    <h3>${langStatement.statementTemplate.technologyHeading}</h3>
                     <ul>
 						${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n						')}
                     </ul>
 					
-                    <h3>${langStatement.environmentHeading}</h3>
-					<p>${langStatement.environmentContent}</p>
+                    <h3>${langStatement.statementTemplate.environmentHeading}</h3>
+					<p>${langStatement.statementTemplate.environmentContent}</p>
                     <ul>
 						${dataVallydette.statement.environments.map(e => `<li>${e.environment}</li>`).join('\n						')}
                     </ul>
                     
-                    <h3>${langStatement.methodsHeading}</h3>
+                    <h3>${langStatement.statementTemplate.methodsHeading}</h3>
                     <ul>
 					`;
 						
@@ -4184,12 +4209,12 @@ exportStatementHTML = function(statementResult, langStatement) {
         
             <div class="col-md">
 				
-				<h2 class="h4 mt-4">${langStatement.contextHeading}</h2>
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.contextHeading}</h2>
 				${md.render(dataVallydette.statement.plan)}
 				
-				<h2 class="h4 mt-4">${langStatement.pagesHeading}</h2>
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.pagesHeading}</h2>
                 
-                <p>${langStatement.pagesContent}</p>
+                <p>${langStatement.statementTemplate.pagesContent}</p>
 				
                 <ol>
 					${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>`).join('\n					')}
@@ -4199,11 +4224,11 @@ exportStatementHTML = function(statementResult, langStatement) {
             </div>
             
             <div class="col-md">
-				<h2 class="h4 mt-4">${langStatement.resultsHeading}</h2>`;
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.resultsHeading}</h2>`;
 				
 			if (dataVallydette.statement.results[0].checked === "true") {
                htmlStatement += ` <p>
-				${langStatement.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }.${langStatement.resultsContent5}
+				${langStatement.statementTemplate.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }.${langStatement.statementTemplate.resultsContent5}
 				</p>
 				
                 <table class="table table-striped">
@@ -4242,7 +4267,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 				  
 				</table>
 				
-				<p><strong>${langStatement.resultsContent6}</strong> ${dataWCAG.globalPagesResult}${langStatement.resultsContent7}</p>
+				<p><strong>${langStatement.statementTemplate.resultsContent6}</strong> ${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent7}</p>
 				`;
 	
 			}
@@ -4250,7 +4275,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 			if (dataVallydette.statement.results[1].checked === "true") {
                htmlStatement += `
 				<p>
-				${langStatement.resultsContent1}${dataWCAG.result}${langStatement.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.resultsContent4}` : `` }.
+				${langStatement.statementTemplate.resultsContent1}${dataWCAG.result}${langStatement.statementTemplate.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }.
 				</p>	
 
 				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt15}</caption>
@@ -4314,19 +4339,19 @@ exportStatementHTML = function(statementResult, langStatement) {
         <div class="row">
         
             <div class="col-lg">
-                <h3 class="h6 mt-4">${langStatement.noncompliancesHeading}</h3>`;
+                <h3 class="h6 mt-4">${langStatement.statementTemplate.noncompliancesHeading}</h3>`;
 		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `
 					<ul>
 					${listNonConformity.map(nc => 
 						`	<li>
-							${nc.wcag} ${nc.name}, ${langVallydette.auditTxt10} ${nc.level}
+							${nc.wcag} ${langStatement.wcag[nc.wcag]}, ${langVallydette.auditTxt10} ${nc.level}
 						</li>`).join('\n					')}
 					</ul>`;
 	
 				} else {
-					htmlStatement += `<p>${langStatement.noNonCompliance}</p>`;
+					htmlStatement += `<p>${langStatement.statementTemplate.noNonCompliance}</p>`;
 				}
 	
 	
@@ -4340,7 +4365,7 @@ exportStatementHTML = function(statementResult, langStatement) {
         
             <div class="col-lg">
         
-                <h3 class="h6 mt-4">${langStatement.derogationsHeading}</h3>
+                <h3 class="h6 mt-4">${langStatement.statementTemplate.derogationsHeading}</h3>
 				
 				${md.render(dataVallydette.statement.derogation)}
 
@@ -4354,7 +4379,7 @@ exportStatementHTML = function(statementResult, langStatement) {
         
             <div class="col-lg">
         
-                <h3 class="h6 mt-4">${langStatement.exemptionsHeading}</h3>
+                <h3 class="h6 mt-4">${langStatement.statementTemplate.exemptionsHeading}</h3>
 				
 				${md.render(dataVallydette.statement.exemption)}
 
@@ -4366,7 +4391,7 @@ exportStatementHTML = function(statementResult, langStatement) {
         
             <div class="col-lg">
         
-                <h2 class="h4 mt-4">${langStatement.contactsHeading}</h2>
+                <h2 class="h4 mt-4">${langStatement.statementTemplate.contactsHeading}</h2>
 				
 				${dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => md.render(c.content)).join('')}
 
@@ -4376,17 +4401,17 @@ exportStatementHTML = function(statementResult, langStatement) {
         
             <div class="col-lg">
         
-                <h2 class="h4 mt-4">${langStatement.legalHeading}</h2>
-				<p>${langStatement.legalContent}</p>
+                <h2 class="h4 mt-4">${langStatement.statementTemplate.legalHeading}</h2>
+				<p>${langStatement.statementTemplate.legalContent}</p>
 				<ul>
-					<li>${langStatement.legalList1}</li>
-					<li>${langStatement.legalList2}</li>
-					<li>${langStatement.legalList3}</li>
+					<li>${langStatement.statementTemplate.legalList1}</li>
+					<li>${langStatement.statementTemplate.legalList2}</li>
+					<li>${langStatement.statementTemplate.legalList3}</li>
 				</ul>
 
 			</div>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>`;

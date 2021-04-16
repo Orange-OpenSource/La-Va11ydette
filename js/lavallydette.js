@@ -848,6 +848,10 @@ runTestListMarkup = function (currentRefTests) {
 function setAutoCheckID(e, testIDorigin, testID) {
 	
 	if (e.checked) {
+		
+		if (!dataVallydette.checklist.autoCheckIDs) {
+			dataVallydette.checklist.autoCheckIDs = [];
+		}
 		dataVallydette.checklist.autoCheckIDs.push(testIDorigin);
 		
 		const iconHtml = '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + testID + '"><span class="sr-only">Ce test est lié à la première page</span></span>';
@@ -875,12 +879,12 @@ function getTestResult(pageId, testIDorigin) {
 function getIfAutoCheck(currentIDorigin) {
 	
 	let autoUpdateResult = false;
-	const autoUpdate = dataVallydette.checklist.autoCheckIDs.filter(a => a === currentIDorigin);
-	
-	if (autoUpdate.length > 0) {
-		autoUpdateResult = true;
-	}
-
+	if (dataVallydette.checklist.autoCheckIDs) {
+		const autoUpdate = dataVallydette.checklist.autoCheckIDs.filter(a => a === currentIDorigin);
+			if (autoUpdate.length > 0) {
+			autoUpdateResult = true;
+		}
+	} 
 	return autoUpdateResult;
 	
 }

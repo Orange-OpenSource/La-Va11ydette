@@ -3479,14 +3479,14 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group">';
-	statementWizardContent += '<span class="d-block"><strong>Type de résultat</strong></span>';
+	statementWizardContent += '<span class="d-block"><strong>' + langVallydette.typeOfResult + '</strong></span>';
     statementWizardContent += '<label class="mt-1 font-weight-normal">';
     statementWizardContent += '<input id="input-pagesAverage"  name="input-pagesAverage" class="mr-1" type="checkbox" autocomplete="off" ' + (dataVallydette.statement.results[0].checked === "true" ? " checked " : "") + '>';
-    statementWizardContent += '<span>Taux moyen</span>';
+    statementWizardContent += '<span>' + langVallydette.averageRate + '</span>';
     statementWizardContent += '</label>';
 	statementWizardContent += '<label class="font-weight-normal">';
     statementWizardContent += '<input id="input-criteriaPercentage"  name="input-criteriaPercentage"  class="mr-1" type="checkbox" autocomplete="off" '+ (dataVallydette.statement.results[1].checked === "true" ? " checked " : "") + '>';
-    statementWizardContent += '<span>Pourcentage de critères respectés</span>';
+    statementWizardContent += '<span>' + langVallydette.criteriaPercentage + '</span>';
     statementWizardContent += '</label>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';

@@ -3184,8 +3184,6 @@ const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoin
 
 function initStatementObject() {
 	
-	console.log(currentCriteriaListName);
-	
 	if (!dataVallydette.statement) {
 		dataVallydette.statement = {};
 	}
@@ -3372,8 +3370,6 @@ function initStatementObject() {
 					}];
 				}
 			}
-		
-	
 		}
 	});
 	
@@ -3921,6 +3917,8 @@ saveStatement = function(statementForm, submitterBtn) {
 		dataVallydette.statement.status = "DONE";
 		
 		var langStatement = {};
+		langStatement.statementTemplate = {};
+		langStatement.wcag = {};
 		
 		if (dataVallydette.statement.lang !== globalLang) {
 			
@@ -3929,11 +3927,10 @@ saveStatement = function(statementForm, submitterBtn) {
 			langRequest.onreadystatechange = function () {
 			  if(langRequest.readyState === 4 && langRequest.status === 200) {
 				langStatementRequest = JSON.parse(langRequest.responseText);
-				console.log(langStatementRequest.statementTemplate);
-				langStatement.statementTemplate = {};
-				langStatement.wcag = {};
-				langStatement.statementTemplate = langStatementRequest.statementTemplate;
-				langStatement.wcag = langStatementRequest.wcag;
+				
+				langStatement = langStatementRequest;
+				//langStatement.statementTemplate = langStatementRequest.statementTemplate;
+				//langStatement.wcag = langStatementRequest.wcag;
 	
 				exportStatementHTML(statementResult, langStatement);
 				exportStatement(statementResult, langStatement);
@@ -3943,10 +3940,10 @@ saveStatement = function(statementForm, submitterBtn) {
 			langRequest.send();
 			
 		} else {
-			langStatement.statementTemplate = {};
-			langStatement.wcag = {};
-			langStatement.statementTemplate = langVallydette.statementTemplate;
-			langStatement.wcag = langVallydette.wcag;
+			
+			langStatement = langVallydette;
+			//langStatement.statementTemplate = langVallydette.statementTemplate;
+			//langStatement.wcag = langVallydette.wcag;
 			
 			exportStatementHTML(statementResult, langStatement);
 			exportStatement(statementResult, langStatement);
@@ -4251,8 +4248,6 @@ exportStatementHTML = function(statementResult, langStatement) {
   <link rel="stylesheet" href="pie.css">
   
   <title>${langStatement.statementTemplate.title} - ${dataVallydette.statement.name}</title>
-  
-  <link rel="stylesheet" href="pie.css">
 
 </head>
 
@@ -4312,12 +4307,12 @@ exportStatementHTML = function(statementResult, langStatement) {
 						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
 						let separator = ', '
 						
-						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langVallydette[t + "Test"]}:</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n					` : '';
+						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langStatement[t + "Test"]}:</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n					` : '';
 						
 					});
 					
 					if (dataVallydette.statement.userNumber > 0 && dataVallydette.statement.userTestDescription !== '') {
-						htmlStatement += `<li><strong>${langVallydette.userTest}:</strong> ${dataVallydette.statement.userTestDescription}</li>`
+						htmlStatement += `<li><strong>${langStatement.userTest}:</strong> ${dataVallydette.statement.userTestDescription}</li>`
 					}
 	
 	htmlStatement += `</ul>
@@ -4351,20 +4346,20 @@ exportStatementHTML = function(statementResult, langStatement) {
 				
 			if (dataVallydette.statement.results[0].checked === "true") {
                htmlStatement += ` <p>
-				${langStatement.statementTemplate.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }.${langStatement.statementTemplate.resultsContent5}
+				${langStatement.statementTemplate.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).${langStatement.statementTemplate.resultsContent5}
 				</p>
 				
                 <table class="table table-striped">
-				<caption class="sr-only">${langVallydette.auditTxt4}</caption>
+				<caption class="sr-only">${langStatement.auditTxt4}</caption>
 				  <tr>
-					<th scope="row">${langVallydette.auditTxt4}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.compliant}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.nonCompliant}</th>
-					<th scope="col" colspan="2" class="text-center">${langVallydette.notApplicable}</th>
-					<th rowspan="2" class="text-center bg-light">${langVallydette.result}</th>
+					<th scope="row">${langStatement.auditTxt4}</th>
+					<th scope="col" colspan="2" class="text-center">${langStatement.compliant}</th>
+					<th scope="col" colspan="2" class="text-center">${langStatement.nonCompliant}</th>
+					<th scope="col" colspan="2" class="text-center">${langStatement.notApplicable}</th>
+					<th rowspan="2" class="text-center bg-light">${langStatement.result}</th>
 				  </tr>
 				  <tr>
-					<th scope="col">${langVallydette.auditTxt10}</th>
+					<th scope="col">${langStatement.auditTxt10}</th>
 					<th scope="col">A</th>
 					<th scope="col">AA</th>
 					<th scope="col">A</th>
@@ -4398,12 +4393,12 @@ exportStatementHTML = function(statementResult, langStatement) {
 			if (dataVallydette.statement.results[1].checked === "true") {
                htmlStatement += `
 				<p>
-				${langStatement.statementTemplate.resultsContent1}${dataWCAG.result}${langStatement.statementTemplate.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }.
+				${langStatement.statementTemplate.resultsContent1}${dataWCAG.result}${langStatement.statementTemplate.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).
 				</p>	
 
-				<table class="table table-striped"><caption class="sr-only">${langVallydette.auditTxt15}</caption>
+				<table class="table table-striped"><caption class="sr-only">${langStatement.auditTxt15}</caption>
 					<thead><tr>
-						<th scope="row">${langVallydette.auditTxt10}</th>
+						<th scope="row">${langStatement.auditTxt10}</th>
 						<th scope="col" class="text-center">A</th>
 						<th scope="col" class="text-center">AA</th>
 						<th scope="col" class="text-center">Total</th>
@@ -4411,35 +4406,35 @@ exportStatementHTML = function(statementResult, langStatement) {
 				<tbody>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langVallydette.criteriaNumber}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.criteriaNumber}</th>
 					<td class="text-center">${dataWCAG.totalA}</td>
 					<td class="text-center">${dataWCAG.totalAA}</td>
 					<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langVallydette.template.status1}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.template.status1}</th>
 					<td class="text-center">${dataWCAG.conformeA}</td>
 					<td class="text-center">${dataWCAG.conformeAA}</td>
 					<td class="text-center">${dataWCAG.totalconforme}</td>
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langVallydette.template.status2}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.template.status2}</th>
 					<td class="text-center">${dataWCAG.nonconformeA}</td>
 					<td class="text-center">${dataWCAG.nonconformeAA}</td>
 					<td class="text-center">${dataWCAG.totalnonconforme}</td>
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langVallydette.template.status3}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.template.status3}</th>
 					<td class="text-center">${dataWCAG.naA}</td>
 					<td class="text-center">${dataWCAG.naAA}</td>
 					<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold bg-light">${langVallydette.auditTxt16}</th>
+					<th scope="row" class="font-weight-bold bg-light">${langStatement.auditTxt16}</th>
 					<td class="text-center bg-light">
 						${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
 					</td>
@@ -4469,7 +4464,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 					<ul>
 					${listNonConformity.map(nc => 
 						`	<li>
-							${nc.wcag} ${langStatement.wcag[nc.wcag]}, ${langVallydette.auditTxt10} ${nc.level}
+							${nc.wcag} ${langStatement.wcag[nc.wcag]}, ${langStatement.auditTxt10} ${nc.level}
 						</li>`).join('\n					')}
 					</ul>`;
 	

@@ -48,7 +48,7 @@
 	"validate": "Valider",
 	"edit": "Éditer",
 	"save": "Enregistrer",
-	"saveDownloadJson": "Sauvegarder et télécharger au format JSON",
+	"saveDownloadJson": "Enregistrer et télécharger au format JSON",
 	"downloadJson": "Télécharger au format JSON",
 	"import": "Importer",
 	"download": "Télécharger",

@@ -3405,7 +3405,7 @@ function showStatementWizard() {
 	
 	var statementResult = runComputation(true);
 
-	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "done") {
+	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "DONE") {
 		
 		//exportStatement(statementResult);
 		//exportStatementHTML(statementResult);
@@ -3455,14 +3455,14 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="input-name" class="is-required">' + langVallydette.projectName + '</label>';
-    statementWizardContent += '<input type="text" class="form-control" id="input-name" value="' + dataVallydette.statement.name + '" required>';
+    statementWizardContent += '<input type="text" class="form-control" id="input-name" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.name + '" required >';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="input-lang" class="is-required">' + langVallydette.lang + '</label>';
-    statementWizardContent += '<select class="custom-select" id="input-lang" required>';
+    statementWizardContent += '<select class="custom-select" id="input-lang"  style="scroll-margin-top: 10.35em;"  required>';
     statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
     statementWizardContent += '<option value="fr" ' + (dataVallydette.statement.lang === "fr" ? "selected" : "") + '>' + langVallydette.french + '</option>';
     statementWizardContent += '<option value="en" ' + (dataVallydette.statement.lang === "en" ? "selected" : "") + '>' + langVallydette.english + '</option>';
@@ -3473,7 +3473,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group">';
     statementWizardContent += '<label for="input-date"  class="is-required">' + langVallydette.date + '</label>';
-    statementWizardContent += '<input type="date" class="form-control" id="input-date" value="' + dataVallydette.statement.date + '" required>';
+    statementWizardContent += '<input type="date" class="form-control" id="input-date" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
@@ -3680,6 +3680,12 @@ function showStatementWizard() {
 	document.getElementById("statementForm").addEventListener('submit', function (e) {
 		event.preventDefault();
 		saveStatement(this, e.submitter.id);
+	});
+	
+	document.getElementById("statementForm").addEventListener('focusin', function (e) {
+		if (document.getElementById('StatementFormInfo')) {
+			document.getElementById('StatementFormInfo').remove();
+		}
 	});
 		
 }
@@ -3893,9 +3899,7 @@ addListElement = function(statementProperty) {
 saveStatement = function(statementForm, submitterBtn) {
 	
 	var statementResult = runComputation(true);
-	
-	dataVallydette.statement.status = "done";
-	
+
 	statementInputs.forEach(function(input){
 		dataVallydette.statement[input] = statementForm.elements["input-"+input].value;
 	});
@@ -3914,13 +3918,12 @@ saveStatement = function(statementForm, submitterBtn) {
 	
 	if (dataWCAG.globalPagesResult) {
 		
+		dataVallydette.statement.status = "DONE";
+		
 		var langStatement = {};
 		
-		
 		if (dataVallydette.statement.lang !== globalLang) {
-			console.log(dataVallydette.statement.lang);
-		console.log(globalLang);
-		
+			
 			var langRequest = new XMLHttpRequest();
 			langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
 			langRequest.onreadystatechange = function () {
@@ -3949,13 +3952,15 @@ saveStatement = function(statementForm, submitterBtn) {
 			exportStatement(statementResult, langStatement);
 			
 		}
+	
+	} else {
 		
-
+		dataVallydette.statement.status = "WIP";
 		
 	}
 
 	alertMessage = '';
-	alertMessage += '<div class="alert alert-success alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
+	alertMessage += '<div class="alert alert-success alert-dismissible fade show" id="StatementFormInfo" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
 	alertMessage += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">' + langVallydette.closeInformations + '</span></button>';   
 	alertMessage += '</div>';
 	
@@ -4210,7 +4215,7 @@ exportStatement = function(statementResult, langStatement) {
 	
 	xmlStatement += '\n\n</declaration>';
 
-	if (dataVallydette.statement.status === "done") {
+	if (dataVallydette.statement.status === "DONE") {
 		
 		var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
 		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.xml';
@@ -4535,7 +4540,7 @@ exportStatementHTML = function(statementResult, langStatement) {
 </html>`;
 	
 	
-	if (dataVallydette.statement.status === "done") {
+	if (dataVallydette.statement.status === "DONE") {
 		
 		var bb = new Blob([htmlStatement], {type: 'application/octet-stream'});
 		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.html';

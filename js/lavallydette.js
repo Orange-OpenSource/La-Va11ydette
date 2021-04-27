@@ -353,7 +353,14 @@ function eventHandler() {
 		fr.onload = function (e) {
 			dataVallydette = JSON.parse(e.target.result);
 			if (dataVallydette.checklist.referentiel) {
+				
+				//fix obsolete referentiel name (from 1.4 checklist version)
+				if (dataVallydette.checklist.referentiel === "wcagEase") {
+					dataVallydette.checklist.referentiel = "wcag-web";
+				}
+				
 				currentCriteriaListName = dataVallydette.checklist.referentiel;
+				
 			}
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
@@ -1167,7 +1174,7 @@ function applyDisabledGroups() {
  * @param {number} currentChecklistVersion
 */
 function checkTheVersion(currentChecklistVersion) {
-	
+
 	if (dataVallydette.checklist.referentiel && checklistVallydette[dataVallydette.checklist.referentiel]) {
 				
 		if (checklistVallydette[dataVallydette.checklist.referentiel].version) {

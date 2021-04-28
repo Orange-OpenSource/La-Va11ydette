@@ -486,9 +486,10 @@ runTestListMarkup = function (currentRefTests) {
 
 	if (document.getElementById('btnExcelExport') === null) {
 		
-			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, 'icon-Excel', true, ["btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none"]);
+			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, 'icon-Excel', true, ["btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none"], langVallydette.title.btnExcelExport);
 		
-			document.getElementById("auditInfoManager").appendChild(btnExcelExport);
+			let auditInfoNode = document.getElementById("auditInfoManager");
+			auditInfoNode.insertBefore(btnExcelExport, auditInfoNode.children[3]);
 			btnExcelExport.addEventListener('click', function () {
 				excelExport(globalTemplate);
 			});
@@ -500,13 +501,11 @@ runTestListMarkup = function (currentRefTests) {
 
 		setPageName(dataVallydette.checklist.page[currentPage].name);
 		
-		//utils.removeElement(document.getElementById('btnExcelExport'));
-		
 		/** Modify column number */ 
 		utils.columnDisplay(3);
 	
 		if(document.getElementById('btnShowStatement') === null) {
-			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statementBtn, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"]);
+			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"], langVallydette.statementTitle);
 			document.getElementById("auditInfoManager").appendChild(btnStatement);
 			document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
 		}
@@ -4641,7 +4640,7 @@ const utils = {
 		return exportFileDefaultName;
 	}
   },
- addElement: function (type,  id, innerText, icon, iconOnly, arrayClass) { 
+ addElement: function (type,  id, innerText, icon, iconOnly, arrayClass, title) { 
 	var e = document.createElement(type);
 	
 	if (icon) {
@@ -4655,7 +4654,10 @@ const utils = {
 	}
 	
 	e.setAttribute('id', id);
-	e.setAttribute('title', innerText);
+	if (title) {
+		e.setAttribute('title', title);
+	}
+
 
 	arrayClass.forEach(c => e.classList.add(c));
 	

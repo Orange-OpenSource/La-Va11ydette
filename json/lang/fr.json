@@ -116,7 +116,7 @@
 	"criteriaNumber": "Nombre de critères",
 	"addElement": "Ajouter un élément",
 	"statement": "Déclaration",
-	"statementBtn": "Générer la déclaration",
+	"statementTitle": "Générer la déclaration",
 	"statementTxt1": "Configuration de la déclaration",
 	"statementTxt2": "Les exports XML et HTML des déclarations sont disponibles uniquement pour les audits terminés, afin de permettre la récupération automatique des résultats (taux de conformités, liste des non-conformités, etc...).",
 	"statementTxt3": "Laisser vide le champ \"nom\", pour supprimer l'item de la liste après enregistrement.",
@@ -170,7 +170,7 @@
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
-		"btnShowResult": "Afficher le résultat de l'audit",
+		"btnShowResult": "Conformité",
 		"btnImportTxt": "Importer",
 		"btnExportTxt": "Exporter",
 		"selectFilesLabel": "Sélectionner un audit",
@@ -186,13 +186,14 @@
 		"link-about-txt": "À propos"					   
 	},
 	"title": {
-		"btnImport": "importer un audit (json)",
-		"export": "exporter l'audit (json)",
+		"btnImport": "Importer un audit (json)",
+		"export": "Exporter l'audit (json)",
+		"btnShowResult": "Afficher les taux de conformité",
 		"btnChecklistName": "Modifier le nom de l’audit",
 		"btnPageName": "Modifier le nom de la page",
 		"btnDelPage": "Supprimer la page",
 		"btnLocalStorage": "Restaurer le dernier audit",
-		"btnExcelExport": "exporter les anomalies (excel)",
+		"btnExcelExport": "Exporter les anomalies (excel)",
 		"link-about": "À propos (nouvelle fenêtre)"
 	},
 	"ariaLabelOnly": {

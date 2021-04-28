@@ -115,7 +115,7 @@
 	"criteriaNumber": "Number of criteria",
 	"addElement": "Add an element",
 	"statement": "Statement",
-	"statementBtn": "Generate the statement",
+	"statementTitle": "Generate the statement",
 	"statementTxt1": "Statement configuration",
 	"statementTxt2": "XML export is only available for completed audits",
 	"statementTxt3": "Leave the \"name\" field empty, to delete the item from the list after saving.",
@@ -166,7 +166,7 @@
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Orange WCAG 2.1 Audit check list",
-		"btnShowResult": "Display the results of the audit",
+		"btnShowResult": "Compliance",
 		"btnImportTxt": "Import",
 		"btnExportTxt": "Export",
 		"selectFilesLabel": "Select an audit",
@@ -182,13 +182,14 @@
 		"link-about-txt": "About"				   
 	},
 	"title": {
-		"btnImport": "import an audit (json)",
-		"export": "export an audit (json)",
+		"btnImport": "Import an audit (json)",
+		"export": "Export an audit (json)",
+		"btnShowResult": "Show the compliances results",
 		"btnChecklistName": "Edit the audit name",
 		"btnPageName": "Edit the page name",
 		"btnDelPage": "Delete the page",
 		"btnLocalStorage": "Recover the last audit",
-		"btnExcelExport": "export issues (excel)",
+		"btnExcelExport": "Export issues (excel)",
 		"link-about": "About (new window)"
 	},
 	"ariaLabelOnly": {

@@ -259,9 +259,9 @@
 	},
 	"statementTemplate": {
 		"title": "Déclaration d'Accessibilité",
-		"auditDate": "Date de l'audit :",
+		"auditDate": "Date de l'audit",
 		"state": "État de conformité :",
-		"compliantContent1": "Ce site est conforme à : ",
+		"compliantContent1": "Ce site est conforme à ",
 		"compliantContent2": " aux critères <abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr>",
 		"blockingPoint1": " , avec ",
 		"blockingPoint2": " point(s) bloquant(s) d'un point de vue utilisateur",
@@ -274,7 +274,7 @@
 		"methodsHeading": "Méthodes et outils utilisés pour vérifier l’accessibilité",
 		"contextHeading": "Contexte",
 		"pagesHeading": "Page(s) ayant fait l’objet de la vérification de conformité",
-		"pagesContent": "L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange.",
+		"pagesContent": "L’audit de vérification a été effectué sur les pages suivantes à l'aide de la va11ydette d'Orange :",
 		"resultsHeading": "Résultat des tests",
 		"resultsContent1": "L'audit révèle que le taux moyen de conformité du site s’élève à ",
 		"resultsContent2": "% (moyenne des taux de conformité des pages",
@@ -292,7 +292,7 @@
 		"legalHeading": "Voies de recours",
 		"legalContent": "Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu de réponse satisfaisante, dans ce cas&nbsp;:",
 		"legalList1": "Écrire un message au <a href=\"https://formulaire.defenseurdesdroits.fr/\">Défenseur des droits</a>.",
-		"legalList2": "Contacter le <a href=\"https://www.defenseurdesdroits.fr/saisir/delegues\">délégué du Défenseur des droits dans votre région</a>.",
-		"legalList3": "Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) <br><address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>"	
+		"legalList2": "Ou contacter le <a href=\"https://www.defenseurdesdroits.fr/saisir/delegues\">délégué du Défenseur des droits dans votre département</a>.",
+		"legalList3": "Ou envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) <br><address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>"	
 	}
 }

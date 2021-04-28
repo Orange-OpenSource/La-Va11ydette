@@ -255,9 +255,9 @@
 		},
 	"statementTemplate": {
 		"title": "Accessibility assessment",
-		"auditDate": "Date of the audit:",
+		"auditDate": "Date of the audit",
 		"state": "Conformity level:",
-		"compliantContent1": "This site is  ",
+		"compliantContent1": "This site is ",
 		"compliantContent2": " compliant with <abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr>",
 		"blockingPoint1": " ,with ",
 		"blockingPoint2": " blocking point(s) from a user point of view",
@@ -270,11 +270,11 @@
 		"methodsHeading": "Methods and Tools to evaluate accessibility",
 		"contextHeading": "Context",
 		"pagesHeading": "Pages which have been the subject of compliance verification",
-		"pagesContent": "The verification audit was performed on the following pages using the Orange va11ydette.",
+		"pagesContent": "The verification audit was performed on the following pages using the Orange va11ydette: ",
 		"resultsHeading": "Tests result",
 		"resultsContent1": "The audit found that the site's average compliance rate is ",
 		"resultsContent2": "% (average pages compliance rates",
-		"resultsContent3": ", with ",
+		"resultsContent3": ",with ",
 		"resultsContent4": " blocking point(s) from a user point of view",
 		"resultsContent5": " The compliance rate for each audited page is equal to the number of compliant criteria divided by the number of applicable criteria.",
 		"resultsContent6": "Compliance rate (pages average):",
@@ -288,7 +288,7 @@
 		"legalHeading": "Legal remedies",
 		"legalContent": "You have reported to the website manager an accessibility problem that prevents you from accessing content or one of the portal's services and you have not received a satisfactory response, in this case:",
 		"legalList1": "Write a message to the <a href=\"https://formulaire.defenseurdesdroits.fr/\">Défenseurs des Droits</a>.",
-		"legalList2": "Contact the <a href=\"https://www.defenseurdesdroits.fr/saisir/delegues\">Défenseurs des Droits delegate in your department</a>.",
-		"legalList3": "Send a letter by post (free of charge, do not put a stamp) <br><address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>"
+		"legalList2": "Or contact the <a href=\"https://www.defenseurdesdroits.fr/saisir/delegues\">Défenseurs des Droits delegate in your department</a>.",
+		"legalList3": "Or send a letter by post (free of charge, do not put a stamp) <br><address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>"
 	}
 }

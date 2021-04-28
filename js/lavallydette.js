@@ -1617,11 +1617,11 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsynthesePages">';
 		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
-		computationContent += '<th scope="row">' + langVallydette.auditTxt4 + '</th>';
+		computationContent += '<th scope="row">' + langVallydette.auditTxt17 + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.compliant + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.nonCompliant + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.notApplicable + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.result + '</th>';
+		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.auditTxt8 + '</th>';
 		computationContent += '</tr><tr>';
 		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
@@ -4272,7 +4272,7 @@ exportStatementHTML = function(statementResult, langStatement) {
                         <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
                     </h2>
                     
-                    <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.blockingPoint1} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint2}` : `` }.
+                    <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint1}` : `` }.
 					</p>
 				</div>
         
@@ -4358,11 +4358,11 @@ exportStatementHTML = function(statementResult, langStatement) {
                 <table class="table table-striped">
 				<caption class="sr-only">${langStatement.auditTxt4}</caption>
 				  <tr>
-					<th scope="row">${langStatement.auditTxt4}</th>
+					<th scope="row">${langStatement.auditTxt17}</th>
 					<th scope="col" colspan="2" class="text-center">${langStatement.compliant}</th>
 					<th scope="col" colspan="2" class="text-center">${langStatement.nonCompliant}</th>
 					<th scope="col" colspan="2" class="text-center">${langStatement.notApplicable}</th>
-					<th rowspan="2" class="text-center bg-light">${langStatement.result}</th>
+					<th rowspan="2" class="text-center bg-light">${langStatement.auditTxt8}</th>
 				  </tr>
 				  <tr>
 					<th scope="col">${langStatement.auditTxt10}</th>
@@ -4419,21 +4419,21 @@ exportStatementHTML = function(statementResult, langStatement) {
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.template.status1}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.compliant}</th>
 					<td class="text-center">${dataWCAG.conformeA}</td>
 					<td class="text-center">${dataWCAG.conformeAA}</td>
 					<td class="text-center">${dataWCAG.totalconforme}</td>
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.template.status2}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.nonCompliant}</th>
 					<td class="text-center">${dataWCAG.nonconformeA}</td>
 					<td class="text-center">${dataWCAG.nonconformeAA}</td>
 					<td class="text-center">${dataWCAG.totalnonconforme}</td>
 				</tr>
 				
 				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.template.status3}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.notApplicable}</th>
 					<td class="text-center">${dataWCAG.naA}</td>
 					<td class="text-center">${dataWCAG.naAA}</td>
 					<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>

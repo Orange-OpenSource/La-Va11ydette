@@ -3597,7 +3597,7 @@ function showStatementWizard() {
 	statementWizardContent += '<input type="number" class="form-control" id="input-userBlockingPoints" value="' + dataVallydette.statement.userBlockingPoints +'" min="0" max="100">';
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
+	statementWizardContent += '<label for="input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
 	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription + '</textarea>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';

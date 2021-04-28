@@ -263,7 +263,7 @@
 		"state": "État de conformité :",
 		"compliantContent1": "Ce site est conforme à ",
 		"compliantContent2": " aux critères <abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr>",
-		"blockingPoint1": " , avec ",
+		"blockingPoint1": ", avec ",
 		"blockingPoint2": " point(s) bloquant(s) d'un point de vue utilisateur",
 		"approvalHeading": "Identité du déclarant",
 		"standardHeading": "Référentiel",

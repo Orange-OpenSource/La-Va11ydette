@@ -3259,13 +3259,7 @@ function initStatementObject() {
 				dataVallydette.statement.exemption = "";
 			}
 			if (p === "userTestDescription") {
-				if (currentCriteriaListName === "wcag-web") {
-					dataVallydette.statement.userTestDescription = langVallydette.userTestingContent + langVallydette.userTestingContentWeb;
-				} else if (currentCriteriaListName === "wcag-android") {
-					dataVallydette.statement.userTestDescription = langVallydette.userTestingContent + langVallydette.userTestingContentAndroid;
-				} else if (currentCriteriaListName === "wcag-ios") {
-					dataVallydette.statement.userTestDescription = langVallydette.userTestingContent + langVallydette.userTestingContentIOS;
-				}
+				dataVallydette.statement.userTestDescription = langVallydette.userTestingContent;
 			}
 			if (p === "technology") {
 				if (currentCriteriaListName === "wcag-web") {
@@ -3598,12 +3592,21 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '<div class="form-group input-group-sm">';
 	statementWizardContent += '<label for="input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
-	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription + '</textarea>';
+	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription 
+	if (currentCriteriaListName === "wcag-web") {
+		statementWizardContent += langVallydette.userTestingContentWeb;
+	} else if (currentCriteriaListName === "wcag-android") {
+		statementWizardContent += langVallydette.userTestingContentAndroid;
+	} else if (currentCriteriaListName === "wcag-ios") {
+		statementWizardContent += langVallydette.userTestingContentIOS;
+	}
+	statementWizardContent += '</textarea>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	
+				
 	statementWizardContent += '</div>';
 
 	

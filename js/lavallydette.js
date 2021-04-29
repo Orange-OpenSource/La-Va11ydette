@@ -3187,6 +3187,7 @@ for (let i in dataVallydette.checklist.page) {
 const statementObjectProperties = ["name", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environments"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
 const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
+var langStatement = {};
 
 function initStatementObject() {
 	
@@ -3201,6 +3202,7 @@ function initStatementObject() {
 			}
 			if (p === "lang") {
 				dataVallydette.statement.lang = globalLang;
+				langStatement = langStatement;
 			}
 			if (p === "status") {
 				dataVallydette.statement.status = "WIP";
@@ -3233,10 +3235,10 @@ function initStatementObject() {
 			}
 			if (p === "approval") {
 				dataVallydette.statement.approval = [{
-					"name": langVallydette.customerService,
+					"name": langStatement.customerService,
 					"content": ""
 				},{
-					"name": langVallydette.internalService,
+					"name": langStatement.internalService,
 					"content": "",
 				}
 				];
@@ -3247,7 +3249,7 @@ function initStatementObject() {
 					"content": ""
 				},
 				{
-					"name": langVallydette.orangeGroup,
+					"name": langStatement.orangeGroup,
 					"content": ""
 				}
 				];
@@ -3259,7 +3261,8 @@ function initStatementObject() {
 				dataVallydette.statement.exemption = "";
 			}
 			if (p === "userTestDescription") {
-				dataVallydette.statement.userTestDescription = langVallydette.userTestingContent;
+				dataVallydette.statement.userTestDescription = langStatement.userTestingContent;
+				
 			}
 			if (p === "technology") {
 				if (currentCriteriaListName === "wcag-web") {
@@ -3312,7 +3315,7 @@ function initStatementObject() {
 					},
 					{	
 					"type": "functional",
-					"name":  langVallydette.keyboardNavigation,
+					"name":  langStatement.keyboardNavigation,
 					"version": ""
 					}];
 				}
@@ -3354,19 +3357,19 @@ function initStatementObject() {
 			if (p === "environments") {
 				if (currentCriteriaListName === "wcag-web") {
 					dataVallydette.statement.environments = [{
-						"environment": langVallydette.environmentEx1
+						"environment": langStatement.environmentEx1
 					},{
-						"environment": langVallydette.environmentEx2
+						"environment": langStatement.environmentEx2
 					}];
 				}
 				if (currentCriteriaListName === "wcag-android") {
 					dataVallydette.statement.environments = [{
-						"environment": langVallydette.environmentEx3
+						"environment": langStatement.environmentEx3
 					}];
 				}
 				if (currentCriteriaListName === "wcag-ios") {
 					dataVallydette.statement.environments = [{
-						"environment": langVallydette.environmentEx4
+						"environment": langStatement.environmentEx4
 					}];
 				}
 			}
@@ -3537,8 +3540,7 @@ function showStatementWizard() {
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
-			statementWizardContent += '<li>'+listItem.name+' '+listItem.version+'</li>';
-	
+		statementWizardContent += '<li>'+listItem.name+' '+listItem.version+'</li>';
 	})
 	
 	statementWizardContent += '</ul>';
@@ -3553,9 +3555,7 @@ function showStatementWizard() {
 	statementWizardContent += '<ul id="testsList">';	
 	
     dataVallydette.statement.tests.forEach(function(listItem, index){
-
 		statementWizardContent += '<li>' +listItem.name + ' ' + listItem.version + '</li>';
-		
 	})
 	
 	statementWizardContent += '</ul>';
@@ -3570,9 +3570,7 @@ function showStatementWizard() {
 	statementWizardContent += '<ul id="environmentsList">';	
 	
     dataVallydette.statement.environments.forEach(function(listItem, index){
-
 		statementWizardContent += '<li>' + listItem.environment + '</li>';
-		
 	})
 	
 	statementWizardContent += '</ul>';
@@ -3604,16 +3602,11 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
-	
-	
-				
+			
 	statementWizardContent += '</div>';
 
-	
 	statementWizardContent += '<hr class="border-light">';
 	statementWizardContent += '<div class="row">';
-	
-	
 	statementWizardContent += '<div class="col-lg-6">';
 	
 	statementWizardContent += '</div>';
@@ -3665,7 +3658,28 @@ function showStatementWizard() {
 
 		fr.onload = function (e) {
 			dataVallydette.statement = JSON.parse(e.target.result);
-			initStatementObject();
+			if (dataVallydette.statement.lang !== globalLang) {
+				
+				var langRequest = new XMLHttpRequest();
+				langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
+				langRequest.onreadystatechange = function () {
+				  if(langRequest.readyState === 4 && langRequest.status === 200) {
+					langStatementRequest = JSON.parse(langRequest.responseText);
+					
+					langStatement = langStatementRequest;
+					initStatementObject();
+					
+				  } 
+				};
+				langRequest.send();
+				
+			} else {
+				
+				langStatement = langVallydette;
+				initStatementObject();
+			}
+			
+			
 		}
 
 		fr.readAsText(files.item(0));
@@ -3925,10 +3939,6 @@ saveStatement = function(statementForm, submitterBtn) {
 		
 		dataVallydette.statement.status = "DONE";
 		
-		var langStatement = {};
-		langStatement.statementTemplate = {};
-		langStatement.wcag = {};
-		
 		if (dataVallydette.statement.lang !== globalLang) {
 			
 			var langRequest = new XMLHttpRequest();
@@ -3938,9 +3948,7 @@ saveStatement = function(statementForm, submitterBtn) {
 				langStatementRequest = JSON.parse(langRequest.responseText);
 				
 				langStatement = langStatementRequest;
-				//langStatement.statementTemplate = langStatementRequest.statementTemplate;
-				//langStatement.wcag = langStatementRequest.wcag;
-	
+				
 				exportStatementHTML(statementResult, langStatement);
 				exportStatement(statementResult, langStatement);
 	
@@ -3951,8 +3959,6 @@ saveStatement = function(statementForm, submitterBtn) {
 		} else {
 			
 			langStatement = langVallydette;
-			//langStatement.statementTemplate = langVallydette.statementTemplate;
-			//langStatement.wcag = langVallydette.wcag;
 			
 			exportStatementHTML(statementResult, langStatement);
 			exportStatement(statementResult, langStatement);

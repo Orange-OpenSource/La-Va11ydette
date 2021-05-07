@@ -2159,7 +2159,10 @@ setStatusAndResults = function (ele, targetId) {
 			dataVallydette.checklist.page[currentPage].items[i].resultatTest = ele.value;
 			
 			//auto checked
-			isAutoChecked = dataVallydette.checklist.autoCheckIDs.filter(id => id === dataVallydette.checklist.page[currentPage].items[i].IDorigin);
+			if (dataVallydette.checklist.autoCheckIDs) {
+				isAutoChecked = dataVallydette.checklist.autoCheckIDs.filter(id => id === dataVallydette.checklist.page[currentPage].items[i].IDorigin);	
+			}
+			
 			itemIndice = i;
 		}
 	}

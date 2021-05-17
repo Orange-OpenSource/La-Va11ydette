@@ -14,6 +14,13 @@
 		"about-fr": "https://a11y-guidelines.orange.com/fr/android/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/android/wcag-audit/"
 	},
+	"wcag-ios": {
+		"filename": "criteres-wcag-ios",
+		"template": "wcag",
+		"version": "1.0",
+		"about-fr": "https://a11y-guidelines.orange.com/fr/ios/audit-wcag/",
+		"about-en": "https://a11y-guidelines.orange.com/en/ios/wcag-audit/"
+	},
 	"audit-web": {
 		"filename": "tests-web",
 		"template": "audit",

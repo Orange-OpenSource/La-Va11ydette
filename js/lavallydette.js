@@ -3176,7 +3176,7 @@ let setIndex = 1;
 
 for (let i in dataVallydette.checklist.page) {
 	
-		excel.addSheet(dataVallydette.checklist.page[i].name);
+		excel.addSheet(dataVallydette.checklist.page[i].name.slice(0, 31));
   
 		for (var j=0;j<dataHeaders.length;j++){    
 		

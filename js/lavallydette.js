@@ -3241,13 +3241,18 @@ for (let i in dataVallydette.checklist.page) {
  * @param {array} statementObjectProperties - list all the statement object properties
  * @param {array} statementProperties - list of the properties updated from popin form
  * @param {array} statementInputs - list of the input type properties
- * @param {object} langStatement - lang traductions (needed if statement lang is diffrent from global lang)
+ * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
 const statementObjectProperties = ["name", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environments"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
 const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
 var langStatement = {};
 
+
+/**
+ * Init the statement object
+ *
+*/
 function initStatementObject() {
 	
 	if (!dataVallydette.statement) {
@@ -3438,6 +3443,10 @@ function initStatementObject() {
 	showStatementWizard();
 }
 
+/**
+ * Init the statement page
+ *
+*/
 function showStatementWizard() {
 	
 	setPageName(langVallydette.statement);
@@ -3867,6 +3876,11 @@ editStatementProperty = function (statementProperty) {
 	document.getElementById("editionSaveBtn").addEventListener('click', function(){saveListElement(document.getElementById("listToEdit"), statementProperty);});
 } 
 
+/**
+ * Save an item list (list of properties)
+ * @param {string} listToEdit - a list ID (html element ID)
+ * @param {string} statementProperty - statement property to edit
+*/
 saveListElement = function(listToEdit, statementProperty) {
 
 	dataVallydette.statement[statementProperty] = [];
@@ -3925,6 +3939,10 @@ saveListElement = function(listToEdit, statementProperty) {
 
 }
 
+/**
+ * Add a new item to a given list (list of properties)
+ * @param {string} statementProperty - statement property to edit
+*/
 addListElement = function(statementProperty) {
 
 	var listItem = document.createElement("li");
@@ -3974,6 +3992,11 @@ addListElement = function(statementProperty) {
 	document.getElementById("name-"+listIndex).focus();
 }
 
+/**
+ * Save the statement form
+ * @param {object} statementForm - the statement form object
+ * @param {string} submitterBtn - the submit button ID (html element ID)
+*/
 saveStatement = function(statementForm, submitterBtn) {
 	
 	var statementResult = runComputation(true);
@@ -4050,6 +4073,12 @@ saveStatement = function(statementForm, submitterBtn) {
 
 }
 
+
+/**
+ * XML statement export
+ * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
+ * @param {string} langStatement - lang of the export (choosen by user from statement wizard form)
+*/
 exportStatement = function(statementResult, langStatement) {
 
 	var md = window.markdownit();
@@ -4300,7 +4329,11 @@ exportStatement = function(statementResult, langStatement) {
 
 }
 
-
+/**
+ * HTML statement export
+ * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
+ * @param {string} langStatement - lang of the export (choosen by user from statement wizard form)
+*/
 exportStatementHTML = function(statementResult, langStatement) {
 	
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
@@ -4766,4 +4799,5 @@ const utils = {
 	
 }  
 
+//default builder
 initVallydetteApp('wcag-android', 'fr');

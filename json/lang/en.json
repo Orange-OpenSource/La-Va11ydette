@@ -85,6 +85,8 @@
 	"description": "description",
 	"solution": "solution",
 	"technical_solution": "technical solution",
+	"reviewIssue": "Review",
+	"stateIssue": "Issue state / project team commentary",
 	"selectIssue": "select a pre-defined issue",
 	"yes": "yes",
 	"no": "no",

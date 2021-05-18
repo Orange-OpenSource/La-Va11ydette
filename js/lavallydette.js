@@ -3140,7 +3140,7 @@ const formatHeaderProject = excel.addStyle ( {border: "none,none,none,thin #3333
 const formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: "Calibri 11 #000000"}); 
 const formatWarning = excel.addStyle ( {font: "Calibri 11 #ff0000 B"}); 
 const pageHeaders = ['Nom', 'URL'];
-const dataHeaders = ['ID', 'Test', 'Titre', 'Détail', 'Solution', 'Solution Technique', 'Suivi Validation', 'Etat / remarque équipe projet'];
+const dataHeaders = ['ID', 'Test', langVallydette.summary, langVallydette.description, langVallydette.solution, langVallydette.technical_solution, langVallydette.reviewIssue, langVallydette.stateIssue];
 
 
 excel.set( {sheet:0,value:"Informations"} );
@@ -3171,7 +3171,7 @@ rowPages++;
 
 excel.set(0,0,rowPages, langVallydette.auditWarning, formatWarning);
 
-
+	
 let setIndex = 1;
 
 for (let i in dataVallydette.checklist.page) {
@@ -3195,7 +3195,7 @@ for (let i in dataVallydette.checklist.page) {
 			
 			rowIssues++;
 			excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
-			
+		
 			if (type === "audit") {
 				
 				if (item.issues.length > 0) {

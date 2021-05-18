@@ -86,6 +86,8 @@
 	"description": "description",
 	"solution": "solution",
 	"technical_solution": "solution technique",
+	"reviewIssue": "Suivi validation",
+	"stateIssue": "Etat / remarque équipe projet",
 	"selectIssue": "sélectionner une anomalie pré-définie",
 	"yes": "oui",
 	"no": "non",

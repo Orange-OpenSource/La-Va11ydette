@@ -52,6 +52,7 @@
 	"downloadJson": "Download in JSON format",
 	"import": "Import",
 	"download": "Download",
+	"selectAchecklist": "Select a checklist",
 	"reset": "Reset",
 	"selectAudit": "Select an audit",
 	"name": "Name", 

@@ -4,8 +4,8 @@
 		"filename": "criteres-wcag-ease",
 		"template": "wcag",
 		"version": "1.5",
-		"name_fr": "Audit de conformité WCAG / WEB",
-		"name_en": "Conformity audit WCAG / WEB",
+		"name-fr": "Audit de conformité WCAG / WEB",
+		"name-en": "Conformity audit WCAG / WEB",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/web/wcag-audit/"
 	},
@@ -13,8 +13,8 @@
 		"filename": "criteres-wcag-android",
 		"template": "wcag",
 		"version": "1.0",
-		"name_fr": "Audit de conformité WCAG / ANDROID",
-		"name_en": "Conformity audit WCAG / ANDROID",
+		"name-fr": "Audit de conformité WCAG / ANDROID",
+		"name-en": "Conformity audit WCAG / ANDROID",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/android/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/android/wcag-audit/"
 	},
@@ -22,8 +22,8 @@
 		"filename": "criteres-wcag-ios",
 		"template": "wcag",
 		"version": "1.0",
-		"name_fr": "Audit de conformité WCAG / IOS",
-		"name_en": "Conformity audit WCAG / IOS",
+		"name-fr": "Audit de conformité WCAG / IOS",
+		"name-en": "Conformity audit WCAG / IOS",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/ios/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/ios/wcag-audit/"
 	},
@@ -31,8 +31,8 @@
 		"filename": "tests-web",
 		"template": "audit",
 		"version": "1.1",
-		"name_fr": "Audit d'évaluation WEB",
-		"name_en": "Evaluation audit WEB",
+		"name-fr": "Audit d'évaluation WEB",
+		"name-en": "Evaluation audit WEB",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/ios/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/ios/wcag-audit/"
 	}

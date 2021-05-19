@@ -191,11 +191,11 @@ function initMainMenu () {
 	
 	htmlMainMenu += '<div class="btn-group">';
 	htmlMainMenu += '<button class="btn btn-link btn-inverse dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-	htmlMainMenu += 'Sélectionner une checklist';
+	htmlMainMenu += langVallydette.selectAchecklist;
 	htmlMainMenu += '</button>';
-	htmlMainMenu += '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">';
+	htmlMainMenu += '<div class="dropdown-menu dropdown-menu-right">';
 	
-	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item" href="./?list=' + c + '&lang=' + globalLang + '">' + checklistVallydette[c]['name_' + globalLang] + '</a>');
+	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item' + (c === currentCriteriaListName ? ' active' : '') + '" href="./?list=' + c + '&lang=' + globalLang + '" ' + (c === currentCriteriaListName ? ' aria-current="page"' : '') + '>' + checklistVallydette[c]['name-' + globalLang] + '</a>');
 	
 	htmlMainMenu += '</div>';
 	htmlMainMenu += '</div>';

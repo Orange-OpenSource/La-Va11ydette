@@ -105,6 +105,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
 			checklistVallydette = JSON.parse(checklistRequest.responseText);
 			createObjectAndRunVallydette();
+			initMainMenu();
 		  } 
 		};
 		
@@ -117,11 +118,10 @@ function initGlobalCriteriaListName(criteriaListName) {
 		issuesVallydette = JSON.parse(issuesRequest.responseText);
 	  } 
 	};
-	issuesRequest.send();		
-		
+	issuesRequest.send();			
 	
 	initLangMenu();
-	
+
 }										 
 
 
@@ -183,7 +183,31 @@ function createObjectAndRunVallydette() {
 }
 
 /**
- *  update the dataVallydette object with the selected checklist object (ie the wcag ease object)
+ *  init the main menu
+ */
+function initMainMenu () {
+	
+	var htmlMainMenu = "";
+	
+	
+	
+	htmlMainMenu += '<div class="btn-group">';
+	htmlMainMenu += '<button class="btn  btn-inverse dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	htmlMainMenu += 'Sélectionner une checklist';
+	htmlMainMenu += '</button>';
+	htmlMainMenu += '<div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">';
+	
+	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item" href="./?list=' + c + '">' + c + '</a>');
+	
+	htmlMainMenu += '</div>';
+	htmlMainMenu += '</div>';
+	
+	document.getElementById("importexport").innerHTML = htmlMainMenu + document.getElementById("importexport").innerHTML;
+	
+}
+
+/**
+ *  update the dataVallydette object with the selected checklist object
  */
 function importCriteriaToVallydetteObj (criteriaVallydette) {
  
@@ -216,7 +240,6 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 		}
 		
 	}); 
-
 	
 	dataVallydette.checklist.lang = globalLang;
 	dataVallydette.checklist.version = globalVersion;

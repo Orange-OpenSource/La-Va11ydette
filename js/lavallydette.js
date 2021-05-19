@@ -189,15 +189,13 @@ function initMainMenu () {
 	
 	var htmlMainMenu = "";
 	
-	
-	
 	htmlMainMenu += '<div class="btn-group">';
-	htmlMainMenu += '<button class="btn  btn-inverse dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	htmlMainMenu += '<button class="btn btn-link btn-inverse dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 	htmlMainMenu += 'Sélectionner une checklist';
 	htmlMainMenu += '</button>';
-	htmlMainMenu += '<div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">';
+	htmlMainMenu += '<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuOffset">';
 	
-	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item" href="./?list=' + c + '">' + c + '</a>');
+	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item" href="./?list=' + c + '&lang=' + globalLang + '">' + checklistVallydette[c]['name_' + globalLang] + '</a>');
 	
 	htmlMainMenu += '</div>';
 	htmlMainMenu += '</div>';

@@ -63,7 +63,7 @@ var htmlMainContent = document.getElementById('mainContent');
 function initVallydetteApp (criteriaListName, lang) {
 	
 	initGlobalLang(lang);
-	
+
 	var langRequest = new XMLHttpRequest();
 	langRequest.open("GET", "json/lang/"+globalLang+".json", true);
 	langRequest.onreadystatechange = function () {
@@ -71,12 +71,9 @@ function initVallydetteApp (criteriaListName, lang) {
 		langVallydette = JSON.parse(langRequest.responseText);
 		localizeHTML();
 		initGlobalCriteriaListName(criteriaListName);
-	
 	  } 
 	};
 	langRequest.send();
-	
-
 	
 }
 
@@ -89,7 +86,6 @@ function initGlobalCriteriaListName(criteriaListName) {
 	
 	const paramString = window.location.search;
 	const urlParams = new URLSearchParams(paramString);
-
 	if (urlParams.has('list')) {
 		currentCriteriaListName = urlParams.get('list');
 	} else if (criteriaListName) {
@@ -98,7 +94,11 @@ function initGlobalCriteriaListName(criteriaListName) {
 		currentCriteriaListName = 'wcag-web';
 	}
 	
-	var checklistRequest = new XMLHttpRequest();
+	if (checklistVallydette) {
+		createObjectAndRunVallydette();
+		initMainMenu();
+	} else {
+		var checklistRequest = new XMLHttpRequest();
 		checklistRequest.open("GET", "json/config-checklist.json", true);
 		checklistRequest.onreadystatechange = function () {
 			
@@ -106,19 +106,22 @@ function initGlobalCriteriaListName(criteriaListName) {
 			checklistVallydette = JSON.parse(checklistRequest.responseText);
 			createObjectAndRunVallydette();
 			initMainMenu();
+			
 		  } 
 		};
 		
 		checklistRequest.send();
-		
+	}
+	
 	var issuesRequest = new XMLHttpRequest();
-	issuesRequest.open("GET", "json/issues-"+globalLang+".json", true);
+	issuesRequest.open("GET", "json/issues-" + globalLang + ".json", true);
 	issuesRequest.onreadystatechange = function () {
 	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
 		issuesVallydette = JSON.parse(issuesRequest.responseText);
 	  } 
 	};
-	issuesRequest.send();			
+	
+	issuesRequest.send();	
 	
 	initLangMenu();
 
@@ -185,7 +188,7 @@ function createObjectAndRunVallydette() {
 /**
  *  init the main menu
  */
-function initMainMenu () {
+function initMainMenu() {
 	
 	var htmlMainMenu = "";
 	
@@ -201,6 +204,50 @@ function initMainMenu () {
 	htmlMainMenu += '</div>';
 	
 	document.getElementById("importexport").innerHTML = htmlMainMenu + document.getElementById("importexport").innerHTML;
+	
+}
+
+/**
+ *  init the homepage
+ */
+function initHomePage() {
+	
+	utils.setPageTitle("Accueil");
+	
+	document.getElementById("main").innerHTML = "";
+	
+	var htmlHomePage = "";
+	
+	htmlHomePage += '<div class="container">';
+	htmlHomePage += '<h1 class="display-2">La v<span class="text-primary bg-transparent">a11y</span>dette d\'Orange</h1>';
+	htmlHomePage += '<p>Orange met à disposition plusieurs grilles d\'évaluations d\'accessiblité au travers de son outil de validation La va11ydette.</p>';
+	
+	htmlHomePage += '<div class="row mb-5">';
+	
+	Object.keys(checklistVallydette).forEach(function(c){
+		
+		htmlHomePage += '<div class="col-sm-6 col-md-4 col-xl-3 mb-3">';
+		htmlHomePage += '<div class="card h-100 border-0">';
+		htmlHomePage += '<div class="card-body">';
+        htmlHomePage += '  <h2 class="card-title bg-transparent">' + checklistVallydette[c]['name-' + globalLang] + '</h2>';
+        htmlHomePage += ' <p class="card-subtitle">' + checklistVallydette[c]['description-' + globalLang] + '</p>';
+		htmlHomePage += ' </div>';
+        htmlHomePage += '<div class="card-footer py-3 border-0">';
+        htmlHomePage += '  <a href="./?list=' + c + '&lang=' + globalLang + '" class="btn btn-info  stretched-link">';
+        htmlHomePage += '    Lancer';
+        htmlHomePage += '   <span class="sr-only"> Boosted components sample</span>';
+        htmlHomePage += '  </a>';
+        htmlHomePage += '</div>';
+		htmlHomePage += '</div>';
+		htmlHomePage += '</div>';
+	});
+	
+	
+
+	htmlHomePage += '</div>';
+	htmlHomePage += '</div>';
+	
+	document.getElementById("main").innerHTML = htmlHomePage;
 	
 }
 
@@ -1000,7 +1047,7 @@ function initLangMenu() {
  *  Useful for import and localstorage. Will load the interface localisation json depending on new object loaded, and run the vallydette app.
  */
 function runLangRequest () {
-	
+
 	var langRequest = new XMLHttpRequest();
 				langRequest.open("GET", "json/lang/"+globalLang+".json", true);
 				langRequest.onreadystatechange = function () {
@@ -4821,4 +4868,4 @@ const utils = {
 }  
 
 //default builder
-initVallydetteApp('wcag-android', 'fr');
+initVallydetteApp('', 'fr');

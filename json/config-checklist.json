@@ -6,6 +6,8 @@
 		"version": "1.5",
 		"name-fr": "Audit de conformité WCAG / WEB",
 		"name-en": "Conformity audit WCAG / WEB",
+		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'une application web aux critères WCAG 2.1 A et AA",
+		"description-en": "Conformity audit WCAG / WEB",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/web/wcag-audit/"
 	},
@@ -15,8 +17,10 @@
 		"version": "1.0",
 		"name-fr": "Audit de conformité WCAG / ANDROID",
 		"name-en": "Conformity audit WCAG / ANDROID",
-		"about-fr": "https://a11y-guidelines.orange.com/fr/android/audit-wcag/",
-		"about-en": "https://a11y-guidelines.orange.com/en/android/wcag-audit/"
+		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'une application Android aux critères WCAG 2.1 A et AA",
+		"description-en": "Conformity audit WCAG / WEB",
+		"about-fr": "https://a11y-guidelines.orange.com/fr/mobile/android/audit-wcag/",
+		"about-en": "https://a11y-guidelines.orange.com/en/mobile/android/wcag-audit/"
 	},
 	"wcag-ios": {
 		"filename": "criteres-wcag-ios",
@@ -24,8 +28,10 @@
 		"version": "1.0",
 		"name-fr": "Audit de conformité WCAG / IOS",
 		"name-en": "Conformity audit WCAG / IOS",
-		"about-fr": "https://a11y-guidelines.orange.com/fr/ios/audit-wcag/",
-		"about-en": "https://a11y-guidelines.orange.com/en/ios/wcag-audit/"
+		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'un application IOS aux critères WCAG 2.1 A et AA",
+		"description-en": "Conformity audit WCAG / WEB",
+		"about-fr": "https://a11y-guidelines.orange.com/fr/mobile/ios/audit-wcag/",
+		"about-en": "https://a11y-guidelines.orange.com/en/mobile/ios/wcag-audit/"
 	},
 	"audit-web": {
 		"filename": "tests-web",
@@ -33,7 +39,9 @@
 		"version": "1.1",
 		"name-fr": "Audit d'évaluation WEB",
 		"name-en": "Evaluation audit WEB",
-		"about-fr": "https://a11y-guidelines.orange.com/fr/ios/audit-wcag/",
-		"about-en": "https://a11y-guidelines.orange.com/en/ios/wcag-audit/"
+		"description-fr": "Grille d'évaluation permettant de vérifier le respect des critères d'accessibilité recommandés pour les projets d'Orange (wcag 2.1 A, AA, mais également quelques critères AAA et bonnes pratiques).",
+		"description-en": "Conformity audit WCAG / WEB",
+		"about-fr": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/",
+		"about-en": "https://a11y-guidelines.orange.com/en/web/wcag-audit/"
 	}
 }

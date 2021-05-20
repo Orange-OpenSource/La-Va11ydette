@@ -45,7 +45,7 @@ var arrayTypeActivated = [];
 var currentCriteriaListName;
 
 var htmlContextualMenuContent = document.getElementById('contextualMenu');
-var htmlFilterContent = document.getElementById('filter');
+var htmlFilterContent;
 var htmlMainContent = document.getElementById('mainContent');
 
 	
@@ -69,6 +69,7 @@ function initVallydetteApp (criteriaListName, lang) {
 	langRequest.onreadystatechange = function () {
 	  if(langRequest.readyState === 4 && langRequest.status === 200) {
 		langVallydette = JSON.parse(langRequest.responseText);
+		initAuditPage();
 		localizeHTML();
 		initGlobalCriteriaListName(criteriaListName);
 	  } 
@@ -91,27 +92,32 @@ function initGlobalCriteriaListName(criteriaListName) {
 	} else if (criteriaListName) {
 		currentCriteriaListName = criteriaListName;
 	} else {
-		currentCriteriaListName = 'wcag-web';
+		//currentCriteriaListName = 'wcag-web';
+		
 	}
 	
-	if (checklistVallydette) {
-		createObjectAndRunVallydette();
-		initMainMenu();
-	} else {
+
 		var checklistRequest = new XMLHttpRequest();
 		checklistRequest.open("GET", "json/config-checklist.json", true);
 		checklistRequest.onreadystatechange = function () {
 			
 		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
 			checklistVallydette = JSON.parse(checklistRequest.responseText);
-			createObjectAndRunVallydette();
+			
+			if (currentCriteriaListName) {
+				createObjectAndRunVallydette();
+
+			} else {
+				initHomePage();
+			}
+			
 			initMainMenu();
 			
 		  } 
 		};
 		
 		checklistRequest.send();
-	}
+	
 	
 	var issuesRequest = new XMLHttpRequest();
 	issuesRequest.open("GET", "json/issues-" + globalLang + ".json", true);
@@ -124,7 +130,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 	issuesRequest.send();	
 	
 	initLangMenu();
-
+	eventHandler();
 }										 
 
 
@@ -212,8 +218,8 @@ function initMainMenu() {
  */
 function initHomePage() {
 	
-	utils.setPageTitle("Accueil");
-	
+	//utils.setPageTitle("Accueil");
+		
 	document.getElementById("main").innerHTML = "";
 	
 	var htmlHomePage = "";
@@ -242,13 +248,78 @@ function initHomePage() {
 		htmlHomePage += '</div>';
 	});
 	
-	
-
 	htmlHomePage += '</div>';
 	htmlHomePage += '</div>';
 	
 	document.getElementById("main").innerHTML = htmlHomePage;
 	
+}
+
+function initAuditPage() {
+	
+	document.getElementById("main").innerHTML = "";
+	
+	var htmlAuditPage = '';
+	htmlAuditPage = `
+	<div class="container d-flex align-items-center mb-3" id="auditInfoManager">
+                <h1 id="checklistName" class="mb-0"></h1>
+                <button class="btn btn-secondary btn-icon ml-auto d-print-none" id="btnChecklistName"
+                        aria-label="" title=""
+                        data-element="checklistName" data-property="checklist.name"
+                        data-toggle="modal" data-target="#modalEdit">
+                    <span class="icon-Pencil" aria-hidden="true"></span>
+                </button>
+				<button class="btn btn-secondary btn-icon ml-2 d-print-none" id="btnLocalStorage"
+                        aria-label="" title=""
+                        data-element="checklistName" data-property="checklist.name"
+                        data-toggle="modal" data-target="#modalLocalStorage">
+                     <span class="icon-Syncronise" aria-hidden="true"></span>
+                </button>
+                <button class="btn btn-secondary ml-2 d-print-none" type="button"
+                        data-toggle="modal" data-target="#modalResult"
+                        id="btnShowResult">
+                </button>
+              
+            </div>
+
+            <div class="o-nav-local bg-white navbar-light my-3 d-print-none" id="pageManager"></div>
+
+            <div class="container">
+                <div class="row align-items-start position-relative">
+                    <div class="col-md-2 sticky-top pt-4 pr-0 col-print-12" id="currentPageManager">
+                        <h1 id="pageName" class="mb-0"></h1>
+                        <hr class="border-light">
+                        <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap w-100 d-print-none">
+                            <button class="btn btn-secondary btn-icon" id="btnPageName"
+                                    aria-label="" title=""
+                                    data-element="pageName" data-secondary-element="pageID-0"
+                                    data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit">
+                                <span class="icon-Pencil" aria-hidden="true"></span>
+                            </button>
+                            <button id="btnDelPage" class="btn btn-secondary btn-icon ml-2"
+                                    aria-label="" title=""
+                                    data-element="pageName" data-property="checklist.page.0"
+                                    data-toggle="modal" data-target="#modalDelete" disabled>
+                                <span class="icon-trash" aria-hidden="true"></span>
+                            </button>
+							<hr class="border-light w-100">	
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-8 bg-white border border-light col-print-12" id="currentPageContent">
+                        <span id="count" class="alert-danger"></span>
+                        <section id="mainContent"></section>
+                    </div>
+                    <aside id="filter" class="col-md-2 sticky-top pt-4 col-print-12 overflow-auto">
+                        
+                    </aside>
+                </div>
+            </div>
+	`
+	
+	document.getElementById("main").innerHTML = htmlAuditPage;
+	
+	htmlFilterContent = document.getElementById('filter');
 }
 
 /**
@@ -292,7 +363,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	
 	utils.setPageTitle();
 	
-	eventHandler();
+	//eventHandler();
 	
 	runVallydetteApp();
 }
@@ -433,6 +504,7 @@ function eventHandler() {
 				currentCriteriaListName = dataVallydette.checklist.referentiel;
 				
 			}
+			initAuditPage();
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
 			checkTheVersion(dataVallydette.checklist.version);
@@ -1057,7 +1129,7 @@ function runLangRequest () {
 					runVallydetteApp();
 			  } 
 			};
-			langRequest.send();
+	langRequest.send();
 	
 }
 
@@ -1312,7 +1384,7 @@ function initComputation() {
 
             var btnShowResult = document.getElementById("btnShowResult");
             btnShowResult.addEventListener('click', function () {
-                runComputation();
+				runComputation();
 				utils.setPageTitle(langVallydette.auditResult);
 				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
@@ -1647,7 +1719,7 @@ function getAAA(currentWcag) {
  *  @param {array} pagesResultsArray - Contains all wcag results by pages.
 */
 function runFinalComputation(pagesResultsArray) {
-  
+
 	/**
 	 * 	Gets the number of non-tested items.
 	 @param {number} nbNT - number of non-tested items.
@@ -1844,6 +1916,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</div>';
 
     htmlMainContent.innerHTML = computationContent;
+
 }
 
 /**

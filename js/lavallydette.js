@@ -89,33 +89,30 @@ function initGlobalCriteriaListName(criteriaListName) {
 		currentCriteriaListName = urlParams.get('list');
 	} else if (criteriaListName) {
 		currentCriteriaListName = criteriaListName;
-	} else {
-		//currentCriteriaListName = 'wcag-web';
-		
-	}
+	} 
 	
 
-		var checklistRequest = new XMLHttpRequest();
-		checklistRequest.open("GET", "json/config-checklist.json", true);
-		checklistRequest.onreadystatechange = function () {
-			
-		  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
-			checklistVallydette = JSON.parse(checklistRequest.responseText);
-			
-			if (currentCriteriaListName) {
-				initAuditPage();
-				createObjectAndRunVallydette();
-				
-			} else {
-				initHomePage();
-			}
-			
-			initMainMenu();
-			localizeHTML();
-		  } 
-		};
+	var checklistRequest = new XMLHttpRequest();
+	checklistRequest.open("GET", "json/config-checklist.json", true);
+	checklistRequest.onreadystatechange = function () {
 		
-		checklistRequest.send();
+	  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
+		checklistVallydette = JSON.parse(checklistRequest.responseText);
+		
+		if (currentCriteriaListName) {
+			initAuditPage();
+			createObjectAndRunVallydette();
+			
+		} else {
+			initHomePage();
+		}
+		
+		initMainMenu();
+		localizeHTML();
+	  } 
+	};
+	
+	checklistRequest.send();
 	
 	
 	var issuesRequest = new XMLHttpRequest();
@@ -217,7 +214,7 @@ function initMainMenu() {
  */
 function initHomePage() {
 	
-	//utils.setPageTitle("Accueil");
+	utils.setPageTitle("Accueil");
 		
 	document.getElementById("main").innerHTML = "";
 	
@@ -343,7 +340,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 		 })
 	}
 
-	dataVallydette.checklist.name = criteriaVallydette.name;
+	dataVallydette.checklist.name = checklistVallydette[currentCriteriaListName]['name-' + globalLang];
 	dataVallydette.checklist.page[0].groups = {};
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
 
@@ -4858,7 +4855,7 @@ const utils = {
 	e.setAttribute("aria-current", "true");
   },
   setPageTitle: function (e) {
-	document.title = e + " — " + dataVallydette.checklist.name + " — " + langVallydette.va11ydette;
+	document.title = e + " — " + ((dataVallydette) ? dataVallydette.checklist.name + " — " : '') + langVallydette.va11ydette;
   },
   listOrParagraph: function (e) {
 	let htmlMarker;

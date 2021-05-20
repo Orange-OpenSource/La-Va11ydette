@@ -510,7 +510,7 @@ function eventHandler() {
 				currentCriteriaListName = dataVallydette.checklist.referentiel;
 				
 			}
-			//initAuditPage();
+			initAuditPage();
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
 			checkTheVersion(dataVallydette.checklist.version);
@@ -3408,190 +3408,191 @@ function initStatementObject() {
 	
 	if (!dataVallydette.statement) {
 		dataVallydette.statement = {};
+	
+		statementObjectProperties.forEach(function(p){
+			if (!dataVallydette.statement.hasOwnProperty(p)) {
+				if (p === "name") {
+					dataVallydette.statement.name = "";
+				}
+				if (p === "lang") {
+					dataVallydette.statement.lang = globalLang;
+					langStatement = langVallydette;
+				}
+				if (p === "status") {
+					dataVallydette.statement.status = "WIP";
+				}
+				if (p === "date") {
+					dataVallydette.statement.date = "";
+				}
+				if (p === "results") {
+					dataVallydette.statement.results = [{
+							"type" : "pagesAverage",
+							"checked" : "true"
+						},
+						{
+							"type" : "criteriaPercentage",
+						}
+						
+					];
+				}
+				if (p === "plan") {
+					dataVallydette.statement.plan = "";
+				}
+				if (p === "userNumber") {
+					dataVallydette.statement.userNumber = 0;
+				}
+				if (p === "userBlockingPoints") {
+					dataVallydette.statement.userBlockingPoints = 0;
+				}
+				if (p === "userTestDescription") {
+					dataVallydette.statement.userTestDescription = "";
+				}
+				if (p === "approval") {
+					dataVallydette.statement.approval = [{
+						"name": langStatement.customerService,
+						"content": ""
+					},{
+						"name": langStatement.internalService,
+						"content": "",
+					}
+					];
+				}
+				if (p === "contact") {
+					dataVallydette.statement.contact = [{
+						"name": "Orange France",
+						"content": ""
+					},
+					{
+						"name": langStatement.orangeGroup,
+						"content": ""
+					}
+					];
+				}
+				if (p === "derogation") {
+					dataVallydette.statement.derogation = "";
+				}
+				if (p === "exemption") {
+					dataVallydette.statement.exemption = "";
+				}
+				if (p === "userTestDescription") {
+					dataVallydette.statement.userTestDescription = langStatement.userTestingContent;
+					
+				}
+				if (p === "technology") {
+					if (currentCriteriaListName === "wcag-web") {
+						dataVallydette.statement.technology = [{
+							"name": "HTML",
+							"version": ""
+						},{
+							"name": "CSS",
+							"version": ""
+						},{
+							"name": "JavaScript",
+							"version": ""
+						}];
+					}
+					if (currentCriteriaListName === "wcag-android") {
+						dataVallydette.statement.technology = [{
+							"name": "Java",
+							"version": ""
+						},{
+							"name": "Kotlin",
+							"version": ""
+						},{
+							"name": "XML",
+							"version": ""
+						}];
+					}
+					if (currentCriteriaListName === "wcag-ios") {
+						dataVallydette.statement.technology = [{
+							"name": "Swift",
+							"version": ""
+						}];
+					}
+				}
+				if (p === "tests") {
+					if (currentCriteriaListName === "wcag-web") {
+						dataVallydette.statement.tests = [{
+						"type": "auto",
+						"name": "aXe",
+						"version": "3.5.1"
+						},
+						{
+						"type": "auto",
+						"name": "Wave",
+						"version": "3.1.3"
+						},
+						{	
+						"type": "functional",
+						"name": "NVDA",
+						"version": "2020.3"
+						},
+						{	
+						"type": "functional",
+						"name":  langStatement.keyboardNavigation,
+						"version": ""
+						}];
+					}
+					if (currentCriteriaListName === "wcag-android") {
+						dataVallydette.statement.tests = [{
+						"type": "auto",
+						"name": "aXe",
+						"version": "0.10.2"
+						},
+						{
+						"type": "auto",
+						"name": "Accessibility Scanner",
+						"version": ""
+						},
+						{	
+						"type": "functional",
+						"name": "Talkback",
+						"version": ""
+						},
+						{	
+						"type": "functional",
+						"name":  "Switch Access",
+						"version": ""
+						}];
+					}
+					if (currentCriteriaListName === "wcag-ios") {
+						dataVallydette.statement.tests = [{
+						"type": "auto",
+						"name": "Accessibility Inspector",
+						"version": ""
+						},
+						{	
+						"type": "functional",
+						"name": "Voice Over",
+						"version": ""
+						}];
+					}
+				}
+				if (p === "environments") {
+					if (currentCriteriaListName === "wcag-web") {
+						dataVallydette.statement.environments = [{
+							"environment": langStatement.environmentEx1
+						},{
+							"environment": langStatement.environmentEx2
+						}];
+					}
+					if (currentCriteriaListName === "wcag-android") {
+						dataVallydette.statement.environments = [{
+							"environment": langStatement.environmentEx3
+						}];
+					}
+					if (currentCriteriaListName === "wcag-ios") {
+						dataVallydette.statement.environments = [{
+							"environment": langStatement.environmentEx4
+						}];
+					}
+				}
+			}
+		});
 	}
 	
-	statementObjectProperties.forEach(function(p){
-		if (!dataVallydette.statement.hasOwnProperty(p)) {
-			if (p === "name") {
-				dataVallydette.statement.name = "";
-			}
-			if (p === "lang") {
-				dataVallydette.statement.lang = globalLang;
-				langStatement = langVallydette;
-			}
-			if (p === "status") {
-				dataVallydette.statement.status = "WIP";
-			}
-			if (p === "date") {
-				dataVallydette.statement.date = "";
-			}
-			if (p === "results") {
-				dataVallydette.statement.results = [{
-						"type" : "pagesAverage",
-						"checked" : "true"
-					},
-					{
-						"type" : "criteriaPercentage",
-					}
-					
-				];
-			}
-			if (p === "plan") {
-				dataVallydette.statement.plan = "";
-			}
-			if (p === "userNumber") {
-				dataVallydette.statement.userNumber = 0;
-			}
-			if (p === "userBlockingPoints") {
-				dataVallydette.statement.userBlockingPoints = 0;
-			}
-			if (p === "userTestDescription") {
-				dataVallydette.statement.userTestDescription = "";
-			}
-			if (p === "approval") {
-				dataVallydette.statement.approval = [{
-					"name": langStatement.customerService,
-					"content": ""
-				},{
-					"name": langStatement.internalService,
-					"content": "",
-				}
-				];
-			}
-			if (p === "contact") {
-				dataVallydette.statement.contact = [{
-					"name": "Orange France",
-					"content": ""
-				},
-				{
-					"name": langStatement.orangeGroup,
-					"content": ""
-				}
-				];
-			}
-			if (p === "derogation") {
-				dataVallydette.statement.derogation = "";
-			}
-			if (p === "exemption") {
-				dataVallydette.statement.exemption = "";
-			}
-			if (p === "userTestDescription") {
-				dataVallydette.statement.userTestDescription = langStatement.userTestingContent;
-				
-			}
-			if (p === "technology") {
-				if (currentCriteriaListName === "wcag-web") {
-					dataVallydette.statement.technology = [{
-						"name": "HTML",
-						"version": ""
-					},{
-						"name": "CSS",
-						"version": ""
-					},{
-						"name": "JavaScript",
-						"version": ""
-					}];
-				}
-				if (currentCriteriaListName === "wcag-android") {
-					dataVallydette.statement.technology = [{
-						"name": "Java",
-						"version": ""
-					},{
-						"name": "Kotlin",
-						"version": ""
-					},{
-						"name": "XML",
-						"version": ""
-					}];
-				}
-				if (currentCriteriaListName === "wcag-ios") {
-					dataVallydette.statement.technology = [{
-						"name": "Swift",
-						"version": ""
-					}];
-				}
-			}
-			if (p === "tests") {
-				if (currentCriteriaListName === "wcag-web") {
-					dataVallydette.statement.tests = [{
-					"type": "auto",
-					"name": "aXe",
-					"version": "3.5.1"
-					},
-					{
-					"type": "auto",
-					"name": "Wave",
-					"version": "3.1.3"
-					},
-					{	
-					"type": "functional",
-					"name": "NVDA",
-					"version": "2020.3"
-					},
-					{	
-					"type": "functional",
-					"name":  langStatement.keyboardNavigation,
-					"version": ""
-					}];
-				}
-				if (currentCriteriaListName === "wcag-android") {
-					dataVallydette.statement.tests = [{
-					"type": "auto",
-					"name": "aXe",
-					"version": "0.10.2"
-					},
-					{
-					"type": "auto",
-					"name": "Accessibility Scanner",
-					"version": ""
-					},
-					{	
-					"type": "functional",
-					"name": "Talkback",
-					"version": ""
-					},
-					{	
-					"type": "functional",
-					"name":  "Switch Access",
-					"version": ""
-					}];
-				}
-				if (currentCriteriaListName === "wcag-ios") {
-					dataVallydette.statement.tests = [{
-					"type": "auto",
-					"name": "Accessibility Inspector",
-					"version": ""
-					},
-					{	
-					"type": "functional",
-					"name": "Voice Over",
-					"version": ""
-					}];
-				}
-			}
-			if (p === "environments") {
-				if (currentCriteriaListName === "wcag-web") {
-					dataVallydette.statement.environments = [{
-						"environment": langStatement.environmentEx1
-					},{
-						"environment": langStatement.environmentEx2
-					}];
-				}
-				if (currentCriteriaListName === "wcag-android") {
-					dataVallydette.statement.environments = [{
-						"environment": langStatement.environmentEx3
-					}];
-				}
-				if (currentCriteriaListName === "wcag-ios") {
-					dataVallydette.statement.environments = [{
-						"environment": langStatement.environmentEx4
-					}];
-				}
-			}
-		}
-	});
-	
 	showStatementWizard();
+	
 }
 
 /**
@@ -3625,8 +3626,7 @@ function showStatementWizard() {
 
 	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "DONE") {
 		
-		//exportStatement(statementResult);
-		//exportStatementHTML(statementResult);
+		initStatementExports(statementResult);
 		
 	} else {
 		
@@ -4182,8 +4182,7 @@ saveStatement = function(statementForm, submitterBtn) {
 				
 				langStatement = langStatementRequest;
 				
-				exportStatementHTML(statementResult, langStatement);
-				exportStatement(statementResult, langStatement);
+				initStatementExports(statementResult);
 	
 			  } 
 			};
@@ -4193,8 +4192,7 @@ saveStatement = function(statementForm, submitterBtn) {
 			
 			langStatement = langVallydette;
 			
-			exportStatementHTML(statementResult, langStatement);
-			exportStatement(statementResult, langStatement);
+			initStatementExports(statementResult);
 			
 		}
 	
@@ -4224,13 +4222,17 @@ saveStatement = function(statementForm, submitterBtn) {
 
 }
 
+function initStatementExports(statementResult){
+	exportStatementHTML(statementResult);
+	exportStatement(statementResult);
+}
 
 /**
  * XML statement export
  * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
- * @param {string} langStatement - lang of the export (choosen by user from statement wizard form)
+ * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
-exportStatement = function(statementResult, langStatement) {
+exportStatement = function(statementResult) {
 
 	var md = window.markdownit();
 
@@ -4483,9 +4485,9 @@ exportStatement = function(statementResult, langStatement) {
 /**
  * HTML statement export
  * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
- * @param {string} langStatement - lang of the export (choosen by user from statement wizard form)
+ * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
-exportStatementHTML = function(statementResult, langStatement) {
+exportStatementHTML = function(statementResult) {
 	
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
 	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);

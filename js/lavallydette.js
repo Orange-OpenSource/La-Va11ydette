@@ -44,9 +44,9 @@ var arrayTypeActivated = [];
 
 var currentCriteriaListName;
 
-var htmlContextualMenuContent = document.getElementById('contextualMenu');
+var htmlContextualMenuContent;
 var htmlFilterContent;
-var htmlMainContent = document.getElementById('mainContent');
+var htmlMainContent;
 
 	
 /**
@@ -69,8 +69,6 @@ function initVallydetteApp (criteriaListName, lang) {
 	langRequest.onreadystatechange = function () {
 	  if(langRequest.readyState === 4 && langRequest.status === 200) {
 		langVallydette = JSON.parse(langRequest.responseText);
-		initAuditPage();
-		localizeHTML();
 		initGlobalCriteriaListName(criteriaListName);
 	  } 
 	};
@@ -105,14 +103,15 @@ function initGlobalCriteriaListName(criteriaListName) {
 			checklistVallydette = JSON.parse(checklistRequest.responseText);
 			
 			if (currentCriteriaListName) {
+				initAuditPage();
 				createObjectAndRunVallydette();
-
+				
 			} else {
 				initHomePage();
 			}
 			
 			initMainMenu();
-			
+			localizeHTML();
 		  } 
 		};
 		
@@ -130,7 +129,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 	issuesRequest.send();	
 	
 	initLangMenu();
-	eventHandler();
+
 }										 
 
 
@@ -253,6 +252,8 @@ function initHomePage() {
 	
 	document.getElementById("main").innerHTML = htmlHomePage;
 	
+	eventHandler();
+	
 }
 
 function initAuditPage() {
@@ -320,6 +321,11 @@ function initAuditPage() {
 	document.getElementById("main").innerHTML = htmlAuditPage;
 	
 	htmlFilterContent = document.getElementById('filter');
+	htmlContextualMenuContent = document.getElementById('contextualMenu');
+	htmlMainContent = document.getElementById('mainContent');
+	
+	eventHandler();
+	
 }
 
 /**
@@ -504,7 +510,7 @@ function eventHandler() {
 				currentCriteriaListName = dataVallydette.checklist.referentiel;
 				
 			}
-			initAuditPage();
+			//initAuditPage();
 			initGlobalLang(dataVallydette.checklist.lang, true);
 			initGlobalTemplate(dataVallydette.checklist.template);
 			checkTheVersion(dataVallydette.checklist.version);
@@ -621,7 +627,7 @@ function btnActionPageEventHandler () {
  */
 runTestListMarkup = function (currentRefTests) {
 
-	let elrefTests = document.getElementById('mainContent');
+	//let htmlMainContent = document.getElementById('mainContent');
 	let htmlrefTests = '';
 	let headingTheme = '';
 	let headingCriterium = '';
@@ -944,7 +950,7 @@ runTestListMarkup = function (currentRefTests) {
 		}
 	}
 
-	currentRefTests.length === 0 ? elrefTests.innerHTML = '<div class="alert alert-warning">' + langVallydette.warningNoResult + '</div>' : elrefTests.innerHTML = htmlrefTests;
+	currentRefTests.length === 0 ? htmlMainContent.innerHTML = '<div class="alert alert-warning">' + langVallydette.warningNoResult + '</div>' : htmlMainContent.innerHTML = htmlrefTests;
 
 	/** event handler */
 	for (let i in currentRefTests) {
@@ -1091,26 +1097,30 @@ function initGlobalLang(lang, fromImport) {
  *  Init the current item in the menu lang
  */
 function initLangMenu() {
-	if (globalLang === "fr") {
-		var linkFr = document.getElementById("link-fr");
-		linkFr.setAttribute('aria-current', true);
+	
+	var linkFr = document.getElementById("link-fr");
+	var linkEn = document.getElementById("link-en");
+	
+	if (currentCriteriaListName) {
 		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
+		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
+	} else {
+		linkFr.setAttribute('href', './?lang=fr');
+		linkEn.setAttribute('href', './?lang=en');
+	}
+	
+	if (globalLang === "fr") {
+		linkFr.setAttribute('aria-current', true);	
 		linkFr.classList.add("active");
 		
-		var linkEn = document.getElementById("link-en");
 		linkEn.removeAttribute('aria-current');
-		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 		linkEn.classList.remove("active");
 		
 	} else {
-		var linkEn = document.getElementById("link-en");
 		linkEn.setAttribute('aria-current', true);
-		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 		linkEn.classList.add("active");
 		
-		var linkFr = document.getElementById("link-fr");
 		linkFr.removeAttribute('aria-current');
-		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkFr.classList.remove("active");
 	}
 }
@@ -4802,8 +4812,9 @@ exportStatementHTML = function(statementResult, langStatement) {
  */
 const utils = {
   reqError: function (err) {
-	let elrefTests = document.getElementById('mainContent');
-    elrefTests.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only" lang="en">Warning</span></span>' + langVallydette.errorJson + '</div>';
+	//let htmlMainContent = document.getElementById('mainContent');
+	
+    htmlMainContent.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only" lang="en">Warning</span></span>' + langVallydette.errorJson + '</div>';
   },
   formatHeading: function (str) {
     return str.toLowerCase()

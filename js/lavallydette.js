@@ -214,7 +214,7 @@ function initMainMenu() {
  */
 function initHomePage() {
 	
-	utils.setPageTitle("Accueil");
+	utils.setPageTitle(langVallydette.homepage);
 		
 	document.getElementById("main").innerHTML = "";
 	

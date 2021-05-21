@@ -3405,6 +3405,7 @@ function initStatementObject() {
 	
 	if (!dataVallydette.statement) {
 		dataVallydette.statement = {};
+	}
 	
 		statementObjectProperties.forEach(function(p){
 			if (!dataVallydette.statement.hasOwnProperty(p)) {
@@ -3512,7 +3513,7 @@ function initStatementObject() {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
 						"name": "aXe",
-						"version": "3.5.1"
+						"version": "4.9.3"
 						},
 						{
 						"type": "auto",
@@ -3522,7 +3523,7 @@ function initStatementObject() {
 						{	
 						"type": "functional",
 						"name": "NVDA",
-						"version": "2020.3"
+						"version": "2020.4"
 						},
 						{	
 						"type": "functional",
@@ -3586,7 +3587,7 @@ function initStatementObject() {
 				}
 			}
 		});
-	}
+	
 	
 	showStatementWizard();
 	

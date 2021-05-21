@@ -3407,14 +3407,35 @@ function initStatementObject() {
 		dataVallydette.statement = {};
 	}
 	
+	if (!dataVallydette.statement.lang) {
+		
+		dataVallydette.statement.lang = globalLang;
+		langStatement = langVallydette;
+		
+	} else if (dataVallydette.statement.lang !== globalLang) {
+				
+		var langRequest = new XMLHttpRequest();
+		langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
+		langRequest.onreadystatechange = function () {
+		  if(langRequest.readyState === 4 && langRequest.status === 200) {
+			langStatementRequest = JSON.parse(langRequest.responseText);
+			
+			langStatement = langStatementRequest;
+			
+		  } 
+		};
+		langRequest.send();
+		
+	} else {
+		
+		langStatement = langVallydette;
+				
+	}
+	
 		statementObjectProperties.forEach(function(p){
 			if (!dataVallydette.statement.hasOwnProperty(p)) {
 				if (p === "name") {
 					dataVallydette.statement.name = "";
-				}
-				if (p === "lang") {
-					dataVallydette.statement.lang = globalLang;
-					langStatement = langVallydette;
 				}
 				if (p === "status") {
 					dataVallydette.statement.status = "WIP";
@@ -3926,6 +3947,9 @@ function showStatementWizard() {
 		
 }
 
+/**
+ * Used to update statement properties state
+*/
 radioIsChecked = function (statementProperty, propertyIndex) {
 	
 	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
@@ -4220,6 +4244,9 @@ saveStatement = function(statementForm, submitterBtn) {
 
 }
 
+/**
+ * Run the statement exports functions. Useful each time an update is made into the statement properties.
+*/
 function initStatementExports(statementResult){
 	exportStatementHTML(statementResult);
 	exportStatement(statementResult);

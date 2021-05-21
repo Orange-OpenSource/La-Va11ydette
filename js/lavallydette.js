@@ -1495,9 +1495,13 @@ function runComputation(obj) {
 							 }
 
 							if (pagesResults[i].items[k].resultat) {
+								
 								if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
 									pagesResults[i].items[k].resultat = true;
+									
 									if (dataWCAG.items[k].resultat !== false) {
+										console.log(dataWCAG.items[k].resultat);
+										
 										dataWCAG.items[k].resultat = true;
 									}
 									
@@ -1511,12 +1515,12 @@ function runComputation(obj) {
 								} else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
 									pagesResults[i].items[k].resultat = "na";
 									
-									if (dataWCAG.items[k].resultat !== false || dataWCAG.items[k].resultat !== true ) {
+									if (dataWCAG.items[k].resultat !== false && dataWCAG.items[k].resultat !== true ) {
 										dataWCAG.items[k].resultat = "na";
 									}
 									
 									break;	
-								}
+								} 
 
 							}	
 						}
@@ -1529,9 +1533,12 @@ function runComputation(obj) {
 			
         }
     }
+	console.log(pagesResults);
 	
 	pagesResults = pagesResultsComputation(pagesResults);
 	dataWCAGComputation();
+
+	
 	
 	if (obj) {
 		return pagesResults;
@@ -1692,6 +1699,7 @@ function dataWCAGComputation() {
 			dataWCAG.resultAA = Math.round((dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100);
 		}
 	
+	console.log(dataWCAG);
 }
 
 /**

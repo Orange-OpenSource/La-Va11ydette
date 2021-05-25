@@ -998,7 +998,7 @@ runTestListMarkup = function (currentRefTests) {
  */
 
 /**
- * Add or remove a test from the autocheckIDs array (depending if the checkbox is checked or not
+ * Add or remove a test from the autocheckIDs array (depending if the checkbox is checked or not)
  * @param {object} e - autocheck input checkbox
  * @param {string} testIDorigin - test ID property from dataVa11ydette
  * @param {string} testID - current test ID property from dataVa11ydette
@@ -1035,7 +1035,7 @@ function getTestResult(pageId, testIDorigin) {
 }
 
 /**
- * Get if a tests is part of the autocheckIDs array depending of his IDorigin property
+ * Get if a test is part of the autocheckIDs array depending of his IDorigin property
  * @param {string} currentIDorigin - test ID property from dataVa11ydette of the current test
  */
 function getIfAutoCheck(currentIDorigin) {
@@ -2021,7 +2021,7 @@ initPagination = function (pages) {
 addPage = function () {
 	
 	/**  Duplicate the page object and push it to the dataVallydette as a new page. */
-	var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[currentPage]));
+	var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[0]));
 	dataVallydette.checklist.page.push(arr2);
 
 	indexPage = dataVallydette.checklist.page.length - 1;

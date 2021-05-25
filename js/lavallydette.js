@@ -214,6 +214,8 @@ function initMainMenu() {
  */
 function initHomePage() {
 	
+	localizeHTML();
+	
 	utils.setPageTitle(langVallydette.homepage);
 		
 	document.getElementById("main").innerHTML = "";
@@ -221,8 +223,8 @@ function initHomePage() {
 	var htmlHomePage = "";
 	
 	htmlHomePage += '<div class="container">';
-	htmlHomePage += '<h1 class="display-2">La v<span class="text-primary bg-transparent">a11y</span>dette d\'Orange</h1>';
-	htmlHomePage += '<p>Orange met à disposition plusieurs grilles d\'évaluations d\'accessiblité au travers de son outil de validation La va11ydette.</p>';
+	htmlHomePage += '<h1 class="display-2">' + langVallydette.va11ydetteOrange +  '</h1>';
+	htmlHomePage += '<p>' + langVallydette.homepageDescription +  '</p>';
 	
 	htmlHomePage += '<div class="row mb-5">';
 	
@@ -236,8 +238,8 @@ function initHomePage() {
 		htmlHomePage += ' </div>';
         htmlHomePage += '<div class="card-footer py-3 border-0">';
         htmlHomePage += '  <a href="./?list=' + c + '&lang=' + globalLang + '" class="btn btn-info  stretched-link">';
-        htmlHomePage += '    Lancer';
-        htmlHomePage += '   <span class="sr-only"> Boosted components sample</span>';
+        htmlHomePage +=  langVallydette.run;
+        htmlHomePage += '   <span class="sr-only">' + checklistVallydette[c]['name-' + globalLang] + '</span>';
         htmlHomePage += '  </a>';
         htmlHomePage += '</div>';
 		htmlHomePage += '</div>';

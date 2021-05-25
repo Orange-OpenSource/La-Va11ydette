@@ -3307,7 +3307,7 @@ excel.set(0,0,2,"");
 
 for (var j=0; j < pageHeaders.length; j++){    
 		
-			excel.set(0,j,3,pageHeaders[j], formatHeader);    
+	excel.set(0,j,3,pageHeaders[j], formatHeader);    
 			            
 }	
 
@@ -3372,13 +3372,17 @@ for (let i in dataVallydette.checklist.page) {
 				
 			} else {
 
+					if (!item.commentaire) {
+						item.commentaire = langVallydette.noCommentary;
+					}
+
 					excel.set(setIndex,1,rowIssues, item.title);
 					excel.set(setIndex,2,rowIssues, '');
 					excel.set(setIndex,3,rowIssues, item.commentaire);
 					excel.set(setIndex,4,rowIssues, '');
 					excel.set(setIndex,5,rowIssues, '');
 
-			}
+			} 
 			
 		});
 		

@@ -172,6 +172,7 @@
 	"nonCompliant": "Non-conformes",
 	"notApplicable": "Non-applicables",
 	"notTested": "non-testés",
+	"noCommentary": "Pas de commentaire",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
 		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",

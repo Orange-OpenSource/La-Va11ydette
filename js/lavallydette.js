@@ -612,11 +612,10 @@ function btnActionPageEventHandler () {
 		setValue(currentBtnPageName.dataset.element, currentBtnPageName.dataset.property, currentBtnPageName.dataset.secondaryElement)
 	}, false);
 
-	
 	currentBtnDelPage.addEventListener('click', function () {
-		setDeletePage(currentBtnPageName.dataset.element)
+		setDeletePage(currentBtnPageName.dataset.property)
 	}, false);
-			
+
 }
 
 
@@ -2199,7 +2198,7 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
-	htmlModal += langVallydette.deletePageName + getPropertyValue(targetElement) + ' ?';
+	htmlModal += '<p>' + langVallydette.deletePageName + ' <strong>' + getPropertyValue(targetElement) + '</strong> ?</p>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';

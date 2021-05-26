@@ -1502,8 +1502,7 @@ function runComputation(obj) {
 									pagesResults[i].items[k].resultat = true;
 									
 									if (dataWCAG.items[k].resultat !== false) {
-										console.log(dataWCAG.items[k].resultat);
-										
+
 										dataWCAG.items[k].resultat = true;
 									}
 									
@@ -1535,7 +1534,6 @@ function runComputation(obj) {
 			
         }
     }
-	console.log(pagesResults);
 	
 	pagesResults = pagesResultsComputation(pagesResults);
 	dataWCAGComputation();
@@ -1701,7 +1699,6 @@ function dataWCAGComputation() {
 			dataWCAG.resultAA = Math.round((dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100);
 		}
 	
-	console.log(dataWCAG);
 }
 
 /**
@@ -1903,7 +1900,7 @@ function runFinalComputation(pagesResultsArray) {
 				for (let i in listNonConformity) {
 				
 					computationContent += '<ul>';
-					computationContent += '<li><strong>' + langVallydette.auditTxt9 + ' ' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', niveau ' + listNonConformity[i].level + '</strong>';
+					computationContent += '<li><strong>' + langVallydette.auditTxt9 + ' ' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', ' + langVallydette.level + ' ' + listNonConformity[i].level + '</strong>';
 				
 					/** Remove undefined values */
 					listNonConformity[i].comment = listNonConformity[i].comment.filter(x => x);

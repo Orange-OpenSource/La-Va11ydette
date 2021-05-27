@@ -333,7 +333,7 @@ function initAuditPage() {
 function importCriteriaToVallydetteObj (criteriaVallydette) {
  
 	if (checklistVallydette[currentCriteriaListName].template === 'audit'){
-		criteriaVallydette.items.forEach(function (criteria, key) {
+		criteriaVallydette.forEach(function (criteria, key) {
 			 criteria.ID = "testWebID-"+key;
 			 criteria.IDorigin = "testWebID-"+key;
 			 criteria.resultatTest = "nt";
@@ -344,7 +344,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 
 	dataVallydette.checklist.name = checklistVallydette[currentCriteriaListName]['name-' + globalLang];
 	dataVallydette.checklist.page[0].groups = {};
-    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette.items);
+    dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette);
 
 	dataVallydette.checklist.page[0].items.forEach(function (test) {
 

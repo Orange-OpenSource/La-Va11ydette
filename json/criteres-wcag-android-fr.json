@@ -1,6 +1,4 @@
-﻿{
-	"name": "Audit de conformité WCAG / ANDROID",
-	"items":[{
+﻿[{
 		"themes": "Écran de saisie",
 		"title": "Chaque champ de saisie possède-t-il une étiquette ?",
 		"ID": "testID-001",
@@ -562,4 +560,4 @@
 		"group": "Multimédia",		
 		"resultatTest": "nt"
 	}
-]}
+]

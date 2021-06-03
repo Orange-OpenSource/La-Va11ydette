@@ -517,9 +517,145 @@
 	],
 	"testWebID-45": [
 		{
-			"title" : "Présence de textes tronqués ou de chevauchement",
-			"detail" : "Des contenus sont tronqués ou se chevauchent après application de propriétés d'aération du texte.",
-			"solution" : "- appliquer des unités relatives (em, rem, %) aux propriétés d'espacement de textes \n- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"",
+			"title" : "Composants répétés sur plusieurs pages, dans des ordres différents",
+			"detail" : "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
+			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaitre de manière constante, dans le même ordre relatif.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-46": [
+		{
+			"title" : "La surface cliquable de certains éléments interactifs n'est pas suffisante.",
+			"detail" : "La surface cliquable des éléments interactifs doit dépasser 44 par 44 CSS pixels.",
+			"solution" : "- agrandir la surface cliquable pour atteindre au moins 44 par 44 CSS pixels\n- proposer un mécanisme permettant d'agrandir la taille sans avoir recours au zoom",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-47": [
+		{
+			"title" : "Présence de champs non-labellisés",
+			"detail" : "Tous les éléments de formulaire doivent posséder un label.",
+			"solution" : "Appliquer une des solutions ci-dessous :\n- ajout d'un élément \"label\", en masquage accessible si nécessaire, lié de manière programmatique au champ\n- utilisation d'un aria-labelledby pointant vers une information pertinente pour comprendre la nature du champ \n- ajout d'un attribut aria-label\n ajout d'un attribut title",
+			"technicalSolution" : "Exemples :\n- <label for=\"idInput\">[...]</label> <input id=\"idInput\" type=\"[...]\">\n- <h2 id=\"idHeading\">[...]</h2> <input aria-labelledby=\"idHeading\" type=\"[...]\">\n-  <input aria-label=\"[...]\" type=\"[...]\">\n- <input title=\"[...]\" type=\"[...]\">"
+		}
+	],
+	"testWebID-48": [
+		{
+			"title" : "Présence de champs non-pertinents",
+			"detail" : "Tous les éléments de formulaire doivent posséder un label pertinent, permettant de comprendre la nature du champ.",
+			"solution" : "Compléter le libellé texte du label.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-49": [
+		{
+			"title" : "Absence de format de données",
+			"detail" : "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
+			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemeple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+		},{
+			"title" : "Le format de données n'est pas lié de manière programmatique au champ",
+			"detail" : "Dans le cas le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran).",
+			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemeple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+		}
+	],
+	"testWebID-50": [
+		{
+			"title" : "Champ obligatoire non identifiable visuellement",
+			"detail" : "L'identification visuelle du champ obligatoire ne repose pas uniquement sur la couleur.",
+			"solution" : "Ajouter une information visuelle ne reposant pas uniquement sur la couleur, exemple : astérisque, icône, etc...",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Champ obligatoire non identifiable ne manière programmatique",
+			"detail" : "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex: lecteur d'écran), si elle n'est pas donner de manière programmatique.",
+			"solution" : "Utiliser une des techniques ci-dessous :\n- information visuelle intégrée dans le label\n- ajout d'un attribut \"required\" sur l'input \n- ajout d'un attribut \"aria-required\" sur l'input",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-51": [
+		{
+			"title" : "Présence de champs non-groupés",
+			"detail" : "Lorque nécessaire les champs ne même natures doivent être groupés",
+			"solution" : "- appliquer un \"fieldset\" complété par un élément \"legend\"\n- appliquer un role \"group\" sur l'élément parent encapsulant les champs, et compléter par une légende basée sur un aria-labelledby",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-52": [
+		{
+			"title" : "Présence de messages d'erreurs non-pertinents",
+			"detail" : "Des messages d'erreurs sont absents ou non pertinents.",
+			"solution" : "Les messages d'erreurs doivent permettre aux utilisateurs de corriger facilement leurs erreurs de saisie.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-53": [
+		{
+			"title" : "Des messages d'erreurs ne sont pas perçus par les utilisateurs",
+			"detail" : "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quelques-soit leur équipement.",
+			"solution" : "Appliquer une des techniques ci-dessous :\n- Le message d'erreur est présent avant le formulaire.\nLe message liste les champs en erreur.\nLe focus est positionné sur le message d'erreur.\nDes ancres permettent à l'utilisateur de se positionner sur les champs en erreurs.\n-Les messages d'erreurs sont ajoutés dans les labels des champs.\n- Les messages d'erreurs ne sont pas intégrés dans les labels, mais un mécanisme est présent afin de lier les champs et les erreurs de manière programmatique : voir aria-describedby ",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-54": [
+		{
+			"title" : "Des données importantes sont soumises sans possibilité d'être annuler ou vérifier",
+			"detail" : "Les utilisateurs doivent avoir le contrôle lors de la soumission de données importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen...).",
+			"solution" : "Appliquer une des solutions ci-dessous :\n- L'action peut être annulée\n- une étape de confirmation permettant la vérification ou la modification est présente avant validation ",
+			"technicalSolution" : "Exemple :\nAprès soumission du formulaire, un message de confirmation apparaît dans une popin.\nLe message reprend les données saisies par l'utilisateur, et donne la possibilité de valider ou annuler.\nSi l'utilisateur annule, il est redirigé vers le formulaire, ses saisies sont toujours présentes dans les champs, avec la possibilité de les modifier."
+		}
+	],
+	"testWebID-55": [
+		{
+			"title" : "Absence d'attribut autocomplete pour des champs présentant des données personnelles",
+			"detail" : "Tout champ permettant de collecter des données spécifiques sur l'utilisateur, doit posséder un attribut \"autocomplete\".",
+			"solution" : "Ajouter un attribut \"autocomplete\" sur l'input. La valeur de l'autocomplete dépend de la nature de l'information collectée dans le champ.",
+			"technicalSolution" : "exemples : autocomplete=\"username\", autocomplete=\"new-password\", autocomplete=\"postal-code\", etc... "
+		}
+	],
+	"testWebID-56": [
+		{
+			"title" : "Le zoom n'est pas autorisé",
+			"detail" : "L'agrandissement du texte à 200% doit être possible.",
+			"solution" : "Si une balise \"<meta name= 'viewport'>\" est présente :\n- le paramètre user-scalable='no' n’est pas présent\n- et le paramètre maximum-scale n’est pas inférieur à 2 ",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-57": [
+		{
+			"title" : "Une action ne peut être annulée",
+			"detail" : "L'action ne peut être annulée car déclenchée sur l'évènement DOWN.",
+			"solution" : "- déclencher l'action sur l'évènement UP\n- pour des composants complexes (ex : drag n'drop), l'action sur le UP est complétée par une boîte de dialogue donnant la possibilité aux utilisateurs d'annuler leur action.",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-58": [
+		{
+			"title" : "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
+			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur un seul pointeur.",
+			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-59": [
+		{
+			"title" : "Perte d'information lors d'une consultation en mode portrait ou paysage",
+			"detail" : "Le contenu et les fonctionnalités doivent être disponibles dans les 2 orientations sans pertes d'informations.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testWebID-60": [
+		{
+			"title" : "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
+			"detail" : "Les états coché/décochés, plié/déplié, etc... ne sont pas percue depuis un lecteur d'écran",
+			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected, etc...)",
+			"technicalSolution" : ""
+		}, {
+			"title" : "Un composant interactifs n'est pas utilisable depuis un lecteur d'écran",
+			"detail" : "Les fonctionnalités d'un composant ne pas utilisables depuis un lecteur d'écran",
+			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
 			"technicalSolution" : ""
 		}
 	]

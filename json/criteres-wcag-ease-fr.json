@@ -257,7 +257,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier qu'une alternative est fournie par un <code>title</code> positionné sur le contenu ou par le contenu adjacent</li><li>vérifier que l'alternative est pertinente</li></ul>",
+		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte <br>exemples : <ul><li>utilisation d’une balise <code>abbr</code> avec l'attribut <code>title</code></li><li>utilisation d’un contenu adjacent </li></ul></li><li>vérifier que l'alternative est pertinente</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"resultatTest": "nt"
 	},{
@@ -331,13 +331,13 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
-		"title": "Le nom accessible des composants d'interface contient-il au minimum le libellé visible à l'écran (si possible au début)&nbsp;?",
+		"title": "Le nom accessible des composants d'interface contient-il au minimum le libellé visible à l'écran&nbsp;?",
 		"ID": "testID-011",
 		"IDorigin": "testID-011",
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent (en premier, si possible) dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/web/a11y-name.html' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenête)'>Le nom accessible en HTML</a></p>\n<p>Non applicable, si aucun composant d'interface n'a de libellé visible (icônes sans texte, par exemple)</p>",
+		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/web/a11y-name.html' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenête)'>Le nom accessible en HTML</a></p>\n<p>Non applicable, si aucun composant d'interface n'a de libellé texte visible (icônes sans texte, par exemple)</p>",
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre un <code>aria-label</code> «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"resultatTest": "nt"

@@ -259,7 +259,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>check that there is a text alternative provided by a <code>title</code> that is either positioned on the content or provided in text adjacent to the content</li><li>check that the alternative is appropriate</li></ul>",
+		"verifier": "<ul><li>check that there is a text alternative provided<br/>examples :<ul><li>use of an <code>abbr</code> tag with the <code>title</code> attribute</li><li>use of adjacent content</li></ul></li><li>check that the alternative is appropriate</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"resultatTest": "nt"
 	},{
@@ -333,13 +333,13 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",
-		"title": "Does the accessible name of the interface components contain at a minimum the label visible on the screen (if possible at the start of the accessible name)?",
+		"title": "Does the accessible name of the interface components contain at a minimum the label visible on the screen?",
 		"ID": "testID-011",
 		"IDorigin": "testID-011",
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present (at the start, if possible) in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/web/a11y-name.html' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a></p>\n<p>Not applicable, if no interface component has a visible label (icon without text, for example)</p>",
+		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/web/a11y-name.html' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a>)</p>\n<p>Not applicable, if no interface component has a visible text label (icon without text, for example)</p>",
 		"complement": "<p>For example: for a  'start ' link, use an <code>aria-label</code>  'start playing', but not  'commence playing'</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"resultatTest": "nt"

@@ -3355,8 +3355,6 @@ for (let i in dataVallydette.checklist.page) {
 		
 		const listNonConformity = dataVallydette.checklist.page[i].items.filter(item => item.resultatTest === "ko").map(function(item) {
 			
-			
-		
 			if (type === "audit") {
 				
 				if (item.issues.length > 0) {
@@ -3384,6 +3382,9 @@ for (let i in dataVallydette.checklist.page) {
 				
 			} else {
 
+					rowIssues++;
+					excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+						
 					if (!item.commentaire) {
 						item.commentaire = langVallydette.noCommentary;
 					}

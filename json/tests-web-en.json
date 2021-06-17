@@ -777,13 +777,13 @@
       "Manual test"
     ],
     "tests": [
-      "Identify if shortcuts using a printable character are available in the application"
+      "Identify if shortcuts using a printable character (upper-case and lower-case letter, punctuation, number, or symbol characters) are available in the application"
     ],
     "verifier": [
-      "Check that keyboard shortcuts based on a non-printable character meet one of the following conditions: <ul><li>shortcuts can be disabled by the user</li><li>shortcuts can be modified, with the possibility of adding one or more characters non-printable (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, etc.) to the combination</li><li>shortcuts are only active when focusing on the element</li></ul>"
+      "Check that keyboard shortcuts based on a printable character meet one of the following conditions: <ul><li>shortcuts can be disabled by the user</li><li>shortcuts can be modified, with the possibility of adding one or more characters non-printable (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, etc.) to the combination</li><li>shortcuts are only active when focusing on the element</li></ul>"
     ],
     "resultat": [
-      "Non-printable character key shortcuts can be activated on focus only, disabled or reprogrammed."
+      "Printable character key shortcuts can be activated on focus only, disabled or reprogrammed."
     ],
     "exception": "Not concerned : 'accesskey' and keyboard shortcuts using a modification key.",
     "raccourcis":"",
@@ -793,7 +793,7 @@
   },
   {
     "themes": "Common navigation",
-    "title": "Provide multiple access and a location",
+    "title": "Provide multiple access and a location / multiple access",
     "type": [
       "Manual test"
     ],
@@ -802,10 +802,10 @@
       "Identify navigation and search elements"
     ],
     "verifier": [
-      "Verify that at least 2 of the mechanisms listed below are present on the page, to allow a user to be located within a content tree structure: <ul><li>provide a main navigation menu, locating the current position of the user</li><li>provide a table of contents</li><li>provide a sitemap</li><li>provide a search mechanism</li><li>provide a link list to navigate through the entire site</li>"
+      "Verify that at least 2 of the mechanisms listed below are present on the page, to allow a user to be located within a content tree structure: <ul><li>provide a main navigation menu</li><li>provide a table of contents</li><li>provide a sitemap</li><li>provide a search mechanism</li><li>provide a link list to navigate through the entire site</li>"
     ],
     "resultat": [
-      "2 of the following mechanisms are present on the page: <ul><li>provide a main navigation menu, presenting the current position of the user (be careful, the information must not be based on color only)</li><li>provide a breadcrumb trail</li><li>provide a sitemap, table of contents</li><li>provide a search mechanism</li><li>provide a link list to navigate through the entire site (in the footer)</li></ul>"
+      "2 of the following mechanisms are present on the page: <ul><li>provide a main navigation menu</li><li>provide a sitemap, table of contents</li><li>provide a search mechanism</li><li>provide a link list to navigate through the entire site (in the footer)</li></ul>"
     ],
     "exception":"",
     "raccourcis":"",
@@ -821,7 +821,7 @@
     ],
     "tests": [
       "Browse the page",
-      "Identify navigation and search elements"
+      "Identify navigation elements (main  menu, breadcrumb trail,...)"
     ],
     "verifier": [
       "Verify that the user's current location within a site is visually and programmatically given"
@@ -1072,13 +1072,13 @@
       "Identify interactive elements"
     ],
     "verifier": [
-      "Check that the size of these elements exceeds 44px by 44px"
+      "Check that the size of the target for these elements exceeds 44px by 44px"
     ],
     "resultat": [
-      "All interactive elements have dimensions that exceed 44px by 44px"
+      "The size of the target of all of these interactive elements exceed 44px by 44px"
     ],
-    "exception": "<ul><li>Anchor / internal link to the page</li><li>Link within a paragraph</li><li>Link within a sentence</li><li>Link within a footnote (at the end of a paragraph or sentence)</li><li>A clickable icon within a sentence or paragraph</li></ul>",
-    "raccourcis":"",
+    "exception": "<ul><li>Anchor / internal link to the page</li><li>Link within a paragraph</li><li>Link within a sentence</li><li>Link within a footnote (at the end of a paragraph or sentence)</li><li>A clickable icon within a sentence or paragraph</li><li>If the browser default style is used</li><li>If the use of a reduced area is justified by the context of the application (e.g. serious game)</li></ul>",
+    "raccourcis": "You can use this <a href=\"https://adrianroselli.com/2019/06/target-size-and-2-5-5.html#Update04 \" title=\"Bookmarklet Target Size (new window)\" target=\"_blank\">bookmarklet</a> to quickly assess the dimensions of a click zone.",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
     "profils": ["Accessibility Expert"],
     "wcag": ["2.5.5"]
@@ -1137,7 +1137,7 @@
       "Identify each forms"
     ],
     "verifier": [
-      "Check that the label text indicates the data format when necessary."
+      "Check that the data format is present in the accessible name or the accessible description (aria-describedby)."
     ],
     "resultat": [
       "Presence of text specifying the input formats"

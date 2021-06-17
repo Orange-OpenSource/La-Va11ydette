@@ -777,13 +777,13 @@
       "Test manuel"
     ],
     "tests": [
-      "Identifier si des raccourcis utilisant un caractère imprimable sont proposés par l'application"
+      "Identifier si des raccourcis utilisant un caractère imprimable (lettre minuscule ou majuscule, la ponctuation, les chiffres ou les symboles) sont proposés par l'application"
     ],
     "verifier": [
       "Vérifier que les raccourcis clavier utilisant un caractère imprimable répondent à une des conditions ci-dessous : <ul><li>les raccourcis peuvent être désactivés par l'utilisateur</li><li>les raccourcis peuvent être modifiés, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, etc.) à la combinaison</li><li>les raccourcis ne sont actifs qu'à la prise de focus sur l'élément</li></ul>"
 	],
     "resultat": [
-      "Les raccourcis reposant sur un caractère non-imprimable peuvent être activés qu'à la prise de focus, désactivés ou reprogrammés"
+      "Les raccourcis reposant sur un caractère imprimable peuvent être activés qu'à la prise de focus, désactivés ou reprogrammés"
     ],
     "exception": "Ne sont pas concernés, les 'accesskey' et les raccourcis clavier utilisant une touche de modification.",
     "raccourcis": "",
@@ -793,7 +793,7 @@
   },
   {
     "themes": "Navigation générale",
-    "title": "Fournir des accès multiples et une localisation",
+    "title": "Fournir des accès multiples et une localisation / accès multiples",
     "type": [
       "Test manuel"
     ],
@@ -802,10 +802,10 @@
       "Identifier les éléments de navigation et de recherche"
     ],
     "verifier": [
-		"Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site : <ul><li>fournir un menu de navigation principal, présentant la position courante de l'utilisateur</li><li>fournir une table des matières</li><li>fournir un sitemap</li><li>fournir un mécanisme de recherche</li><li>fournir une liste de lien permettant de naviguer à travers tout le site</li></ul>"
+		"Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site : <ul><li>fournir un menu de navigation principal</li><li>fournir une table des matières</li><li>fournir un sitemap</li><li>fournir un mécanisme de recherche</li><li>fournir une liste de lien permettant de naviguer à travers tout le site</li></ul>"
 	],
     "resultat": [
-		"2 des mécanismes ci-dessous sont présents sur la page : <ul><li>fournir un menu de navigation principal, présentant la position courante de l'utilisateur (attention l'information ne doit reposer uniquement sur la couleur)</li><li>fournir un fil d'ariane</li><li>fournir un sitemap,  table des matières</li><li>fournir un mécanisme de recherche</li><li>fournir une liste de lien permettant de naviguer à travers tout le site (en pied de page)</li></ul>"
+		"2 des mécanismes ci-dessous sont présents sur la page : <ul><li>fournir un menu de navigation principal</li><li>fournir un fil d'ariane</li><li>fournir un sitemap,  table des matières</li><li>fournir un mécanisme de recherche</li><li>fournir une liste de lien permettant de naviguer à travers tout le site (ex : en pied de page)</li></ul>"
 	],
     "exception": "",
     "raccourcis": "",
@@ -821,7 +821,7 @@
     ],
     "tests": [
       "Parcourir la page",
-      "Identifier les éléments de navigation et de recherche"
+      "Identifier les éléments de navigation (menu principal, fil d'ariane, ...)"
     ],
     "verifier": [
       "Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement"
@@ -1072,13 +1072,13 @@
       "Identifier les éléments interactifs"
     ],
     "verifier": [
-      "Vérifier que la taille de ces éléments dépasse 44px par 44px"
+      "Vérifier que la zone de click de ces éléments dépasse 44px par 44px. "
     ],
     "resultat": [
-      "Tous les éléments interactifs ont des dimensions qui dépassent 44px par 44px"
+      "La dimension de la zone de click de tous les éléments interactifs dépassent 44px par 44px"
     ],
-    "exception": "<ul><li>Ancre / lien interne à la page</li><li>Lien à l'intérieur d'un paragraphe</li><li>Lien à l'intérieur d'une phrase</li><li>Lien dans une note de pied de page (à la fin de paragraphe ou d'une phrase)</li><li>Un icône cliquable à l'intérieur d'une phrase ou d'un paragraphe</li></ul>",
-    "raccourcis": "",
+    "exception": "<ul><li>Ancre / lien interne à la page</li><li>Lien à l'intérieur d'un paragraphe</li><li>Lien à l'intérieur d'une phrase</li><li>Lien dans une note de pied de page (à la fin de paragraphe ou d'une phrase)</li><li>Un icône cliquable à l'intérieur d'une phrase ou d'un paragraphe</li><li>Si le style par défaut du navigateur est utilisé </li><li>Si l'utilisation d'une zone réduite est justifiée par le contexte de l'application (ex : serious game)</li></ul>",
+    "raccourcis": "Vous pouvez utiliser ce <a href=\"https://adrianroselli.com/2019/06/target-size-and-2-5-5.html#Update04 \" title=\"Bookmarklet Target Size (nouvelle fenêtre)\" target=\"_blank\" hreflang=\"en\">bookmarklet</a> pour évaluer rapidement les dimensions d'une zone de click.",
 	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
     "profils": ["Expert Accessibilité"],
     "wcag": ["2.5.5"]
@@ -1137,7 +1137,7 @@
       "Parcourir les formulaires"
     ],
     "verifier": [
-		"Vérifier que le texte des labels indique le format de données lorsque nécessaire."
+		"Vérifier que le format de données est présent dans l’accessible name ou l’accessible description (aria-describedby)."
 	],
     "resultat": [
       "Présence de texte précisent le formats de saisie"

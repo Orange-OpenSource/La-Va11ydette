@@ -440,7 +440,7 @@
 			"title" : "La position courante au sein de la hiérarchisation ne peut être déterminée de manière programmatique",
 			"detail" : "La position courante au sein de la hiérarchisation ne peut être déterminée de manière programmatique (depuis une aide technique telle qu'un lecteur d'écran par exemple)",
 			"solution" : "- fil d'ariane : appliquer un attribut aria-current=\"location\" sur l'élément actif \n - navigation principale : ajouter un attribut aria-current=\"page\" sur l'item actif",
-			"technicalSolution" : "- fil d'ariane : <li aria-current=\"location\"> [...] </li> \n - navigation principale : <a [...] aria-current=\"page\"> [...] </a>"
+			"technicalSolution" : "- fil d'ariane : <li aria-current=\"location\"> [...] </li> \n- navigation principale : <a [...] aria-current=\"page\"> [...] </a> \n- procédure, étapes multiples : <a [...] aria-current=\"step\"> [...] </a>"
 		}
 	],
 	"testWebID-36": [
@@ -511,8 +511,8 @@
 		{
 			"title" : "Présence de textes tronqués ou de chevauchement",
 			"detail" : "Des contenus sont tronqués ou se chevauchent après application de propriétés d'aération du texte.",
-			"solution" : "- appliquer des unités relatives (em, rem, %) aux propriétés d'espacement de textes \n- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"",
-			"technicalSolution" : ""
+			"solution" : "Ne pas imposer ou hériter une taille absolue (px, ...) aux propriétés d'espacement",
+			"technicalSolution" : "- appliquer des unités relatives (em, rem, %) aux propriétés d'espacement de textes \n- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\""
 		}
 	],
 	"testWebID-45": [
@@ -527,7 +527,7 @@
 		{
 			"title" : "La surface cliquable de certains éléments interactifs n'est pas suffisante.",
 			"detail" : "La surface cliquable des éléments interactifs doit dépasser 44 par 44 CSS pixels.",
-			"solution" : "- agrandir la surface cliquable pour atteindre au moins 44 par 44 CSS pixels\n- proposer un mécanisme permettant d'agrandir la taille sans avoir recours au zoom",
+			"solution" : "- agrandir la surface cliquable pour atteindre au moins 44 par 44 CSS pixels\n- proposer un mécanisme dans la page permettant d'agrandir la taille sans avoir recours au zoom",
 			"technicalSolution" : ""
 		}
 	],

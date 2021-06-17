@@ -3342,7 +3342,7 @@ for (let i in dataVallydette.checklist.page) {
   
 		for (var j=0;j<dataHeaders.length;j++){    
 		
-			if(j===7){
+			if(j===8){
 				excel.set(setIndex,j,0,dataHeaders[j], formatHeaderProject); 
 			} else {
 				excel.set(setIndex,j,0,dataHeaders[j], formatHeader);	

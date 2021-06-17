@@ -3355,15 +3355,15 @@ for (let i in dataVallydette.checklist.page) {
 		
 		const listNonConformity = dataVallydette.checklist.page[i].items.filter(item => item.resultatTest === "ko").map(function(item) {
 			
-			rowIssues++;
-			excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+			
 		
 			if (type === "audit") {
 				
 				if (item.issues.length > 0) {
 						
 					item.issues.forEach(function (issue, key) {
-						
+						rowIssues++;
+						excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
 						//@ ajout url tests
 						
 						excel.set(setIndex,1,rowIssues, item.title);

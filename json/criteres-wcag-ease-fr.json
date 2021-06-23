@@ -398,7 +398,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Lors de l'utilisation de formulaires ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
-		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter les utilisateurs incapables d'afficher la page dans sa totalité.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur</li><li><span lang=\"en\">viewport</span></li><li>focus</li><li>contenu qui modifie le sens de la page Web</li></ul>",
+		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li><span lang=\"en\">de viewport (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</span></li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"resultatTest": "nt"
 	},{
@@ -567,7 +567,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>Vérifier que le contenu lu de façon linéaire reste compréhensible (ordre de lecture dans la page sans CSS).</p>",
-		"complement": "<h4>Compléments d'information</h4><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester :</p><ul><li>Mise en page via ces propriétés CSS : <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>…)</li><li><code>float</code> notamment <code>right</code></li><li><code>display:\"flex\"</code> ou <code>dislay:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
+		"complement": "<h4>Compléments d'information</h4><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester :</p><ul><li>Mise en page via ces propriétés CSS : <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>dislay:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"resultatTest": "nt"
 	},{

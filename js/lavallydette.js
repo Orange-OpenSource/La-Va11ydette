@@ -2121,7 +2121,13 @@ initProperties = function (item) {
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
-	
+	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") == '' ){
+		htmlMenu += '<a role="button" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="Ouvrir l\'url de la page audité (nouvelle fenetre)" title="Ouvrir l\'url de la page audité (nouvelle fenetre)" href="#" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
+	}
+	else{
+		htmlMenu += '<a role="button" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="Ouvrir l\'url de la page audité (nouvelle fenetre)" title="Ouvrir l\'url de la page audité (nouvelle fenetre)" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
+	}
+
 	if (currentPage === 0) {
 		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '" disabled><span class="icon-trash" aria-hidden="true"></span></button>';
 	} else {
@@ -2177,6 +2183,16 @@ showPage = function (id) {
 			currentBtnDelPage.disabled = false;
 			currentBtnDelPage.dataset.property = "checklist.page." + currentPage;
 			currentBtnDelPage.dataset.pagination = id;
+		}
+
+		var currentbtnOpenUrl = document.getElementById('btnOpenUrl');
+		if( getPropertyValue("checklist.page." + currentPage + ".url") == '' ){
+			currentbtnOpenUrl.classList.add('disabled');
+			currentbtnOpenUrl.href = "#";
+		}
+		else{
+			currentbtnOpenUrl.classList.remove('disabled');
+			currentbtnOpenUrl.href = getPropertyValue("checklist.page." + currentPage + ".url");
 		}
 		
 	}
@@ -2486,7 +2502,13 @@ setPropertyValue = function (propertyValue, propertyPath) {
 updateProperty = function(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement) {
 
 	setPropertyValue(arrayPropertyValue[0], targetProperty);
-	if (arrayPropertyValue[1]) {setPropertyValue(arrayPropertyValue[1], "checklist.page." + currentPage + ".url");}
+	if (arrayPropertyValue[1]) {
+		setPropertyValue(arrayPropertyValue[1], "checklist.page." + currentPage + ".url");
+
+		/**  Enabled url button */
+		var currentbtnOpenUrl = document.getElementById('btnOpenUrl');
+		currentbtnOpenUrl.classList.remove('disabled');
+	}
 	
 	var currentTargetElement = document.getElementById(targetElement);
 	currentTargetElement.innerText = arrayPropertyValue[0];

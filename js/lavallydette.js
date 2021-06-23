@@ -2121,11 +2121,11 @@ initProperties = function (item) {
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
-	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") == '' ){
-		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="Ouvrir l\'url de la page audité (nouvelle fenetre)" title="Ouvrir l\'url de la page audité (nouvelle fenetre)" href="#" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
+	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
+		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="Ouvrir l\'url de la page en cours (nouvelle fenetre)" title="Ouvrir l\'url de la page en cours (nouvelle fenetre)" href="#" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
 	else{
-		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="Ouvrir l\'url de la page audité (nouvelle fenetre)" title="Ouvrir l\'url de la page audité (nouvelle fenetre)" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
+		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="Ouvrir l\'url de la page en cours (nouvelle fenetre)" title="Ouvrir l\'url de la page en cours (nouvelle fenetre)" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
 
 	if (currentPage === 0) {
@@ -2186,7 +2186,7 @@ showPage = function (id) {
 		}
 
 		var currentbtnOpenUrl = document.getElementById('btnOpenUrl');
-		if( getPropertyValue("checklist.page." + currentPage + ".url") == '' ){
+		if( getPropertyValue("checklist.page." + currentPage + ".url") === '' ){
 			currentbtnOpenUrl.classList.add('disabled');
 			currentbtnOpenUrl.href = "#";
 		}

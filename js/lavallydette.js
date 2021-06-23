@@ -4877,7 +4877,8 @@ const utils = {
   formatHeading: function (str) {
     return str.toLowerCase()
 		.replace(/é|è|ê/g, "e")
-		.replace(/ /g, "-");
+		.replace(/ /g, "-")
+		.replace(/\(|\)/g, "");
   },
   slugify: function (str) {
     return str.toString().toLowerCase()

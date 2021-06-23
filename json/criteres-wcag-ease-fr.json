@@ -566,7 +566,7 @@
 		"wcag": [
 			"1.3.2 A"
 		],
-		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page :</p><p> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p>Exemple : un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre en CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
+		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page :<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p><strong>Exemple :</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre en CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
 		"complement": "<h4>Compléments d'information</h4><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester :</p><ul><li>Mise en page via ces propriétés CSS : <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>dislay:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"resultatTest": "nt"

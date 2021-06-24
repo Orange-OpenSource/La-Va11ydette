@@ -2122,10 +2122,10 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
 	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
-		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="#" target="_blank" aria-disabled="true"><span class="icon-Link" aria-hidden="true"></span></a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
 	else{
-		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false"><span class="icon-Link" aria-hidden="true"></span></a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
 
 	if (currentPage === 0) {
@@ -2188,7 +2188,7 @@ showPage = function (id) {
 		var currentbtnOpenUrl = document.getElementById('btnOpenUrl');
 		if( getPropertyValue("checklist.page." + currentPage + ".url") === '' ){
 			currentbtnOpenUrl.classList.add('disabled');
-			currentbtnOpenUrl.href = "#";
+			currentbtnOpenUrl.removeAttribute('href');
 			currentbtnOpenUrl.setAttribute('aria-disabled', 'true');
 		}
 		else{

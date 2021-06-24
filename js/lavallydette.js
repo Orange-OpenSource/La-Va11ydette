@@ -2122,10 +2122,10 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
 	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
-		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="Ouvrir l\'url de la page en cours (nouvelle fenetre)" title="Ouvrir l\'url de la page en cours (nouvelle fenetre)" href="#" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
+		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="#" target="_blank" aria-disabled="true"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
 	else{
-		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="Ouvrir l\'url de la page en cours (nouvelle fenetre)" title="Ouvrir l\'url de la page en cours (nouvelle fenetre)" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank"><span class="icon-Link" aria-hidden="true"></span></a>';
+		htmlMenu += '<a id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
 
 	if (currentPage === 0) {
@@ -2189,10 +2189,12 @@ showPage = function (id) {
 		if( getPropertyValue("checklist.page." + currentPage + ".url") === '' ){
 			currentbtnOpenUrl.classList.add('disabled');
 			currentbtnOpenUrl.href = "#";
+			currentbtnOpenUrl.setAttribute('aria-disabled', 'true');
 		}
 		else{
 			currentbtnOpenUrl.classList.remove('disabled');
 			currentbtnOpenUrl.href = getPropertyValue("checklist.page." + currentPage + ".url");
+			currentbtnOpenUrl.setAttribute('aria-disabled', 'false');
 		}
 		
 	}
@@ -2493,6 +2495,18 @@ setPropertyValue = function (propertyValue, propertyPath) {
 }
 
 /**
+ * Check if the url is correct, and correct it accordingly
+ * @param {string} url - url link.
+*/
+validateUrl = function( url ){
+	if (url.indexOf("http://") == -1 && url.indexOf("https://") == -1) {
+       url =  "http://" + url;
+    }
+	return url;
+
+}
+
+/**
  * Run the set up of properties value, and display a feedback.
  * @param {array} arrayPropertyValue - Array of properties to update.
  * @param {string} targetElement - Element to edit (audit or page).
@@ -2503,11 +2517,13 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 
 	setPropertyValue(arrayPropertyValue[0], targetProperty);
 	if (arrayPropertyValue[1]) {
-		setPropertyValue(arrayPropertyValue[1], "checklist.page." + currentPage + ".url");
+		setPropertyValue(validateUrl(arrayPropertyValue[1]), "checklist.page." + currentPage + ".url");
 
 		/**  Enabled url button */
 		var currentbtnOpenUrl = document.getElementById('btnOpenUrl');
+		currentbtnOpenUrl.href = getPropertyValue("checklist.page." + currentPage + ".url");
 		currentbtnOpenUrl.classList.remove('disabled');
+		currentbtnOpenUrl.setAttribute('aria-disabled', 'false');
 	}
 	
 	var currentTargetElement = document.getElementById(targetElement);

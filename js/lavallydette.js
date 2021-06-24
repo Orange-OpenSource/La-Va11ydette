@@ -2073,6 +2073,8 @@ addPage = function () {
 	currentBtnDelPage.disabled = false;
 	
 	showPage(currentIdPage);
+	document.getElementById('btnPageName').click();
+
 }
 
 /**  Initialization of some properties */

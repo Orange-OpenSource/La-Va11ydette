@@ -1917,7 +1917,7 @@ function runFinalComputation(pagesResultsArray) {
 					
 							computationContent += '<ul>';
 							for (let j in listNonConformity[i].comment) {
-								computationContent += '<li>' + utils.htmlEntities(listNonConformity[i].comment[j]) + ' <span class="badge bg-secondary">' +  utils.htmlEntities(listNonConformity[i].page[j]) + '</span></li>';	
+								computationContent += '<li>' + utils.htmlEntities(listNonConformity[i].comment[j]) + ' <span class="badge bg-light">' +  utils.htmlEntities(listNonConformity[i].page[j]) + '</span></li>';	
 							}
 							computationContent += '</ul>';	
 					} 

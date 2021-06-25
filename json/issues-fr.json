@@ -39,7 +39,7 @@
 		{
 				"title" : "Absence de sémantique de lien HTML ",
 				"detail" : "Les éléments interactifs entrainant un changement d'URL doivent utiliser une sémantique de lien HTML. ",
-				"solution" : "Utiliser la sémantique <a>.",
+				"solution" : "Utiliser la sémantique <a> avec un attribut href.",
 				"technicalSolution" : ""
 		},
 		{
@@ -103,9 +103,9 @@
 	],
 	"testWebID-6": [
 		{
-			"title" : "Absence d'entêtes de lignes ou de colonnes",
+			"title" : "Absence de sémantiques d'entêtes de ligne ou de colonne",
 			"detail" : "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",
-			"solution" : "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope='col'. Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope=\"row\". ",
+			"solution" : "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope=\"col\". Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope=\"row\". ",
 			"technicalSolution" : "<th scope=\"col\"> / <th scope=\"row\"> "
 		},
 		{
@@ -147,7 +147,7 @@
 		{
 			"title" : "Le ALT d'une image porteuse d'information n'est pas renseigné ou non pertinent",
 			"detail" : "L'attribut alt de chaque image est pertinent par rapport au rôle de l'image dans la page.",
-			"solution" : "Renseigner dans le ALT, l'information portée par l'image..",
+			"solution" : "Renseigner dans le ALT, l'information portée par l'image.",
 			"technicalSolution" : ""
 		},
 		{
@@ -172,8 +172,8 @@
 	"testWebID-10": [
 		{
 			"title" : "Attribut TITLE non pertinent",
-			"detail" : "La valeur de l'attribut doit permettre aux utilisateurs de comprendre la nature de la frame ou iframe",
-			"solution" : "Ajouter un attribut TITLE, la valeur de l'attribut décrit le contenu de la frame ou iframe",
+			"detail" : "La valeur de l'attribut doit permettre aux utilisateurs de comprendre la nature de la frame ou iframe.",
+			"solution" : "Ajouter un attribut TITLE, la valeur de l'attribut décrit le contenu de la frame ou iframe.",
 			"technicalSolution" : ""
 		}
 		
@@ -182,7 +182,7 @@
 		{
 			"title" : "Présence de texte sous forme d'image",
 			"detail" : "Les textes doivent être présent dans le HTML et mis en forme via CSS.",
-			"solution" : "Intégrer les textes dans le HTML et gérer la mise en forme via CSS",
+			"solution" : "Intégrer les textes dans le HTML et gérer la mise en forme via CSS.",
 			"technicalSolution" : ""
 		}
 	],

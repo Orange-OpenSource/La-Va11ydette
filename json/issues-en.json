@@ -187,7 +187,7 @@
 	],
 	"testWebID-12": [
 		{
-			"title" : "Absence de transcrit complet",
+			"title" : "A complete transcript is missing",
 			"detail" : "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
 			"solution" : "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire",
 			"technicalSolution" : ""

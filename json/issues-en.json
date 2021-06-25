@@ -179,9 +179,9 @@
 	],
 	"testWebID-11": [
 		{
-			"title" : "Présence de texte sous forme d'image",
-			"detail" : "Les textes doivent être présent dans le HTML et mis en forme via CSS.",
-			"solution" : "Intégrer les textes dans le HTML et gérer la mise en forme via CSS",
+			"title" : "Presence of text as an image",
+			"detail" : "Texts must be included in HTML and formatted via CSS.",
+			"solution" : "Include texts in HTML and manage the formatting via CSS.",
 			"technicalSolution" : ""
 		}
 	],

@@ -188,354 +188,354 @@
 	"testWebID-12": [
 		{
 			"title" : "A complete transcript is missing",
-			"detail" : "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
-			"solution" : "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire",
+			"detail" : "A complete transcript (text version of the speech containing all visual and auditory information) must be provided as an alternative to audio or video tracks.",
+			"solution" : "Add a complete transcript (text version of the speech), either directly in the page, or by a link pointing to an html page containing this transcript and this, near the element to be described",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Absence de sous-titres",
-			"detail" : "Pour toute vidéo, des sous-titres sont disponibles",
-			"solution" : "Ajouter des sous-titres sous formats texte sont présents pour toutes vidéos et restituent l’ensemble des informations de la bande son",
+			"title" : "Captions are missing",
+			"detail" : "For any video, captions are available",
+			"solution" : "Add subtitles in text formats for all videos. These provide all the informations of the audio track.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Absence d'audiodescription",
-			"detail" : "Une audiodescription est nécessaire pour les vidéos présentant des informations sous forme visuelle.",
-			"solution" : "Ajouter une audio-description est présente en complément de la bande audio, si besoin. Celle-ci présente, sous format texte, les informations convoyées uniquement par l’image.",
+			"title" : "Audio description is missing",
+			"detail" : "Audio description is required for videos presenting information in visual form.",
+			"solution" : "Adding an audio description is present in addition to the audio track, if necessary. This presents, in text format, the information conveyed only by the image.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-13": [
 		{
-			"title" : "Impossible de stopper une piste audio ou vidéo",
-			"detail" : "Les pistes audio de la page automatiquement jouées plus de 3 secondes peuvent être stoppées, mises en pause ou leur volume peut être contrôlé indépendamment",
-			"solution" : "Fournir un mécanisme accessible, permettant aux utilisateurs de contrôler les sons joués plus de 3 secondes.",
+			"title" : "Cannot stop an audio or video track",
+			"detail" : "Page audio tracks that are automatically played longer than 3 seconds can be stopped, paused or their volume can be controlled independently.",
+			"solution" : "Provide an accessible mechanism, allowing users to control sounds played over 3 seconds.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-14": [
 		{
-			"title" : "Présence de clignotements rapides",
-			"detail" : "Présence de contenu présentant des clignotements rapides (plus de 3 flash à la seconde) ou les flashs sont inférieurs au seuil général ou seuil de rouge.",
+			"title" : "Presence of rapid flashing",
+			"detail" : "Presence of content presenting rapid flashes (more than 3 flashes per second) or the flashes are below the general threshold or red threshold.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-15": [
 		{
-			"title" : "Absence d'alternative au captcha",
-			"detail" : "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
-			"solution" : "Proposer en alternative : un captcha audio + visuel, ou  des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
+			"title" : "An alternative to captcha is missing",
+			"detail" : "Any captcha that is only visual or audio must have an accessible alternative.",
+			"solution" : "Provide as an alternative: an audio + visual captcha, or logical tests (question whose answer is obvious, simple mathematical test ...).",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-16": [
 		{
-			"title" : "Contraste insuffisant entre texte et fond",
-			"detail" : "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
-			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"title" : "Insufficient contrast between text and background",
+			"detail" : "The contrast must be sufficient to understand the information carried by all the texts.",
+			"solution" : "Ensure a contrast of 4.5: 1 minimum for texts of normal sizes (less than 24px CSS and 19px CSS in bold). Ensure a minimum contrast of 3: 1 for large texts (greater than 24px CSS and 19px CSS in bold).",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Contraste insuffisant pour des liens non-soulignés",
-			"detail" : "Les liens non-soulignés doivent avoir un rapport de contraste suffisant avec le texte environnant",
-			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"title" : "Insufficient contrast for non-underlined links",
+			"detail" : "Non-underlined links must have a sufficient contrast ratio with the surrounding text.",
+			"solution" : "Ensure a minimum contrast of 4.5: 1 between an un-underlined link and the surrounding text of normal sizes (less than 24px CSS and 19px CSS in bold). Ensure a minimum 3: 1 contrast between a non-underlined link and the surrounding text of large sizes (greater than 24px CSS and 19px CSS in bold).",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-17": [
 		{
-			"title" : "Contraste insuffisant pour des icônes porteur d'information",
-			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
-			"solution" : "Assurer un contraste de 3:1 minimum pour les icônes.",
+			"title" : "Insufficient contrast for icons carrying information",
+			"detail" : "The contrast must be sufficient to convey the information.",
+			"solution" : "Ensure a minimum contrast of 3: 1 for icons.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Contraste insuffisant pour des composants interactifs (boutons, boutons radios, ...)",
-			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
-			"solution" : "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
+			"title" : "Insufficient contrast for interactive components (buttons, radio buttons, ...)",
+			"detail" : "The contrast must be sufficient to convey the information.",
+			"solution" : "Ensure a minimum contrast of 3: 1 for the different states of interactive components.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Contraste insuffisant pour états de composants interactifs (focus, hover, ...)",
-			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
-			"solution" : "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
+			"title" : "Insufficient contrast for states of interactive components (focus, hover, ...)",
+			"detail" : "The contrast must be sufficient to convey the information.",
+			"solution" : "Ensure a minimum contrast of 3: 1 for the different states of interactive components.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-18": [
 		{
-			"title" : "La couleur est le seul moyen de convoyer de l'information",
-			"detail" : "La couleur ne doit pas être le seul moyen de convoyer d'information : au moins un autre moyen visuel est disponible pour obtenir la même information",
-			"solution" : "Compléter la couleur par un texte explicite, ou une autre information visuelle (exemple : des icônes utilisent des couleurs, mais également des formes différentes).",
+			"title" : "Color is the only way to convey information",
+			"detail" : "Color should not be the only means of conveying information: at least one other visual means is available to obtain the same information.",
+			"solution" : "Complete the color with explicit text, or other visual information (example: icons use colors, but also different shapes).",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-19": [
 		{
-			"title" : "Lien non identifiable dans un corps de texte",
-			"detail" : "Les liens dans le corps du texte doivent être facilement identifiables visuellement par un moyen autre que la couleur (souligné, gras, etc.)",
-			"solution" : "Appliquer un moyen visuellement identifiable (souligné, gras, etc.).  s'assurer d'un contraste de 3:1 entre le texte, le fond et les liens et qu'il existe un autre moyen que la couleur pour les identifier au survol et au focus.",
+			"title" : "Unidentifiable link in a body of text",
+			"detail" : "Links in the body of the text must be easily identifiable visually by a means other than color (underlined, bold, etc.).",
+			"solution" : "Apply a visually identifiable medium (underlined, bold, etc.). Make sure there is a 3: 1 contrast between text, background and links and that there is another way than color to identify them when hovering and focusing.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-20": [
 		{
-			"title" : "Une information sensorielle est le seul moyen de convoyer de l'information",
-			"detail" : "Une l’information sensorielle (ex : position, taille, son) ne doit pas être le seul moyen pour transmettre de l'information",
-			"solution" : "Compléter linformation par un texte, ou un message explicite.",
+			"title" : "Sensory information is the only way to convey information",
+			"detail" : "Sensory information (eg: position, size, sound) should not be the only way to provide information.",
+			"solution" : "Complete the information with a text, or an explicit message.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-22": [
 		{
-			"title" : "Présence de libellés identiques",
-			"detail" : "Des éléments interactifs avec des libellés identiques mais des cibles différentes, sont présents dans la page.",
-			"solution" : "Ajouter une information discriminante à chaque libellé afin de les différencier.",
-			"technicalSolution" : "Plusieurs solutions sont possibles pour compléter un libellé de lien ou de bouton : sr-only, aria-labelledby, aria-label"
+			"title" : "Presence of identical labels",
+			"detail" : "Interactive elements with identical labels but different targets are present in the page.",
+			"solution" : "Add discriminating information to each label in order to differentiate them.",
+			"technicalSolution" : "Several solutions are available to complete a link or button label: sr-only, aria-labelledby, aria-label."
 		}
 	],
 	"testWebID-23": [
 		{
-			"title" : "Présence de libellés non-compréhensibles dans leur contexte",
-			"detail" : "La cible d'un lien ou l'action portée par un bouton n'est pas compréhensible grâce à son contexte direct (texte environnant).",
-			"solution" : "Ajouter une information discriminante dans le texte environnant.",
-			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n- élément dans un paragraphe : compléter le texte du paragraphe (<p>[...]</p>) \n- élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n- élément dans une cellule de tableau : compléter le texte de la cellule (<td>[...]</td>) ou compléter l'entête directe de la cellule (<th>[...]</th>) "
+			"title" : "Presence of wording that is not understandable in their context",
+			"detail" : "The target of a link or the action carried by a button is not understandable thanks to its direct context (surrounding text).",
+			"solution" : "Add discriminating information in the surrounding text.",
+			"technicalSolution" : "The solution depends on the context in which the element is used: \n- element in a paragraph: complete the text of the paragraph (<p> [...] </p>) \n- element in a list: complete a item from the list (<ul>, <ol>) \n- element in a table cell: complete the text of the cell (<td> [...] </td>) or complete the direct header of the cell (<th> [...] </th>)."
 		}
 	],
 	"testWebID-24": [
 		{
-			"title" : "Présence de libellés identiques",
-			"detail" : "Des éléments interactifs avec des libellés identiques, mais des cibles différentes sont présents dans la page.",
-			"solution" : "Ajouter une information discriminante à chaque libellé afin de les différencier.",
-			"technicalSolution" : "Plusieurs solutions sont possibles pour compléter un libellé de lien ou de bouton : sr-only, aria-labelledby, aria-label"
+			"title" : "Presence of identical text labels",
+			"detail" : "Interactive elements with identical text labels, but different targets are present in the page.",
+			"solution" : "Add discriminating information to each label in order to differentiate them.",
+			"technicalSolution" : "Several solutions are available to complete a link or button label: sr-only, aria-labelledby, aria-label."
 		}
 	],
 	"testWebID-25": [
 		{
-			"title" : "Absence du texte visible à l'écran, dans l'accessible name",
-			"detail" : "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom (accessible) de ce composant.",
-			"solution" : "Modifier l'accessible name de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
-			"technicalSolution" : "Plusieurs solutions sont possibles pour redéfinir l'accessible name : aria-labelledby, aria-label, title, sr-only"
+			"title" : "The visible text on the screen is missing in the accessible name",
+			"detail" : "The text of the displayed label (the textual caption or the text of the image visible on the screen) must be present (in first position, if possible) in the name (accessible) of this component.",
+			"solution" : "Modify the accessible name of the element to include visible text on the screen, if possible in first position.",
+			"technicalSolution" : "Several solutions are available to redefine the accessible name: aria-labelledby, aria-label, title, sr-only."
 		}
 	],
 	"testWebID-26": [
 		{
-			"title" : "Le libellé du lien n'est pas compréhensible",
-			"detail" : "Le libellé est basé sur le nom du fichier.",
-			"solution" : "Le libellé texte doit être basé sur le titre du document.",
+			"title" : "The wording of the link text is not understandable",
+			"detail" : "The link text is based on the name of the file.",
+			"solution" : "The link text should be based on the document title.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Absence du format du document",
-			"detail" : "Le format du document n'est pas précisé dans le libellé du lien",
-			"solution" : "Ajouter le format du fichier dans le libellé texte du lien.",
+			"title" : "The document format is missing",
+			"detail" : "The format of the document is not specified in the wording of the link.",
+			"solution" : "Add the file format in the link text.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Absence de la langue du document",
-			"detail" : "Le document en téléchargement est dans une langue différente de la page courante.",
-			"solution" : "Préciser la langue du document en téléchargement dans le libellé texte du lien.",
+			"title" : "The document language is missing",
+			"detail" : "The document being downloaded is in a different language from the current page.",
+			"solution" : "Specify the language of the document being downloaded in the link text.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Absence du poids du document",
-			"detail" : "Le poids du document n'est pas précisé.",
-			"solution" : "Préciser le poids du document en téléchargement dans le libellé texte du lien.",
+			"title" : "The document weight is missing",
+			"detail" : "The weight of the document is not specified.",
+			"solution" : "Specify the weight of the document for downloading in the link text.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-27": [
 		{
-			"title" : "Absence de la mention \"nouvelle fenêtre\"",
-			"detail" : "L'ouverture dans une nouvelle fenêtre n'est pas annoncé aux utilisateurs.",
-			"solution" : "Ajouter la mention \"nouvelle fenêtre\" au lien.",
-			"technicalSolution" : "- Ajouter la mention dans un attribut \"title\" positionné sur le lien. \n- L'attribut reprend la libellé texte visible à l'écran, suivi de la mention \"(nouvelle fenêtre)\". \n- Afin d'améliorer la robustesse de la solution pour les utilisateurs de lecteurs d'écran, l'attribut \"title\" est doublé par un attribut \"aria-label\" positionné également sur le lien. \n- L'attribut \"aria-label\" reprend les mêmes informations que le title."
+			"title" : "The mention \"new window\" is missing",
+			"detail" : "Opening in a new window is not announced to users.",
+			"solution" : "Add the mention \"new window\" to the link.",
+			"technicalSolution" : "- Add the mention in a \"title\" attribute positioned on the link.\n- The attribute uses the text label visible on the screen, followed by the mention \"(new window)\".\n- In order to improve the robustness of the solution for screen reader users, the \"title\" attribute is doubled by an \"aria-label\" attribute also positioned on the link.\n- The \"aria-label\" attribute contains the same information as the title."
 		}
 	],
 	"testWebID-28": [
 		{
-			"title" : "Absence de région \"main\"",
-			"detail" : "La page doit contenir à minima une région \"main\".",
-			"solution" : "Le contenu principal doit être encapsulé dans une région \"main\".",
-			"technicalSolution" : "- Le contenu principal doit être encapsulé dans une région \"main\". \n- La région \"main\" ne doit pas contenir d'élément répété ailleurs dans la page (ex : navigation)."
+			"title" : "A \"main\" region is missing",
+			"detail" : "The page must contain at least one \"main\" region.",
+			"solution" : "Main content must be wrapped in a \"main\" region.",
+			"technicalSolution" : "- The main content must be encapsulated in a \"main\" region.\n- The \"main\" region must not contain any element repeated elsewhere in the page (eg: navigation)."
 		}
 	],
 	"testWebID-29": [
 		{
-			"title" : "Absence de liens d'évitement",
-			"detail" : "Des liens d'évitements sont nécessaires afin d'accéder aux principales zones de la pages (menu principal, contenu principal, moteur de recherche, etc...",
-			"solution" : "Ajouter des liens d'évitements, en début de page. Ce sont les premiers éléments de la page. Les liens sont masqués (de manière accessible, cf. masquage accessible), si contrainte forte, pour s'afficher uniquement dès la prise de focus clavier.",
+			"title" : "Skip links are missing",
+			"detail" : "Skip links are necessary in order to access the main areas of the pages (main menu, main content, search engine, etc ...",
+			"solution" : "Add skip links at the top of the page. These are the first elements of the page. Links can be masked (in an accessible manner, cf. accessible hidden) only if the constraint is strong. They are then displayed only as soon as keyboard focus is taken.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-30": [
 		{
-			"title" : "Formulaire soumis automatiquement lors de la prise de focus d'un élément",
-			"detail" : "Un formulaire est soumis automatiquement dès la prise de focus d'un élément du formulaire (onFocus).",
-			"solution" : "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
+			"title" : "Form automatically submitted when taking focus of an element",
+			"detail" : "A form is automatically submitted as soon as a form element takes focus (onFocus).",
+			"solution" : "A form should be submitted only after activating the submit button (onClick).",
 			"technicalSolution" : ""
 		},{
-			"title" : "Formulaire soumis automatiquement lors de la saisie de données",
-			"detail" : "Un formulaire est soumis automatiquement après saisie de données dans un champ (onInput).",
-			"solution" : "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
+			"title" : "Form automatically submitted during data entry",
+			"detail" : "A form is automatically submitted after entering data in a field (onInput).",
+			"solution" : "A form should be submitted only after activating the submit button (onClick).",
 			"technicalSolution" : ""
 		},{
-			"title" : "Changement du contenu de la page courante dès la prise de focus",
-			"detail" : "Un changement de contenu s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
-			"solution" : "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien ou un bouton d'action.",
+			"title" : "Change of the content of the current page as soon as the focus is taken",
+			"detail" : "A change of content takes place without being initiated voluntarily by the user (onFocus).",
+			"solution" : "A change of content must take place only after voluntary triggering of the user (onClick) on a link or an action button.",
 			"technicalSolution" : ""
 		},{
-			"title" : "Ouverture d'une nouvelle page dès la prise de focus",
-			"detail" : "Un changement de page s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
-			"solution" : "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien.",
+			"title" : "Opening of a new page as soon as focus is taken",
+			"detail" : "A page change takes place without being initiated voluntarily by the user (onFocus).",
+			"solution" : "A change of content must take place only after voluntary triggering of the user (onClick) on a link.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-31": [
 		{
-			"title" : "Déplacement du pointeur vers le contenu d'une tooltip impossible",
-			"detail" : "Après ouverture d'une tooltip, l'utilisateur ne peut pas déplacer son pointeur de l'élément déclencheur vers le contenu de la tooltip, sans que celle-ci se ferme.",
-			"solution" : "L'utilisateur doit être capable de déplacer le pointeur souris de l'élément déclencheur vers le contenu de la tooltip sans fermeture de celle-ci.",
+			"title" : "Cannot move the pointer to the content of a tooltip",
+			"detail" : "After opening a tooltip, the user cannot move his pointer from the trigger element to the content of the tooltip, without the latter closing.",
+			"solution" : "The user must be able to move the mouse pointer from the trigger element to the content of the tooltip without closing it.",
 			"technicalSolution" : ""
 		}, {
-			"title" : "Impossible de fermer un contenu additionnel (tooltip, popin, etc...) sans déplacer le focus ou le pointeur",
-			"detail" : "Après ouverture du contenu additionnel, l'utilisateur ne peut pas fermer celui-ci sans avoir à déplacer le focus ou le pointeur de la souris.",
-			"solution" : "Proposer un mécanisme aux utilisateurs pour leur permettre de fermer un contenu additionnel sans déplacement de focus ou de souris (ex : fermeture depuis la touche Echap).",
+			"title" : "Cannot close additional content (tooltip, popin, etc ...) without moving the focus or the pointer",
+			"detail" : "After opening additional content, the user cannot close it without having to move the focus or the mouse pointer.",
+			"solution" : "After opening additional content, the user cannot close it without having to move the focus or the mouse pointer.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-32": [
 		{
-			"title" : "L'utilisateur n'a pas le contrôle d'une limite de temps",
-			"detail" : "Une limite de temps est présente pour réaliser une action, hors l'utilisateur n'a pas le contrôle de celle-ci.",
-			"solution" : "L'utilisateur doit pouvoir supprimer la limite ou l'ajuster.",
+			"title" : "User does not have control of a time limit",
+			"detail" : "There is a time limit for performing an action, and the user has no control over it.",
+			"solution" : "The user should be able to remove the limit or adjust it.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-33": [
 		{
-			"title" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche",
-			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche : letter (minuscule ou majuscule), ponctuation, chiffre, ou symbôle.",
-			"solution" : "L'utilisateur doit pouvoir : \n- désactiver le raccourci \n- ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n Ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
+			"title" : "User does not have control of a single key based keyboard shortcut",
+			"detail" : "The user does not have control of a keyboard shortcut based on a single key: letter (lowercase or uppercase), punctuation, number, or symbol.",
+			"solution" : "The user must be able to:\n- deactivate the shortcut\n- or modify the shortcut to add an extra key to the combination\n- or ensure that the shortcut is active only when taking focus of the component of the interface.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-34": [
 		{
-			"title" : "Un seul mécanisme de navigation est présent",
-			"detail" : "Au moins 2 mécanismes de navigation doivent être présent sur l'interface.",
-			"solution" : "Compléter le mécanisme existant une solution listée ci-dessous : \n -  un menu de navigation principal \n - une table des matières \n - un sitemap \n - un mécanisme de recherche \n - une liste de liens permettant de naviguer à travers tout le site (pied de page)",
+			"title" : "Only one navigation mechanism is present",
+			"detail" : "At least 2 navigation mechanisms must be present on the interface.",
+			"solution" : "Complete the existing mechanism with a solution listed below: \n - a main navigation menu \n - a table of contents \n - a sitemap \n - a search mechanism \n - a list of links to navigate to across the whole site (footer).",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-35": [
 		{
-			"title" : "Absence d'information visuelle sur la position courante de l'utilisateur au sein de la hiérarchisation.",
-			"detail" : "La position courante au sein de la hiérarchisation d'un site ne peut être déterminée visuellement.",
-			"solution" : "- ajouter un fil d'ariane \n - navigation principale : ajouter une indication visuelle, ne dépendant pas uniquement de la couleur (ex : souligner l'item actif)",
+			"title" : "A visual information on the user's current position within the hierarchy is missing",
+			"detail" : "The current position within the hierarchy of a site cannot be determined visually.",
+			"solution" : "- add a breadcrumb \n - main navigation: add a visual indication, not depending only on the color (ex: underline the active item)",
 			"technicalSolution" : ""
 		}, {
-			"title" : "La position courante au sein de la hiérarchisation ne peut être déterminée de manière programmatique",
-			"detail" : "La position courante au sein de la hiérarchisation ne peut être déterminée de manière programmatique (depuis une aide technique telle qu'un lecteur d'écran par exemple)",
-			"solution" : "- fil d'ariane : appliquer un attribut aria-current=\"location\" sur l'élément actif \n - navigation principale : ajouter un attribut aria-current=\"page\" sur l'item actif",
-			"technicalSolution" : "- fil d'ariane : <li aria-current=\"location\"> [...] </li> \n- navigation principale : <a [...] aria-current=\"page\"> [...] </a> \n- procédure, étapes multiples : <a [...] aria-current=\"step\"> [...] </a>"
+			"title" : "The current position within the hierarchy cannot be determined programmatically",
+			"detail" : "The current position within the hierarchy cannot be determined programmatically (from an assistive technology such as a screen reader for example).",
+			"solution" : "- breadcrumbs: apply an aria-current=\"location\" attribute on the active element \n- main navigation: add an aria-current=\"page\" attribute on the active item.",
+			"technicalSolution" : "- breadcrumbs: <li aria-current=\"location\"> [...] </li> \n- main navigation: <a [...] aria-current=\"page\"> [...] </a> \n- procedure, multiple steps: <a [...] aria-current=\"step\"> [...] </a>"
 		}
 	],
 	"testWebID-36": [
 		{
-			"title" : "Absence de roles ARIA (status, alert, alertdialog...) ou de régions dynamiques aria-live",
-			"detail" : "Les messages d'alertes ne sont pas perçus depuis un lecteur d'écran.",
-			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc...) ou un attribut \"aria-live\" au message d'alerte afni qu'il soit vocalisé automatiquement dés apparition.",
-			"technicalSolution" : "exemples :\n - <div role=\"status\"> [...] </div> \n - <div aria-live=\"assertive\">[...]</div>"
+			"title" : "A ARIA role (status, alert, alertdialog ...) or dynamic aria-live regions is missing",
+			"detail" : "Alert messages are not heard from a screen reader.",
+			"solution" : "Apply an ARIA role (\"status\", \"alert\", \"alertdialog\", etc ...) or an \"aria-live\" attribute to the alert message so that it is automatically vocalized from the onset.",
+			"technicalSolution" : "examples: \n- <div role =\"status\"> [...] </div> \n- <div aria-live=\"assertive\"> [...] </div>"
 		}
 	],
 	"testWebID-37": [
 		{
-			"title" : "Absence de mécanisme permettant de stopper un contenu en mouvement",
-			"detail" : "L'utilisateur doit avoir le contrôle des contenus en mouvement.",
-			"solution" : "Proposer un mécanisme accessible permettant de stopper ou mettre en pause un contenu en mouvement.",
+			"title" : "A mechanism to stop moving content is missing",
+			"detail" : "User must have control of moving content.",
+			"solution" : "Provide an accessible mechanism to stop or pause moving content.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-38": [
 		{
-			"title" : "Élément non utilisable au clavier",
-			"detail" : "Un élément n'est pas utilisable depuis une navigation clavier.",
+			"title" : "Item not usable on keyboard",
+			"detail" : "An element cannot be used from keyboard navigation.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-39": [
 		{
-			"title" : "Déplacement du focus non-logique",
-			"detail" : "Le déplacement du focus ne suit pas un ordre logique (sens de lecture).",
+			"title" : "Non-logical focus sequence",
+			"detail" : "The movement of the focus does not follow a logical order (reading direction).",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-40": [
 		{
-			"title" : "La visualisation du focus (outline) est désactivée",
-			"detail" : "Le outline ne doit pas être désactivé.",
-			"solution" : "Vérifier que le outline n'est pas supprimé depuis une propriété css (ex : \"outline:none;\")",
+			"title" : "Focus visualization (outline) is disabled",
+			"detail" : "The outline must not be deactivated.",
+			"solution" : "Check that the outline is not deleted from a css property (ex: \"outline: none;\").",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-41": [
 		{
-			"title" : "La visualisation du focus (outline) ne possède pas un contraste suffisant",
-			"detail" : "Le outline doit avoir un contraste suffisant avec la couleur de fond quelques soit le contexte.",
-			"solution" : "- préserver le outline par défaut \n- si la couleur du outline est personnalisée, veiller à ce que la couleur respecte un ratio de 3:1 avec la couleur de fond quelque soit le contexte.",
+			"title" : "The visualization of the focus (outline) does not have sufficient contrast",
+			"detail" : "The outline must have sufficient contrast with the background color whatever the context.",
+			"solution" : "- preserve the default outline \n- if the outline color is customized, ensure that the color respects a ratio of 3:1 with the background color whatever the context.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-42": [
 		{
-			"title" : "Présence de textes tronqués ou de chevauchement",
-			"detail" : "Des contenus sont tronqués ou se chevauchent après un zoom à 200% du texte.",
-			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"",
+			"title" : "Presence of truncated or overlapping texts",
+			"detail" : "Content is truncated or overlapped after zooming to 200% of the text.",
+			"solution" : "- apply relative units (em, rem, %) to text containers \n- or use \"min-width\" and \"min-height\" properties instead of \"width\" and \"height \" properties.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-43": [
 		{
-			"title" : "Présence d'une barre de défilement horizontale",
-			"detail" : "Une barre de défilement horizontale apparaît après un redissionnement de l'interface à 320 px css de large.",
-			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"",
+			"title" : "Presence of a horizontal scroll bar",
+			"detail" : "A horizontal scroll bar appears after resizing the interface to 320px css wide.",
+			"solution" : "- apply relative units (em, rem,%) to text containers \n- or use \"min-width\" and \"min-height\" properties instead of \"width\" and \"height\" properties.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-44": [
 		{
-			"title" : "Présence de textes tronqués ou de chevauchement",
-			"detail" : "Des contenus sont tronqués ou se chevauchent après application de propriétés d'aération du texte.",
-			"solution" : "Ne pas imposer ou hériter une taille absolue (px, ...) aux propriétés d'espacement",
-			"technicalSolution" : "- appliquer des unités relatives (em, rem, %) aux propriétés d'espacement de textes \n- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\""
+			"title" : "Presence of truncated or overlapping texts",
+			"detail" : "Contents are truncated or overlapped after applying text spacing properties.",
+			"solution" : "Do not impose or inherit an absolute size (px, ...) to the spacing properties.",
+			"technicalSolution" : "- apply relative units (em, rem,%) to text spacing properties \n- apply relative units (em, rem, %) to text containers \n- or use properties \"min-width\"and \"min-height\" instead of the \"width\"and \"height\" properties."
 		}
 	],
 	"testWebID-45": [
 		{
-			"title" : "Composants répétés sur plusieurs pages, dans des ordres différents",
-			"detail" : "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
-			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaitre de manière constante, dans le même ordre relatif.",
+			"title" : "Components repeated on several pages, in different orders",
+			"detail" : "Components repeated on several pages, do not appear in the same order on some pages.",
+			"solution" : "The layout of the components must be homogeneous between all the pages of a site. Components should appear consistently, in the same relative order.",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-46": [
 		{
-			"title" : "La surface cliquable de certains éléments interactifs n'est pas suffisante.",
-			"detail" : "La surface cliquable des éléments interactifs doit dépasser 44 par 44 CSS pixels.",
-			"solution" : "- agrandir la surface cliquable pour atteindre au moins 44 par 44 CSS pixels\n- proposer un mécanisme dans la page permettant d'agrandir la taille sans avoir recours au zoom",
+			"title" : "The clickable surface of some interactive elements is not sufficient.",
+			"detail" : "The clickable area of ​​interactive elements must exceed 44 by 44 CSS pixels.",
+			"solution" : "- enlarge the clickable surface to reach at least 44 by 44 CSS pixels \ n- propose a mechanism in the page allowing to enlarge the size without resorting to the zoom",
 			"technicalSolution" : ""
 		}
 	],
 	"testWebID-47": [
 		{
-			"title" : "Présence de champs non-labellisés",
-			"detail" : "Tous les éléments de formulaire doivent posséder un label.",
-			"solution" : "Appliquer une des solutions ci-dessous :\n- ajout d'un élément \"label\", en masquage accessible si nécessaire, lié de manière programmatique au champ\n- utilisation d'un aria-labelledby pointant vers une information pertinente pour comprendre la nature du champ \n- ajout d'un attribut aria-label\n ajout d'un attribut title",
-			"technicalSolution" : "Exemples :\n- <label for=\"idInput\">[...]</label> <input id=\"idInput\" type=\"[...]\">\n- <h2 id=\"idHeading\">[...]</h2> <input aria-labelledby=\"idHeading\" type=\"[...]\">\n-  <input aria-label=\"[...]\" type=\"[...]\">\n- <input title=\"[...]\" type=\"[...]\">"
+			"title" : "Presence of non-labeled fields",
+			"detail" : "All form elements must have a label.",
+			"solution" : "Apply one of the solutions below: \n- addition of a \"label\" element, in accessible masking if necessary, programmatically linked to the field \n- use of an aria-labelledby pointing to relevant information for understand the nature of the field \n- adding an aria-label attribute \n- adding a title attribute",
+			"technicalSolution" : "Examples: \ n-<label for=\"idInput\"> [...] </label> <input id=\"idInput\" type=\"[...]\"> \n- <h2 id=\"idHeading\"> [...] </h2> <input aria-labelledby=\"idHeading\" type=\"[...]\"> \n- <input aria-label=\"[...]\" type=\"[...]\"> \n- <input title=\"[...]\" type=\"[...]\">"
 		}
 	],
 	"testWebID-48": [

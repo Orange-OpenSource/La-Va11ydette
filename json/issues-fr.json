@@ -552,12 +552,12 @@
 			"title" : "Absence de format de données",
 			"detail" : "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
 			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemeple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		},{
 			"title" : "Le format de données n'est pas lié de manière programmatique au champ",
 			"detail" : "Dans le cas le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran).",
 			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemeple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		}
 	],
 	"testWebID-50": [
@@ -634,7 +634,7 @@
 		{
 			"title" : "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
 			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur un seul pointeur.",
-			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée",
+			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée.",
 			"technicalSolution" : ""
 		}
 	],

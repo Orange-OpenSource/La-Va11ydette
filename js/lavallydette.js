@@ -2934,6 +2934,7 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 	
 		utils.removeElement(document.getElementById("cardIssue"+targetId+"-"+ issueIndex));
 		utils.putTheFocus(document.getElementById("modal" + targetId + "Title"));
+		jsonUpdate();
 		
 	} else {
 		
@@ -2967,14 +2968,16 @@ displayIssue = function (targetId, title) {
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
+			let auditNumber = 0;
 			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
+				auditNumber= j +1;
 				
 				htmlModal += '<div class="card" id="cardIssue'+targetId+'-'+ j +'">';
 				
 				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
 				htmlModal += '  <a id="btnIssue'+targetId+'-'+ j +'" data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
-				htmlModal += '#' + j + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
+				htmlModal += '#' + auditNumber + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
 				htmlModal += ' </a>';
 				htmlModal += '</h5>';
 				htmlModal += ' </div>';

@@ -87,7 +87,7 @@ function initVallydetteApp (criteriaListName, lang) {
 	  } 
 	};
 	langRequest.send();
-	
+
 }
 
 /**
@@ -685,7 +685,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '"><span class="w-75 mr-auto">' + currentRefTests[i].title + '</span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + currentRefTests[i].ID + '"><span class="sr-only">' + langVallydette.autocheckTxt1 + '</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ml-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 mr-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + currentRefTests[i].ID + '"><span class="sr-only">' + langVallydette.autocheckTxt1 + '</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ml-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
@@ -1421,6 +1421,10 @@ function initComputation() {
             }, false);
 		
 	    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
+		if(window.location.hash !== ""){
+			document.getElementById(window.location.hash.substring(1)).scrollIntoView();
+		}
+		
 
 	  }
 	};
@@ -3423,10 +3427,11 @@ for (let i in dataVallydette.checklist.page) {
 			if (type === "audit") {
 				
 				if (item.issues.length > 0) {
+					let urlanchor = utils.getUrlAnchor(item);
 						
 					item.issues.forEach(function (issue, key) {
 						rowIssues++;
-						excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+						excel.set(setIndex,0,rowIssues,  '=HYPERLINK("' + urlanchor + '","issue-' + i + '-' + rowIssues+ '")', formatHyperlink);
 						//@ ajout url tests
 						
 						excel.set(setIndex,1,rowIssues, item.title);
@@ -3448,7 +3453,9 @@ for (let i in dataVallydette.checklist.page) {
 			} else {
 
 					rowIssues++;
-					excel.set(setIndex,0,rowIssues,  'issue-' + i + '-' + rowIssues);
+					let urlanchor = utils.getUrlAnchor(item);
+
+					excel.set(setIndex,0,rowIssues,  '=HYPERLINK("' + urlanchor + '","issue-' + i + '-' + rowIssues+ '")', formatHyperlink);
 						
 					if (!item.commentaire) {
 						item.commentaire = langVallydette.noCommentary;
@@ -5071,6 +5078,13 @@ const utils = {
   },
   htmlEntities: function (str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  },
+
+  getUrlAnchor: function(item){
+		let urlanchor = window.location.origin + window.location.pathname + window.location.search + '#heading' + item.ID;
+		return urlanchor.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+			return '&#'+i.charCodeAt(0)+';';
+		});
   }
 	
 }  

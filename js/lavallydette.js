@@ -161,6 +161,7 @@ function createObjectAndRunVallydette() {
 			"version": globalVersion,
 			"template": globalTemplate,
 			"autoCheckIDs": [],
+			"timestamp": Date.now(),
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
@@ -546,7 +547,7 @@ function eventHandler() {
 		runLocalStorage();
 	}, false);
 
-	if (localStorage.getItem("lavallydette")===null) {
+	if (localStorage.length===0) {
 		btnLocalStorage.disabled=true;
 		btnLocalStorage.classList.add("disabled");
 	}
@@ -567,39 +568,107 @@ function runLocalStorage() {
 	
 	let htmlModal = '';
 	htmlModal = '<div id="modalLocalStorage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLocalStorageTitle">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-dialog" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalLocalStorageTitle">' + langVallydette.recoverTitle + '</h5>';
 	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
-	htmlModal += '<div class="modal-body">';
-	htmlModal += langVallydette.recoverMessage;
+	htmlModal += '<div class="modal-body" id="modalLocalStorageForm">';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="localStorageCancelBtn" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
+	htmlModal += '<button type="button" id="localStorageDeleteBtn" class="btn btn-danger">' + langVallydette.deleteAction + '</button>'
 	htmlModal += '</div></div></div></div>';
 	
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
+	createFormLocalStorage();
 
 	var localStorageSaveBtn = document.getElementById("localStorageSaveBtn");
 	localStorageSaveBtn.addEventListener('click', function () {
-		getLocalStorage();
+		valueSelect = document.querySelector('input[name="auditRadioRestore"]:checked').value;
+		getLocalStorage(valueSelect);
 	});
+
+	var localStorageDeleteBtn = document.getElementById("localStorageDeleteBtn");
+	localStorageDeleteBtn.addEventListener('click', function () {
+		valueSelect = document.querySelector('input[name="auditRadioRestore"]:checked').value;
+		let selectChecklist = window.localStorage.getItem(valueSelect);
+		selectChecklist = JSON.parse(selectChecklist);
+		let HtmlDivDelete ='';
+		HtmlDivDelete += '<p>'+ langVallydette.deleteAsk +' '+ selectChecklist.checklist.name +' ?</p>';
+		HtmlDivDelete += '<button type="button" id="localStorageDeleteYesBtn" class="btn btn-primary">' + langVallydette.yes + '</button>';
+		HtmlDivDelete += '<button type="button" id="localStorageDeleteNoBtn" class="btn btn-danger ml-2">' + langVallydette.no + '</button>'
+		let elDivDelete = document.getElementById('localStorageValidDelete');
+		elDivDelete.innerHTML = HtmlDivDelete;
+		elDivDelete.focus();
+
+		var localStorageDeleteYesBtn = document.getElementById("localStorageDeleteYesBtn");
+		localStorageDeleteYesBtn.addEventListener('click', function () {
+			valueSelect = document.querySelector('input[name="auditRadioRestore"]:checked').value;
+			window.localStorage.removeItem(valueSelect);
+			createFormLocalStorage();
+			if( window.localStorage.length === 0 ){
+				document.getElementById("localStorageCancelBtn").click();
+				let btnLocalStorage = document.getElementById("btnLocalStorage");
+				btnLocalStorage.disabled=true;
+				btnLocalStorage.classList.add("disabled");
+				document.getElementById('btnExcelExport').focus();
+			}
+			document.getElementById(document.querySelector('input[name="auditRadioRestore"]:checked').id).focus();
+		});
+
+		var localStorageDeleteNoBtn = document.getElementById("localStorageDeleteNoBtn");
+		localStorageDeleteNoBtn.addEventListener('click', function () {
+			createFormLocalStorage();
+			document.getElementById(document.querySelector('input[name="auditRadioRestore"]:checked').id).focus();
+		});
+	});
+
+	
+
+}
+
+/**
+ * Create Radio button localstorage
+ */
+function createFormLocalStorage(){
+	let allLocalStorage;
+	allLocalStorage = getAllStorage();
+	let checked = true;
+
+	let htmlModal = '';
+	
+	htmlModal += '<div tabindex="-1" id="localStorageValidDelete" class="pb-3"></div>';
+	htmlModal += '<fieldset>';
+	htmlModal += '<legend>' + langVallydette.recoverMessage +'</legend>';
+	for (const [key, value] of Object.entries(allLocalStorage)) {
+		let auditStorage = JSON.parse(value);
+		htmlModal += '<div class="custom-control custom-radio">';
+		htmlModal += '<input class="custom-control-input" type="radio" name="auditRadioRestore" value="'+key+'" id="'+utils.formatHeading(key)+'"'+ (checked ? 'checked' : '')+'>';
+		htmlModal += '<label class="custom-control-label" for="'+ utils.formatHeading(key)+'" '+ ( globalLang!== auditStorage.checklist.lang ? 'lang="'+auditStorage.checklist.lang+'"' : '')+'>';
+		htmlModal += auditStorage.checklist.name;
+		htmlModal += '</label>';
+		htmlModal += '</div>';
+		checked = false;
+	}
+	htmlModal += '</fieldset>';
+
+	let elModal = document.getElementById('modalLocalStorageForm');
+	elModal.innerHTML = htmlModal;
+
 }
 
 /**
  *  Get the localstorage object
+ * @param {string} auditName - Audit name in locale storage
  */
-function getLocalStorage() {
+function getLocalStorage(auditName) {
 	
-	let objLocalStorage = localStorage.getItem("lavallydette");
+	let objLocalStorage = localStorage.getItem(auditName);
 	dataVallydette = JSON.parse(objLocalStorage);
-	
-	btnLocalStorage.disabled=true;
-	btnLocalStorage.classList.add("disabled");
 	
 	initGlobalLang(dataVallydette.checklist.lang, true);
 	initGlobalTemplate(dataVallydette.checklist.template);
@@ -3324,7 +3393,7 @@ loadChecklistObject = function () {
 jsonUpdate = function () {
 
 	let exportFileName = utils.fileName('json');
-	
+	dataVallydette.checklist.timestamp = Date.now();
 	let dataStr = JSON.stringify(dataVallydette);
 	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
@@ -3335,11 +3404,36 @@ jsonUpdate = function () {
 	linkElement.setAttribute('href', dataUri);
 	linkElement.setAttribute('download', exportFileName);
 	
-	
-	window.localStorage.setItem('lavallydette', dataStr);
-	
-	btnLocalStorage.disabled=true;
-	btnLocalStorage.classList.add("disabled");
+	if( window.localStorage.length >=8 ){
+		let allLocalStorage;
+		allLocalStorage = getAllStorage();
+		let deleteitem = '';
+		let timestamp = 0;
+		for (const [key, value] of Object.entries(allLocalStorage)) {
+			let storage_audit=JSON.parse(value);
+			if( timestamp === 0 || timestamp > storage_audit.checklist.timestamp){
+				deleteitem = key;
+				timestamp = storage_audit.checklist.timestamp;
+			}
+		  }
+		  window.localStorage.removeItem(deleteitem);
+	}
+	window.localStorage.setItem('lavallydette__'+dataVallydette.checklist.name, dataStr);
+	btnLocalStorage.disabled=false;
+	btnLocalStorage.classList.remove("disabled");
+}
+
+function getAllStorage() {
+
+    var archive = {}, // Notice change here
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+        archive[ keys[i] ] = localStorage.getItem( keys[i] );
+    }
+
+    return archive;
 }
 
 /**

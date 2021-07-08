@@ -547,11 +547,11 @@ function eventHandler() {
 		runLocalStorage();
 	}, false);
 
-	if (localStorage.length===0) {
+	if(Object.keys(getAllStorage()).length === 0){
 		btnLocalStorage.disabled=true;
 		btnLocalStorage.classList.add("disabled");
 	}
- 
+	
 	btnActionPageEventHandler();
 	
 }
@@ -610,14 +610,16 @@ function runLocalStorage() {
 			valueSelect = document.querySelector('input[name="auditRadioRestore"]:checked').value;
 			window.localStorage.removeItem(valueSelect);
 			createFormLocalStorage();
-			if( window.localStorage.length === 0 ){
+			if(Object.keys(getAllStorage()).length === 0){
 				document.getElementById("localStorageCancelBtn").click();
+				document.getElementById('btnExcelExport').focus();
 				let btnLocalStorage = document.getElementById("btnLocalStorage");
 				btnLocalStorage.disabled=true;
 				btnLocalStorage.classList.add("disabled");
-				document.getElementById('btnExcelExport').focus();
 			}
-			document.getElementById(document.querySelector('input[name="auditRadioRestore"]:checked').id).focus();
+			else{
+				document.getElementById(document.querySelector('input[name="auditRadioRestore"]:checked').id).focus();
+			}	
 		});
 
 		var localStorageDeleteNoBtn = document.getElementById("localStorageDeleteNoBtn");
@@ -3403,10 +3405,11 @@ jsonUpdate = function () {
 	linkElement.setAttribute('aria-disabled', false);
 	linkElement.setAttribute('href', dataUri);
 	linkElement.setAttribute('download', exportFileName);
+
+	let allLocalStorage = getAllStorage();
+
+	if( Object.keys(allLocalStorage).length >8 ){
 	
-	if( window.localStorage.length >=8 ){
-		let allLocalStorage;
-		allLocalStorage = getAllStorage();
 		let deleteitem = '';
 		let timestamp = 0;
 		for (const [key, value] of Object.entries(allLocalStorage)) {
@@ -3423,6 +3426,11 @@ jsonUpdate = function () {
 	btnLocalStorage.classList.remove("disabled");
 }
 
+/**
+ * Get all local storage va11ydette audit
+ * 
+ * @returns 
+ */
 function getAllStorage() {
 
     var archive = {}, // Notice change here
@@ -3430,8 +3438,11 @@ function getAllStorage() {
         i = keys.length;
 
     while ( i-- ) {
-        archive[ keys[i] ] = localStorage.getItem( keys[i] );
+		if( keys[i].indexOf('lavallydette')>=0 ){
+        	archive[ keys[i] ] = localStorage.getItem( keys[i] );
+		}
     }
+
 
     return archive;
 }

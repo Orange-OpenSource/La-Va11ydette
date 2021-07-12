@@ -348,8 +348,6 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
  
 	if (checklistVallydette[currentCriteriaListName].template === 'audit'){
 		criteriaVallydette.forEach(function (criteria, key) {
-			 criteria.ID = "testWebID-"+key;
-			 criteria.IDorigin = "testWebID-"+key;
 			 criteria.resultatTest = "nt";
 			 criteria.issues = [];
 			 

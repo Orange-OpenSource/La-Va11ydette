@@ -529,6 +529,7 @@ function eventHandler() {
 			checkTheVersion(dataVallydette.checklist.version);
 			utils.putTheFocus(document.getElementById("checklistName"));
 			runLangRequest();
+			setTimeout(function(){ jsonUpdate(); }, 500);
 		}
 
 		fr.readAsText(files.item(0));

@@ -9,7 +9,8 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Vérifier que chaque champ a une étiquette (<code>TextView</code> associé) et que celle-ci est pertinente.</p>",
-		"group": "Écran de saisie",		
+		"group": "Écran de saisie",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Écran de saisie",
@@ -18,10 +19,12 @@
 		"IDorigin": "testID-002",
 		"wcag": [
 			"1.3.1 A",	
+			"1.3.2 A",	
 			"3.3.2 A"
 		],
 		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>RadioButton</code>, l'utilisation de la propriété <code>RadioGroup</code> étant nécessaire</li><li>pour une liste de <code>Checkbox</code></li></ul>",
 		"group": "Écran de saisie",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",	
 		"resultatTest": "nt"
 	},{
 		"themes": "Écran de saisie",
@@ -34,6 +37,7 @@
 		],
 		"verifier": "<ul><li>Vérifier la présence d'une identification visuelle du champ obligatoire ne reposant pas uniquement sur la couleur (ex&nbsp;: astérisque).</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li><li>Vérifier que le formulaire ne peut pas être validé si le champ obligatoire n'est pas renseigné.</li></ul>",
 		"group": "Écran de saisie",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",	
 		"resultatTest": "nt"
 	},{
 		"themes": "Écran de saisie",
@@ -45,7 +49,8 @@
 
 		],
 		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
-		"group": "Écran de saisie",		
+		"group": "Écran de saisie",	
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",		
 		"resultatTest": "nt"
 	},{
 		"themes": "Écran de saisie",
@@ -78,7 +83,8 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
-		"group": "Écran de saisie",		
+		"group": "Écran de saisie",	
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",	
 		"resultatTest": "nt"
 	},{
 		"themes": "Écran de saisie",
@@ -90,6 +96,7 @@
 		],
 		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies.</p>",
 		"group": "Écran de saisie",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",	
 		"resultatTest": "nt"
 	},{
 		"themes": "Écran de saisie",
@@ -111,6 +118,7 @@
 			"2.4.2 A"
 		],
 		"verifier": "<p>Vérifier que le titre de l'<code>Activity</code> est renseigné.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
 		"resultatTest": "nt"
 	},{
 	"themes": "Entêtes",
@@ -121,6 +129,7 @@
 			"2.4.2 A"
 		],
 		"verifier": "<p>Vérifier que le titre de l'<code>Activity</code> est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
 		"resultatTest": "nt"
 	},{
 	"themes": "Entêtes",
@@ -131,16 +140,19 @@
 			"2.4.2 A"
 		],
 		"verifier": "<p>Vérifier que le titre de l'<code>Activity</code> permet à l'utilisateur de comprendre le contexte de la page.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
 		"resultatTest": "nt"
 	},{
 	"themes": "Couleurs et contrastes",
-		"title": "Le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors cas particuliers)&nbsp;?",
+		"title": "Le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors exceptions)&nbsp;?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
 			"1.4.3 AA"
 		],
 		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes.</p><ul><li><strong>Pour texte standard</strong> <ul><li>Taille inférieure à <code>18sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18sp</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14sp</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
+		"exception": "<p>Le brand name, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt"
 	},{
 		"themes": "Couleurs et contrastes",
@@ -152,6 +164,7 @@
 		],
 		"verifier": "<p>Vérifier que les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
 		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt"
 	},{
 		"themes": "Couleurs et contrastes",
@@ -162,6 +175,7 @@
 			"1.4.1 A"
 		],
 		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3 :1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt"
 	},{
 		"themes": "Couleurs et contrastes",
@@ -172,6 +186,7 @@
 			"1.3.3 A"
 		],
 		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt"
 	},{
 		"themes": "Agrandissement des éléments",
@@ -183,6 +198,7 @@
 			"1.4.10 AA"
 		],
 		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 200%.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/agrandissement/",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -193,6 +209,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de l'activité est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -204,6 +221,18 @@
 			"2.4.3 A"
 		],
 		"verifier": "<p>Vérifier que les éléments suivent un ordre logique et compréhensible en utilisant la navigation vocale.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#gerer-lordre-de-lecture-avec-la-navigation-vocale",
+		"resultatTest": "nt"
+	},{
+		"themes": "Navigation vocale",
+		"title": "Un champ de saisie est-il vocalisé avec le label qui lui est associé ? ",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": [
+			"1.3.5 AA"
+		],
+		"verifier": "<p>Vérifier que le libellé des champs de saisie sont bien associés à ceux-ci par le biais de l'attribut <code>LabelFor</code>. Les libellés doivent ainsi être vocalisés lorsqu'on navigue sur les champs de saisie avec lesquels ils sont associés.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -211,9 +240,11 @@
 		"ID": "testID-020",
 		"IDorigin": "testID-020",
 		"wcag": [
-			"1.3.1 A"
+			"1.3.1 A",
+			"1.3.2 A"
 		],
 		"verifier": "<p>Vérifier que les éléments liés sont vocalisés en un seul bloc :</p><ul><li>les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>les informations multidimensionnelles respectent-ils une bonne balance entre nombre de blocs et contenu dans chaque bloc ?</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#regrouper-les-elements",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -221,9 +252,11 @@
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": [
+			"1.3.1 A",
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Vérifier qu'avec la navigation vocale Talkback et le paramètre de navigation par entête défini :</p><ul><li>tous les entêtes de section sont navigables et vocalisés</li><li>seuls les entêtes sont navigables et vocalisés</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#gerer-la-navigation-par-entetes",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -234,6 +267,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran (activité) est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -244,6 +278,7 @@
 			"4.1.3 AA"
 		],
 		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -254,6 +289,7 @@
 			"4.1.2 A"
 		],
 		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-letat-des-elements",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -264,6 +300,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Vérifier qu'il n'y a aucun élément fantôme avec la navigation vocale.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -274,6 +311,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation vocale",
@@ -284,9 +322,9 @@
 			"2.5.3 A"
 		],
 		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant. Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt"
 	},{
-
 		"themes": "Navigation au clavier & Switch Access",
 		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access et avec un clavier ?",
 		"ID": "testID-027",
@@ -295,6 +333,7 @@
 			"2.1.1 A"
 		],
 		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access et avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de scroller pour lire le contenu dans une scrollView</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation au clavier & Switch Access",
@@ -305,6 +344,7 @@
 			"2.1.2 A"
 		],
 		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec la navigation au clavier.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation au clavier & Switch Access",
@@ -315,6 +355,7 @@
 			"2.4.3 A"
 		],
 		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access et la navigation au clavier.",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation au clavier & Switch Access",
@@ -325,6 +366,7 @@
 			"2.4.7 AA"
 		],
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran, que ce soit avec Switch Access ou la navigation clavier.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -336,6 +378,7 @@
 		],
 		"verifier": "<ul><li>Vérifier que ces actions ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Vérifier qu'il est possible de désactiver la détection de mouvement.</li></ul>",
 		"exception": "<p>Le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -347,6 +390,7 @@
 		],
 		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
 		"complement": "<h4>Exemple</h4><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -367,6 +411,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-une-application-utilisable-quelle-que-soit-lorientation",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -377,6 +422,8 @@
 			"2.5.5 AAA"
 		],
 		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic supérieur ou égal à 48dp</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li></ul>",
+		"exception": "<p>Cette règle comporte deux exceptions :</p><ul><li>Il y a un autre élément sur l'écran qui réalise la même action, et qui respecte la taille requise. Dans ce cas, précis, on accepte que l'élément soit trop petit.</li><li>L'élément interactif se trouve dans une phrase ou un bloc de texte (ex : liens).</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -390,13 +437,14 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
-		"title": "Une UI avec limite de temps a-t-elle son délai adaptable ?",
+		"title": "Une limite de temps impliquant un changement de contexte a-t-elle son délai adaptable ?",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": [
 			"2.2.1 A"
 		],
-		"verifier": "<p>Vérifier que le délai provoquant un changement de contexte automatique (par exemple, l'overflow de contrôle d'une vidéo qui disparaît après quelques secondes) est adaptable : soit depuis le paramètre d'accessibilité 'Time to take action', soit directement depuis l'application.</p>",
+		"verifier": "<p>Vérifier que le délai provoquant un changement de contexte automatique (par exemple, l'overflow de contrôle d'une vidéo qui disparaît après quelques secondes) est adaptable : soit depuis le paramètre d'accessibilité 'Time to take action', soit directement depuis l'application. On peut alors proposer plusieurs options depuis l'application : <ul><li>désactiver la limite de temps, mais l'application doit permettre de réaliser le même changement de contexte par une alternative.</li><li>contrôler la limite de temps, en choississant un délai plus ou moins long selon son besoin</li></ul></p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#rendre-adaptable-les-ui-avec-limite-de-temps",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -407,6 +455,7 @@
 			"1.4.12 AA"
 		],
 		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
@@ -439,6 +488,7 @@
 			"2.3.1 A"
 		],
 		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code>)</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#eviter-le-contenu-a-risque-epileptique",
 		"resultatTest": "nt"
 	},{	
 		"themes": "Navigation générale",
@@ -462,7 +512,7 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de lien est-il explicite, au minimum dans son contexte ?",
+		"title": "Chaque libellé de lien ou de bouton est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": [
@@ -481,6 +531,7 @@
 		],
 		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -492,6 +543,7 @@
 		],
 		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -503,6 +555,7 @@
 		],
 		"verifier": "<ul><li>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -514,6 +567,7 @@
 		],
 		"verifier": "<ul><li>Vérifier que pour toute vidéo, une audiodescription est disponible.</li><li>Vérifier que l'audiodescription est correctement synchronisée.</li><li>Vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>Vérifier que l'audiodescription est pertinente.</li></ul>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -525,6 +579,7 @@
 		],
 		"verifier": "<ul><li>Vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -537,6 +592,7 @@
 		"verifier": "<ul><li>Vérifier que des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
 		"complement": "<h4>Sous-titres transcrits</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
@@ -548,17 +604,19 @@
 		],
 		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Possibilité de régler le volume indépendamment du volume système.</li></ul>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "Multimédia",
-		"title": "Des contrôles sont-ils présents pour interagir avec un média (pause, stop, volume, sous titres, etc...) ?",
+		"title": "Des contrôles sont-ils présents pour interagir avec un média basé sur le temps (pause, stop, volume, sous titres, etc...) ?",
 		"ID": "testID-048",
 		"IDorigin": "testID-048",
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio, ou un média vidéo.</p>",
+		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio, un média vidéo, mais aussi avec un média basé sur le temps. Par exemple, un caroussel qui change de contenu automatiquement après un certain délai doit lui aussi proposer un sytème de contrôle pour pouvoir revenir au contenu précédent ou aller au contenu suivant.</p>",
 		"group": "Multimédia",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
 		"resultatTest": "nt"
 	},{
 		"themes": "WebView",
@@ -570,6 +628,7 @@
 		],
 		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Dans le code HTML s'assurer que&nbsp;:</p><ul><li>les balises de début et de fin sont complètes</li><li>éléments imbriqués selon leurs spécifications</li><li>il n'y a pas d'attributs en double</li><li>les attributs sont définis correctement (ouverture et fermeture des guillemets)</li><li>chaque attribut <code>id</code> est unique</li></ul>",
 		"group": "WebView",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"resultatTest": "nt"
 	},{
 		"themes": "WebView",
@@ -582,6 +641,7 @@
 		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangères.</p>",
 		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>",
 		"group": "WebView",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"resultatTest": "nt"
 	},{
 		"themes": "WebView",
@@ -593,6 +653,7 @@
 		],
 		"verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
 		"group": "WebView",		
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-liens-devitement",
 		"resultatTest": "nt"
 	},{
 		"themes": "WebView",
@@ -604,6 +665,7 @@
 		],
 		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
 		"group": "WebView",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"resultatTest": "nt"
 	}
 ]

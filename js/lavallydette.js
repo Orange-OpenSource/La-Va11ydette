@@ -112,7 +112,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 		
 	  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
 		checklistVallydette = JSON.parse(checklistRequest.responseText);
-		
+
 		if (currentCriteriaListName) {
 			initAuditPage();
 			createObjectAndRunVallydette();
@@ -120,7 +120,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 		} else {
 			initHomePage();
 		}
-		
+
 		initMainMenu();
 		localizeHTML();
 	  } 
@@ -220,7 +220,7 @@ function initMainMenu() {
 	htmlMainMenu += '</div>';
 	htmlMainMenu += '</div>';
 	
-	document.getElementById("importexport").innerHTML = htmlMainMenu + document.getElementById("importexport").innerHTML;
+	document.getElementById("checklist").innerHTML = htmlMainMenu;
 	
 }
 
@@ -339,6 +339,7 @@ function initAuditPage() {
 	htmlMainContent = document.getElementById('mainContent');
 	
 	eventHandler();
+	AuditEventHandler();
 	
 }
 
@@ -511,24 +512,24 @@ function eventHandler() {
 		var fr = new FileReader();
 
 		fr.onload = function (e) {
-			dataVallydette = JSON.parse(e.target.result);
-			if (dataVallydette.checklist.referentiel) {
-				
+			let dataFile = JSON.parse(e.target.result);
+			if (dataFile.hasOwnProperty('checklist')) {
+				dataVallydette = dataFile;
+					
 				//fix obsolete referentiel name (from 1.4 checklist version)
 				if (dataVallydette.checklist.referentiel === "wcagEase") {
 					dataVallydette.checklist.referentiel = "wcag-web";
 				}
 				
 				currentCriteriaListName = dataVallydette.checklist.referentiel;
-				
+				initAuditPage();
+				initGlobalLang(dataVallydette.checklist.lang, true);
+				initGlobalTemplate(dataVallydette.checklist.template);
+				checkTheVersion(dataVallydette.checklist.version);
+				utils.putTheFocus(document.getElementById("checklistName"));
+				runLangRequest();
+				setTimeout(function(){ jsonUpdate(); }, 500);
 			}
-			initAuditPage();
-			initGlobalLang(dataVallydette.checklist.lang, true);
-			initGlobalTemplate(dataVallydette.checklist.template);
-			checkTheVersion(dataVallydette.checklist.version);
-			utils.putTheFocus(document.getElementById("checklistName"));
-			runLangRequest();
-			setTimeout(function(){ jsonUpdate(); }, 500);
 		}
 
 		fr.readAsText(files.item(0));
@@ -538,23 +539,6 @@ function eventHandler() {
 	inputSelectFile.addEventListener('change', function () {
 		document.getElementById("selectFilesLabel").innerText = inputSelectFile.files[0].name;
 	}, false);
-	
-	var btnChecklist = document.getElementById("btnChecklistName");
-	btnChecklist.addEventListener('click', function () {
-		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
-	}, false);
-	
-	var btnLocalStorage = document.getElementById("btnLocalStorage");
-	btnLocalStorage.addEventListener('click', function () {
-		runLocalStorage();
-	}, false);
-
-	if(Object.keys(getAllStorage()).length === 0){
-		btnLocalStorage.disabled=true;
-		btnLocalStorage.classList.add("disabled");
-	}
-	
-	btnActionPageEventHandler();
 	
 }
 
@@ -682,6 +666,30 @@ function getLocalStorage(auditName) {
 	runLangRequest();						
 }
 
+
+/**
+ *  Initialization of events for name audit button, and local Storage button.
+ */
+
+function AuditEventHandler(){
+	var btnChecklist = document.getElementById("btnChecklistName");
+
+	btnChecklist.addEventListener('click', function () {
+		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
+	}, false);
+
+	var btnLocalStorage = document.getElementById("btnLocalStorage");
+	btnLocalStorage.addEventListener('click', function () {
+		runLocalStorage();
+	}, false);
+
+	if(Object.keys(getAllStorage()).length === 0){
+		btnLocalStorage.disabled=true;
+		btnLocalStorage.classList.add("disabled");
+	}
+	btnActionPageEventHandler();
+
+}
 
 /**
  *  Initialization of events for page name edit button and page delete button.
@@ -2229,7 +2237,7 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	htmlMenu += '<hr class="border-light  w-100">';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
-	btnActionPageEventHandler ();
+	btnActionPageEventHandler();
 }
 
 

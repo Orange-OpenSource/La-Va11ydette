@@ -57,6 +57,8 @@
 	"saveDownloadJson": "Save and download in JSON format",
 	"downloadJson": "Download in JSON format",
 	"import": "Import",
+	"importError": "The JSON file is not compatible with import",
+	"importErrorEmpty": "You must fill in a JSON file before importing",
 	"download": "Download",
 	"selectAchecklist": "Select a checklist",
 	"reset": "Reset",
@@ -205,6 +207,7 @@
 	},
 	"title": {
 		"btnImport": "Import an audit (json)",
+		"btnImportClose": "Close the import part",
 		"export": "Export an audit (json)",
 		"btnShowResult": "Show the compliances results",
 		"btnChecklistName": "Edit the audit name",

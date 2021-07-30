@@ -509,30 +509,44 @@ function eventHandler() {
 	
 	btnImport.onclick = function () {
 		var files = document.getElementById('selectFiles').files;
-		var fr = new FileReader();
+		let alert = document.getElementById('import-alert');
+		alert.classList.add('d-none');
 
-		fr.onload = function (e) {
-			let dataFile = JSON.parse(e.target.result);
-			if (dataFile.hasOwnProperty('checklist')) {
-				dataVallydette = dataFile;
-					
-				//fix obsolete referentiel name (from 1.4 checklist version)
-				if (dataVallydette.checklist.referentiel === "wcagEase") {
-					dataVallydette.checklist.referentiel = "wcag-web";
-				}
-				
-				currentCriteriaListName = dataVallydette.checklist.referentiel;
-				initAuditPage();
-				initGlobalLang(dataVallydette.checklist.lang, true);
-				initGlobalTemplate(dataVallydette.checklist.template);
-				checkTheVersion(dataVallydette.checklist.version);
-				utils.putTheFocus(document.getElementById("checklistName"));
-				runLangRequest();
-				setTimeout(function(){ jsonUpdate(); }, 500);
-			}
+		if(files.length==0){
+			alert.classList.remove('d-none');
+			alert.innerHTML='<span class="alert-icon"></span><p>'+ langVallydette.importErrorEmpty +'</p>';
 		}
+		else{
+			var fr = new FileReader();
 
-		fr.readAsText(files.item(0));
+			fr.onload = function (e) {
+				let dataFile = JSON.parse(e.target.result);
+				if (dataFile.hasOwnProperty('checklist')) {
+					dataVallydette = dataFile;
+						
+					//fix obsolete referentiel name (from 1.4 checklist version)
+					if (dataVallydette.checklist.referentiel === "wcagEase") {
+						dataVallydette.checklist.referentiel = "wcag-web";
+					}
+					
+					currentCriteriaListName = dataVallydette.checklist.referentiel;
+					initAuditPage();
+					initGlobalLang(dataVallydette.checklist.lang, true);
+					initGlobalTemplate(dataVallydette.checklist.template);
+					checkTheVersion(dataVallydette.checklist.version);
+					document.getElementById("btnImport").click();
+					utils.putTheFocus(document.getElementById("checklistName"));
+					runLangRequest();
+					setTimeout(function(){ jsonUpdate(); }, 500);
+				}
+				else{
+					alert.classList.remove('d-none');
+					alert.innerHTML='<span class="alert-icon"></span><p>'+ langVallydette.importError +'</p>';
+				}
+			}
+			fr.readAsText(files.item(0));	
+		}
+		
 	};
 	
 	var inputSelectFile = document.getElementById("selectFiles");

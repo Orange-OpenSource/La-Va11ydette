@@ -182,8 +182,16 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                             <label class="custom-file-label" id="selectFilesLabel" for="selectFiles" aria-describedby="import">Sélectionner un audit</label>
                         </div>
                         <div class="input-group-append">
-                            <button class="btn btn-secondary btn-inverse" type="button" id="import" data-toggle="collapse" data-target="#import-form"
-                            aria-expanded="false" aria-controls="import-form">Importer</button>
+                            <button class="btn btn-secondary btn-inverse" type="button" id="import">Importer</button>
+                            <button id="btnImportClose" type="button" class="btn btn-secondary btn-inverse btn-icon" title=""
+                            data-toggle="collapse" data-target="#import-form"
+                            aria-expanded="false" aria-controls="import-form">
+                                <span class="icon icon-delete" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-dark pt-3">
+                        <div id="import-alert" class="alert alert-danger d-none" role="alert">
                         </div>
                     </div>
                 </div>

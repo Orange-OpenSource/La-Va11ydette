@@ -487,7 +487,7 @@
 		"wcag": [
 			"2.4.3 A"
 		],
-		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel).",
+		"verifier": "<p>Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier",
 		"resultatTest": "nt"
 	},{

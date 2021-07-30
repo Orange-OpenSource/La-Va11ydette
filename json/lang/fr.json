@@ -58,6 +58,8 @@
 	"saveDownloadJson": "Enregistrer et télécharger au format JSON",
 	"downloadJson": "Télécharger au format JSON",
 	"import": "Importer",
+	"importError": "Le fichier JSON renseigné n'est pas compatible avec l'import",
+	"importErrorEmpty": "Vous devez renseigner un fichier JSON avant d'importer",
 	"download": "Télécharger",
 	"selectAchecklist": "Sélectionner une checklist",
 	"reset": "Réinitialiser",
@@ -205,6 +207,7 @@
 	},
 	"title": {
 		"btnImport": "Importer un audit (json)",
+		"btnImportClose": "Fermer la partie import",
 		"export": "Exporter l'audit (json)",
 		"btnShowResult": "Afficher les taux de conformité",
 		"btnChecklistName": "Modifier le nom de l’audit",

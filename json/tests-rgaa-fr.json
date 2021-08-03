@@ -6,7 +6,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Chaque image (<code>img</code>, <code>role=\"img\"</code>, <code>area</code>, <code>svg</code>, <code>type=\"image\"</code>, <code>canvas</code>) porteuse d'information a-t-elle une alternative textuelle?</li><li>Chaque image (<code>svg</code>, <code>object</code>, <code>embed</code>, <code>canvas</code>) porteuse d'information possède un attribut WAI-ARIA <code>role=\"img\"</code></li><li>Chaque image objet ou embarquée (<code>object</code>, <code>embed</code>, <code>canvas</code>) porteuse d'information vérifie t'elle une de ces conditions?<ul><li>L’élément est immédiatement suivi d’un lien ou bouton adjacent permettant d’accéder à un contenu alternatif.</li><li>Un mécanisme permet à l’utilisateur de remplacer l’élément par un contenu alternatif.</li></ul></li><li>Pour chaque image bitmap (<code>canvas</code>) porteuse d'information, un contenu alternatif est présent entre les balises <code>canvas</code></li></ul>",
+		"verifier": "<p>Chaque image (balise <code>img</code> ou balise possédant l'attribut WAI-ARIA <code>role=\"img\"</code>) porteuse d'information a-t-elle une alternative textuelle ?</p><p>Chaque zone d'une image réactive (balise <code>area</code>) porteuse d'information a-t-elle une alternative textuelle ?</p><p>Chaque bouton de type image (balise<code>input</code> avec l'attribut<code>type=\"image\"</code>) a-t-il une alternative textuelle ?</p><p>Chaque zone cliquable d'une image réactive côté serveur est-t-elle doublée d'un lien dans la page ?</p><p>Chaque image vectorielle (balise <code>svg</code>) porteuse d'information, vérifie-t-elle ces conditions ?</p><ul><li>La balise <code>svg</code> possède un attribut WAI-ARIA <code>role=\"img\"</code>.</li><li>La balise <code>svg</code> a une alternative textuelle.</li></ul><p>Chaque image objet (balise <code>object</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, vérifie-t-elle une de ces conditions ?</p><ul><li>La balise <code>object</code> possède une alternative textuelle</li><li>L'élément <code>object</code> est immédiatement suivi d'un lien ou bouton adjacent permettant d'accéder à un contenu alternatif.</li><li>Un mécanisme permet à l'utilisateur de remplacer l'élément <code>object</code> par un contenu alternatif.</li></ul><p>Chaque image embarquée (balise <code>embed</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, vérifie-t-elle une de ces conditions ?</p><ul><li>La balise <code>embed</code> possède une alternative textuelle</li><li>L'élément <code>embed</code> est immédiatement suivi d'un lien ou bouton adjacent permettant d'accéder à un contenu alternatif.</li><li>Un mécanisme permet à l'utilisateur de remplacer l'élément <code>embed</code> par un contenu alternatif.</li></ul><p>Chaque image bitmap (balise <code>canvas</code>) porteuse d'information, vérifie-t-elle une de ces conditions ?</p><ul><li>La balise <code>canvas</code> possède une alternative textuelle</li><li>Un contenu alternatif est présent entre les balises <code>canvas</code> </li><li>L'élément <code>canvas</code> est immédiatement suivi d'un lien ou bouton adjacent permettant d'accéder à un contenu alternatif.</li><li>Un mécanisme permet à l'utilisateur de remplacer l'élément <code>canvas</code> par un contenu alternatif.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -17,7 +17,7 @@
 			"1.1.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "<ul><li>Chaque image (<code>img</code>, <code>area</code>) de décoration, sans légende, vérifie-t-elle une de ces conditions ?<ul><li>La balise <code>img</code> possède un attribut <code>alt</code> vide (<code>alt=\"\"</code>) et est dépourvue de tout autre attribut permettant de fournir une alternative textuelle ;</li><li>La balise <code>img</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code> ou <code>role=\"presentation\"</code>.</li></ul></li><li>Chaque image (<code>object</code>, <code>canvas</code>) de décoration, sans légende, vérifie-t-elle ces conditions ?<ul><li>L'élément possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code></li><li>L'élément est dépourvu d'alternative textuelle</li><li>Il n'y a aucun texte faisant office d'alternative textuelle entre les balises <code>object</code> ou <code>canvas</code></li></ul></li><li>Chaque image vectorielle (balise <code>svg</code>) de décoration, sans légende, vérifie-t-elle ces conditions ?<ul><li>La balise possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code></li><li>La balise et ses enfants sont dépourvus d'alternative textuelle</li><li>Les balises <code>title</code> et <code>desc</code> sont absentes ou vides</li><li>La balise et ses enfants sont dépouvus d'attribut <code>title</code></ul></li></ul>",
+		"verifier": "<p>Chaque image (balise <code>img</code>) de décoration, sans légende, vérifie-t-elle une de ces conditions ?</p><ul><li>La balise <code>img</code> possède un attribut alt vide (<code>alt=\"\"</code>) et est dépourvue de tout autre attribut permettant de fournir une alternative textuelle.</li><li>La balise <code>img</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code> ou <code>role=\"presentation\"</code>.</li></ul><p>Chaque zone non cliquable (balise <code>area</code> sans attribut <code>href</code>) de décoration, vérifie-t-elle une de ces conditions ?</p><ul><li>La balise <code>area</code> possède un attribut <code>alt</code> vide (<code>alt=\"\"</code>) et est dépourvue de tout autre attribut permettant de fournir une alternative textuelle.</li><li>La balise <code>area</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code> ou <code>role=\"presentation\"</code>.</li></ul><p>Chaque image objet (balise <code>object</code> avec l'attribut <code>type=\"image/…\"</code>) de décoration, sans légende, vérifie-t-elle ces conditions ?</p><ul><li>La balise <code>object</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code>.</li><li>La balise <code>object</code> est dépourvue d'alternative textuelle.</li><li>Il n'y a aucun texte faisant office d'alternative textuelle entre <code>object</code>.</li></ul><p>Chaque image vectorielle (balise <code>svg</code>) de décoration, sans légende, vérifie-t-elle ces conditions ?</p><ul><li>La balise <code>svg</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code>.</li><li>La balise <code>svg</code> et ses enfants sont dépourvus d'alternative textuelle.</li><li>Les balises <code>title</code> et<code>desc</code> sont absentes ou vides.</li><li>La balise <code>svg</code> et ses enfants sont dépourvus d'attribut <code>title</code>.</li></ul><p>Chaque image bitmap (balise <code>canvas</code>) de décoration, sans légende, vérifie-t-elle ces conditions ?</p><ul><li>La balise <code>canvas</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code>.</li><li>La balise <code>canvas</code> et ses enfants sont dépourvus d'alternative textuelle.</li><li>Il n'y a aucun texte faisant office d'alternative textuelle entre <code>canvas</code> .</li></ul><p>Chaque image embarquée (balise <code>embed</code> avec l'attribut <code>type=\"image/…\"</code>) de décoration, sans légende, vérifie-t-elle ces conditions ?</p><ul><li>La balise <code>embed</code> possède un attribut WAI-ARIA <code>aria-hidden=\"true\"</code>.</li><li>La balise <code>embed</code> et ses enfants sont dépourvus d'alternative textuelle.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -28,7 +28,7 @@
 			"1.1.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "<ul><li>Chaque image (<code>img</code>, <code>role=\"img\"</code>, <code>area</code>, <code>svg</code>, <code>type=\"image\"</code>, <code>canvas</code>) porteuse d'information, ayant une alternative textuelle, cette alternative est-elle pertinente?<ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent</li></ul></li><li>Pour chaque image bitmap (balise <code>canvas</code>) porteuse d’information et ayant un contenu alternatif entre <code>canvas</code>, ce contenu alternatif est-il correctement restitué par les technologies d’assistance ? </li><li>Pour chaque image porteuse d’information et ayant une alternative textuelle, l’alternative textuelle est-elle courte et concise (hors cas particuliers) ?</li></ul>",
+		"verifier": "<p>Pour chaque image (balise <code>img</code> ou balise possédant l'attribut WAI-ARIA <code>role=\"img\"</code>) porteuse d'information, ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque zone (balise <code>area</code>) d'une image réactive porteuse d'information, ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque bouton de type <code>image</code> (balise<code>input</code> avec l'attribut<code>type=\"image\"</code>), ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque image objet (balise <code>object</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent le contenu alternatif est pertinent.</li></ul><p>Pour chaque image embarquée (balise <code>embed</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent le contenu alternatif est pertinent.</li></ul><p>Pour chaque image vectorielle (balise <code>svg</code>) porteuse d'information, ayant une alternative textuelle, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque image bitmap (balise <code>canvas</code>) porteuse d'information, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent le contenu alternatif est pertinent.</li></ul><p>Pour chaque image bitmap (balise <code>canvas</code>) porteuse d'information et ayant un contenu alternatif entre <code>canvas</code> , ce contenu alternatif est-il correctement restitué par les technologies d'assistance ?</p><p>Pour chaque image porteuse d'information et ayant une alternative textuelle, l'alternative textuelle est-elle courte et consice (hors cas particuliers) ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -38,7 +38,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Chaque image (<code>img</code>, <code>role=\"img\"</code>, <code>area</code>, <code>svg</code>, <code>type=\"image\"</code>, <code>canvas</code>) utilisé comme CAPTCHA ou comme image-test, ayant une alternative textuelle, cette alternative est-elle pertinente?<ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent</li></ul></li></ul>",
+		"verifier": "<p>Pour chaque image (balise <code>img</code>) utilisée comme CAPTCHA ou comme image test, ayant une alternative textuelle, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque zone (balise <code>area</code>) d'une image réactive utilisée comme CAPTCHA ou comme image test, ayant une alternative textuelle, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut alt est pertinent.</li><li>S'il est présent, le contenu de l'attribut title est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque bouton de type image (balise<code>input</code> avec l'attribut<code>type=\"image\"</code>) utilisé comme CAPTCHA ou comme image test, ayant une alternative textuelle, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>alt</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque image objet (balise <code>object</code> avec l'attribut <code>type=\"image/…\"</code>) utilisée comme CAPTCHA ou comme image test, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent le contenu alternatif est pertinent.</li></ul><p>Pour chaque image embarquée (balise <code>embed</code> avec l'attribut <code>type=\"image/…\"</code>) utilisée comme CAPTCHA ou comme image test, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent le contenu alternatif est pertinent.</li></ul><p>Pour chaque image vectorielle (balise <code>svg</code>) utilisé comme CAPTCHA ou comme image test, ayant une alternative textuelle, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li></ul><p>Pour chaque image bitmap (balise <code>canvas</code>) utilisée comme CAPTCHA ou comme image test, ayant une alternative textuelle ou un contenu alternatif, cette alternative est-elle pertinente ?</p><ul><li>S'il est présent, le contenu de l'attribut <code>title</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent le contenu alternatif est pertinent.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -48,7 +48,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Chaque image (balises <code>img</code>, <code>area</code>, <code>object</code>, <code>embed</code>, <code>svg</code>, <code>canvas</code> ou possédant un attribut WAI-ARIA <code>role=\"img\"</code>) utilisée comme CAPTCHA vérifie-t-elle une de ces conditions ?<ul><li>Il existe une autre forme de CAPTCHA non graphique, au moins</li><li>Il existe une autre solution d’accès à la fonctionnalité qui est sécurisée par le CAPTCHA.</li></ul></li><li>Chaque bouton associé à une image (balise input avec l’attribut <code>type=\"image\"</code>) utilisée comme CAPTCHA vérifie-t-il une de ces conditions ?<ul><li>Il existe une autre forme de CAPTCHA non graphique, au moins</><li>Il existe une autre solution d’accès à la fonctionnalité sécurisée par le CAPTCHA.</li></ul></li></ul>",
+		"verifier": "<p>Chaque image (balises <code>img</code>, <code>area</code>, <code>object</code>, <code>embed</code>, <code>svg</code>, <code>canvas</code> ou possédant un attribut WAI-ARIA <code>role=\"img\"</code>) utilisée comme CAPTCHA vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe une autre forme de CAPTCHA non graphique, au moins.</li><li>Il existe une autre solution d'accès à la fonctionnalité qui est sécurisée par le CAPTCHA.</li></ul><p>Chaque bouton associé à une image (balise <code>input</code> avec l'attribut<code>type=\"image\"</code>) utilisée comme CAPTCHA vérifie-t-il une de ces conditions ?</p><ul><li>Il existe une autre forme de CAPTCHA non graphique, au moins.</li><li>Il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -58,7 +58,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque image (balise <code>img</code>) porteuse d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe un attribut <code>longdesc</code> qui donne l'adresse (url) d'une page ou d'un emplacement dans la page contenant la description détaillée.</li><li>Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l'image.</li><li>Il existe un lien ou un bouton adjacent permettant d'accéder à la description détaillée.</li></ul><p>Chaque image objet (balise <code>object</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l'image.</li><li>Il existe un lien ou un bouton adjacent permettant d'accéder à la description détaillée.</li></ul><p>Chaque image embarquée (balise <code>embed</code>) porteuse d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l'image.</li><li>Il existe un lien ou un bouton adjacent permettant d'accéder à la description détaillée.</li></ul><p>Chaque bouton de type image (balise<code>input</code> avec l'attribut<code>type=\"image\"</code>) porteur d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe une alternative textuelle contenant la référence à une description détaillée adjacente à l'image.</li><li>Il existe un lien ou un bouton adjacent permettant d'accéder à la description détaillée.</li><li>Il existe un attribut WAI-ARIA <code>aria-describedby</code> associant un passage de texte faisant office de description détaillée.</li></ul><p>Chaque image vectorielle (balise <code>svg</code>) porteuse d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe un attribut WAI-ARIA <code>aria-label</code> contenant l'alternative textuelle et une référence à une description détaillée adjacente.</li><li>Il existe un attribut WAI-ARIA <code>aria-labelledby</code> associant un passage de texte faisant office d'alternative textuelle et un autre faisant office de description détaillée.</li><li>Il existe un attribut WAI-ARIA <code>aria-describedby</code> associant un passage de texte faisant office de description détaillée.</li><li>Il existe un lien ou un bouton adjacent permettant d'accéder à la description détaillée.</li></ul><p>Pour chaque image vectorielle (balise <code>svg</code>) porteuse d'information, ayant une description détaillée, la référence éventuelle à la description détaillée dans l'attribut WAI-ARIA <code>aria-label</code> et la description détaillée associée par l'attribut WAI-ARIA <code>aria-labelledby</code> ou <code>aria-describedby</code> sont-elles correctement restituées par les technologies d'assistance ?</p><p>Chaque image bitmap (balise <code>canvas</code>), porteuse d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe un attribut WAI-ARIA <code>aria-label</code> contenant l'alternative textuelle et une référence à une description détaillée adjacente.</li><li>Il existe un attribut WAI-ARIA <code>aria-labelledby</code> associant un passage de texte faisant office d'alternative textuelle et un autre faisant office de description détaillée.</li><li>Il existe un contenu textuel entre <code>canvas</code>  faisant référence à une description détaillée adjacente à l'image bitmap.</li><li>Il existe un contenu textuel entre <code>canvas</code>  faisant office de description détaillée.</li><li>Il existe un lien ou bouton adjacent permettant d'accéder à la description détaillée.</li></ul><p>Pour chaque image bitmap (balise <code>canvas</code>) porteuse d'information, qui implémente une référence à une description détaillée adjacente, cette référence est-elle correctement restituée par les technologies d'assistance ?</p><p>Pour chaque image (balise <code>img</code>,<code>input</code> avec l'attribut<code>type=\"image\"</code>, <code>area</code>, <code>object</code>, <code>embed</code>, <code>svg</code>, <code>canvas</code>, ou possédant un attribut WAI-ARIA <code>role=\"img\"</code>) porteuse d'information, qui est accompagnée d'une description détaillée et qui utilise un attribut WAI-ARIA <code>aria-describedby</code>, l'attribut WAI-ARIA <code>aria-describedby</code> associe-t-il la description détaillée ?</p><p>Chaque balise possédant un attribut WAI-ARIA role=\"img\" porteuse d'information, qui nécessite une description détaillée, vérifie-t-elle une de ces conditions ?</p><ul><li>Il existe un attribut WAI-ARIA <code>aria-label</code> contenant l'alternative textuelle et une référence à une description détaillée adjacente.</li><li>Il existe un attribut WAI-ARIA <code>aria-labelledby</code> associant un passage de texte faisant office d'alternative textuelle et un autre faisant office de description détaillée.</li><li>Il existe un attribut WAI-ARIA <code>aria-describedby</code> associant un passage de texte faisant office de description détaillée.</li><li>Il existe un lien ou un bouton adjacent permettant d'accéder à la description détaillée.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -68,7 +68,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque image (balise <code>img</code>) porteuse d'information, ayant une description détaillée, vérifie-t-elle ces conditions ?</p><ul><li>La description détaillée via l'adresse référencée dans l'attribut longdesc est pertinente.</li><li>La description détaillée dans la page et signalée par l'alternative textuelle est pertinente.</li><li>La description détaillée via un lien ou bouton adjacent est pertinente.</li><li>Le passage de texte associé via l'attribut WAI-ARIA <code>aria-describedby</code> est pertinent.</li></ul><p>Chaque bouton de type image (balise<code>input</code> avec l'attribut<code>type=\"image\"</code>) porteur d'information, ayant une description détaillée, vérifie-t-elle ces conditions ?</p><ul><li>La description détaillée dans la page et signalée par l'alternative textuelle est pertinente.</li><li>La description détaillée via un lien ou bouton adjacent est pertinente.</li><li>Le passage de texte associé via l'attribut WAI-ARIA <code>aria-describedby</code> est pertinent.</li></ul><p>Chaque image objet (balise <code>object</code> avec l'attribut type=<code>\"image/…\"</code>) porteuse d'information, ayant une description détaillée, vérifie-t-elle ces conditions ?</p><ul><li>La description détaillée dans la page et signalée par l'alternative textuelle est pertinente.</li><li>La description détaillée adjacente à l'image objet est pertinente.</li><li>La description détaillée via un lien ou bouton adjacent est pertinente.</li><li>Le passage de texte associé via l'attribut WAI-ARIA <code>aria-describedby</code> est pertinent.</li></ul><p>Chaque image embarquée (balise <code>embed</code> avec l'attribut type=<code>\"image/…\"</code>) porteuse d'information, ayant une description détaillée, vérifie-t-elle ces conditions ?</p><ul><li>La description détaillée dans la page et signalée par l'alternative textuelle est pertinente.</li><li>La description détaillée adjacente à l'image embarquée est pertinente.</li><li>La description détaillée via un lien ou bouton adjacent est pertinente.</li><li>Le passage de texte associé via l'attribut WAI-ARIA <code>aria-describedby</code> est pertinent.</li></ul><p>Chaque image vectorielle (balise <code>svg</code>) porteuse d'information, ayant une description détaillée, vérifie-t-elle ces conditions ?</p><ul><li>La description détaillée dans la page et signalée par l'alternative textuelle est pertinente.</li><li>La description détaillée dans la page et signalée par le texte contenu dans balise<code>desc</code> ou <code>title</code> est pertinente.</li><li>La description détaillée contenue dans la balise<code>desc</code> est pertinente.</li><li>La description détaillée via un lien ou bouton adjacent est pertinente.</li><li>Le passage de texte associé via l'attribut WAI-ARIA <code>aria-describedby</code> est pertinent.</li></ul><p>Chaque image bitmap (balise <code>canvas</code>) porteuse d'information, ayant une description détaillée, vérifie-t-elle ces conditions ?</p><ul><li>La description détaillée dans la page et signalée par l'alternative textuelle est pertinente.</li><li>La description détaillée dans la page et signalée par le texte contenu entre <code>canvas</code>  est pertinente.</li><li>La description détaillée contenue entre <code>canvas</code>  est pertinente.</li><li>La description détaillée adjacente à l'image bitmap est pertinente.</li><li>La description détaillée via un lien ou bouton adjacent est pertinente.</li><li>Le passage de texte associé via l'attribut WAI-ARIA <code>aria-describedby</code> est pertinent.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -78,7 +78,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque image texte (balise <code>img</code> ou possédant un attribut WAI-ARIA <code>role=\"img\"</code>) porteuse d'information, en l'absence d'un mécanisùe de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?</p><p>Chaque bouton « image texte » (balise<code>input</code> avec l'attribut<code>type=\"image\"</code>) porteur d'information, en l'absence d'un mécanisùe de remplacement, doit si possible être remplacé par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?</p><p>Chaque image texte objet (balise <code>object</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, en l'absence d'un mécanisùe de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?</p><p>Chaque image texte embarquée (balise <code>embed</code> avec l'attribut <code>type=\"image/…\"</code>) porteuse d'information, en l'absence d'un mécanisùe de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?</p><p>Chaque image texte bitmap (balise <code>canvas</code>) porteuse d'information, en l'absence d'un mécanisùe de remplacement, doit si possible être remplacée par du texte stylé. Cette règle est-elle respectée (hors cas particuliers) ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Images",
@@ -89,7 +89,7 @@
 			"1.1.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque image pourvue d'une légende (balise <code>img</code>,<code>input</code> avec l'attribut<code>type=\"image\"</code> ou possédant un attribut WAI-ARIA <code>role=\"img\"</code> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?</p><ul><li>L'image (balise <code>img</code>,<code>input</code> avec l'attribut<code>type=\"image\"</code> ou possédant un attribut WAI-ARIA <code>role=\"img\"</code>) et sa légende adjacente sont contenues dans une balise <code>figure</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>role=\"figure\"</code> ou <code>role=\"group\"</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>aria-label</code> dont le contenu est identique au contenu de la légende.</li><li>La légende est contenue dans une balise <code>figcaption</code>.</li></ul><p>Chaque image objet pourvue d'une légende (balise <code>object</code> avec l'attribut type=\"image/…\" associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?</p><ul><li>L'image objet (balise <code>object</code>) et sa légende adjacente sont contenues dans une balise <code>figure</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>role=\"figure\"</code> ou <code>role=\"group\"</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>aria-label</code> dont le contenu est identique au contenu de la légende.</li><li>La légende est contenue dans une balise <code>figcaption</code>.</li></ul><p>Chaque image embarquée pourvue d'une légende (balise <code>embed</code> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?</p><ul><li>L'image embarquée (balise <code>embed</code>) et sa légende adjacente sont contenues dans une balise <code>figure</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>role=\"figure\"</code> ou <code>role=\"group\"</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>aria-label</code> dont le contenu est identique au contenu de la légende.</li><li>La légende est contenue dans une balise <code>figcaption</code>.</li></ul><p>Chaque image vectorielle pourvue d'une légende (balise <code>svg</code> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?</p><ul><li>L'image vectorielle (balise <code>svg</code>) et sa légende adjacente sont contenues dans une balise <code>figure</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>role=\"figure\"</code> ou <code>role=\"group\"</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>aria-label</code> dont le contenu est identique au contenu de la légende.</li><li>La légende est contenue dans une balise <code>figcaption</code>.</li></ul><p>Chaque image bitmap pourvue d'une légende (balise <code>canvas</code> associée à une légende adjacente), vérifie-t-elle, si nécessaire, ces conditions ?</p><ul><li>L'image bitmap (balise <code>canvas</code>) et sa légende adjacente sont contenues dans une balise <code>figure</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>role=\"figure\"</code> ou <code>role=\"group\"</code>.</li><li>La balise <code>figure</code> possède un attribut WAI-ARIA <code>aria-label</code> dont le contenu est identique au contenu de la légende.</li><li>La légende est contenue dans une balise <code>figcaption</code>.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Cadres",
@@ -99,7 +99,7 @@
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque cadre (balise <code>iframe</code> ou <code>frame</code>) a-t-il un attribut <code>title</code> ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Cadres",
@@ -109,7 +109,7 @@
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque cadre (balise <code>iframe</code> ou <code>frame</code>) a-t-il un attribut <code>title</code> ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Couleurs",
@@ -120,7 +120,7 @@
 			"1.3.1 A",
 			"1.1.4 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque mot ou ensemble de mots dont la mise en couleur est porteuse d'information, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?</p><p>Pour chaque indication de couleur donnée par un texte, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?</p><p>Pour chaque image véhiculant une information, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?</p><p>Pour chaque propriété CSS déterminant une couleur et véhiculant une information, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?</p><p>Pour chaque média temporel véhiculant une information, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?</p><p>Pour chaque média non temporel véhiculant une information, l'information ne doit pas être donnée uniquement par la couleur. Cette règle est-elle respectée ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Couleurs",
@@ -130,7 +130,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "",
+		"verifier": "<p>Dans chaque page web, le texte et le texte en image sans effet de graisse d'une taille restituée inférieure à 24px vérifient-ils une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste entre le texte et son arrière-plan est de 4.5:1, au moins.</li><li>Un mécanisme permet à l'utilisateur d'afficher le texte avec un rapport de contraste de 4.5:1, au moins.?</li></ul><p>Dans chaque page web, le texte et le texte en image en gras d'une taille restituée inférieure à 18,5px vérifient-ils une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste entre le texte et son arrière-plan est de 4.5:1, au moins.</li><li>Un mécanisme permet à l'utilisateur d'afficher le texte avec un rapport de contraste de 4.5:1, au moins.</li></ul><p>Dans chaque page web, le texte et le texte en image sans effet de graisse d'un taille restituée supérieure ou égale à 24px vérifient-ils une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste entre le texte et son arrière-plan est de 3:1, au moins.</li><li>Un mécanisme permet à l'utilisateur d'afficher le texte avec un rapport de contraste de 3:1, au moins.</li></ul><p>Dans chaque page web, le texte et le texte en image en gras d'un taille restituée supérieure ou égale à 18,5px vérifient-ils une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste entre le texte et son arrière-plan est de 3:1, au moins.</li><li>Un mécanisme permet à l'utilisateur d'afficher le texte avec un rapport de contraste de 3:1, au moins.</li></ul><p>Dans le mécanisme qui permet d'afficher un rapport de contraste conforme, le rapport de contraste entre le texte et la couleur d’arrière-plan est-il suffisamment élevé ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Couleurs",
@@ -140,7 +140,7 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "",
+		"verifier": "<p>Dans chaque page web, le rapport de contraste entre les couleurs d'un composant d'interface dans ses différents états et la couleur d'arrière-plan contiguë vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste est de 3:1, au moins.</li><li>Unmécanisme permet un rapport de contraste de 3:1, au moins.</li></ul><p>Dans chaque page web, le rapport de contraste des différentes couleurs composant un élément graphique, lorsqu'elles sont nécessaires à sa compréhension, et la couleur d'arrière-plan contiguë, vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste est de 3:1, au moins.</li><li>Unmécanisme permet un rapport de contraste de 3:1, au moins.</li></ul><p>Dans chaque page web, le rapport de contraste des différentes couleurs contiguës entre elles d'un élément graphique, lorsqu'elles sont nécessaires à sa compréhension, vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>Le rapport de contraste est de 3:1, au moins.</li><li>Unmécanisme permet un rapport de contraste de 3:1, au moins.</li></ul><p>Dans le mécanisme qui permet d'afficher un rapport de contraste conforme, les couleurs du composant ou des éléments graphiques porteurs d’informations qui le composent, sont-elles suffisamment contrastées ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -151,7 +151,7 @@
 			"1.2.1 A",
 			"1.2.3 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque média temporel pré-enregistré seulement audio, vérifie-t-il, si nécessaire, l'une de ces conditions (hors cas particuliers) ?</p><ul><li>Il existe une transcription textuelle accessible via un lien ou bouton adjacent.</li><li>Il existe une transcription textuelle adjacente clairement identifiable.</li></ul><p>Chaque média temporel pré-enregistré seulement vidéo vérifie-t-il, si nécessaire, l'une de ces conditions (hors cas particuliers) ?</p><ul><li>Il existe une version alternative « audio seulement » accessible via un lien ou bouton adjacent.</li><li>Il existe une version alternative « audio seulement » adjacente clairement identifiable.</li><li>Il existe une transcription textuelle accessible via un lien ou bouton adjacent.</li><li>Il existe une transcription textuelle adjacente clairement identifiable.</li><li>Il existe une audio description synchronisée.</li><li>Il existe une version alternative avec une audio description synchronisée accessible via un lien ou bouton adjacent.</li></ul><p>Chaque média temporel synchronisé pré-enregistré vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?</p><ul><li>Il existe une transcription textuelle accessible via un lien ou bouton adjacent.</li><li>Il existe une transcription textuelle adjacente clairement identifiable.</li><li>Il existe une audio description synchronisée.</li><li>Il existe une version alternative avec une audio description synchronisée accessible via un lien ou bouton adjacent.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -162,7 +162,7 @@
 			"1.2.1 A",
 			"1.2.3 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média temporel pré-enregistré seulement audio, ayant une transcription textuelle, celle-ci est-elle pertinente (hors cas particuliers) ?</p><p>Chaque média temporel pré-enregistré seulement vidéo vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>La transcription textuelle est pertinente.</li><li>L'audio description synchronisée est pertinente.</li><li>L'audio description synchronisée de la version alternative est pertinente.</li><li>La version alternative audio seulement est pertinente.</li></ul><p>Chaque média temporel synchronisé pré-enregistré vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>La transcription textuelle est pertinente.</li><li>L'audio description synchronisée est pertinente.</li><li>L'audio description synchronisée de la version alternative est pertinente.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -172,7 +172,7 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque média temporel synchronisé pré-enregistré vérifie-t-il, si nécessaire, l'une de ces conditions (hors cas particuliers) ?</p><ul><li>Le média temporel synchronisé possède des sous-titres synchronisés.</li><li>Il existe une version alternative possédant des sous-titres synchronisés accessible via un lien ou bouton adjacent.</li></ul><p>Pour chaque média temporel synchronisé pré-enregistré possédant des sous-titres synchronisés diffusés via une balise <code>track</code>, la balise <code>track</code> possède-t-elle un attribut <code>kind=\"captions\"</code> ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -182,7 +182,7 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média temporel synchronisé pré-enregistré ayant des sous-titres synchronisés, ces sous-titres sont-ils pertinents ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -192,7 +192,7 @@
 		"wcag": [
 			"1.2.5 AA"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque média temporel pré-enregistré seulement vidéo vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?</p><ul><li>Il existe une audio description synchronisée.</li><li>Il existe une version alternative avec une audio description synchronisée.</li></ul><p>Chaque média temporel synchronisé pré-enregistré vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?</p><ul><li>Il existe une audio description synchronisée.</li><li>Il existe une version alternative avec une audio description synchronisée.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -202,7 +202,7 @@
 		"wcag": [
 			"1.2.5 AA"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média temporel pré-enregistré seulement vidéo ayant une audio description synchronisée, celle-ci est-elle pertinente ?</p><p>Pour chaque média temporel synchronisé ayant une audio description synchronisée, celle-ci est-elle pertinente ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -212,7 +212,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média temporel pré-enregistré seulement vidéo ayant une audio description synchronisée, celle-ci est-elle pertinente ?</p><p>Pour chaque média temporel synchronisé ayant une audio description synchronisée, celle-ci est-elle pertinente ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -222,7 +222,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média temporel seulement son, seulement vidéo ou synchronisé, le contenu textuel adjacent permet-il d'identifier clairement le média temporel (hors cas particuliers) ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -232,7 +232,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque média non temporel vérifie-t-il, si nécessaire, une de ces conditions (hors cas particuliers) ?</p><ul><li>Un lien ou bouton adjacent, clairement identifiable, contient l'adresse (url) d'une page contenant une alternative.</li><li>Un lien ou bouton adjacent, clairement identifiable, permet d'accéder à une alternative dans la page.</li></ul><p>Chaque média non temporel associé à une alternative vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>La page référencée par le lien ou bouton adjacent est accessible.</li><li>L'alternative dans la page, référencée par le lien ou bouton adjacent, est accessible.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -242,7 +242,7 @@
 		"wcag": [
 			"1.4.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média non temporel ayant une alternative, cette alternative permet-elle d'accéder au même contenu et à des fonctionnalités similaires ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -253,7 +253,7 @@
 			"2.1.1 A",
 			"2.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque média temporel a-t-il, si nécessaire, les fonctionnalités de contrôle de sa consultation ?</p><p>Pour chaque média temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?</p><ul><li>La fonctionnalité est accessible par le clavier et tout dispositif de pointage.</li><li>Une fonctionnalité accessible par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page.</li></ul><p>Pour chaque média temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?</p><ul><li>La fonctionnalité est activable par le clavier et tout dispositif de pointage.</li><li>Une fonctionnalité activable par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -264,7 +264,7 @@
 			"2.1.1 A",
 			"2.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque média non temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?</p><ul><li>La fonctionnalité est accessible par le clavier et tout dispositif de pointage.</li><li>Une fonctionnalité accessible par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page.</li></ul><p>Pour chaque média non temporel, chaque fonctionnalité vérifie-t-elle une de ces conditions ?</p><ul><li>La fonctionnalité est activable par le clavier et la souris.</li><li> Une fonctionnalité activable par le clavier et tout dispositif de pointage permettant de réaliser la même action est présente dans la page.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Multimédia",
@@ -274,7 +274,7 @@
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque média temporel et non temporel vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>Le nom, le rôle, la valeur, le paramétrage et les changements d'états des composants d'interfaces sont accessibles aux technologies d'assistance via une API d'accessibilité.</li><li>Une alternative compatible avec une API d'accessibilité permet d'accéder aux mêmes fonctionnalités.</li></ul><p>Chaque média temporel et non temporel qui possède une alternative compatible avec les technologies d'assistance, vérifie-t-il une de ces conditions ?</p><ul><li>L'alternative est adjacente au média temporel ou non temporel.</li><li>L'alternative est accessible via un lien ou bouton adjacent.</li><li>Un mécanisme permet de remplacer le média temporel ou non temporel par son alternative.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -284,7 +284,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque tableau de données complexe un résumé est-il disponible ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -294,7 +294,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque tableau de données complexe ayant un résumé, celui-ci est-il pertinent ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -305,7 +305,7 @@
 			"1.3.2 A",
 			"4.1.2 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque tableau de mise en forme vérifie-t-il ces conditions (hors cas particuliers) ?</p><ul><li>Le contenu linéarisé reste compréhensible.</li><li>La balise <code>table</code> possède un attribut <code>role=\"presentation\"</code>.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -315,7 +315,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque tableau de données ayant un titre, le titre est-il correctement associé au tableau de données ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -325,7 +325,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque tableau de données ayant un titre, ce titre permet-il d'identifier le contenu du tableau de données de manière claire et concise ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -335,7 +335,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque tableau de données, chaque en-tête de colonnes s'appliquant à la totalité de la colonne vérifie-t-il une de ces conditions ?</p><ul><li>L'en-tête de colonnes est structuré au moyen d'une balise <code>th</code>.</li><li>L'en-tête de colonnes est structuré au moyen d'une balise pourvue d'un attribut WAI-ARIA <code>role=\"columnheader\"</code>.</li></ul><p>Pour chaque tableau de données, chaque en-tête de lignes s'appliquant à la totalité de la ligne vérifie-t-il une de ces conditions ?</p><ul><li>L'en-tête de lignes est structuré au moyen d'une balise <code>th</code>.</li><li>L'en-tête de lignes est structuré au moyen d'une balise pourvue d'un attribut WAI-ARIA <code>role=\"rowheader\"</code>.</li></ul><p>Pour chaque tableau de données, chaque en-tête ne s'appliquant pas à la totalité de la ligne ou de la colonne est-il structuré au moyen d'une balise <code>th</code> ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -345,7 +345,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Pour chaque contenu de balise <code>th</code> s'appliquant à la totalité de la ligne ou de la colonne, la balise <code>th</code> respecte-t-elle une de ces conditions (hors cas particuliers) ?</p><ul><li>La balise <code>th</code> possède un attribut <code>id</code> unique.</li><li>La balise <code>th</code> possède un attribut <code>scope</code>.</li><li>La balise <code>th</code> possède un attribut WAI-ARIA <code>role=\"rowheader\"</code> ou <code>\"columnheader\"</code>.</li></ul><p>Pour chaque contenu de balise <code>th</code> s'appliquant à la totalité de la ligne ou de la colonne et possédant un attribut <code>scope</code>, la balise <code>th</code> vérifie-t-elle une de ces conditions ?</p><ul><li>La balise <code>th</code> possède un attribut scope avec la valeur <code>\"row\"</code> pour les en-tête de lignes.</li><li>La balise <code>th</code> possède un attribut scope avec la valeur <code>\"col\"</code> pour les en-tête de colonnes.</li></ul><p>Pour chaque contenu de balise <code>th</code> ne s'appliquant pas à la totalité de la ligne ou de la colonne, la balise <code>th</code> vérifie-t-elle ces conditions ?</p><ul><li>La balise <code>th</code> ne possède pas d'attribut <code>scope</code>.</li><li>La balise <code>th</code> ne possède pas d'attribut WAI-ARIA <code>role=\"rowheader\"</code> ou <code>\"columnheader\"</code>.</li><li>La balise <code>th</code> possède un attribut <code>id</code> unique.</li></ul><p>Pour chaque contenu de balise <code>td</code> ou <code>th</code> associée à un ou plusieurs en-têtes possédant un attribut <code>id</code>, la balise vérifie-t-elle ces conditions ?</p><ul><li>La balise possède un attribut <code>headers</code>.</li><li>L'attribut <code>headers</code> possède la liste des valeurs d'attribut <code>id</code> des en-têtes associés.</li></ul><p>Pour chaque balise pourvue d'un attribut WAI-ARIA <code>role=\"rowheader\"</code> ou <code>\"columnheader\"</code> dont le contenu s'applique à la totalité de la ligne ou de la colonne, la balise vérifie-t-elle une de ces conditions ?</p><ul><li>La balise possède un attribut WAI-ARIA <code>role=\"rowheader\"</code> pour les en-têtes de lignes.</li><li>La balise possède un attribut WAI-ARIA <code>role=\"columnheader\"</code> pour les en-têtes de colonnes.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Tableaux",
@@ -355,7 +355,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque tableau de mise en forme (balise <code>table</code>) vérifie-t-il ces conditions ?</p><ul><li>Le tableau de mise en forme (balise <code>table</code>) ne contient pas de balises <code>caption</code>, <code>th</code>, <code>thead</code>, <code>tfoot</code>, <code>colgroup</code> ou de balises ayant un attribut WAI-ARIA <code>role=\"rowheader\"</code>, <code>role=\"columnheader\"</code>.</li><li>Les cellules du tableau de mise en forme (balises <code>td</code>) ne possèdent pas d'attributs <code>scope</code>, <code>headers</code>, <code>axis</code>.</li></ul>",
 		"resultatTest": "nt"
 },{
 	"themes": "Liens",
@@ -367,7 +367,7 @@
 			"2.4.4 A",
 			"2.5.3 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Chaque lien texte vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'intitulé de lien seul permet d'en comprendre la fonction et la destination.</li><li>L'intitulé de lien additionné au contexte du lien permet d'en comprendre la fonction et la destination.</li></ul><p>Chaque lien image vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'intitulé de lien seul permet d'en comprendre la fonction et la destination.</li><li>L'intitulé de lien additionné au contexte du lien permet d'en comprendre la fonction et la destination.</li></ul><p>Chaque lien composite vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'intitulé de lien seul permet d'en comprendre la fonction et la destination.</li><li>L'intitulé de lien additionné au contexte du lien permet d'en comprendre la fonction et la destination.</li></ul><p>Chaque lien SVG vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'intitulé de lien seul permet d'en comprendre la fonction et la destination.</li><li>L'intitulé de lien additionné au contexte du lien permet d'en comprendre la fonction et la destination.</li></ul><p>Pour chaque lien ayant un intitulé visible, le nom accessible du lien contient-il au moins l'intitulé visible (hors cas particuliers) ?</p>",
 		"resultatTest": "nt"
 },{
 	"themes": "Liens",
@@ -378,6 +378,742 @@
 			"1.1.1 A",
 			"2.4.4 A"
 		],
-		"verifier": "",
+		"verifier": "<p>Dans chaque page web, chaque lien, à l'exception des ancres, a-t-il un intitulé entre <code>a</code> et <code>a</code> ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Scripts",
+		"title": "Critère 7.1. Chaque script est-il, si nécessaire, compatible avec les technologies d’assistance&nbsp;?",
+		"ID": "testID-038",
+		"IDorigin": "testID-038",
+		"wcag": [
+			"2.5.3 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Chaque script qui génère ou contrôle un composant d'interface vérifie-t-il, si nécessaire, une de ces conditions ?</p><ul><li>Le nom, le rôle, la valeur, le paramétrage et les changements d'états sont accessibles aux technologies d'assistance via une API d'accessibilité.</li><li>Un composant d'interface accessible permettant d'accéder aux mêmes fonctionnalités est présent dans la page.</li><li>Une alternative accessible permet d'accéder aux mêmes fonctionnalités.</li></ul><p>Chaque script qui génère ou contrôle un composant d'interface respecte-t-il une de ces conditions ?</p><ul><li>Le composant d'interface est correctement restitué par les technologies d'assistance.</li><li>Une alternative accessible permet d'accéder aux mêmes fonctionnalités.</li></ul><p>Chaque script qui génère ou contrôle un composant d'interface vérifie-t-il ces conditions (hors cas particuliers) ?</p><ul><li>Le composant possède un nom pertinent.</li><li>Le nom accessible du composant contient au moins l'intitulé visible.</li><li>Le composant possède un rôle pertinent.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Scripts",
+		"title": "Critère 7.2. Pour chaque script ayant une alternative, cette alternative est-elle pertinente&nbsp;?",
+		"ID": "testID-039",
+		"IDorigin": "testID-039",
+		"wcag": [
+			"1.1.1 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Chaque script débutant par la balise <code>script</code> et ayant une alternative vérifie-t-il une de ces conditions ?</p><ul><li>L'alternative entre <code>noscript</code> permet d'accéder à des contenus et des fonctionnalités similaires.</li><li>La page affichée, lorsque JavaScript est désactivé, permet d'accéder à des contenus et des fonctionnalités similaires.</li><li>La page alternative permet d'accéder à des contenus et des fonctionnalités similaires.</li><li>Le langage de script côté serveur permet d'accéder à des contenus et des fonctionnalités similaires.</li><li>L'alternative présente dans la page permet d'accéder à des contenus et des fonctionnalités similaires.</li></ul><p>Chaque élément non textuel mis à jour par un script (dans la page, ou dans un cadre) et ayant une alternative vérifie-t-il ces conditions ?</p><ul><li>L'alternative de l'élément non textuel est mise à jour.</li><li>L'alternative mise à jour est pertinente.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Scripts",
+		"title": "Critère 7.3. Chaque script est-il contrôlable par le clavier et par tout dispositif de pointage (hors cas particuliers)&nbsp;?",
+		"ID": "testID-040",
+		"IDorigin": "testID-040",
+		"wcag": [
+			"1.3.1 A",
+			"2.1.1 A",
+			"2.4.7 AA"
+		],
+		"verifier": "<p>Chaque élément possédant un gestionnaire d'événement contrôlé par un script vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'élément est accessible par le clavier et tout dispositif de pointage.</li><li>Un élément accessible par le clavier et tout dispositif de pointage permettant de réaliser la même action est présent dans la page.</li></ul><p>Un script ne doit pas supprimer le focus d'un élément qui le reçoit. Cette règle est-elle respectée (hors cas particuliers) ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Scripts",
+		"title": "Critère 7.4. Pour chaque script qui initie un changement de contexte, l’utilisateur est-il averti ou en a-t-il le contrôle&nbsp;?",
+		"ID": "testID-041",
+		"IDorigin": "testID-041",
+		"wcag": [
+			"3.2.1 A",
+			"3.2.2 A"
+		],
+		"verifier": "<p>Chaque script qui initie un changement de contexte vérifie-t-il une de ces conditions ?</p><ul><li>L'utilisateur est averti par un texte de l'action du script et du type de changement avant son déclenchement.</li><li>Le changement de contexte est initié par un bouton (input de type <code>submit</code>, <code>button</code> ou <code>image</code> ou balise <code>button</code>) explicite.</li><li>Le changement de contexte est initié par un lien explicite.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Scripts",
+		"title": "Critère 7.5. Dans chaque page web, les messages de statut sont-ils correctement restitués par les technologies d’assistance&nbsp;?",
+		"ID": "testID-042",
+		"IDorigin": "testID-042",
+		"wcag": [
+			"4.1.3 AA"
+		],
+		"verifier": "<p>Chaque message de statut qui informe de la réussite, du résultat d'une action ou bien de l'état d'une application utilise-t-il l'attribut WAI-ARIA <code>role=\"status\"</code> ?</p><p>Chaque message de statut qui présente une suggestion, ou avertit de l'existence d'une erreur utilise-t-il l'attribut WAI-ARIA <code>role=\"alert\"</code> ?</p><p>Chaque message de statut qui indique la progression d'un processus utilise-t-il l'un des attributs WAI-ARIA <code>role=\"log\"</code>, <code>role=\"progressbar\"</code> ou <code>role=\"status\"</code> ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.1. Chaque page web est-elle définie par un type de document&nbsp;?",
+		"ID": "testID-043",
+		"IDorigin": "testID-043",
+		"wcag": [
+			"4.1.1 A"
+		],
+		"verifier": "<p>Pour chaque page web, le type de document (balise <code>doctype</code>) est-il présent ?</p><p>Pour chaque page web, le type de document (balise <code>doctype</code>) est-il valide ?</p><p>Pour chaque page web possédant une déclaration de type de document, celle-ci est-elle située avant la balise <code>html</code> dans le code source ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.2. Pour chaque page web, le code source généré est-il valide selon le type de document spécifié&nbsp;?",
+		"ID": "testID-044",
+		"IDorigin": "testID-044",
+		"wcag": [
+			"4.1.1 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Pour chaque page web, le type de document (balise <code>doctype</code>) est-il présent ?</p><p>Pour chaque page web, le type de document (balise <code>doctype</code>) est-il valide ?</p><p>Pour chaque page web possédant une déclaration de type de document, celle-ci est-elle située avant la balise <code>html</code> dans le code source ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.3. Dans chaque page web, la langue par défaut est-elle présente&nbsp;?",
+		"ID": "testID-045",
+		"IDorigin": "testID-045",
+		"wcag": [
+			"3.1.1 A"
+		],
+		"verifier": "<p>Pour chaque page web, l'indication de langue par défaut vérifie-t-elle une de ces conditions ?</p><ul><li>L'indication de la langue de la page (attribut <code>lang</code> et/ou <code>xml:lang</code>) est donnée pour l'élément <code>html</code>.</li><li>L'indication de la langue de la page (attribut <code>lang</code> et/ou <code>xml:lang</code>) est donnée sur chaque élément de texte ou sur l'un des éléments parents.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.4. Pour chaque page web ayant une langue par défaut, le code de langue est-il pertinent&nbsp;?",
+		"ID": "testID-046",
+		"IDorigin": "testID-046",
+		"wcag": [
+			"3.1.1 A"
+		],
+		"verifier": "<p>Pour chaque page web ayant une langue par défaut, le code de langue vérifie-t-il ces conditions ?</p><ul><li>Le code de langue est valide.</li><li>Le code de langue est pertinent.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.5. Chaque page web a-t-elle un titre de page&nbsp;?",
+		"ID": "testID-047",
+		"IDorigin": "testID-047",
+		"wcag": [
+			"2.4.2 A"
+		],
+		"verifier": "<p>Chaque page web a-t-elle un titre de page (balise <code>title</code>) ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.6. Pour chaque page web ayant un titre de page, ce titre est-il pertinent&nbsp;?",
+		"ID": "testID-048",
+		"IDorigin": "testID-048",
+		"wcag": [
+			"2.4.2 A"
+		],
+		"verifier": "<p>Pour chaque page web ayant un titre de page (balise <code>title</code>), le contenu de cette balise est-il pertinent ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.7. Dans chaque page web, chaque changement de langue est-il indiqué dans le code source (hors cas particuliers)&nbsp;?",
+		"ID": "testID-049",
+		"IDorigin": "testID-049",
+		"wcag": [
+			"3.1.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque texte écrit dans une langue différente de la langue par défaut vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'indication de langue est donnée sur l'élément contenant le texte (attribut <code>lang</code> et/ou <code>xml:lang</code>).</li><li>L'indication de langue est donnée sur un des éléments parents (attribut <code>lang</code> et/ou <code>xml:lang</code>).</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.8. Dans chaque page web, le code de langue de chaque changement de langue est-il valide et pertinent&nbsp;?",
+		"ID": "testID-050",
+		"IDorigin": "testID-050",
+		"wcag": [
+			"3.1.2 A"
+		],
+		"verifier": "<p>Pour chaque page web, le code de langue de chaque changement de langue vérifie-t-il ces conditions ?</p><ul><li>Le code de langue est valide.</li><li>Le code de langue est pertinent.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.9. Dans chaque page web, les balises ne doivent pas être utilisées uniquement à des fins de présentation. Cette règle est-elle respectée&nbsp;?",
+		"ID": "testID-051",
+		"IDorigin": "testID-051",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Dans chaque page web les balises (à l'exception de <code>div</code>, <code>span</code> et <code>table</code>) ne doivent pas être utilisées uniquement à des fins de présentation. Cette règle est-elle respectée ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Éléments obligatoires",
+		"title": "Critère 8.10. Dans chaque page web, les changements du sens de lecture sont-ils signalés&nbsp;?",
+		"ID": "testID-052",
+		"IDorigin": "testID-052",
+		"wcag": [
+			"1.3.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque texte dont le sens de lecture est différent du sens de lecture par défaut est contenu dans une balise possédant un attribut <code>dir</code> ?</p><p>Dans chaque page web, chaque changement du sens de lecture (attribut <code>dir</code>) vérifie-t-il ces conditions ?</p><ul><li>La valeur de l'attribut <code>dir</code> est conforme (<code>rtl</code> ou <code>ltr</code>).</li><li>La valeur de l'attribut <code>dir</code> est pertinente.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Structuration de l'information",
+		"title": "Critère 9.1. Dans chaque page web, l’information est-elle structurée par l’utilisation appropriée de titres&nbsp;?",
+		"ID": "testID-053",
+		"IDorigin": "testID-053",
+		"wcag": [
+			"1.3.1 A",
+			"2.4.1 A",
+			"2.4.6 AA",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, la hiérarchie entre les titres (balise <code>hx</code> ou balise possédant un attribut WAI-ARIA <code>role=\"heading\"</code> associé à un attribut WAI-ARIA <code>aria-level</code>) est-elle pertinente ?</p><p>Dans chaque page web, le contenu de chaque titre (balise <code>hx</code> ou balise possédant un attribut WAI-ARIA <code>role=\"heading\"</code> associé à un attribut WAI-ARIA <code>aria-level</code>) est-il pertinent ?</p><p>Dans chaque page web, chaque passage de texte constituant un titre est-il structuré à l'aide d'une balise <code>hx</code> ou d'une balise possédant un attribut WAI-ARIA <code>role=\"heading\"</code> associé à un attribut WAI-ARIA <code>aria-level</code> ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Structuration de l'information",
+		"title": "Critère 9.2. Dans chaque page web, la structure du document est-elle cohérente (hors cas particuliers)&nbsp;?",
+		"ID": "testID-054",
+		"IDorigin": "testID-054",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, la structure du document vérifie-t-elle ces conditions (hors cas particuliers) ?</p><ul><li>La zone d'en-tête de la page est structurée via une balise <code>header</code>.</li><li>Les zones de navigation principales et secondaires sont structurées via une balise <code>nav</code>.</li><li>La balise <code>nav</code> est réservée à la structuration des zones de navigation principales et secondaires.</li><li>La zone de contenu principal est structurée via une balise <code>main</code>.</li><li>La structure du document utilise une balise <code>main</code> visible unique.</li><li>La zone de pied de page est structurée via une balise <code>footer</code>.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Structuration de l'information",
+		"title": "Critère 9.3. Dans chaque page web, chaque liste est-elle correctement structurée&nbsp;?",
+		"ID": "testID-055",
+		"IDorigin": "testID-055",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, les informations regroupées visuellement sous forme de liste non ordonnée vérifient-elles une de ces conditions ?</p><ul><li>La liste utilise les balises HTML <code>ul</code> et <code>li</code>.</li><li>La liste utilise les attributs WAI-ARIA <code>role=\"list\"</code> et <code>\"listitem\"</code>.</li></ul><p>Dans chaque page web, les informations regroupées visuellement sous forme de liste ordonnée vérifient-elles une de ces conditions ?</p><ul><li>La liste utilise les balises HTML <code>ol</code> et <code>li</code>.</li><li>La liste utilise les attributs WAI-ARIA <code>role=\"list\"</code> et <code>\"listitem\"</code>.</li></ul><p>Dans chaque page web, les informations regroupées sous forme de liste de description utilisent-elles les balises <code>dl</code> et <code>dt / dd</code> ? </p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Structuration de l'information",
+		"title": "Critère 9.4. Dans chaque page web, chaque citation est-elle correctement indiquée&nbsp;?",
+		"ID": "testID-056",
+		"IDorigin": "testID-056",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque citation courte utilise-t-elle une balise <code>q</code> ?</p><p>Dans chaque page web, chaque bloc de citation utilise-t-il une balise <code>blockquote</code> ? </p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.1. Dans le site web, des feuilles de styles sont-elles utilisées pour contrôler la présentation de l’information&nbsp;?",
+		"ID": "testID-057",
+		"IDorigin": "testID-057",
+		"wcag": [
+			"1.3.1 A",
+			"1.3.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, les balises servant à la présentation de l'information ne doivent pas être présentes dans le code source généré des pages. Cette règle est-elle respectée ?</p><p>Dans chaque page web, les attributs servant à la présentation de l'information ne doivent pas être présents dans le code source généré des pages. Cette règle est-elle respectée ?</p><p>Dans chaque page web, l'utilisation des espaces vérifie-t-elle ces conditions ?</p><ul><li>Les espaces ne sont pas utilisés pour séparer les lettres d'un mot.</li><li>Les espaces ne sont pas utilisés pour simuler des tableaux.</li><li>Les espaces ne sont pas utilisés pour simuler des colonnes de texte.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.2. Dans chaque page web, le contenu visible porteur d’information reste-t-il présent lorsque les feuilles de styles sont désactivées&nbsp;?",
+		"ID": "testID-058",
+		"IDorigin": "testID-058",
+		"wcag": [
+			"1.1.1 A",
+			"1.3.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, l'information reste-t-elle présente lorsque les feuilles de styles sont désactivées ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.3. Dans chaque page web, l’information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées&nbsp;?",
+		"ID": "testID-059",
+		"IDorigin": "testID-059",
+		"wcag": [
+			"1.3.2 A",
+			"2.4.3 A"
+		],
+		"verifier": "<p>Dans chaque page web, l'information reste-t-elle compréhensible lorsque les feuilles de styles sont désactivées ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.4. Dans chaque page web, le texte reste-t-il lisible lorsque la taille des caractères est augmentée jusqu’à 200%, au moins (hors cas particuliers)&nbsp;?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": [
+			"1.4.4 AA"
+		],
+		"verifier": "<p>Dans les feuilles de styles du site web, les unités non relatives (<code>pt</code>, <code>pc</code>, <code>mm</code>, <code>cm</code>, <code>in</code>) ne doivent pas être utilisées pour les types de média <code>screen</code>, <code>tv</code>, <code>handheld</code>, <code>projection</code>. Cette règle est-elle respectée (hors cas particuliers) ?</p><p>Dans chaque page web, l'augmentation de la taille des caractères jusqu'à 200%, au moins, ne doit pas provoquer de perte d'information. Cette règle est-t-elle respectée selon une de ces conditions (hors cas particuliers) ?</p><ul><li>Lors de l'utilisation de la fonction d'agrandissement du texte du navigateur.</li><li>Lors de l'utilisation des fonctions de zoom graphique du navigateur.</li><li>Lors de l'utilisation d'un composant d'interface propre au site permettant d'agrandir le texte ou de zoomer.</li></ul><p>Dans chaque page web, l'augmentation de la taille des caractères jusqu'à 200%, au moins, doit être possible pour l’ensemble du texte dans la page. Cette règle est-t-elle respectée selon une de ces conditions (hors cas particuliers) ?</p><ul><li>Lors de l'utilisation de la fonction d'agrandissement du texte du navigateur.</li><li>Lors de l'utilisation des fonctions de zoom graphique du navigateur.</li><li>Lors de l'utilisation d'un composant d'interface propre au site permettant d'agrandir le texte ou de zoomer.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.5. Dans chaque page web, les déclarations CSS de couleurs de fond d’élément et de police sont-elles correctement utilisées&nbsp;?",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": [
+			"1.4.3 AA"
+		],
+		"verifier": "<p>Dans chaque page web, chaque déclaration CSS de couleurs de police (<code>color</code>), d'un élément susceptible de contenir du texte, est-elle accompagnée d'une déclaration de couleur de fond (<code>background</code>, <code>background-color</code>), au moins, héritée d'un parent ?</p><p>Dans chaque page web, chaque déclaration de couleur de fond (<code>background</code>, <code>background-color</code>), d'un élément susceptible de contenir du texte, est-elle accompagnée d'une déclaration de couleur de police (<code>color</code>) au moins, héritée d'un parent ?</p><p>Dans chaque page web, chaque utilisation d'une image pour créer une couleur de fond d'un élément susceptible de contenir du texte, via CSS (<code>background</code>, <code>background-image</code>), est-elle accompagnée d'une déclaration de couleur de fond (<code>background</code>, <code>background-color</code>), au moins, héritée d'un parent ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.6. Dans chaque page web, chaque lien dont la nature n’est pas évidente est-il visible par rapport au texte environnants&nbsp;?",
+		"ID": "testID-062",
+		"IDorigin": "testID-062",
+		"wcag": [
+			"1.4.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque lien texte signalé uniquement par la couleur, et dont la nature n'est pas évidente, vérifie-t-il ces conditions ?</p><ul><li>La couleur du lien à un rapport de contraste supérieur ou égal à 3:1 par rapport au texte environnant.</li><li>Le lien dispose d'une indication visuelle au survol autre qu'un changement de couleur.</li><li>Le lien dispose d'une indication visuelle au focus autre qu'un changement de couleur.</li></ul>s",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.7. Dans chaque page web, pour chaque élément recevant le focus, la prise de focus est-elle visibles&nbsp;?",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
+		"wcag": [
+			"1.4.1 A",
+			"2.4.7 AA"
+		],
+		"verifier": "<p>Pour chaque élément recevant le focus, la prise de focus vérifie-t-elle une de ces conditions ?</p><ul><li>Le style du focus natif du navigateur n'est pas supprimé ou dégradé.</li><li>Un style du focus défini par l'auteur est visible.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.8. Pour chaque page web, les contenus cachés ont-ils vocation à être ignorés par les technologies d’assistance&nbsp;?",
+		"ID": "testID-064",
+		"IDorigin": "testID-064",
+		"wcag": [
+			"1.3.2 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque contenu caché vérifie-t-il une de ces conditions ?</p><ul><li>Le contenus caché a vocation à être ignoré par les technologies d'assistance.</li><li>Le contenus caché n’a pas vocation à être ignoré par les technologies d’assistances et est rendu restituable par les technologies d'assistance suite à une action de l'utilisateur réalisable au clavier ou par tout dispositif de pointage sur un élément précédent le contenu caché ou suite à un repositionnement du focus dessus.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.9. Dans chaque page web, l’information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée&nbsp;?",
+		"ID": "testID-065",
+		"IDorigin": "testID-065",
+		"wcag": [
+			"1.3.3 A",
+			"1.4.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, pour chaque texte ou ensemble de textes, l'information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</p><p>Dans chaque page web, pour chaque image ou ensemble d'images, l'information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</p><p>Dans chaque page web, pour chaque média temporel, l'information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</p><p>Dans chaque page web, pour chaque média non temporel, l'information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle respectée ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.10. Dans chaque page web, l’information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente&nbsp;?",
+		"ID": "testID-066",
+		"IDorigin": "testID-066",
+		"wcag": [
+			"1.3.3 A",
+			"1.4.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, pour chaque texte ou ensemble de textes, l'information ne doit pas être donnée uniquement par la forme, taille ou position. Cette règle est-elle implémentée de façon pertinente ?</p><p>Dans chaque page web, pour chaque image ou ensemble d'images, l'information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?</p><p>Dans chaque page web, pour chaque média temporel, l'information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?</p><p>Dans chaque page web, pour chaque média non temporel, l'information ne doit pas être donnée par la forme, taille ou position uniquement. Cette règle est-elle implémentée de façon pertinente ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.11. Pour chaque page web, les contenus peuvent-ils être présentés sans avoir recours à un défilement vertical pour une fenêtre ayant une hauteur de 256px ou à un défilement horizontal pour une fenêtre ayant une largeur de 320px (hors cas particuliers)&nbsp;?",
+		"ID": "testID-067",
+		"IDorigin": "testID-067",
+		"wcag": [
+			"1.4.10 AA"
+		],
+		"verifier": "<p>Pour chaque page web, lorsque le contenu dont le sens de lecture est horizontal est affiché dans une fenêtre réduite à une largeur de 320px, l'ensemble des informations et des fonctionnalités sont-elles disponibles sans aucun défilement horizontal (hors cas particuliers) ?</p><p>Pour chaque page web, lorsque le contenu dont le sens de lecture est vertical est affiché dans une fenêtre réduite à une hauteur de 256px, l'ensemble des informations et des fonctionnalités sont-elles disponibles sans aucun défilement vertical (hors cas particuliers) ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.12. Dans chaque page web, les propriétés d’espacement du texte peuvent-elles être redéfinies par l’utilisateur sans perte de contenu ou de fonctionnalité (hors cas particuliers)&nbsp;?",
+		"ID": "testID-068",
+		"IDorigin": "testID-068",
+		"wcag": [
+			"1.4.12 AA"
+		],
+		"verifier": "<p>Dans chaque page web, le texte reste-t-il lisible lorsque l'affichage est modifié selon ces conditions (hors cas particuliers) ?</p><ul><li>L'espacement entre les lignes (<code>line-height</code>) est augmenté jusqu'à 1,5 fois la taille de la police ;</li><li>L'espacement suivant les paragraphes (balise <code>p</code>) est augmenté jusqu'à 2 fois la taille de la police ;</li><li>L'espacement des lettres (<code>letter-spaccing</code>) est augmenté jusqu'à 0,12 fois la taille de la police ;</li><li>L'espacement des mots (<code>word-spaccing</code>) est augmenté jusqu'à 0,16 fois la taille de la police ;</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.13. Dans chaque page web, les contenus additionnels apparaissant à la prise de focus ou au survol d’un composant d’interface sont-ils contrôlables par l’utilisateur (hors cas particuliers)&nbsp;?",
+		"ID": "testID-069",
+		"IDorigin": "testID-069",
+		"wcag": [
+			"1.4.13 AA"
+		],
+		"verifier": "<p>Chaque contenu additionnel devenant visible à la prise de focus ou au survol d'un composant d'interface peut-il être masqué par une action utilisateur sans déplacer le focus ou le pointeur de la souris (hors cas particuliers) ?</p><p>Chaque contenu additionnel qui apparait au survol d'un composant d'interface peut-il être survolé par le pointeur de la souris sans disparaître (hors cas particuliers) ?</p><p>Chaque contenu additionnel qui apparaît à la prise de focus ou au survol d'un composant d'interface vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>Le contenu additionnel reste visible jusqu'à ce que l'utilisateur retire le pointeur souris ou le focus du contenu additionnel et du composant d'interface ayant déclenché son apparition.</li><li>Le contenu additionnel reste visible jusqu'à ce l'utilisateur déclenche une action masquant ce contenu sans déplacer le focus ou le pointeur souris du composant d'interface ayant déclenché son apparition.</li><li>Le contenu additionnel reste visible jusqu'à ce qu'il ne soit plus valide.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Présentation de l'information",
+		"title": "Critère 10.14. Dans chaque page web, les contenus additionnels apparaissant via les styles CSS uniquement peuvent-ils être rendus visibles au clavier et par tout dispositif de pointage&nbsp;?",
+		"ID": "testID-070",
+		"IDorigin": "testID-070",
+		"wcag": [
+			"2.1.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, les contenus additionnels apparaissant au survol d'un composant d'interface via les styles CSS respectent-ils si nécessaire une de ces conditions ?</p><ul><li>Les contenus additionnels apparaissent également à l'activation du composant via le clavier et tout dispositif de pointage.</li><li>Les contenus additionnels apparaissent également à la prise de focus du composant.</li><li>Les contenus additionnels apparaissent également par le biais de l'activation ou de la prise de focus d'un autre composant.</li></ul><p>Dans chaque page web, les contenus additionnels apparaissant au focus d'un composant d'interface via les styles CSS respectent-ils si nécessaire une de ces conditions ?</p><ul><li>Les contenus additionnels apparaissent également à l'activation du composant via le clavier et tout dispositif de pointage.</li><li>Les contenus additionnels apparaissent également au survol du composant.</li><li>Les contenus additionnels apparaissent également par le biais de l'activation ou du survol d'un autre composant.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.1. Chaque champ de formulaire a-t-il une étiquette&nbsp;?",
+		"ID": "testID-071",
+		"IDorigin": "testID-071",
+		"wcag": [
+			"1.3.1 A",
+			"2.4.6 AA",
+			"3.3.2 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Chaque champ de formulaire vérifie-t-il une de ces conditions ?</p><ul><li>Le champ de formulaire possède un attribut WAI-ARIA <code>aria-labelledby</code> référençant un passage de texte identifié.</li><li>Le champ de formulaire possède un attribut WAI ARIA <code>aria-label</code>.</li><li>Une balise <code>label</code> ayant un attribut <code>for</code> est associée au champ de formulaire.</li><li>Le champ de formulaire possède un attribut <code>title</code>.</li><li>Un bouton adjacent au champ de formulaire lui fournit une étiquette visible et un attribut WAI-ARIA <code>aria-label</code>, <code>aria-labelledby</code> ou <code>title</code> lui fournit un nom accessible.</li></ul><p>Chaque champ de formulaire associé à une balise <code>label</code> ayant un attribut <code>for</code>, vérifie-t-il ces conditions ?</p><ul><li>Le champ de formulaire possède un attribut <code>id</code>.</li><li>La valeur de l'attribut <code>for</code> est égale à la valeur de l'attribut <code>id</code> du champ de formulaire associé.</li></ul><p>Chaque champ de formulaire ayant une étiquette dont le contenu n'est pas visible ou à proximité (masqué, <code>aria-label</code>) ou qui n’est pas accolé au champ (<code>aria-labelledby</code>), vérifie-t-il une de ses conditions ?</p><ul><li>Le champ de formulaire possède un attribut <code>title</code> dont le contenu permet de comprendre la nature de la saisie attendue.</li><li>Le champ de formulaire est accompagné d'un passage de texte accolé au champ qui devient visible à la prise de focus permettant de comprendre la nature de la saisie attendue.</li><li>Le champ de formulaire est accompagné d'un passage de texte visible accolé au champ permettant de comprendre la nature de la saisie attendue.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.2. Chaque étiquette associée à un champ de formulaire est-elle pertinente (hors cas particuliers)&nbsp;?",
+		"ID": "testID-072",
+		"IDorigin": "testID-072",
+		"wcag": [
+			"2.4.6 AA",
+			"2.5.3 A",
+			"3.3.2 A"
+		],
+		"verifier": "<p>Chaque balise <code>label</code> permet-elle de connaître la fonction exacte du champ de formulaire auquel elle est associée ?</p><p>Chaque attribut <code>title</code> permet-il de connaître la fonction exacte du champ de formulaire auquel il est associé ?</p><p>Chaque étiquette implémentée via l'attribut WAI-ARIA <code>aria-label</code> permet-elle de connaître la fonction exacte du champ de formulaire auquel elle est associée ?</p><p>Chaque passage de texte associé via l'attribut WAI-ARIA <code>aria-labelledby</code> permet-il de connaître la fonction exacte du champ de formulaire auquel il est associée ?</p><p>Chaque champ de formulaire ayant un intitulé visible vérifie-t-il ces conditions (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> du champ de formulaire contient au moins l'intitulé visible.</li><li>S'il est présent, le passage de texte lié au champ de formulaire via un attribut WAI-ARIA <code>aria-labelledby</code> contient au moins l'intitulé visible.</li><li>S'il est présent, le contenu de l'attribut <code>title</code> du champ de formulaire contient au moins l'intitulé visible.</li><li>S'il est présent le contenu de la balise <code>label</code> associé au champ de formulaire contient au moins l'intitulé visible.</li></ul><p>Chaque bouton adjacent au champ de formulaire qui fournit une étiquette visible permet-il de connaître la fonction exacte du champ de formulaire auquel il est associé ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.3. Dans chaque formulaire, chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page ou dans un ensemble de pages est-elle cohérente&nbsp;?",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
+		"wcag": [
+			"3.2.4 AA"
+		],
+		"verifier": "<p>Chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée plusieurs fois dans une même page est-elle cohérente ?</p><p>Chaque étiquette associée à un champ de formulaire ayant la même fonction et répétée dans un ensemble de pages est-elle cohérente ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.4. Dans chaque formulaire, chaque étiquette de champ et son champ associé sont-ils accolés (hors cas particuliers)&nbsp;?",
+		"ID": "testID-074",
+		"IDorigin": "testID-074",
+		"wcag": [
+			"3.2.2 A"
+		],
+		"verifier": "<p>Chaque étiquette de champ et son champ associé sont-ils accolés ?</p><p>Chaque étiquette accolée à un champ (à l'exception des case à cocher, bouton radio ou balises ayant un attribut WAI-ARIA <code>role=\"checkbox\"</code>, <code>role=\"radio\"</code> ou <code>role=\"switch\"</code>), vérifie-t-elle ces conditions (hors cas particuliers) ?</p><ul><li>L'étiquette est visuellement accolée immédiatement au-dessus ou à gauche du champ de formulaire lorsque le sens de lecture de la langue de l'étiquette est de gauche à droite.</li><li>L'étiquette est visuellement accolée immédiatement au-dessus ou à droite du champ de formulaire lorsque le sens de lecture de la langue de l'étiquette est de droite à gauche.</li></ul><p>Chaque étiquette accolée à un champ de type <code>checkbox</code> ou <code>radio</code> ou à une balise ayant un attribut WAI-ARIA <code>role=\"checkbox\"</code>, <code>role=\"radio\"</code> ou <code>role=\"switch\"</code>, vérifie-t-elle ces conditions (hors cas particuliers) ?</p><ul><li>L'étiquette est visuellement accolée immédiatement au-dessus ou à droite du champ de formulaire lorsque le sens de lecture de la langue de l'étiquette est de gauche à droite.</li><li>L'étiquette est visuellement accolée immédiatement au-dessus ou à gauche du champ de formulaire lorsque le sens de lecture de la langue de l'étiquette est de droite à gauche.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.5. Dans chaque formulaire, les champs de même nature sont-ils regroupés, si nécessaire&nbsp;?",
+		"ID": "testID-075",
+		"IDorigin": "testID-075",
+		"wcag": [
+			"1.3.1 A",
+			"3.2.2 A"
+		],
+		"verifier": "<p>Les champs de même nature vérifient-ils l'une de ces conditions, si nécessaire ?</p><ul><li>Les champs de même nature sont regroupés dans une balise <fieldset>.</li><li>Les champs de même nature sont regroupés dans une balise possédant un attribut WAI-ARIA <code>role=\"group\"</code>.</li><li>Les champs de même nature de type radio (<input type=\"radio\"> ou balises possédant un attribut WAI-ARIA role=\"radio\") sont regroupés dans une balise possédant un attribut WAI-ARIA role=\"radiogroup\" ou \"group\".</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.6. Dans chaque formulaire, chaque regroupement de champs de même nature a-t-il une légende&nbsp;?",
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"1.3.1 A",
+			"3.2.2 A"
+		],
+		"verifier": "<p>Chaque regroupement de champs de même nature possède-t-il une légende ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.7. Dans chaque formulaire, chaque légende associée à un regroupement de champs de même nature est-elle pertinente&nbsp;?",
+		"ID": "testID-077",
+		"IDorigin": "testID-077",
+		"wcag": [
+			"1.3.1 A",
+			"3.2.2 A"
+		],
+		"verifier": "<p>Chaque légende associée à un regroupement de champs de même nature est-elle pertinente ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.8. Dans chaque formulaire, les items de même nature d’une liste de choix sont-ils regroupés de manière pertinente&nbsp;?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Pour chaque balise <code>select</code>, les items de même nature d'une liste de choix sont-ils regroupés avec une balise <optgroup>, si nécessaire ?</p><p>Dans chaque balise <code>select</code>, chaque balise <optgroup> possède-t-elle un attribut label ?</p><p>Pour chaque balise <code>optgroup</code> ayant un attribut label, le contenu de l'attribut label est-il pertinent ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.9. Dans chaque formulaire, l’intitulé de chaque bouton est-il pertinent (hors cas particuliers)&nbsp;?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"2.5.3 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>L'intitulé de chaque bouton est-il pertinent ?</p><ul><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> est pertinent.</li><li>S'il est présent, le passage de texte lié au bouton via un attribut WAI-ARIA <code>aria-labelledby</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut value d'une balise<code>input</code> de type submit, reset ou button est pertinent.</li><li>S'il est présent, le contenu de la balise <code>button</code> est pertinent.</li><li>S'il est présent, le contenu de l'attribut alt d'une balise<code>input</code> de type image est pertinent.</li><li>S'il est présent, le contenu de l'attribut title est pertinent.</li></ul><p>Chaque bouton affichant un intitulé visible vérifie-t-il ces conditions (hors cas particuliers) ?</p><ul><li>S'il est présent, le contenu de l'attribut WAI-ARIA <code>aria-label</code> contient au moins l'intitulé visible.</li><li>S'il est présent, le passage de texte lié au bouton via un attribut WAI-ARIA <code>aria-labelledby</code> contient au moins l'intitulé visible.</li><li>S'il est présent, le contenu de l'attribut value d'une balise<code>input</code> de type submit, reset ou button contient au moins l'intitulé visible.</li><li>S'il est présent, le contenu de la balise <code>button</code> contient au moins l'intitulé visible.</li><li>S'il est présent, le contenu de l'attribut alt d'une balise<code>input</code> de type image contient au moins l'intitulé visible.</li><li>S'il est présent, le contenu de l'attribut title contient au moins l'intitulé visible.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.10. Dans chaque formulaire, le contrôle de saisie est-il utilisé de manière pertinente (hors cas particuliers)&nbsp;?",
+		"ID": "testID-080",
+		"IDorigin": "testID-080",
+		"wcag": [
+			"3.3.1 A",
+			"3.3.2 A"
+		],
+		"verifier": "<p>Les indications du caractère obligatoire de la saisie des champs vérifient-elles une de ces conditions (hors cas particuliers) ?</p><ul><li>Une indication de champ obligatoire est visible et permet d'identifier nommément le champ concerné préalablement à la validation du formulaire.</li><li>Le champ obligatoire dispose de l'attribut aria-required=\"true\" ou required préalablement à la validation du formulaire.</li></ul><p>Les champs obligatoires ayant l'attribut aria-required=\"true\" ou required vérifient-ils une de ces conditions ?</p><ul><li>Une indication de champ obligatoire est visible et située dans l'étiquette associé au champ préalablement à la validation du formulaire.</li><li>Une indication de champ obligatoire est visible et située dans le passage de texte associé au champ préalablement à la validation du formulaire.</li></ul><p>Les messages d'erreur indiquant l'absence de saisie d'un champ obligatoire vérifient-ils une de ces conditions ?</p><ul><li>le message d'erreur indiquant l'absence de saisie d'un champ obligatoire est visible et permet d'identifier nommément le champ concerné.</li><li>Le champ obligatoire dispose de l'attribut aria-invalid=\"true\".</li></ul><p>Les champs obligatoires ayant l'attribut aria-invalid=\"true\" vérifient-ils une de ces conditions ?</p><ul><li>Une indication de champ obligatoire est visible et située dans l'étiquette associée au champ.</li><li>Une indication de champ obligatoire est visible et située dans le passage de texte associé au champ.</li></ul><p>Les instructions et indications du type de données et/ou de format obligatoires vérifient-elles une de ces conditions ?</p><ul><li>Une instruction ou une indication du type de données et/ou de format obligatoire est visible et permet d'identifier nommément le champ concerné préalablement à la validation du formulaire.</li><li>Une instruction ou une indication du type de données et/ou de format obligatoire est visible dans l'étiquette ou le passage de texte associé au champ préalablement à la validation du formulaire.</li></ul><p>Les messages d'erreurs fournissant une instruction ou une indication du type de données et/ou de format obligatoire des champs vérifient-ils une de ces conditions ?</p><ul><li>Le message d'erreur fournissant une instruction ou une indication du type de données et/ou de format obligatoires est visible et identifie le champ concerné.</li><li>Le champ dispose de l'attribut aria-invalid=\"true\".</li></ul><p>Les champs ayant l'attribut aria-invalid=\"true\" dont la saisie requiert un type de données et/ou de format obligatoires vérifient-ils une de ces conditions ?</p><ul><li>Une instructions ou une indication du type de données et/ou de format obligatoire est visible et située dans la balise <code>label</code> associée au champ.</li><li>Une instructions ou une indication du type de données et/ou de format obligatoire est visible et située dans le passage de texte associé au champ.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.11. Dans chaque formulaire, le contrôle de saisie est-il accompagné, si nécessaire, de suggestions facilitant la correction des erreurs de saisie&nbsp;?",
+		"ID": "testID-081",
+		"IDorigin": "testID-081",
+		"wcag": [
+			"3.3.3 AA"
+		],
+		"verifier": "<p>Pour chaque erreur de saisie, les types et les formats de données sont-ils suggérés, si nécessaire ?</p><p>Pour chaque erreur de saisie, des exemples de valeurs attendues sont-ils suggérés, si nécessaire ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.12. Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou à un examen, ou dont la validation a des conséquences financières ou juridiques, les données saisies peuvent-elles être modifiées, mises à jour ou récupérées par l’utilisateur&nbsp;?",
+		"ID": "testID-082",
+		"IDorigin": "testID-082",
+		"wcag": [
+			"3.3.4 AA"
+		],
+		"verifier": "<p>Pour chaque formulaire qui modifie ou supprime des données, ou qui transmet des réponses à un test ou un examen, ou dont la validation a des conséquences financières ou juridiques, la saisie des données vérifie-t-elle une de ces conditions ?</p><ul><li>L'utilisateur peut modifier ou annuler les données et les actions effectuées sur ces données après la validation du formulaire.</li><li>L'utilisateur peut vérifier et corriger les données avant la validation d'un formulaire en plusieurs étapes.</li><li>Un mécanisme de confirmation explicite, via une case à cocher (balise<code>input</code> de type checkbox ou balise ayant un attribut WAI-ARIA role=\"checkbox\") ou une étape supplémentaire, est présent.</li></ul><p>Chaque formulaire dont la validation modifie ou supprime des données à caractère financier, juridique ou personnel vérifie-t-il une de ces conditions ?</p><ul><li>Un mécanisme permet de récupérer les données supprimées ou modifiées par l'utilisateur.</li><li>Un mécanisme de demande de confirmation explicite de la suppression ou de la modification, via un champ de formulaire ou une étape supplémentaire, est proposé.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Formulaires",
+		"title": "Critère 11.13. La finalité d’un champ de saisie peut-elle être déduite pour faciliter le remplissage automatique des champs avec les données de l’utilisateur&nbsp;?",
+		"ID": "testID-083",
+		"IDorigin": "testID-083",
+		"wcag": [
+			"1.3.5 AA"
+		],
+		"verifier": "<p>Chaque champ de formulaire dont l'objet se rapporte à une information concernant l'utilisateur vérifie-t-il ces conditions ?</p><ul><li>Le champ de formulaire possède un attribut autocomplete.</li><li>L'attribut autocomplete est pourvu d'une valeur présente dans la liste des valeurs possibles pour l'attribut autocomplete associés à un champ de formulaire.</li><li>La valeur indiquée pour l'attribut autocomplete est pertinente au regard du type d'information attendu.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.1. Chaque ensemble de pages dispose-t-il de deux systèmes de navigation différents, au moins (hors cas particuliers)&nbsp;?",
+		"ID": "testID-084",
+		"IDorigin": "testID-084",
+		"wcag": [
+			"2.4.5 AA"
+		],
+		"verifier": "<p>Chaque ensemble de pages vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>Un menu de navigation et un plan du site sont présents.</li><li>Un menu de navigation et un moteur de recherche sont présents.</li><li>Un moteur de recherche et un plan du site sont présents.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.2. Dans chaque ensemble de pages, le menu et les barres de navigation sont-ils toujours à la même place (hors cas particuliers)&nbsp;?",
+		"ID": "testID-085",
+		"IDorigin": "testID-085",
+		"wcag": [
+			"3.2.3 AA"
+		],
+		"verifier": "<p>Dans chaque ensemble de pages, chaque page disposant d'un menu ou de barres de navigation vérifie-t-elle ces conditions (hors cas particuliers) ?</p><ul><li>Le menu ou de barres de navigation est toujours à la même place dans la présentation.</li><li>Le menu ou de barres de navigation se présente toujours dans le même ordre relatif dans le code source.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.3. La page « plan du site » est-elle pertinente&nbsp;?",
+		"ID": "testID-086",
+		"IDorigin": "testID-086",
+		"wcag": [
+			"2.4.5 AA"
+		],
+		"verifier": "<p>La page « plan du site » est-elle représentative de l'architecture générale du site ?</p><p>Les liens du plan du site sont-ils fonctionnels ?</p><p>Les liens du plan du site renvoient-ils bien vers les pages indiquées par l'intitulé ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.4. Dans chaque ensemble de pages, la page « plan du site » est-elle atteignable de manière identique&nbsp;?",
+		"ID": "testID-087",
+		"IDorigin": "testID-087",
+		"wcag": [
+			"2.4.5 AA",
+			"3.2.3 AA"
+		],
+		"verifier": "<p>Dans chaque ensemble de pages, la page « plan du site » est-elle accessible à partir d'une fonctionnalité identique ?</p><p>Dans chaque ensemble de pages, la fonctionnalité vers la page « plan du site » est-elle située à la même place dans la présentation ?</p><p>Dans chaque ensemble de pages, la fonctionnalité vers la page « plan du site » se présente-t-elle toujours dans le même ordre relatif dans le code source ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.5. Dans chaque ensemble de pages, le moteur de recherche est-il atteignable de manière identique&nbsp;?",
+		"ID": "testID-088",
+		"IDorigin": "testID-088",
+		"wcag": [
+			"3.2.3 AA"
+		],
+		"verifier": "<p>Dans chaque ensemble de pages, le moteur de recherche est-il accessible à partir d'une fonctionnalité identique ?</p><p>Dans chaque ensemble de pages, la fonctionnalité vers le moteur de recherche est-elle située à la même place dans la présentation ?</p><p>Dans chaque ensemble de pages, la fonctionnalité vers le moteur de recherche se présente-t-elle toujours dans le même ordre relatif dans le code source ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.6. Les zones de regroupement de contenus présentes dans plusieurs pages web (zones d’en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche) peuvent-elles être atteintes ou évitées&nbsp;?",
+		"ID": "testID-089",
+		"IDorigin": "testID-089",
+		"wcag": [
+			"1.3.1 A",
+			"2.4.1 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Dans chaque page web où elles sont présentes, la zone d'en-tête, de navigation principale, de contenu principal, de pied de page et de moteur de recherche respectent-elles au moins une de ces conditions :</p><ul><li>La zone possède un rôle WAI-ARIA de type landmark correspondant à sa nature.</li><li>La zone possède un titre de hiérarchie dont le contenu permet de comprendre la nature du contenu de la zone.</li><li>La zone peut être masquée par le biais d'un bouton précédent directement la zone dans l'ordre du code source.</li><li>La zone peut être évitée par le biais d'un lien d'évitement précédent directement la zone dans l'ordre du code source.</li><li>La zone peut être atteinte par le biais d'un lien d'accès rapide visible à la prise de focus lors d’une tabulation.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.7. Dans chaque page web, un lien d’évitement ou d’accès rapide à la zone de contenu principal est-il présent (hors cas particuliers)&nbsp;?",
+		"ID": "testID-090",
+		"IDorigin": "testID-090",
+		"wcag": [
+			"2.4.1 A",
+			"2.4.3 A",
+			"3.2.3 AA"
+		],
+		"verifier": "<p>Dans chaque page web, un lien permet-il d'éviter la zone de contenu principal ou d'y accéder (hors cas particuliers) ?</p><p>Dans chaque ensemble de pages, le lien d'évitement ou d'accès rapide à la zone de contenu principal vérifient-il ces conditions (hors cas particuliers) ?</p><ul><li>Le lien est situé à la même place dans la présentation.</li><li>Le lien se présente toujours dans le même ordre relatif dans le code source.</li><li>Le lien est visible à la prise de focus au moins.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.8. Dans chaque page web, l’ordre de tabulation est-il cohérent&nbsp;?",
+		"ID": "testID-091",
+		"IDorigin": "testID-091",
+		"wcag": [
+			"2.4.3 A"
+		],
+		"verifier": "<p>Dans chaque page web, l'ordre de tabulation dans le contenu est-il cohérent ?</p><p>Pour chaque script qui met à jour ou insère un contenu, l'ordre de tabulation reste-t-il cohérent ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.9. Dans chaque page web, la navigation ne doit pas contenir de piège au clavier. Cette règle est-elle respectée&nbsp;?",
+		"ID": "testID-092",
+		"IDorigin": "testID-092",
+		"wcag": [
+			"2.1.1 A",
+			"2.1.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque élément recevant le focus vérifie-t-il une de ces conditions ?</p><ul><li>Il est possible d'atteindre l'élément suivant ou précédent pouvant recevoir le focus avec la touche de tabulation.</li><li>L'utilisateur est informé d'un mécanisme fonctionnel permettant d'atteindre au clavier l'élément suivant ou précédent pouvant recevoir le focus.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.10. Dans chaque page web, les raccourcis clavier n’utilisant qu’une seule touche (lettre minuscule ou majuscule, ponctuation, chiffre ou symbole) sont-ils contrôlables par l’utilisateur&nbsp;?",
+		"ID": "testID-093",
+		"IDorigin": "testID-093",
+		"wcag": [
+			"2.1.4 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque raccourci clavier n'utilisant qu'une seule touche (lettres minuscule ou majuscule, ponctuation, chiffre ou symbole) vérifie-t-il l'une de ces conditions ?</p><ul><li>Un mécanisme est disponible pour désactiver le raccourci clavier.</li><li>Un mécanisme est disponible pour configurer la touche de raccourci clavier au moyen des touches de modification (Ctrl, Alt, Maj, etc).</li><li>Dans le cas d'un composant d'interface utilisateur, le raccourci clavier qui lui est associé ne peut être activé que si le focus clavier est sur ce composant.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Navigation",
+		"title": "Critère 12.11. Dans chaque page web, les contenus additionnels apparaissant au survol, à la prise de focus ou à l’activation d’un composant d’interface sont-ils si nécessaire atteignables au clavier&nbsp;?",
+		"ID": "testID-094",
+		"IDorigin": "testID-094",
+		"wcag": [
+			"2.1.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, les contenus additionnels apparaissant au survol, à la prise de focus ou à l'activation d'un composant d'interface sont-ils si nécessaire atteignables au clavier ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.1. Pour chaque page web, l’utilisateur a-t-il le contrôle de chaque limite de temps modifiant le contenu (hors cas particuliers)&nbsp;?",
+		"ID": "testID-095",
+		"IDorigin": "testID-095",
+		"wcag": [
+			"2.1.1 A",
+			"2.2.2 A"
+		],
+		"verifier": "<p>Pour chaque page web, chaque procédé de rafraîchissement (balise <code>object</code>, balise <code>embed</code>, balise <code>svg</code>, balise <code>canvas</code>, balise <code>meta</code>) vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'utilisateur peut arrêter ou relancer le rafraîchissement.</li><li>L'utilisateur peut augmenter la limite de temps entre deux rafraîchissements de dix fois, au moins.</li><li>L'utilisateur est averti de l'imminence du rafraîchissement et dispose de vingt secondes, au moins, pour augmenter la limite de temps avant le prochain rafraîchissement.</li><li>La limite de temps entre deux rafraîchissements est de vingt heures, au moins</li></ul><p>Pour chaque page web, chaque procédé de redirection effectué via une balise <code>meta</code> est-il immédiat (hors cas particuliers) ?</p><p>Pour chaque page web, chaque procédé de redirection effectué via un script vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'utilisateur peut arrêter ou relancer la redirection.</li><li>L'utilisateur peut augmenter la limite de temps avant la redirection de dix fois, au moins.</li><li>L'utilisateur est averti de l'imminence de la redirection et dispose de vingt secondes, au moins, pour augmenter la limite de temps avant la prochaine redirection.</li><li>La limite de temps avant la redirection est de vingt heures, au moins.</li></ul><p>Pour chaque page web, chaque procédé limitant le temps d'une session vérifie-t-il une de ces conditions (hors cas particuliers) ?</p><ul><li>L'utilisateur peut supprimer la limite de temps.</li><li>L'utilisateur peut augmenter la limite de temps.</li><li>La limite de temps avant la fin de la session est de vingt heures au moins.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.2. Dans chaque page web, l’ouverture d’une nouvelle fenêtre ne doit pas être déclenchée sans action de l’utilisateur. Cette règle est-elle respectée&nbsp;?",
+		"ID": "testID-096",
+		"IDorigin": "testID-096",
+		"wcag": [
+			"3.2.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, l'ouverture d'une nouvelle fenêtre ne doit pas être déclenchée sans action de l'utilisateur. Cette règle est-elle respectée ?</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.3. Dans chaque page web, chaque document bureautique en téléchargement possède-t-il, si nécessaire, une version accessible (hors cas particuliers)&nbsp;?",
+		"ID": "testID-097",
+		"IDorigin": "testID-097",
+		"wcag": [
+			"1.1.1 A",
+			"1.3.1 A",
+			"1.3.2 A",
+			"2.4.1 A",
+			"2.4.3 A",
+			"3.1.1 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque fonctionnalité de téléchargement d'un document bureautique vérifie-t-elle une de ces conditions ?</p><ul><li>Le document en téléchargement est compatible avec l'accessibilité.</li><li>Il existe une version alternative du document en téléchargement compatible avec l'accessibilité.</li><li>Il existe une version alternative du document en téléchargement au format HTML.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.4. Pour chaque document bureautique ayant une version accessible, cette version offre-t-elle la même information&nbsp;?",
+		"ID": "testID-098",
+		"IDorigin": "testID-098",
+		"wcag": [
+			"1.1.1 A",
+			"1.3.1 A",
+			"1.3.2 A",
+			"2.4.1 A",
+			"2.4.3 A",
+			"3.1.1 A",
+			"4.1.2 A"
+		],
+		"verifier": "<p>Chaque document bureautique ayant une version accessible vérifie-t-il une de ces conditions ?</p><ul><li>La version compatible avec l'accessibilité offre la même information.</li><li>La version alternative au format HTML est pertinente et offre la même information.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.5. Dans chaque page web, chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) a-t-il une alternative&nbsp;?",
+		"ID": "testID-099",
+		"IDorigin": "testID-099",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) vérifie-t-il une de ces conditions ?</p><ul><li>Un attribut <code>title</code> est disponible.</li><li>Une définition est donnée par le contexte adjacent.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.6. Dans chaque page web, pour chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) ayant une alternative, cette alternative est-elle pertinente&nbsp;?",
+		"ID": "testID-100",
+		"IDorigin": "testID-100",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) vérifie-t-il une de ces conditions ?</p><ul><li>Le contenu de l'attribut <code>title</code> est pertinent.</li><li>La définition donnée par le contexte adjacent est pertinente.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.7. Dans chaque page web, les changements brusques de luminosité ou les effets de flash sont-ils correctement utilisés&nbsp;?",
+		"ID": "testID-101",
+		"IDorigin": "testID-101",
+		"wcag": [
+			"2.3.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque image (balise <code>img</code>, balise <code>svg</code>, balise <code>canvas</code>, balise <code>embed</code> ou balise <code>object</code>) qui provoque un changement brusque de luminosité ou un effet de flash vérifie-t-elle une de ces conditions ?</p><ul><li>La fréquence de l'effet est inférieure à 3 par seconde.</li><li>La surface totale cumulée des effets est inférieure ou égale à 21824 pixels.</li></ul><p>Dans chaque page web, chaque script qui provoque un changements brusques de luminosité ou les effets de flash vérifie-t-il une de ces conditions ?</p><ul><li>La fréquence de l'effet est inférieure à 3 par seconde.</li><li>La surface totale cumulée des effets est inférieure ou égale à 21824 pixels.</li></ul><p>Dans chaque page web, chaque mise en forme CSS qui provoque un changements brusques de luminosité ou les effets de flash vérifie-t-elle une de ces conditions ?</p><ul><li>La fréquence de l'effet est inférieure à 3 par seconde.</li><li>La surface totale cumulée des effets est inférieure ou égale à 21824 pixels.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.8. Dans chaque page web, chaque contenu en mouvement ou clignotant est-il contrôlable par l’utilisateur&nbsp;?",
+		"ID": "testID-102",
+		"IDorigin": "testID-102",
+		"wcag": [
+			"2.2.1 A",
+			"2.2.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque contenu en mouvement, déclenché automatiquement, vérifie-t-il une de ces conditions ?</p><ul><li>La durée du mouvement est inférieure ou égale à 5 secondes.</li><li>L'utilisateur peut arrêter et relancer le mouvement.</li><li>L'utilisateur peut afficher et masquer le contenu en mouvement.</li><li>L'utilisateur peut afficher la totalité de l'information sans le mouvement.</li></ul><p>Dans chaque page web, chaque contenu clignotant, déclenché automatiquement, vérifie-t-il une de ces conditions ?</p><ul><li>La durée du clignotement est inférieure ou égale à 5 secondes.</li><li>L'utilisateur peut arrêter et relancer le clignotement.</li><li>L'utilisateur peut afficher et masquer le contenu clignotant.</li><li>L'utilisateur peut afficher la totalité de l'information sans le clignotement.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.9. Dans chaque page web, le contenu proposé est-il consultable quelle que soit l’orientation de l’écran (portrait ou paysage) (hors cas particuliers)&nbsp;?",
+		"ID": "testID-103",
+		"IDorigin": "testID-103",
+		"wcag": [
+			"1.3.4 AA"
+		],
+		"verifier": "<p>Dans chaque page web, chaque contenu vérifie-t-il ces conditions (hors cas particuliers) ?</p><ul><li>La consultation est possible quel que soit le mode d'orientation de l'écran.</li><li>Le contenu proposé reste le même quel que soit le mode d'orientation de l'écran utilisé même si sa présentation et le moyen d'y accéder peut différer.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.10. Dans chaque page web, les fonctionnalités utilisables ou disponibles au moyen d’un geste complexe peuvent-elles être également disponibles au moyen d’un geste simple (hors cas particuliers)&nbsp;?",
+		"ID": "testID-104",
+		"IDorigin": "testID-104",
+		"wcag": [
+			"2.5.1 A"
+		],
+		"verifier": "<p>Dans chaque page web, chaque fonctionnalité utilisable ou disponible suite à un contact multipoint est-elle également utilisable ou disponible suite à un contact en un point unique de l'écran (hors cas particuliers).</p><p>Dans chaque page web, chaque fonctionnalité utilisable ou disponible suite à un geste basé sur le suivi d'une trajectoire sur l'écran est-elle également utilisable ou disponible suite à un contact en un point unique de l'écran (hors cas particuliers).</p>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.11. Dans chaque page web, les actions déclenchées au moyen d’un dispositif de pointage sur un point unique de l’écran peuvent-elles faire l’objet d’une annulation (hors cas particuliers)&nbsp;?",
+		"ID": "testID-105",
+		"IDorigin": "testID-105",
+		"wcag": [
+			"2.5.2 A"
+		],
+		"verifier": "<p>Dans chaque page web, les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran vérifient-elles l'une de ces conditions (hors cas particuliers) ?</p><ul><li>L'action est déclenchée au moment où le dispositif de pointage est relâché ou relevé;</li><li>L'action est déclenchée au moment où le dispositif de pointage est pressé ou posé puis annulée lorsque le dispositif de pointage est relâché ou relevé;</li><li>Un mécanisme est disponible pour abandonner (avant achèvement de l'action) ou annuler (après achèvement) l'exécution de l'action.</li></ul>",
+		"resultatTest": "nt"
+},{
+	"themes": "Consultation",
+		"title": "Critère 13.12. Dans chaque page web, les fonctionnalités qui impliquent un mouvement de l’appareil ou vers l’appareil peuvent-elles être satisfaites de manière alternative (hors cas particuliers)&nbsp;?",
+		"ID": "testID-106",
+		"IDorigin": "testID-106",
+		"wcag": [
+			"2.5.4 A"
+		],
+		"verifier": "<p>Dans chaque page web, les fonctionnalités disponibles en bougeant l'appareil peuvent-elles être accomplies avec des composants d'interface utilisateur (hors cas particuliers) ?</p><p>Dans chaque page web, les fonctionnalités disponibles en faisant un geste en direction de l'appareil peuvent-elles être accomplies avec des composants d'interface utilisateur (hors cas particuliers) ?</p><p>L'utilisateur a-t-il la possibilité de désactiver la détection du mouvement pour éviter un déclenchement accidentel de la fonctionnalité (hors cas particuliers) ?</p>",
 		"resultatTest": "nt"
 }]

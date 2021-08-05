@@ -1673,6 +1673,7 @@ function runComputation(obj) {
  * @return {array} pagesResultsArray - Contains all wcag results by pages, and the diffrents results
 */
 function pagesResultsComputation(pagesResultsArray) {
+
 	var finalTotal = 0;
     var finalResult = 0;
     var nbPage = 0;
@@ -3727,18 +3728,6 @@ function initStatementObject() {
 					
 				}
 				if (p === "technology") {
-					if (currentCriteriaListName === "wcag-web") {
-						dataVallydette.statement.technology = [{
-							"name": "HTML",
-							"version": ""
-						},{
-							"name": "CSS",
-							"version": ""
-						},{
-							"name": "JavaScript",
-							"version": ""
-						}];
-					}
 					if (currentCriteriaListName === "wcag-android") {
 						dataVallydette.statement.technology = [{
 							"name": "Java",
@@ -3751,36 +3740,26 @@ function initStatementObject() {
 							"version": ""
 						}];
 					}
-					if (currentCriteriaListName === "wcag-ios") {
+					else if (currentCriteriaListName === "wcag-ios") {
 						dataVallydette.statement.technology = [{
 							"name": "Swift",
 							"version": ""
 						}];
 					}
-				}
-				if (p === "tests") {
-					if (currentCriteriaListName === "wcag-web") {
-						dataVallydette.statement.tests = [{
-						"type": "auto",
-						"name": "aXe",
-						"version": "4.9.3"
-						},
-						{
-						"type": "auto",
-						"name": "Wave",
-						"version": "3.1.3"
-						},
-						{	
-						"type": "functional",
-						"name": "NVDA",
-						"version": "2020.4"
-						},
-						{	
-						"type": "functional",
-						"name":  langStatement.keyboardNavigation,
-						"version": ""
+					else{
+						dataVallydette.statement.technology = [{
+							"name": "HTML",
+							"version": ""
+						},{
+							"name": "CSS",
+							"version": ""
+						},{
+							"name": "JavaScript",
+							"version": ""
 						}];
 					}
+				}
+				if (p === "tests") {
 					if (currentCriteriaListName === "wcag-android") {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
@@ -3803,7 +3782,7 @@ function initStatementObject() {
 						"version": ""
 						}];
 					}
-					if (currentCriteriaListName === "wcag-ios") {
+					else if (currentCriteriaListName === "wcag-ios") {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
 						"name": "Accessibility Inspector",
@@ -3815,23 +3794,46 @@ function initStatementObject() {
 						"version": ""
 						}];
 					}
+					else{
+						dataVallydette.statement.tests = [{
+							"type": "auto",
+							"name": "aXe",
+							"version": "4.9.3"
+							},
+							{
+							"type": "auto",
+							"name": "Wave",
+							"version": "3.1.3"
+							},
+							{	
+							"type": "functional",
+							"name": "NVDA",
+							"version": "2020.4"
+							},
+							{	
+							"type": "functional",
+							"name":  langStatement.keyboardNavigation,
+							"version": ""
+							}];
+
+					}
 				}
 				if (p === "environments") {
-					if (currentCriteriaListName === "wcag-web") {
-						dataVallydette.statement.environments = [{
-							"environment": langStatement.environmentEx1
-						},{
-							"environment": langStatement.environmentEx2
-						}];
-					}
 					if (currentCriteriaListName === "wcag-android") {
 						dataVallydette.statement.environments = [{
 							"environment": langStatement.environmentEx3
 						}];
 					}
-					if (currentCriteriaListName === "wcag-ios") {
+					else if (currentCriteriaListName === "wcag-ios") {
 						dataVallydette.statement.environments = [{
 							"environment": langStatement.environmentEx4
+						}];
+					}
+					else{
+						dataVallydette.statement.environments = [{
+							"environment": langStatement.environmentEx1
+						},{
+							"environment": langStatement.environmentEx2
 						}];
 					}
 				}
@@ -5075,7 +5077,7 @@ const utils = {
   formatHeading: function (str) {
     return str.toLowerCase()
 		.replace(/é|è|ê/g, "e")
-		.replace(/ /g, "-")
+		.replace(/ |'/g, "-")
 		.replace(/\(|\)/g, "");
   },
   slugify: function (str) {

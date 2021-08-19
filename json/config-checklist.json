@@ -49,10 +49,10 @@
 		"template": "wcag",
 		"version": "1.1",
 		"name-fr": "RGAA WEB",
-		"name-en": "Evaluation audit WEB",
-		"description-fr": "Grille d'évaluation permettant de vérifier le respect des critères d'accessibilité recommandés pour les projets d'Orange (wcag 2.1 A, AA, mais également quelques critères AAA et bonnes pratiques).",
-		"description-en": "Evaluation grid to verify compliance with the accessibility criteria recommended for Orange projects (wcag 2.1 A, AA, but also some AAA criteria and good practices).",
+		"name-en": "",
+		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'une application web aux critères RGAA 4",
+		"description-en": "",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/",
-		"about-en": "https://a11y-guidelines.orange.com/en/web/wcag-audit/"
+		"about-en": ""
 	}
 }

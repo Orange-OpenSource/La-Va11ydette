@@ -242,23 +242,24 @@ function initHomePage() {
 	htmlHomePage += '<p>' + langVallydette.homepageDescription +  '</p>';
 	
 	htmlHomePage += '<div class="row mb-5">';
-	
 	Object.keys(checklistVallydette).forEach(function(c){
-		
-		htmlHomePage += '<div class="col-sm-6 col-md-4 col-xl-3 mb-3">';
-		htmlHomePage += '<div class="card h-100 border-0">';
-		htmlHomePage += '<div class="card-body">';
-        htmlHomePage += '  <h2 class="card-title bg-transparent">' + checklistVallydette[c]['name-' + globalLang] + '</h2>';
-        htmlHomePage += ' <p class="card-subtitle">' + checklistVallydette[c]['description-' + globalLang] + '</p>';
-		htmlHomePage += ' </div>';
-        htmlHomePage += '<div class="card-footer py-3 border-0">';
-        htmlHomePage += '  <a href="./?list=' + c + '&lang=' + globalLang + '" class="btn btn-info  stretched-link">';
-        htmlHomePage +=  langVallydette.run;
-        htmlHomePage += '   <span class="sr-only">' + checklistVallydette[c]['name-' + globalLang] + '</span>';
-        htmlHomePage += '  </a>';
-        htmlHomePage += '</div>';
-		htmlHomePage += '</div>';
-		htmlHomePage += '</div>';
+
+		if(checklistVallydette[c]['name-' + globalLang]!==''){
+			htmlHomePage += '<div class="col-sm-6 col-md-4 col-xl-3 mb-3">';
+			htmlHomePage += '<div class="card h-100 border-0">';
+			htmlHomePage += '<div class="card-body">';
+			htmlHomePage += '  <h2 class="card-title bg-transparent">' + checklistVallydette[c]['name-' + globalLang] + '</h2>';
+			htmlHomePage += ' <p class="card-subtitle">' + checklistVallydette[c]['description-' + globalLang] + '</p>';
+			htmlHomePage += ' </div>';
+			htmlHomePage += '<div class="card-footer py-3 border-0">';
+			htmlHomePage += '  <a href="./?list=' + c + '&lang=' + globalLang + '" class="btn btn-info  stretched-link">';
+			htmlHomePage +=  langVallydette.run;
+			htmlHomePage += '   <span class="sr-only">' + checklistVallydette[c]['name-' + globalLang] + '</span>';
+			htmlHomePage += '  </a>';
+			htmlHomePage += '</div>';
+			htmlHomePage += '</div>';
+			htmlHomePage += '</div>';
+		}
 	});
 	
 	htmlHomePage += '</div>';

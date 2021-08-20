@@ -203,7 +203,7 @@
 		"filters": "Filtres",
 		"footerTxt1": "Documentation sous <a href=\"https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE\">licence CC BY SA 3.0</a>.", 
 		"footerTxt2": "Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange&nbsp;: Copyright © 2016 Orange SA <em lang=\"en\">All rights reserved</em>.", 
-		"footerTxt3": "Signaler une erreur sur GitHub<span class=\"sr-only\">&nbsp;(nouvelle fenêtre)</span>", 
+		"footerLinkGit": "Signaler une erreur sur GitHub<span class=\"sr-only\">&nbsp;(nouvelle fenêtre)</span>", 
 		"link-about-txt": "À propos"					   
 	},
 	"title": {
@@ -216,6 +216,7 @@
 		"btnDelPage": "Supprimer la page",
 		"btnLocalStorage": "Restaurer / Supprimer un audit",
 		"btnExcelExport": "Exporter les anomalies (excel)",
+		"footerLinkGit" : "Signaler une erreur sur GitHub (nouvelle fenêtre)",
 		"link-about": "À propos (nouvelle fenêtre)"
 	},
 	"ariaLabelOnly": {

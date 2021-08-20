@@ -203,6 +203,7 @@
 		"filters": "Filters",
 		"footerTxt1": "Documentation under <a href=\"https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE\">licence CC BY SA 3.0</a>.", 
 		"footerTxt2": "The Orange logo as well as certain images and screenshots are the property of Orange: Copyright © 2016 Orange SA All rights reserved.", 
+		"footerTxt3": "Report an error on GitHub <span class=\"sr-only\">&nbsp;(new window)</span>", 
 		"link-about-txt": "About"				   
 	},
 	"title": {

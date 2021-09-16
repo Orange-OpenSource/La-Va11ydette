@@ -347,7 +347,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	if (checklistVallydette[currentCriteriaListName].template === 'audit'){
 		criteriaVallydette.forEach(function (criteria, key) {
 			 criteria.resultatTest = "nt";
-			 criteria.issues = [];
+			 //criteria.issues = [];
 			 
 		 })
 	}
@@ -357,6 +357,7 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
     dataVallydette.checklist.page[0].items = dataVallydette.checklist.page[0].items.concat(criteriaVallydette);
 
 	dataVallydette.checklist.page[0].items.forEach(function (test) {
+		test.issues = [];
 
 		if(test.group) {
 			if(dataVallydette.checklist.page[0].groups[test.group]){
@@ -782,8 +783,14 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 
-			htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
-
+			//htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
+			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
+			htmlrefTests += '<ul class="list-inline m-0">';
+			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">' + langVallydette.addIssue + '</span></button></li>';
+			htmlrefTests += '</ul>';
+			htmlrefTests += '</div>';
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
@@ -2777,15 +2784,15 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="is-required mt-2" for="issueDetailValue">' + langVallydette.description + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
-	htmlModal += '<textarea class="form-control" id="issueDetailValue" required></textarea>';
+	htmlModal += '<label class="mt-2" for="issueDetailValue">' + langVallydette.description + ' </label>';
+	htmlModal += '<textarea class="form-control" id="issueDetailValue" ></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="form-group">';
-	htmlModal += '<label for="issueSolutionValue" class="mt-2">' + langVallydette.solution + ' </span></label>';
+	htmlModal += '<label for="issueSolutionValue" class="mt-2">' + langVallydette.solution + ' </label>';
 	htmlModal += '<textarea class="form-control" id="issueSolutionValue"></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="form-group">';
-	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">' + langVallydette.technical_solution + ' </span></label>';
+	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">' + langVallydette.technical_solution + ' </label>';
 	htmlModal += '<textarea class="form-control" id="issueTechnicalSolutionValue"></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '</div>';
@@ -2919,7 +2926,7 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<form id="editIssueForm">';
 	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
-	htmlEditIssue += '<label class="is-required mt-2" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<label class="mt-2" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
 	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
@@ -3039,7 +3046,7 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 			if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
 				dataVallydette.checklist.page[currentPage].items[i].issues.splice(issueIndex, 1);
 				if (dataVallydette.checklist.page[currentPage].items[i].issues.length === 0) {
-					document.getElementById("issueDisplayBtntestWebID-"+ i).setAttribute("disabled", true);
+					document.getElementById("issueDisplayBtn"+ targetId).setAttribute("disabled", true);
 				}
 			}
 		}
@@ -3082,8 +3089,7 @@ displayIssue = function (targetId, title) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
 			let auditNumber = 0;
 			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
-				auditNumber= j +1;
-				
+				auditNumber++;
 				htmlModal += '<div class="card" id="cardIssue'+targetId+'-'+ j +'">';
 				
 				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';

@@ -401,7 +401,6 @@ function importRGAA(dataRGAA) {
 
 
                 vallydetteTest.ID = "testID-" + topics.number + "-" + criteria.criterium.number + "-" + test;
-                vallydetteTest.commentaire = "";
                 vallydetteTest.resultatTest = "";
 
 
@@ -519,7 +518,7 @@ function eventHandler() {
 			fr.onload = function (e) {
 				let dataFile = JSON.parse(e.target.result);
 				if (dataFile.hasOwnProperty('checklist')) {
-					dataVallydette = dataFile;
+					dataVallydette = managementDeprecatedComment(dataFile);
 						
 					//fix obsolete referentiel name (from 1.4 checklist version)
 					if (dataVallydette.checklist.referentiel === "wcagEase") {
@@ -667,7 +666,7 @@ function createFormLocalStorage(){
 function getLocalStorage(auditName) {
 	
 	let objLocalStorage = localStorage.getItem(auditName);
-	dataVallydette = JSON.parse(objLocalStorage);
+	dataVallydette = managementDeprecatedComment(JSON.parse(objLocalStorage));
 	
 	initGlobalLang(dataVallydette.checklist.lang, true);
 	initGlobalTemplate(dataVallydette.checklist.template);
@@ -783,7 +782,6 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 
-			//htmlrefTests += '<button type="button" id="commentBtn' + currentTest + '" class="btn btn-link d-print-none" aria-labelledby="commentBtn' + currentTest + ' title-' + currentTest + '" data-toggle="modal" data-target="#modal' + currentTest + '">' + getCommentState(currentTest) + '</button>';
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
@@ -968,7 +966,6 @@ runTestListMarkup = function (currentRefTests) {
 				}
 
 				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) ? "checked" : "") + '/>';
-				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
 				htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
 				htmlrefTests += '<div class="card-block"><div class="row">';
 				htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
@@ -1001,7 +998,6 @@ runTestListMarkup = function (currentRefTests) {
 
 				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 
-				htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div>';
 				htmlrefTests += '</div></article>';
 
 				if ((currentRefTests[nextIndex] != undefined) && (headingCriterium != currentRefTests[nextIndex].criterium)) {
@@ -1024,7 +1020,6 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
 
 			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
-			htmlrefTests += '<button type="button" id="commentBtn' + i + '" class="btn btn-secondary float-lg-right" data-toggle="modal" data-target="#modal' + i + '">' + getCommentState(i) + '</button></div></div>';
 			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
 			htmlrefTests += '<div class="card-block"><div class="row">';
 			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
@@ -1078,12 +1073,6 @@ runTestListMarkup = function (currentRefTests) {
 			}, false);
 		}
 
-		var comment = document.getElementById("commentBtn" + currentRefTests[i].ID);
-		if (comment) {
-			comment.addEventListener('click', function () {
-				setComment(currentRefTests[i].ID, currentRefTests[i].title)
-			}, false);
-		}
 		
 		var issue = document.getElementById("issueBtn" + currentRefTests[i].ID);
 		if (issue) {
@@ -1611,6 +1600,7 @@ function runComputation(obj) {
 
 							if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
 								dataWCAG.items[k].resultat = false;
+								//@TODO voir pour rajouter les issues
 								if (dataVallydette.checklist.page[i].items[j].commentaire!=="") { 
 								   dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
 								   dataWCAG.items[k].page.push(pagesResults[i].name);
@@ -2198,7 +2188,6 @@ initNewPage = function (item) {
 	/**  auto check */
 	if (!getIfAutoCheck(item.IDorigin)) {
 		item.resultatTest = 'nt';
-		item.commentaire = '';
 	}
 	
 	if(item.issues) {
@@ -2670,90 +2659,32 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
  */
 
 /**
- * Comment popin initialization.
- * @param {string} targetId - current test ID.
- * @param {string} title - current test title.
-*/
-setComment = function (targetId, title) {
-	let titleModal = title;
-
-	let htmlModal = '';
-	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
-	htmlModal += '<div class="modal-content">';
-	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.commentTxt1 + ' : ' + titleModal + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
-	htmlModal += '</div>';
-	htmlModal += '<div class="modal-body">';
-	htmlModal += '<textarea class="form-control" id="comment' + targetId +'" aria-labelledby="modal' + targetId + 'Title">' + getComment(targetId) + '</textarea>';
-	htmlModal += '</div>';
-	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="commentSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
-	htmlModal += '</div></div></div></div>';
-
-	let elModal = document.getElementById('modal');
-	elModal.innerHTML = htmlModal;
-
-	var commentSave = document.getElementById("commentSaveBtn");
-	commentSave.addEventListener('click', function () {
-		addComment(targetId, comment.value)
-	});
-	
-	var comment = document.getElementById('comment' + targetId);
-
-	$('.modal').on('shown.bs.modal', function (event) {
-		comment.focus()
-	});
-	
-}
-
-/**
- * Add the comment to the vallydette object.
- * @param {string} targetId - current test ID.
- * @param {string} newComment.
-*/
-addComment = function (targetId, newComment) {
-	for (let i in dataVallydette.checklist.page[currentPage].items) {
-		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
-			dataVallydette.checklist.page[currentPage].items[i].commentaire = newComment;
-		}
-	}
-
-	var currentBtnComment = document.getElementById("commentBtn" + targetId);
-	currentBtnComment.innerHTML = getCommentState(targetId);
-
-	jsonUpdate();
-}
-
-/**
- * Get the comment from the vallydette object.
- * @param {string} targetId - current test ID.
- * @return {string} currentComment - current comment value
-*/
-getComment = function (targetId) {
-	var currentComment;
-
-	for (let i in dataVallydette.checklist.page[currentPage].items) {
-		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].commentaire !== undefined ) {
-			currentComment = dataVallydette.checklist.page[currentPage].items[i].commentaire;
-		}
-	}
-
-	return (currentComment !== undefined  ? currentComment : "");
-}
-
-/**
- * Return a markup depending on commant value
- * @param {string} targetId - current test ID.
- * @return {string} - markup depending on comment value
-*/
-getCommentState = function (targetId) {
-	
-	var currentComment = getComment(targetId);
-
-	return (currentComment === undefined || currentComment === "" ? "<span class='icon-Comments' aria-hidden='true'></span>&nbsp;" + langVallydette.addComment + "" : "<span class='icon-Comments text-primary' aria-hidden='true'></span>&nbsp;" + langVallydette.editComment + "");
+ * Management of deprecated comments that no longer exist 
+ * @param {array} data - data valydette
+ */
+managementDeprecatedComment = function (data){
+	data.checklist.page.forEach( 
+			page => {
+				page.items.forEach( item =>{
+					if(typeof item.issues === 'undefined'){
+						item.issues = [];
+					}
+					if( typeof item.commentaire !== 'undefined'){
+						if(item.commentaire!==""){
+							newIssue = {
+								issueTitle : item.commentaire,
+								issueDetail : "",
+								issueSolution : "",
+								issueTechnicalSolution:""
+							};
+							item.issues.push(newIssue);
+						}
+						delete item.commentaire	
+					}
+				})
+			}
+		 );
+	return data;
 }
 
 /**
@@ -3585,6 +3516,7 @@ for (let i in dataVallydette.checklist.page) {
 
 					excel.set(setIndex,0,rowIssues,  '=HYPERLINK("' + urlanchor + '","issue-' + i + '-' + rowIssues+ '")', formatHyperlink);
 						
+					//@TODO remplacer par les issues voir si ca peut matcher avec les audits ci dessus
 					if (!item.commentaire) {
 						item.commentaire = langVallydette.noCommentary;
 					}

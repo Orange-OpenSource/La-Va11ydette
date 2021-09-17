@@ -3452,7 +3452,7 @@ for (let i in dataVallydette.checklist.page) {
 
 	excel.set(0,0,rowPages, dataVallydette.checklist.page[i].name);
 	if (dataVallydette.checklist.page[i].url) {
-		excel.set(0,1,rowPages, '=HYPERLINK("' + dataVallydette.checklist.page[i].url + '","' + dataVallydette.checklist.page[i].url + '")', formatHyperlink);
+		excel.set(0,1,rowPages, '=HYPERLINK("' + utils.escapeExcel(dataVallydette.checklist.page[i].url) + '","' + utils.escapeExcel(dataVallydette.checklist.page[i].url) + '")', formatHyperlink);
 	}
 
 	rowPages++;
@@ -3482,58 +3482,30 @@ for (let i in dataVallydette.checklist.page) {
 		let rowIssues = 0;
 		
 		const listNonConformity = dataVallydette.checklist.page[i].items.filter(item => item.resultatTest === "ko").map(function(item) {
-			
-			if (type === "audit") {
 				
-				if (item.issues.length > 0) {
-					let urlanchor = utils.getUrlAnchor(item);
-						
-					item.issues.forEach(function (issue, key) {
-						rowIssues++;
-						excel.set(setIndex,0,rowIssues,  '=HYPERLINK("' + urlanchor + '","issue-' + i + '-' + rowIssues+ '")', formatHyperlink);
-						//@ ajout url tests
-						
-						excel.set(setIndex,1,rowIssues, item.title);
-						if (item.moreInfo) {
-							excel.set(setIndex,2,rowIssues, '=HYPERLINK("' + item.moreInfo + '","' + langVallydette.moreInfo + '")', formatHyperlink);
-						} else {
-							excel.set(setIndex,2,rowIssues, '');
-						}
-
-						excel.set(setIndex,3,rowIssues, issue.issueTitle);
-						excel.set(setIndex,4,rowIssues, issue.issueDetail);
-						excel.set(setIndex,5,rowIssues, issue.issueSolution);
-						excel.set(setIndex,6,rowIssues, issue.issueTechnicalSolution);
-			
-					})
-						
-				}
-				
-			} else {
-
+			if (item.issues.length > 0) {
+				let urlanchor = utils.getUrlAnchor(item);
+					
+				item.issues.forEach(function (issue, key) {
 					rowIssues++;
-					let urlanchor = utils.getUrlAnchor(item);
-
 					excel.set(setIndex,0,rowIssues,  '=HYPERLINK("' + urlanchor + '","issue-' + i + '-' + rowIssues+ '")', formatHyperlink);
-						
-					//@TODO remplacer par les issues voir si ca peut matcher avec les audits ci dessus
-					if (!item.commentaire) {
-						item.commentaire = langVallydette.noCommentary;
-					}
-
+					//@ ajout url tests
+					
 					excel.set(setIndex,1,rowIssues, item.title);
 					if (item.moreInfo) {
-							excel.set(setIndex,2,rowIssues, '=HYPERLINK("' + item.moreInfo + '","' + langVallydette.moreInfo + '")', formatHyperlink);
-						} else {
-							excel.set(setIndex,2,rowIssues, '');
-						}
+						excel.set(setIndex,2,rowIssues, '=HYPERLINK("' + item.moreInfo + '","' + langVallydette.moreInfo + '")', formatHyperlink);
+					} else {
+						excel.set(setIndex,2,rowIssues, '');
+					}
 
-					excel.set(setIndex,3,rowIssues, '');
-					excel.set(setIndex,4,rowIssues, item.commentaire);
-					excel.set(setIndex,5,rowIssues, '');
-					excel.set(setIndex,6,rowIssues, '');
-
-			} 
+					excel.set(setIndex,3,rowIssues, issue.issueTitle);
+					excel.set(setIndex,4,rowIssues, issue.issueDetail);
+					excel.set(setIndex,5,rowIssues, issue.issueSolution);
+					excel.set(setIndex,6,rowIssues, issue.issueTechnicalSolution);
+		
+				})
+					
+			}
 			
 		});
 		
@@ -5131,6 +5103,7 @@ const utils = {
 		return
 		
 	}
+
 	  
 	document.getElementById('filter').style.display = display;
 	document.getElementById('currentPageContent').classList.remove(remove);
@@ -5140,11 +5113,14 @@ const utils = {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   },
 
-  getUrlAnchor: function(item){
-		let urlanchor = window.location.origin + window.location.pathname + window.location.search + '#heading' + item.ID;
-		return urlanchor.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+  escapeExcel: function (url){
+		return url.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
 			return '&#'+i.charCodeAt(0)+';';
 		});
+	},
+  getUrlAnchor: function(item){
+		let urlanchor = window.location.origin + window.location.pathname + window.location.search + '#heading' + item.ID;
+		return utils.escapeExcel(urlanchor);
   }
 	
 }  

@@ -1,0 +1,301 @@
+{
+    "testID-001":[
+        {
+			"title" : "Presence of non-labeled fields",
+			"detail" : "All form elements must have a label.",
+			"solution" : "Apply one of the solutions below: \n- addition of a \"label\" element, in accessible masking if necessary, programmatically linked to the field \n- use of an aria-labelledby pointing to relevant information for understand the nature of the field \n- adding an aria-label attribute \n- adding a title attribute",
+			"technicalSolution" : "Examples: \n-<label for=\"idInput\"> [...] </label> <input id=\"idInput\" type=\"[...]\"> \n- <h2 id=\"idHeading\"> [...] </h2> <input aria-labelledby=\"idHeading\" type=\"[...]\"> \n- <input aria-label=\"[...]\" type=\"[...]\"> \n- <input title=\"[...]\" type=\"[...]\">"
+		}
+    ],
+	"testID-002": [
+		{
+			"title" : "Presence of irrelevant fields",
+			"detail" : "All form elements must have a relevant label, allowing to understand the purpose of the field.",
+			"solution" : "Complete the text label of the label.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-003": [
+		{
+			"title" : "Presence of non-grouped fields",
+			"detail" : "When necessary the fields not even natures must be grouped",
+			"solution" : "- apply a \"fieldset\" completed by an element \"legend\" \n- apply a role \"group\" on the parent element encapsulating the fields, and complete with a legend based on an aria-labelledby",
+			"technicalSolution" : ""
+		}
+	],
+    "testID-004":[
+        {
+			"title" : "Mandatory field not visually identifiable",
+			"detail" : "The visual identification of the mandatory field is not based only on color.",
+			"solution" : "Add visual information not based only on color, example: asterisk, icon, etc ...",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Mandatory field not identifiable programmatically",
+			"detail" : "The identification of a mandatory field is not possible from a technical aid (ex: screen reader), if it is not given programmatically.",
+			"solution" : "Use one of the techniques below: \n- visual information integrated into the label \n- addition of a \"required\" attribute on the input \n- addition of an \"aria-required\" attribute on the input",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-005":[
+        {
+			"title" : "A data format is missing",
+			"detail" : "A data format is necessary to allow all users to correctly enter information.",
+			"solution" : "Add a data format. This format is programmatically linked to the field.",
+			"technicalSolution" : "Apply one of the solutions below: \n- integrate the data format into the label element \nexample: <label for=\"idInput\"> Date DD/MM/YYYY </label>\n- link the format to the field via an attribute aria-describedby \nexemple: <input aria-describedby=\"idDesc\" [...]> <p id=\"idDesc\"> Input format: DD/MM/YYYY </p>"
+		},{
+			"title" : "The data format is not programmatically linked to the field",
+			"detail" : "In the case the data format will not be perceived from an assistive technology (example: screen reader).",
+			"solution" : "Add a data format. This format is programmatically linked to the field.",
+			"technicalSolution" : "Apply one of the solutions below: \n- integrate the data format into the label element \nexample: <label for=\"idInput\"> Date DD/MM/YYYY </label>\n- link the format to the field via an attribute aria-describedby \nexemple: <input aria-describedby=\"idDesc\" [...]> <p id=\"idDesc\"> Input format: DD/MM/YYYY </p>"
+		}
+    ],
+    "testID-012":[
+        {
+			"title" : "No autocomplete attribute for fields presenting personal data",
+			"detail" : "Any field used to collect specific data on the user must have an \"autocomplete\" attribute.",
+			"solution" : "Add an \"autocomplete\" attribute on the input. The value of the autocomplete depends on the nature of the information collected in the field.",
+			"technicalSolution" : "examples: autocomplete=\"username\", autocomplete=\"new-password\", autocomplete =\"postal-code\", etc ..."
+		}
+    ],
+    "testID-006":[
+        {
+			"title" : "Error messages are not perceived by users",
+			"detail" : "Error messages must be understood by all users, regardless of their equipment.",
+			"solution" : "Apply one of the techniques below: \n- The error message is present before the form. \nThe message lists the fields in error. \nThe focus is on the error message. \nAnchors allow the user to position himself on the fields with errors. \n-The error messages are added in the labels of the fields. \n- The error messages are not integrated in the labels, but a mechanism is present in order to link programmatically fields and errors: see aria-describedby",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-008":[
+        {
+			"title" : "Presence of irrelevant error messages",
+			"detail" : "Error messages are missing or irrelevant.",
+			"solution" : "Error messages should allow users to easily correct their input errors.",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-009":[
+        {
+			"title" : "Presence of irrelevant error messages",
+			"detail" : "Error messages are missing or irrelevant.",
+			"solution" : "Error messages should allow users to easily correct their input errors.",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-017":[
+        {
+			"title" : "Page title not specified",
+			"detail" : "Each page should have a unique title.",
+			"solution" : "Fill in the <title> element, with keywords allowing to understand the role of the page. The information can be ordered from the most specific to the least specific, or vice versa (no rules).",
+			"technicalSolution" : "<title>Homepage - Orange customer area</title>"
+		},
+		{
+			"title" : "Page title irrelevant",
+			"detail" : "Each page must have a unique title, making it possible to understand its role.",
+			"solution" : "Fill in the <title> element, with keywords allowing to understand the role of the page. The information can be ordered from the most specific to the least specific, or vice versa (no rules).",
+			"technicalSolution" : "<title>Homepage - Orange customer area</title>"
+		}
+    ],
+    "testID-010":[
+        {
+			"title" : "Incomplete hierarchy",
+			"detail" : "The page must be structured with headings.",
+			"solution" : "All content, visually treated as titles, must have heading semantics (<h1> to <h6> tags)",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Hierarchy of heading levels not logical",
+			"detail" : "Level headings should be structured logically",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-068":[
+        {
+			"title" : "A HTML list semantic is missing",
+			"detail" : "Items presented visually as lists must be structured with list semantics.",
+			"solution" : "Use appropriate list semantics <ul>, <ol> or <dl>, <dt> and <dd>.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "An HTML hyperlink semantic is missing",
+			"detail" : "Interactive elements causing a URL change must use HTML an hyperlink semantics.",
+			"solution" : "Use a <a> tag with a href attribute.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "A HTML button semantic is missing",
+			"detail" : "Interactive elements that trigger an action must use HTML button semantics.",
+			"solution" : "Use <button> or <input type=\"button\"> semantics",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-064":[
+        {
+			"title" : "Incomplete element",
+			"detail" : "Start or end tags are missing for one or more items.",
+			"solution" : "",
+			"technicalSolution" : ""
+		
+		},
+		{
+			"title" : "Nesting error",
+			"detail" : "Elements do not respect nesting rules (HTML conformance).",
+			"solution" : "",
+			"technicalSolution" : ""
+		
+		},
+		{
+			"title" : "Duplicate attributes",
+			"detail" : "Presence of duplicate attributes on the same element.",
+			"solution" : "",
+			"technicalSolution" : ""
+		
+		},
+		{
+			"title" : "Presence of duplicate IDs",
+			"detail" : "The page should not have duplicate IDs.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-021":[
+        {
+			"title" : "The lang attribute is missing",
+			"detail" : "A lang attribute must be present on the HTML element. In addition, the value of the attribute must correspond to the main language of the document.",
+			"solution" : "",
+			"technicalSolution" : "<html lang=\"en\" >"
+		},
+		{
+			"title" : "The value of the lang attribute is wrong",
+			"detail" : "The value of the attribute must match the main language of the document.",
+			"solution" : "If english is the main language of the document, then the value of the attribute will be lang=\"en\"",
+			"technicalSolution" : "<html lang=\"en\" >"
+		}
+    ],
+    "testID-022":[
+        {
+			"title" : "Language change not indicated",
+			"detail" : "Words and expressions in foreign languages ​​must be indicated to users.",
+			"solution" : "Add a lang attribute to foreign language terms",
+			"technicalSolution" : "<q lang=\"fr\">[…]</q>"
+		}
+    ],
+    "testID-023":[
+        {
+			"title" : "Row or column headers semantics are missing",
+			"detail" : "Headers are required to identify the nature of the columns and / or rows",
+			"solution" : "The column header cells must have a semantics of TH + a scope=\"col\" attribute. Row header cells must have a semantics of TH + a scope=\"row\" attribute. ",
+			"technicalSolution" : "<th scope=\"col\"> / <th scope=\"row\"> "
+		},
+		{
+			"title" : "Presence of a layout table",
+			"detail" : "Tables should not be used content layout",
+			"solution" : "Add a role=\"presentation\" to the table",
+			"technicalSolution" : "<table role=\"presentation\">"
+		}
+    ],
+    "testID-013":[
+        {
+			"title" : "An ALT attribute is missing",
+			"detail" : "All images must have an ALT attribute.",
+			"solution" : "Add an ALT attribute to images.",
+			"technicalSolution" : "<img alt=\"[...]\" [...]> "
+		},{
+			"title" : "The ALT attribute of an image within a link is not filled in or not relevant",
+			"detail" : "The content of the alt attribute of each clickable images is relevant to its linking function.",
+			"solution" : "Enter the link target in the ALT",
+			"technicalSolution" : "<a href=\"http://mywebsite.com\"><img src=\"[...]\" alt=\"My website\" ></a>"
+		},
+		{
+			"title" : "The ALT attribute of an image that carrying information is not filled in or not relevant",
+			"detail" : "The alt attribute of each image is relevant to the role of the image on the page.",
+			"solution" : "Enter in the ALT the information carried by the image.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "The ALT attribute of an image containing text is not filled in or not relevant",
+			"detail" : "The alt attribute includes at least the text of the image.",
+			"solution" : "Enter in the ALT the text presented by the image.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "The ALT attribute of a decorative image is not relevant",
+			"detail" : "The alt attribute of a decorative image must be empty, so that the image is ignored, especially by assistive technology.",
+			"solution" : "Fill in an empty alt.",
+			"technicalSolution" : "<img src=\"[...]\" alt=\"\" >"
+		},
+		{
+			"title" : "The ALT of a complex image (diagrams, graphs, etc.) is irrelevant",
+			"detail" : "",
+			"solution" : "For any image description that is too long to be put in an alt attribute, the description of the images is either present in the page, or, an adjacent link points to an html page containing the description.",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-062":[
+        {
+			"title" : "Presence of text as an image",
+			"detail" : "Texts must be included in HTML and formatted via CSS.",
+			"solution" : "Include texts in HTML and manage the formatting via CSS.",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-014":[
+        {
+			"title" : "An alternative to captcha is missing",
+			"detail" : "Any captcha that is only visual or audio must have an accessible alternative.",
+			"solution" : "Provide as an alternative: an audio + visual captcha, or logical tests (question whose answer is obvious, simple mathematical test ...).",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-065":[
+        {
+			"title" : "A TITLE attribute is missing",
+			"detail" : "All frames must have a TITLE attribute.",
+			"solution" : "Add a TITLE attribute to frames.",
+			"technicalSolution" : "<iframe title=\"[...]\">"
+		}
+    ],
+    "testID-024":[
+        {
+			"title" : "Insufficient contrast between text and background",
+			"detail" : "The contrast must be sufficient to understand the information carried by all the texts.",
+			"solution" : "Ensure a contrast of 4.5: 1 minimum for texts of normal sizes (less than 24px CSS and 19px CSS in bold). Ensure a minimum contrast of 3: 1 for large texts (greater than 24px CSS and 19px CSS in bold).",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Insufficient contrast for non-underlined links",
+			"detail" : "Non-underlined links must have a sufficient contrast ratio with the surrounding text.",
+			"solution" : "Ensure a minimum contrast of 4.5: 1 between an un-underlined link and the surrounding text of normal sizes (less than 24px CSS and 19px CSS in bold). Ensure a minimum 3: 1 contrast between a non-underlined link and the surrounding text of large sizes (greater than 24px CSS and 19px CSS in bold).",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-026":[
+        {
+			"title" : "Insufficient contrast for icons carrying information",
+			"detail" : "The contrast must be sufficient to convey the information.",
+			"solution" : "Ensure a minimum contrast of 3: 1 for icons.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Insufficient contrast for interactive components (buttons, radio buttons, ...)",
+			"detail" : "The contrast must be sufficient to convey the information.",
+			"solution" : "Ensure a minimum contrast of 3: 1 for the different states of interactive components.",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Insufficient contrast for states of interactive components (focus, hover, ...)",
+			"detail" : "The contrast must be sufficient to convey the information.",
+			"solution" : "Ensure a minimum contrast of 3: 1 for the different states of interactive components.",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-027":[
+        {
+			"title" : "Color is the only way to convey information",
+			"detail" : "Color should not be the only means of conveying information: at least one other visual means is available to obtain the same information.",
+			"solution" : "Complete the color with explicit text, or other visual information (example: icons use colors, but also different shapes).",
+			"technicalSolution" : ""
+		}
+    ]
+}

@@ -35,7 +35,7 @@ $('.o-nav-local').prioritynav('Autres pages');
 var dataVallydette;
 var langVallydette;
 var checklistVallydette;
-var issuesVallydette;
+var issuesVallydette={};
 
 var globalLang;
 var globalTemplate;
@@ -119,21 +119,23 @@ function initGlobalCriteriaListName(criteriaListName) {
 
 		initMainMenu();
 		localizeHTML();
+
+		var issuesRequest = new XMLHttpRequest();
+		issuesRequest.open("GET", "json/"+ checklistVallydette[currentCriteriaListName].filename+"-issues-" + globalLang + ".json", true);
+		issuesRequest.onreadystatechange = function () {
+	 	if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+			issuesVallydette = JSON.parse(issuesRequest.responseText);
+	  	}	 
+	};
+	
+	issuesRequest.send();
 	  } 
 	};
 	
 	checklistRequest.send();
 	
 	
-	var issuesRequest = new XMLHttpRequest();
-	issuesRequest.open("GET", "json/issues-" + globalLang + ".json", true);
-	issuesRequest.onreadystatechange = function () {
-	  if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
-		issuesVallydette = JSON.parse(issuesRequest.responseText);
-	  } 
-	};
-	
-	issuesRequest.send();	
+		
 	
 	initLangMenu();
 
@@ -347,7 +349,6 @@ function importCriteriaToVallydetteObj (criteriaVallydette) {
 	if (checklistVallydette[currentCriteriaListName].template === 'audit'){
 		criteriaVallydette.forEach(function (criteria, key) {
 			 criteria.resultatTest = "nt";
-			 //criteria.issues = [];
 			 
 		 })
 	}

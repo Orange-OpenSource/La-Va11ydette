@@ -297,5 +297,254 @@
 			"solution" : "Complete the color with explicit text, or other visual information (example: icons use colors, but also different shapes).",
 			"technicalSolution" : ""
 		}
-    ]
+    ],
+	"testID-051":[
+		{
+			"title" : "Sensory information is the only way to convey information",
+			"detail" : "Sensory information (eg: position, size, sound) should not be the only way to provide information.",
+			"solution" : "Complete the information with a text, or an explicit message.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-011":[
+		{
+			"title" : "The visible text on the screen is missing in the accessible name",
+			"detail" : "The text of the displayed label (the textual caption or the text of the image visible on the screen) must be present (in first position, if possible) in the name (accessible) of this component.",
+			"solution" : "Modify the accessible name of the element to include visible text on the screen, if possible in first position.",
+			"technicalSolution" : "Several solutions are available to redefine the accessible name: aria-labelledby, aria-label, title, sr-only."
+		}
+	],
+	"testID-028":[
+		{
+			"title" : "Presence of wording that is not understandable in their context",
+			"detail" : "The target of a link or the action carried by a button is not understandable thanks to its direct context (surrounding text).",
+			"solution" : "Add discriminating information in the surrounding text.",
+			"technicalSolution" : "The solution depends on the context in which the element is used: \n- element in a paragraph: complete the text of the paragraph (<p> [...] </p>) \n- element in a list: complete a item from the list (<ul>, <ol>) \n- element in a table cell: complete the text of the cell (<td> [...] </td>) or complete the direct header of the cell (<th> [...] </th>)."
+		}
+	],
+	"testID-030":[
+		{
+			"title" : "Cannot move the pointer to the content of a tooltip",
+			"detail" : "After opening a tooltip, the user cannot move his pointer from the trigger element to the content of the tooltip, without the latter closing.",
+			"solution" : "The user must be able to move the mouse pointer from the trigger element to the content of the tooltip without closing it.",
+			"technicalSolution" : ""
+		}, {
+			"title" : "Cannot close additional content (tooltip, popin, etc ...) without moving the focus or the pointer",
+			"detail" : "After opening additional content, the user cannot close it without having to move the focus or the mouse pointer.",
+			"solution" : "After opening additional content, the user cannot close it without having to move the focus or the mouse pointer.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-032":[
+		{
+			"title" : "Form automatically submitted when taking focus of an element",
+			"detail" : "A form is automatically submitted as soon as a form element takes focus (onFocus).",
+			"solution" : "A form should be submitted only after activating the submit button (onClick).",
+			"technicalSolution" : ""
+		},{
+			"title" : "Form automatically submitted during data entry",
+			"detail" : "A form is automatically submitted after entering data in a field (onInput).",
+			"solution" : "A form should be submitted only after activating the submit button (onClick).",
+			"technicalSolution" : ""
+		},{
+			"title" : "Change of the content of the current page as soon as the focus is taken",
+			"detail" : "A change of content takes place without being initiated voluntarily by the user (onFocus).",
+			"solution" : "A change of content must take place only after voluntary triggering of the user (onClick) on a link or an action button.",
+			"technicalSolution" : ""
+		},{
+			"title" : "Opening of a new page as soon as focus is taken",
+			"detail" : "A page change takes place without being initiated voluntarily by the user (onFocus).",
+			"solution" : "A change of content must take place only after voluntary triggering of the user (onClick) on a link.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-033":[
+		{
+			"title" : "Only one navigation mechanism is present",
+			"detail" : "At least 2 navigation mechanisms must be present on the interface.",
+			"solution" : "Complete the existing mechanism with a solution listed below: \n - a main navigation menu \n - a table of contents \n - a sitemap \n - a search mechanism \n - a list of links to navigate to across the whole site (footer).",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-034":[
+		{
+			"title" : "A ARIA role (status, alert, alertdialog ...) or dynamic aria-live regions is missing",
+			"detail" : "Alert messages are not heard from a screen reader.",
+			"solution" : "Apply an ARIA role (\"status\", \"alert\", \"alertdialog\", etc ...) or an \"aria-live\" attribute to the alert message so that it is automatically vocalized from the onset.",
+			"technicalSolution" : "examples: \n- <div role =\"status\"> [...] </div> \n- <div aria-live=\"assertive\"> [...] </div>"
+		}
+	],
+	"testID-035":[
+		{
+			"title" : "A mechanism to stop moving content is missing",
+			"detail" : "User must have control of moving content.",
+			"solution" : "Provide an accessible mechanism to stop or pause moving content.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-036":[
+		{
+			"title" : "Presence of rapid flashing",
+			"detail" : "Presence of content presenting rapid flashes (more than 3 flashes per second) or the flashes are below the general threshold or red threshold.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-037":[
+		{
+			"title" : "Item not usable on keyboard",
+			"detail" : "An element cannot be used from keyboard navigation.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-039":[
+		{
+			"title" : "User does not have control of a single key based keyboard shortcut",
+			"detail" : "The user does not have control of a keyboard shortcut based on a single key: letter (lowercase or uppercase), punctuation, number, or symbol.",
+			"solution" : "The user must be able to:\n- deactivate the shortcut\n- or modify the shortcut to add an extra key to the combination\n- or ensure that the shortcut is active only when taking focus of the component of the interface.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-040":[
+		{
+			"title" : "Non-logical focus sequence",
+			"detail" : "The movement of the focus does not follow a logical order (reading direction).",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-041":[
+		{
+			"title" : "Focus visualization (outline) is disabled",
+			"detail" : "The outline must not be deactivated.",
+			"solution" : "Check that the outline is not deleted from a css property (ex: \"outline: none;\").",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-042":[
+		{
+			"title" : "Zoom is not allowed",
+			"detail" : "The enlargement of the text to 200% must be possible.",
+			"solution" : "If a \"<meta name = 'viewport'>\" tag is present: \n- the user-scalable='no' parameter is not present \n- and the maximum-scale parameter is not less than 2",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-043":[
+		{
+			"title" : "Presence of a horizontal scroll bar",
+			"detail" : "A horizontal scroll bar appears after resizing the interface to 320px css wide.",
+			"solution" : "- apply relative units (em, rem,%) to text containers \n- or use \"min-width\" and \"min-height\" properties instead of \"width\" and \"height\" properties.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-044":[
+		{
+			"title" : "Presence of truncated or overlapping texts",
+			"detail" : "Contents are truncated or overlapped after applying text spacing properties.",
+			"solution" : "Do not impose or inherit an absolute size (px, ...) to the spacing properties.",
+			"technicalSolution" : "- apply relative units (em, rem,%) to text spacing properties \n- apply relative units (em, rem, %) to text containers \n- or use properties \"min-width\"and \"min-height\" instead of the \"width\"and \"height\" properties."
+		}
+	],
+	"testID-045":[
+		{
+			"title" : "Components repeated on several pages, in different orders",
+			"detail" : "Components repeated on several pages, do not appear in the same order on some pages.",
+			"solution" : "The layout of the components must be homogeneous between all the pages of a site. Components should appear consistently, in the same relative order.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-046":[
+		{
+			"title" : "Components repeated on several pages, in different orders",
+			"detail" : "Components repeated on several pages, do not appear in the same order on some pages.",
+			"solution" : "The layout of the components must be homogeneous between all the pages of a site. Components should appear consistently, in the same relative order.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-048":[
+		{
+			"title" : "An action cannot be undone",
+			"detail" : "The action cannot be canceled because it was triggered on the DOWN event.",
+			"solution" : "- trigger the action on the UP \n event - for complex components (eg: drag n'drop), the action on the UP is completed by a dialog box giving users the possibility to cancel their action.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-049":[
+		{
+			"title" : "An action based on a complex gesture has no alternative",
+			"detail" : "Any action based on complex gestures must have an alternative based on a single pointer.",
+			"solution" : "Example: for a zoom action on a map with a finger pinch, an alternative in the form of <button> [+] and [-] is proposed.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-050":[
+		{
+			"title" : "Loss of information during a consultation in portrait or landscape mode",
+			"detail" : "Content and functionality must be available in both orientations without loss of information.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-052":[
+		{
+			"title" : "A complete transcript is missing",
+			"detail" : "A complete transcript (text version of the speech containing all visual and auditory information) must be provided as an alternative to audio or video tracks.",
+			"solution" : "Add a complete transcript (text version of the speech), either directly in the page, or by a link pointing to an html page containing this transcript and this, near the element to be described",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-053":[
+		{
+			"title" : "A complete transcript is missing",
+			"detail" : "A complete transcript (text version of the speech containing all visual and auditory information) must be provided as an alternative to audio or video tracks.",
+			"solution" : "Add a complete transcript (text version of the speech), either directly in the page, or by a link pointing to an html page containing this transcript and this, near the element to be described",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-057":[
+		{
+			"title" : "Audio description is missing",
+			"detail" : "Audio description is required for videos presenting information in visual form.",
+			"solution" : "Adding an audio description is present in addition to the audio track, if necessary. This presents, in text format, the information conveyed only by the image.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-054":[
+		{
+			"title" : "Captions are missing",
+			"detail" : "For any video, captions are available",
+			"solution" : "Add subtitles in text formats for all videos. These provide all the informations of the audio track.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-056":[
+		{
+			"title" : "Captions are missing",
+			"detail" : "For any video, captions are available",
+			"solution" : "Add subtitles in text formats for all videos. These provide all the informations of the audio track.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-063":[
+		{
+			"title" : "Cannot stop an audio or video track",
+			"detail" : "Page audio tracks that are automatically played longer than 3 seconds can be stopped, paused or their volume can be controlled independently.",
+			"solution" : "Provide an accessible mechanism, allowing users to control sounds played over 3 seconds.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-066":[
+		{
+			"title" : "The state of a component is not perceived from a screen reader",
+			"detail" : "The states checked / unchecked, folded / unfolded, etc ... are not seen from a screen reader",
+			"solution" : "- use native components as a priority (example: use input checkboxes for checkboxes, the state will be managed natively \n - otherwise make sure to apply the ARIA patterns, to ensure correct semantics and management of the states of the components ( cf. attributes aria-expanded, aria-selected, etc ...)",
+			"technicalSolution" : ""
+		}, {
+			"title" : "An interactive component cannot be used from a screen reader",
+			"detail" : "The features of a component that cannot be used from a screen reader",
+			"solution" : "- use native components as a priority (example: use input checkboxes for checkboxes, the state will be managed natively \n - otherwise make sure to apply the ARIA patterns, to ensure correct semantics",
+			"technicalSolution" : ""
+		}
+	]
 }

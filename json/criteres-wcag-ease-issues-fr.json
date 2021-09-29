@@ -297,5 +297,254 @@
 			"solution" : "Compléter la couleur par un texte explicite, ou une autre information visuelle (exemple : des icônes utilisent des couleurs, mais également des formes différentes).",
 			"technicalSolution" : ""
 		}
-    ]
+    ],
+	"testID-051":[
+		{
+			"title" : "Une information sensorielle est le seul moyen de convoyer de l'information",
+			"detail" : "Une l’information sensorielle (ex : position, taille, son) ne doit pas être le seul moyen pour transmettre de l'information.",
+			"solution" : "Compléter linformation par un texte, ou un message explicite.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-011":[
+		{
+			"title" : "Absence du texte visible à l'écran, dans l'accessible name",
+			"detail" : "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom (accessible) de ce composant.",
+			"solution" : "Modifier l'accessible name de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
+			"technicalSolution" : "Plusieurs solutions sont possibles pour redéfinir l'accessible name : aria-labelledby, aria-label, title, sr-only."
+		}
+	],
+	"testID-028":[
+		{
+			"title" : "Présence de libellés non-compréhensibles dans leur contexte",
+			"detail" : "La cible d'un lien ou l'action portée par un bouton n'est pas compréhensible grâce à son contexte direct (texte environnant).",
+			"solution" : "Ajouter une information discriminante dans le texte environnant.",
+			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n- élément dans un paragraphe : compléter le texte du paragraphe (<p>[...]</p>) \n- élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n- élément dans une cellule de tableau : compléter le texte de la cellule (<td>[...]</td>) ou compléter l'entête directe de la cellule (<th>[...]</th>)."
+		}
+	],
+	"testID-030":[
+		{
+			"title" : "Déplacement du pointeur vers le contenu d'une tooltip impossible",
+			"detail" : "Après ouverture d'une tooltip, l'utilisateur ne peut pas déplacer son pointeur de l'élément déclencheur vers le contenu de la tooltip, sans que celle-ci se ferme.",
+			"solution" : "L'utilisateur doit être capable de déplacer le pointeur souris de l'élément déclencheur vers le contenu de la tooltip sans fermeture de celle-ci.",
+			"technicalSolution" : ""
+		}, {
+			"title" : "Impossible de fermer un contenu additionnel (tooltip, popin, etc...) sans déplacer le focus ou le pointeur",
+			"detail" : "Après ouverture du contenu additionnel, l'utilisateur ne peut pas fermer celui-ci sans avoir à déplacer le focus ou le pointeur de la souris.",
+			"solution" : "Proposer un mécanisme aux utilisateurs pour leur permettre de fermer un contenu additionnel sans déplacement de focus ou de souris (ex : fermeture depuis la touche Echap).",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-032":[
+		{
+			"title" : "Formulaire soumis automatiquement lors de la prise de focus d'un élément",
+			"detail" : "Un formulaire est soumis automatiquement dès la prise de focus d'un élément du formulaire (onFocus).",
+			"solution" : "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
+			"technicalSolution" : ""
+		},{
+			"title" : "Formulaire soumis automatiquement lors de la saisie de données",
+			"detail" : "Un formulaire est soumis automatiquement après saisie de données dans un champ (onInput).",
+			"solution" : "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
+			"technicalSolution" : ""
+		},{
+			"title" : "Changement du contenu de la page courante dès la prise de focus",
+			"detail" : "Un changement de contenu s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
+			"solution" : "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien ou un bouton d'action.",
+			"technicalSolution" : ""
+		},{
+			"title" : "Ouverture d'une nouvelle page dès la prise de focus",
+			"detail" : "Un changement de page s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
+			"solution" : "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-033":[
+		{
+			"title" : "Un seul mécanisme de navigation est présent",
+			"detail" : "Au moins 2 mécanismes de navigation doivent être présent sur l'interface.",
+			"solution" : "Compléter le mécanisme existant avec une solution listée ci-dessous : \n -  un menu de navigation principal \n - une table des matières \n - un sitemap \n - un mécanisme de recherche \n - une liste de liens permettant de naviguer à travers tout le site (pied de page).",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-034":[
+		{
+			"title" : "Absence de roles ARIA (status, alert, alertdialog...) ou de régions dynamiques aria-live",
+			"detail" : "Les messages d'alertes ne sont pas perçus depuis un lecteur d'écran.",
+			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc...) ou un attribut \"aria-live\" au message d'alerte afni qu'il soit vocalisé automatiquement dés apparition.",
+			"technicalSolution" : "exemples :\n - <div role=\"status\"> [...] </div> \n - <div aria-live=\"assertive\">[...]</div>"
+		}
+	],
+	"testID-035":[
+		{
+			"title" : "Absence de mécanisme permettant de stopper un contenu en mouvement",
+			"detail" : "L'utilisateur doit avoir le contrôle des contenus en mouvement.",
+			"solution" : "Proposer un mécanisme accessible permettant de stopper ou mettre en pause un contenu en mouvement.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-036":[
+		{
+			"title" : "Présence de clignotements rapides",
+			"detail" : "Présence de contenu présentant des clignotements rapides (plus de 3 flash à la seconde) ou les flashs sont inférieurs au seuil général ou seuil de rouge.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-037":[
+		{
+			"title" : "Élément non utilisable au clavier",
+			"detail" : "Un élément n'est pas utilisable depuis une navigation clavier.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-039":[
+		{
+			"title" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche",
+			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche : letter (minuscule ou majuscule), ponctuation, chiffre, ou symbôle.",
+			"solution" : "L'utilisateur doit pouvoir : \n- désactiver le raccourci \n- ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-040":[
+		{
+			"title" : "Déplacement du focus non-logique",
+			"detail" : "Le déplacement du focus ne suit pas un ordre logique (sens de lecture).",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-041":[
+		{
+			"title" : "La visualisation du focus (outline) est désactivée",
+			"detail" : "Le outline ne doit pas être désactivé.",
+			"solution" : "Vérifier que le outline n'est pas supprimé depuis une propriété css (ex : \"outline:none;\").",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-042":[
+		{
+			"title" : "Le zoom n'est pas autorisé",
+			"detail" : "L'agrandissement du texte à 200% doit être possible.",
+			"solution" : "Si une balise \"<meta name= 'viewport'>\" est présente :\n- le paramètre user-scalable='no' n’est pas présent\n- et le paramètre maximum-scale n’est pas inférieur à 2 ",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-043":[
+		{
+			"title" : "Présence d'une barre de défilement horizontale",
+			"detail" : "Une barre de défilement horizontale apparaît après un redissionnement de l'interface à 320 px css de large.",
+			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-044":[
+		{
+			"title" : "Présence de textes tronqués ou de chevauchement",
+			"detail" : "Des contenus sont tronqués ou se chevauchent après application de propriétés d'aération du texte.",
+			"solution" : "Ne pas imposer ou hériter une taille absolue (px, ...) aux propriétés d'espacement.",
+			"technicalSolution" : "- appliquer des unités relatives (em, rem, %) aux propriétés d'espacement de textes \n- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"."
+		}
+	],
+	"testID-045":[
+		{
+			"title" : "Composants répétés sur plusieurs pages, dans des ordres différents",
+			"detail" : "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
+			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaitre de manière constante, dans le même ordre relatif.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-046":[
+		{
+			"title" : "Composants répétés sur plusieurs pages, dans des ordres différents",
+			"detail" : "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
+			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaitre de manière constante, dans le même ordre relatif.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-048":[
+		{
+			"title" : "Une action ne peut être annulée",
+			"detail" : "L'action ne peut être annulée car déclenchée sur l'évènement DOWN.",
+			"solution" : "- déclencher l'action sur l'évènement UP\n- pour des composants complexes (ex : drag n'drop), l'action sur le UP est complétée par une boîte de dialogue donnant la possibilité aux utilisateurs d'annuler leur action.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-049":[
+		{
+			"title" : "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
+			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur un seul pointeur.",
+			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-050":[
+		{
+			"title" : "Perte d'information lors d'une consultation en mode portrait ou paysage",
+			"detail" : "Le contenu et les fonctionnalités doivent être disponibles dans les 2 orientations sans pertes d'informations.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-052":[
+		{
+			"title" : "Absence de transcrit complet",
+			"detail" : "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
+			"solution" : "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-053":[
+		{
+			"title" : "Absence de transcrit complet",
+			"detail" : "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
+			"solution" : "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-057":[
+		{
+			"title" : "Absence d'audiodescription",
+			"detail" : "Une audiodescription est nécessaire pour les vidéos présentant des informations sous forme visuelle.",
+			"solution" : "Ajouter une audio-description est présente en complément de la bande audio, si besoin. Celle-ci présente, sous format texte, les informations convoyées uniquement par l’image.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-054":[
+		{
+			"title" : "Absence de sous-titres",
+			"detail" : "Pour toute vidéo, des sous-titres sont disponibles.",
+			"solution" : "Ajouter des sous-titres sous formats texte pour toutes vidéos. Ceux-ci restituent l’ensemble des informations de la piste audio.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-056":[
+		{
+			"title" : "Absence de sous-titres",
+			"detail" : "Pour toute vidéo, des sous-titres sont disponibles.",
+			"solution" : "Ajouter des sous-titres sous formats texte pour toutes vidéos. Ceux-ci restituent l’ensemble des informations de la piste audio.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-063":[
+		{
+			"title" : "Impossible de stopper une piste audio ou vidéo",
+			"detail" : "Les pistes audio de la page automatiquement jouées plus de 3 secondes peuvent être stoppées, mises en pause ou leur volume peut être contrôlé indépendamment.",
+			"solution" : "Fournir un mécanisme accessible, permettant aux utilisateurs de contrôler les sons joués plus de 3 secondes.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-066":[
+		{
+			"title" : "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
+			"detail" : "Les états coché/décochés, plié/déplié, etc... ne sont pas percue depuis un lecteur d'écran",
+			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected, etc...)",
+			"technicalSolution" : ""
+		}, {
+			"title" : "Un composant interactifs n'est pas utilisable depuis un lecteur d'écran",
+			"detail" : "Les fonctionnalités d'un composant ne pas utilisables depuis un lecteur d'écran",
+			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
+			"technicalSolution" : ""
+		}
+	]
 }

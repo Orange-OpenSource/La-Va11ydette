@@ -576,7 +576,7 @@
 	"testWebID-51": [
 		{
 			"title" : "Présence de champs non-groupés",
-			"detail" : "Lorque nécessaire les champs ne même natures doivent être groupés",
+			"detail" : "Lorque nécessaire les champs de même natures doivent être groupés",
 			"solution" : "- appliquer un \"fieldset\" complété par un élément \"legend\"\n- appliquer un role \"group\" sur l'élément parent encapsulant les champs, et compléter par une légende basée sur un aria-labelledby",
 			"technicalSolution" : ""
 		}

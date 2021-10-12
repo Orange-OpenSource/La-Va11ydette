@@ -66,6 +66,14 @@
 			"technicalSolution" : ""
 		}
     ],
+    "testID-007":[
+        {
+			"title" : "Presence of irrelevant error messages",
+			"detail" : "Error messages are missing or irrelevant.",
+			"solution" : "Error messages should allow users to easily correct their input errors.",
+			"technicalSolution" : ""
+		}
+    ],
     "testID-008":[
         {
 			"title" : "Presence of irrelevant error messages",
@@ -241,6 +249,14 @@
 		}
     ],
     "testID-014":[
+        {
+			"title" : "An alternative to captcha is missing or incorrect",
+			"detail" : "An alternative to captcha doest not tell the user it is a captcha",
+			"solution" : "Provide as an alternative: an audio + visual captcha, or logical tests (question whose answer is obvious, simple mathematical test ...).",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-015":[
         {
 			"title" : "An alternative to captcha is missing",
 			"detail" : "Any captcha that is only visual or audio must have an accessible alternative.",
@@ -456,9 +472,17 @@
 	],
 	"testID-046":[
 		{
-			"title" : "Components repeated on several pages, in different orders",
-			"detail" : "Components repeated on several pages, do not appear in the same order on some pages.",
-			"solution" : "The layout of the components must be homogeneous between all the pages of a site. Components should appear consistently, in the same relative order.",
+			"title" : "Components repeated on several pages, with different titles ",
+			"detail" : "Components repeated on several pages, do not have the same title.",
+			"solution" : "Components repeated on several pages must have homogeneous titles.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-047":[
+		{
+			"title" : "An action based on a complex gesture has no alternative",
+			"detail" : "Any action based on complex gestures must have an alternative based on a single pointer.",
+			"solution" : "Example: for a zoom action on a map with a finger pinch, an alternative in the form of <button> [+] and [-] is proposed.",
 			"technicalSolution" : ""
 		}
 	],
@@ -472,9 +496,9 @@
 	],
 	"testID-049":[
 		{
-			"title" : "An action based on a complex gesture has no alternative",
-			"detail" : "Any action based on complex gestures must have an alternative based on a single pointer.",
-			"solution" : "Example: for a zoom action on a map with a finger pinch, an alternative in the form of <button> [+] and [-] is proposed.",
+			"title" : "An action based on a movement of the device or a gesture of the user has no alternative",
+			"detail" : "Any action based on a movement of the device must have an alternative.",
+			"solution" : "Allow this action to be triggered by another means (ex: add a button in the interface).",
 			"technicalSolution" : ""
 		}
 	],

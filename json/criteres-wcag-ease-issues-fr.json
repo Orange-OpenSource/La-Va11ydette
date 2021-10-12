@@ -66,10 +66,18 @@
 			"technicalSolution" : ""
 		}
     ],
-    "testID-008":[
+    "testID-007":[
         {
 			"title" : "Présence de messages d'erreurs non-pertinents",
 			"detail" : "Des messages d'erreurs sont absents ou non pertinents.",
+			"solution" : "Les messages d'erreurs doivent permettre aux utilisateurs de détecter facilement les erreurs de saisie.",
+			"technicalSolution" : ""
+		}
+    ],
+    "testID-008":[
+        {
+			"title" : "Présence de messages d'erreurs non-pertinents",
+			"detail" : "Des messages d'erreurs sont non pertinents.",
 			"solution" : "Les messages d'erreurs doivent permettre aux utilisateurs de corriger facilement leurs erreurs de saisie.",
 			"technicalSolution" : ""
 		}
@@ -241,6 +249,14 @@
 		}
     ],
     "testID-014":[
+        {
+			"title" : "Alternative textuelle du CAPTCHA absente ou erronée.",
+			"detail" : "L’alternative textuelle de l’image CAPTCHA n’indique pas à l’utilisateur qu’il s’agit d’un CAPTCHA.",
+			"solution" : "Put a valid textual alternative for this image, example: \"CAPTCHA (image anti-spam)\" ",
+			"technicalSolution" : "<img alt=\"CAPTCHA (image anti-spam)\" [...]>"
+		}
+    ],
+    "testID-015":[
         {
 			"title" : "Absence d'alternative au captcha",
 			"detail" : "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
@@ -433,7 +449,7 @@
 	"testID-043":[
 		{
 			"title" : "Présence d'une barre de défilement horizontale",
-			"detail" : "Une barre de défilement horizontale apparaît après un redissionnement de l'interface à 320 px css de large.",
+			"detail" : "Une barre de défilement horizontale apparaît après un redimenssionnement de l'interface à 320 px css de large.",
 			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
 			"technicalSolution" : ""
 		}
@@ -456,9 +472,17 @@
 	],
 	"testID-046":[
 		{
-			"title" : "Composants répétés sur plusieurs pages, dans des ordres différents",
-			"detail" : "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
-			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaitre de manière constante, dans le même ordre relatif.",
+			"title" : "Composants répétés sur plusieurs pages, avec des intitulés différents",
+			"detail" : "Des composants répétés sur plusieurs pages, ne possèdent pas le même intitulé.",
+			"solution" : "Les composants répétés sur plusieurs pages doivent avoir des intitulés homogènes.",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-047":[
+		{
+			"title" : "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
+			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur un seul pointeur.",
+			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée.",
 			"technicalSolution" : ""
 		}
 	],
@@ -472,9 +496,9 @@
 	],
 	"testID-049":[
 		{
-			"title" : "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
-			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur un seul pointeur.",
-			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée.",
+			"title" : "Une action basée sur un mouvement de l’appareil ou un geste de l’utilisateur ne possède pas d’alternative",
+			"detail" : "Toute action basée sur un mouvement de l'appareil doit posséder une altenative.",
+			"solution" : "Permettre de déclencher cette action par un autre moyen (ex : ajouter un bouton dans l'interface).",
 			"technicalSolution" : ""
 		}
 	],

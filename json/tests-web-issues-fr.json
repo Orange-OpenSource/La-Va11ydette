@@ -599,7 +599,7 @@
 	],
 	"testWebID-54": [
 		{
-			"title" : "Des données importantes sont soumises sans possibilité d'être annuler ou vérifier",
+			"title" : "Des données importantes sont soumises sans possibilité d'être annulé ou vérifié",
 			"detail" : "Les utilisateurs doivent avoir le contrôle lors de la soumission de données importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen...).",
 			"solution" : "Appliquer une des solutions ci-dessous :\n- L'action peut être annulée\n- une étape de confirmation permettant la vérification ou la modification est présente avant validation ",
 			"technicalSolution" : "Exemple :\nAprès soumission du formulaire, un message de confirmation apparaît dans une popin.\nLe message reprend les données saisies par l'utilisateur, et donne la possibilité de valider ou annuler.\nSi l'utilisateur annule, il est redirigé vers le formulaire, ses saisies sont toujours présentes dans les champs, avec la possibilité de les modifier."

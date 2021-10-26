@@ -2911,7 +2911,7 @@ saveIssue = function (targetId, issueIndex, issueEditForm) {
 		}
 	}
 
-	cancelIssue(targetId, issueIndex, issueEditForm.elements["issueNameValue-" + issueIndex].value, issueEditForm.elements["issueDetailValue-" + issueIndex].value);
+	cancelIssue(targetId, issueIndex, utils.escape_html(issueEditForm.elements["issueNameValue-" + issueIndex].value), utils.escape_html(issueEditForm.elements["issueDetailValue-" + issueIndex].value));
 	
 	jsonUpdate();	
 	
@@ -3027,7 +3027,7 @@ displayIssue = function (targetId, title) {
 				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
 				htmlModal += '  <a id="btnIssue'+targetId+'-'+ j +'" data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
-				htmlModal += '#' + auditNumber + ' ' + dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle;
+				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
 				htmlModal += ' </a>';
 				htmlModal += '</h5>';
 				htmlModal += ' </div>';
@@ -3036,7 +3036,7 @@ displayIssue = function (targetId, title) {
 
 				htmlModal += ' <div class="card-body">';
 				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
-				htmlModal +=  		dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail;
+				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
 			
 				htmlModal += '  </div>';
 				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">' + langVallydette.edit + '</button>';

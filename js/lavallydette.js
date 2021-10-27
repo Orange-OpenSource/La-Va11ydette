@@ -1602,8 +1602,6 @@ function runComputation(obj) {
 							if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
 
 								dataWCAG.items[k].resultat = false;
-								//@TODO voir pour rajouter les issues
-
 								if(dataVallydette.checklist.page[i].items[j].issues.length >0){
 									dataVallydette.checklist.page[i].items[j].issues.forEach(issue => {
 										dataWCAG.items[k].comment.push(issue.issueTitle);

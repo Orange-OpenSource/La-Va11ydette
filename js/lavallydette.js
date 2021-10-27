@@ -1600,11 +1600,15 @@ function runComputation(obj) {
 							}
 
 							if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
+
 								dataWCAG.items[k].resultat = false;
 								//@TODO voir pour rajouter les issues
-								if (dataVallydette.checklist.page[i].items[j].commentaire!=="") { 
-								   dataWCAG.items[k].comment.push(dataVallydette.checklist.page[i].items[j].commentaire);
-								   dataWCAG.items[k].page.push(pagesResults[i].name);
+
+								if(dataVallydette.checklist.page[i].items[j].issues.length >0){
+									dataVallydette.checklist.page[i].items[j].issues.forEach(issue => {
+										dataWCAG.items[k].comment.push(issue.issueTitle);
+										dataWCAG.items[k].page.push(pagesResults[i].name);
+									});
 								}
 							 }
 
@@ -2324,7 +2328,7 @@ setDeletePage = function (targetElement) {
 
 	let htmlModal = '';
 	htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-dialog" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5>' + langVallydette.delete + '</h5>';
@@ -2494,7 +2498,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 
 	let htmlModal = '';
 	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-dialog" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">' + langVallydette.edit + ' : ' + getPropertyValue(targetProperty) + '</h5>';
@@ -3007,7 +3011,7 @@ displayIssue = function (targetId, title) {
 
 	let htmlModal = '';
 	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-dialog" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + titleModal + '</h5>';
@@ -4107,7 +4111,7 @@ editStatementProperty = function (statementProperty) {
 	
 	let htmlModal = '';
 	htmlModal = '<div id="modalStatement" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalStatementTitle">';
-	htmlModal += '<div class="modal-dialog modal-dialog-scrollable" role="document">';
+	htmlModal += '<div class="modal-dialog" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalStatementTitle">' + langVallydette.edition + '</h5>';

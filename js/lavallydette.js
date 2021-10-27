@@ -2857,7 +2857,7 @@ editIssue = function (targetId, issueIndex) {
 	
 	htmlEditIssue += '<form id="editIssueForm">';
 	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
-	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + getIssue(targetId, 'issueTitle', issueIndex) + '" required >';
+	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
 	htmlEditIssue += '<label class="mt-2" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
 	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.solution + '</label>';

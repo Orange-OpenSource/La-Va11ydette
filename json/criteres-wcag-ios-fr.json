@@ -551,7 +551,7 @@
       "ID": "testID-057",
       "IDorigin": "testID-057",
       "wcag": {
-      	 "0":"4.1.1 A",
+      	 "0":"4.1.1 A"
       },
       "verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Dans le code HTML s'assurer que&nbsp;:</p><ul><li>les balises de début et de fin sont complètes</li><li>éléments imbriqués selon leurs spécifications</li><li>il n'y a pas d'attributs en double</li><li>les attributs sont définis correctement (ouverture et fermeture des guillemets)</li><li>chaque attribut <code>id</code> est unique</li></ul>",
       "group": "WebView",
@@ -576,7 +576,7 @@
       "ID": "testID-059",
       "IDorigin": "testID-059",
       "wcag": {
-      	"0": "2.4.1 A",
+      	"0": "2.4.1 A"
       },
       "verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\\\"en\\\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
       "group": "WebView",
@@ -588,7 +588,7 @@
       "ID": "testID-060",
       "IDorigin": "testID-060",
       "wcag": {
-      	"0": "3.1.1 A",
+      	"0": "3.1.1 A"
       },
       "verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
       "group": "WebView",

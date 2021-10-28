@@ -58,6 +58,11 @@ var htmlContextualMenuContent;
 var htmlFilterContent;
 var htmlMainContent;
 
+var htmlIcon = {
+	edit: '<svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class="cls-1" d="M876.2,238.316l-51.077-51.108-63.846-63.884a81.085,81.085,0,0,0-68.3-23.078c-0.712.095-1.421,0.2-2.131,0.32-2.332.375-4.65,0.843-6.948,1.422-2.315.583-4.611,1.26-6.877,2.049-0.03.011-.061,0.019-0.091,0.03a80.92,80.92,0,0,0-30.578,19.257L186.663,583.292,133.137,759.716h0l-13.253,43.678L101.2,864.984c-0.185.61-.344,1.22-0.485,1.827-0.045.192-.078,0.383-0.119,0.575-0.087.415-.17,0.83-0.238,1.242-0.037.227-.066,0.453-0.1,0.68-0.052.378-.1,0.755-0.135,1.131-0.022.235-.04,0.468-0.057,0.7-0.025.369-.043,0.736-0.053,1.1-0.006.23-.012,0.46-0.013,0.689,0,0.376.01,0.75,0.025,1.123,0.008,0.211.013,0.422,0.027,0.632,0.027,0.425.069,0.847,0.116,1.267,0.018,0.152.028,0.305,0.048,0.456q0.111,0.855.276,1.693c0.021,0.108.05,0.214,0.072,0.322,0.095,0.448.2,0.894,0.313,1.334,0.051,0.191.11,0.379,0.165,0.568,0.1,0.354.207,0.705,0.323,1.053,0.07,0.207.145,0.412,0.219,0.617,0.118,0.326.24,0.649,0.37,0.969,0.084,0.207.171,0.412,0.259,0.617q0.207,0.473.431,0.935c0.095,0.2.188,0.393,0.288,0.587,0.164,0.322.339,0.638,0.516,0.952,0.095,0.171.188,0.343,0.287,0.511,0.227,0.385.467,0.761,0.713,1.134,0.059,0.09.114,0.183,0.175,0.273q0.464,0.685.969,1.341c0.1,0.127.2,0.248,0.3,0.373,0.246,0.308.493,0.614,0.752,0.911,0.135,0.156.277,0.307,0.415,0.46,0.234,0.257.47,0.512,0.713,0.76,0.155,0.158.313,0.312,0.472,0.467,0.241,0.234.486,0.465,0.736,0.69,0.165,0.15.33,0.3,0.5,0.443,0.259,0.224.524,0.441,0.792,0.655,0.167,0.132.331,0.266,0.5,0.395,0.3,0.228.6,0.445,0.912,0.66,0.147,0.1.29,0.21,0.438,0.309,0.459,0.308.926,0.605,1.405,0.885,0.021,0.013.043,0.024,0.065,0.036q0.687,0.4,1.4.759c0.162,0.082.329,0.156,0.494,0.235,0.337,0.163.677,0.323,1.022,0.472,0.2,0.084.395,0.162,0.592,0.241,0.324,0.131.65,0.257,0.979,0.375,0.209,0.075.419,0.146,0.631,0.216q0.493,0.162.995,0.306c0.212,0.061.424,0.122,0.638,0.177,0.352,0.092.706,0.172,1.062,0.249,0.2,0.044.4,0.091,0.6,0.129,0.415,0.08.835,0.145,1.256,0.206,0.147,0.021.291,0.048,0.438,0.067q0.856,0.106,1.726.159c0.117,0.007.236,0.006,0.353,0.011,0.4,0.019.8,0.037,1.208,0.037,0.056,0,.113-0.006.169-0.006,0.358,0,.719-0.023,1.08-0.04,0.283-.013.565-0.019,0.85-0.041,0.377-.03.758-0.081,1.137-0.127,0.272-.033.542-0.056,0.814-0.1,0.421-.064.845-0.153,1.269-0.237,0.233-.047.466-0.082,0.7-0.135q0.963-.219,1.93-0.51c0.017,0,.034-0.008.051-0.014l21.618-6.566,83.587-25.391h0l176.317-53.56h0l262.68-262.838L876.2,353.308a80.927,80.927,0,0,0,22.163-41.279q0.136-.669.26-1.338,0.611-3.294.95-6.62c0.026-.248.053-0.5,0.076-0.744q0.342-3.7.35-7.422c0-.031,0-0.062,0-0.093A81.083,81.083,0,0,0,876.2,238.316ZM359.047,755.779l37.419,37.442L220.148,846.78l-66.969-67.01,53.527-176.424,37.419,37.441L703.815,180.82l19.154,19.165L263.278,659.953l76.615,76.661L799.584,276.646l19.154,19.166Z"/></svg>',
+	arrowDown: '<svg aria-hidden="true" focusable="false" class="icon-arrow-down" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs> <style>.cls-1 { fill-rule: evenodd; }</style> </defs><path class="cls-1" d="M900,275L500,750,100,275H900Z"/></svg>'
+}
+
 	
 /**
  * Vallydette object
@@ -280,7 +285,7 @@ function initAuditPage() {
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
                         data-toggle="modal" data-target="#modalEdit">
-                    <span class="icon-Pencil" aria-hidden="true"></span>
+						`+ htmlIcon.edit+`
                 </button>
 				<button class="btn btn-secondary btn-icon ml-2 d-print-none" id="btnLocalStorage"
                         aria-label="" title=""
@@ -307,7 +312,7 @@ function initAuditPage() {
                                     aria-label="" title=""
                                     data-element="pageName" data-secondary-element="pageID-0"
                                     data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit">
-                                <span class="icon-Pencil" aria-hidden="true"></span>
+									`+htmlIcon.edit+`
                             </button>
                             <button id="btnDelPage" class="btn btn-secondary btn-icon ml-2"
                                     aria-label="" title=""
@@ -770,7 +775,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -786,11 +791,11 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
 			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentPage === 0) {
@@ -846,7 +851,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '"><span class="icon-arrow-down"></span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -882,12 +887,12 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '><span class="icon icon-Pencil" aria-hidden="true"></span><span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
 			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue"><span class="icon icon-Add" aria-hidden="true"></span></span><span class="sr-only">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '"><span class="icon-arrow-down" aria-hidden="true"></span><span class="sr-only">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="sr-only">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
@@ -2229,7 +2234,7 @@ initProperties = function (item) {
 */
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
-	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit"><span class="icon-Pencil" aria-hidden="true"></span></button>';
+	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit">'+htmlIcon.edit+'</span></button>';
 	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
 		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true"><span class="icon-Link" aria-hidden="true"></span></a>';
 	}
@@ -3871,7 +3876,7 @@ function showStatementWizard() {
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 	statementWizardContent += '<div class="form-group" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
@@ -3885,7 +3890,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 	statementWizardContent += '<div class="form-group" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
@@ -3912,7 +3917,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3926,7 +3931,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
@@ -3941,7 +3946,7 @@ function showStatementWizard() {
 		
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="environmentLegend">';
-	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '"><span class="icon-Pencil" aria-hidden="true"></span></button></h4>';
+	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 
 	statementWizardContent += '<ul id="environmentsList">';	
 	

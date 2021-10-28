@@ -588,7 +588,7 @@
             "IDorigin": "testID-060",
             "wcag": {
             	"0": "3.1.1 A"
-            }
+            },
             "verifier": "<p>This criterion can only be verified if you have access to the URL of the WebView.</p><ul><li>check there is a <code>lang</code> attribute present (N.B. the presence of the <code>xml:lang</code> attribute is not sufficient to pass this test)</li><li>the value of the <code>lang</code> attribute should correspond to the primary language used on the page</li></ul>",
             "group": "WebView",
             "resultatTest": "nt"

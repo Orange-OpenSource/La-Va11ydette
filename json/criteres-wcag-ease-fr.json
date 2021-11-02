@@ -72,7 +72,7 @@
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de l'attribut <code>autocomplete</code></li><li>la valeur indiquée pour l'attribut <code>autocomplete</code> est pertinente (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'>liste exhaustive des valeurs autorisées</a>) au regard du type d'information attendue</li></ul>",
+		"verifier": "<ul><li>pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de l'attribut <code>autocomplete</code></li><li>la valeur indiquée pour l'attribut <code>autocomplete</code> est pertinente (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='liste exhaustive des valeurs autorisées (nouvelle fenêtre)'>liste exhaustive des valeurs autorisées</a>) au regard du type d'information attendue</li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"resultatTest": "nt"
@@ -337,7 +337,7 @@
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/web/a11y-name.html' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenête)'>Le nom accessible en HTML</a></p>\n<p>Non applicable, si aucun composant d'interface n'a de libellé texte visible (icônes sans texte, par exemple)</p>",
+		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenête)'>Le nom accessible en HTML</a></p>\n<p>Non applicable, si aucun composant d'interface n'a de libellé texte visible (icônes sans texte, par exemple)</p>",
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre un <code>aria-label</code> «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"resultatTest": "nt"

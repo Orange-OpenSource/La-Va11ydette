@@ -3,16 +3,15 @@
 		{
 			"title" : "Titre de page non renseigné",
 			"detail" : "Chaque page doit posséder un titre unique.",
-			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la  plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
+			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
 			"technicalSolution" : "<title>Acccueil - Espace client Orange</title>"
 		},
 		{
 			"title" : "Titre de page non pertinent",
 			"detail" : "Chaque page doit posséder un titre unique, permettant de comprendre le rôle de celle-ci.",
-			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la  plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
+			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
 			"technicalSolution" : "<title>Acccueil - Espace client Orange</title>"
 		}
-		
 	],
 	"testWebID-1": [
 		{
@@ -51,7 +50,7 @@
 	],
 	"testWebID-3": [
 		{
-			"title" : "Element incomplet",
+			"title" : "Élément incomplet",
 			"detail" : "Des balises de début ou de fin sont manquantes pour un ou plusieurs éléments.",
 			"solution" : "",
 			"technicalSolution" : ""
@@ -153,7 +152,7 @@
 		{
 			"title" : "Le ALT d'une image contenant du texte n'est pas renseigné ou non pertinent",
 			"detail" : "L'attribut alt reprend au moins le texte de l’image.",
-			"solution" : "Reporter  dans la ALT le texte présenté par l'image.",
+			"solution" : "Reporter dans le ALT le texte présenté par l'image.",
 			"technicalSolution" : ""
 		},
 		{
@@ -226,7 +225,7 @@
 		{
 			"title" : "Absence d'alternative au captcha",
 			"detail" : "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
-			"solution" : "Proposer en alternative : un captcha audio + visuel, ou  des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
+			"solution" : "Proposer en alternative : un captcha audio + visuel, ou des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
 			"technicalSolution" : ""
 		}
 	],
@@ -417,8 +416,8 @@
 	"testWebID-33": [
 		{
 			"title" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche",
-			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche : letter (minuscule ou majuscule), ponctuation, chiffre, ou symbôle.",
-			"solution" : "L'utilisateur doit pouvoir : \n- désactiver le raccourci \n- ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
+			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche : lettre (minuscule ou majuscule), ponctuation, chiffre, ou symbôle.",
+			"solution" : "L'utilisateur doit pouvoir : \n- désactiver le raccourci \n- ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n- ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
 			"technicalSolution" : ""
 		}
 	],
@@ -447,7 +446,7 @@
 		{
 			"title" : "Absence de roles ARIA (status, alert, alertdialog...) ou de régions dynamiques aria-live",
 			"detail" : "Les messages d'alertes ne sont pas perçus depuis un lecteur d'écran.",
-			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc...) ou un attribut \"aria-live\" au message d'alerte afni qu'il soit vocalisé automatiquement dés apparition.",
+			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc...) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement dés apparition.",
 			"technicalSolution" : "exemples :\n - <div role=\"status\"> [...] </div> \n - <div aria-live=\"assertive\">[...]</div>"
 		}
 	],
@@ -555,7 +554,7 @@
 			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		},{
 			"title" : "Le format de données n'est pas lié de manière programmatique au champ",
-			"detail" : "Dans le cas le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran).",
+			"detail" : "Dans le cas où le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran).",
 			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
 			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		}
@@ -568,8 +567,8 @@
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Champ obligatoire non identifiable ne manière programmatique",
-			"detail" : "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex: lecteur d'écran), si elle n'est pas donner de manière programmatique.",
+			"title" : "Champ obligatoire non identifiable de manière programmatique",
+			"detail" : "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex: lecteur d'écran), si elle n'est pas donnée de manière programmatique.",
 			"solution" : "Utiliser une des techniques ci-dessous :\n- information visuelle intégrée dans le label\n- ajout d'un attribut \"required\" sur l'input \n- ajout d'un attribut \"aria-required\" sur l'input",
 			"technicalSolution" : ""
 		}
@@ -577,7 +576,7 @@
 	"testWebID-51": [
 		{
 			"title" : "Présence de champs non-groupés",
-			"detail" : "Lorque nécessaire les champs ne même natures doivent être groupés",
+			"detail" : "Lorsque nécessaire les champs de même natures doivent être groupés",
 			"solution" : "- appliquer un \"fieldset\" complété par un élément \"legend\"\n- appliquer un role \"group\" sur l'élément parent encapsulant les champs, et compléter par une légende basée sur un aria-labelledby",
 			"technicalSolution" : ""
 		}
@@ -600,7 +599,7 @@
 	],
 	"testWebID-54": [
 		{
-			"title" : "Des données importantes sont soumises sans possibilité d'être annuler ou vérifier",
+			"title" : "Des données importantes sont soumises sans possibilité d'être annulé ou vérifié",
 			"detail" : "Les utilisateurs doivent avoir le contrôle lors de la soumission de données importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen...).",
 			"solution" : "Appliquer une des solutions ci-dessous :\n- L'action peut être annulée\n- une étape de confirmation permettant la vérification ou la modification est présente avant validation ",
 			"technicalSolution" : "Exemple :\nAprès soumission du formulaire, un message de confirmation apparaît dans une popin.\nLe message reprend les données saisies par l'utilisateur, et donne la possibilité de valider ou annuler.\nSi l'utilisateur annule, il est redirigé vers le formulaire, ses saisies sont toujours présentes dans les champs, avec la possibilité de les modifier."
@@ -641,7 +640,7 @@
 	"testWebID-59": [
 		{
 			"title" : "Perte d'information lors d'une consultation en mode portrait ou paysage",
-			"detail" : "Le contenu et les fonctionnalités doivent être disponibles dans les 2 orientations sans pertes d'informations.",
+			"detail" : "Le contenu et les fonctionnalités doivent être disponibles dans les 2 orientations sans perte d'informations.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -649,7 +648,7 @@
 	"testWebID-60": [
 		{
 			"title" : "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
-			"detail" : "Les états coché/décochés, plié/déplié, etc... ne sont pas percue depuis un lecteur d'écran",
+			"detail" : "Les états cochés/décochés, pliés/dépliés, etc... ne sont pas percus depuis un lecteur d'écran",
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected, etc...)",
 			"technicalSolution" : ""
 		}, {

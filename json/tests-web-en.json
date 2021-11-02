@@ -97,7 +97,7 @@
 	"ID": "testWebID-6",
 	"IDorigin": "testWebID-6"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Define text alternatives for images and frames / images",
 	"type": ["aXe"],
 	"tests": ["Launch aXe"],
@@ -111,7 +111,7 @@
 	"ID": "testWebID-7",
 	"IDorigin": "testWebID-7"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Set a text alternatives for images and frames / background",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Disable page styles<br/>Firefox > Display > Page style > No style"],
@@ -125,7 +125,7 @@
 	"ID": "testWebID-8",
 	"IDorigin": "testWebID-8"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Set a text alternatives for images and frames / alternatives for images",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Inspect the images"],
@@ -139,14 +139,14 @@
 	"ID": "testWebID-9",
 	"IDorigin": "testWebID-9"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Set a text alternatives for images and frames / alternatives for frames",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Inspect the frames"],
 	"verifier": ["Verify that the value of the <code>title</code> attributes describes the content or function of <code>iframe</code> or <code>frame</code>"],
 	"resultat": ["All frames have a relevant <code>title</code> attribute"],
 	"exception": "<ul><li>A properly masked non-informative <code>frame</code> or <code>iframe</code> does not need a <code>title</code>. </li> <li >A <code>title</code> is not required if the content of the <code>iframe</code> is not distinct from the surrounding content and does not have a focusable element inside, and there is an added <code>tabindex='- 1'</code> on the <code>iframe</code> so that it does not receive the focus.</li></ul>",
-	"raccourcis": "Technical iframes: http://a11y-guidelines.orange.com/web_EN/exemples/iframes-techniques/index.html",
+	"raccourcis": "<a href='http://a11y-guidelines.orange.com/web_EN/exemples/iframes-techniques/index.html' target='_blank' aria-label='Technical iframes (new window)'>Technical iframes ",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#set-a-text-alternatives-for-images-and-frames",
 	"profils": ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
 	"wcag": ["1.1.1"],
@@ -167,7 +167,7 @@
 	"ID": "testWebID-11",
 	"IDorigin": "testWebID-11"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Provide accessible audio or video tracks",
 	"type": ["Manual test"],
 	"tests": ["Inspect the audio and video content of the page"],
@@ -181,7 +181,7 @@
 	"ID": "testWebID-12",
 	"IDorigin": "testWebID-12"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Provide accessible audio or video tracks / auto-play",
 	"type": ["Manual test"],
 	"tests": ["Inspect the audio content of the page"],
@@ -195,11 +195,11 @@
 	"ID": "testWebID-13",
 	"IDorigin": "testWebID-13"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Provide accessible flashes",
 	"type": ["Manual test"],
 	"tests": ["Inspect the animation and video contents of the page that flashes"],
-	"verifier": ["Make sure that any content does not show rapid flashes (more than 3 flashes per second) or the flashes are below the <a href='https://www.w3.org/TR/WCAG21/#dfn-general-flash-and-red-flash-thresholds'>general flash and red flash thresholds</a>."],
+	"verifier": ["Make sure that any content does not show rapid flashes (more than 3 flashes per second) or the flashes are below the <a href='https://www.w3.org/TR/WCAG21/#dfn-general-flash-and-red-flash-thresholds' target='_blank'>general flash and red flash thresholds</a>."],
 	"resultat": ["No rapid flash or beyond the general flash and red flash thresholds."],
 	"exception": "",
 	"raccourcis": "",
@@ -209,7 +209,7 @@
 	"ID": "testWebID-14",
 	"IDorigin": "testWebID-14"
 }, {
-	"themes": "Non-text content",
+	"themes": "Non-textual content",
 	"title": "Avoid captchas",
 	"type": ["Manual test"],
 	"tests": ["Inspect the captcha"],
@@ -306,7 +306,7 @@
 	"ID": "testWebID-21",
 	"IDorigin": "testWebID-21"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Link and button labels must be understandable out of context / identical labels",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items, <br/>If the test cannot be validated in step 3, inspect the <code>title</code> and <code>title</code> attributes"],
@@ -320,7 +320,7 @@
 	"ID": "testWebID-22",
 	"IDorigin": "testWebID-22"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Link and button labels must be understandable in context / labels",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
@@ -334,7 +334,7 @@
 	"ID": "testWebID-23",
 	"IDorigin": "testWebID-23"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Link and button labels must be understandable out of context / labels",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
@@ -348,11 +348,11 @@
 	"ID": "testWebID-24",
 	"IDorigin": "testWebID-24"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Make text of links and buttons accessible / names",
 	"type": ["Manual test - Code inspector"],
-	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Compare the text of links, buttons... or the text of the image and <a href='http://a11y-guidelines.orange.com/web_EN/a11y-name.html'>the accessible name</a> of these items"],
-	"verifier": ["Verify that the text of the displayed label (the text or the text of image of interactive items) is present (first, if possible) in the (accessible) name of this component (more details, <a href='http://a11y-guidelines.orange.com/web_EN/a11y-name.html'>the accessible name</a>"],
+	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Compare the text of links, buttons... or the text of the image and <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a> of these items"],
+	"verifier": ["Verify that the text of the displayed label (the text or the text of image of interactive items) is present (first, if possible) in the (accessible) name of this component (more details, <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a>"],
 	"resultat": ["The links, buttons and navigation items have for any interface component, the text of the displayed label (the text or the text of the image of interactive items) is present (first, if possible) in the (accessible) name of this component"],
 	"exception": "",
 	"raccourcis": "",
@@ -376,7 +376,7 @@
 	"ID": "testWebID-26",
 	"IDorigin": "testWebID-26"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Warn the user when opening a new window",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
@@ -390,7 +390,7 @@
 	"ID": "testWebID-27",
 	"IDorigin": "testWebID-27"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Is the semantic global structure of the document consistent?",
 	"type": ["Wave toolbar"],
 	"tests": ["Use Wave > Structure", "Consider the prioritization of ARIA landmarks"],
@@ -403,7 +403,7 @@
 	"ID": "testWebID-28",
 	"IDorigin": "testWebID-28"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Provide skip links",
 	"type": ["Manual test"],
 	"tests": ["Disable page styles<br/>under Firefox > Display > Page style > No style"],
@@ -417,7 +417,7 @@
 	"ID": "testWebID-29",
 	"IDorigin": "testWebID-29"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Ensure that the user keeps control during interactions - On Focus / On Input",
 	"type": ["Manual test"],
 	"tests": ["Follow an user story within the page (via mouse navigation, then keyboard navigation)"],
@@ -431,7 +431,7 @@
 	"ID": "testWebID-30",
 	"IDorigin": "testWebID-30"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Ensuring that the user keeps control during interactions - Content on Hover or Focus",
 	"type": ["Manual test"],
 	"tests": ["Identify additional content displayed on focus or on mouse hover (e.g. tooltip)"],
@@ -445,7 +445,7 @@
 	"ID": "testWebID-31",
 	"IDorigin": "testWebID-31"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Ensure that the user keeps control during interactions - Time Adjustable",
 	"type": ["Manual test"],
 	"tests": ["Identify whether the user should complete a form or perform actions within a limited time."],
@@ -459,7 +459,7 @@
 	"ID": "testWebID-32",
 	"IDorigin": "testWebID-32"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Ensure that the user keeps control during interactions - Character key shortcut",
 	"type": ["Manual test"],
 	"tests": ["Identify if shortcuts using a printable character (upper-case and lower-case letter, punctuation, number, or symbol characters) are available in the application"],
@@ -473,7 +473,7 @@
 	"ID": "testWebID-33",
 	"IDorigin": "testWebID-33"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Provide multiple access and a location / multiple access",
 	"type": ["Manual test"],
 	"tests": ["Browse the page", "Identify navigation and search elements"],
@@ -487,7 +487,7 @@
 	"ID": "testWebID-34",
 	"IDorigin": "testWebID-34"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Provide multiple access and location / location",
 	"type": ["Manual test"],
 	"tests": ["Browse the page", "Identify navigation elements (main  menu, breadcrumb trail,...)"],
@@ -501,11 +501,11 @@
 	"ID": "testWebID-35",
 	"IDorigin": "testWebID-35"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Allow to know the result of a user interaction using status messages",
 	"type": ["Screen reader"],
 	"tests": ["Launch a screen reader", "Follow an user story", "Trigger status or alert messages (message on interaction results, waiting message, message related to a change of context)", "Run the code inspector of the browser"],
-	"verifier": ["Verify that a mechanism based on <abbr>ARIA</abbr> roles (status, alert, alertdialog...) and/or <code>aria-live</code> dynamic regions is implemented. <br/>Example: <a href='aria-status.html'>Aria and status messages</a>"],
+	"verifier": ["Verify that a mechanism based on <abbr>ARIA</abbr> roles (status, alert, alertdialog...) and/or <code>aria-live</code> dynamic regions is implemented. <br/>Example: <a href='https://a11y-guidelines.orange.com/en/articles/aria-status-messages/' target='_blank' aria-label='Aria and status messages (new window)'>Aria and status messages</a>"],
 	"resultat": ["Messages are automatically vocalized."],
 	"exception": "",
 	"raccourcis": "",
@@ -515,7 +515,7 @@
 	"ID": "testWebID-36",
 	"IDorigin": "testWebID-36"
 }, {
-	"themes": "Common navigation",
+	"themes": "General navigation",
 	"title": "Allowing control of animations",
 	"type": ["Manual test"],
 	"tests": ["Browse the page", "Identify any content in motion, automatically updated, blinking or scrolling for more than 5 seconds and automatically starting"],
@@ -771,7 +771,7 @@
 	"title": "Detect, identify errors and suggest corrections / avoid entry errors",
 	"type": ["Manual test"],
 	"tests": ["Manual test", "Browse the forms", "Fill in the forms with specific information about the user"],
-	"verifier": ["For any field that collects specific information about the user (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' lang='en'> exhaustive list </a>), the <code> autocomplete </code> attribute of the field must be present and have an appropriate value "],
+	"verifier": ["For any field that collects specific information about the user (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='exhaustive list (new window)'> exhaustive list </a>), the <code> autocomplete </code> attribute of the field must be present and have an appropriate value "],
 	"resultat": ["The <code>autocomplete</code> attribute is:", "present", "and the value of this attribute is relevant"],
 	"exception": [],
 	"raccourcis": "",

@@ -252,7 +252,7 @@
         {
 			"title" : "An alternative to captcha is missing or incorrect",
 			"detail" : "An alternative to captcha doest not tell the user it is a captcha",
-			"solution" : "Provide as an alternative: an audio + visual captcha, or logical tests (question whose answer is obvious, simple mathematical test ...).",
+			"solution" : "Put a valid textual alternative for this image, example: \"CAPTCHA (image anti-spam)\" .",
 			"technicalSolution" : ""
 		}
     ],

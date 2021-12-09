@@ -219,9 +219,10 @@ function initMainMenu() {
 	var htmlMainMenu = "";
 	
 	htmlMainMenu += '<div class="btn-group">';
-	htmlMainMenu += '<button class="btn btn-link btn-inverse dropdown-toggle pe-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	//htmlMainMenu += '<button class="btn btn-inverse dropdown-toggle pe-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	htmlMainMenu += '<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 	htmlMainMenu += langVallydette.selectAchecklist;
-	htmlMainMenu += '</button>';
+	htmlMainMenu += '</a>';
 	htmlMainMenu += '<div class="dropdown-menu dropdown-menu-right">';
 	
 	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item' + (c === currentCriteriaListName ? ' active' : '') + '" href="./?list=' + c + '&lang=' + globalLang + '" ' + (c === currentCriteriaListName ? ' aria-current="page"' : '') + '>' + checklistVallydette[c]['name-' + globalLang] + '</a>');
@@ -290,17 +291,17 @@ function initAuditPage() {
                 <button class="btn btn-secondary btn-icon ms-auto d-print-none" id="btnChecklistName"
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
-                        data-toggle="modal" data-target="#modalEdit">
+                        data-bs-toggle="modal" data-bs-target="#modalEdit">
 						`+ htmlIcon.edit+`
                 </button>
 				<button class="btn btn-secondary btn-icon ms-2 d-print-none" id="btnLocalStorage"
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
-                        data-toggle="modal" data-target="#modalLocalStorage">
+                        data-bs-toggle="modal" data-bs-target="#modalLocalStorage">
                     `+htmlIcon.syncronise+`
                 </button>
                 <button class="btn btn-secondary ms-2 d-print-none" type="button"
-                        data-toggle="modal" data-target="#modalResult"
+                        data-bs-toggle="modal" data-bs-target="#modalResult"
                         id="btnShowResult">
                 </button>
               
@@ -317,13 +318,13 @@ function initAuditPage() {
                             <button class="btn btn-secondary btn-icon" id="btnPageName"
                                     aria-label="" title=""
                                     data-element="pageName" data-secondary-element="pageID-0"
-                                    data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit">
+                                    data-property="checklist.page.0.name" data-bs-toggle="modal" data-bs-target="#modalEdit">
 									`+htmlIcon.edit+`
                             </button>
                             <button id="btnDelPage" class="btn btn-secondary btn-icon ms-2"
                                     aria-label="" title=""
                                     data-element="pageName" data-property="checklist.page.0"
-                                    data-toggle="modal" data-target="#modalDelete" disabled>
+                                    data-bs-toggle="modal" data-bs-target="#modalDelete" disabled>
 									`+htmlIcon.trash+`
                             </button>
 							<hr class="border-light w-100">	
@@ -580,13 +581,13 @@ function runLocalStorage() {
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalLocalStorageTitle">' + langVallydette.recoverTitle + '</h5>';
-	htmlModal += '<button type="button" class="btn-close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body" id="modalLocalStorageForm">';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" id="localStorageCancelBtn" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
+	htmlModal += '<button type="button" id="localStorageCancelBtn" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="localStorageSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '<button type="button" id="localStorageDeleteBtn" class="btn btn-danger">' + langVallydette.deleteAction + '</button>'
 	htmlModal += '</div></div></div></div>';
 	
@@ -781,7 +782,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -797,11 +798,11 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentPage === 0) {
@@ -857,7 +858,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -893,12 +894,12 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
@@ -970,7 +971,7 @@ runTestListMarkup = function (currentRefTests) {
 			if (headingCriterium != currentRefTests[i].criterium) {
 				headingCriterium = currentRefTests[i].criterium;
 
-				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
+				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
 			
 				if (currentRefTests[i].resultatTest === "") {
 					currentRefTests[i].resultatTest = "nt";
@@ -1002,7 +1003,7 @@ runTestListMarkup = function (currentRefTests) {
 					htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
 					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
 
-					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
+					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
 					htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
 				}
 
@@ -1029,7 +1030,7 @@ runTestListMarkup = function (currentRefTests) {
 				headingTheme = currentRefTests[i].themes;
 				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
 			}
-			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
+			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
 
 			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
@@ -1472,7 +1473,7 @@ function checkTheVersion(currentChecklistVersion) {
 		versionHTML += '<div id="alertVersion" class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
 		versionHTML += ' <span class="alert-icon"><span class="visually-hidden">Information</span></span>';
 		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' <strong>' + globalVersion + '</strong>. ' + langVallydette.versionAlert2 + ' <strong>' + currentChecklistVersion +'</strong></p>';
-		versionHTML += ' <button id="closeVersion" type="button" class="btn-close" data-dismiss="alert">';
+		versionHTML += ' <button id="closeVersion" type="button" class="btn-close" data-bs-dismiss="alert">';
 		versionHTML +=	'  <span class="visually-hidden">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';
 		versionHTML +='</div>';
@@ -1889,10 +1890,10 @@ function runFinalComputation(pagesResultsArray) {
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">' + langVallydette.auditTxt3 + '</a></li>';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#synthesePages" data-toggle="tab" id="tabsynthesePages" role="tab" tabindex="-1" aria-selected="false" aria-controls="synthesePages">' + langVallydette.auditTxt4 + '</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveaux" data-toggle="tab" id="tabsyntheseNiveaux" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveaux">' + langVallydette.auditTxt15 + '</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">' + langVallydette.auditTxt5 + '</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-bs-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">' + langVallydette.auditTxt3 + '</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#synthesePages" data-bs-toggle="tab" id="tabsynthesePages" role="tab" tabindex="-1" aria-selected="false" aria-controls="synthesePages">' + langVallydette.auditTxt4 + '</a></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveaux" data-bs-toggle="tab" id="tabsyntheseNiveaux" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveaux">' + langVallydette.auditTxt15 + '</a></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-bs-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">' + langVallydette.auditTxt5 + '</a></li>';
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
@@ -2240,7 +2241,7 @@ initProperties = function (item) {
 */
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
-	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit">'+htmlIcon.edit+'</span></button>';
+	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-bs-toggle="modal" data-bs-target="#modalEdit">'+htmlIcon.edit+'</span></button>';
 	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
 		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true">'+htmlIcon.link+'</a>';
 	}
@@ -2249,9 +2250,9 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	}
 
 	if (currentPage === 0) {
-		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '" disabled>'+htmlIcon.trash+'</button>';
+		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '" disabled>'+htmlIcon.trash+'</button>';
 	} else {
-		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
+		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
 	}
 
 	htmlMenu += '<hr class="border-light  w-100">';
@@ -2341,14 +2342,14 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5>' + langVallydette.delete + '</h5>';
-	htmlModal += '<button type="button" class="btn-close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<p>' + langVallydette.deletePageName + ' <strong>' + getPropertyValue(targetElement) + '</strong> ?</p>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="deteleSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 	/**  html modal container */
@@ -2507,11 +2508,11 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 
 	let htmlModal = '';
 	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle">';
-	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">' + langVallydette.edit + ' : ' + getPropertyValue(targetProperty) + '</h5>';
-	htmlModal += '<button type="button" class="btn-close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 		
 	htmlModal += '<form id="editForm"><div class="modal-body">';
@@ -2532,10 +2533,11 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	}
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></form></div></div></div>';
 			
+	
 	let elModal = document.getElementById('modal');
 	elModal.innerHTML = htmlModal;
 
@@ -2568,11 +2570,14 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		* @todo jquery code from boosted 4.5.
 		* So it should be necessary to replace this code as soon as the vallydette will be updated to v5.
 	*/
-	var name = document.getElementById('nameValue');
-	$('.modal').on('shown.bs.modal', function (event) {
-		name.focus()
-	});
+	
 
+	var myModal = document.getElementsByClassName('modal')
+	var myInput = document.getElementById('nameValue')
+
+	myModal[0].addEventListener('shown.bs.modal', function () {
+		myInput.focus()
+	  })
 }
 
 /**
@@ -2719,7 +2724,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + titleModal + '</h5>';
-	htmlModal += '<button type="button" class="btn-close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<form id="editForm">';
 	htmlModal += '<div class="modal-body">';
@@ -2743,7 +2748,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '</div>';
 
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div>';
 	htmlModal += '</form>';
@@ -2768,6 +2773,8 @@ setIssue = function (targetId, title, targetIdOrigin) {
 		
 			document.getElementById('btnValidatePredefined').addEventListener('click', function () {
 			event.preventDefault();
+			console.log(issuePredefined);
+			console.log(targetIdOrigin);
 			
 			issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
 			issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
@@ -2781,11 +2788,11 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	}
 	
 	var issueNameValueInput = document.getElementById('issueNameValue');
+	var modal = document.getElementsByClassName('modal');
 	
-	$('.modal').on('shown.bs.modal', function (event) {
+	modal[0].addEventListener('shown.bs.modal', function () {
 		issueNameValueInput.focus()
-	});
-
+	  })
 }
 
 /**
@@ -3026,8 +3033,9 @@ displayIssue = function (targetId, title) {
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + titleModal + '</h5>';
-	htmlModal += '<button type="button" class="btn-close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
+	htmlModal += '<div class="">';
 	htmlModal += '<div id="issueList" class="accordion">';
 	
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
@@ -3040,7 +3048,7 @@ displayIssue = function (targetId, title) {
 				
 				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += ' <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
+				htmlModal += ' <button class="accordion-button w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
 				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
 				htmlModal += ' </button>';
 				htmlModal += '</h5>';
@@ -3065,8 +3073,9 @@ displayIssue = function (targetId, title) {
 	}
 	
 	htmlModal += '</div>';
+	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-primary" data-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '<button type="button" class="btn btn-primary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 	/**  html modal container */
@@ -3809,7 +3818,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div id="alertContainer">';
 	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
 		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
-		statementWizardContent += '<button type="button" class="btn-close" data-dismiss="alert"><span class="visually-hidden">Close information message</span></button>';   
+		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close information message</span></button>';   
 		statementWizardContent += '</div>';
 	}
 	statementWizardContent += '</div>';
@@ -3882,7 +3891,7 @@ function showStatementWizard() {
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 	statementWizardContent += '<div class="mb-3" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
@@ -3896,7 +3905,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 	statementWizardContent += '<div class="mb-3" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
@@ -3923,7 +3932,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3937,7 +3946,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
@@ -3952,7 +3961,7 @@ function showStatementWizard() {
 		
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="environmentLegend">';
-	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 
 	statementWizardContent += '<ul id="environmentsList">';	
 	
@@ -4124,7 +4133,7 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalStatementTitle">' + langVallydette.edition + '</h5>';
-	htmlModal += '<button type="button" class="btn-close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<form id="listEditForm">';
@@ -4187,8 +4196,8 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '</form>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="editionSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="editionSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div></div></div></div>';
 
 	let elModal = document.getElementById('modal');
@@ -4375,7 +4384,7 @@ saveStatement = function(statementForm, submitterBtn) {
 
 	alertMessage = '';
 	alertMessage += '<div class="alert alert-success alert-dismissible fade show" id="StatementFormInfo" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
-	alertMessage += '<button type="button" class="btn-close" data-dismiss="alert"><span class="visually-hidden">' + langVallydette.closeInformations + '</span></button>';   
+	alertMessage += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">' + langVallydette.closeInformations + '</span></button>';   
 	alertMessage += '</div>';
 	
 	document.getElementById('alertContainer').innerHTML += (alertMessage);

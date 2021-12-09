@@ -97,6 +97,13 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
       }
 
     }
+
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+    }
   </style>
 </head>
 
@@ -256,9 +263,20 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
     </div>
   </footer>
 
-  <a href="#" class="o-scroll-up">
+  <button type="button" class="btn btn-primary btn-lg" id="btn-back-to-top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000" fill="currentColor">
+      <defs>
+        <style>
+          .cls-1 {
+            fill-rule: evenodd;
+          }
+        </style>
+      </defs>
+      <path class="cls-1" d="M308.958,625.092L309,400H109L430.9,78.281a74.989,74.989,0,0,1,106.044,0L859,400H659V675A150.027,150.027,0,0,0,809,825h81c-59.472,76.059-152.071,125-256.109,125C454.436,950,308.958,804.534,308.958,625.092Z"/>
+    </svg>
     <span class="d-none d-sm-inline-block d-print-none" id="scrollUpTxt">Retour en haut de page</span>
-  </a>
+  </button>
+  
 
   <div id="modal">
     <div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle"><div class="modal-dialog"></div></div>

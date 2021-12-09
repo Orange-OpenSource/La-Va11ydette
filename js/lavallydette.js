@@ -2954,9 +2954,9 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	let htmlEditIssue = '';
 	htmlEditIssue += issueDetail;
 	
+
 	let elIssueCard = document.getElementById('issue-body-' + targetId + '-' + issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
-	
 	let elIssueCardHeader = document.getElementById('btnIssue' + targetId + '-' + issueIndex);
 	elIssueCardHeader.innerHTML = issueTitle;
 	
@@ -3049,7 +3049,7 @@ displayIssue = function (targetId, title) {
 				
 				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += ' <button class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
+				htmlModal += ' <button id="btnIssue'+targetId+'-'+ j +'" class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
 				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
 				htmlModal += ' </button>';
 				htmlModal += '</h5>';
@@ -5150,3 +5150,34 @@ const utils = {
 
 //default builder
 initVallydetteApp('', 'fr');
+
+
+/**
+ * @todo remove when boosted implement it
+ * Scroll to top boosted 5.1
+ */
+ //Get the button
+ let mybutton = document.getElementById("btn-back-to-top");
+ 
+ // When the user scrolls down 20px from the top of the document, show the button
+ window.onscroll = function () {
+   scrollFunction();
+ };
+ 
+ function scrollFunction() {
+   if (
+	 document.body.scrollTop > 20 ||
+	 document.documentElement.scrollTop > 20
+   ) {
+	 mybutton.style.display = "block";
+   } else {
+	 mybutton.style.display = "none";
+   }
+ }
+ // When the user clicks on the button, scroll to the top of the document
+ mybutton.addEventListener("click", backToTop);
+ 
+ function backToTop() {
+   document.body.scrollTop = 0;
+   document.documentElement.scrollTop = 0;
+ }

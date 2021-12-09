@@ -576,7 +576,6 @@ function eventHandler() {
 function runLocalStorage() {
 	
 	let htmlModal = '';
-	htmlModal = '<div id="modalLocalStorage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLocalStorageTitle">';
 	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
@@ -589,9 +588,9 @@ function runLocalStorage() {
 	htmlModal += '<button type="button" id="localStorageCancelBtn" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="localStorageSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '<button type="button" id="localStorageDeleteBtn" class="btn btn-danger">' + langVallydette.deleteAction + '</button>'
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '</div></div></div>';
 	
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalLocalStorage');
 	elModal.innerHTML = htmlModal;
 	createFormLocalStorage();
 
@@ -697,6 +696,13 @@ function getLocalStorage(auditName) {
 function AuditEventHandler(){
 	var btnChecklist = document.getElementById("btnChecklistName");
 
+	/*var myModalEl = document.getElementById('modalEdit')
+		myModalEl.addEventListener('show.bs.modal', function (event) {
+			setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
+  // do something...
+	})*/
+
+
 	btnChecklist.addEventListener('click', function () {
 		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
 	}, false);
@@ -798,7 +804,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
 			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
@@ -894,7 +900,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
 			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
@@ -2337,7 +2343,6 @@ showPage = function (id) {
 setDeletePage = function (targetElement) {
 
 	let htmlModal = '';
-	htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
 	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
@@ -2350,10 +2355,10 @@ setDeletePage = function (targetElement) {
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="deteleSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '</div></div></div>';
 
 	/**  html modal container */
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalDelete');
 	elModal.innerHTML = htmlModal;
 
 	/**  popin event handler */
@@ -2507,7 +2512,6 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	arrayPropertyValue = [];
 
 	let htmlModal = '';
-	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle">';
 	htmlModal += '<div class="modal-dialog modal-lg">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
@@ -2535,10 +2539,10 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
-	htmlModal += '</div></form></div></div></div>';
+	htmlModal += '</div></form></div></div>';
 			
 	
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalEdit');
 	elModal.innerHTML = htmlModal;
 
 	/** If it's a page properties edition, when add the groups */
@@ -2719,11 +2723,10 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let titleModal = title;
 
 	let htmlModal = '';
-	htmlModal = '<div id="modalAddIssue" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
 	htmlModal += '<div class="modal-dialog modal-lg " role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + titleModal + '</h5>';
+	htmlModal += '<h5 class="modal-title" id="modalAddIssueTitle">' + langVallydette.issueTxt1 + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<form id="editForm">';
@@ -2748,14 +2751,14 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '</div>';
 
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="closeIssueBtnBtn" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div>';
 	htmlModal += '</form>';
-	htmlModal += '</div></div></div>';
+	htmlModal += '</div></div>';
 
 	
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalAddIssue');
 	elModal.innerHTML = htmlModal;
 
 	let currentEditForm = document.getElementById('editForm');
@@ -2764,8 +2767,9 @@ setIssue = function (targetId, title, targetIdOrigin) {
 		event.preventDefault();
 		
 		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);
+		document.getElementById('closeIssueBtnBtn').click();
 		
-		$('#modalAddIssue').modal('hide');
+
 	});
 	
 	
@@ -2773,8 +2777,6 @@ setIssue = function (targetId, title, targetIdOrigin) {
 		
 			document.getElementById('btnValidatePredefined').addEventListener('click', function () {
 			event.preventDefault();
-			console.log(issuePredefined);
-			console.log(targetIdOrigin);
 			
 			issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
 			issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
@@ -3028,11 +3030,10 @@ displayIssue = function (targetId, title) {
 	let titleModal = title;
 
 	let htmlModal = '';
-	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
 	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + titleModal + '</h5>';
+	htmlModal += '<h5 class="modal-title" id="modalEditIssueTitle">' + langVallydette.issueTxt2 + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="">';
@@ -3048,7 +3049,7 @@ displayIssue = function (targetId, title) {
 				
 				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += ' <button class="accordion-button w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
+				htmlModal += ' <button class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
 				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
 				htmlModal += ' </button>';
 				htmlModal += '</h5>';
@@ -3057,7 +3058,7 @@ displayIssue = function (targetId, title) {
 				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-bs-parent="#issueList" class="accordion-collapse collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
 
 				htmlModal += ' <div class="accordion-body">';
-				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
+				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
 				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
 			
 				htmlModal += '  </div>';
@@ -3076,10 +3077,10 @@ displayIssue = function (targetId, title) {
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-primary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '</div></div></div>';
 
 	/**  html modal container */
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalEditIssue');
 	elModal.innerHTML = htmlModal;
 	
 }
@@ -4128,7 +4129,6 @@ radioIsChecked = function (statementProperty, propertyIndex) {
 editStatementProperty = function (statementProperty) {
 	
 	let htmlModal = '';
-	htmlModal = '<div id="modalStatement" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalStatementTitle">';
 	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
@@ -4198,9 +4198,9 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<div class="modal-footer">';
 	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="button" id="editionSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '</div></div></div>';
 
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalStatement');
 	elModal.innerHTML = htmlModal;
 	
 	document.getElementById("addElement").addEventListener('click', function(){addListElement(statementProperty);});

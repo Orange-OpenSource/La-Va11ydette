@@ -51,25 +51,6 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
       align-self: flex-end;
     }
 
-    .minimized .navbar-brand h1 {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      visibility: hidden;
-      transition-delay: .15s, 0s, 0s;
-    }
-
-    .minimized .navbar-brand .h2 {
-      line-height: 1;
-      align-self: baseline;
-    }
-
-
-    .minimized .navbar-brand img {
-      width: 1.875rem;
-      height: 1.875rem;
-    }
-
     #filter {
       max-height: calc(100vh - 9.6rem);
     }
@@ -97,17 +78,14 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
       }
 
     }
-
-    #btn-back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: none;
+    .table > :not(:first-child) {
+      border-top: none;
     }
   </style>
 </head>
 
 <body>
+  <a id="top"></a>
   <header id="docs-navbar" class="d-print-none">
     <div class="navbar navbar-dark bg-dark navbar-expand supra">
       <div class="d-flex flex-row-reverse container-lg">
@@ -263,19 +241,10 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
     </div>
   </footer>
 
-  <button type="button" class="btn btn-primary btn-lg" id="btn-back-to-top">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000" fill="currentColor">
-      <defs>
-        <style>
-          .cls-1 {
-            fill-rule: evenodd;
-          }
-        </style>
-      </defs>
-      <path class="cls-1" d="M308.958,625.092L309,400H109L430.9,78.281a74.989,74.989,0,0,1,106.044,0L859,400H659V675A150.027,150.027,0,0,0,809,825h81c-59.472,76.059-152.071,125-256.109,125C454.436,950,308.958,804.534,308.958,625.092Z"/>
-    </svg>
-    <span class="d-none d-sm-inline-block d-print-none" id="scrollUpTxt">Retour en haut de page</span>
-  </button>
+  <nav id="nav-back-to-top" aria-label="Retour en haut de la page" class="back-to-top">
+    <a id="link-to-top" href="#top" class="back-to-top-link btn btn-icon btn-secondary" title="Retour en haut de la page">
+    </a>
+  </nav>
   
 
   <div id="modal">

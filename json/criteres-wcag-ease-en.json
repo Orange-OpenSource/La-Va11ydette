@@ -286,13 +286,13 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Colors and contrasts",
-		"title": "<ul> <li> If the text color is defined (<code> color </code>), the background color must also be defined (<code> background-color </code>). </li> <li> If the background color is defined (<code> background-color </code>), the text color must be defined too (<code> color </code>). </li> <li> If a background image is used for an element containing text (<code> background-image </code>), the background color must be set (<code> background-color </code>). </li> </ul>",
+		"title": "For each text whose color is defined by the CSS <code>color</code> property, is the <code>background-color</code> property also filled in and vice versa?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<h4>More details</h4> <p> These properties can be applied directly to an element or inherited from a parent. To test, the easiest way is to change the default colors of your browser. </p>",
+		"verifier": "<ul> <li> If the text color is defined (<code> color </code>), the background color must also be defined (<code> background-color </code>). </li> <li> If the background color is defined (<code> background-color </code>), the text color must be defined too (<code> color </code>). </li> <li> If a background image is used for an element containing text (<code> background-image </code>), the background color must be set (<code> background-color </code>). </li> </ul><h4>More details</h4> <p> These properties can be applied directly to an element or inherited from a parent. To test, the easiest way is to change the default colors of your browser. </p>",
 		"complement": "<h4>Additionally: </h4><ul><li>If the <code>color</code> property is not defined, then the <code>background-color</code> is not necessary</li><li>It is possible to change the browser's default background color in order to identify at a glance if background colors are defined for text containers</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"resultatTest": "nt"

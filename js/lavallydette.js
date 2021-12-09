@@ -218,8 +218,7 @@ function initMainMenu() {
 	
 	var htmlMainMenu = "";
 	
-	htmlMainMenu += '<div class="btn-group">';
-	//htmlMainMenu += '<button class="btn btn-inverse dropdown-toggle pe-0" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	htmlMainMenu += '<div class="nav-item dropdown">';
 	htmlMainMenu += '<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 	htmlMainMenu += langVallydette.selectAchecklist;
 	htmlMainMenu += '</a>';
@@ -286,7 +285,7 @@ function initAuditPage() {
 	
 	var htmlAuditPage = '';
 	htmlAuditPage = `
-	<div class="container d-flex align-items-center mb-3" id="auditInfoManager">
+	<div class="container d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-3" id="auditInfoManager">
                 <h1 id="checklistName" class="mb-0"></h1>
                 <button class="btn btn-secondary btn-icon ms-auto d-print-none" id="btnChecklistName"
                         aria-label="" title=""
@@ -301,7 +300,6 @@ function initAuditPage() {
                     `+htmlIcon.syncronise+`
                 </button>
                 <button class="btn btn-secondary ms-2 d-print-none" type="button"
-                        data-bs-toggle="modal" data-bs-target="#modalResult"
                         id="btnShowResult">
                 </button>
               
@@ -313,7 +311,7 @@ function initAuditPage() {
                 <div class="row align-items-start position-relative">
                     <div class="col-md-2 sticky-top pt-4 pe-0 col-print-12" id="currentPageManager">
                         <h1 id="pageName" class="mb-0"></h1>
-                        <hr class="border-light">
+                        <div class="border-top border-light my-3"></div>
                         <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap w-100 d-print-none">
                             <button class="btn btn-secondary btn-icon" id="btnPageName"
                                     aria-label="" title=""
@@ -327,7 +325,7 @@ function initAuditPage() {
                                     data-bs-toggle="modal" data-bs-target="#modalDelete" disabled>
 									`+htmlIcon.trash+`
                             </button>
-							<hr class="border-light w-100">	
+							<div class="border-top border-light my-3 w-100"></div>
                         </div>
                         
                     </div>
@@ -817,7 +815,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '	<label class="form-check-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">' + langVallydette.autocheckTxt2 + '</label>';
 				htmlrefTests += '</div>';
 
-				htmlrefTests += '<hr class="border-light w-100">';
+				htmlrefTests += '<div class="border-top border-light my-3 w-100"></div>';
 			}
 			
 			if (currentRefTests[i].verifier) {
@@ -1896,10 +1894,10 @@ function runFinalComputation(pagesResultsArray) {
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-bs-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">' + langVallydette.auditTxt3 + '</a></li>';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#synthesePages" data-bs-toggle="tab" id="tabsynthesePages" role="tab" tabindex="-1" aria-selected="false" aria-controls="synthesePages">' + langVallydette.auditTxt4 + '</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveaux" data-bs-toggle="tab" id="tabsyntheseNiveaux" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveaux">' + langVallydette.auditTxt15 + '</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-bs-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">' + langVallydette.auditTxt5 + '</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link active" id="tabResultatPage" data-bs-toggle="tab" data-bs-target="#resultatPage" type="button" role="tab" aria-controls="resultatPage" aria-selected="true">' + langVallydette.auditTxt3 + '</button></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsynthesePages" data-bs-toggle="tab" data-bs-target="#synthesePages" type="button" role="tab" aria-controls="synthesePages" aria-selected="false">' + langVallydette.auditTxt4 + '</button></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsyntheseNiveaux" data-bs-toggle="tab" data-bs-target="#syntheseNiveaux" type="button" role="tab" aria-controls="syntheseNiveaux" aria-selected="false">' + langVallydette.auditTxt15 + '</button></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabNonConformites" data-bs-toggle="tab" data-bs-target="#nonConformites" type="button" role="tab" aria-controls="nonConformites" aria-selected="false">' + langVallydette.auditTxt5 + '</button></li>';
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
@@ -2261,7 +2259,7 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
 	}
 
-	htmlMenu += '<hr class="border-light  w-100">';
+	htmlMenu += '<div class="border-top border-light my-3 w-100"></div>';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
 	btnActionPageEventHandler();
@@ -2890,7 +2888,7 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
 	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 me-1 mb-1">' + langVallydette.cancel + '</button>';
 	htmlEditIssue += '<button type="submit" id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
-	htmlEditIssue += '<hr class="border-light">';
+	htmlEditIssue += '<div class="border-top border-light my-3"></div>';
 	htmlEditIssue += '</form>';
 	
 	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
@@ -3132,7 +3130,7 @@ initFilters = function () {
 		}
 
 		
-		let htmlWcagDisplay = '<hr class="border-light">';
+		let htmlWcagDisplay = '<div class="border-top border-light my-3"></div>';
 		htmlWcagDisplay += '<div class="form-check form-switch"><label class="form-check-label pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="form-check-input" id="typeWcagDisplay" value=""><span class="form-check-label" id="displayWcag">' + langVallydette.wcagView + '</span></label></div>';
 		let wcagDisplayItem = document.createElement("div");
 		wcagDisplayItem.innerHTML = htmlWcagDisplay;
@@ -3840,7 +3838,7 @@ function showStatementWizard() {
     statementWizardContent += '            </div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 		
 	statementWizardContent += '<form id="statementForm">';
 
@@ -3888,7 +3886,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
@@ -3928,7 +3926,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
@@ -4002,7 +4000,7 @@ function showStatementWizard() {
 			
 	statementWizardContent += '</div>';
 
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
 	
@@ -5151,33 +5149,3 @@ const utils = {
 //default builder
 initVallydetteApp('', 'fr');
 
-
-/**
- * @todo remove when boosted implement it
- * Scroll to top boosted 5.1
- */
- //Get the button
- let mybutton = document.getElementById("btn-back-to-top");
- 
- // When the user scrolls down 20px from the top of the document, show the button
- window.onscroll = function () {
-   scrollFunction();
- };
- 
- function scrollFunction() {
-   if (
-	 document.body.scrollTop > 20 ||
-	 document.documentElement.scrollTop > 20
-   ) {
-	 mybutton.style.display = "block";
-   } else {
-	 mybutton.style.display = "none";
-   }
- }
- // When the user clicks on the button, scroll to the top of the document
- mybutton.addEventListener("click", backToTop);
- 
- function backToTop() {
-   document.body.scrollTop = 0;
-   document.documentElement.scrollTop = 0;
- }

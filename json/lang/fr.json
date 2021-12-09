@@ -195,7 +195,6 @@
 		"btnExportTxt": "Exporter",
 		"selectFilesLabel": "Sélectionner un audit",
 		"import": "Importer",
-		"scrollUpTxt": "Retour en haut de page",
 		"status1": "conforme",
 		"status2": "non-conforme",
 		"status3": "non-applicable",
@@ -217,10 +216,12 @@
 		"btnLocalStorage": "Restaurer / Supprimer un audit",
 		"btnExcelExport": "Exporter les anomalies (excel)",
 		"footerLinkGit" : "Signaler une erreur sur GitHub (nouvelle fenêtre)",
-		"link-about": "À propos (nouvelle fenêtre)"
+		"link-about": "À propos (nouvelle fenêtre)",
+		"link-to-top":"Retour en haut de la page"
 	},
 	"ariaLabelOnly": {
-		"nav-lang": "À propos et changement de langues"
+		"nav-lang": "À propos et changement de langues",
+		"nav-back-to-top": "Retour en haut de la page"
 	},
 	"url": {
 		"link-about": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/"

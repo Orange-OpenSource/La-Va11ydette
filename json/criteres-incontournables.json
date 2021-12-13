@@ -112,15 +112,15 @@
 					"Examiner les <code>table</code>"
 				],
 				"verifier": [
-					"Vérifier que les tableaux ne sont pas utiliser à des fins de mise en page",
+					"Vérifier que les tableaux ne sont pas utilisés à des fins de mise en page",
 					"<strong>Pour les tableaux de données :</strong> <br/>Vérifier que les tableaux de données possèdent un élément caption non vide, ou un titre de niveaux placé juste avant le tableau",
-					"<strong>Tableau à 1 entrée :</strong> <br/> Vérifier la présence d'entêtes ( <code>th</code>) pour la tableaux simples",
+					"<strong>Tableau à 1 entrée :</strong> <br/> Vérifier la présence d'entêtes (<code>th</code>) pour les tableaux simples",
 					"<strong>Tableau à 2 entrées :</strong> <br/> Pour chaque <code>th</code> vérifier la présence d'un attribut  <code>scope='col'</code> pour les entêtes de colonnes, <br/>et la présence d'un <code>scope='row'</code> pour les entête de lignes",
 					"<strong>Tableaux complexes :</strong> <br/> Vérifier la présence d'entêtes <code>th</code> ou  d'attributs <code>id</code> et <code>headers</code>",
 					"Vérifier la présence d'un résumé explicitant la structure du tableau. <br/>HTML5 : présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>. <br/>Le résumé est lié au tableau via un <code>aria-describedby</code> <br/>Version antérieure : résumé présent dans un attribut <code>summary</code>"
 				],
 				"resultat": [
-					"Les tableaux sont utilisées uniquement pour la présentation de données",
+					"Les tableaux sont utilisés uniquement pour la présentation de données",
 					"Les tableaux possèdent une légende (caption ou titre de niveaux placé juste avant)",
 					"Les tableaux simples possèdent des entêtes  <code>th</code>",
 					"Les tableaux à double entrée possède des entêtes <code>th</code> ainsi que des attributs <code>scope='col'</code> et <code>scope='row'</code>",

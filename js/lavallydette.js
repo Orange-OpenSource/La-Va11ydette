@@ -309,7 +309,7 @@ function initAuditPage() {
 
             <div class="container">
                 <div class="row align-items-start position-relative">
-                    <div class="col-md-2 sticky-top pt-4 pe-0 col-print-12" id="currentPageManager">
+                    <div class="col-md-2 sticky-md-top pt-4 pe-0 col-print-12" id="currentPageManager">
                         <h1 id="pageName" class="mb-0"></h1>
                         <div class="border-top border-light my-3"></div>
                         <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap w-100 d-print-none">
@@ -333,7 +333,7 @@ function initAuditPage() {
                         <span id="count" class="alert-danger"></span>
                         <section id="mainContent"></section>
                     </div>
-                    <aside id="filter" class="col-md-2 sticky-top pt-4 col-print-12 overflow-auto">
+                    <aside id="filter" class="col-md-2 sticky-md-top pt-4 col-print-12 overflow-auto">
                         
                     </aside>
                 </div>
@@ -786,7 +786,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-md-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -862,7 +862,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
+				htmlrefTests += '<h2 class="sticky-md-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -1919,6 +1919,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '  </div>';
 		
 		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsynthesePages">';
+		computationContent += '<div class="table-responsive">'
 		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt17 + '</th>';
@@ -1958,8 +1959,10 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</tbody>';
 		computationContent += '</table>';
 		computationContent += ' </div>';
+		computationContent += ' </div>';
 		
 		computationContent += '<div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
+		computationContent += '<div class="table-responsive">'
 		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt15 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt10 + '</th>';
@@ -2015,6 +2018,7 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '</tbody>';
 		computationContent += '</table>';
+		computationContent += ' </div>';
 		computationContent += ' </div>';
 		
 		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabNonConformites">';
@@ -3201,12 +3205,12 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 
 			let wcagDisplayContent = '';
 			
-			wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h2>';
+			wcagDisplayContent += '<h2 class="sticky-md-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h2>';
 			
 			for (let i in wcagDisplayObj[currentPage].items) {
 				
 				if ((globalTemplate==="wcag" && wcagDisplayObj[currentPage].items[i].level!="AAA") || globalTemplate!="wcag") {
-					wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
+					wcagDisplayContent += '<h3 class="sticky-md-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
 
 					wcagDisplayContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.wcagView + '</caption>';
 					wcagDisplayContent += '<thead><tr>';

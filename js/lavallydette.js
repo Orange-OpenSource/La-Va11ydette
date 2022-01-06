@@ -4707,8 +4707,8 @@ exportStatementHTML = function(statementResult) {
                 <div class="col-lg-3">
                         
                     <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
-						<span class="visually-hidden">${langStatement.statementTemplate.state}</span> 
-                        <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
+						<span class="visually-hidden">${langStatement.statementTemplate.state} </span> 
+                        <span class="pie-val">${dataWCAG.globalPagesResult}%</span>
                     </h2>
                     
                     <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint1}` : `` }.

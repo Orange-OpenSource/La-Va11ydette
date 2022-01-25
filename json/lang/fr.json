@@ -170,7 +170,6 @@
 	"autoTest": "Tests automatiques ",
 	"functionalTest": "Tests fonctionnels ",
 	"manualTest": "Tests manuels ",
-	"userTest": "Tests utilisateurs ",
 	"version": "Version",
 	"keyboard": "Navigation clavier",
 	"typeOfResult": "Type de résultat",

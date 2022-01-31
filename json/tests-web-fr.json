@@ -772,7 +772,7 @@
 	"type": ["Test manuel"],
 	"tests": ["Test manuel", "Parcourir les formulaires", "Renseigner les formulaires avec des  informations spécifiques sur l'utilisateur"],
 	"verifier": ["Pour tout champ qui permet de collecter des informations spécifiques sur l'utilisateur (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='liste exhaustive (nouvelle fenêtre)'>liste exhaustive</a>), l'attribut <code>autocomplete</code> du champ doit être présent et avoir une valeur adéquate"],
-	"resultat": ["L'attribut <code>autocomplete</code> est&bsp;:", "présent", "et la valeur de cet attribut est pertinente"],
+	"resultat": ["L'attribut <code>autocomplete</code> est présent", "et la valeur de cet attribut est pertinente"],
 	"exception": [],
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",

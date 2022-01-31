@@ -8,8 +8,8 @@
 
 */
 
-$('#docs-navbar').navbar({sticky: true, hideSupra: true});
-$('.o-nav-local').prioritynav('Autres pages');
+/*$('#docs-navbar').navbar({sticky: true, hideSupra: true});
+$('.o-nav-local').prioritynav('Autres pages');*/
 
 /**
  * Global vars
@@ -44,7 +44,7 @@ var globalVersion;
 var dataWCAG;
 
 var	currentPage = 0;
-var statutClass = "badge-light";
+var statutClass = "bg-light";
 
 var arrayFilterNameAndValue = [];
 var arrayFilterActivated = [];
@@ -218,10 +218,10 @@ function initMainMenu() {
 	
 	var htmlMainMenu = "";
 	
-	htmlMainMenu += '<div class="btn-group">';
-	htmlMainMenu += '<button class="btn btn-link btn-inverse dropdown-toggle pr-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	htmlMainMenu += '<div class="nav-item dropdown">';
+	htmlMainMenu += '<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 	htmlMainMenu += langVallydette.selectAchecklist;
-	htmlMainMenu += '</button>';
+	htmlMainMenu += '</a>';
 	htmlMainMenu += '<div class="dropdown-menu dropdown-menu-right">';
 	
 	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item' + (c === currentCriteriaListName ? ' active' : '') + '" href="./?list=' + c + '&lang=' + globalLang + '" ' + (c === currentCriteriaListName ? ' aria-current="page"' : '') + '>' + checklistVallydette[c]['name-' + globalLang] + '</a>');
@@ -263,7 +263,7 @@ function initHomePage() {
         htmlHomePage += '<div class="card-footer py-3 border-0">';
         htmlHomePage += '  <a href="./?list=' + c + '&lang=' + globalLang + '" class="btn btn-info  stretched-link">';
         htmlHomePage +=  langVallydette.run;
-        htmlHomePage += '   <span class="sr-only">' + checklistVallydette[c]['name-' + globalLang] + '</span>';
+        htmlHomePage += '   <span class="visually-hidden">' + checklistVallydette[c]['name-' + globalLang] + '</span>';
         htmlHomePage += '  </a>';
         htmlHomePage += '</div>';
 		htmlHomePage += '</div>';
@@ -285,22 +285,21 @@ function initAuditPage() {
 	
 	var htmlAuditPage = '';
 	htmlAuditPage = `
-	<div class="container d-flex align-items-center mb-3" id="auditInfoManager">
+	<div class="container d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-3" id="auditInfoManager">
                 <h1 id="checklistName" class="mb-0"></h1>
-                <button class="btn btn-secondary btn-icon ml-auto d-print-none" id="btnChecklistName"
+                <button class="btn btn-secondary btn-icon ms-auto d-print-none" id="btnChecklistName"
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
-                        data-toggle="modal" data-target="#modalEdit">
+                        data-bs-toggle="modal" data-bs-target="#modalEdit">
 						`+ htmlIcon.edit+`
                 </button>
-				<button class="btn btn-secondary btn-icon ml-2 d-print-none" id="btnLocalStorage"
+				<button class="btn btn-secondary btn-icon ms-2 d-print-none" id="btnLocalStorage"
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
-                        data-toggle="modal" data-target="#modalLocalStorage">
+                        data-bs-toggle="modal" data-bs-target="#modalLocalStorage">
                     `+htmlIcon.syncronise+`
                 </button>
-                <button class="btn btn-secondary ml-2 d-print-none" type="button"
-                        data-toggle="modal" data-target="#modalResult"
+                <button class="btn btn-secondary ms-2 d-print-none" type="button"
                         id="btnShowResult">
                 </button>
               
@@ -310,23 +309,23 @@ function initAuditPage() {
 
             <div class="container">
                 <div class="row align-items-start position-relative">
-                    <div class="col-md-2 sticky-top pt-4 pr-0 col-print-12" id="currentPageManager">
+                    <div class="col-md-2 sticky-md-top pt-4 pe-0 col-print-12" id="currentPageManager">
                         <h1 id="pageName" class="mb-0"></h1>
-                        <hr class="border-light">
+                        <div class="border-top border-light my-3"></div>
                         <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap w-100 d-print-none">
                             <button class="btn btn-secondary btn-icon" id="btnPageName"
                                     aria-label="" title=""
                                     data-element="pageName" data-secondary-element="pageID-0"
-                                    data-property="checklist.page.0.name" data-toggle="modal" data-target="#modalEdit">
+                                    data-property="checklist.page.0.name" data-bs-toggle="modal" data-bs-target="#modalEdit">
 									`+htmlIcon.edit+`
                             </button>
-                            <button id="btnDelPage" class="btn btn-secondary btn-icon ml-2"
+                            <button id="btnDelPage" class="btn btn-secondary btn-icon ms-2"
                                     aria-label="" title=""
                                     data-element="pageName" data-property="checklist.page.0"
-                                    data-toggle="modal" data-target="#modalDelete" disabled>
+                                    data-bs-toggle="modal" data-bs-target="#modalDelete" disabled>
 									`+htmlIcon.trash+`
                             </button>
-							<hr class="border-light w-100">	
+							<div class="border-top border-light my-3 w-100"></div>
                         </div>
                         
                     </div>
@@ -334,7 +333,7 @@ function initAuditPage() {
                         <span id="count" class="alert-danger"></span>
                         <section id="mainContent"></section>
                     </div>
-                    <aside id="filter" class="col-md-2 sticky-top pt-4 col-print-12 overflow-auto">
+                    <aside id="filter" class="col-md-2 sticky-md-top pt-4 col-print-12 overflow-auto">
                         
                     </aside>
                 </div>
@@ -575,22 +574,21 @@ function eventHandler() {
 function runLocalStorage() {
 	
 	let htmlModal = '';
-	htmlModal = '<div id="modalLocalStorage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLocalStorageTitle">';
-	htmlModal += '<div class="modal-dialog" role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalLocalStorageTitle">' + langVallydette.recoverTitle + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body" id="modalLocalStorageForm">';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" id="localStorageCancelBtn" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="localStorageSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
+	htmlModal += '<button type="button" id="localStorageCancelBtn" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="localStorageSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.recoverAction + '</button>';
 	htmlModal += '<button type="button" id="localStorageDeleteBtn" class="btn btn-danger">' + langVallydette.deleteAction + '</button>'
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '</div></div></div>';
 	
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalLocalStorage');
 	elModal.innerHTML = htmlModal;
 	createFormLocalStorage();
 
@@ -608,7 +606,7 @@ function runLocalStorage() {
 		let HtmlDivDelete ='';
 		HtmlDivDelete += '<p>'+ langVallydette.deleteAsk +' '+ selectChecklist.checklist.name +' ?</p>';
 		HtmlDivDelete += '<button type="button" id="localStorageDeleteYesBtn" class="btn btn-primary">' + langVallydette.yes + '</button>';
-		HtmlDivDelete += '<button type="button" id="localStorageDeleteNoBtn" class="btn btn-danger ml-2">' + langVallydette.no + '</button>'
+		HtmlDivDelete += '<button type="button" id="localStorageDeleteNoBtn" class="btn btn-danger ms-2">' + langVallydette.no + '</button>'
 		let elDivDelete = document.getElementById('localStorageValidDelete');
 		elDivDelete.innerHTML = HtmlDivDelete;
 		elDivDelete.focus();
@@ -656,9 +654,9 @@ function createFormLocalStorage(){
 	htmlModal += '<legend>' + langVallydette.recoverMessage +'</legend>';
 	for (const [key, value] of Object.entries(allLocalStorage)) {
 		let auditStorage = JSON.parse(value);
-		htmlModal += '<div class="custom-control custom-radio">';
-		htmlModal += '<input class="custom-control-input" type="radio" name="auditRadioRestore" value="'+key+'" id="'+utils.formatHeading(key)+'"'+ (checked ? 'checked' : '')+'>';
-		htmlModal += '<label class="custom-control-label" for="'+ utils.formatHeading(key)+'" '+ ( globalLang!== auditStorage.checklist.lang ? 'lang="'+auditStorage.checklist.lang+'"' : '')+'>';
+		htmlModal += '<div class="form-check">';
+		htmlModal += '<input class="form-check-input" type="radio" name="auditRadioRestore" value="'+key+'" id="'+utils.formatHeading(key)+'"'+ (checked ? 'checked' : '')+'>';
+		htmlModal += '<label class="form-check-label" for="'+ utils.formatHeading(key)+'" '+ ( globalLang!== auditStorage.checklist.lang ? 'lang="'+auditStorage.checklist.lang+'"' : '')+'>';
 		htmlModal += auditStorage.checklist.name;
 		htmlModal += '</label>';
 		htmlModal += '</div>';
@@ -695,6 +693,13 @@ function getLocalStorage(auditName) {
 
 function AuditEventHandler(){
 	var btnChecklist = document.getElementById("btnChecklistName");
+
+	/*var myModalEl = document.getElementById('modalEdit')
+		myModalEl.addEventListener('show.bs.modal', function (event) {
+			setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
+  // do something...
+	})*/
+
 
 	btnChecklist.addEventListener('click', function () {
 		setValue(btnChecklist.dataset.element, btnChecklist.dataset.property);
@@ -747,7 +752,7 @@ runTestListMarkup = function (currentRefTests) {
 
 	if (document.getElementById('btnExcelExport') === null) {
 		
-			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, htmlIcon.excel, true, ["btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none"], langVallydette.title.btnExcelExport);
+			var btnExcelExport = utils.addElement('button', 'btnExcelExport', langVallydette.title.btnExcelExport, htmlIcon.excel, true, ["btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none"], langVallydette.title.btnExcelExport);
 		
 			let auditInfoNode = document.getElementById("auditInfoManager");
 			auditInfoNode.insertBefore(btnExcelExport, auditInfoNode.children[3]);
@@ -766,7 +771,7 @@ runTestListMarkup = function (currentRefTests) {
 		utils.columnDisplay(3);
 	
 		if(document.getElementById('btnShowStatement') === null) {
-			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ml-2", "d-print-none"], langVallydette.statementTitle);
+			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ms-2", "d-print-none"], langVallydette.statementTitle);
 			document.getElementById("auditInfoManager").appendChild(btnStatement);
 			document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
 		}
@@ -781,36 +786,36 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 mr-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + currentRefTests[i].ID + '"><span class="sr-only">' + langVallydette.autocheckTxt1 + '</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ml-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '"><span class="visually-hidden">' + langVallydette.autocheckTxt1 + '</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ms-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status2 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status5 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status1 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status2 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="form-check-label">' + langVallydette.status5 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="form-check-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="sr-only">' + langVallydette.addIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="sr-only">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentPage === 0) {
-				htmlrefTests += '<div class="custom-control custom-checkbox">';
-				htmlrefTests += '	<input type="checkbox" class="custom-control-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '" ' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? "checked" : "" )  + '>';
-				htmlrefTests += '	<label class="custom-control-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">' + langVallydette.autocheckTxt2 + '</label>';
+				htmlrefTests += '<div class="form-check">';
+				htmlrefTests += '	<input type="checkbox" class="form-check-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '" ' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? "checked" : "" )  + '>';
+				htmlrefTests += '	<label class="form-check-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">' + langVallydette.autocheckTxt2 + '</label>';
 				htmlrefTests += '</div>';
 
-				htmlrefTests += '<hr class="border-light w-100">';
+				htmlrefTests += '<div class="border-top border-light my-3 w-100"></div>';
 			}
 			
 			if (currentRefTests[i].verifier) {
@@ -857,7 +862,7 @@ runTestListMarkup = function (currentRefTests) {
 
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ml-auto" type="button" data-toggle="collapse" data-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -866,7 +871,7 @@ runTestListMarkup = function (currentRefTests) {
 			hasGoodPractice = false;
 			if ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "")) {
 				hasGoodPractice = true;
-				htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">'+langVallydette.goodPractice+'</span>';
+				htmlrefTests += '<span class="ms-auto me-1 badge bg-warning">'+langVallydette.goodPractice+'</span>';
 			}
 			
 			if (currentRefTests[i].wcag) {
@@ -875,30 +880,30 @@ runTestListMarkup = function (currentRefTests) {
 					
 					if(getAAA(currentWcag)) {
 						hasAAA = true;
-						htmlrefTests += '<span class="ml-auto mr-1 badge badge-warning">AAA</span>';
+						htmlrefTests += '<span class="ms-auto me-1 badge bg-warning">AAA</span>';
 					}
 					
 				});
 			}
 			
-			htmlrefTests += '<span id="resultID-' + currentTest + '" class="' + ((!hasAAA && !hasGoodPractice) ? 'ml-auto ' : '') + 'badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<span id="resultID-' + currentTest + '" class="' + ((!hasAAA && !hasGoodPractice) ? 'ms-auto ' : '') + 'badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status1 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status2 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="custom-control-label">' + langVallydette.status5 + '</label></li>';
-			htmlrefTests += '<li class="custom-control custom-radio custom-control-inline mb-0"><input class="custom-control-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="custom-control-label">' + langVallydette.template.status4 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status1 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="non-conforme-' + currentTest + '" name="test-' + currentTest + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/><label for="non-conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status2 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="na-' + currentTest + '" name="test-' + currentTest + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/><label for="na-' + currentTest + '" class="form-check-label">' + langVallydette.status5 + '</label></li>';
+			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="nt-' + currentTest + '" name="test-' + currentTest + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/><label for="nt-' + currentTest + '" class="form-check-label">' + langVallydette.template.status4 + '</label></li>';
 			htmlrefTests += '</ul>';
 			
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon mr-1 d-print-none" title="' + langVallydette.editIssue + '" data-toggle="modal" data-target="#modal' + currentTest + '" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="sr-only">' + langVallydette.editIssue + '</span></button></li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-toggle="modal" data-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="sr-only">' + langVallydette.addIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-toggle="collapse" data-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="sr-only">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
@@ -970,7 +975,7 @@ runTestListMarkup = function (currentRefTests) {
 			if (headingCriterium != currentRefTests[i].criterium) {
 				headingCriterium = currentRefTests[i].criterium;
 
-				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
+				htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
 			
 				if (currentRefTests[i].resultatTest === "") {
 					currentRefTests[i].resultatTest = "nt";
@@ -1002,11 +1007,11 @@ runTestListMarkup = function (currentRefTests) {
 					htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
 					htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
 
-					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
+					htmlrefTests += '<div class="card-header"><h3><a class="collapsed" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '">' + marked(currentRefTests[i].criterium) + '</a></h3></div>';
 					htmlrefTests += '<div id="collapse' + i + '" class="collapse">';
 				}
 
-				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span>';
+				htmlrefTests += '<article class="mb-1" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><span class="accordion-title">' + marked(currentRefTests[i].title) + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span>';
 
 				htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 
@@ -1029,7 +1034,7 @@ runTestListMarkup = function (currentRefTests) {
 				headingTheme = currentRefTests[i].themes;
 				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
 			}
-			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge badge-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-right">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
+			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
 
 			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
 			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
@@ -1131,7 +1136,7 @@ function setAutoCheckID(e, testIDorigin, testID) {
 		}
 		dataVallydette.checklist.autoCheckIDs.push(testIDorigin);
 		
-		const iconHtml = '<span class="icon icon-Link ml-1 badge badge-warning" id="link-' + testID + '"><span class="sr-only">' + langVallydette.autocheckTxt1 + '</span>';
+		const iconHtml = '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + testID + '"><span class="visually-hidden">' + langVallydette.autocheckTxt1 + '</span>';
 		const iconNode = new DOMParser().parseFromString(iconHtml, 'text/html').body.firstElementChild;
 		let headingNode = document.getElementById('heading' + testID);
 		headingNode.insertBefore(iconNode, headingNode.children[1]);
@@ -1308,7 +1313,7 @@ function initGroups() {
 		htmlgroups = '<h6>' + langVallydette.groupHeading + '</h6>';
 		htmlgroups += '<ul class="list-inline m-0">';
 		for (var themeItem in dataVallydette.checklist.page[currentPage].groups)  {
-			htmlgroups += '<li class="custom-control custom-checkbox custom-control-inline mb-0"><input type="checkbox"  class="custom-control-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].groups[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="custom-control-label">' + themeItem + '</label></li>';
+			htmlgroups += '<li class="form-check form-check-inline mb-0"><input type="checkbox"  class="form-check-input"  id="' + themeItem + '" value="' + themeItem + '" name="' + themeItem + '" ' + (dataVallydette.checklist.page[currentPage].groups[themeItem].checked ? "checked" : "") + '/><label for="' + themeItem + '" class="form-check-label">' + themeItem + '</label></li>';
 		};
 		htmlgroups += '</ul>';
 		
@@ -1470,10 +1475,10 @@ function checkTheVersion(currentChecklistVersion) {
 		var versionHTML = '';
 		
 		versionHTML += '<div id="alertVersion" class="container d-flex align-items-center alert alert-info alert-dismissible fade show" role="alert">';
-		versionHTML += ' <span class="alert-icon"><span class="sr-only">Information</span></span>';
+		versionHTML += ' <span class="alert-icon"><span class="visually-hidden">Information</span></span>';
 		versionHTML += ' <p>' + langVallydette.versionAlert1 + ' <strong>' + globalVersion + '</strong>. ' + langVallydette.versionAlert2 + ' <strong>' + currentChecklistVersion +'</strong></p>';
-		versionHTML += ' <button id="closeVersion" type="button" class="close" data-dismiss="alert">';
-		versionHTML +=	'  <span class="sr-only">' + langVallydette.closeAlert + '</span>';
+		versionHTML += ' <button id="closeVersion" type="button" class="btn-close" data-bs-dismiss="alert">';
+		versionHTML +=	'  <span class="visually-hidden">' + langVallydette.closeAlert + '</span>';
 		versionHTML +=  '</button>';
 		versionHTML +='</div>';
 		
@@ -1889,10 +1894,10 @@ function runFinalComputation(pagesResultsArray) {
 	}	
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link active" href="#resultatPage" data-toggle="tab" id="tabResultatPage" role="tab" tabindex="0" aria-selected="true" aria-controls="resultatPage">' + langVallydette.auditTxt3 + '</a></li>';
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#synthesePages" data-toggle="tab" id="tabsynthesePages" role="tab" tabindex="-1" aria-selected="false" aria-controls="synthesePages">' + langVallydette.auditTxt4 + '</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#syntheseNiveaux" data-toggle="tab" id="tabsyntheseNiveaux" role="tab" tabindex="-1" aria-selected="false" aria-controls="syntheseNiveaux">' + langVallydette.auditTxt15 + '</a></li>';	
-		computationContent += '	<li class="nav-item" role="presentation"><a class="nav-link" href="#nonConformites" data-toggle="tab" id="tabNonConformites" role="tab" tabindex="-1" aria-selected="false" aria-controls="nonConformites">' + langVallydette.auditTxt5 + '</a></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link active" id="tabResultatPage" data-bs-toggle="tab" data-bs-target="#resultatPage" type="button" role="tab" aria-controls="resultatPage" aria-selected="true">' + langVallydette.auditTxt3 + '</button></li>';
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsynthesePages" data-bs-toggle="tab" data-bs-target="#synthesePages" type="button" role="tab" aria-controls="synthesePages" aria-selected="false">' + langVallydette.auditTxt4 + '</button></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsyntheseNiveaux" data-bs-toggle="tab" data-bs-target="#syntheseNiveaux" type="button" role="tab" aria-controls="syntheseNiveaux" aria-selected="false">' + langVallydette.auditTxt15 + '</button></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabNonConformites" data-bs-toggle="tab" data-bs-target="#nonConformites" type="button" role="tab" aria-controls="nonConformites" aria-selected="false">' + langVallydette.auditTxt5 + '</button></li>';
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
@@ -1914,7 +1919,8 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '  </div>';
 		
 		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsynthesePages">';
-		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt4 + '</caption>';
+		computationContent += '<div class="table-responsive">'
+		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt17 + '</th>';
 		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.compliant + '</th>';
@@ -1953,9 +1959,11 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</tbody>';
 		computationContent += '</table>';
 		computationContent += ' </div>';
+		computationContent += ' </div>';
 		
 		computationContent += '<div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
-		computationContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.auditTxt15 + '</caption>';
+		computationContent += '<div class="table-responsive">'
+		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt15 + '</caption>';
 		computationContent += '<thead><tr>';
 		computationContent += '<th scope="row">' + langVallydette.auditTxt10 + '</th>';
 		computationContent += '<th scope="col" class="text-center">A</th>';
@@ -2010,6 +2018,7 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '</tbody>';
 		computationContent += '</table>';
+		computationContent += ' </div>';
 		computationContent += ' </div>';
 		
 		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabNonConformites">';
@@ -2240,21 +2249,21 @@ initProperties = function (item) {
 */
 initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
-	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-toggle="modal" data-target="#modalEdit">'+htmlIcon.edit+'</span></button>';
+	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-bs-toggle="modal" data-bs-target="#modalEdit">'+htmlIcon.edit+'</span></button>';
 	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
-		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true">'+htmlIcon.link+'</a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true">'+htmlIcon.link+'</a>';
 	}
 	else{
-		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false">'+htmlIcon.link+'</a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false">'+htmlIcon.link+'</a>';
 	}
 
 	if (currentPage === 0) {
-		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '" disabled>'+htmlIcon.trash+'</button>';
+		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '" disabled>'+htmlIcon.trash+'</button>';
 	} else {
-		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ml-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-toggle="modal" data-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
+		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
 	}
 
-	htmlMenu += '<hr class="border-light  w-100">';
+	htmlMenu += '<div class="border-top border-light my-3 w-100"></div>';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
 	btnActionPageEventHandler();
@@ -2336,23 +2345,22 @@ showPage = function (id) {
 setDeletePage = function (targetElement) {
 
 	let htmlModal = '';
-	htmlModal = '<div id="modalDelete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="">';
-	htmlModal += '<div class="modal-dialog" role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5>' + langVallydette.delete + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<p>' + langVallydette.deletePageName + ' <strong>' + getPropertyValue(targetElement) + '</strong> ?</p>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="deteleSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="deteleSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.validate + '</button>';
+	htmlModal += '</div></div></div>';
 
 	/**  html modal container */
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalDelete');
 	elModal.innerHTML = htmlModal;
 
 	/**  popin event handler */
@@ -2417,13 +2425,13 @@ function setPageName(value) {
 */
 getStatutClass = function (lastResult) {
 	if (lastResult === arrayFilterNameAndValue[0][1] || lastResult === true) {
-		statutClass = "badge-success";
+		statutClass = "bg-success";
 	} else if (lastResult === arrayFilterNameAndValue[1][1] || lastResult === false) {
-		statutClass = "badge-danger";
+		statutClass = "bg-danger";
 	} else if (lastResult === arrayFilterNameAndValue[2][1]) {
-		statutClass = "badge-info";
+		statutClass = "bg-info";
 	} else {
-		statutClass = "badge-light";
+		statutClass = "bg-light";
 	}
 	return statutClass;
 }
@@ -2506,37 +2514,37 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	arrayPropertyValue = [];
 
 	let htmlModal = '';
-	htmlModal = '<div id="modalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle">';
-	htmlModal += '<div class="modal-dialog" role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">' + langVallydette.edit + ' : ' + getPropertyValue(targetProperty) + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 		
 	htmlModal += '<form id="editForm"><div class="modal-body">';
 	htmlModal += '<div id="modal-alert"></div>';
-	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="is-required" for="nameValue">' + langVallydette.name + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<div class="mb-3">';
+	htmlModal += '<label class="is-required form-label" for="nameValue">' + langVallydette.name + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
 	htmlModal += '</div>';
 	
 	/** If it's a page properties edition, when add the URL input */
 	if (targetElement === "pageName") {
-		htmlModal += '<div class="form-group">';
-		htmlModal += '<label  for="urlValue">URL</label>';
+		htmlModal += '<div class="mb-3">';
+		htmlModal += '<label  class="form-label" for="urlValue">URL</label>';
 		htmlModal += '<input type="text" class="form-control" id="urlValue" placeholder="URL" value="' + getPropertyValue("checklist.page." + currentPage + ".url") + '">';
 		htmlModal += '</div>';
-		htmlModal += '<div id="themeManager" class="form-group">';
+		htmlModal += '<div id="themeManager" class="mb-3">';
 		htmlModal += '</div>';
 	}
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '<button type="submit" id="saveValueBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
-	htmlModal += '</div></form></div></div></div>';
+	htmlModal += '</div></form></div></div>';
 			
-	let elModal = document.getElementById('modal');
+	
+	let elModal = document.getElementById('modalEdit');
 	elModal.innerHTML = htmlModal;
 
 	/** If it's a page properties edition, when add the groups */
@@ -2568,11 +2576,14 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		* @todo jquery code from boosted 4.5.
 		* So it should be necessary to replace this code as soon as the vallydette will be updated to v5.
 	*/
-	var name = document.getElementById('nameValue');
-	$('.modal').on('shown.bs.modal', function (event) {
-		name.focus()
-	});
+	
 
+	var myModal = document.getElementsByClassName('modal')
+	var myInput = document.getElementById('nameValue')
+
+	myModal[0].addEventListener('shown.bs.modal', function () {
+		myInput.focus()
+	  })
 }
 
 /**
@@ -2656,7 +2667,7 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 	
 	var feedbackHtml;
 	feedbackHtml = '<div class="alert alert-success alert-sm" role="alert">';
-	feedbackHtml += '<span class="alert-icon"><span class="sr-only">' + langVallydette.success + '</span></span>';
+	feedbackHtml += '<span class="alert-icon"><span class="visually-hidden">' + langVallydette.success + '</span></span>';
 	feedbackHtml += '<p>' + langVallydette.successFeedback + '</p>';
 	feedbackHtml += '</div>';
 	
@@ -2714,43 +2725,42 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let titleModal = title;
 
 	let htmlModal = '';
-	htmlModal = '<div id="modalAddIssue" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
-	htmlModal += '<div class="modal-dialog " role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg " role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt1 + titleModal + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<h5 class="modal-title" id="modalAddIssueTitle">' + langVallydette.issueTxt1 + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<form id="editForm">';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
-	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="is-required" for="issueNameValue">' + langVallydette.summary + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<div class="mb-3">';
+	htmlModal += '<label class="is-required form-label" for="issueNameValue">' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
 	htmlModal += '</div>';
-	htmlModal += '<div class="form-group">';
-	htmlModal += '<label class="mt-2" for="issueDetailValue">' + langVallydette.description + ' </label>';
+	htmlModal += '<div class="mb-3">';
+	htmlModal += '<label class="mt-2 form-label" for="issueDetailValue">' + langVallydette.description + ' </label>';
 	htmlModal += '<textarea class="form-control" id="issueDetailValue" ></textarea>';
 	htmlModal += '</div>';
-	htmlModal += '<div class="form-group">';
-	htmlModal += '<label for="issueSolutionValue" class="mt-2">' + langVallydette.solution + ' </label>';
+	htmlModal += '<div class="mb-3">';
+	htmlModal += '<label for="issueSolutionValue" class="mt-2 form-label">' + langVallydette.solution + ' </label>';
 	htmlModal += '<textarea class="form-control" id="issueSolutionValue"></textarea>';
 	htmlModal += '</div>';
-	htmlModal += '<div class="form-group">';
-	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2">' + langVallydette.technical_solution + ' </label>';
+	htmlModal += '<div class="mb-3">';
+	htmlModal += '<label for="issueTechnicalSolutionValue" class="mt-2 form-label">' + langVallydette.technical_solution + ' </label>';
 	htmlModal += '<textarea class="form-control" id="issueTechnicalSolutionValue"></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '</div>';
 
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="closeIssueBtnBtn" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
 	htmlModal += '<button type="submit" id="saveIssueBtnBtn" class="btn btn-primary">' + langVallydette.save + '</button>';
 	htmlModal += '</div>';
 	htmlModal += '</form>';
-	htmlModal += '</div></div></div>';
+	htmlModal += '</div></div>';
 
 	
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalAddIssue');
 	elModal.innerHTML = htmlModal;
 
 	let currentEditForm = document.getElementById('editForm');
@@ -2759,8 +2769,9 @@ setIssue = function (targetId, title, targetIdOrigin) {
 		event.preventDefault();
 		
 		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);
+		document.getElementById('closeIssueBtnBtn').click();
 		
-		$('#modalAddIssue').modal('hide');
+
 	});
 	
 	
@@ -2781,11 +2792,11 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	}
 	
 	var issueNameValueInput = document.getElementById('issueNameValue');
+	var modal = document.getElementsByClassName('modal');
 	
-	$('.modal').on('shown.bs.modal', function (event) {
+	modal[0].addEventListener('shown.bs.modal', function () {
 		issueNameValueInput.focus()
-	});
-
+	  })
 }
 
 /**
@@ -2825,15 +2836,17 @@ getPredefinedIssues = function(targetId) {
 	let htmlPredefinedIssues = '';
 	
 
-	htmlPredefinedIssues += '<div class="form-group row">';
+	htmlPredefinedIssues += '<div class="mb-3 row">';
 	htmlPredefinedIssues += '<div class="col-sm-10">';
 	
-	htmlPredefinedIssues += '<select class="custom-select" id="issuePredefined" aria-label="' + langVallydette.selectIssue + ' ">';
+	htmlPredefinedIssues += '<select class="form-select" id="issuePredefined" aria-label="' + langVallydette.selectIssue + ' ">';
 	htmlPredefinedIssues += '<option selected>' + langVallydette.selectIssue + '</option>';
 	issuesVallydette[targetId].forEach(function (issue, index) {htmlPredefinedIssues +='<option value="' + index + '">' + issue.title + '</option>'});
 	htmlPredefinedIssues += '</select>';
 	htmlPredefinedIssues += '</div>';
+	htmlPredefinedIssues += '<div class="col-sm-2">';
 	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">' + langVallydette.validate + '</button>';
+	htmlPredefinedIssues += '</div>';
 	htmlPredefinedIssues += '</div>';
 		
 	return htmlPredefinedIssues;
@@ -2869,17 +2882,17 @@ editIssue = function (targetId, issueIndex) {
 	let htmlEditIssue = '';
 	
 	htmlEditIssue += '<form id="editIssueForm">';
-	htmlEditIssue += '<label class="is-required" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="sr-only"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
-	htmlEditIssue += '<label class="mt-2" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
+	htmlEditIssue += '<label class="mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
-	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.solution + '</label>';
+	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2 form-label">' + langVallydette.solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
-	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2">' + langVallydette.technical_solution + '</label>';
+	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2 v">' + langVallydette.technical_solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
-	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 mr-1 mb-1">' + langVallydette.cancel + '</button>';
+	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 me-1 mb-1">' + langVallydette.cancel + '</button>';
 	htmlEditIssue += '<button type="submit" id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
-	htmlEditIssue += '<hr class="border-light">';
+	htmlEditIssue += '<div class="border-top border-light my-3"></div>';
 	htmlEditIssue += '</form>';
 	
 	let elIssueCard = document.getElementById('issue-body-'+ targetId +'-'+ issueIndex);
@@ -2943,9 +2956,9 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	let htmlEditIssue = '';
 	htmlEditIssue += issueDetail;
 	
+
 	let elIssueCard = document.getElementById('issue-body-' + targetId + '-' + issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
-	
 	let elIssueCardHeader = document.getElementById('btnIssue' + targetId + '-' + issueIndex);
 	elIssueCardHeader.innerHTML = issueTitle;
 	
@@ -3019,12 +3032,11 @@ displayIssue = function (targetId, title) {
 	let titleModal = title;
 
 	let htmlModal = '';
-	htmlModal = '<div id="modal' + targetId + '" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal' + targetId + 'Title">';
-	htmlModal += '<div class="modal-dialog" role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modal' + targetId + 'Title">' + langVallydette.issueTxt2 + titleModal + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<h5 class="modal-title" id="modalEditIssueTitle">' + langVallydette.issueTxt2 + titleModal + '</h5>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="">';
 	htmlModal += '<div id="issueList" class="accordion">';
@@ -3035,20 +3047,20 @@ displayIssue = function (targetId, title) {
 			let auditNumber = 0;
 			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
 				auditNumber++;
-				htmlModal += '<div class="card" id="cardIssue'+targetId+'-'+ j +'">';
+				htmlModal += '<div class="accordion-item" id="cardIssue'+targetId+'-'+ j +'">';
 				
-				htmlModal += ' <div class="card-header" id="issue'+targetId+'-'+ j +'">';
+				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
 				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += '  <a id="btnIssue'+targetId+'-'+ j +'" data-toggle="collapse" href="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="collapse'+targetId+'-'+ j +'" role="button" class="collapsed">';
+				htmlModal += ' <button id="btnIssue'+targetId+'-'+ j +'" class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
 				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
-				htmlModal += ' </a>';
+				htmlModal += ' </button>';
 				htmlModal += '</h5>';
 				htmlModal += ' </div>';
 
-				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-parent="#issueList" class="collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
+				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-bs-parent="#issueList" class="accordion-collapse collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
 
-				htmlModal += ' <div class="card-body">';
-				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'">';
+				htmlModal += ' <div class="accordion-body">';
+				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
 				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
 			
 				htmlModal += '  </div>';
@@ -3066,11 +3078,11 @@ displayIssue = function (targetId, title) {
 	htmlModal += '</div>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-primary" data-dismiss="modal">' + langVallydette.close + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '<button type="button" class="btn btn-primary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '</div></div></div>';
 
 	/**  html modal container */
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalEditIssue');
 	elModal.innerHTML = htmlModal;
 	
 }
@@ -3101,7 +3113,7 @@ initFilters = function () {
 		for (let i in arrayFilterNameAndValue) {
 			var isChecked = "";
 			arrayFilterActivated.forEach(element => {element === arrayFilterNameAndValue[i][1] ? isChecked = "checked" : ''});
-			htmlTypes = '<label class="custom-control custom-switch pb-1" id="labelType' + i + '"><input type="checkbox" class="custom-control-input" id="result' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="custom-control-label" id="status' + i+1 + '">' + arrayFilterNameAndValue[i][0] + '</span></label>';
+			htmlTypes = '<div class="form-check form-switch"><label class="form-check-label pb-1" id="labelType' + i + '"><input type="checkbox" class="form-check-input" id="result' + i + '" value="' + arrayFilterNameAndValue[i][1] + '" '+ isChecked+ '><span class="form-check-label" id="status' + i+1 + '">' + arrayFilterNameAndValue[i][0] + '</span></label></div>';
 			
 			var listItem = document.createElement("li");
 			listItem.innerHTML = htmlTypes;
@@ -3122,8 +3134,8 @@ initFilters = function () {
 		}
 
 		
-		let htmlWcagDisplay = '<hr class="border-light">';
-		htmlWcagDisplay += '<label class="custom-control custom-switch pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="custom-control-input" id="typeWcagDisplay" value=""><span class="custom-control-label" id="displayWcag">' + langVallydette.wcagView + '</span></label>';
+		let htmlWcagDisplay = '<div class="border-top border-light my-3"></div>';
+		htmlWcagDisplay += '<div class="form-check form-switch"><label class="form-check-label pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="form-check-input" id="typeWcagDisplay" value=""><span class="form-check-label" id="displayWcag">' + langVallydette.wcagView + '</span></label></div>';
 		let wcagDisplayItem = document.createElement("div");
 		wcagDisplayItem.innerHTML = htmlWcagDisplay;
 		htmlFilterContent.appendChild(wcagDisplayItem);
@@ -3152,7 +3164,7 @@ function PropertyFilterMarkup(arrayActivatedFilter, arrayNameAndValue, inputName
 				var isChecked = "";
 				
 				window[arrayActivatedFilter].forEach(element => {element === window[arrayNameAndValue][i] ? isChecked = "checked" : ''});
-				htmlProperty = '<label class="custom-control custom-radio pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="custom-control-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="custom-control-label">' + window[arrayNameAndValue][i] + '</span></label>';
+				htmlProperty = '<label class="form-check pb-1" id="label' + inputName + i + '"><input type="radio" name="' + inputName + '" class="form-check-input" id="' + inputName + i + '" value="' + window[arrayNameAndValue][i] + '" '+ isChecked+ '><span class="form-check-label">' + window[arrayNameAndValue][i] + '</span></label>';
 				
 				var listPropertyItem = document.createElement("li");
 				listPropertyItem.innerHTML = htmlProperty;
@@ -3193,14 +3205,14 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 
 			let wcagDisplayContent = '';
 			
-			wcagDisplayContent += '<h2 class="sticky-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h2>';
+			wcagDisplayContent += '<h2 class="sticky-md-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h2>';
 			
 			for (let i in wcagDisplayObj[currentPage].items) {
 				
 				if ((globalTemplate==="wcag" && wcagDisplayObj[currentPage].items[i].level!="AAA") || globalTemplate!="wcag") {
-					wcagDisplayContent += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
+					wcagDisplayContent += '<h3 class="sticky-md-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
 
-					wcagDisplayContent += '<table class="table table-striped"><caption class="sr-only">' + langVallydette.wcagView + '</caption>';
+					wcagDisplayContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.wcagView + '</caption>';
 					wcagDisplayContent += '<thead><tr>';
 					wcagDisplayContent += '<th scope="col">Tests</th>';
 					wcagDisplayContent += '<th scope="col">' + langVallydette.resultHeading + '</th>';
@@ -3209,12 +3221,12 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 					for (let j in wcagDisplayObj[currentPage].items[i].test) {
 						wcagDisplayContent += '<tr>';
 						wcagDisplayContent += '<td class="w-100">'+ wcagDisplayObj[currentPage].items[i].test[j].title +'</td>';
-						wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
+						wcagDisplayContent += '<td><span class="ms-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].test[j].result) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].test[j].result) + '</span></td>';
 						wcagDisplayContent += '</tr>';
 					}
 					wcagDisplayContent += '<tr class="bg-light2">';
 					wcagDisplayContent += '<th class="font-weight-bold" scope="row">' + langVallydette.result + '</th>';
-					wcagDisplayContent += '<td><span class="ml-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
+					wcagDisplayContent += '<td><span class="ms-auto badge ' + getStatutClass(wcagDisplayObj[currentPage].items[i].resultat) + '">' + setStatutText(wcagDisplayObj[currentPage].items[i].resultat) + '</span></td>';
 					wcagDisplayContent += '</tr>';
 					wcagDisplayContent += '</tbody></table>';
 				}
@@ -3779,14 +3791,14 @@ function showStatementWizard() {
 	btnStatementXmlExport.innerHTML = "XML";
 	btnStatementXmlExport.setAttribute('id', "btnStatementXmlExport");
 	btnStatementXmlExport.setAttribute('title', langVallydette.xmlBtn);
-	btnStatementXmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+	btnStatementXmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementXmlExport);
 	
 	var btnStatementHtmlExport = document.createElement('a');
 	btnStatementHtmlExport.innerHTML = "HTML";
 	btnStatementHtmlExport.setAttribute('id', "btnStatementHtmlExport");
 	btnStatementHtmlExport.setAttribute('title', langVallydette.htmlBtn);
-	btnStatementHtmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ml-2", "d-print-none");
+	btnStatementHtmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementHtmlExport);
 	
 	
@@ -3808,8 +3820,8 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div id="alertContainer">';
 	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
-		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
-		statementWizardContent += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">Close information message</span></button>';   
+		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
+		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close information message</span></button>';   
 		statementWizardContent += '</div>';
 	}
 	statementWizardContent += '</div>';
@@ -3830,7 +3842,7 @@ function showStatementWizard() {
     statementWizardContent += '            </div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 		
 	statementWizardContent += '<form id="statementForm">';
 
@@ -3839,16 +3851,16 @@ function showStatementWizard() {
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="input-name" class="is-required">' + langVallydette.projectName + '</label>';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label for="input-name" class="is-required form-label">' + langVallydette.projectName + '</label>';
     statementWizardContent += '<input type="text" class="form-control" id="input-name" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.name + '" required >';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group">';
+	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-lang" class="is-required">' + langVallydette.lang + '</label>';
-    statementWizardContent += '<select class="custom-select" id="input-lang"  style="scroll-margin-top: 10.35em;"  required>';
+    statementWizardContent += '<select class="form-select" id="input-lang"  style="scroll-margin-top: 10.35em;"  required>';
     statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
     statementWizardContent += '<option value="fr" ' + (dataVallydette.statement.lang === "fr" ? "selected" : "") + '>' + langVallydette.french + '</option>';
     statementWizardContent += '<option value="en" ' + (dataVallydette.statement.lang === "en" ? "selected" : "") + '>' + langVallydette.english + '</option>';
@@ -3857,38 +3869,38 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="input-date"  class="is-required">' + langVallydette.date + '</label>';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label for="input-date"  class="is-required form-label">' + langVallydette.date + '</label>';
     statementWizardContent += '<input type="date" class="form-control" id="input-date" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group" role="group">';
+	statementWizardContent += '<div class="mb-3" role="group">';
 	statementWizardContent += '<span class="d-block"><strong>' + langVallydette.typeOfResult + '</strong></span>';
     statementWizardContent += '<label class="mt-1 font-weight-normal">';
-    statementWizardContent += '<input id="input-pagesAverage"  name="input-pagesAverage" class="mr-1" type="checkbox" autocomplete="off" ' + (dataVallydette.statement.results[0].checked === "true" ? " checked " : "") + '>';
+    statementWizardContent += '<input id="input-pagesAverage"  name="input-pagesAverage" class="me-1" type="checkbox" autocomplete="off" ' + (dataVallydette.statement.results[0].checked === "true" ? " checked " : "") + '>';
     statementWizardContent += '<span>' + langVallydette.averageRate + '</span>';
     statementWizardContent += '</label>';
 	statementWizardContent += '<label class="font-weight-normal">';
-    statementWizardContent += '<input id="input-criteriaPercentage"  name="input-criteriaPercentage"  class="mr-1" type="checkbox" autocomplete="off" '+ (dataVallydette.statement.results[1].checked === "true" ? " checked " : "") + '>';
+    statementWizardContent += '<input id="input-criteriaPercentage"  name="input-criteriaPercentage"  class="me-1" type="checkbox" autocomplete="off" '+ (dataVallydette.statement.results[1].checked === "true" ? " checked " : "") + '>';
     statementWizardContent += '<span>' + langVallydette.criteriaPercentage + '</span>';
     statementWizardContent += '</label>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '">'+htmlIcon.edit+'</span></button></h4>';
-	statementWizardContent += '<div class="form-group" id="approvalList">';
+	statementWizardContent += '<h4>' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<div class="mb-3" id="approvalList">';
 	
 	dataVallydette.statement.approval.forEach(function(a, index){ 
-		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="approvalRadio" class="custom-control-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked === "true" ? " checked " : "") + ' >';
-		statementWizardContent += '<label class="custom-control-label" for="approval' +  index + '">' + a.name + '</label>';
+		statementWizardContent += '<div class="form-check">';
+		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="approvalRadio" class="form-check-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked === "true" ? " checked " : "") + ' >';
+		statementWizardContent += '<label class="form-check-label" for="approval' +  index + '">' + a.name + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
@@ -3896,13 +3908,13 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">'+htmlIcon.edit+'</span></button></h4>';
-	statementWizardContent += '<div class="form-group" id="contactList">';
+	statementWizardContent += '<h4>' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<div class="mb-3" id="contactList">';
 	
 	dataVallydette.statement.contact.forEach(function(c, index){ 
-		statementWizardContent += '<div class="custom-control custom-radio">';
-		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="custom-control-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked === "true" ? " checked " : "") + ' >';
-		statementWizardContent += '<label class="custom-control-label" for="contact' +  index + '">' + c.name + '</label>';
+		statementWizardContent += '<div class="form-check">';
+		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="form-check-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked === "true" ? " checked " : "") + ' >';
+		statementWizardContent += '<label class="form-check-label" for="contact' +  index + '">' + c.name + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
@@ -3910,20 +3922,20 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-6">';
-	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="input-plan">' + langVallydette.accessibilityPlan + '</label>';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label for="input-plan" class="form-label">' + langVallydette.accessibilityPlan + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-plan" rows="5" aria-describedby="planDesc">' + dataVallydette.statement.plan + '</textarea>';
 	statementWizardContent += '<small id="planDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="technologyLegend">';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -3936,8 +3948,8 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="testLegend">';
-	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="testLegend">';
+	statementWizardContent += '<h4 id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 
 	statementWizardContent += '<ul id="testsList">';	
 	
@@ -3951,8 +3963,8 @@ function showStatementWizard() {
 	
 		
 	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="form-group" role="group" aria-labelledby="environmentLegend">';
-	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-toggle="modal" data-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="environmentLegend">';
+	statementWizardContent += '<h4 id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 
 	statementWizardContent += '<ul id="environmentsList">';	
 	
@@ -3967,16 +3979,16 @@ function showStatementWizard() {
 		
 	statementWizardContent += '<div class="col-lg-3" role="group" aria-labelledby="usersTestsHeading">';
 	statementWizardContent += '<h4 id="usersTestsHeading">' + langVallydette.userTesting + '</h4>';
-	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-userNumber" >' + langVallydette.userNumber + '</label>';
+	statementWizardContent += '<div class="mb-3 input-group-sm">';
+	statementWizardContent += '<label class="form-label" for="input-userNumber" >' + langVallydette.userNumber + '</label>';
 	statementWizardContent += '<input type="number" class="form-control" id="input-userNumber" value="' + dataVallydette.statement.userNumber +'" min="0" max="100">';
 	statementWizardContent += '</div>';
-	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-userBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
+	statementWizardContent += '<div class="mb-3 input-group-sm">';
+	statementWizardContent += '<label class="form-label" for="input-userBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
 	statementWizardContent += '<input type="number" class="form-control" id="input-userBlockingPoints" value="' + dataVallydette.statement.userBlockingPoints +'" min="0" max="100">';
 	statementWizardContent += '</div>';
-	statementWizardContent += '<div class="form-group input-group-sm">';
-	statementWizardContent += '<label for="input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
+	statementWizardContent += '<div class="mb-3 input-group-sm">';
+	statementWizardContent += '<label class="form-label" for="input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
 	statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription 
 	if (currentCriteriaListName === "wcag-web") {
 		statementWizardContent += langVallydette.userTestingContentWeb;
@@ -3992,7 +4004,7 @@ function showStatementWizard() {
 			
 	statementWizardContent += '</div>';
 
-	statementWizardContent += '<hr class="border-light">';
+	statementWizardContent += '<div class="border-top border-light my-3"></div>';
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
 	
@@ -4001,7 +4013,7 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
-	statementWizardContent += '<div class="form-group">';
+	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-derogation">' + langVallydette.derogations + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
 	statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
@@ -4009,8 +4021,8 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-6">';
-	statementWizardContent += '<div class="form-group">';
-    statementWizardContent += '<label for="input-exemption">' + langVallydette.exemptions + '</label>';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label class="form-label" for="input-exemption">' + langVallydette.exemptions + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' + dataVallydette.statement.exemption + '</textarea>';
 	statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
@@ -4019,8 +4031,8 @@ function showStatementWizard() {
 	
 	statementWizardContent += '<div class="row mb-2">';
 	statementWizardContent += '<div class="col-lg-12">';
-	statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary ml-2">' + langVallydette.save + '</button>';
-	statementWizardContent += '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ml-2">' + langVallydette.saveDownloadJson + '</button>';
+	statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary ms-2">' + langVallydette.save + '</button>';
+	statementWizardContent += '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ms-2">' + langVallydette.saveDownloadJson + '</button>';
 	statementWizardContent += '<a href="#" id="exportStatementData" class="btn btn-secondary" hidden>';      
 	statementWizardContent += langVallydette.downloadJson;
 	statementWizardContent += '</a>';
@@ -4119,12 +4131,11 @@ radioIsChecked = function (statementProperty, propertyIndex) {
 editStatementProperty = function (statementProperty) {
 	
 	let htmlModal = '';
-	htmlModal = '<div id="modalStatement" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalStatementTitle">';
-	htmlModal += '<div class="modal-dialog" role="document">';
+	htmlModal += '<div class="modal-dialog modal-lg" role="document">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
 	htmlModal += '<h5 class="modal-title" id="modalStatementTitle">' + langVallydette.edition + '</h5>';
-	htmlModal += '<button type="button" class="close" data-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
+	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<form id="listEditForm">';
@@ -4148,7 +4159,7 @@ editStatementProperty = function (statementProperty) {
 			
 			if (listItem[p] !== undefined && p === 'type') {
 				
-				htmlModal += '<select id="type-'+index+'" class="custom-select mb-1" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlModal += '<select id="type-'+index+'" class="form-select mb-1" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
 				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
@@ -4187,11 +4198,11 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '</form>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-secondary" data-dismiss="modal">' + langVallydette.cancel + '</button>';
-	htmlModal += '<button type="button" id="editionSaveBtn" data-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
-	htmlModal += '</div></div></div></div>';
+	htmlModal += '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">' + langVallydette.cancel + '</button>';
+	htmlModal += '<button type="button" id="editionSaveBtn" data-bs-dismiss="modal" class="btn btn-primary">' + langVallydette.save + '</button>';
+	htmlModal += '</div></div></div>';
 
-	let elModal = document.getElementById('modal');
+	let elModal = document.getElementById('modalStatement');
 	elModal.innerHTML = htmlModal;
 	
 	document.getElementById("addElement").addEventListener('click', function(){addListElement(statementProperty);});
@@ -4236,11 +4247,11 @@ saveListElement = function(listToEdit, statementProperty) {
 			
 			if (statementProperty === 'contact' || statementProperty === 'approval' ) {
 				
-				listMarkup += '<div class="custom-control custom-radio">';
-				listMarkup += '<input type="radio" id="' + statementProperty +  index + '" name="' + statementProperty + 'Radio" class="custom-control-input" onClick="radioIsChecked(\'' + statementProperty + '\', ' + index + ')" ';
+				listMarkup += '<div class="form-check">';
+				listMarkup += '<input type="radio" id="' + statementProperty +  index + '" name="' + statementProperty + 'Radio" class="form-check-input" onClick="radioIsChecked(\'' + statementProperty + '\', ' + index + ')" ';
 				listMarkup += itemObj.checked === "true" ? "checked" : "";
 				listMarkup += '>';
-				listMarkup += '<label class="custom-control-label" for="' + statementProperty +  index + '">' + itemObj.name + '</label>';
+				listMarkup += '<label class="form-check-label" for="' + statementProperty +  index + '">' + itemObj.name + '</label>';
 				listMarkup += '</div>';
 			}
 			
@@ -4287,7 +4298,7 @@ addListElement = function(statementProperty) {
 			
 			if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'type') {
 				
-				htmlItem += '<select id="type-'+listIndex+'" class="custom-select mb-1" aria-labelledby="itemLegend-' + listIndex + ' name-' + listIndex + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlItem += '<select id="type-'+listIndex+'" class="form-select mb-1" aria-labelledby="itemLegend-' + listIndex + ' name-' + listIndex + '" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
 				htmlItem += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlItem += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlItem += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
@@ -4374,8 +4385,8 @@ saveStatement = function(statementForm, submitterBtn) {
 	}
 
 	alertMessage = '';
-	alertMessage += '<div class="alert alert-success alert-dismissible fade show" id="StatementFormInfo" role="alert"> <span class="alert-icon"><span class="sr-only">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
-	alertMessage += '<button type="button" class="close" data-dismiss="alert"><span class="sr-only">' + langVallydette.closeInformations + '</span></button>';   
+	alertMessage += '<div class="alert alert-success alert-dismissible fade show" id="StatementFormInfo" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
+	alertMessage += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">' + langVallydette.closeInformations + '</span></button>';   
 	alertMessage += '</div>';
 	
 	document.getElementById('alertContainer').innerHTML += (alertMessage);
@@ -4696,8 +4707,8 @@ exportStatementHTML = function(statementResult) {
                 <div class="col-lg-3">
                         
                     <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
-						<span class="sr-only">${langStatement.statementTemplate.state}</span> 
-                        <div class="pie-val"><span>${dataWCAG.globalPagesResult}%</span></div>
+						<span class="visually-hidden">${langStatement.statementTemplate.state} </span> 
+                        <span class="pie-val">${dataWCAG.globalPagesResult}%</span>
                     </h2>
                     
                     <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint1}` : `` }.
@@ -4784,7 +4795,7 @@ exportStatementHTML = function(statementResult) {
 				</p>
 				
                 <table class="table table-striped">
-				<caption class="sr-only">${langStatement.auditTxt4}</caption>
+				<caption class="visually-hidden">${langStatement.auditTxt4}</caption>
 				  <tr>
 					<th scope="row">${langStatement.auditTxt17}</th>
 					<th scope="col" colspan="2" class="text-center">${langStatement.compliant}</th>
@@ -4830,7 +4841,7 @@ exportStatementHTML = function(statementResult) {
 				${langStatement.statementTemplate.resultsContent1}${dataWCAG.result}${langStatement.statementTemplate.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).
 				</p>	
 
-				<table class="table table-striped"><caption class="sr-only">${langStatement.auditTxt15}</caption>
+				<table class="table table-striped"><caption class="visually-hidden">${langStatement.auditTxt15}</caption>
 					<thead><tr>
 						<th scope="row">${langStatement.auditTxt10}</th>
 						<th scope="col" class="text-center">A</th>
@@ -4990,7 +5001,7 @@ const utils = {
   reqError: function (err) {
 	//let htmlMainContent = document.getElementById('mainContent');
 	
-    htmlMainContent.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="sr-only" lang="en">Warning</span></span>' + langVallydette.errorJson + '</div>';
+    htmlMainContent.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="visually-hidden" lang="en">Warning</span></span>' + langVallydette.errorJson + '</div>';
   },
   formatHeading: function (str) {
     return str.toLowerCase()
@@ -5141,3 +5152,4 @@ const utils = {
 
 //default builder
 initVallydetteApp('', 'fr');
+

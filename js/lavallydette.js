@@ -2731,7 +2731,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<h5 class="modal-title" id="modalAddIssueTitle">' + langVallydette.issueTxt1 + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
-	htmlModal += '<form id="editForm">';
+	htmlModal += '<form id="editIssueForm">';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
 	htmlModal += '<div class="mb-3">';
@@ -2763,9 +2763,10 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let elModal = document.getElementById('modalAddIssue');
 	elModal.innerHTML = htmlModal;
 
-	let currentEditForm = document.getElementById('editForm');
+	let currentEditForm = document.getElementById('editIssueForm');
  
 	currentEditForm.addEventListener('submit', function () {
+		console.log('bonjour');
 		event.preventDefault();
 		
 		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);

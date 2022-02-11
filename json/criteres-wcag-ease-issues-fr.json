@@ -4,7 +4,7 @@
 			"title" : "Présence de champs non-labellisés",
 			"detail" : "Tous les éléments de formulaire doivent posséder un label.",
 			"solution" : "Appliquer une des solutions ci-dessous :\n- ajout d'un élément \"label\", en masquage accessible si nécessaire, lié de manière programmatique au champ\n- utilisation d'un aria-labelledby pointant vers une information pertinente pour comprendre la nature du champ \n- ajout d'un attribut aria-label\n- ajout d'un attribut title",
-			"technicalSolution" : "Exemples :\n- <label for=\"idInput\">[...]</label> <input id=\"idInput\" type=\"[...]\">\n- <h2 id=\"idHeading\">[...]</h2> <input aria-labelledby=\"idHeading\" type=\"[...]\">\n-  <input aria-label=\"[...]\" type=\"[...]\">\n- <input title=\"[...]\" type=\"[...]\">"
+			"technicalSolution" : "Exemples : \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- <h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n-  <input aria-label=\"[…]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
 		}
     ],
 	"testID-002": [
@@ -18,8 +18,8 @@
 	"testID-003": [
 		{
 			"title" : "Présence de champs non-groupés",
-			"detail" : "Lorsque nécessaire les champs de même natures doivent être groupés",
-			"solution" : "- appliquer un \"fieldset\" complété par un élément \"legend\"\n- appliquer un role \"group\" sur l'élément parent encapsulant les champs, et compléter par une légende basée sur un aria-labelledby",
+			"detail" : "Lorsque nécessaire les champs de même nature doivent être groupés",
+			"solution" : "- appliquer un \"fieldset\" complété par un élément \"legend\"\n- appliquer un rôle \"group\" sur l'élément parent encapsulant les champs, et compléter par un équivalent de légende basé sur un aria-labelledby",
 			"technicalSolution" : ""
 		}
 	],
@@ -27,12 +27,12 @@
         {
 			"title" : "Champ obligatoire non identifiable visuellement",
 			"detail" : "L'identification visuelle du champ obligatoire ne repose pas uniquement sur la couleur.",
-			"solution" : "Ajouter une information visuelle ne reposant pas uniquement sur la couleur, exemple : astérisque, icône, etc...",
+			"solution" : "Ajouter une information visuelle ne reposant pas uniquement sur la couleur, exemple : astérisque, icône…",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Champ obligatoire non identifiable de manière programmatique",
-			"detail" : "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex: lecteur d'écran), si elle n'est pas donnée de manière programmatique.",
+			"detail" : "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex. : lecteur d'écran), si elle n'est pas donnée de manière programmatique.",
 			"solution" : "Utiliser une des techniques ci-dessous :\n- information visuelle intégrée dans le label\n- ajout d'un attribut \"required\" sur l'input \n- ajout d'un attribut \"aria-required\" sur l'input",
 			"technicalSolution" : ""
 		}
@@ -42,12 +42,12 @@
 			"title" : "Absence de format de données",
 			"detail" : "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
 			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\n exemple : <input aria-describedby=\"idDesc\" […]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		},{
 			"title" : "Le format de données n'est pas lié de manière programmatique au champ",
-			"detail" : "Dans le cas où le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran).",
+			"detail" : "Le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran) lorsqu'il n'y a pas de lien explicite avec le champ.",
 			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" [...]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\n exemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" […]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		}
     ],
     "testID-012":[
@@ -55,23 +55,23 @@
 			"title" : "Absence d'attribut autocomplete pour des champs présentant des données personnelles",
 			"detail" : "Tout champ permettant de collecter des données spécifiques sur l'utilisateur, doit posséder un attribut \"autocomplete\".",
 			"solution" : "Ajouter un attribut \"autocomplete\" sur l'input. La valeur de l'autocomplete dépend de la nature de l'information collectée dans le champ.",
-			"technicalSolution" : "exemples : autocomplete=\"username\", autocomplete=\"new-password\", autocomplete=\"postal-code\", etc... "
+			"technicalSolution" : "exemples : autocomplete=\"username\", autocomplete=\"new-password\", autocomplete=\"postal-code\"… "
 		}
     ],
     "testID-006":[
         {
 			"title" : "Des messages d'erreurs ne sont pas perçus par les utilisateurs",
-			"detail" : "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quelques-soit leur équipement.",
-			"solution" : "Appliquer une des techniques ci-dessous :\n- Le message d'erreur est présent avant le formulaire.\nLe message liste les champs en erreur.\nLe focus est positionné sur le message d'erreur.\nDes ancres permettent à l'utilisateur de se positionner sur les champs en erreurs.\n-Les messages d'erreurs sont ajoutés dans les labels des champs.\n- Les messages d'erreurs ne sont pas intégrés dans les labels, mais un mécanisme est présent afin de lier les champs et les erreurs de manière programmatique : voir aria-describedby ",
+			"detail" : "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quelque-soit leur équipement.",
+			"solution" : "Appliquer une des techniques ci-dessous :\n - Le message d'erreur est présent avant le formulaire.\n Le message liste les champs en erreur.\n Le focus est positionné sur le message d'erreur.\n Des ancres permettent à l'utilisateur de se positionner sur les champs en erreur.\n-Les messages d'erreurs sont ajoutés dans les labels des champs.\n- Les messages d'erreurs ne sont pas intégrés dans les labels, mais un mécanisme est présent afin de lier les champs et les erreurs de manière programmatique : voir aria-describedby ",
 			"technicalSolution" : ""
 		}
     ],
     "testID-007":[
         {
-			"title" : "Présence de messages d'erreurs non-pertinents",
-			"detail" : "Des messages d'erreurs sont absents ou non pertinents.",
-			"solution" : "Les messages d'erreurs doivent permettre aux utilisateurs de détecter facilement les erreurs de saisie.",
-			"technicalSolution" : ""
+			"title" : "Absence de messages d'erreur",
+			"detail" : "Des messages d'erreur sont absents.",
+			"solution" : "Les messages d'erreur permettent aux utilisateurs de détecter facilement les erreurs de saisie.",
+			"technicalSolution" : "Mettre en place un système de validation du formulaire "
 		}
     ],
     "testID-008":[
@@ -79,15 +79,15 @@
 			"title" : "Présence de messages d'erreurs non-pertinents",
 			"detail" : "Des messages d'erreurs sont non pertinents.",
 			"solution" : "Les messages d'erreurs doivent permettre aux utilisateurs de corriger facilement leurs erreurs de saisie.",
-			"technicalSolution" : ""
+			"technicalSolution" : "Proposer des messages d'erreur spécifique au champ et du type d'erreur faite"
 		}
     ],
     "testID-009":[
         {
-			"title" : "Des données importantes sont soumises sans possibilité d'être annulé ou vérifié",
-			"detail" : "Les utilisateurs doivent avoir le contrôle lors de la soumission de données importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen...).",
-			"solution" : "Appliquer une des solutions ci-dessous :\n- L'action peut être annulée\n- une étape de confirmation permettant la vérification ou la modification est présente avant validation ",
-			"technicalSolution" : "Exemple :\nAprès soumission du formulaire, un message de confirmation apparaît dans une popin.\nLe message reprend les données saisies par l'utilisateur, et donne la possibilité de valider ou annuler.\nSi l'utilisateur annule, il est redirigé vers le formulaire, ses saisies sont toujours présentes dans les champs, avec la possibilité de les modifier."
+			"title" : "Des données importantes sont soumises sans possibilité d'être annulées ou vérifiées",
+			"detail" : "Les utilisateurs doivent avoir le contrôle lors de la soumission de données importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen…).",
+			"solution" : "Appliquer une des solutions ci-dessous :\n - L'action peut être annulée\n - une étape de confirmation permettant la vérification ou la modification est présente avant validation finale ",
+			"technicalSolution" : "Exemple :\n Après soumission du formulaire, un message de confirmation apparaît dans une popin.\n Le message reprend les données saisies par l'utilisateur, et donne la possibilité de valider ou annuler.\n Si l'utilisateur annule, il est redirigé vers le formulaire, ses saisies sont toujours présentes dans les champs, avec la possibilité de les modifier."
 		}
     ],
     "testID-017":[
@@ -95,25 +95,31 @@
 			"title" : "Titre de page non renseigné",
 			"detail" : "Chaque page doit posséder un titre unique.",
 			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
-			"technicalSolution" : "<title>Acccueil - Espace client Orange</title>"
+			"technicalSolution" : "<title>Accueil - Espace client Orange</title>"
 		},
 		{
 			"title" : "Titre de page non pertinent",
 			"detail" : "Chaque page doit posséder un titre unique, permettant de comprendre le rôle de celle-ci.",
-			"solution" : "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
-			"technicalSolution" : "<title>Acccueil - Espace client Orange</title>"
+			"solution" : "Renseigner l'élément <title> avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
+			"technicalSolution" : "<title>Accueil - Espace client Orange</title>"
+		},
+		{
+			"title" : "Titre de page non modifié lors de la soumission du formulaire",
+			"detail" : "Chaque page doit posséder un titre unique, permettant d'avoir des informations sur la validation ou non du formulaire de la page lorsque celui-ci ne fait pas changer de page.",
+			"solution" : "Renseigner l'élément <title> avec des mots clefs permettant de comprendre le rôle de la page et, dynamiquement, l'état de validation du formulaire. Les informations doivent indiquer si le formulaire est en erreur, si celui a bien été validé…",
+			"technicalSolution" : "<title>Bien inscrit à la newsletter - Accueil - Espace client Orange</title>"
 		}
     ],
     "testID-010":[
         {
-			"title" : "Hiérarchisation imcompléte",
+			"title" : "Hiérarchisation incomplète",
 			"detail" : "La page doit être structurée à partir de titres de niveaux.",
 			"solution" : "Tous les contenus, traités visuellement comme des titres, doivent posséder une sémantique de titre (balises <h1> à <h6>)",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Hiérarchisation des niveaux de titres non logique",
-			"detail" : "Les titres de niveaux doivent être structurés de manière logique",
+			"detail" : "Les titres de niveaux doivent être hiérarchisés de manière logique",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -127,7 +133,7 @@
         },
         {
                 "title" : "Absence de sémantique de lien HTML ",
-                "detail" : "Les éléments interactifs entrainant un changement d'URL doivent utiliser une sémantique de lien HTML. ",
+                "detail" : "Les éléments interactifs entraînant un changement d'URL doivent utiliser une sémantique de lien HTML. ",
                 "solution" : "Utiliser la sémantique <a> avec un attribut href.",
                 "technicalSolution" : ""
         },
@@ -162,7 +168,7 @@
 		},
 		{
 			"title" : "Présence d'ID dupliqués",
-			"detail" : "La page ne doit pas comporter des ID dupliqués.",
+			"detail" : "La page ne doit pas comporter des ID dupliqués sauf s'ils ne sont pas affichées au même moment.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -208,35 +214,35 @@
 			"title" : "Absence de ALT sur des images",
 			"detail" : "Toutes les images doivent posséder un attribut ALT.",
 			"solution" : "Ajouter un attribut ALT aux images.",
-			"technicalSolution" : "<img alt=\"[...]\" [...]> "
+			"technicalSolution" : "<img alt=\"[…]\" […]> "
 		},{
 			"title" : "Le ALT d'une image-lien n'est pas renseigné ou non pertinent",
-			"detail" : "Le contenu de l'attribut alt de chaque image-lien est pertinent par rapport à sa fonction de lien.",
+			"detail" : "Le contenu de l'attribut ALT de chaque image-lien est pertinent par rapport à sa fonction de lien.",
 			"solution" : "Renseigner la cible du lien dans le ALT.",
-			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[...]\" alt= \"Mon site\" > </a>"
+			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[…]\" alt= \"Mon site\" > </a>"
 		},
 		{
 			"title" : "Le ALT d'une image porteuse d'information n'est pas renseigné ou non pertinent",
-			"detail" : "L'attribut alt de chaque image est pertinent par rapport au rôle de l'image dans la page.",
+			"detail" : "L'attribut ALT de chaque image est pertinent par rapport au rôle de l'image dans la page.",
 			"solution" : "Renseigner dans le ALT, l'information portée par l'image.",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Le ALT d'une image contenant du texte n'est pas renseigné ou non pertinent",
 			"detail" : "L'attribut alt reprend au moins le texte de l’image.",
-			"solution" : "Reporter dans le ALT le texte présenté par l'image.",
+			"solution" : "Reporter, a minima, dans le ALT le texte affiché par l'image.",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Le ALT d'une image décorative n'est pas pertinent",
-			"detail" : "L'attribut alt d'une image décorative doit être vide, afin que l'image soit ignorée, notamment par les aides techniques.",
+			"detail" : "L'attribut ALT d'une image décorative doit être vide, afin que l'image soit ignorée par les aides techniques.",
 			"solution" : "Renseigner un alt vide.",
-			"technicalSolution" : "<img src=\"[...]\" alt=\"\" >"
+			"technicalSolution" : "<img src=\"[…]\" alt=\"\" >"
 		},
 		{
-			"title" : "Le ALT d'une image complexe (schémas, graphes ...) n'est pas pertinent",
+			"title" : "Le ALT d'une image complexe (schémas, graphes …) n'est pas pertinent",
 			"detail" : "",
-			"solution" : "Pour toute description d'image trop longue pour être mise dans un attribut alt, la description de l'image sous forme de texte html est, soit présente dans la page, soit, un lien pointe vers une page html contenant la description, et ceci, à proximité de l'image à décrire.",
+			"solution" : "Pour toute description d'image trop longue pour être mise dans un attribut ALT, la description de l'image sous forme de texte html est, soit présente dans la page, soit, un lien pointe vers une page html contenant la description, et ceci, à proximité de l'image à décrire.",
 			"technicalSolution" : ""
 		}
     ],
@@ -253,36 +259,36 @@
 			"title" : "Alternative textuelle du CAPTCHA absente ou erronée.",
 			"detail" : "L’alternative textuelle de l’image CAPTCHA n’indique pas à l’utilisateur qu’il s’agit d’un CAPTCHA.",
 			"solution" : "Mettre une alternative textuelle valide pour cette image, exemple : \"CAPTCHA (image anti-spam)\".",
-			"technicalSolution" : "<img alt=\"CAPTCHA (image anti-spam)\" [...]>"
+			"technicalSolution" : "<img alt=\"CAPTCHA (image anti-spam)\" […]>"
 		}
     ],
     "testID-015":[
         {
-			"title" : "Absence d'alternative au captcha",
+			"title" : "Absence d'alternative au Captcha",
 			"detail" : "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
-			"solution" : "Proposer en alternative : un captcha audio + visuel, ou des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
+			"solution" : "Proposer en alternative : un Captcha audio + visuel, ou des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
 			"technicalSolution" : ""
 		}
     ],
     "testID-065":[
         {
 			"title" : "Absence de TITLE sur les cadres",
-			"detail" : "Tous les cadres doivent posséder un attribut TITLE.",
+			"detail" : "Tous les cadres doivent posséder un attribut TITLE décrivant le rôle ddu cadre.",
 			"solution" : "Ajouter un attribut TITLE aux cadres.",
-			"technicalSolution" : "<iframe title=\"[...]\">"
+			"technicalSolution" : "<iframe title=\"[…]\">"
 		}
     ],
     "testID-024":[
         {
 			"title" : "Contraste insuffisant entre texte et fond",
 			"detail" : "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
-			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de tailles normales (inférieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Contraste insuffisant pour des liens non-soulignés",
 			"detail" : "Les liens non-soulignés doivent avoir un rapport de contraste suffisant avec le texte environnant.",
-			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (infèrieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (inférieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
 			"technicalSolution" : ""
 		}
     ],
@@ -294,13 +300,13 @@
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Contraste insuffisant pour des composants interactifs (boutons, boutons radios, ...)",
+			"title" : "Contraste insuffisant pour des composants interactifs (boutons, boutons radios…)",
 			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
 			"solution" : "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
 			"technicalSolution" : ""
 		},
 		{
-			"title" : "Contraste insuffisant pour états de composants interactifs (focus, hover, ...)",
+			"title" : "Contraste insuffisant pour états de composants interactifs (focus, hover, …)",
 			"detail" : "Le contraste doit être suffisant pour transmettre l'information.",
 			"solution" : "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
 			"technicalSolution" : ""
@@ -317,8 +323,8 @@
 	"testID-051":[
 		{
 			"title" : "Une information sensorielle est le seul moyen de convoyer de l'information",
-			"detail" : "Une l’information sensorielle (ex : position, taille, son) ne doit pas être le seul moyen pour transmettre de l'information.",
-			"solution" : "Compléter linformation par un texte, ou un message explicite.",
+			"detail" : "Une information sensorielle (ex : position, taille, son) ne doit pas être le seul moyen pour transmettre de l'information.",
+			"solution" : "Compléter l'information par un texte, ou un message explicite.",
 			"technicalSolution" : ""
 		}
 	],
@@ -327,7 +333,7 @@
 			"title" : "Absence du texte visible à l'écran, dans l'accessible name",
 			"detail" : "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom (accessible) de ce composant.",
 			"solution" : "Modifier l'accessible name de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
-			"technicalSolution" : "Plusieurs solutions sont possibles pour redéfinir l'accessible name : aria-labelledby, aria-label, title, sr-only."
+			"technicalSolution" : "Plusieurs solutions sont possibles pour redéfinir l'accessible name : aria-labelledby, aria-label, title, du texte accessible caché."
 		}
 	],
 	"testID-028":[
@@ -335,7 +341,7 @@
 			"title" : "Présence de libellés non-compréhensibles dans leur contexte",
 			"detail" : "La cible d'un lien ou l'action portée par un bouton n'est pas compréhensible grâce à son contexte direct (texte environnant).",
 			"solution" : "Ajouter une information discriminante dans le texte environnant.",
-			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n- élément dans un paragraphe : compléter le texte du paragraphe (<p>[...]</p>) \n- élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n- élément dans une cellule de tableau : compléter le texte de la cellule (<td>[...]</td>) ou compléter l'entête directe de la cellule (<th>[...]</th>)."
+			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n - élément dans un paragraphe : compléter le texte du paragraphe (<p>[…]</p>) \n - élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n - élément dans une cellule de tableau : compléter le texte de la cellule (<td>[…]</td>) ou compléter l'entête directe de la cellule (<th>[…]</th>)."
 		}
 	],
 	"testID-030":[
@@ -345,9 +351,9 @@
 			"solution" : "L'utilisateur doit être capable de déplacer le pointeur souris de l'élément déclencheur vers le contenu de la tooltip sans fermeture de celle-ci.",
 			"technicalSolution" : ""
 		}, {
-			"title" : "Impossible de fermer un contenu additionnel (tooltip, popin, etc...) sans déplacer le focus ou le pointeur",
+			"title" : "Impossible de fermer un contenu additionnel (tooltip, popin…) sans déplacer le focus ou le pointeur",
 			"detail" : "Après ouverture du contenu additionnel, l'utilisateur ne peut pas fermer celui-ci sans avoir à déplacer le focus ou le pointeur de la souris.",
-			"solution" : "Proposer un mécanisme aux utilisateurs pour leur permettre de fermer un contenu additionnel sans déplacement de focus ou de souris (ex : fermeture depuis la touche Echap).",
+			"solution" : "Proposer un mécanisme aux utilisateurs pour leur permettre de fermer un contenu additionnel sans déplacement de focus ou de souris (ex : fermeture depuis la touche Echap.).",
 			"technicalSolution" : ""
 		}
 	],
@@ -365,29 +371,29 @@
 		},{
 			"title" : "Changement du contenu de la page courante dès la prise de focus",
 			"detail" : "Un changement de contenu s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
-			"solution" : "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien ou un bouton d'action.",
+			"solution" : "Un changement de contenu doit s'opérer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien ou un bouton d'action.",
 			"technicalSolution" : ""
 		},{
 			"title" : "Ouverture d'une nouvelle page dès la prise de focus",
 			"detail" : "Un changement de page s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
-			"solution" : "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien.",
+			"solution" : "Un changement de contenu doit s'opérer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien.",
 			"technicalSolution" : ""
 		}
 	],
 	"testID-033":[
 		{
 			"title" : "Un seul mécanisme de navigation est présent",
-			"detail" : "Au moins 2 mécanismes de navigation doivent être présent sur l'interface.",
+			"detail" : "Au moins 2 mécanismes de navigation doivent être présent sur les pages.",
 			"solution" : "Compléter le mécanisme existant avec une solution listée ci-dessous : \n -  un menu de navigation principal \n - une table des matières \n - un sitemap \n - un mécanisme de recherche \n - une liste de liens permettant de naviguer à travers tout le site (pied de page).",
 			"technicalSolution" : ""
 		}
 	],
 	"testID-034":[
 		{
-			"title" : "Absence de roles ARIA (status, alert, alertdialog...) ou de régions dynamiques aria-live",
+			"title" : "Absence de rôles ARIA (status, alert, alertdialog…) ou de régions dynamiques aria-live",
 			"detail" : "Les messages d'alertes ne sont pas perçus depuis un lecteur d'écran.",
-			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc...) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement dés apparition.",
-			"technicalSolution" : "exemples :\n - <div role=\"status\"> [...] </div> \n - <div aria-live=\"assertive\">[...]</div>"
+			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc…) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement dés apparition.",
+			"technicalSolution" : "exemples :\n - <div role=\"status\"> […] </div> \n - <div aria-live=\"assertive\">[…]</div>"
 		}
 	],
 	"testID-035":[
@@ -416,16 +422,16 @@
 	],
 	"testID-039":[
 		{
-			"title" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche",
-			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur une seule touche : lettre (minuscule ou majuscule), ponctuation, chiffre, ou symbôle.",
-			"solution" : "L'utilisateur doit pouvoir : \n- désactiver le raccourci \n- ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n- ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
+			"title" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier",
+			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur un caractère : lettre (minuscule ou majuscule), ponctuation, chiffre, ou caractère symbole.",
+			"solution" : "L'utilisateur doit pouvoir : \n - désactiver le raccourci \n - ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n - ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
 			"technicalSolution" : ""
 		}
 	],
 	"testID-040":[
 		{
 			"title" : "Déplacement du focus non-logique",
-			"detail" : "Le déplacement du focus ne suit pas un ordre logique (sens de lecture).",
+			"detail" : "Le déplacement du focus ne suit pas un ordre de lecture logique.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -434,23 +440,23 @@
 		{
 			"title" : "La visualisation du focus (outline) est désactivée",
 			"detail" : "Le outline ne doit pas être désactivé.",
-			"solution" : "Vérifier que le outline n'est pas supprimé depuis une propriété css (ex : \"outline:none;\").",
+			"solution" : "Vérifier que le outline n'est pas supprimé depuis une propriété css (ex. : \"outline:none;\").",
 			"technicalSolution" : ""
 		}
 	],
 	"testID-042":[
 		{
 			"title" : "Le zoom n'est pas autorisé",
-			"detail" : "L'agrandissement du texte à 200% doit être possible.",
-			"solution" : "Si une balise \"<meta name= 'viewport'>\" est présente :\n- le paramètre user-scalable='no' n’est pas présent\n- et le paramètre maximum-scale n’est pas inférieur à 2 ",
+			"detail" : "L'agrandissement du texte doit être possible sur mobile.",
+			"solution" : "Si une balise \"<meta name= 'viewport'>\" est présente :\n - le paramètre user-scalable='no' n’est pas présent\n-  et le paramètre maximum-scale n’est pas inférieur à 2 ",
 			"technicalSolution" : ""
 		}
 	],
 	"testID-043":[
 		{
 			"title" : "Présence d'une barre de défilement horizontale",
-			"detail" : "Une barre de défilement horizontale apparaît après un redimenssionnement de l'interface à 320 px css de large.",
-			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
+			"detail" : "Une barre de défilement horizontale apparaît après un redimensionnement de l'interface à 320 px css de large.",
+			"solution" : "- appliquer des unités relatives (em, rem, %…) aux textes \n - appliquer des unités relatives (em, rem, %…) aux conteneurs de textes \n - ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
 			"technicalSolution" : ""
 		}
 	],
@@ -458,22 +464,22 @@
 		{
 			"title" : "Présence de textes tronqués ou de chevauchement",
 			"detail" : "Des contenus sont tronqués ou se chevauchent après application de propriétés d'aération du texte.",
-			"solution" : "Ne pas imposer ou hériter une taille absolue (px, ...) aux propriétés d'espacement.",
-			"technicalSolution" : "- appliquer des unités relatives (em, rem, %) aux propriétés d'espacement de textes \n- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"."
+			"solution" : "Ne pas imposer ou hériter une taille absolue (px…) aux propriétés d'espacement.",
+			"technicalSolution" : "- appliquer des unités relatives (em, rem, %…) aux propriétés d'espacement de textes \n - appliquer des unités relatives (em, rem, %…) aux conteneurs de textes \n - ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\"."
 		}
 	],
 	"testID-045":[
 		{
 			"title" : "Composants répétés sur plusieurs pages, dans des ordres différents",
 			"detail" : "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
-			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaitre de manière constante, dans le même ordre relatif.",
+			"solution" : "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaître de manière uniforme, dans le même ordre relatif.",
 			"technicalSolution" : ""
 		}
 	],
 	"testID-046":[
 		{
 			"title" : "Composants répétés sur plusieurs pages, avec des intitulés différents",
-			"detail" : "Des composants répétés sur plusieurs pages, ne possèdent pas le même intitulé.",
+			"detail" : "Des composants répétés sur plusieurs pages, ne possèdent pas le même nom (accessible).",
 			"solution" : "Les composants répétés sur plusieurs pages doivent avoir des intitulés homogènes.",
 			"technicalSolution" : ""
 		}
@@ -481,7 +487,7 @@
 	"testID-047":[
 		{
 			"title" : "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
-			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur un seul pointeur.",
+			"detail" : "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur l'utilisation d'un seul pointeur.",
 			"solution" : "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée.",
 			"technicalSolution" : ""
 		}
@@ -490,7 +496,7 @@
 		{
 			"title" : "Une action ne peut être annulée",
 			"detail" : "L'action ne peut être annulée car déclenchée sur l'évènement DOWN.",
-			"solution" : "- déclencher l'action sur l'évènement UP\n- pour des composants complexes (ex : drag n'drop), l'action sur le UP est complétée par une boîte de dialogue donnant la possibilité aux utilisateurs d'annuler leur action.",
+			"solution" : "- déclencher l'action sur l'évènement UP\n - pour des composants complexes (ex : drag n'drop), l'action sur le UP est complétée par une boîte de dialogue donnant la possibilité aux utilisateurs d'annuler leur action.",
 			"technicalSolution" : ""
 		}
 	],
@@ -538,7 +544,7 @@
 		{
 			"title" : "Absence de sous-titres",
 			"detail" : "Pour toute vidéo, des sous-titres sont disponibles.",
-			"solution" : "Ajouter des sous-titres sous formats texte pour toutes vidéos. Ceux-ci restituent l’ensemble des informations de la piste audio.",
+			"solution" : "Ajouter des sous-titres au format texte pour toutes vidéos. Ceux-ci restituent l’ensemble des informations de la piste audio.",
 			"technicalSolution" : ""
 		}
 	],
@@ -561,12 +567,12 @@
 	"testID-066":[
 		{
 			"title" : "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
-			"detail" : "Les états cochés/décochés, pliés/dépliés, etc... ne sont pas percus depuis un lecteur d'écran",
-			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected, etc...)",
+			"detail" : "Les états cochés/décochés, pliés/dépliés… ne sont pas perçus par un lecteur d'écran",
+			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n - sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected…)",
 			"technicalSolution" : ""
 		}, {
-			"title" : "Un composant interactifs n'est pas utilisable depuis un lecteur d'écran",
-			"detail" : "Les fonctionnalités d'un composant ne pas utilisables depuis un lecteur d'écran",
+			"title" : "Un composant interactifs n'est pas utilisable avec un lecteur d'écran",
+			"detail" : "Les fonctionnalités d'un composant ne pas utilisables avec un lecteur d'écran",
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
 			"technicalSolution" : ""
 		}

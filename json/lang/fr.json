@@ -191,7 +191,7 @@
 		"btnShowResult": "Conformité",
 		"btnImportTxt": "Importer",
 		"btnExportTxt": "Exporter",
-		"import": "Charger",
+		"import": "Charger l'audit",
 		"status1": "conforme",
 		"status2": "non-conforme",
 		"status3": "non-applicable",
@@ -219,7 +219,7 @@
 	"ariaLabelOnly": {
 		"nav-lang": "À propos et changement de langues",
 		"nav-back-to-top": "Retour en haut de la page",
-		"selectFiles": "Sélectionner un audit"
+		"selectFiles": "Sélectionner un audit (JSON)"
 	},
 	"url": {
 		"link-about": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/"

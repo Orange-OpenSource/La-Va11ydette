@@ -155,7 +155,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), for any triggering of an action, validation or selection</li></ul>  ",
+		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), for any triggering of an action, validation or selection</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"resultatTest": "nt"
 	},{
@@ -211,7 +211,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Check  the accessible name of the <code>img</code>, <code>area</code>, <code>canvas</code>, <code>SVG</code>, and of those HTML elements with <code>role='img'</code >, and also of those elements <code>input</code> and <code>object</code> that possess the attribute <code>type='image'</code> </li><li>Check  that the accessible name is not defined through the <code>title</code> attribute</li><li>for decorative images, check that the alternative text is null</li><li>For complex images, check that an alternative text is provided by content adjacent to the image</li><li>For audio and video resources, check that an alternative text is provided by content that is adjacent</li></ul>",
+		"verifier": "<ul><li>Check the accessible name of the <code>img</code>, <code>area</code>, <code>canvas</code>, <code>SVG</code>, and of those HTML elements with <code>role='img'</code >, and also of those elements <code>input</code> and <code>object</code> that possess the attribute <code>type='image'</code> </li><li>Check that the accessible name is not defined through the <code>title</code> attribute</li><li>for decorative images, check that the alternative text is null</li><li>For complex images, check that an alternative text is provided by content adjacent to the image</li><li>For audio and video resources, check that an alternative text is provided by content that is adjacent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"resultatTest": "nt"
 	},{
@@ -234,7 +234,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (eg:   'captcha (anti-spam image) ' ).</p>",
+		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (eg: 'captcha (anti-spam image) ' ).</p>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#avoid-captcha",
 		"resultatTest": "nt"
@@ -258,7 +258,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Check that there is a text alternative provided<br/>examples :<ul><li>use of an <code>abbr</code> tag with the <code>title</code> attribute</li><li>Use of adjacent content</li></ul></li><li>Check  that the alternative is appropriate</li></ul>",
+		"verifier": "<ul><li>Check that there is a text alternative provided<br/>examples :<ul><li>use of an <code>abbr</code> tag with the <code>title</code> attribute</li><li>Use of adjacent content</li></ul></li><li>Check that the alternative is appropriate</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"resultatTest": "nt"
 	},{
@@ -281,7 +281,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Check  that the contrast is sufficient in order that the information communicated by the text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"resultatTest": "nt"
 	},{
@@ -339,7 +339,7 @@
 			"2.5.3 A"
 		],
 		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a>)</p>\n<p>Not applicable, if no interface component has a visible text label (icon without text, for example)</p>",
-		"complement": "<p>For example: for a  'start ' link, use an <code>aria-label</code>  'start playing', but not  'commence playing'</p>",
+		"complement": "<p>For example: for a 'start ' link, use an <code>aria-label</code> 'start playing', but not 'commence playing'</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"resultatTest": "nt"
 	},{
@@ -350,7 +350,7 @@
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the page to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>Check  that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
+		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the page to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>Check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
 		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. Check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"resultatTest": "nt"
@@ -399,7 +399,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p> When using forms or any interactive component, check that there is no change of context, without warning the user: </p> <ul> <li> when an element takes the focus </li> <li> when entering data </li> <li> when activating a form element other than a button </li> </ul>",
-		"complement": "<h4> Change of context </h4> <p> Major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport  (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li>  the user is warned by a text before it is triggered </li> </ul>",
+		"complement": "<h4> Change of context </h4> <p> Major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"resultatTest": "nt"
 	},{
@@ -421,7 +421,7 @@
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chatbot, upload of a file, product registration in a basket, progressive loading of a page (next 20 items) ... ): </p> <ul> <li>check that a mechanism based on the ARIA roles (<code>status</code>, <code>alert</code>, <code> lertdialog </code>, ...) or on dynamic regions <code>aria-live</code> is implemented </li> <li> Check  that they are rendered in a relevant way to the screen reader </li> </ul>",
+		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chatbot, upload of a file, product registration in a basket, progressive loading of a page (next 20 items) ... ): </p> <ul> <li>check that a mechanism based on the ARIA roles (<code>status</code>, <code>alert</code>, <code> lertdialog </code>, ...) or on dynamic regions <code>aria-live</code> is implemented </li> <li> Check that they are rendered in a relevant way to the screen reader </li> </ul>",
 		"complement":"<h4>Examples</h4><ul> <li> message that informs about the result of an action or the state of the application: <code>role='status'</code></ li > <li> error message: <code>role='alert'</code></li> <li> message indicating progress: <code>role='log'</code>, <code>'progressbar'</code> or <code>'status'</code></li></ul> <p>More information on <a href =\"https://a11y-guidelines.orange.com/en/articles/aria-status-messages/ \" target=\"_ blank\" title=\"Messages status (new window) \"> status messages</a>. </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allow-to-know-the-result-of-a-user-interaction-with-status-messages",
 		"resultatTest": "nt"
@@ -455,7 +455,7 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li> Check  that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check  that the content displayed on hover (eg: popin, tooltip) is also displayed when focus is received </li></ul>",
+		"verifier": "<ul><li> Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (eg: popin, tooltip) is also displayed when focus is received </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#allow-the-use-of-the-main-features-of-the-application-with-the-keyboard",
 		"resultatTest": "nt"
 	},{
@@ -614,7 +614,7 @@
 		"wcag": [
 			"2.5.2 A"
 		],
-		"verifier": "<p>It must be possible to cancel actions triggered by a single pointer input that operates with one point of contact with the screen (eg: single taps and clicks, double-taps and clicks):</p><ul><li>Check  that no action is triggered on the down-event (as soon as you touch or press an element) and that it is possible to abort the action by lifting the pointer outside that element.</li><li> if an action is triggered when an element is pressed, check that it is cancelled as soon as the pointer is released.</li><li>For complex actions (eg: drag and drop), check that the user can cancel the action before completing the process through, for example, a confirmation dialog.</li></ul>",
+		"verifier": "<p>It must be possible to cancel actions triggered by a single pointer input that operates with one point of contact with the screen (eg: single taps and clicks, double-taps and clicks):</p><ul><li>Check that no action is triggered on the down-event (as soon as you touch or press an element) and that it is possible to abort the action by lifting the pointer outside that element.</li><li> if an action is triggered when an element is pressed, check that it is cancelled as soon as the pointer is released.</li><li>For complex actions (eg: drag and drop), check that the user can cancel the action before completing the process through, for example, a confirmation dialog.</li></ul>",
 		"exceptions": "<p>Interactions that emulate a keyboard or a numeric keypad are allowed to implement actions on down-events.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#allow-to-cancel-the-triggering-of-gestural-interactions",
 		"resultatTest": "nt"
@@ -626,7 +626,7 @@
 		"wcag": [
 			"2.5.4 A"
 		],
-		"verifier": "<ul><li>Check  that these actions can also be operated by user interface components (eg: button)</li><li>Check  that it is possible to disable the motion detection</li></ul>",
+		"verifier": "<ul><li>Check that these actions can also be operated by user interface components (eg: button)</li><li>Check that it is possible to disable the motion detection</li></ul>",
 		"exceptions": "<p>The motion is essential for the function (eg: pedometer)</p>",
 		"group": "Touche Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
@@ -675,7 +675,7 @@
 		"wcag": [
 			"1.2.3 A"
 		],
-		"verifier": "<ul><li>Check that a complete transcript (all of the information - both visual and auditory - in text form) is provided as plain text or HTML.<br> This text transcript should be:<ul><li> present in the page </li> <li> or available via a link immediately next to the link to the video clip</li></ul></li><li>Or for all video content, check that an audio description is provided:<ul><li> Check  that the audio description is synchronized correctly </li><li> Check  that the audio description does not conflict with the audio track of the video (no loss of information)</li><li> Check  that the audio description is appropriate</li></ul>",
+		"verifier": "<ul><li>Check that a complete transcript (all of the information - both visual and auditory - in text form) is provided as plain text or HTML.<br> This text transcript should be:<ul><li> present in the page </li> <li> or available via a link immediately next to the link to the video clip</li></ul></li><li>Or for all video content, check that an audio description is provided:<ul><li> Check that the audio description is synchronized correctly </li><li> Check that the audio description does not conflict with the audio track of the video (no loss of information)</li><li> Check that the audio description is appropriate</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"resultatTest": "nt"
@@ -687,7 +687,7 @@
 		"wcag": [
 			"1.2.5 AA"
 		],
-		"verifier": "<ul><li>Check  that an audio description is provided for all video content</li><li>Check  that the audio description is synchronized correctly</li><li>Check  that the audio description does not conflict with the audio track of the video (no loss of information)</li><li>Check  that the audio description is appropriate</li></ul>",
+		"verifier": "<ul><li>Check that an audio description is provided for all video content</li><li>Check that the audio description is synchronized correctly</li><li>Check that the audio description does not conflict with the audio track of the video (no loss of information)</li><li>Check that the audio description is appropriate</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"resultatTest": "nt"
@@ -699,7 +699,7 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "<ul><li>Check  that captions are available for all video with audio content</li><li>Check  that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li><li>Check  that the captions are not covering important information in the video</li></ul>",
+		"verifier": "<ul><li>Check that captions are available for all video with audio content</li><li>Check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li><li>Check that the captions are not covering important information in the video</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"resultatTest": "nt"
@@ -711,7 +711,7 @@
 		"wcag": [
 			"1.2.4 AA"
 		],
-		"verifier": "<ul><li>Check  that captions are available</li><li>Check  that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
+		"verifier": "<ul><li>Check that captions are available</li><li>Check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
 		"complement": "<h4>Captions</h4><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",

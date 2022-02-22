@@ -358,7 +358,13 @@
 			"title" : "Absence de région \"main\"",
 			"detail" : "La page doit contenir à minima une région \"main\".",
 			"solution" : "Le contenu principal doit être encapsulé dans une région \"main\".",
-			"technicalSolution" : "- Le contenu principal doit être encapsulé dans une région \"main\". \n- La région \"main\" ne doit pas contenir d'élément répété ailleurs dans la page (ex : navigation)."
+			"technicalSolution" : "- Le contenu principal doit être encapsulé dans une région \"main\". \n - La région \"main\" ne doit pas contenir d'élément répété ailleurs dans la page (ex : navigation)."
+		},
+		{
+			"title" : "Absence de structure sémantique html5 de la page",
+			"detail" : "La page doit contenir les balises de structure html5 appropriées.",
+			"solution" : "Le contenu de la page doit être encapsulé dans les balises sémantiques de structure : header, footer, nav, main, aside, article, section... selon les besoins.",
+			"technicalSolution" : ""
 		}
 	],
 	"testWebID-29": [
@@ -501,7 +507,7 @@
 	"testWebID-43": [
 		{
 			"title" : "Présence d'une barre de défilement horizontale",
-			"detail" : "Une barre de défilement horizontale apparaît après un redissionnement de l'interface à 320 px css de large.",
+			"detail" : "Une barre de défilement horizontale apparaît après un redimensionnement de l'interface à 320 px css de large.",
 			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
 			"technicalSolution" : ""
 		}

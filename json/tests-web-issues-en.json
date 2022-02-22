@@ -359,6 +359,12 @@
 			"detail" : "The page must contain at least one \"main\" region.",
 			"solution" : "Main content must be wrapped in a \"main\" region.",
 			"technicalSolution" : "- The main content must be encapsulated in a \"main\" region.\n- The \"main\" region must not contain any element repeated elsewhere in the page (eg: navigation)."
+		},
+		{
+		"title": "Absence of html5 semantic structure of the page",
+		"detail" : "The page must contain the appropriate html5 structure tags.",
+		"solution": "The content of the page must be encapsulated in the semantic structure tags: header, footer, nav, main, aside, article, section... as needed.",
+		"technicalSolution": ""
 		}
 	],
 	"testWebID-29": [

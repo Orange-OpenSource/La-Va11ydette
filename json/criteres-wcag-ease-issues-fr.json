@@ -61,7 +61,7 @@
     "testID-006":[
         {
 			"title" : "Des messages d'erreurs ne sont pas perçus par les utilisateurs",
-			"detail" : "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quelque-soit leur équipement.",
+			"detail" : "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quel que soit leur équipement.",
 			"solution" : "Appliquer une des techniques ci-dessous :\n - Le message d'erreur est présent avant le formulaire.\n Le message liste les champs en erreur.\n Le focus est positionné sur le message d'erreur.\n Des ancres permettent à l'utilisateur de se positionner sur les champs en erreur.\n-Les messages d'erreurs sont ajoutés dans les labels des champs.\n- Les messages d'erreurs ne sont pas intégrés dans les labels, mais un mécanisme est présent afin de lier les champs et les erreurs de manière programmatique : voir aria-describedby ",
 			"technicalSolution" : ""
 		}
@@ -79,7 +79,7 @@
 			"title" : "Présence de messages d'erreurs non-pertinents",
 			"detail" : "Des messages d'erreurs sont non pertinents.",
 			"solution" : "Les messages d'erreurs doivent permettre aux utilisateurs de corriger facilement leurs erreurs de saisie.",
-			"technicalSolution" : "Proposer des messages d'erreur spécifique au champ et du type d'erreur faite"
+			"technicalSolution" : "Proposer des messages d'erreur adaptés au champ et au type d'erreur commise"
 		}
     ],
     "testID-009":[
@@ -168,7 +168,7 @@
 		},
 		{
 			"title" : "Présence d'ID dupliqués",
-			"detail" : "La page ne doit pas comporter des ID dupliqués sauf s'ils ne sont pas affichées au même moment.",
+			"detail" : "La page ne doit pas comporter des ID dupliqués sauf s'ils ne sont pas affichés au même moment.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -273,7 +273,7 @@
     "testID-065":[
         {
 			"title" : "Absence de TITLE sur les cadres",
-			"detail" : "Tous les cadres doivent posséder un attribut TITLE décrivant le rôle ddu cadre.",
+			"detail" : "Tous les cadres doivent posséder un attribut TITLE décrivant le rôle du cadre.",
 			"solution" : "Ajouter un attribut TITLE aux cadres.",
 			"technicalSolution" : "<iframe title=\"[…]\">"
 		}

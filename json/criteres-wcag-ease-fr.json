@@ -201,6 +201,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous : <br>* Attention : en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous :<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est : <ul><li>pertinent</li><li>différent du titre</li></ul></li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"resultatTest": "nt"
 	},{
 		"themes": "Contenu non-textuel",
@@ -211,7 +212,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<ul><li>vérifier l'<span lang=\"en\">accessible name</span> des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que l'<span lang=\"en\">accessible name</span> n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'alternative est vide</li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"resultatTest": "nt"
 	},{
 		"themes": "Contenu non-textuel",

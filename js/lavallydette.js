@@ -130,16 +130,8 @@ function initGlobalCriteriaListName(criteriaListName) {
 
 		initMainMenu();
 		localizeHTML();
-
-		var issuesRequest = new XMLHttpRequest();
-		issuesRequest.open("GET", "json/"+ checklistVallydette[currentCriteriaListName].filename+"-issues-" + globalLang + ".json", true);
-		issuesRequest.onreadystatechange = function () {
-	 	if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
-			issuesVallydette = JSON.parse(issuesRequest.responseText);
-	  	}	 
-	};
-	
-	issuesRequest.send();
+		loadIssue();
+		
 	  } 
 	};
 	
@@ -541,6 +533,7 @@ function eventHandler() {
 					initGlobalLang(dataVallydette.checklist.lang, true);
 					initGlobalTemplate(dataVallydette.checklist.template);
 					checkTheVersion(dataVallydette.checklist.version);
+					loadIssue();
 					document.getElementById("btnImport").click();
 					utils.putTheFocus(document.getElementById("checklistName"));
 					runLangRequest();
@@ -682,6 +675,7 @@ function getLocalStorage(auditName) {
 	initGlobalTemplate(dataVallydette.checklist.template);
 	
 	checkTheVersion(dataVallydette.checklist.version);	
+	loadIssue();
 
 	runLangRequest();						
 }
@@ -2717,6 +2711,21 @@ managementDeprecatedComment = function (data){
  */
 
 /**
+ * Load issue
+*/
+loadIssue = function (){
+	var issuesRequest = new XMLHttpRequest();
+	issuesRequest.open("GET", "json/"+ checklistVallydette[dataVallydette.checklist.referentiel].filename+"-issues-" + globalLang + ".json", true);
+	issuesRequest.onreadystatechange = function () {
+		if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+			issuesVallydette = JSON.parse(issuesRequest.responseText);
+		}	 
+	};
+	
+	issuesRequest.send();
+}
+
+/**
  * Issue popin initialization.
  * @param {string} targetId - current test ID.
  * @param {string} title - current test title.
@@ -2766,7 +2775,6 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let currentEditForm = document.getElementById('editIssueForm');
  
 	currentEditForm.addEventListener('submit', function () {
-		console.log('bonjour');
 		event.preventDefault();
 		
 		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);

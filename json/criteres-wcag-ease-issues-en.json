@@ -422,8 +422,8 @@
 	],
 	"testID-039":[
 		{
-			"title" : "User does not have control of a single key based keyboard shortcut",
-			"detail" : "The user does not have control of a keyboard shortcut based on a character : letter (lowercase or uppercase), punctuation, number, or symbol character.",
+			"title" : "User does not have control of a character key based keyboard shortcut",
+			"detail" : "The user does not have control of a keyboard shortcut based on one or more character(s) : letter (lowercase or uppercase), punctuation, number, or symbol character.",
 			"solution" : "The user must be able to:\n - deactivate the shortcut\n - or modify the shortcut to add an extra key to the combination\n - or ensure that the shortcut is active only when taking focus of the component of the interface.",
 			"technicalSolution" : ""
 		}

@@ -1,7 +1,15 @@
 {
     "testID-001":[
         {
-			"title" : "Présence de champs non-labellisés",
+			"title" : "Présence de champs non étiqueté visuellement",
+			"detail" : "Tous les éléments de formulaire doivent posséder une étiquette.",
+			"solution" : "",
+			"technicalSolution" : "Exemples : \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- <h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n-  <input aria-label=\"[…]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
+		}
+    ],
+	"testID-067":[
+        {
+			"title" : "Présence de champs non-labellisés et liés",
 			"detail" : "Tous les éléments de formulaire doivent posséder un label.",
 			"solution" : "Appliquer une des solutions ci-dessous :\n- ajout d'un élément \"label\", en masquage accessible si nécessaire, lié de manière programmatique au champ\n- utilisation d'un aria-labelledby pointant vers une information pertinente pour comprendre la nature du champ \n- ajout d'un attribut aria-label\n- ajout d'un attribut title",
 			"technicalSolution" : "Exemples : \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- <h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n-  <input aria-label=\"[…]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
@@ -9,7 +17,7 @@
     ],
 	"testID-002": [
 		{
-			"title" : "Présence de champs non-pertinents",
+			"title" : "Présence d'étiquette de champs non-pertinents",
 			"detail" : "Tous les éléments de formulaire doivent posséder un label pertinent, permettant de comprendre la nature du champ.",
 			"solution" : "Compléter le libellé texte du label.",
 			"technicalSolution" : ""
@@ -423,7 +431,7 @@
 	"testID-039":[
 		{
 			"title" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier",
-			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur un caractère : lettre (minuscule ou majuscule), ponctuation, chiffre, ou caractère symbole.",
+			"detail" : "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur un ou des caractère(s) : lettre (minuscule ou majuscule), ponctuation, chiffre, ou caractère symbole.",
 			"solution" : "L'utilisateur doit pouvoir : \n - désactiver le raccourci \n - ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n - ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
 			"technicalSolution" : ""
 		}

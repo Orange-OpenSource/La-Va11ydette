@@ -84,7 +84,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Check that:</p> <ul><li>the error message is present visually,</li><li>it allows you to explicitly identify the field in error,</li></ul>",
+		"verifier": "<p>Check that:</p> <ul><li>there is an error message (addition of an error text, of an error icon...) present visually or the error message is programmatically linked to the field,</li><li>if the visual information does not have a text alternative (eg: icon without alternative), check that the field has an attribute <code>aria-invalid='true'</code></li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"resultatTest": "nt"
@@ -96,7 +96,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Check that an error message is present visually, and that it allows the field in error to be precisely identified and the nature of the error to be understood.</p>",
+		"verifier": "<p>Check that:</p> <ul><li> an error message is present visually,</li><li> and that it allows the field in error to be precisely identified and the nature of the error to be understood.</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"resultatTest": "nt"
@@ -200,7 +200,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
+		"verifier": "<p>If the table is a presentation table, add a <code>role='presentation'</code> attribute to the <code>table</code></p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"resultatTest": "nt"
 	},{
@@ -350,7 +350,7 @@
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the page to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>Check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
+		"verifier": "<p>The user should be able to determine if they wish to follow a link or activate a button, with context, if needed, to understand their function or their destination.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>Check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
 		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. Check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"resultatTest": "nt"
@@ -470,14 +470,14 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Keyboard navigation",
-		"title": "If a keyboard shortcut using a single key is available, does it meet one of the conditions below?",
+		"title": "If a keyboard shortcut using one or more character key(s) is available, does it meet one of the conditions below?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [
 			"2.1.4 A"
 		],
 		"verifier": "<ul><li> the shortcut can be disabled by the user </li><li>the shortcut is only active when the interface component has focus </li><li> A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) </li></ul>",
-		"exceptions": "<p>Keyboard shortcuts that include a modifier key and accesskeys (<code> accesskey </code>) are not affected.</p>",
+		"exceptions": "<p>Keyboard shortcuts that include a modifier key or an accesskeys (<code> accesskey </code>) are not affected.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"resultatTest": "nt"
 	},{

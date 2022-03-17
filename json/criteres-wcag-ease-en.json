@@ -369,8 +369,8 @@
 	},{
 		"themes": "Commun navigation",
 		"title": "Each button label is relevant?",
-		"ID": "testID-068",
-		"IDorigin": "testID-068",
+		"ID": "testID-069",
+		"IDorigin": "testID-069",
 		"wcag": [
 			"4.1.2 A"
 		],

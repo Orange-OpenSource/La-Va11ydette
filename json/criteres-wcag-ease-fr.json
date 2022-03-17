@@ -27,6 +27,19 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
+		"title": "Chaque champ de formulaire a-t-il un nom accessible ?&nbsp;?",
+		"ID": "testID-067",
+		"IDorigin": "testID-067",
+		"wcag": [
+			"1.3.1 A",
+			"4.1.2 A"
+		],
+		"verifier": "Tous les étiquettes sont bien liées à leurs champs, grâce às&nbsp;: <ol><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li></ol>",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"resultatTest": "nt"
+	},{
+		"themes": "Formulaire",
 		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
@@ -357,8 +370,8 @@
 	},{
 		"themes": "Navigation générale",
 		"title": "Chaque libellé de bouton est-il pertinent&nbsp;?",
-		"ID": "testID-068",
-		"IDorigin": "testID-068",
+		"ID": "testID-069",
+		"IDorigin": "testID-069",
 		"wcag": [
 			"4.1.2 A"
 		],

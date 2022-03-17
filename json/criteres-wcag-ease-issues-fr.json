@@ -1,17 +1,31 @@
 {
     "testID-001":[
         {
+			"title" : "Présence de champs non étiquetés visuellement",
+			"detail" : "Tous les éléments de formulaire doivent posséder une étiquette visible.",
+			"solution" : "Metre une étiquette pertinente, visible à proximité de tout champ de formulaire",
+			"technicalSolution" : ""
+		}
+    ],
+	"testID-067":[
+        {
+			"title" : "Présence de champs non liés au label",
+			"detail" : "Toutes les balises label doivent être liées au champ correspondant.",
+			"solution" : "La balise label doit avoir un attribut for pointant sur l'id de l'input correspondant",
+			"technicalSolution" : "Exemples : \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">"
+		},
+		{
 			"title" : "Présence de champs non-labellisés",
-			"detail" : "Tous les éléments de formulaire doivent posséder un label.",
+			"detail" : "Tous les éléments de formulaire doivent posséder un nom accessible.",
 			"solution" : "Appliquer une des solutions ci-dessous :\n- ajout d'un élément \"label\", en masquage accessible si nécessaire, lié de manière programmatique au champ\n- utilisation d'un aria-labelledby pointant vers une information pertinente pour comprendre la nature du champ \n- ajout d'un attribut aria-label\n- ajout d'un attribut title",
 			"technicalSolution" : "Exemples : \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- <h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n-  <input aria-label=\"[…]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
 		}
     ],
 	"testID-002": [
 		{
-			"title" : "Présence de champs non-pertinents",
-			"detail" : "Tous les éléments de formulaire doivent posséder un label pertinent, permettant de comprendre la nature du champ.",
-			"solution" : "Compléter le libellé texte du label.",
+			"title" : "Présence d'étiquette de champs non-pertinente",
+			"detail" : "Tous les éléments de formulaire doivent posséder une étiquette pertinente permettant de comprendre la nature du champ.",
+			"solution" : "Compléter le libellé texte de  l'étiquette afin de comprendre la fonction du champ ou/et les données attendues.",
 			"technicalSolution" : ""
 		}
 	],
@@ -338,10 +352,18 @@
 	],
 	"testID-028":[
 		{
-			"title" : "Présence de libellés non-compréhensibles dans leur contexte",
-			"detail" : "La cible d'un lien ou l'action portée par un bouton n'est pas compréhensible grâce à son contexte direct (texte environnant).",
+			"title" : "Présence de libellés de lien non-compréhensibles dans leurs contextes",
+			"detail" : "La cible d'un lien n'est pas compréhensible grâce à son contexte direct (texte environnant).",
 			"solution" : "Ajouter une information discriminante dans le texte environnant.",
 			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n - élément dans un paragraphe : compléter le texte du paragraphe (<p>[…]</p>) \n - élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n - élément dans une cellule de tableau : compléter le texte de la cellule (<td>[…]</td>) ou compléter l'entête directe de la cellule (<th>[…]</th>)."
+		}
+	],
+	"testID-069":[
+		{
+			"title" : "Présence de libellés de bouton non-compréhensibles",
+			"detail" : "L'action portée par un bouton n'est pas compréhensible.",
+			"solution" : "Ajouter une information discriminante dans l'intitulé des boutons.",
+			"technicalSolution" : "Le nom accessible du bouton doit permettre d'en comprendre la fonction, tout ou une partie du texte peut être caché de manière accessible."
 		}
 	],
 	"testID-030":[

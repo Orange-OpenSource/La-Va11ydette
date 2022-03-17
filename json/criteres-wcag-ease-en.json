@@ -14,17 +14,29 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Form",
-		"title": "Is every input field's label appropriate?",
+		"title": "Is every input field's label relevant?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
-			"2.4.6 AA",
-			"3.3.2 A"
+			"2.4.6 AA"
 		],
-		"verifier": "<p>Check that the accessible name of each input field is appropriate.</p>",
+		"verifier": "<p>Check that the accessible name of each input field is relevant.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"resultatTest": "nt"
+	},{
+		"themes": "Form",
+		"title": "Does each form field have an accessible name?",
+		"ID": "testID-067",
+		"IDorigin": "testID-067",
+		"wcag": [
+		"1.3.1 A",
+		"4.1.2 A"
+		],
+		"verify": "All labels are properly linked to their fields, using one of the following: <ol><li>an ARIA attribute <code>aria-label</code> in the field</li><li>an ARIA attribute <code>aria-labelledby</code> in the field</li><li>a <code>title</code> attribute in the <code>input</code> tag of the field</li><li >a <code>label</code> tag with a <code>for</code> attribute referencing the <code>id</code> of the field</li></ol>",
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
+		"resultTest": "nt"
 	},{
 		"themes": "Form",
 		"title": "Are the form elements grouped where it is necessary?",
@@ -200,7 +212,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
+		"verifier": "<p>If the table is a presentation table, add a <code>role='presentation'</code> attribute to the <code>table</code></p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"resultatTest": "nt"
 	},{
@@ -344,15 +356,26 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",
-		"title": "Each link or button label is explicit, at least if the user takes its context into consideration?",
+		"title": "Each link text is explicit, at least if the user takes its context into consideration?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the page to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>Check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
+		"verifier": "<p>The user should be able to determine if they wish to follow a link, with context, if needed, to understand his destination.</p><ul><li>check that there are not any identical link text pointing to different locations (URLs)</li><li>Check that it is possible to determine the action or destination of a link given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link can be inferred from its context</li></ul>",
 		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. Check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
+		"resultatTest": "nt"
+	},{
+		"themes": "Commun navigation",
+		"title": "Each button label is relevant?",
+		"ID": "testID-068",
+		"IDorigin": "testID-068",
+		"wcag": [
+			"4.1.2 A"
+		],
+		"verifier": "<p>The user must be able to find the button function with the button text. Verify that the action carried by the accessible name of each button is relevant .</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
 		"resultatTest": "nt"
 	},{
 		"themes": "Common navigation",

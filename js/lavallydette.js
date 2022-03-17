@@ -130,16 +130,8 @@ function initGlobalCriteriaListName(criteriaListName) {
 
 		initMainMenu();
 		localizeHTML();
-
-		var issuesRequest = new XMLHttpRequest();
-		issuesRequest.open("GET", "json/"+ checklistVallydette[currentCriteriaListName].filename+"-issues-" + globalLang + ".json", true);
-		issuesRequest.onreadystatechange = function () {
-	 	if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
-			issuesVallydette = JSON.parse(issuesRequest.responseText);
-	  	}	 
-	};
-	
-	issuesRequest.send();
+		loadIssue();
+		
 	  } 
 	};
 	
@@ -541,6 +533,7 @@ function eventHandler() {
 					initGlobalLang(dataVallydette.checklist.lang, true);
 					initGlobalTemplate(dataVallydette.checklist.template);
 					checkTheVersion(dataVallydette.checklist.version);
+					loadIssue();
 					document.getElementById("btnImport").click();
 					utils.putTheFocus(document.getElementById("checklistName"));
 					runLangRequest();
@@ -682,6 +675,7 @@ function getLocalStorage(auditName) {
 	initGlobalTemplate(dataVallydette.checklist.template);
 	
 	checkTheVersion(dataVallydette.checklist.version);	
+	loadIssue();
 
 	runLangRequest();						
 }
@@ -2717,6 +2711,21 @@ managementDeprecatedComment = function (data){
  */
 
 /**
+ * Load issue
+*/
+loadIssue = function (){
+	var issuesRequest = new XMLHttpRequest();
+	issuesRequest.open("GET", "json/"+ checklistVallydette[dataVallydette.checklist.referentiel].filename+"-issues-" + globalLang + ".json", true);
+	issuesRequest.onreadystatechange = function () {
+		if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+			issuesVallydette = JSON.parse(issuesRequest.responseText);
+		}	 
+	};
+	
+	issuesRequest.send();
+}
+
+/**
  * Issue popin initialization.
  * @param {string} targetId - current test ID.
  * @param {string} title - current test title.
@@ -2731,7 +2740,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<h5 class="modal-title" id="modalAddIssueTitle">' + langVallydette.issueTxt1 + titleModal + '</h5>';
 	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
-	htmlModal += '<form id="editForm">';
+	htmlModal += '<form id="editIssueForm">';
 	htmlModal += '<div class="modal-body">';
 	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
 	htmlModal += '<div class="mb-3">';
@@ -2763,7 +2772,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let elModal = document.getElementById('modalAddIssue');
 	elModal.innerHTML = htmlModal;
 
-	let currentEditForm = document.getElementById('editForm');
+	let currentEditForm = document.getElementById('editIssueForm');
  
 	currentEditForm.addEventListener('submit', function () {
 		event.preventDefault();
@@ -2881,7 +2890,7 @@ editIssue = function (targetId, issueIndex) {
 	
 	let htmlEditIssue = '';
 	
-	htmlEditIssue += '<form id="editIssueForm">';
+	htmlEditIssue += '<form id="editIssueForm2">';
 	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
 	htmlEditIssue += '<label class="mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
@@ -2901,7 +2910,7 @@ editIssue = function (targetId, issueIndex) {
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
 	elTitle.focus();
 
-	let issueForm = document.getElementById('editIssueForm');
+	let issueForm = document.getElementById('editIssueForm2');
 	issueForm.addEventListener('submit', function () {
 		event.preventDefault();
 		

@@ -3,7 +3,7 @@
         {
 			"title" : "Presence of non-visually labeled fields",
 			"detail" : "All form elements must have a visible label.",
-			"solution" : "Set uop a visible relevant label for each field",
+			"solution" : "Set up a visible relevant label for each field",
 			"technicalSolution" : ""
 		}
     ],

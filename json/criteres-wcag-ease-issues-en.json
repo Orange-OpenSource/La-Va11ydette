@@ -301,7 +301,7 @@
 		{
 			"title" : "Insufficient contrast for non-underlined links",
 			"detail" : "Non-underlined links must have a sufficient contrast ratio with the surrounding text.",
-			"solut8ion" : "Ensure a minimum contrast of 4.5: 1 between an un-underlined link and the surrounding text of normal sizes (less than 24px CSS and 19px CSS in bold). Ensure a minimum 3: 1 contrast between a non-underlined link and the surrounding text of large sizes (greater than 24px CSS and 19px CSS in bold).",
+			"solution" : "Ensure a minimum contrast of 4.5: 1 between an un-underlined link and the surrounding text of normal sizes (less than 24px CSS and 19px CSS in bold). Ensure a minimum 3: 1 contrast between a non-underlined link and the surrounding text of large sizes (greater than 24px CSS and 19px CSS in bold).",
 			"technicalSolution" : ""
 		}
     ],

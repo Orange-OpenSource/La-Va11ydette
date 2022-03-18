@@ -4,11 +4,10 @@
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
-			"1.3.1 A",
-			"2.4.6 AA",
 			"3.3.2 A"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque champ est défini.</p>",
+		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
+		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"resultatTest": "nt"
@@ -18,10 +17,9 @@
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
-			"2.4.6 AA",
-			"3.3.2 A"
+			"2.4.6 AA"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque champ est pertinent.</p>",
+		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"resultatTest": "nt"

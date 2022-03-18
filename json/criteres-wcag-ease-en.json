@@ -33,7 +33,7 @@
 		"1.3.1 A",
 		"4.1.2 A"
 		],
-		"verifier": "All labels are properly linked to their fields, using one of the following: <ol><li>an ARIA attribute <code>aria-label</code> in the field</li><li>an ARIA attribute <code>aria-labelledby</code> in the field</li><li>a <code>title</code> attribute in the <code>input</code> tag of the field</li><li >a <code>label</code> tag with a <code>for</code> attribute referencing the <code>id</code> of the field</li></ol>",
+		"verifier": "All labels are properly linked to their fields, using one of the following: <ol><li>an ARIA attribute <code>aria-labelledby</code> in the field</li><li>an ARIA attribute <code>aria-label</code> in the field</li><li>a <code>label</code> tag with a <code>for</code> attribute referencing the <code>id</code> of the field</li><li>a <code>title</code> attribute in the <code>input</code> tag of the field</li></ol>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"resultTest": "nt"

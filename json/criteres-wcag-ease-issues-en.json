@@ -1,15 +1,28 @@
 {
     "testID-001":[
         {
-			"title" : "Presence of non-labeled fields",
-			"detail" : "All form elements must have a label.",
-			"solution" : "Apply one of the solutions below: \n - addition of a \"label\" element, in accessible masking if necessary, programmatically linked to the field \n - use of an aria-labelledby pointing to relevant information for understand the nature of the field \n- adding an aria-label attribute \n - adding a title attribute",
-			"technicalSolution" : "Examples: \n -<label for=\"idInput\"> […] </label> <input id=\"idInput\" type=\"[…]\"> \n - <h2 id=\"idHeading\"> […] </h2> <input aria-labelledby=\"idHeading\" type=\"[…]\"> \n - <input aria-label=\"[…]\" type=\"[…]\"> \n - <input title=\"[…]\" type=\"[…]\">"
+			"title" : "Presence of non-visually labeled fields",
+			"detail" : "All form elements must have a visible label.",
+			"solution" : "Set up a visible relevant label for each field",
+			"technicalSolution" : ""
 		}
     ],
+	"testID-067":[
+		{
+			"title": "Presence of fields not linked to their labels",
+			"detail" : "All label tags must be linked to the corresponding field.",
+			"solution": "The label tag must have a for attribute pointing to the id of the corresponding input",
+			"technicalSolution": "Examples: \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">"
+			},
+			{
+			"title": "Presence of unlabeled fields",
+			"detail" : "All form elements must have an accessible name.",
+			"solution": "Apply one of the solutions below:\n- add a \"label\" element, in masking accessible if necessary, programmatically linked to the field\n- use an aria-labelledby pointing to relevant information to understand the nature of the field \n- addition of an aria-label attribute\n- addition of a title attribute",
+			"technicalSolution": "Examples: \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- < h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n- <input aria-label=\"[… ]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
+			}	],
 	"testID-002": [
 		{
-			"title" : "Presence of irrelevant fields",
+			"title" : "Presence of irrelevant field labels",
 			"detail" : "All form elements must have a relevant label, allowing to understand the purpose of the field.",
 			"solution" : "Complete the text of the label.",
 			"technicalSolution" : ""
@@ -338,10 +351,18 @@
 	],
 	"testID-028":[
 		{
-			"title" : "Presence of link or button texts that are not understandable in their context",
-			"detail" : "The target of a link or the action carried by a button is not understandable thanks to its direct context (surrounding text).",
+			"title" : "Presence of link texts that are not understandable in their context",
+			"detail" : "The target of a link is not understandable even with its direct context (surrounding text).",
 			"solution" : "Add discriminating information in the surrounding text.",
 			"technicalSolution" : "The solution depends on the context in which the element is used: \n - element in a paragraph: complete the text of the paragraph (<p> […] </p>) \n - element in a list: complete a item from the list (<ul>, <ol>) \n - element in a table cell: complete the text of the cell (<td> […] </td>) or complete the direct header of the cell (<th> […] </th>)."
+		}
+	],
+	"testID-069":[
+		{
+			"title": "Presence of irrelevant button labels",
+			"detail": "The action carried by a button is not understandable.",
+				"solution": "Add discriminating information in the text of the buttons.",
+		"technicalSolution": "The accessible name of the button must make it possible to understand its function, all or part of the text can be hidden in an accessible way."
 		}
 	],
 	"testID-030":[

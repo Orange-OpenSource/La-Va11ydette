@@ -353,7 +353,7 @@
 	"testID-028":[
 		{
 			"title" : "Présence de libellés de lien non-compréhensibles dans leurs contextes",
-			"detail" : "La cible d'un lien n'est pas compréhensible grâce à son contexte direct (texte environnant).",
+			"detail" : "La cible d'un lien n'est pas compréhensible même en s'aidant de son contexte direct (texte environnant).",
 			"solution" : "Ajouter une information discriminante dans le texte environnant.",
 			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n - élément dans un paragraphe : compléter le texte du paragraphe (<p>[…]</p>) \n - élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n - élément dans une cellule de tableau : compléter le texte de la cellule (<td>[…]</td>) ou compléter l'entête directe de la cellule (<th>[…]</th>)."
 		}

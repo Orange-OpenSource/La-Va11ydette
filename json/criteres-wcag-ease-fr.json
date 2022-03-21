@@ -32,7 +32,7 @@
 			"1.3.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "Tous les étiquettes sont bien liées à leurs champs, grâce às&nbsp;: <ol><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li></ol>",
+		"verifier": "Tous les étiquettes sont bien liées à leurs champs, grâce à&nbsp;: <ol><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li></ol>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"resultatTest": "nt"
@@ -361,7 +361,7 @@
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination .</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son nom accessible</li><li>si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
+		"verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son nom accessible</li><li>si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
 		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"resultatTest": "nt"

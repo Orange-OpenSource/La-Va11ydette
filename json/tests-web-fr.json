@@ -406,7 +406,7 @@
 }, {
 	"themes": "Navigation générale",
 	"title": "La structure sémantique globale du document est-elle cohérente&nbsp;?",
-	"type": ["Wave Toolbar"],
+	"type": ["Wave toolbar"],
 	"tests": ["Lancer Wave > Structure", "Examiner la hiérarchisation des landmarks ARIA"],
 	"verifier": ["<ul><li>vérifier que chaque région de la page possède une sémantique pertinente à travers des balises de structure HTML5 <code>header</code>, <code>nav</code>…</li><li>vérifier que le contenu principal est inclus dans une balise <code>main</code></li><li>vérifier que l'élément <code>main</code> ne contient pas d'éléments répétés ailleurs dans la page (ex&nbsp;: navigation)</li></ul>"],
 	"resultat": ["Les différentes régions sont clairement identifiables programmatiquement"],

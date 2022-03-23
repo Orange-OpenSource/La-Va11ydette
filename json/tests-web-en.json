@@ -252,6 +252,20 @@
 	"IDorigin": "testWebID-17"
 }, {
 	"themes": "Colors and contrasts",
+	"title": "Provide enough contrast between text and background / CSS colors",
+	"type": ["Manual Test"],
+	"tests": ["For each text whose color is defined by the CSS <code>color</code> property, the <code>background-color</code> property must also be defined and vice versa"],
+	"verify": ["<p>To verify this simply, in Firefox we modify in Settings > Language and appearance > Fonts and colors > Colors > Text and background, the Text and Background color with clearly identifiable colors</p><ul><li>If the text color is defined (<code>color</code>), the background color must be too (<code>background-color</code>).< /li><li>If the background color is defined (<code>background-color</code>), the text color must be too (<code>color</code>).</li> <li>If a background image (<code>background-image</code>) is used for an element containing text with a <code>color</code> CSS property set, the background color must be set too (<code>background-color</code>) and vice versa.</li></ul>"],
+	"result": ["The CSS colors (<code>color</code> and <code>background-color</code> properties) of text and background are both set or neither ."],
+	"exception": "",
+	"shortcuts": "",
+	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
+	"profiles": ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
+	"wcag": ["1.4.3"],
+	"ID": "testWebID-61",
+	"IDorigin": "testWebID-61"
+	}, {
+	"themes": "Colors and contrasts",
 	"title": "Do not use colour or sensory characteristics as the unique source of information / color",
 	"type": ["Manual test"],
 	"tests": ["Identify elements using color to convey information"],

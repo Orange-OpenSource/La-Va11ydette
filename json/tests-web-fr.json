@@ -17,7 +17,7 @@
 	"title": "Donner des titres aux rubriques",
 	"type": ["Wave toolbar"],
 	"tests": ["Lancer Wave > Structure", "Examiner la hiérarchisation de titre"],
-	"verifier": ["Vérifier que les titres sont pertinents et non vides", "Vérifier que les titres s'enchaînent de façon logique", "Vérifier l'absence de sauts dans la hiérarchie des titres"],
+	"verifier": ["Vérifier que les titres sont pertinents et non vides", "Vérifier que les titres s’enchainent de façon logique", "Vérifier l'absence de sauts dans la hiérarchie des titres"],
 	"resultat": ["Tous les contenus, traités visuellement comme des titres, possèdent une sémantique de titre (balises <code>&lt;h1&gt;</code> à <code>&lt;h6&gt;</code>)", " Les titres de niveaux sont hiérarchisés de manière logique"],
 	"exception": "Ne pas tenir compte des titres masqués (<code>visibility:hidden</code>, <code>aria-hidden='true'</code> ou <code>display:none</code>). Si un de ces titres masqués est susceptible d'apparaître, il faut refaire les observations sur la nouvelle structuration du titrage.",
 	"raccourcis": "",
@@ -252,6 +252,20 @@
 	"IDorigin": "testWebID-17"
 }, {
 	"themes": "Couleurs et contrastes",
+	"title": "Ne pas utiliser la couleur ou l’information sensorielle comme seule source d’information / couleurs CSS",
+	"type": ["Test manuel"],
+	"tests": ["Pour chaque texte dont la couleur est définie par la propriété CSS <code>color</code>, la propriété <code>background-color</code> doit être également renseignée et inversement"],
+	"verifier": ["<p>Pour vérifier cela simplement, dans Firefox on modifie dans Paramètres > Langue et apparence > Polices et couleurs > Couleurs > Texte et arrière-plan, la couleur Texte et Arrière-plan avec des couleurs bien identifiables</p><ul><li>Si la couleur du texte est redéfinie (<code>color</code>), la couleur du fond doit l'être également (<code>background-color</code>).</li><li>Si la couleur du fond est redéfinie (<code>background-color</code>), la couleur du texte doit l'être également (<code>color</code>).</li><li>Si une image de fond (<code>background-image</code>) est utilisée pour un élément contenant du texte avec une propriété CSS <code>color</code> définie, la couleur du fond doit être définie (<code>background-color</code>) elle-aussi et inversement.</li></ul>"],
+	"resultat": ["Les couleurs CSS (propriétés <code>color</code> et <code>background-color</code>) de texte et de fond sont définies toutes les deux ou ni l'une ni l'autre."],
+	"exception": "",
+	"raccourcis": "",
+	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
+	"profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+	"wcag": ["1.4.3"],
+	"ID": "testWebID-61",
+	"IDorigin": "testWebID-61"
+}, {
+	"themes": "Couleurs et contrastes",
 	"title": "Ne pas utiliser la couleur ou l’information sensorielle comme seule source d’information / couleur",
 	"type": ["Test manuel"],
 	"tests": ["Identifier les éléments utilisant de la couleur pour porter de l'information"],
@@ -392,7 +406,7 @@
 }, {
 	"themes": "Navigation générale",
 	"title": "La structure sémantique globale du document est-elle cohérente&nbsp;?",
-	"type": ["Wave Toolbar"],
+	"type": ["Wave toolbar"],
 	"tests": ["Lancer Wave > Structure", "Examiner la hiérarchisation des landmarks ARIA"],
 	"verifier": ["<ul><li>vérifier que chaque région de la page possède une sémantique pertinente à travers des balises de structure HTML5 <code>header</code>, <code>nav</code>…</li><li>vérifier que le contenu principal est inclus dans une balise <code>main</code></li><li>vérifier que l'élément <code>main</code> ne contient pas d'éléments répétés ailleurs dans la page (ex&nbsp;: navigation)</li></ul>"],
 	"resultat": ["Les différentes régions sont clairement identifiables programmatiquement"],

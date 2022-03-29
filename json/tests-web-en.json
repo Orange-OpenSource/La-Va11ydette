@@ -260,7 +260,7 @@
 	"exception": "",
 	"shortcuts": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
-	"profiles": ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
+	"profils": ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
 	"wcag": ["1.4.3"],
 	"ID": "testWebID-61",
 	"IDorigin": "testWebID-61"

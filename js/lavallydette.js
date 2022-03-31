@@ -1268,9 +1268,6 @@ function localizeHTML() {
 		if (eleToLocalize !== null) {
 			eleToLocalize.innerHTML = langVallydette.template[key];
 		}
-		if (key === "selectFilesLabel") {
-			eleToLocalize.setAttribute('data-browse', langVallydette.dataBrowse);
-		}
 	});
 	
 	Object.keys(langVallydette.title).forEach(function (key) {

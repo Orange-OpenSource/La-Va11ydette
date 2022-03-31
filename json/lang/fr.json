@@ -63,7 +63,6 @@
 	"download": "Télécharger",
 	"selectAchecklist": "Sélectionner une checklist",
 	"reset": "Réinitialiser",
-	"selectAudit": "Sélectionner un audit",
 	"name": "Nom",
 	"required": "requis",
 	"url": "URL",
@@ -192,8 +191,7 @@
 		"btnShowResult": "Conformité",
 		"btnImportTxt": "Importer",
 		"btnExportTxt": "Exporter",
-		"selectFilesLabel": "Sélectionner un audit",
-		"import": "Importer",
+		"import": "Charger l'audit",
 		"status1": "conforme",
 		"status2": "non-conforme",
 		"status3": "non-applicable",
@@ -220,7 +218,8 @@
 	},
 	"ariaLabelOnly": {
 		"nav-lang": "À propos et changement de langues",
-		"nav-back-to-top": "Retour en haut de la page"
+		"nav-back-to-top": "Retour en haut de la page",
+		"selectFiles": "Sélectionner un audit (JSON)"
 	},
 	"url": {
 		"link-about": "https://a11y-guidelines.orange.com/fr/web/audit-wcag/"

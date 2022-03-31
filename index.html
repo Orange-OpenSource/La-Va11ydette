@@ -67,6 +67,11 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
       background-color: #F6F6F6;
     }
 
+    #selectFiles:hover , #selectFiles:focus{
+        border: .250rem solid #f16e00!important;
+        border-right: none;
+    }
+
     @media print {
       body {
         padding-top: 0 !important;
@@ -168,15 +173,14 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
       <div class="collapse w-100 border-top border-900" id="import-form">
         <div class="container py-3">
           <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-9">
               <div class="input-group">
-                  <input class="form-control" id="selectFiles" type="file" accept="application/JSON">
-                  <label class="input-group-text" id="selectFilesLabel" for="selectFiles"
-                    aria-describedby="import">Sélectionner un audit</label>
+                  <input class="form-control" id="selectFiles" type="file" accept="application/JSON" aria-label="Sélectionner un audit">
               </div>
+              
             </div>
-            <div class="col-sm-2">
-              <button class="btn btn-info border-white" type="button" id="import">Importer</button>
+            <div class="col-sm-3">
+            <button class="btn btn-info border-white" type="button" id="import">Charger</button>
               <button id="btnImportClose" type="button" class="btn btn-secondary btn-info border-white" title=""
                 data-bs-toggle="collapse" data-bs-target="#import-form" aria-expanded="false" aria-controls="import-form">
                 <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg"

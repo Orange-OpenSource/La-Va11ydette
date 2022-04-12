@@ -321,11 +321,11 @@
 	"IDorigin": "testWebID-21"
 }, {
 	"themes": "General navigation",
-	"title": "Link and button labels must be understandable out of context / identical labels",
+	"title": "Link labels must be understandable in context / identical labels",
 	"type": ["Manual test - Code inspector"],
-	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items, <br/>If the test cannot be validated in step 3, inspect the <code>title</code> and <code>title</code> attributes"],
+	"tests": ["Run the code inspector of the browser", "Locate links and all navigation items", "Inspect the text wording of these items and its context, <br/>If the test cannot be validated in step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
 	"verifier": ["Check that there are no identical labels pointing to different destinations"],
-	"resultat": ["Links, buttons and navigation items with identical wording, point to the same target, or do the same action."],
+	"resultat": ["Links and navigation items with identical wording in context, point to the same target, or do the same action."],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
@@ -335,11 +335,11 @@
 	"IDorigin": "testWebID-22"
 }, {
 	"themes": "General navigation",
-	"title": "Link and button labels must be understandable in context / labels",
+	"title": "Link labels must be understandable in context / labels",
 	"type": ["Manual test - Code inspector"],
-	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
-	"verifier": ["Verify that the action or destination of a link or button can be determined using information that can be determined programmatically from text that is in the same paragraph, list, or same table cell or in a table header cell associated with the table cell."],
-	"resultat": ["Links, buttons and navigation items are understandable in context"],
+	"tests": ["Run the code inspector of the browser", "Locate links and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
+	"verifier": ["Verify that the action or destination of a link can be determined using information that can be determined programmatically from text that is in the same paragraph, list, or same table cell or in a table header cell associated with the table cell."],
+	"resultat": ["Links and navigation items are understandable in context"],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
@@ -349,21 +349,35 @@
 	"IDorigin": "testWebID-23"
 }, {
 	"themes": "General navigation",
-	"title": "Link and button labels must be understandable out of context / labels",
+	"title": "Link labels must be understandable out of context / labels",
 	"type": ["Manual test - Code inspector"],
-	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
-	"verifier": ["Verify that it is possible to determine the action or destination of a link or button, only from its <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='blank' title='accessible name (new window)' aria-label='accessible name (new window)' >accessible name</a>"],
-	"resultat": ["Links, buttons and navigation items are understandable out of context"],
+	"tests": ["Run the code inspector of the browser", "Locate links and all navigation items", "Inspect the text wording of these items", "If the test cannot be validated as early as step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
+	"verifier": ["Verify that it is possible to determine the action or destination of a link, only from its <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='blank' title='accessible name (new window)' aria-label='accessible name (new window)' >accessible name</a>"],
+	"resultat": ["Links and navigation items are understandable out of context"],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 	"profils": ["Developer", "Accessibility Expert"],
-	"wcag": ["2.4.4"],
+	"wcag": ["2.4.9"],
 	"ID": "testWebID-24",
 	"IDorigin": "testWebID-24"
-}, {
+},  {
 	"themes": "General navigation",
-	"title": "Make text of links and buttons accessible / names",
+	"title": "Link labels must be understandable out of context / identical labels",
+	"type": ["Manual test - Code inspector"],
+	"tests": ["Run the code inspector of the browser", "Locate links and all navigation items", "Inspect the text wording of these items, <br/>If the test cannot be validated in step 3, inspect the <code>aria-label</code> and <code>title</code> attributes"],
+	"verifier": ["Check that there are no identical labels pointing to different destinations"],
+	"resultat": ["Links and navigation items with identical wording out of context, point to the same target."],
+	"exception": "",
+	"raccourcis": "",
+	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
+	"profils": ["Developer", "Accessibility Expert"],
+	"wcag": ["2.4.9"],
+	"ID": "testWebID-62",
+	"IDorigin": "testWebID-62"
+},{
+	"themes": "General navigation",
+	"title": "Make text of links accessible / names",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of the browser", "Locate links, buttons and all navigation items", "Compare the text of links, buttons... or the text of the image and <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a> of these items"],
 	"verifier": ["Verify that the text of the displayed label (the text or the text of image of interactive items) is present (first, if possible) in the (accessible) name of this component (more details, <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a>"],
@@ -377,7 +391,7 @@
 	"IDorigin": "testWebID-25"
 }, {
 	"themes": "General navigation",
-	"title": "Make the text of links and buttons understandable without context / downloading of documents",
+	"title": "Make the text of links understandable without context / downloading of documents",
 	"type": ["Manual test - Code inspector"],
 	"tests": ["Run the code inspector of tne browser", "Locate the links (or other) allowing the downloading of documents (pdf, word processor, video, audio, etc.)", "Inspect the text label of these items"],
 	"verifier": ["Check that the text of the link contains:", "the name/title of the document", "the type of document: pdf, text, mp3, etc.", "if necessary, the language of the document", "the approximate weight of the document"],
@@ -684,6 +698,20 @@
 	"IDorigin": "testWebID-47"
 }, {
 	"themes": "Forms",
+	"title": "Associate a relevant label to each form field - Relevance of button labels",
+	"type": ["Manual test"],
+	"tests": ["Manual test", "Browse forms"],
+	"verifier": ["Verify that for any button (<code>button</code> element, or <code>input type=\"button\"</code>), the accessible name is relevant"],
+	"resultat": ["Presence of a relevant (specific and unique) accessible name for any button"],
+	"exception": "",
+	"raccourcis": "",
+	"moreInfo": "https://a11y-guidelines.orange.com/en/articles/accessible-name/",
+	"profils":  ["Qualifier - advanced checklist", "Developer", "Accessibility Expert"],
+	"wcag": ["2.4.6", "3.3.2"],
+	"ID": "testWebID-63",
+	"IDorigin": "testWebID-63"
+}, {
+	"themes": "Forms",
 	"title": "Associate a relevant label to each form field - Relevance of labels",
 	"type": ["Manual test"],
 	"tests": ["Manual test", "Browse forms"],
@@ -701,7 +729,7 @@
 	"title": "Associate a relevant label to each form field - Data formats",
 	"type": ["Manual test"],
 	"tests": ["Manual test", "Identify each forms"],
-	"verifier": ["Check that the data format is present in the accessible name or the accessible description (aria-describedby) and visible."],
+	"verifier": ["Check that the data format is present in the accessible name or, but less supported, the accessible description (aria-describedby) and visible."],
 	"resultat": ["Presence of text specifying the input formats"],
 	"exception": "",
 	"raccourcis": "",

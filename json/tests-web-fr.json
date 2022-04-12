@@ -321,21 +321,21 @@
 	"IDorigin": "testWebID-21"
 }, {
 	"themes": "Navigation générale",
-	"title": "Rendre les intitulés des liens et des boutons compréhensibles hors contexte / libellés identiques",
+	"title": "Rendre les intitulés des liens compréhensibles en contexte / libellés identiques",
 	"type": ["Test manuel - Inspecteur de code"],
-	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens, boutons et tous les items de navigation", "Inspecter le libellé texte de ces items, <br/>Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"],
+	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens et tous les items de navigation", "Inspecter le libellé texte de ces items et son contexte, <br/>Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"],
 	"verifier": ["Vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes"],
-	"resultat": ["Les liens, boutons et items de navigation ayant un libellé identique, pointent vers la même cible, ou portent la même action"],
+	"resultat": ["Les liens et items de navigation ayant un libellé identique en contexte, pointent vers la même cible"],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 	"profils": ["Développeur", "Expert Accessibilité"],
-	"wcag": ["2.4.9"],
+	"wcag": ["2.4.4"],
 	"ID": "testWebID-22",
 	"IDorigin": "testWebID-22"
 }, {
 	"themes": "Navigation générale",
-	"title": "Rendre les intitulés des liens et des boutons compréhensibles en contexte / libellés",
+	"title": "Rendre les intitulés des liens compréhensibles en contexte / libellés",
 	"type": ["Test manuel - Inspecteur de code"],
 	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens, boutons et tout items de navigation", "Inspecter le libellé texte de ces items et son contexte HTML", "Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"],
 	"verifier": ["Vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton grâce à des informations pouvant être déterminées par programme à partir du texte qui se trouve dans le même paragraphe, la même liste ou la même cellule de tableau ou dans une cellule d'en-tête de tableau associée à la cellule de tableau."],
@@ -349,11 +349,11 @@
 	"IDorigin": "testWebID-23"
 }, {
 	"themes": "Navigation générale",
-	"title": "Rendre les intitulés des liens et des boutons compréhensibles hors contexte / libellés",
+	"title": "Rendre les intitulés des liens compréhensibles hors contexte / libellés",
 	"type": ["Test manuel - Inspecteur de code"],
-	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens, boutons et tout items de navigation", "Inspecter le libellé texte de ces items", "Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"],
-	"verifier": ["Vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton, uniquement à partir de son <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='blank' title='nom accessible (nouvelle fenêtre)' aria-label='nom accessible (nouvelle fenêtre)' > nom accessible</a>)"],
-	"resultat": ["Les liens, boutons et items de navigation sont compréhensibles hors contextes"],
+	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens et tout items de navigation", "Inspecter le libellé texte de ces items", "Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"],
+	"verifier": ["Vérifier qu'il est possible de déterminer l'action ou la destination d'un lien, uniquement à partir de son <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='blank' title='nom accessible (nouvelle fenêtre)' aria-label='nom accessible (nouvelle fenêtre)' > nom accessible</a>)"],
+	"resultat": ["Les liens et items de navigation sont compréhensibles hors contextes"],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
@@ -361,7 +361,21 @@
 	"wcag": ["2.4.9"],
 	"ID": "testWebID-24",
 	"IDorigin": "testWebID-24"
-}, {
+},  {
+	"themes": "Navigation générale",
+	"title": "Rendre les intitulés des liens compréhensibles hors contexte / libellés identiques",
+	"type": ["Test manuel - Inspecteur de code"],
+	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens et tous les items de navigation", "Inspecter le libellé texte de ces items hors contexte, <br/>Si le test ne peut être validé dès l'étape 3, inspecter les attributs <code>aria-label</code> et <code>title</code>"],
+	"verifier": ["Vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes"],
+	"resultat": ["Les liens et items de navigation ayant un libellé identique hors contexte, pointent vers la même cible"],
+	"exception": "",
+	"raccourcis": "",
+	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
+	"profils": ["Développeur", "Expert Accessibilité"],
+	"wcag": ["2.4.9"],
+	"ID": "testWebID-62",
+	"IDorigin": "testWebID-62"
+},{
 	"themes": "Navigation générale",
 	"title": "Rendre les intitulés des liens et des boutons accessibles / noms",
 	"type": ["Test manuel - Inspecteur de code"],
@@ -377,7 +391,7 @@
 	"IDorigin": "testWebID-25"
 }, {
 	"themes": "Navigation générale",
-	"title": "Rendre les intitulés des liens et des boutons compréhensibles hors contexte / téléchargement de documents",
+	"title": "Rendre les intitulés des liens compréhensibles hors contexte / téléchargement de documents",
 	"type": ["Test manuel - Inspecteur de code"],
 	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens (ou autre) permettant le téléchargement de documents (pdf, traitement de texte, vidéo, audio...)", "Inspecter le libellé texte de ces éléments"],
 	"verifier": ["Vérifier que le libellé du lien contient&nbsp;", "le nom/titre du document", "le type de document&nbsp;: pdf, texte, mp3...", "si besoin, la langue du document", "le poids approximatif du document"],
@@ -446,7 +460,7 @@
 	"IDorigin": "testWebID-30"
 }, {
 	"themes": "Navigation générale",
-	"title": "S’assurer que l’utilisateur garde le contrôle lors des interactions - Content on Hover or Focus",
+	"title": "S’assurer que l’utilisateur garde le contrôle lors des interactions - Contenu on Hover or Focus",
 	"type": ["Test manuel"],
 	"tests": ["Identifier les contenus additionnels s'affichant à la prise de focus ou au survol de la souris (ex : tooltip)"],
 	"verifier": ["Vérifier que l'utilisateur peut déplacer le pointeur, de l'élément déclencheur, vers le contenu additionnel, sans que celui-ci ne se ferme", "Vérifier qu'un mécanisme permet de faire disparaître le contenu additionnel sans avoir à déplacer le  pointeur, ni le focus", "Vérifier que le contenu apparu reste visible tant que l'utilisateur n'interagit pas avec l'élément déclencheur et que le contenu reste valide"],
@@ -684,6 +698,20 @@
 	"IDorigin": "testWebID-47"
 }, {
 	"themes": "Formulaires",
+	"title": "Associer une étiquette pertinente à chaque champ de formulaire - Pertinence des libellés de bouton",
+	"type": ["Test manuel"],
+	"tests": ["Test manuel", "Parcourir les formulaires"],
+	"verifier": ["Vérifier que pour tout bouton (élément <code>button</code>, ou <code>input type=\"button\"</code>), le nom accessible est pertinent"],
+	"resultat": ["Présence d'un nom accessible pertinent (spécifique et unique) pour tout bouton"],
+	"exception": "",
+	"raccourcis": "",
+	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+	"profils": ["Qualifieur - checklist avancée", "Développeur", "Expert Accessibilité"],
+	"wcag": ["2.4.6", "3.3.2"],
+	"ID": "testWebID-63",
+	"IDorigin": "testWebID-63"
+}, {
+	"themes": "Formulaires",
 	"title": "Associer une étiquette pertinente à chaque champ de formulaire - Pertinence des labels",
 	"type": ["Test manuel"],
 	"tests": ["Test manuel", "Parcourir les formulaires"],
@@ -701,7 +729,7 @@
 	"title": "Associer une étiquette pertinente à chaque champ de formulaire - Formats de données",
 	"type": ["Test manuel"],
 	"tests": ["Test manuel", "Parcourir les formulaires"],
-	"verifier": ["Vérifier que le format de données est présent dans l’accessible name ou l’accessible description (aria-describedby) et visible."],
+	"verifier": ["Vérifier que le format de données est présent dans l’accessible name ou, mais moins bon support, l’accessible description (aria-describedby) et visible."],
 	"resultat": ["Présence de texte précisent le formats de saisie"],
 	"exception": "",
 	"raccourcis": "",

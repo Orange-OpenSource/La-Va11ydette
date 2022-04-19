@@ -25,7 +25,7 @@
 		"resultatTest": "nt"
 	},{
 		"themes": "Formulaire",
-		"title": "Chaque champ de formulaire a-t-il un nom accessible ?&nbsp;?",
+		"title": "Chaque champ de formulaire a-t-il un nom accessible&nbsp;?",
 		"ID": "testID-067",
 		"IDorigin": "testID-067",
 		"wcag": [

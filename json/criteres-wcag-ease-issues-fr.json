@@ -153,7 +153,7 @@
         },
         {
                 "title" : "Absence de sémantique de bouton HTML ",
-                "detail" : "Les éléments interactifs déclanchant une action doivent utiliser une sémantique de bouton HTML. ",
+                "detail" : "Les éléments interactifs déclenchant une action doivent utiliser une sémantique de bouton HTML. ",
                 "solution" : "Utiliser la sémantique <button> ou <input type=\"button\"> ",
                 "technicalSolution" : ""
         }

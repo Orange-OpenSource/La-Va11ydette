@@ -2887,7 +2887,7 @@ editIssue = function (targetId, issueIndex) {
 	
 	let htmlEditIssue = '';
 	
-	htmlEditIssue += '<form id="editIssueForm2">';
+	htmlEditIssue += '<form id="editIssueForm-'+ targetId +'-'+ issueIndex+'">';
 	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
 	htmlEditIssue += '<label class="mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
@@ -2907,8 +2907,8 @@ editIssue = function (targetId, issueIndex) {
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
 	elTitle.focus();
 
-	let issueForm = document.getElementById('editIssueForm2');
-	issueForm.addEventListener('submit', function () {
+	let issueForm = document.getElementById('editIssueForm-'+ targetId +'-'+ issueIndex);
+	issueForm.addEventListener('submit', function (event) {
 		event.preventDefault();
 		
 		saveIssue(targetId, issueIndex, this);

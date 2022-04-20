@@ -2188,10 +2188,14 @@ addPage = function () {
 
 	/**  Enabled delete button */
 	var currentBtnDelPage = document.getElementById('btnDelPage');
-	currentBtnDelPage.disabled = false;
+	if( null != currentBtnDelPage ){
+		currentBtnDelPage.disabled = false;
+	}
+	
 	
 	showPage(currentIdPage);
 	document.getElementById('btnPageName').click();
+	document.getElementById("nameValue").select();
 
 }
 

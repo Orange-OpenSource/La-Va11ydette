@@ -1892,7 +1892,7 @@ function runFinalComputation(pagesResultsArray) {
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
-		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tabResultatPage">';
+		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" aria-labelledby="tabResultatPage">';
 		
 		
 		for (let i in pagesResultsArray) {
@@ -1909,23 +1909,23 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '  </div>';
 		
-		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsynthesePages">';
+		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" aria-labelledby="tabsynthesePages">';
 		computationContent += '<div class="table-responsive">'
 		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
-		computationContent += '<th scope="row">' + langVallydette.auditTxt17 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.compliant + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.nonCompliant + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.notApplicable + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.auditTxt8 + '</th>';
+		computationContent += '<th id="critere">' + langVallydette.auditTxt17 + '</th>';
+		computationContent += '<th id="conforme" headers="critere" colspan="2" class="text-center">' + langVallydette.compliant + '</th>';
+		computationContent += '<th id="non-conforme" headers="critere" colspan="2" class="text-center">' + langVallydette.nonCompliant + '</th>';
+		computationContent += '<th id="non-applicable" headers="critere" colspan="2" class="text-center">' + langVallydette.notApplicable + '</th>';
+		computationContent += '<th id="conformite" rowspan="2" class="text-center bg-light">' + langVallydette.auditTxt8 + '</th>';
 		computationContent += '</tr><tr>';
-		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
-		computationContent += '<th scope="col" class="text-center">A</th>';
-		computationContent += '<th scope="col" class="text-center">AA</th>';
-		computationContent += '<th scope="col" class="text-center">A</th>';
-		computationContent += '<th scope="col" class="text-center">AA</th>';
-		computationContent += '<th scope="col" class="text-center">A</th>';
-		computationContent += '<th scope="col" class="text-center">AA</th>';
+		computationContent += '<th id="niveau">' + langVallydette.auditTxt10 + '</th>';
+		computationContent += '<th id="a-conforme" headers="niveau conforme" class="text-center">A</th>';
+		computationContent += '<th id="aa-conforme" headers="niveau conforme" class="text-center">AA</th>';
+		computationContent += '<th id="a-non-conforme" headers="niveau non-conforme" class="text-center">A</th>';
+		computationContent += '<th id="aa-non-conforme" headers="niveau non-conforme" class="text-center">AA</th>';
+		computationContent += '<th id="a-non-applicable" headers="niveau non-applicable" class="text-center">A</th>';
+		computationContent += '<th id="aa-non-applicable" headers="niveau non-applicable" class="text-center">AA</th>';
 		computationContent += '</tr></thead>';
 		computationContent += '<tbody>';
 	
@@ -1933,14 +1933,14 @@ function runFinalComputation(pagesResultsArray) {
 		for (let i in pagesResultsArray) {
 			
 			computationContent += '<tr>';
-			computationContent += '<th scope="row" class="font-weight-bold">' + pagesResultsArray[i].name + '</th>';
-			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
-			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
-			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';
-			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeAA+ '</td>';
-			computationContent += '<td class="text-center">' + pagesResultsArray[i].naA+ '</td>';
-			computationContent += '<td class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
-			computationContent += '<td class="text-center bg-light">';
+			computationContent += '<th id="'+ utils.slugify(pagesResultsArray[i].name)+'" class="font-weight-bold">' + pagesResultsArray[i].name + '</th>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' conforme a-conforme" class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' conforme aa-conforme" class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' non-conforme a-non-conforme" class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' non-conforme aa-non-conforme" class="text-center">' + pagesResultsArray[i].nonconformeAA+ '</td>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' non-applicable a-non-applicable" class="text-center">' + pagesResultsArray[i].naA+ '</td>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' non-applicable aa-non-applicable" class="text-center">' + pagesResultsArray[i].naAA+ '</td>';
+			computationContent += '<td headers="'+ utils.slugify(pagesResultsArray[i].name)+' conformite" class="text-center bg-light">';
 			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
 			computationContent += '</td>';
@@ -4807,33 +4807,33 @@ exportStatementHTML = function(statementResult) {
                 <table class="table table-striped">
 				<caption class="visually-hidden">${langStatement.auditTxt4}</caption>
 				  <tr>
-					<th scope="row">${langStatement.auditTxt17}</th>
-					<th scope="col" colspan="2" class="text-center">${langStatement.compliant}</th>
-					<th scope="col" colspan="2" class="text-center">${langStatement.nonCompliant}</th>
-					<th scope="col" colspan="2" class="text-center">${langStatement.notApplicable}</th>
-					<th rowspan="2" class="text-center bg-light">${langStatement.auditTxt8}</th>
+					<th id="critere">${langStatement.auditTxt17}</th>
+					<th id="conforme" colspan="2" class="text-center">${langStatement.compliant}</th>
+					<th id="non-conforme" colspan="2" class="text-center">${langStatement.nonCompliant}</th>
+					<th id="non-applicable" colspan="2" class="text-center">${langStatement.notApplicable}</th>
+					<th id="conformite" rowspan="2" class="text-center bg-light">${langStatement.auditTxt8}</th>
 				  </tr>
 				  <tr>
-					<th scope="col">${langStatement.auditTxt10}</th>
-					<th scope="col">A</th>
-					<th scope="col">AA</th>
-					<th scope="col">A</th>
-					<th scope="col">AA</th>
-					<th scope="col">A</th>
-					<th scope="col">AA</th>
+					<th id="niveau">${langStatement.auditTxt10}</th>
+					<th id="a-conforme" headers="niveau conforme">A</th>
+					<th id="aa-conforme" headers="niveau conforme">AA</th>
+					<th id="a-non-conforme" headers="niveau non-conforme">A</th>
+					<th id="aa-non-conforme" headers="niveau non-conforme">AA</th>
+					<th id="a-non-applicable" headers="niveau non-applicable">A</th>
+					<th id="aa-non-applicable" headers="niveau non-applicable">AA</th>
 				  </tr>
 				 
 				
 				  ${statementResult.map(r => 
 					`<tr>
-						<th scope="row">${r.name}</th>
-						<td>${r.conformeA}</td>
-						<td>${r.conformeAA}</td>
-						<td>${r.nonconformeA}</td>
-						<td>${r.nonconformeAA}</td>
-						<td>${r.naA}</td>
-						<td>${r.naAA}</td>
-						<td style="background-color:#ddd !important;">${r.result} %</td>
+						<th id="${utils.slugify(r.name)}">${r.name}</th>
+						<td headers="${utils.slugify(r.name)} conforme a-conforme">${r.conformeA}</td>
+						<td headers="${utils.slugify(r.name)} conforme aa-conforme">${r.conformeAA}</td>
+						<td headers="${utils.slugify(r.name)} non-conforme a-non-conforme">${r.nonconformeA}</td>
+						<td headers="${utils.slugify(r.name)} non-conforme aa-non-conforme">${r.nonconformeAA}</td>
+						<td headers="${utils.slugify(r.name)} non-applicable a-non-applicable">${r.naA}</td>
+						<td headers="${utils.slugify(r.name)} non-applicable aa-non-applicable">${r.naAA}</td>
+						<td headers="${utils.slugify(r.name)} conformite" style="background-color:#ddd !important;">${r.result} %</td>
 					</tr>`
 					  
 					).join('')}

@@ -272,7 +272,7 @@
 		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant. Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
 		"resultatTest": "nt"
 	},{
-		"themes": "Clontrôle de sélection",
+		"themes": "Contrôle de sélection",
 		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
@@ -282,7 +282,7 @@
 		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection</li><li>seuls les éléments interactifs sont accessibles avec le contôle de selection</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li></ul>",
 		"resultatTest": "nt"
 	},{
-		"themes": "Clontrôle de sélection",
+		"themes": "Contrôle de sélection",
 		"title": "L'écran ne contient pas de piège clavier&nbsp;? (L'écran passe t-il par toutes les zones cliquable ?)",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
@@ -292,7 +292,7 @@
 		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec le contrôle de selection.</p>",
 		"resultatTest": "nt"
 	},{
-		"themes": "Clontrôle de sélection",
+		"themes": "Contrôle de sélection",
 		"title": "L'ordre de prise de focus des éléments est-il logique et cohérent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
@@ -302,7 +302,7 @@
 		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
 		"resultatTest": "nt"
 	},{
-		"themes": "Clontrôle de sélection",
+		"themes": "Contrôle de sélection",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",

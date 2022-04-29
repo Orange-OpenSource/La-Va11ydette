@@ -132,6 +132,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 		localizeHTML();
 		loadIssue();
 		
+		
 	  } 
 	};
 	
@@ -231,22 +232,31 @@ function initMainMenu() {
  function initAnchorMenu() {
 	let AnchorMenuHTML='';
 
-	 document.getElementById("title-nav-anchor").textContent=langVallydette.template.navAnchor;
-	 itemsChecklist=dataVallydette.checklist.page[currentPage].items;
-	 let uniqueThemesChecklist = [
-		...new Map(itemsChecklist.map((item) => [item["themes"], item["themes"]])).values(),
-	];
-	 AnchorMenuHTML+='<ul class="nav flex-column">';
-	 uniqueThemesChecklist.forEach(theme=>{
+	
+
+	 let allThematiques=[];
+	 document.querySelectorAll("h2.sticky-top").forEach( h2Them =>{
+		allThematiques.push(h2Them.firstChild.textContent);
+	 });
+	 
+	 if(allThematiques.length >0){
+		document.getElementById("title-nav-anchor").textContent=langVallydette.template.navAnchor;
+		document.getElementById("title-nav-anchor").classList.remove('d-none');
+
+		AnchorMenuHTML+='<ul class="nav flex-column">';
+		allThematiques.forEach(theme=>{
 		let formattedHeadingTheme = utils.formatHeading(theme);
-		AnchorMenuHTML+=' <li class="nav-item p-1">';
-		AnchorMenuHTML+=' <a class="nav-link" href="#test-'+formattedHeadingTheme+'">'+theme+'</a>'
-		AnchorMenuHTML+=' </li>';
-	 })
-	 AnchorMenuHTML+='</ul>';
-
-	 document.getElementById("tableOfContents").innerHTML=AnchorMenuHTML;
-
+			AnchorMenuHTML+=' <li class="nav-item p-1">';
+			AnchorMenuHTML+=' <a class="nav-link" href="#test-'+formattedHeadingTheme+'">'+theme+'</a>'
+			AnchorMenuHTML+=' </li>';
+		})
+	 	AnchorMenuHTML+='</ul>';
+	 }
+	 else{
+		document.getElementById("title-nav-anchor").textContent="";
+		document.getElementById("title-nav-anchor").classList.add('d-none');
+	 }
+	document.getElementById("tableOfContents").innerHTML=AnchorMenuHTML;
  }
  
 
@@ -521,7 +531,6 @@ function runVallydetteApp() {
 	initComputation();
     initPagination(dataVallydette.checklist);
 	initFilters();
-	initAnchorMenu();
   
 	
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
@@ -1138,6 +1147,7 @@ runTestListMarkup = function (currentRefTests) {
 	}
 
 	applyDisabledGroups();
+	initAnchorMenu();
 }
 
 
@@ -3182,7 +3192,7 @@ initFilters = function () {
 		
 		var typeWcagDisplayInput = document.getElementById("typeWcagDisplay");
 		typeWcagDisplayInput.addEventListener('click', function () {
-				wcagDisplayMode(this)
+				wcagDisplayMode(this);
 			}, false);
 }
 
@@ -3275,7 +3285,8 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 			
 			htmlMainContent.innerHTML = wcagDisplayContent;
 			
-
+			
+			initAnchorMenu();
 	} else {
 		showPage(dataVallydette.checklist.page[currentPage].IDPage);
 	}

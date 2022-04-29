@@ -132,6 +132,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 		localizeHTML();
 		loadIssue();
 		
+		
 	  } 
 	};
 	
@@ -224,6 +225,40 @@ function initMainMenu() {
 	document.getElementById("checklist").innerHTML = htmlMainMenu;
 	
 }
+
+/**
+ *  init the anchor menu
+ */
+ function initAnchorMenu() {
+	let AnchorMenuHTML='';
+
+	
+
+	 let allThematiques=[];
+	 document.querySelectorAll("h2.sticky-top").forEach( h2Them =>{
+		allThematiques.push(h2Them.firstChild.textContent);
+	 });
+	 
+	 if(allThematiques.length >0){
+		document.getElementById("title-nav-anchor").textContent=langVallydette.template.navAnchor;
+		document.getElementById("title-nav-anchor").classList.remove('d-none');
+
+		AnchorMenuHTML+='<ul class="nav flex-column">';
+		allThematiques.forEach(theme=>{
+		let formattedHeadingTheme = utils.formatHeading(theme);
+			AnchorMenuHTML+=' <li class="nav-item p-1">';
+			AnchorMenuHTML+=' <a class="nav-link" href="#test-'+formattedHeadingTheme+'">'+theme+'</a>'
+			AnchorMenuHTML+=' </li>';
+		})
+	 	AnchorMenuHTML+='</ul>';
+	 }
+	 else{
+		document.getElementById("title-nav-anchor").textContent="";
+		document.getElementById("title-nav-anchor").classList.add('d-none');
+	 }
+	document.getElementById("tableOfContents").innerHTML=AnchorMenuHTML;
+ }
+ 
 
 /**
  *  init the homepage
@@ -319,7 +354,11 @@ function initAuditPage() {
                             </button>
 							<div class="border-top border-light my-3 w-100"></div>
                         </div>
-                        
+						<div id="anchornav">
+							<h2 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
+							<nav id="tableOfContents" aria-labelledby="title-nav-anchor">	
+							</nav>
+						</div>
                     </div>
                     <div class="col-md-8 bg-white border border-light col-print-12" id="currentPageContent">
                         <span id="count" class="alert-danger"></span>
@@ -1108,6 +1147,7 @@ runTestListMarkup = function (currentRefTests) {
 	}
 
 	applyDisabledGroups();
+	initAnchorMenu();
 }
 
 
@@ -3152,7 +3192,7 @@ initFilters = function () {
 		
 		var typeWcagDisplayInput = document.getElementById("typeWcagDisplay");
 		typeWcagDisplayInput.addEventListener('click', function () {
-				wcagDisplayMode(this)
+				wcagDisplayMode(this);
 			}, false);
 }
 
@@ -3245,7 +3285,8 @@ function wcagDisplayMode(wcagDisplayModeInput) {
 			
 			htmlMainContent.innerHTML = wcagDisplayContent;
 			
-
+			
+			initAnchorMenu();
 	} else {
 		showPage(dataVallydette.checklist.page[currentPage].IDPage);
 	}

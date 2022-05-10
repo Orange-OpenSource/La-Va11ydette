@@ -377,11 +377,11 @@
 	"IDorigin": "testWebID-62"
 },{
 	"themes": "Navigation générale",
-	"title": "Rendre les intitulés des liens accessibles / noms",
+	"title": "Rendre les intitulés des liens, boutons et étiquette de champ de formulaire accessibles / noms",
 	"type": ["Test manuel - Inspecteur de code"],
-	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens et tout items de navigation", "Comparer le libellé texte ou le texte contenu dans l'image et <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' aria-label='le nom accessible (nouvelle fenêtre)'>le nom accessible</a> de ces items"],
+	"tests": ["Lancer l'inspecteur de code du navigateur", "Localiser les liens, boutons et étiquettes de champ de formulaire", "Comparer le libellé texte visible ou le texte contenu dans l'image utilisé comme libellé visuel et <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' aria-label='le nom accessible (nouvelle fenêtre)'>le nom accessible</a> de ces items"],
 	"verifier": ["Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent (en premier, si possible) dans le nom (accessible) de ce composant (pour aller plus loin, <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' aria-label='le nom accessible en HTML (nouvelle fenêtre)'>Le nom accessible en HTML</a>"],
-	"resultat": ["Les liens et items de navigation ont pour tout composant d'interface, le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran est présent (en premier, si possible) dans le nom (accessible) de ce composant"],
+	"resultat": ["Les liens, boutons et étiquettes de champ de formulaire ont le texte de l'étiquette affichée (le libellé textuel visible ou le texte de l'image visible à l'écran utilisé comme étiquette) est présent (en premier, si possible) dans le nom (accessible) de ces composants"],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",

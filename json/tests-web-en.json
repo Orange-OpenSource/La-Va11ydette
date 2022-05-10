@@ -377,11 +377,11 @@
 	"IDorigin": "testWebID-62"
 },{
 	"themes": "General navigation",
-	"title": "Make text of links accessible / names",
+	"title": "Make text of links, buttons or form field labels accessible / names",
 	"type": ["Manual test - Code inspector"],
-	"tests": ["Run the code inspector of the browser", "Locate links and all navigation items", "Compare the text of links... or the text of the image and <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a> of these items"],
+	"tests": ["Run the code inspector of the browser", "Locate links, buttons or form field labels", "Compare the visible text of links or the text of the image used as visible label and <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a> of these items"],
 	"verifier": ["Verify that the text of the displayed label (the text or the text of image of interactive items) is present (first, if possible) in the (accessible) name of this component (more details, <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' aria-label='the accessible name (new window)'>the accessible name</a>"],
-	"resultat": ["The links and navigation items have for any interface component, the text of the displayed label (the text or the text of the image of interactive items) is present (first, if possible) in the (accessible) name of this component"],
+	"resultat": ["The links, buttons or form field labels have the text of the displayed label (the visible text or the text of the image used as a label) is present (first, if possible) in the (accessible) name of thes&e components"],
 	"exception": "",
 	"raccourcis": "",
 	"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",

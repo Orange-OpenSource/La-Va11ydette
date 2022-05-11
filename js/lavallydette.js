@@ -3543,7 +3543,7 @@ let setIndex = 1;
 
 for (let i in dataVallydette.checklist.page) {
 	
-		excel.addSheet(dataVallydette.checklist.page[i].name.slice(0, 31));
+		excel.addSheet(utils.escape_html(dataVallydette.checklist.page[i].name.slice(0, 31)));
   
 		for (var j=0;j<dataHeaders.length;j++){    
 		
@@ -5074,7 +5074,7 @@ const utils = {
 	'<': '&lt;',
 	'>': '&gt;',
 	'"': '&quot;',
-	"'": '&#039;'
+	"'": '&rsquo;'
 	};
 
 	return str.toString().replace(/[&<>"']/g, function(m) { return map[m]; });

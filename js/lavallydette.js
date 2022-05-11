@@ -5074,7 +5074,7 @@ const utils = {
 	'<': '&lt;',
 	'>': '&gt;',
 	'"': '&quot;',
-	"'": '&rsquo;'
+	"'": '&#039;'
 	};
 
 	return str.toString().replace(/[&<>"']/g, function(m) { return map[m]; });

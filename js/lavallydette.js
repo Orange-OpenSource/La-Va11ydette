@@ -2323,11 +2323,11 @@ removeContextualMenu = function () {
 initExpandedMenu = function () {
 	var htmlMenu = '';
 	htmlMenu+=`<button class="btn btn-secondary btn-icon" id="btnPageExpanded"
-								aria-label="`+langVallydette.expandedAll+`" title="`+langVallydette.expandedAll+`" style="transform: rotate(180deg);">
+								aria-label="`+langVallydette.expandedAll+`" title="`+langVallydette.expandedAll+`">
 								`+htmlIcon.arrowDown+`
 							</button>
 							<button class="btn btn-secondary btn-icon ms-2" id="btnPageExpandedFalse"
-								aria-label="`+langVallydette.expandedAllFalse+`" title="`+langVallydette.expandedAllFalse+`">
+								aria-label="`+langVallydette.expandedAllFalse+`" title="`+langVallydette.expandedAllFalse+`" style="transform: rotate(180deg);">
 								`+htmlIcon.arrowDown+`
 							</button>`;
 	htmlExpandedMenuContent.innerHTML = htmlMenu;

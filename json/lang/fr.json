@@ -142,6 +142,8 @@
 	"manualDataEntryDesc": "Compléter ou modifier les données de la déclaration.",
 	"approval": "Déclarant",
 	"approvalEdit": "Modifier la liste des déclarants",
+	"expandedAll": "Ouvrir toutes les informations supplémentaires",
+	"expandedAllFalse": "Fermer toutes les informations supplémentaires",
 	"contact": "Contact",
 	"contactEdit": "Modifier la liste des contacts",
 	"accessibilityPlan": "Schéma pluriannuel",

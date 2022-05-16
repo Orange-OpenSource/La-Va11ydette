@@ -29,6 +29,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
  * @param {array} arrayTypeActivated - Array that contains all the activated types from the frontend filter menu (from audit mode).
  * @param {string} currentCriteriaListName - Selected checklist json file name.
  * @param {object} htmlContextualMenuContent - Contextual page menu (edit page name, delete a page).
+ * @param {object} htmlExpandedMenuContent - Contextual page menu (edit page name, delete a page).
  * @param {object} htmlFilterContent - Test filter menu.
  * @param {object} htmlMainContent - Main content.
  */
@@ -55,6 +56,7 @@ var arrayTypeActivated = [];
 var currentCriteriaListName;
 
 var htmlContextualMenuContent;
+var htmlExpandedMenuContent;
 var htmlFilterContent;
 var htmlMainContent;
 
@@ -352,8 +354,11 @@ function initAuditPage() {
                                     data-bs-toggle="modal" data-bs-target="#modalDelete" disabled>
 									`+htmlIcon.trash+`
                             </button>
-							<div class="border-top border-light my-3 w-100"></div>
+							
                         </div>
+						<div id="expandedMenu" class="mt-2 d-flex align-content-stretch flex-wrap w-100 d-print-none">
+						</div>
+						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
 							<h2 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
 							<nav id="tableOfContents" aria-labelledby="title-nav-anchor">	
@@ -375,6 +380,7 @@ function initAuditPage() {
 	
 	htmlFilterContent = document.getElementById('filter');
 	htmlContextualMenuContent = document.getElementById('contextualMenu');
+	htmlExpandedMenuContent = document.getElementById('expandedMenu');
 	htmlMainContent = document.getElementById('mainContent');
 	
 	eventHandler();
@@ -806,7 +812,7 @@ runTestListMarkup = function (currentRefTests) {
 		if(document.getElementById('btnShowStatement') === null) {
 			var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ms-2", "d-print-none"], langVallydette.statementTitle);
 			document.getElementById("auditInfoManager").appendChild(btnStatement);
-			document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
+			document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject(); initAnchorMenu();});
 		}
 		
 		/** pass through the tests object to display each of them */
@@ -840,7 +846,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentPage === 0) {
@@ -1149,6 +1155,7 @@ runTestListMarkup = function (currentRefTests) {
 
 	applyDisabledGroups();
 	initAnchorMenu();
+	initExpandedMenu();
 }
 
 
@@ -1551,6 +1558,7 @@ function initComputation() {
 				utils.setPageTitle(langVallydette.auditResult);
 				utils.resetActive(document.getElementById("pageManager"));
 				utils.putTheFocus(document.getElementById("pageName"));
+				initAnchorMenu()
             }, false);
 		
 	    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
@@ -1910,6 +1918,7 @@ function runFinalComputation(pagesResultsArray) {
 
 	setPageName(langVallydette.auditResult);
 	removeContextualMenu();
+	removeExpandedMenu();
 	removeFilterSection();
 	
 	/** Modify column number */ 
@@ -2298,17 +2307,53 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	} else {
 		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
 	}
-
-	htmlMenu += '<div class="border-top border-light my-3 w-100"></div>';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
 	btnActionPageEventHandler();
 }
 
-
 /** Remove the page contextual menu (needed for audit results page). */
 removeContextualMenu = function () {
 	htmlContextualMenuContent.innerHTML = "";
+}
+
+/**  
+*	Initialization of page expanded menu, each time the user move to a new page.
+*/
+initExpandedMenu = function () {
+	var htmlMenu = '';
+	htmlMenu+=`<button class="btn btn-secondary btn-icon" id="btnPageExpanded"
+								aria-label="`+langVallydette.expandedAll+`" title="`+langVallydette.expandedAll+`" style="transform: rotate(180deg);">
+								`+htmlIcon.arrowDown+`
+							</button>
+							<button class="btn btn-secondary btn-icon ms-2" id="btnPageExpandedFalse"
+								aria-label="`+langVallydette.expandedAllFalse+`" title="`+langVallydette.expandedAllFalse+`">
+								`+htmlIcon.arrowDown+`
+							</button>`;
+	htmlExpandedMenuContent.innerHTML = htmlMenu;
+
+	document.getElementById('btnPageExpanded').addEventListener('click', function () {
+		document.querySelectorAll("button.btn-expanded").forEach( element =>{
+			if (element.attributes['aria-expanded'].value==="false"){
+				element.click();
+			}
+		})
+	});
+
+	document.getElementById('btnPageExpandedFalse').addEventListener('click', function () {
+		document.querySelectorAll("button.btn-expanded").forEach( element =>{
+			if (element.attributes['aria-expanded'].value==="true"){
+				element.click();
+			}
+		})
+	});
+	
+}
+
+
+/** Remove the page expanded menu (needed for audit results page). */
+removeExpandedMenu = function () {
+	htmlExpandedMenuContent.innerHTML = "";
 }
 
 /** 
@@ -3836,6 +3881,7 @@ function showStatementWizard() {
 	setPageName(langVallydette.statement);
 	utils.setPageTitle(langVallydette.statementTxt1);
 	removeContextualMenu();
+	removeExpandedMenu();
 	removeFilterSection();
 	utils.columnDisplay(2);
 	

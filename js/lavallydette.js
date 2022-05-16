@@ -943,7 +943,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {

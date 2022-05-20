@@ -806,7 +806,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
 		 if(document.getElementById('btnShowStatement') === null) {
 			 var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ms-2", "d-print-none"], langVallydette.statementTitle);
 			 document.getElementById("auditInfoManager").appendChild(btnStatement);
-			 document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
+			 document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject(); initAnchorMenu();});
 		 }
 		 
 		 /** pass through the tests object to display each of them */
@@ -896,6 +896,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
  
 				 headingTheme = currentRefTests[i].themes;
 				 let formattedHeadingTheme = utils.formatHeading(headingTheme);
+				 htmlrefTests += '<a id="anchor-'+formattedHeadingTheme+'"></a>';
 				 htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
 				 htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			 }
@@ -1551,6 +1552,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
 				 utils.setPageTitle(langVallydette.auditResult);
 				 utils.resetActive(document.getElementById("pageManager"));
 				 utils.putTheFocus(document.getElementById("pageName"));
+				 initAnchorMenu()
 			 }, false);
 		 
 		 runTestListMarkup(dataVallydette.checklist.page[currentPage].items);

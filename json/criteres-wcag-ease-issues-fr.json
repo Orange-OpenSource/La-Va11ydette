@@ -3,7 +3,7 @@
         {
 			"title" : "Présence de champs non étiquetés visuellement",
 			"detail" : "Tous les éléments de formulaire doivent posséder une étiquette visible.",
-			"solution" : "Metre une étiquette pertinente, visible à proximité de tout champ de formulaire",
+			"solution" : "Mettre une étiquette pertinente, visible à proximité de tout champ de formulaire",
 			"technicalSolution" : ""
 		}
     ],

@@ -3511,7 +3511,7 @@ const formatRow = excel.addStyle ( {border: "none,none,none,thin #333333",font: 
 const formatWarning = excel.addStyle ( {font: "Calibri 11 #ff0000 B"});
 const formatHyperlink = excel.addStyle ( {font: "Calibri Light 12 #0563C1 U"}); 
 const pageHeaders = [langVallydette.name, 'URL'];
-const dataHeaders = ['ID', 'test', langVallydette.guidelines, langVallydette.summary, langVallydette.description, langVallydette.solution, langVallydette.technical_solution, langVallydette.reviewIssue, langVallydette.stateIssue];
+const dataHeaders = ['ID', 'test', langVallydette.guidelines, langVallydette.summary, langVallydette.description, langVallydette.solution, langVallydette.technical_solution, langVallydette.priorityIssue, langVallydette.reviewIssue, langVallydette.stateIssue];
 
 
 excel.set( {sheet:0,value:"Informations"} );
@@ -3523,7 +3523,7 @@ excel.set(0,0,2,"");
 for (var j=0; j < pageHeaders.length; j++){    
 		
 	excel.set(0,j,3,pageHeaders[j], formatHeader);    
-			            
+						
 }	
 
 let rowPages = 4;
@@ -3547,10 +3547,10 @@ let setIndex = 1;
 for (let i in dataVallydette.checklist.page) {
 	
 		excel.addSheet(utils.escape_html(dataVallydette.checklist.page[i].name.slice(0, 31)));
-  
+	
 		for (var j=0;j<dataHeaders.length;j++){    
 		
-			if(j===8){
+			if(j===9){
 				excel.set(setIndex,j,0,dataHeaders[j], formatHeaderProject); 
 			} else {
 				excel.set(setIndex,j,0,dataHeaders[j], formatHeader);	
@@ -3562,6 +3562,10 @@ for (let i in dataVallydette.checklist.page) {
 		let rowIssues = 0;
 		
 		const listNonConformity = dataVallydette.checklist.page[i].items.filter(item => item.resultatTest === "ko").map(function(item) {
+			let priority="";
+			if(item.priority!== undefined ){
+				priority=item.priority
+			}
 				
 			if (item.issues.length > 0) {
 				let urlanchor = utils.getUrlAnchor(item);
@@ -3582,6 +3586,7 @@ for (let i in dataVallydette.checklist.page) {
 					excel.set(setIndex,4,rowIssues, issue.issueDetail);
 					excel.set(setIndex,5,rowIssues, issue.issueSolution);
 					excel.set(setIndex,6,rowIssues, issue.issueTechnicalSolution);
+					excel.set(setIndex,7,rowIssues, priority);
 		
 				})
 					

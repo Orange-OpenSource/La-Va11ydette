@@ -96,6 +96,7 @@
 	"description": "description",
 	"solution": "solution",
 	"technical_solution": "solution technique",
+	"priorityIssue" : "priorité",
 	"reviewIssue": "suivi validation",
 	"stateIssue": "état / remarque équipe projet",
 	"selectIssue": "sélectionner une anomalie pré-définie",

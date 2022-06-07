@@ -341,7 +341,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24px</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5px</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li></ul>",
+		"verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24px</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5px</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",
 		"resultatTest": "nt"
@@ -368,7 +368,7 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p>Vérifier que les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste minimum de 3:1 pour transmettre l'information</p>",
+		"verifier": "<p>Vérifier que les graphiques, les icônes et les composants interactifs graphiques ont un contraste minimum de 3:1 pour transmettre l'information</p>",
 		"exception": "<ul><li>les logos</li><li>si un texte, comme un label ou un tableau de données, apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",

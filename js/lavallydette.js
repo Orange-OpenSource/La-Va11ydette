@@ -1929,13 +1929,13 @@ function runFinalComputation(pagesResultsArray) {
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
 		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link active" id="tabResultatPage" data-bs-toggle="tab" data-bs-target="#resultatPage" type="button" role="tab" aria-controls="resultatPage" aria-selected="true">' + langVallydette.auditTxt3 + '</button></li>';
-		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsynthesePages" data-bs-toggle="tab" data-bs-target="#synthesePages" type="button" role="tab" aria-controls="synthesePages" aria-selected="false">' + langVallydette.auditTxt4 + '</button></li>';	
+		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsynthesePages" data-bs-toggle="tab" data-bs-target="#synthesePages" type="button" role="tab" aria-controls="synthesePages" aria-selected="false">' + langVallydette.auditTxt18 + '</button></li>';	
 		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsyntheseNiveaux" data-bs-toggle="tab" data-bs-target="#syntheseNiveaux" type="button" role="tab" aria-controls="syntheseNiveaux" aria-selected="false">' + langVallydette.auditTxt15 + '</button></li>';	
 		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabNonConformites" data-bs-toggle="tab" data-bs-target="#nonConformites" type="button" role="tab" aria-controls="nonConformites" aria-selected="false">' + langVallydette.auditTxt5 + '</button></li>';
 		computationContent += '</ul>';
 		
 		computationContent += '<div class="tab-content border-0">';
-		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" tabindex="0" aria-hidden="false" aria-labelledby="tabResultatPage">';
+		computationContent += '  <div class="tab-pane active" id="resultatPage" role="tabpanel" aria-labelledby="tabResultatPage">';
 		
 		
 		for (let i in pagesResultsArray) {
@@ -1952,23 +1952,18 @@ function runFinalComputation(pagesResultsArray) {
 		
 		computationContent += '  </div>';
 		
-		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsynthesePages">';
+		computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" aria-labelledby="tabsynthesePages">';
 		computationContent += '<div class="table-responsive">'
 		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt4 + '</caption>';
 		computationContent += '<thead><tr>';
-		computationContent += '<th scope="row">' + langVallydette.auditTxt17 + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.compliant + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.nonCompliant + '</th>';
-		computationContent += '<th scope="col" colspan="2" class="text-center">' + langVallydette.notApplicable + '</th>';
-		computationContent += '<th rowspan="2" class="text-center bg-light">' + langVallydette.auditTxt8 + '</th>';
-		computationContent += '</tr><tr>';
-		computationContent += '<th scope="col">' + langVallydette.auditTxt10 + '</th>';
-		computationContent += '<th scope="col" class="text-center">A</th>';
-		computationContent += '<th scope="col" class="text-center">AA</th>';
-		computationContent += '<th scope="col" class="text-center">A</th>';
-		computationContent += '<th scope="col" class="text-center">AA</th>';
-		computationContent += '<th scope="col" class="text-center">A</th>';
-		computationContent += '<th scope="col" class="text-center">AA</th>';
+		computationContent += '<th scope="row">' + langVallydette.auditTxt17 + ' / ' + langVallydette.auditTxt10 + '</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.compliant + ' / A</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.compliant + ' / AA</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.nonCompliant + ' / A</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.nonCompliant + ' / AA</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.notApplicable + ' / A</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.notApplicable + ' / AA</th>';
+		computationContent += '<th scope="col" class="text-center bg-light">' + langVallydette.auditTxt8 + '</th>';
 		computationContent += '</tr></thead>';
 		computationContent += '<tbody>';
 	
@@ -1976,7 +1971,7 @@ function runFinalComputation(pagesResultsArray) {
 		for (let i in pagesResultsArray) {
 			
 			computationContent += '<tr>';
-			computationContent += '<th scope="row" class="font-weight-bold">' + pagesResultsArray[i].name + '</th>';
+			computationContent += '<th scope="row" class="font-weight-bold"> <span class="visually-hidden">Page : </span>' + pagesResultsArray[i].name + '</th>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';
@@ -4850,32 +4845,29 @@ exportStatementHTML = function(statementResult) {
 				
 			if (dataVallydette.statement.results[0].checked === "true") {
                htmlStatement += ` <p>
-				${langStatement.statementTemplate.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).${langStatement.statementTemplate.resultsContent5}
+				${langStatement.statementTemplate.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).
+				</p>
+				<p id="table-description" aria-hidden="true">
+				${langStatement.statementTemplate.resultsContent5}
 				</p>
 				
-                <table class="table table-striped">
+                <table class="table table-striped" aria-describedby="table-description">
 				<caption class="visually-hidden">${langStatement.auditTxt4}</caption>
 				  <tr>
-					<th scope="row">${langStatement.auditTxt17}</th>
-					<th scope="col" colspan="2" class="text-center">${langStatement.compliant}</th>
-					<th scope="col" colspan="2" class="text-center">${langStatement.nonCompliant}</th>
-					<th scope="col" colspan="2" class="text-center">${langStatement.notApplicable}</th>
-					<th rowspan="2" class="text-center bg-light">${langStatement.auditTxt8}</th>
-				  </tr>
-				  <tr>
-					<th scope="col">${langStatement.auditTxt10}</th>
-					<th scope="col">A</th>
-					<th scope="col">AA</th>
-					<th scope="col">A</th>
-					<th scope="col">AA</th>
-					<th scope="col">A</th>
-					<th scope="col">AA</th>
+					<th scope="row">${langStatement.auditTxt17} / ${langStatement.auditTxt10}</th>
+					<th scope="col" class="text-center">${langStatement.compliant} / A</th>
+					<th scope="col" class="text-center">${langStatement.compliant} / AA</th>
+					<th scope="col"class="text-center">${langStatement.nonCompliant} / A</th>
+					<th scope="col"class="text-center">${langStatement.nonCompliant} / AA</th>
+					<th scope="col" class="text-center">${langStatement.notApplicable} / A</th>
+					<th scope="col" class="text-center">${langStatement.notApplicable} / AA</th>
+					<th scope="col" class="text-center bg-light">${langStatement.auditTxt8}</th>
 				  </tr>
 				 
 				
 				  ${statementResult.map(r => 
 					`<tr>
-						<th scope="row">${r.name}</th>
+						<th scope="row"><span class="visually-hidden">Page : </span>${r.name}</th>
 						<td>${r.conformeA}</td>
 						<td>${r.conformeAA}</td>
 						<td>${r.nonconformeA}</td>

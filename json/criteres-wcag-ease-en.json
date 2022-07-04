@@ -341,7 +341,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text or image of text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt"
@@ -368,7 +368,7 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p> Check that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
+		"verifier": "<p> Check that as well as graphics, icons and graphic interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
 		"exceptions": "<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>disabled components</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",

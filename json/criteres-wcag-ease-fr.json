@@ -623,7 +623,7 @@
 		"wcag": [
 			"1.4.4 AA"
 		],
-		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenus ou de fonctionnalités inutilisables, tronqués ou masqués) suite à l'agrandissement de la taille du texte à 200%.</p>",
+		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenus ou de fonctionnalités inutilisables, tronqués ou masqués) suite à l'agrandissement de la taille du texte à 200%.</p><p><em>Note&nbsp:</em> le zoom du texte doit être autorisé sur mobile. Il ne faut pas de présence de balise \"&lt;meta name='viewport'&gt;\" avec&nbsp:</p><ul><li>soit, le paramètre user-scalable='no' </li><li>soit, le paramètre maximum-scale inférieur à 2</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#utiliser-des-tailles-relatives-et-faire-du-web-adaptatif",
 		"priority": "P3",
 		"resultatTest": "nt"

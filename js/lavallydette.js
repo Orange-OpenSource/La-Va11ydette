@@ -2171,7 +2171,7 @@ initPagination = function (pages) {
 	var allPages = pages.page;
 
 	var pageElement = document.getElementById("pageManager");
-	pageElement.innerHTML = "<div class='container'><ul class='nav'></ul></div>";
+	pageElement.innerHTML = "<div class='container navbar-expand p-0'><ul class='nav navbar-nav'></ul></div>";
 
 	let AddPage = document.createElement("li");
 	AddPage.classList.add("nav-item");
@@ -2198,7 +2198,7 @@ initPagination = function (pages) {
 		newBtnPage.innerHTML = allPages[i].name;
 		newBtnPage.setAttribute('id', allPages[i].IDPage);
 		newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
-		if (i === 0) {
+		if (i == 0) {
 			utils.setActive(newBtnPage);
 		}
 		newPage.appendChild(newBtnPage);
@@ -2592,7 +2592,17 @@ setStatusAndResults = function (ele, targetId, originID) {
 	// check if test is linked to previouspage
 	if( 0 < currentPage)
 	{
+		
 		if(getIfAutoCheck(originID,currentPage-1)){
+
+			const index = dataVallydette.checklist.page[currentPage-1].autoCheckIDs.indexOf(originID);
+			if (index > -1) { 
+				dataVallydette.checklist.page[currentPage-1].autoCheckIDs.splice(index, 1);
+				console.log(document.getElementById('link-' + targetId))
+				if(document.getElementById('link-' + targetId) !== null){
+					document.getElementById('link-' + targetId).remove();
+				}
+			}
 			let alertAutocheck = document.getElementById('alert-'+targetId);
 			alertAutocheck.innerHTML = '<span class="alert-icon"></span><p>'+langVallydette.autocheckTxtError+'</p>'
 			alertAutocheck.classList.remove('d-none')

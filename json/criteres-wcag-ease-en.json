@@ -240,7 +240,7 @@
 	},
 	{
 		"themes": "Textual Content",
-		"title": "Are the data tables structured properly?",
+		"title": "Are the tables structured properly?",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
@@ -484,19 +484,28 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Does the user have control over context changes?",
+		"title": "Does the user have control over context changes with keyboard or mouse?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
-		"wcag": [
-			"3.2.1 A",
-			"3.2.2 A"
-		],
-		"verifier": "<p> When using forms or any interactive component, check that there is no change of context, without warning the user: </p> <ul> <li> when an element takes the focus </li> <li> when entering data </li> <li> when activating a form element other than a button </li> </ul>",
+		"wcag": ["3.2.1 A"],
+		"verifier": "<p>When using forms or any interactive component, verify that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). But an element can change when the focus is taken, if the context does not change, for example, the appearance when focusing a drop-down menu or even the visual modification when hovering over a link.</p>",
 		"complement": "<h4> Change of context </h4> <p> Major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P2",
 		"resultatTest": "nt"
 	},
+	{
+		"themes": "General Navigation",
+		"title": "Does the user have control over context changes on a parameter modification?",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": ["3.2.2 A"],
+		"verifier": "<p>Verify the absence of context change, without prior warning of the user, when modifying the parameter of any interactive component. Modifying a parameter can be, for example, checking a checkbox, entering content in a text field, selecting an option in a form control, all of this must have predictable results (classic behavior, expected by the user) but the activation of a link or of a button is not a parameter change.</p>",
+		"complement": "<h4>Context Switch</h4><p>A major change in web page content that, when done without the knowledge of the user, can be confusing.</p> <p>Context switches include:</p><ul><li>user agent (opening an application from the browser)</li><li>changes to <span lang=\" in\">viewport</span> (another part of the displayed page, opening a new window)</li><li>of focus (moving the focus)</li><li>of content that modifies the web page meaning</li></ul><p>Context switching is compliant if:</p><ul><li>the action is initiated by an explicit button or link</li ><li>the user is warned by a text before it is triggered</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interaction",
+		"priority": "P2",
+		"resultTest": "nt"
+		},
 	{
 		"themes": "Common navigation",
 		"title": "Does the website have at least 2 means of navigation?",

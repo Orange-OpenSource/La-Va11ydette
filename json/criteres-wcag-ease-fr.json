@@ -240,7 +240,7 @@
 	},
 	{
 		"themes": "Contenu textuel",
-		"title": "Les tableaux de données sont-ils correctement structurés&nbsp;?",
+		"title": "Les tableaux sont-ils correctement structurés&nbsp;?",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
@@ -484,14 +484,23 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'utilisateur a-t-il le contrôle des changements de contexte&nbsp;?",
+		"title": "L'utilisateur a-t-il le contrôle des changements de contexte au clavier ou à la souris&nbsp;?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
-		"wcag": [
-			"3.2.1 A",
-			"3.2.2 A"
-		],
-		"verifier": "<p>Lors de l'utilisation de formulaires ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
+		"wcag": ["3.2.1 A"],
+		"verifier": "<p>Lors de l'utilisation de formulaires ou de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction à des résultats prédictibles (comportement classique, attendu par l'utilisateur). Mais un élément peut changer à la prise de focus, si le contexte ne change pas, par exemple, l'apparition au focus sur un menu déroulant ou encore, la modification visuelle lors du survol d'un lien.</p>",
+		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
+		"priority": "P2",
+		"resultatTest": "nt"
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "L'utilisateur a-t-il le contrôle des changements de context lors d'une modification de paramètre&nbsp;?",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": ["3.2.2 A"],
+		"verifier": "<p>Vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur, lors de la modification de paramètre de tout composant interactif. La modification d'un paramètre peut être, par exemple, cocher une case, la saisie de contenu dans un champ de texte, la sélection d'une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement classique, attendu par l'utilisateur) mais l'activation d'un lien ou d'un bouton n'est pas une modification de paramètre.</p>",
 		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",

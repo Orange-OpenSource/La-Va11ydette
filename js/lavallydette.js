@@ -2787,8 +2787,8 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="mb-3">';
-	htmlModal += '<label class="mt-2 form-label" for="issueDetailValue">' + langVallydette.description + ' </label>';
-	htmlModal += '<textarea class="form-control" id="issueDetailValue" ></textarea>';
+	htmlModal += '<label class="is-required mt-2 form-label" for="issueDetailValue">' + langVallydette.description + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span> </label>';
+	htmlModal += '<textarea class="form-control" id="issueDetailValue" rows="8" required></textarea>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="mb-3">';
 	htmlModal += '<label for="issueSolutionValue" class="mt-2 form-label">' + langVallydette.solution + ' </label>';
@@ -2893,7 +2893,7 @@ getPredefinedIssues = function(targetId) {
 	htmlPredefinedIssues += '</select>';
 	htmlPredefinedIssues += '</div>';
 	htmlPredefinedIssues += '<div class="col-sm-2">';
-	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">' + langVallydette.validate + '</button>';
+	htmlPredefinedIssues += '<button id="btnValidatePredefined" class="btn btn-secondary">' + langVallydette.import + '</button>';
 	htmlPredefinedIssues += '</div>';
 	htmlPredefinedIssues += '</div>';
 		
@@ -2932,8 +2932,8 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<form id="editIssueForm-'+ targetId +'-'+ issueIndex+'">';
 	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
-	htmlEditIssue += '<label class="mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + '</label>';
-	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '">' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
+	htmlEditIssue += '<label class="is-required mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '" rows="8" required>' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
 	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2 form-label">' + langVallydette.solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
 	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2 v">' + langVallydette.technical_solution + '</label>';

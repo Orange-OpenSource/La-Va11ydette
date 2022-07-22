@@ -273,7 +273,7 @@
 			"1.4.5 AA"
 		],
 		"verifier": "<ul><li>vérifier que des images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter du texte.</li></ul>\n<p>Non applicable, si aucune image ne contient de texte</p>",
-		"exception": "<ul><li>SVG (vrai texte)</li>, <li>cas particulier (ex&nbsp;: logo, captcha, dénomination commerciale)</li></ul>",
+		"exception": "<ul><li>SVG (vrai texte)</li><li>cas particulier (ex&nbsp;: logo, captcha, dénomination commerciale)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt"

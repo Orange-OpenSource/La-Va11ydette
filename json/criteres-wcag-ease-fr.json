@@ -99,7 +99,7 @@
 		"verifier": "<ul><li>pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de l'attribut <code>autocomplete</code></li><li>la valeur indiquée pour l'attribut <code>autocomplete</code> est pertinente (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='liste exhaustive des valeurs autorisées (nouvelle fenêtre)'>liste exhaustive des valeurs autorisées</a>) au regard du type d'information attendue</li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
-		"pgriority": "P3",
+		"priority": "P3",
 		"resultatTest": "nt"
 	},
 	{

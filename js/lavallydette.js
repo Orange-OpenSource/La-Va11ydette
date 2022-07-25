@@ -65,6 +65,7 @@ var htmlIcon = {
 	edit: '<svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class="cls-1" d="M876.2,238.316l-51.077-51.108-63.846-63.884a81.085,81.085,0,0,0-68.3-23.078c-0.712.095-1.421,0.2-2.131,0.32-2.332.375-4.65,0.843-6.948,1.422-2.315.583-4.611,1.26-6.877,2.049-0.03.011-.061,0.019-0.091,0.03a80.92,80.92,0,0,0-30.578,19.257L186.663,583.292,133.137,759.716h0l-13.253,43.678L101.2,864.984c-0.185.61-.344,1.22-0.485,1.827-0.045.192-.078,0.383-0.119,0.575-0.087.415-.17,0.83-0.238,1.242-0.037.227-.066,0.453-0.1,0.68-0.052.378-.1,0.755-0.135,1.131-0.022.235-.04,0.468-0.057,0.7-0.025.369-.043,0.736-0.053,1.1-0.006.23-.012,0.46-0.013,0.689,0,0.376.01,0.75,0.025,1.123,0.008,0.211.013,0.422,0.027,0.632,0.027,0.425.069,0.847,0.116,1.267,0.018,0.152.028,0.305,0.048,0.456q0.111,0.855.276,1.693c0.021,0.108.05,0.214,0.072,0.322,0.095,0.448.2,0.894,0.313,1.334,0.051,0.191.11,0.379,0.165,0.568,0.1,0.354.207,0.705,0.323,1.053,0.07,0.207.145,0.412,0.219,0.617,0.118,0.326.24,0.649,0.37,0.969,0.084,0.207.171,0.412,0.259,0.617q0.207,0.473.431,0.935c0.095,0.2.188,0.393,0.288,0.587,0.164,0.322.339,0.638,0.516,0.952,0.095,0.171.188,0.343,0.287,0.511,0.227,0.385.467,0.761,0.713,1.134,0.059,0.09.114,0.183,0.175,0.273q0.464,0.685.969,1.341c0.1,0.127.2,0.248,0.3,0.373,0.246,0.308.493,0.614,0.752,0.911,0.135,0.156.277,0.307,0.415,0.46,0.234,0.257.47,0.512,0.713,0.76,0.155,0.158.313,0.312,0.472,0.467,0.241,0.234.486,0.465,0.736,0.69,0.165,0.15.33,0.3,0.5,0.443,0.259,0.224.524,0.441,0.792,0.655,0.167,0.132.331,0.266,0.5,0.395,0.3,0.228.6,0.445,0.912,0.66,0.147,0.1.29,0.21,0.438,0.309,0.459,0.308.926,0.605,1.405,0.885,0.021,0.013.043,0.024,0.065,0.036q0.687,0.4,1.4.759c0.162,0.082.329,0.156,0.494,0.235,0.337,0.163.677,0.323,1.022,0.472,0.2,0.084.395,0.162,0.592,0.241,0.324,0.131.65,0.257,0.979,0.375,0.209,0.075.419,0.146,0.631,0.216q0.493,0.162.995,0.306c0.212,0.061.424,0.122,0.638,0.177,0.352,0.092.706,0.172,1.062,0.249,0.2,0.044.4,0.091,0.6,0.129,0.415,0.08.835,0.145,1.256,0.206,0.147,0.021.291,0.048,0.438,0.067q0.856,0.106,1.726.159c0.117,0.007.236,0.006,0.353,0.011,0.4,0.019.8,0.037,1.208,0.037,0.056,0,.113-0.006.169-0.006,0.358,0,.719-0.023,1.08-0.04,0.283-.013.565-0.019,0.85-0.041,0.377-.03.758-0.081,1.137-0.127,0.272-.033.542-0.056,0.814-0.1,0.421-.064.845-0.153,1.269-0.237,0.233-.047.466-0.082,0.7-0.135q0.963-.219,1.93-0.51c0.017,0,.034-0.008.051-0.014l21.618-6.566,83.587-25.391h0l176.317-53.56h0l262.68-262.838L876.2,353.308a80.927,80.927,0,0,0,22.163-41.279q0.136-.669.26-1.338,0.611-3.294.95-6.62c0.026-.248.053-0.5,0.076-0.744q0.342-3.7.35-7.422c0-.031,0-0.062,0-0.093A81.083,81.083,0,0,0,876.2,238.316ZM359.047,755.779l37.419,37.442L220.148,846.78l-66.969-67.01,53.527-176.424,37.419,37.441L703.815,180.82l19.154,19.165L263.278,659.953l76.615,76.661L799.584,276.646l19.154,19.166Z"/></svg>',
 	excel : '<svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class="cls-1" d="M669.445,275H825L625,75V225C625,252.616,644.9,275,669.445,275ZM675,325A100,100,0,0,1,575,225V75H175V874.774h0.006c0,0.076-.006.15-0.006,0.226a50,50,0,0,0,50,50H825V325H675ZM400,800H300V750H400v50Zm150,0H450V750H550v50Zm-7.322-282.322L472.856,587.5l69.822,69.822h0a25,25,0,0,1-35.356,35.356h0L437.5,622.856l-69.822,69.822h0a25,25,0,0,1-35.356-35.356h0L402.144,587.5l-69.822-69.822h0a25,25,0,0,1,35.356-35.356h0L437.5,552.145l69.822-69.823h0a25,25,0,0,1,35.356,35.356h0ZM700,800H600V750H700v50Zm0-100H600V650H700v50Zm0-100H600V550H700v50Zm0-100H600V450H700v50Z"/></svg>',
 	link: '<svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class="cls-1" d="M587.422,132.923L412.634,307.711A248.078,248.078,0,0,1,537.9,322.28L657.342,202.842A98.881,98.881,0,0,1,797.181,342.681l-174.8,174.8a98.881,98.881,0,0,1-139.838,0,49.441,49.441,0,1,0-69.92,69.919h0c77.231,77.231,202.447,77.231,279.678,0L867.1,412.6c77.231-77.231,77.231-202.447,0-279.678h0C789.869,55.692,664.653,55.692,587.422,132.923Zm-174.8,734.154L587.413,692.288a248.056,248.056,0,0,1-125.27-14.569L342.7,797.158A98.881,98.881,0,0,1,202.865,657.319l174.8-174.8a98.883,98.883,0,0,1,139.839,0A49.44,49.44,0,1,0,587.422,412.6h0c-77.23-77.23-202.446-77.23-279.677,0l-174.8,174.8c-77.231,77.231-77.231,202.447,0,279.678h0C210.177,944.308,335.393,944.308,412.624,867.077Z"/></svg>',
+	link_external:'<svg aria-hidden="true" focusable="false" fill="currentColor" width="20" height="20" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path id="External_Link" data-name="External Link" class="cls-1" d="M725,756.25A43.879,43.879,0,0,1,681.25,800H243.75A43.879,43.879,0,0,1,200,756.25V318.75A43.879,43.879,0,0,1,243.75,275H512.868l75-75H215c-49.5,0-90,40.5-90,90V785c0,49.5,40.5,90,90,90H710c49.5,0,90-40.5,90-90V412.132l-75,75V756.25ZM820.36,125H574.479L656.5,207.021,491.152,372.369a55.157,55.157,0,0,0,0,77.988l58.491,58.491a55.157,55.157,0,0,0,77.988,0L792.979,343.5,875,425.521V179.64A54.64,54.64,0,0,0,820.36,125Z"/></svg>',
 	syncronise: '<svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs><style>.cls-1 { fill-rule: evenodd;  }</style></defs><path class="cls-1" d="M782.843,217.174A398.736,398.736,0,0,0,500,100c-195.291,0-357.892,139.936-393,325H261.391a250.117,250.117,0,0,1,415.4-101.776L575.005,425H825.02a50,50,0,0,0,50-50V125ZM738.609,575a250.117,250.117,0,0,1-415.4,101.777L425,575H174.98a50,50,0,0,0-50,50V875l92.18-92.174A398.736,398.736,0,0,0,500,900c195.291,0,357.892-139.936,393-325H738.609Z"/></svg>',
 	trash: '<svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class="cls-1" d="M750,149.959H625V125a50,50,0,0,0-50-50H425a50,50,0,0,0-50,50v24.959H250a75,75,0,0,0-75,75V275H825V224.959A75,75,0,0,0,750,149.959ZM425,125H575v24.959H425V125ZM225,299.959V925H775V299.959H225ZM375,400V824.865h0c0,0.045,0,.09,0,0.135a25,25,0,0,1-50,0c0-.045,0-0.09,0-0.135h0V400h0c0-.014,0-0.027,0-0.041a25,25,0,0,1,50,0c0,0.014,0,.027,0,0.041h0Zm150,0V824.864h0c0,0.046,0,.09,0,0.136a25,25,0,0,1-50,0c0-.046,0-0.09,0-0.136h0V400h0c0-.014,0-0.028,0-0.041a25,25,0,0,1,50,0c0,0.013,0,.027,0,0.041h0Zm150,0V824.865h0c0,0.045,0,.09,0,0.135a25,25,0,0,1-50,0c0-.045,0-0.09,0-0.135h0V400h0c0-.014,0-0.027,0-0.041a25,25,0,0,1,50,0c0,0.014,0,.027,0,0.041h0Z"/></svg>'
 }
@@ -165,12 +166,12 @@ function createObjectAndRunVallydette() {
 			"referentiel": currentCriteriaListName,
 			"version": globalVersion,
 			"template": globalTemplate,
-			"autoCheckIDs": [],
 			"timestamp": Date.now(),
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
-					"items": []
+					"items": [],
+					"autoCheckIDs": []
 					}]
 			}
 		}
@@ -824,7 +825,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '"><span class="visually-hidden">' + langVallydette.autocheckTxt1 + '</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ms-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '</span></span>' : '') + '<span id="resultID-' + currentTest + '" class="ms-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status1 + '</label></li>';
@@ -841,16 +842,18 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			
+			htmlrefTests +='<div id="alert-' + currentTest + '" class="alert alert-danger d-none" role="alert"><span class="alert-icon"></span><p></p></div>';
+			
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
-			if (currentPage === 0) {
-				htmlrefTests += '<div class="form-check">';
-				htmlrefTests += '	<input type="checkbox" class="form-check-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '" ' + ((getIfAutoCheck(currentRefTests[i].IDorigin)) ? "checked" : "" )  + '>';
-				htmlrefTests += '	<label class="form-check-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">' + langVallydette.autocheckTxt2 + '</label>';
-				htmlrefTests += '</div>';
+			
+			htmlrefTests += '<div class="form-check">';
+			htmlrefTests += '	<input type="checkbox" class="form-check-input" id="autoCheck-' + currentTest + '" aria-labelledby="heading' + currentTest + ' autoCheckLabel-' + currentTest + '" ' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage)) ? "checked" : "" )  + '>';
+			htmlrefTests += '	<label class="form-check-label" for="autoCheck-' + currentTest + '" id="autoCheckLabel-' + currentTest + '">' + langVallydette.autocheckTxt2 + '</label>';
+			htmlrefTests += '</div>';
 
-				htmlrefTests += '<div class="border-top border-light my-3 w-100"></div>';
-			}
+			htmlrefTests += '<div class="border-top border-light my-3 w-100"></div>';
 			
 			if (currentRefTests[i].verifier) {
 				htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
@@ -939,6 +942,9 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '</div>';
 				
 			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			
+			htmlrefTests +='<div id="alert-' + currentTest + '" class="alert alert-danger d-none" role="alert"><span class="alert-icon"></span><p></p></div>';
+
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
@@ -1121,7 +1127,7 @@ runTestListMarkup = function (currentRefTests) {
 		var nodeArray = [];
 		for (var j = 0; j < radios.length; ++j) {
 			radios[j].addEventListener('click', function () {
-				setStatusAndResults(this, currentRefTests[i].ID);
+				setStatusAndResults(this, currentRefTests[i].ID, currentRefTests[i].IDorigin);
 			}, false);
 		}
 
@@ -1166,22 +1172,52 @@ runTestListMarkup = function (currentRefTests) {
 function setAutoCheckID(e, testIDorigin, testID) {
 	
 	if (e.checked) {
-		
-		if (!dataVallydette.checklist.autoCheckIDs) {
-			dataVallydette.checklist.autoCheckIDs = [];
+		if (!dataVallydette.checklist.page[currentPage].autoCheckIDs) {
+			dataVallydette.checklist.page[currentPage].autoCheckIDs = [];
 		}
-		dataVallydette.checklist.autoCheckIDs.push(testIDorigin);
+		dataVallydette.checklist.page[currentPage].autoCheckIDs.push(testIDorigin);
 		
-		const iconHtml = '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + testID + '"><span class="visually-hidden">' + langVallydette.autocheckTxt1 + '</span>';
+		if(document.getElementById('link-' + testID) !== null){
+			document.getElementById('link-' + testID).remove();
+		}
+		
+		const iconHtml = '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + testID + '" title="' + langVallydette.autocheckTxt3 + '">'+htmlIcon.link+'<span class="visually-hidden">' + langVallydette.autocheckTxt3 + '</span>';
 		const iconNode = new DOMParser().parseFromString(iconHtml, 'text/html').body.firstElementChild;
 		let headingNode = document.getElementById('heading' + testID);
 		headingNode.insertBefore(iconNode, headingNode.children[1]);
-		
-		
+
+		if((currentPage != dataVallydette.checklist.page.length -1)){
+			//dataVallydette.checklist.page[(currentPage+1)].autoCheckIDs.push(testIDorigin);
+			nextPage = dataVallydette.checklist.page[(currentPage+1)].items.find(e => e.IDorigin == testIDorigin );
+			currentPageTab = dataVallydette.checklist.page[currentPage].items.find(e => e.IDorigin == testIDorigin );
+			nextPage.resultatTest = currentPageTab.resultatTest;
+		}
+
 	} else {
+		if((currentPage != dataVallydette.checklist.page.length -1)){
+			if (dataVallydette.checklist.page[currentPage].autoCheckIDs.length > 0) {
+				let critereLink=true;
+				let pageNumber = currentPage;
+				while (critereLink){
+					if(dataVallydette.checklist.page[pageNumber].autoCheckIDs.indexOf(testIDorigin)==-1){
+						critereLink =false;
+					}
+
+					if(pageNumber==dataVallydette.checklist.page.length-1){
+						critereLink = false;
+					}
+
+					dataVallydette.checklist.page[pageNumber].autoCheckIDs = dataVallydette.checklist.page[pageNumber].autoCheckIDs.filter(item => item !== testIDorigin);
+					pageNumber++;
+				}
+			}
+		}else{
+			dataVallydette.checklist.page[currentPage].autoCheckIDs = dataVallydette.checklist.page[currentPage].autoCheckIDs.filter(item => item !== testIDorigin);
+		}
+		if(currentPage == 0){
+			document.getElementById('link-' + testID).remove();
+		}
 		
-		dataVallydette.checklist.autoCheckIDs = dataVallydette.checklist.autoCheckIDs.filter(item => item !== testIDorigin);
-		document.getElementById('link-' + testID).remove();
 		
 	}
 
@@ -1194,15 +1230,14 @@ function getTestResult(pageId, testIDorigin) {
 
 }
 
-/**
- * Get if a test is part of the autocheckIDs array depending of his IDorigin property
- * @param {string} currentIDorigin - test ID property from dataVa11ydette of the current test
- */
-function getIfAutoCheck(currentIDorigin) {
-	
+function getIfAutoCheck(currentIDorigin,previewPage = 0) {
+
 	let autoUpdateResult = false;
-	if (dataVallydette.checklist.autoCheckIDs) {
-		const autoUpdate = dataVallydette.checklist.autoCheckIDs.filter(a => a === currentIDorigin);
+	if (previewPage < 0 ){
+		previewPage = 0;
+	}
+	if (dataVallydette.checklist.page[previewPage].autoCheckIDs) {
+		const autoUpdate = dataVallydette.checklist.page[previewPage].autoCheckIDs.filter(a => a === currentIDorigin);
 			if (autoUpdate.length > 0) {
 			autoUpdateResult = true;
 		}
@@ -1424,7 +1459,7 @@ function applyGroups() {
 					
 						if (radioToUpdate!==null) {
 							radioToUpdate.checked = true;
-							setStatusAndResults(radioToUpdate, itemTest.ID);
+							setStatusAndResults(radioToUpdate, itemTest.ID, itemTest.IDorigin);
 						} else {
 							dataVallydette.checklist.page[currentPage].items[index].resultatTest = testValue;
 						}
@@ -2136,7 +2171,7 @@ initPagination = function (pages) {
 	var allPages = pages.page;
 
 	var pageElement = document.getElementById("pageManager");
-	pageElement.innerHTML = "<div class='container'><ul class='nav'></ul></div>";
+	pageElement.innerHTML = "<div class='container navbar-expand p-0'><ul class='nav navbar-nav'></ul></div>";
 
 	let AddPage = document.createElement("li");
 	AddPage.classList.add("nav-item");
@@ -2163,7 +2198,7 @@ initPagination = function (pages) {
 		newBtnPage.innerHTML = allPages[i].name;
 		newBtnPage.setAttribute('id', allPages[i].IDPage);
 		newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
-		if (i === 0) {
+		if (i == 0) {
 			utils.setActive(newBtnPage);
 		}
 		newPage.appendChild(newBtnPage);
@@ -2182,8 +2217,11 @@ initPagination = function (pages) {
 /**  Adds a new page to the dataVallydette object and updates the page menu. */
 addPage = function () {
 	
+
+	var pagenum = dataVallydette.checklist.page.length;
 	/**  Duplicate the page object and push it to the dataVallydette as a new page. */
-	var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[0]));
+	var arr2 = JSON.parse(JSON.stringify(dataVallydette.checklist.page[pagenum-1]));
+	
 	dataVallydette.checklist.page.push(arr2);
 
 	indexPage = dataVallydette.checklist.page.length - 1;
@@ -2242,12 +2280,11 @@ initNewPage = function (item) {
 	item.ID = item.ID + '-p' + indexPage;
 	
 	/**  auto check */
-	if (!getIfAutoCheck(item.IDorigin)) {
+	if (!getIfAutoCheck(item.IDorigin, indexPage-1)) {
 		item.resultatTest = 'nt';
-	}
-	
-	if(item.issues) {
-		item.issues.splice(0, item.issues.length);
+		if(item.issues) {
+			item.issues.splice(0, item.issues.length);
+		}
 	}
 	
 	/**  Initialization of the groups */
@@ -2284,10 +2321,10 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	var htmlMenu = '';
 	htmlMenu += '<button class="btn btn-secondary btn-icon" id="btnPageName" aria-label="' + langVallydette.editPageName + '" title="' + langVallydette.editPageName + '" data-element="pageName" data-secondary-element="' + currentPageID + '" data-property="checklist.page.' + currentPageIndex + '.name" data-bs-toggle="modal" data-bs-target="#modalEdit">'+htmlIcon.edit+'</span></button>';
 	if( getPropertyValue("checklist.page." + currentPageIndex + ".url") === '' ){
-		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true">'+htmlIcon.link+'</a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true">'+htmlIcon.link_external+'</a>';
 	}
 	else{
-		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false">'+htmlIcon.link+'</a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false">'+htmlIcon.link_external+'</a>';
 	}
 
 	if (currentPage === 0) {
@@ -2410,6 +2447,18 @@ setDeletePage = function (targetElement) {
 */
 deletePage = function (currentPage, targetElement) {
 
+	/** check linked next and previous page, if not delete link to previous page	 */
+	let previouspage = dataVallydette.checklist.page[currentPage-1];
+
+	let differenceAutoCheck = previouspage.autoCheckIDs.filter(x => !dataVallydette.checklist.page[currentPage].autoCheckIDs.includes(x));
+	differenceAutoCheck.forEach(autoCheck=>{
+		let index = previouspage.autoCheckIDs.indexOf(autoCheck);
+		if(index > -1 ){
+			previouspage.autoCheckIDs.splice(index,1);
+		}
+
+	});
+
 	/** Removes page from dataVallydette. */
 	dataVallydette.checklist.page.splice(currentPage, 1);
 
@@ -2493,11 +2542,11 @@ setStatutText = function (lastResult) {
  * Update the badge status
  * @param {object} ele - radio button checked from a test.
  * @return {string} targetId - test ID that has been checked.
+ * @return {string} originID - test originID that has been checked.
 */
-setStatusAndResults = function (ele, targetId) {
+setStatusAndResults = function (ele, targetId, originID) {
 	let isAutoChecked;
 	var itemIndice;
-	
 	/** Update the test result into the object	*/
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId) {
@@ -2505,8 +2554,8 @@ setStatusAndResults = function (ele, targetId) {
 			dataVallydette.checklist.page[currentPage].items[i].resultatTest = ele.value;
 			
 			//auto checked
-			if (dataVallydette.checklist.autoCheckIDs) {
-				isAutoChecked = dataVallydette.checklist.autoCheckIDs.filter(id => id === dataVallydette.checklist.page[currentPage].items[i].IDorigin);	
+			if (dataVallydette.checklist.page[currentPage].autoCheckIDs) {
+				isAutoChecked = dataVallydette.checklist.page[currentPage].autoCheckIDs.filter(id => id === dataVallydette.checklist.page[currentPage].items[i].IDorigin);	
 			}
 			
 			itemIndice = i;
@@ -2520,13 +2569,47 @@ setStatusAndResults = function (ele, targetId) {
 	testResult.innerText = setStatutText(ele.value);
 	testResult.classList.add(statutClass);
 
-	if (currentPage === 0 && isAutoChecked.length > 0) {
-		if (dataVallydette.checklist.autoCheckIDs.length > 0) {
-			dataVallydette.checklist.page.forEach(function(p){
-				p.items[itemIndice].resultatTest = ele.value;
-			});
+
+	if((currentPage != dataVallydette.checklist.page.length -1) && isAutoChecked.length > 0){
+			if (dataVallydette.checklist.page[currentPage].autoCheckIDs.length > 0) {
+			let critereLink=true;
+			let pageNumber = currentPage;
+			while (critereLink){
+				pageNumber++;
+				dataVallydette.checklist.page[pageNumber].items[itemIndice].resultatTest =ele.value;
+
+				if(pageNumber==dataVallydette.checklist.page.length-1){
+					critereLink = false;
+				}
+
+				if(dataVallydette.checklist.page[pageNumber].autoCheckIDs.indexOf(dataVallydette.checklist.page[pageNumber].items[itemIndice].IDorigin)==-1){
+					critereLink =false;
+				}
+			}
 		}
 	}
+
+	// check if test is linked to previouspage
+	if( 0 < currentPage)
+	{
+		
+		if(getIfAutoCheck(originID,currentPage-1)){
+
+			const index = dataVallydette.checklist.page[currentPage-1].autoCheckIDs.indexOf(originID);
+			if (index > -1) { 
+				dataVallydette.checklist.page[currentPage-1].autoCheckIDs.splice(index, 1);
+				console.log(document.getElementById('link-' + targetId))
+				if(document.getElementById('link-' + targetId) !== null){
+					document.getElementById('link-' + targetId).remove();
+				}
+			}
+			let alertAutocheck = document.getElementById('alert-'+targetId);
+			alertAutocheck.innerHTML = '<span class="alert-icon"></span><p>'+langVallydette.autocheckTxtError+'</p>'
+			alertAutocheck.classList.remove('d-none')
+		}
+	}
+	
+
 	
 	jsonUpdate();
 }

@@ -3,7 +3,7 @@
 	"wcag-web": {
 		"filename": "criteres-wcag-ease",
 		"template": "wcag",
-		"version": "1.6",
+		"version": "1.7",
 		"name-fr": "Audit de conformité WCAG / WEB",
 		"name-en": "Conformity audit WCAG / WEB",
 		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'une application web aux critères WCAG 2.1 A et AA.",

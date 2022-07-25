@@ -357,6 +357,14 @@
 			"technicalSolution" : "The solution depends on the context in which the element is used: \n - element in a paragraph: complete the text of the paragraph (<p> […] </p>) \n - element in a list: complete a item from the list (<ul>, <ol>) \n - element in a table cell: complete the text of the cell (<td> […] </td>) or complete the direct header of the cell (<th> […] </th>)."
 		}
 	],
+	"testID-070":[
+        {
+			"title" : "Presence of buttons not visually labeled",
+			"detail" : "All buttons must have a visible label.",
+			"solution" : "Put a relevant label, visible near any button",
+			"technicalSolution" : ""
+		}
+    ],
 	"testID-069":[
 		{
 			"title": "Presence of irrelevant button labels",

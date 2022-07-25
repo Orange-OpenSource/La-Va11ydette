@@ -358,6 +358,14 @@
 			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n - élément dans un paragraphe : compléter le texte du paragraphe (<p>[…]</p>) \n - élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n - élément dans une cellule de tableau : compléter le texte de la cellule (<td>[…]</td>) ou compléter l'entête directe de la cellule (<th>[…]</th>)."
 		}
 	],
+	"testID-070":[
+        {
+			"title" : "Présence de boutons non étiquetés visuellement",
+			"detail" : "Tous les boutons doivent posséder une étiquette visible.",
+			"solution" : "Mettre un libellé pertinent, visible à proximité de tout bouton",
+			"technicalSolution" : ""
+		}
+    ],
 	"testID-069":[
 		{
 			"title" : "Présence de libellés de bouton non-compréhensibles",

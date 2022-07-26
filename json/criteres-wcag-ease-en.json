@@ -240,7 +240,7 @@
 	},
 	{
 		"themes": "Textual Content",
-		"title": "Are the data tables structured properly?",
+		"title": "Are the tables structured properly?",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
@@ -341,7 +341,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text or image of text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt"
@@ -368,7 +368,7 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p> Check that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
+		"verifier": "<p> Check that as well as graphics, icons and graphic interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
 		"exceptions": "<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>disabled components</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
@@ -434,7 +434,7 @@
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
 		"wcag": [
-			"4.1.2 A"
+			"2.4.6 AA"
 		],
 		"verifier": "<p>The user must be able to find the button function with the button text. Verify that the action carried by the accessible name of each button is relevant.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
@@ -484,19 +484,28 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Does the user have control over context changes?",
+		"title": "Does the user have control over context changes with keyboard or mouse?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
-		"wcag": [
-			"3.2.1 A",
-			"3.2.2 A"
-		],
-		"verifier": "<p> When using forms or any interactive component, check that there is no change of context, without warning the user: </p> <ul> <li> when an element takes the focus </li> <li> when entering data </li> <li> when activating a form element other than a button </li> </ul>",
+		"wcag": ["3.2.1 A"],
+		"verifier": "<p>When using forms or any interactive component, verify that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). But an element can change when the focus is taken, if the context does not change, for example, the appearance when focusing a drop-down menu or even the visual modification when hovering over a link.</p>",
 		"complement": "<h4> Change of context </h4> <p> Major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P2",
 		"resultatTest": "nt"
 	},
+	{
+		"themes": "General Navigation",
+		"title": "Does the user have control over context changes on a parameter modification?",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": ["3.2.2 A"],
+		"verifier": "<p>Verify the absence of context change, without prior warning of the user, when modifying the parameter of any interactive component. Modifying a parameter can be, for example, checking a checkbox, entering content in a text field, selecting an option in a form control, all of this must have predictable results (classic behavior, expected by the user) but the activation of a link or of a button is not a parameter change.</p>",
+		"complement": "<h4>Context Switch</h4><p>A major change in web page content that, when done without the knowledge of the user, can be confusing.</p> <p>Context switches include:</p><ul><li>user agent (opening an application from the browser)</li><li>changes to <span lang=\" in\">viewport</span> (another part of the displayed page, opening a new window)</li><li>of focus (moving the focus)</li><li>of content that modifies the web page meaning</li></ul><p>Context switching is compliant if:</p><ul><li>the action is initiated by an explicit button or link</li ><li>the user is warned by a text before it is triggered</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interaction",
+		"priority": "P2",
+		"resultTest": "nt"
+		},
 	{
 		"themes": "Common navigation",
 		"title": "Does the website have at least 2 means of navigation?",
@@ -623,7 +632,7 @@
 		"wcag": [
 			"1.4.4 AA"
 		],
-		"verifier": "<p>Check that there is no loss of information (no unusable, truncated, or hidden content or functionalities) after enlarging the text size by up to 200%.</p>",
+		"verifier": "<p>Verify that there is no loss of information (no unusable, truncated or hidden content or functionality) following the enlargement of the text size to 200%.</p><p><em>Note:</em> text zoom must be allowed on mobile. There must not be a \"&lt;meta name= 'viewport'&gt;\" tag with:</p><ul><li>the parameter user-scalable='no' </li><li>or, the parameter maximum-scale less than 2</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt"

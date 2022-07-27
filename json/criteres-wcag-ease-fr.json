@@ -110,7 +110,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<ul><li>vérifier que le label du champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône)</li><li>si l'information visuelle ne possède pas d'alternative texte (ex&nbsp;: icône sans alternative), vérifier que le champ possède un attribut <code>aria-invalid='true'</code></li></ul>",
+		"verifier": "<ul><li>vérifier que le label ou le nom accessible du champ en erreur est modifié afin que l'on comprenne que ce champ est en erreur (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône, ajout d'un <code>aria-labelledby</code>...)</li><li>si l'information visuelle ne possède pas d'alternative texte (ex&nbsp;: icône sans alternative), vérifier que le champ possède un attribut <code>aria-invalid='true'</code></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P1",
@@ -124,7 +124,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li></ul>",
+		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex&nbsp;: champ téléphone obligatoire, format de l'email invalide...).</ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",

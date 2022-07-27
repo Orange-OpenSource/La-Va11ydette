@@ -495,7 +495,7 @@
 		"resultatTest": "nt"
 	},
 	{
-		"themes": "General Navigation",
+		"themes": "Common navigation",
 		"title": "Does the user have control over context changes on a parameter modification?",
 		"ID": "testID-061",
 		"IDorigin": "testID-061",

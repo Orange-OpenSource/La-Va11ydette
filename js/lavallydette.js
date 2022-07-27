@@ -29,6 +29,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
  * @param {array} arrayTypeActivated - Array that contains all the activated types from the frontend filter menu (from audit mode).
  * @param {string} currentCriteriaListName - Selected checklist json file name.
  * @param {object} htmlContextualMenuContent - Contextual page menu (edit page name, delete a page).
+ * @param {object} htmlExpandedMenuContent - Contextual page menu (edit page name, delete a page).
  * @param {object} htmlFilterContent - Test filter menu.
  * @param {object} htmlMainContent - Main content.
  */
@@ -55,6 +56,7 @@ var arrayTypeActivated = [];
 var currentCriteriaListName;
 
 var htmlContextualMenuContent;
+var htmlExpandedMenuContent;
 var htmlFilterContent;
 var htmlMainContent;
 
@@ -353,8 +355,11 @@ function initAuditPage() {
                                     data-bs-toggle="modal" data-bs-target="#modalDelete" disabled>
 									`+htmlIcon.trash+`
                             </button>
-							<div class="border-top border-light my-3 w-100"></div>
+							
                         </div>
+						<div id="expandedMenu" class="mt-2 pe-2 w-100 d-print-none">
+						</div>
+						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
 							<h2 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
 							<nav id="tableOfContents" aria-labelledby="title-nav-anchor">	
@@ -376,6 +381,7 @@ function initAuditPage() {
 	
 	htmlFilterContent = document.getElementById('filter');
 	htmlContextualMenuContent = document.getElementById('contextualMenu');
+	htmlExpandedMenuContent = document.getElementById('expandedMenu');
 	htmlMainContent = document.getElementById('mainContent');
 	
 	eventHandler();
@@ -821,7 +827,7 @@ runTestListMarkup = function (currentRefTests) {
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
 				htmlrefTests += '<a id="anchor-'+formattedHeadingTheme+'"></a>';
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -841,7 +847,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			
 			htmlrefTests +='<div id="alert-' + currentTest + '" class="alert alert-danger d-none" role="alert"><span class="alert-icon"></span><p></p></div>';
 			
@@ -873,7 +879,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<a href="' + currentRefTests[i].moreInfo + '" id="mi-' + currentTest + '" aria-labelledby="heading' + currentTest + ' mi-' + currentTest + '" class="btn btn-secondary btn-sm" title="' + langVallydette.moreInfo + ' (' + langVallydette.newWindow +')" target="_blank">' + langVallydette.moreInfo + '</a>';
 			}
 			
-			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
+			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
 			for (let j in currentRefTests[i].wcag) {
 				htmlrefTests += currentRefTests[i].wcag[j];
 				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
@@ -900,7 +906,7 @@ runTestListMarkup = function (currentRefTests) {
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
 				htmlrefTests += '<a id="anchor-'+formattedHeadingTheme+'"></a>';
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
+				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
@@ -941,7 +947,7 @@ runTestListMarkup = function (currentRefTests) {
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				
-			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
+			htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
 			
 			htmlrefTests +='<div id="alert-' + currentTest + '" class="alert alert-danger d-none" role="alert"><span class="alert-icon"></span><p></p></div>';
 
@@ -976,7 +982,7 @@ runTestListMarkup = function (currentRefTests) {
 				htmlrefTests += '<a href="' + currentRefTests[i].moreInfo + '" id="mi-' + currentTest + '" aria-labelledby="heading' + currentTest + ' mi-' + currentTest + '" class="btn btn-secondary btn-sm" title="' + langVallydette.moreInfo + ' (' + langVallydette.newWindow +')" target="_blank">' + langVallydette.moreInfo + '</a>';
 			}
 			
-			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" aria-label="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
+			htmlrefTests += '<div class="py-2 ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + 'border-light"><p class="text-muted mb-0"><abbr title="Web Content Accessibility Guidelines" lang="en">WCAG</abbr>&nbsp;:&nbsp;';
 			for (let j in currentRefTests[i].wcag) {
 				htmlrefTests += currentRefTests[i].wcag[j];
 				j != ((currentRefTests[i].wcag).length - 1) ? htmlrefTests += ',  ' : '';
@@ -1156,6 +1162,7 @@ runTestListMarkup = function (currentRefTests) {
 
 	applyDisabledGroups();
 	initAnchorMenu();
+	initExpandedMenu();
 }
 
 
@@ -1947,6 +1954,7 @@ function runFinalComputation(pagesResultsArray) {
 
 	setPageName(langVallydette.auditResult);
 	removeContextualMenu();
+	removeExpandedMenu();
 	removeFilterSection();
 	
 	/** Modify column number */ 
@@ -2332,17 +2340,48 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 	} else {
 		htmlMenu += '<button id="btnDelPage" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.deletePageName + '" title="' + langVallydette.deletePageName + '" data-element="pageName" data-property="checklist.page.' + currentPageIndex + '" data-bs-toggle="modal" data-bs-target="#modalDelete" data-pagination="' + currentPageID + '">'+htmlIcon.trash+'</button>';
 	}
-
-	htmlMenu += '<div class="border-top border-light my-3 w-100"></div>';
 	htmlContextualMenuContent.innerHTML = htmlMenu;
 	
 	btnActionPageEventHandler();
 }
 
-
 /** Remove the page contextual menu (needed for audit results page). */
 removeContextualMenu = function () {
 	htmlContextualMenuContent.innerHTML = "";
+}
+
+/**  
+*	Initialization of page expanded menu, each time the user move to a new page.
+*/
+initExpandedMenu = function () {
+	var htmlMenu = '';
+	htmlMenu+=`<div class="form-check form-switch">
+					<input class="form-check-input" type="checkbox" role="switch" id="btnPageExpanded">
+					<label class="form-check-label" for="btnPageExpanded">`+langVallydette.expandedAll+`</label>
+				</div>`;
+	htmlExpandedMenuContent.innerHTML = htmlMenu;
+
+	document.getElementById('btnPageExpanded').addEventListener('click', function (e) {
+		document.querySelectorAll("button.btn-expanded").forEach( element =>{
+			if(this.checked){
+				if (element.attributes['aria-expanded'].value==="false"){
+					element.click();
+				}
+			}
+			else{
+				if (element.attributes['aria-expanded'].value==="true"){
+					element.click();
+				}
+			}
+		})
+	});
+	
+}
+
+
+/** Remove the page expanded menu (needed for audit results page). */
+removeExpandedMenu = function () {
+	htmlExpandedMenuContent.innerHTML = "";
 }
 
 /** 
@@ -3921,6 +3960,7 @@ function showStatementWizard() {
 	setPageName(langVallydette.statement);
 	utils.setPageTitle(langVallydette.statementTxt1);
 	removeContextualMenu();
+	removeExpandedMenu();
 	removeFilterSection();
 	utils.columnDisplay(2);
 	

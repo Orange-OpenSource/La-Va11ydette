@@ -325,7 +325,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au clavier & Switch Access",
+		"themes": "Navigation au clavier et Switch Access",
 		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access et avec un clavier ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
@@ -336,7 +336,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au clavier & Switch Access",
+		"themes": "Navigation au clavier et Switch Access",
 		"title": "L'écran ne contient pas de piège clavier&nbsp;?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
@@ -347,7 +347,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au clavier & Switch Access",
+		"themes": "Navigation au clavier et Switch Access",
 		"title": "L'ordre de prise de focus des éléments est-il logique et cohérent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
@@ -358,7 +358,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt"
 	},{
-		"themes": "Navigation au clavier & Switch Access",
+		"themes": "Navigation au clavier et Switch Access",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",

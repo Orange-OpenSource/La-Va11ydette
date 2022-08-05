@@ -324,7 +324,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
 		"resultatTest": "nt"
 	},{
-		"themes": "Keyboard navigation & Switch Access",
+		"themes": "Keyboard navigation and Switch Access",
 		"title": "Is all functionality of the page content operable through a keyboard interface and Switch Access?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
@@ -335,7 +335,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
 		"resultatTest": "nt"
 	},{
-		"themes": "Keyboard navigation & Switch Access",
+		"themes": "Keyboard navigation and Switch Access",
 		"title": "The screen does not contain keyboard traps?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
@@ -346,7 +346,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#keyboard-navigation-order",
 		"resultatTest": "nt"
 	},{
-		"themes": "Keyboard navigation & Switch Access",
+		"themes": "Keyboard navigation and Switch Access",
 		"title": "Is the order in which focusable components receive focus logical and consistent?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
@@ -357,7 +357,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#keyboard-navigation-order",
 		"resultatTest": "nt"
 	},{
-		"themes": "Keyboard navigation & Switch Access",
+		"themes": "Keyboard navigation and Switch Access",
 		"title": "When focus is received, is there a visible focus indicator?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",

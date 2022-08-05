@@ -29,7 +29,6 @@ $('.o-nav-local').prioritynav('Autres pages');*/
  * @param {array} arrayTypeActivated - Array that contains all the activated types from the frontend filter menu (from audit mode).
  * @param {string} currentCriteriaListName - Selected checklist json file name.
  * @param {object} htmlContextualMenuContent - Contextual page menu (edit page name, delete a page).
- * @param {object} htmlExpandedMenuContent - Contextual page menu (edit page name, delete a page).
  * @param {object} htmlFilterContent - Test filter menu.
  * @param {object} htmlMainContent - Main content.
  */
@@ -56,7 +55,6 @@ var arrayTypeActivated = [];
 var currentCriteriaListName;
 
 var htmlContextualMenuContent;
-var htmlExpandedMenuContent;
 var htmlFilterContent;
 var htmlMainContent;
 
@@ -357,8 +355,6 @@ function initAuditPage() {
                             </button>
 							
                         </div>
-						<div id="expandedMenu" class="mt-2 pe-2 w-100 d-print-none">
-						</div>
 						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
 							<h2 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
@@ -381,7 +377,6 @@ function initAuditPage() {
 	
 	htmlFilterContent = document.getElementById('filter');
 	htmlContextualMenuContent = document.getElementById('contextualMenu');
-	htmlExpandedMenuContent = document.getElementById('expandedMenu');
 	htmlMainContent = document.getElementById('mainContent');
 	
 	eventHandler();
@@ -1162,7 +1157,6 @@ runTestListMarkup = function (currentRefTests) {
 
 	applyDisabledGroups();
 	initAnchorMenu();
-	initExpandedMenu();
 }
 
 
@@ -1954,7 +1948,6 @@ function runFinalComputation(pagesResultsArray) {
 
 	setPageName(langVallydette.auditResult);
 	removeContextualMenu();
-	removeExpandedMenu();
 	removeFilterSection();
 	
 	/** Modify column number */ 
@@ -2350,39 +2343,6 @@ removeContextualMenu = function () {
 	htmlContextualMenuContent.innerHTML = "";
 }
 
-/**  
-*	Initialization of page expanded menu, each time the user move to a new page.
-*/
-initExpandedMenu = function () {
-	var htmlMenu = '';
-	htmlMenu+=`<div class="form-check form-switch">
-					<input class="form-check-input" type="checkbox" role="switch" id="btnPageExpanded">
-					<label class="form-check-label" for="btnPageExpanded">`+langVallydette.expandedAll+`</label>
-				</div>`;
-	htmlExpandedMenuContent.innerHTML = htmlMenu;
-
-	document.getElementById('btnPageExpanded').addEventListener('click', function (e) {
-		document.querySelectorAll("button.btn-expanded").forEach( element =>{
-			if(this.checked){
-				if (element.attributes['aria-expanded'].value==="false"){
-					element.click();
-				}
-			}
-			else{
-				if (element.attributes['aria-expanded'].value==="true"){
-					element.click();
-				}
-			}
-		})
-	});
-	
-}
-
-
-/** Remove the page expanded menu (needed for audit results page). */
-removeExpandedMenu = function () {
-	htmlExpandedMenuContent.innerHTML = "";
-}
 
 /** 
 *	Shows a new page when using the pagination menu.
@@ -3266,9 +3226,53 @@ displayIssue = function (targetId, title) {
  * Filter initialization, filters HTML elements are build here from the global var arrayFilterNameAndValue.
  */
 initFilters = function () {
+
+
     
 		htmlFilterContent.innerHTML = '';
+
+		/* Display part */
+		let htmlDisplayHeading = document.createElement('h2');
+		htmlDisplayHeading.textContent = "Affichage";
+		htmlFilterContent.appendChild(htmlDisplayHeading);
+
+		let htmlDisplayButtonExpand = document.createElement("button");
+		htmlDisplayButtonExpand.classList.add("btn", "btn-secondary", "btn-sm","mb-2");
+		htmlDisplayButtonExpand.id="btnPageExpanded";
+		htmlDisplayButtonExpand.textContent=langVallydette.expandedAll;
+		htmlFilterContent.appendChild(htmlDisplayButtonExpand);
+
+
+		let htmlDisplayButtonCollapse = document.createElement("button");
+		htmlDisplayButtonCollapse.classList.add("btn", "btn-secondary", "btn-sm","mb-2");
+		htmlDisplayButtonCollapse.id="btnPageCollapsed";
+		htmlDisplayButtonCollapse.textContent=langVallydette.expandedAllFalse;
+		htmlFilterContent.appendChild(htmlDisplayButtonCollapse);
+
+		let htmlBorderSeparate = document.createElement("div");
+		htmlBorderSeparate.innerHTML = '<div class="border-top border-light my-3"></div>';
+		htmlFilterContent.appendChild(htmlBorderSeparate);
+
+		document.getElementById('btnPageExpanded').addEventListener('click', function (e) {
+			document.querySelectorAll("button.btn-expanded").forEach( element =>{
+					if (element.attributes['aria-expanded'].value==="false"){
+						element.click();
+					}
+			})
+		});
+
+		document.getElementById('btnPageCollapsed').addEventListener('click', function (e) {
+			document.querySelectorAll("button.btn-expanded").forEach( element =>{
+					if (element.attributes['aria-expanded'].value==="true"){
+						element.click();
+					}
+			})
+		});
+		
 	   
+
+
+		/* Filter part */
 		let htmlFilterHeading = document.createElement('h2');
 		htmlFilterHeading.textContent = langVallydette.template.filters;
 		htmlFilterContent.appendChild(htmlFilterHeading);
@@ -3960,7 +3964,6 @@ function showStatementWizard() {
 	setPageName(langVallydette.statement);
 	utils.setPageTitle(langVallydette.statementTxt1);
 	removeContextualMenu();
-	removeExpandedMenu();
 	removeFilterSection();
 	utils.columnDisplay(2);
 	

@@ -3237,14 +3237,14 @@ initFilters = function () {
 		htmlFilterContent.appendChild(htmlDisplayHeading);
 
 		let htmlDisplayButtonExpand = document.createElement("button");
-		htmlDisplayButtonExpand.classList.add("btn", "btn-secondary", "btn-sm","mb-2");
+		htmlDisplayButtonExpand.classList.add("btn", "btn-secondary", "btn-sm","m-2");
 		htmlDisplayButtonExpand.id="btnPageExpanded";
 		htmlDisplayButtonExpand.textContent=langVallydette.expandedAll;
 		htmlFilterContent.appendChild(htmlDisplayButtonExpand);
 
 
 		let htmlDisplayButtonCollapse = document.createElement("button");
-		htmlDisplayButtonCollapse.classList.add("btn", "btn-secondary", "btn-sm","mb-2");
+		htmlDisplayButtonCollapse.classList.add("btn", "btn-secondary", "btn-sm","m-2");
 		htmlDisplayButtonCollapse.id="btnPageCollapsed";
 		htmlDisplayButtonCollapse.textContent=langVallydette.expandedAllFalse;
 		htmlFilterContent.appendChild(htmlDisplayButtonCollapse);

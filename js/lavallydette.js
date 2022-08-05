@@ -3233,7 +3233,7 @@ initFilters = function () {
 
 		/* Display part */
 		let htmlDisplayHeading = document.createElement('h2');
-		htmlDisplayHeading.textContent = "Affichage";
+		htmlDisplayHeading.textContent = langVallydette.display;
 		htmlFilterContent.appendChild(htmlDisplayHeading);
 
 		let htmlDisplayButtonExpand = document.createElement("button");

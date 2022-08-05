@@ -144,6 +144,7 @@
 	"manualDataEntryDesc": "Compléter ou modifier les données de la déclaration.",
 	"approval": "Déclarant",
 	"approvalEdit": "Modifier la liste des déclarants",
+	"display": "Affichage",
 	"expandedAll": "Ouvrir tous les tests",
 	"expandedAllFalse": "Fermer tous les tests",
 	"contact": "Contact",

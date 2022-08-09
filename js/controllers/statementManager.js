@@ -862,7 +862,7 @@ saveStatement = function(statementForm, submitterBtn) {
 */
 function initStatementExports(statementResult){
 	exportStatementHTML(statementResult);
-	exportStatement(statementResult);
+	exportStatementXML(statementResult);
 }
 
 /**

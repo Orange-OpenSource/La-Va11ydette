@@ -163,6 +163,27 @@
 }
 
 /**
+ * Get all local storage va11ydette audit
+ * 
+ * @returns 
+ */
+ function getAllStorage() {
+
+    var archive = {}, // Notice change here
+        keys = Object.keys(localStorage),
+        i = keys.length;
+
+    while ( i-- ) {
+		if( keys[i].indexOf('lavallydette')>=0 ){
+        	archive[ keys[i] ] = localStorage.getItem( keys[i] );
+		}
+    }
+
+
+    return archive;
+}
+
+/**
  * Add or remove a test from the autocheckIDs array (depending if the checkbox is checked or not)
  * @param {object} e - autocheck input checkbox
  * @param {string} testIDorigin - test ID property from dataVa11ydette

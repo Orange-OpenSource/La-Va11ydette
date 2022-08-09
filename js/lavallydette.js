@@ -297,6 +297,8 @@ function runVallydetteApp() {
 	
 	arrayFilterNameAndValue = [[langVallydette.template.status1, "ok"], [langVallydette.template.status2, "ko"], [langVallydette.template.status3, "na"], [langVallydette.template.status4, "nt"]];
 	
+
+	// @todo à supprimer dans le futur 08/08/2022
 	if (globalTemplate==="audit") {
 		arrayProfileNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items,"profils");
 		arrayTypeNameAndValue = uniqueEntry(dataVallydette.checklist.page[0].items, "type");
@@ -306,7 +308,9 @@ function runVallydetteApp() {
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
 	
-	initComputationWcag();
+	if( globalTemplate==="audit" || globalTemplate==="wcag"){
+		initComputationWcag();
+	}
     initPagination(dataVallydette.checklist);
 	initFilters();
   
@@ -392,26 +396,7 @@ jsonUpdate = function () {
 	btnLocalStorage.classList.remove("disabled");
 }
 
-/**
- * Get all local storage va11ydette audit
- * 
- * @returns 
- */
-function getAllStorage() {
 
-    var archive = {}, // Notice change here
-        keys = Object.keys(localStorage),
-        i = keys.length;
-
-    while ( i-- ) {
-		if( keys[i].indexOf('lavallydette')>=0 ){
-        	archive[ keys[i] ] = localStorage.getItem( keys[i] );
-		}
-    }
-
-
-    return archive;
-}
 
 /**
  * Run the excel export

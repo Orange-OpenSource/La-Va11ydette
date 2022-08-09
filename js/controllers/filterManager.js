@@ -10,7 +10,7 @@
 
     globalFilter();
     
-    
+    // @todo à supprimer dans le futur 08/08/2022
     if (globalTemplate==="audit") {
         PropertyFilterMarkup("arrayProfileActivated", "arrayProfileNameAndValue", "profile");
         PropertyFilterMarkup("arrayTypeActivated", "arrayTypeNameAndValue", "type");

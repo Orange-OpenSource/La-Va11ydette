@@ -870,7 +870,7 @@ function initStatementExports(statementResult){
  * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
  * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
-exportStatement = function(statementResult) {
+exportStatementXML = function(statementResult) {
 
 	var md = window.markdownit();
 

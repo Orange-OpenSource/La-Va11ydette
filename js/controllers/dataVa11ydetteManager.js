@@ -417,10 +417,6 @@ setStatusAndResults = function (ele, targetId, originID) {
 			alertAutocheck.classList.remove('d-none')
 		}
 	}
-	
-
-	
-	jsonUpdate();
 }
 
 /**

@@ -482,6 +482,7 @@ function initAuditPage() {
 		for (var j = 0; j < radios.length; ++j) {
 			radios[j].addEventListener('click', function () {
 				setStatusAndResults(this, currentRefTests[i].ID, currentRefTests[i].IDorigin);
+				jsonUpdate();
 			}, false);
 		}
 

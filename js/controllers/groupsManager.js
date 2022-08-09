@@ -32,43 +32,40 @@
 function getGroups() {
 	
 	themeIsUpdated = false;
+	themeUpdatedArray=[];
 	
 	for (var themeItem in dataVallydette.checklist.page[currentPage].groups) {
 		
 		if (document.getElementById(themeItem).checked !== dataVallydette.checklist.page[currentPage].groups[themeItem].checked) {
 			themeIsUpdated = true;
 			dataVallydette.checklist.page[currentPage].groups[themeItem].checked = document.getElementById(themeItem).checked;
+			themeUpdatedArray.push(dataVallydette.checklist.page[currentPage].groups[themeItem]);
 		
 		}
 	}
-	
 	if (themeIsUpdated) {
-		applyGroups();
+		applyGroups(themeUpdatedArray);
 	}
 	
 }
 
  /**
 	* Update the tests value from current groups selection
+	*	@param {Array} themeUpdatedArray - global var that contains the current page index.
  */
-function applyGroups() {
+function applyGroups( themeUpdatedArray ) {
 	
 	var radioToUpdate;
 	var testValue;
-	
-	for (var themeItem in dataVallydette.checklist.page[currentPage].groups) {
-		
-		dataVallydette.checklist.page[currentPage].groups[themeItem].idTests.map(function(themeIdTest) {
-			
-			dataVallydette.checklist.page[currentPage].items.map(function(itemTest, index) {
-	
-				if (themeIdTest === itemTest.IDorigin) {
-						
-					const radioButtons = document.getElementsByName("test-"+itemTest.ID);
+	var findTest;
+	themeUpdatedArray.forEach(theme=>{
+		theme.idTests.forEach(test => {
+			findTest = dataVallydette.checklist.page[currentPage].items.find(o => o.IDorigin === test);
+			const radioButtons = document.getElementsByName("test-"+findTest.ID);
 					
-					if (dataVallydette.checklist.page[currentPage].items[index].resultatTest === "nt" || dataVallydette.checklist.page[currentPage].items[index].resultatTest === "na") {
+					if (findTest.resultatTest === "nt" || findTest.resultatTest === "na") {
 					
-						if (dataVallydette.checklist.page[currentPage].groups[themeItem].checked) {
+						if (theme.checked) {
 			
 							testValue = "nt";
 							
@@ -89,25 +86,24 @@ function applyGroups() {
 						}
 							
 						 /** testing if not null in case of an activated filter */
-						radioToUpdate = document.getElementById(testValue+"-"+itemTest.ID);
+						radioToUpdate = document.getElementById(testValue+"-"+findTest.ID);
 					
 					
 						if (radioToUpdate!==null) {
 							radioToUpdate.checked = true;
-							setStatusAndResults(radioToUpdate, itemTest.ID, itemTest.IDorigin);
+							setStatusAndResults(radioToUpdate, findTest.ID, findTest.IDorigin);
 						} else {
-							dataVallydette.checklist.page[currentPage].items[index].resultatTest = testValue;
+							findTest.resultatTest = testValue;
 						}
 					
 					}
 
-				}
-			
-			}); 	
-			
-		}); 
+		});
 		
-	}	
+	})
+
+	
+		
 	
 }
 

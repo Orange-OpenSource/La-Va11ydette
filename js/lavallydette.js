@@ -166,6 +166,7 @@ function createObjectAndRunVallydette() {
 			"version": globalVersion,
 			"template": globalTemplate,
 			"timestamp": Date.now(),
+			"goodPractice": true,
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,
@@ -318,34 +319,6 @@ function runVallydetteApp() {
     updateCounter(false, dataVallydette.checklist.page[currentPage].items.length);
 	utils.setPageTitle( dataVallydette.checklist.page[currentPage].name);
 }
-
-
-
-
-/**
-	*  Get if a test rely on AAA wcag rules
-*/
-function getAAA(currentWcag) {
-	
-	let level = false;
-	
-	if (currentWcag) {
-		dataWCAG.items.forEach(function(current){
-			
-			if (current.wcag === currentWcag) {
-				
-				if (current.level === 'AAA') {
-					level = true;
-				} 
-			} 
-		
-		});
-		
-	}
-	return level;
-	
-}
-
 
 /**
  * Check if the url is correct, and correct it accordingly

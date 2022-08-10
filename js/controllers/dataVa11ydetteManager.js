@@ -201,7 +201,7 @@
 			document.getElementById('link-' + testID).remove();
 		}
 		
-		const iconHtml = '<span class="icon icon-Link ms-1 badge bg-warning" id="link-' + testID + '" title="' + langVallydette.autocheckTxt3 + '">'+htmlIcon.link+'<span class="visually-hidden">' + langVallydette.autocheckTxt3 + '</span>';
+		const iconHtml = '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + testID + '" title="' + langVallydette.autocheckTxt3 + '">'+htmlIcon.link+'<span class="visually-hidden">' + langVallydette.autocheckTxt3 + '</span>';
 		const iconNode = new DOMParser().parseFromString(iconHtml, 'text/html').body.firstElementChild;
 		let headingNode = document.getElementById('heading' + testID);
 		headingNode.insertBefore(iconNode, headingNode.children[1]);
@@ -324,6 +324,30 @@ function getNbNotTested() {
     nbNTArray.total = nbNTtests;
 
     return nbNTArray;
+}
+
+/**
+	*  Get if a test rely on AAA wcag rules
+*/
+function getAAA(currentWcag) {
+	
+	
+	let level = false;
+	
+	if (currentWcag) {
+		dataWCAG.items.forEach(function(current){
+			if (current.wcag === currentWcag || current.wcag+ " AAA"===currentWcag) {
+				
+				if (current.level === 'AAA') {
+					level = true;
+				} 
+			} 
+		
+		});
+		
+	}
+	return level;
+	
 }
 
 /**

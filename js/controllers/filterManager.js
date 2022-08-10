@@ -17,6 +17,11 @@
     }
 
     if(globalTemplate==="audit" || globalTemplate==="wcag"){
+
+        if(globalTemplate==="wcag"){
+            goodPracticeFilter();
+        }
+
         let htmlWcagDisplay = '<div class="border-top border-light my-3"></div>';
         htmlWcagDisplay += '<div class="form-check form-switch"><label class="form-check-label pb-1 d-print-none" id="labelWcagDisplay"><input type="checkbox" class="form-check-input" id="typeWcagDisplay" value=""><span class="form-check-label" id="displayWcag">' + langVallydette.wcagView + '</span></label></div>';
         let wcagDisplayItem = document.createElement("div");
@@ -109,6 +114,43 @@ function globalFilter(){
         }, false);
 
     }
+}
+
+/**
+* Filter good practice to wcag checklist
+* display good practice or not
+*/
+function goodPracticeFilter(){
+    let htmlFilterList = document.getElementsByClassName('list-unstyled');
+    var isChecked = ( dataVallydette.checklist.goodPractice===true ? "checked" :"" );
+
+    htmlTypes = '<div class="form-check form-switch"><label class="form-check-label pb-1" id="labelTypeGoodPractice"><input type="checkbox" class="form-check-input" id="resultGoodPractice" '+ isChecked+ '><span class="form-check-label" id="statusGoodPractice">' + langVallydette.goodPractice + '</span></label></div>';
+    var listItem = document.createElement("li");
+    listItem.innerHTML = htmlTypes;
+    htmlFilterList[0].appendChild(listItem);
+
+    var inputItem = document.getElementById("resultGoodPractice");
+        inputItem.addEventListener('click', function (e) {
+            if(e.target.checked){
+               
+                let goodPracticeElements= document.getElementsByClassName("good-practice");
+                for (let item of goodPracticeElements) {
+                    item.classList.remove('d-none')
+                    
+                }
+                dataVallydette.checklist.goodPractice=true;
+            }
+            else{
+                let goodPracticeElements= document.getElementsByClassName("good-practice");
+                for (let item of goodPracticeElements) {
+                    item.classList.add('d-none')
+                }
+                dataVallydette.checklist.goodPractice=false;
+            }
+
+            runFilter();
+        }, false);
+
 }
 
 /**
@@ -321,6 +363,16 @@ if(arrayProfileActivated && arrayProfileActivated.length > 0){
 if(arrayTypeActivated && arrayTypeActivated.length > 0){
     
     filteredTest = filteredTest.filter(filtrerParID("type", "arrayTypeActivated"));
+
+}
+
+if(dataVallydette.checklist.goodPractice == false ){
+    
+    filteredTest = filteredTest.filter(o => {
+        if(! o.goodPractice){
+            return o;
+        }
+    });
 
 } 
 

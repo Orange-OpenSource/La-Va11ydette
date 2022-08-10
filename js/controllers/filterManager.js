@@ -156,6 +156,25 @@ function goodPracticeFilter(){
 
 }
 
+function getNbGoodPractice(){
+
+    goodPracticeArray = [];
+    filteredTest = dataVallydette.checklist.page[currentPage].items;
+
+    if(dataVallydette.checklist.goodPractice == false ){
+    
+        goodPracticeArray = filteredTest.filter(o => {
+            if( o.goodPractice){
+                return o;
+            }
+        });
+    
+    } 
+
+    return goodPracticeArray.length;
+    
+}
+
 /**
 * Create the filters markup (lists of filters)
 */
@@ -261,11 +280,17 @@ if (wcagDisplayModeInput.checked) {
 updateCounter = function (activeFilter, nbTests) {
 let elFeedback = document.getElementById('feedback');
 let htmlFeedback = '';
+
+nbTests -=getNbGoodPractice();
+if(nbTests<0){
+    nbTests=0;
+}
+
 if (activeFilter) {
     htmlFeedback = '<p><span><b>' + nbTests + '</b> ' + langVallydette.filterFeedback2 + '</span></p>';
     elFeedback.innerHTML = htmlFeedback;
 } else {
-    htmlFeedback = '<p><b>' + nbTests + '</b> ' + langVallydette.filterFeedback1 + '</p>';
+    htmlFeedback = '<p><b>' + nbTests  + '</b> ' + langVallydette.filterFeedback1 + '</p>';
     elFeedback.innerHTML = htmlFeedback;
 }
 };
@@ -368,17 +393,6 @@ if(arrayTypeActivated && arrayTypeActivated.length > 0){
     filteredTest = filteredTest.filter(filtrerParID("type", "arrayTypeActivated"));
 
 }
-
-if(dataVallydette.checklist.goodPractice == false ){
-    
-    filteredTest = filteredTest.filter(o => {
-        if(! o.goodPractice){
-            return o;
-        }
-    });
-
-} 
-
 
 runTestListMarkup(filteredTest);
 updateCounter(true, filteredTest.length);

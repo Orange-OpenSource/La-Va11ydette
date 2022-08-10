@@ -158,7 +158,7 @@ function createObjectAndRunVallydette() {
 		} else {
 			utils.reqError();
 		}
-		
+
 		dataVallydette = {
 		"checklist": {
 			"name": "",
@@ -166,7 +166,7 @@ function createObjectAndRunVallydette() {
 			"version": globalVersion,
 			"template": globalTemplate,
 			"timestamp": Date.now(),
-			"goodPractice": true,
+			"goodPractice": (localStorage.getItem('goodPractice') === null ? true : JSON.parse(localStorage.getItem('goodPractice')) ),
 			"page": [{
 					"IDPage": "pageID-0",
 					"name": langVallydette.pageName,

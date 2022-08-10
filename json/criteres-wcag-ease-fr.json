@@ -489,6 +489,19 @@
 	},
 	{
 		"themes": "Navigation générale",
+		"title": "Un utilisateur est-il prévenu de l’ouverture d’une nouvelle fenêtre ? ",
+		"ID": "testID-072",
+		"IDorigin": "testID-072",
+		"wcag": [],
+		"verifier": "<p>Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs, au choix :</p><ul><li>intitulé du lien incluant la mention « nouvelle fenêtre »</li><li>présence d’un indice visuelle (title, icone dans l’intitulé…) et de la mention « nouvelle fenêtre » dans le nom accessible.</li></ul>",
+		"complement": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#prevenir-lutilisateur-de-louverture-dune-nouvelle-fenetre",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
+	},
+	{
+		"themes": "Navigation générale",
 		"title": "Chaque libellé de bouton est-il pertinent&nbsp;?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
@@ -514,6 +527,32 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "La structure sémantique globale est-elle cohérente ? ",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
+		"wcag": [],
+		"verifier": "<ul><li>vérifier que chaque région de la page possède une sémantique pertinente à travers des balises de structures HTML5 au minimum <code>header</code>, <code>main</code>, <code>footer</code> (ou leur équivalent sous forme de roles ARIA : <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>vérifier que le contenu principal est inclus dans une balise main</li><li>vérifier que le contenu de la page est inclus au minimum dans une balise structure</li></ul>",
+		"complement": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/exemples-de-composants/landmarks-aria/#main-content",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Des liens d’évitement sont-ils présents ? ",
+		"ID": "testID-074",
+		"IDorigin": "testID-074",
+		"wcag": [],
+		"verifier": "<p>Vérifier la présence de liens d'évitement (en haut de page) si nécessaire.</p>",
+		"complement": "<p>Les principales raisons de la mise en place de liens d'évitements :</p><ul><li>la page est longue</li><li>la navigation contient beaucoup de lien</li><li>le contenu contient beaucoup de liens (plusieurs menus de navigation, pieds de page faisant office de plan de site…)</li><li>la page est découpée en nombreuse parties distinctes (portail, tableau de bord…)</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/articles/liens-evitement/",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Navigation générale",
@@ -588,6 +627,20 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Des informations sur l’emplacement de l’utilisateur dans un ensemble de page sont-elles disponibles ? ",
+		"ID": "testID-075",
+		"IDorigin": "testID-075",
+		"wcag": [
+			"2.4.8 AAA"
+		],
+		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement :</p><ul><li>un système est présent (fil d’Ariane…)</li><li>une indication visuelle est présente (suffisamment contrasté et ne reposant pas que sur la couleur) et accompagnée d’un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\">attribut aria-current</a></li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-acces-multiples-et-une-localisation",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Navigation générale",
@@ -816,6 +869,21 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Mise en page",
+		"title": "Les zones de click ont-elles une taille suffisante ? ",
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.5.5 AAA"
+		],
+		"verifier": "<p>L’utilisateur doit pouvoir cliquer facilement sur un élément interactif. </p><p>Vérifier que la zone de click de ces éléments dépasse 44px par 44px</p>",
+		"exception":"<ul><li>si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les liens d’ancrages</li><li>lien au milieu d'une phrase</li><li>note de bas de page</li><li>icone d'aide dans une phrase</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Tactile et interactions",

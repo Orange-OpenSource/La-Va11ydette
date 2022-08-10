@@ -175,10 +175,6 @@ function runComputationWcag(obj) {
 							}	
 						}
 					}
-
-					//if (pagesResults[i].items[k].complete === false) {
-						// pagesResults[i].items[k].resultat = "nt";
-					//}
 				}
 			
         }
@@ -330,7 +326,7 @@ function dataWCAGComputation() {
 		dataWCAG.totalA = dataWCAG.items.filter(function(item){return item.level==="A"}).length;
 		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA"}).length;
 	
-		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => item.resultat === true || item.resultat === false).length;
+		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => (item.resultat === true || item.resultat === false) && item.level!=="AAA").length;
 		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true).length;
 		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false).length;
 		dataWCAG.nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na").length;

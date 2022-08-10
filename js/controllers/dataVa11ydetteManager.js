@@ -310,7 +310,7 @@ function getNbNotTested() {
 
     for (let k in dataVallydette.checklist.page) {
         for (let l in dataVallydette.checklist.page[k].items) {
-            if (dataVallydette.checklist.page[k].items[l].resultatTest == "nt") {
+            if (dataVallydette.checklist.page[k].items[l].resultatTest == "nt" && dataVallydette.checklist.page[k].items[l].goodPractice =="false") {
                 nbNTtests++;
                 nbNTtestsPage++;
             }

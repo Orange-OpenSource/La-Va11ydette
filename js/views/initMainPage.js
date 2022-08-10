@@ -362,7 +362,6 @@ function wcagView(currentRefTests){
 		let goodPracticeClass ="";
 		if(currentRefTests[i].goodPractice == true){
 			goodPracticeClass="good-practice";
-
 			if(! dataVallydette.checklist.goodPractice){
 				goodPracticeClass+=" d-none";
 			}

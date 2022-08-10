@@ -92,6 +92,7 @@ function globalFilter(){
 
     let htmlFilterFeedback = document.createElement('div');
     htmlFilterFeedback.setAttribute("id", "feedback"); 
+    htmlFilterFeedback.setAttribute("role", "alert"); 
     htmlFilterContent.appendChild(htmlFilterFeedback);
 
     let htmlFilterList = document.createElement('ul');
@@ -139,6 +140,7 @@ function goodPracticeFilter(){
                     
                 }
                 dataVallydette.checklist.goodPractice=true;
+                localStorage.setItem('goodPractice',true)
             }
             else{
                 let goodPracticeElements= document.getElementsByClassName("good-practice");
@@ -146,6 +148,7 @@ function goodPracticeFilter(){
                     item.classList.add('d-none')
                 }
                 dataVallydette.checklist.goodPractice=false;
+                localStorage.setItem('goodPractice',false)
             }
 
             runFilter();

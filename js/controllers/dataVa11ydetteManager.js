@@ -93,10 +93,6 @@
 		
 	};
 	
-	var inputSelectFile = document.getElementById("selectFiles");
-	inputSelectFile.addEventListener('change', function () {
-		document.getElementById("selectFilesLabel").innerText = inputSelectFile.files[0].name;
-	}, false);
 	
 }
 

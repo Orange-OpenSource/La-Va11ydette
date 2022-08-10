@@ -39,15 +39,18 @@
  * Load issue
 */
 loadIssue = function (){
-	var issuesRequest = new XMLHttpRequest();
-	issuesRequest.open("GET", "json/"+ checklistVallydette[dataVallydette.checklist.referentiel].filename+"-issues-" + globalLang + ".json", true);
-	issuesRequest.onreadystatechange = function () {
-		if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
-			issuesVallydette = JSON.parse(issuesRequest.responseText);
-		}	 
-	};
+	if(typeof checklistVallydette[dataVallydette.checklist.referentiel] !== 'undefined'){
+		var issuesRequest = new XMLHttpRequest();
+		issuesRequest.open("GET", "json/"+ checklistVallydette[dataVallydette.checklist.referentiel].filename+"-issues-" + globalLang + ".json", true);
+		issuesRequest.onreadystatechange = function () {
+			if(issuesRequest.readyState === 4 && issuesRequest.status === 200) {
+				issuesVallydette = JSON.parse(issuesRequest.responseText);
+			}	 
+		};
+		
+		issuesRequest.send();
+	}
 	
-	issuesRequest.send();
 }
 
 /**

@@ -21,6 +21,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
  * @param {string} globalTemplate - actually 2 templates are available, wcag for conformity audit et audit for test audit.
  * @param {number} globalVersion - Contains the last checklist version
  * @param {object} dataWCAG - Object related to matrice-wcag-ease.json, that contains the link between WCAG rules and conformity checklist tests.
+ * @param {object} dataRGAA - Object, that contains the criteres RGAA.
  * @param {number} currentPage - Current page index, updated each time user move to another page.
  * @param {string} statutClass - Default class used by the html element displaying a test result.
  * @param {array} arrayFilterNameAndValue - Initialization of filter labels and values.
@@ -34,7 +35,7 @@ $('.o-nav-local').prioritynav('Autres pages');*/
  */
 var dataVallydette;
 var langVallydette;
-var checklistVallydette;
+var checklistVallydette={};
 var issuesVallydette={};
 
 var globalLang;
@@ -42,6 +43,7 @@ var globalTemplate;
 var globalVersion;
 
 var dataWCAG;
+var dataRGAA;
 
 var	currentPage = 0;
 var statutClass = "bg-light";
@@ -119,7 +121,13 @@ function initGlobalCriteriaListName(criteriaListName) {
 	checklistRequest.onreadystatechange = function () {
 		
 	  if(checklistRequest.readyState === 4 && checklistRequest.status === 200) {
-		checklistVallydette = JSON.parse(checklistRequest.responseText);
+		objChecklist=JSON.parse(checklistRequest.responseText);
+		for(const[key, value] of Object.entries(objChecklist)){
+			if(objChecklist[key]["name-" + globalLang] ===""){
+				delete objChecklist[key];
+			}
+		}
+		checklistVallydette = objChecklist;
 
 		if (currentCriteriaListName) {
 			initAuditPage();
@@ -309,9 +317,19 @@ function runVallydetteApp() {
 	var HeadingChecklistName = document.getElementById("checklistName");
 	HeadingChecklistName.innerText = dataVallydette.checklist.name;
 	
-	if( globalTemplate==="audit" || globalTemplate==="wcag"){
-		initComputationWcag();
+
+	switch(globalTemplate){
+		case "wcag":
+			initComputationWcag();
+			break;
+			case "audit":
+				initComputationWcag();
+				break;
+			case "rgaa":
+				initComputationRGAA();
+				break;
 	}
+	
     initPagination(dataVallydette.checklist);
 	initFilters();
   
@@ -493,6 +511,7 @@ const utils = {
     return str.toLowerCase()
 		.replace(/é|è|ê/g, "e")
 		.replace(/ /g, "-")
+		.replace(/'/g, "")
 		.replace(/\(|\)/g, "");
   },
   slugify: function (str) {

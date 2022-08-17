@@ -223,65 +223,19 @@ function initAuditPage() {
 			
 	}
 
-	/** 'wcag' value correspond to the conformity checklist */
-	if (globalTemplate === 'wcag') {
-		htmlrefTests = wcagView(currentRefTests)
-	 /** 'audit' value correspond to the conformity checklist 
-	  * @todo a supprimer au bout d'un moment 08/08/2022
-	 */
-	} else if (globalTemplate === 'audit') {
-		htmlrefTests = auditView(currentRefTests)
-	} else {
-		/** 
-			*	default template, was used with the vallydette first version.
-			*	@todo Need to be uptaded or removed.
-		*/
-		for (let i in currentRefTests) {
-			if (headingTheme != currentRefTests[i].themes) {
-				headingTheme = currentRefTests[i].themes;
-				htmlrefTests += '<h2 id="test-' + utils.formatHeading(currentRefTests[i].themes) + '">' + currentRefTests[i].themes + '</h2>';
-			}
-			htmlrefTests += '<article class="" id="' + currentRefTests[i].ID + '"><div class="card-header" id="heading' + i + '"><h3 class="card-title"><a class="" role="button" data-bs-toggle="collapse" href="#collapse' + i + '" aria-expanded="false" aria-controls="collapse' + i + '"><span class="accordion-title">' + currentRefTests[i].title + '</span><span id="resultID-' + currentRefTests[i].ID + '" class="badge bg-pill ' + getStatutClass(currentRefTests[i].resultatTest) + ' float-lg-start">' + setStatutText(currentRefTests[i].resultatTest) + '</span></a></h3>';
+	switch (globalTemplate){
+		case 'wcag':
+			htmlrefTests = wcagView(currentRefTests);
+			break;
+		/** 'audit' value correspond to the conformity checklist 
+	  	* @todo a supprimer au bout d'un moment 08/08/2022
+	 	*/
+		case 'audit':
+			htmlrefTests = auditView(currentRefTests)
+			break;
+		case 'rgaa' :
+			htmlrefTests = rgaaView(currentRefTests);
 
-			htmlrefTests += '<div class="testForm"><label for="conforme' + i + '">Conforme</label><input type="radio" id="conforme' + i + '" name="test' + i + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/> <label for="non-conforme' + i + '">Non conforme</label><input type="radio" id="non-conforme' + i + '" name="test' + i + '" id="radio' + i + '" value="ko" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[1][1]) ? "checked" : "") + '/>  <label for="na' + i + '">N/A</label><input type="radio" id="na' + i + '" name="test' + i + '" value="na" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[2][1]) ? "checked" : "") + '/>  <label for="nt' + i + '">Non testé</label><input type="radio" id="nt' + i + '" name="test' + i + '" value="nt" ' + (((currentRefTests[i].resultatTest === arrayFilterNameAndValue[3][1]) || (currentRefTests[i].resultatTest === '')) ? "checked" : "") + '/>';
-			htmlrefTests += '<div id="collapse' + i + '" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading' + i + '">';
-			htmlrefTests += '<div class="card-block"><div class="row">';
-			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title1 + '</h4><ol>';
-			for (let j in currentRefTests[i].tests) {
-				htmlrefTests += '<li>' + currentRefTests[i].tests[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '<div class="col-lg-6"><h4>' + textContent.title2 + '</h4><ol>';
-			for (let j in currentRefTests[i].verifier) {
-				htmlrefTests += '<li>' + currentRefTests[i].verifier[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '</div>';
-			htmlrefTests += '<div class="row">';
-			htmlrefTests += '<div class="col-lg-12"><h4>' + ((currentRefTests[i].profils[0] === 'Concepteur') ? textContent.title4 : textContent.title3) + '</h4><ol>';
-			for (let j in currentRefTests[i].resultat) {
-				htmlrefTests += '<li>' + currentRefTests[i].resultat[j] + '</li> ';
-			}
-			htmlrefTests += '</ol></div>';
-			htmlrefTests += '</div>';
-			if (currentRefTests[i].exception) {
-				htmlrefTests += '<div class="row"><div class="col-lg-12" ><h4>Exceptions</h4>';
-				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p> ';
-				htmlrefTests += '</div>';
-				htmlrefTests += '</div>';
-			}
-			htmlrefTests += '</div><div class="card-footer text-muted"><b>Profils : </b>';
-			for (let j in currentRefTests[i].profils) {
-				htmlrefTests += currentRefTests[i].profils[j];
-				j != ((currentRefTests[i].profils).length - 1) ? htmlrefTests += ',  ' : '';
-			}
-			htmlrefTests += '<br />' + ((currentRefTests[i].type).length > 0 ? '<b>Outils : </b>' : '');
-			for (let j in currentRefTests[i].type) {
-				htmlrefTests += '<i class="fa fa-tag" aria-hidden="true"></i> ' + currentRefTests[i].type[j] + ' ';
-			}
-			htmlrefTests += '</div>';
-			htmlrefTests += '</div></article>';
-		}
 	}
 
 	currentRefTests.length === 0 ? htmlMainContent.innerHTML = '<div class="alert alert-warning">' + langVallydette.warningNoResult + '</div>' : htmlMainContent.innerHTML = htmlrefTests;
@@ -325,11 +279,12 @@ function initAuditPage() {
 	initAnchorMenu();
 }
 
+
 /**
  *  View HTMl to wcag checklist.
   * @param {object} currentRefTests - Dynamic version of the vallydette object. Which means that it can be dynamically updated by the filters options.
  */
-function wcagView(currentRefTests){
+function defaultView(currentRefTests){
 	let htmlrefTests = '';
 	let headingTheme = '';
 	
@@ -337,14 +292,6 @@ function wcagView(currentRefTests){
 		
 	/** Modify column number */ 
 	utils.columnDisplay(3);
-
-	if(document.getElementById('btnShowStatement') === null) {
-		var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ms-2", "d-print-none"], langVallydette.statementTitle);
-		document.getElementById("auditInfoManager").appendChild(btnStatement);
-		document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject(); initAnchorMenu();});
-	}
-	
-	/** pass through the tests object to display each of them */
 	for (let i in currentRefTests) {
 		var currentTest = currentRefTests[i].ID;
 		if (headingTheme != currentRefTests[i].themes) {
@@ -450,6 +397,31 @@ function wcagView(currentRefTests){
 		htmlrefTests += '</article>';
 	}
 	return htmlrefTests;
+}
+
+
+/**
+ *  View HTMl to wcag checklist.
+  * @param {object} currentRefTests - Dynamic version of the vallydette object. Which means that it can be dynamically updated by the filters options.
+ */
+function wcagView(currentRefTests){
+	
+
+	if(document.getElementById('btnShowStatement') === null) {
+		var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ms-2", "d-print-none"], langVallydette.statementTitle);
+		document.getElementById("auditInfoManager").appendChild(btnStatement);
+		document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject(); initAnchorMenu();});
+	}
+
+	return defaultView(currentRefTests);
+}
+
+/**
+ *  View HTMl to rgaa checklist.
+  * @param {object} currentRefTests - Dynamic version of the vallydette object. Which means that it can be dynamically updated by the filters options.
+ */
+function rgaaView(currentRefTests){
+	return defaultView(currentRefTests);
 }
 
 /**

@@ -435,3 +435,142 @@ function runFinalComputationWcag(pagesResultsArray) {
 
 }
 
+
+/**
+ * Result for wcag audit
+ * 
+ * 	Computes the conformity rate by pages and the final audit conformity rate (average rate).
+ *	Computes the rgaa summary table (conformity, non-conformity and non-applicable tests by wcag levels).
+ *	Builds the non-conformity list
+ *	Builds the audit result markup.
+ *  @param {array} pagesResultsArray - Contains all rgaa results by pages.
+*/
+function runFinalComputationRGAA(pagesResultsArray){
+	/**
+	 * 	Gets the number of non-tested items.
+	 @param {number} nbNT - number of non-tested items.
+	*/  
+    nbNTResultsArray = getNbNotTested();
+
+    var nbNT = nbNTResultsArray.total;
+
+	/**Build the audit conformity markup. */ 
+
+	let computationContent = '';
+
+	setPageName(langVallydette.auditResult);
+	removeContextualMenu();
+	removeFilterSection();
+	
+	/** Modify column number */ 
+	utils.columnDisplay(2);
+	
+	computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt14 + '</h2>';
+	
+	if (nbNT >= 1) {
+		computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
+	} else if (nbNT === 0 && !isNaN(dataRGAA.globalPagesResult)) {
+		computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + dataRGAA.globalPagesResult + '%</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataRGAA.result) + '%</span></p>';
+	}	
+
+	computationContent += '<ul class="nav nav-tabs" role="tablist">';
+	computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link active" id="tabResultatPage" data-bs-toggle="tab" data-bs-target="#resultatPage" type="button" role="tab" aria-controls="resultatPage" aria-selected="true">' + langVallydette.auditTxt3 + '</button></li>';
+	computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabsynthesePages" data-bs-toggle="tab" data-bs-target="#synthesePages" type="button" role="tab" aria-controls="synthesePages" aria-selected="false">' + langVallydette.auditTxt18 + '</button></li>';	
+	computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link" id="tabNonConformites" data-bs-toggle="tab" data-bs-target="#nonConformites" type="button" role="tab" aria-controls="nonConformites" aria-selected="false">' + langVallydette.auditTxt5 + '</button></li>';
+	computationContent += '</ul>';
+
+	computationContent += '<div class="tab-content border-0">';
+
+	computationContent += '<div class="tab-pane active" id="resultatPage" role="tabpanel" aria-labelledby="tabResultatPage">';
+	for (let i in pagesResultsArray) {
+		computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
+		
+		computationContent += '<ul>';
+		computationContent += '<li><strong>' + langVallydette.auditTxt12 + '</strong> ';
+		computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result + ' % ' : '';
+		computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ' / ' + nbNTResultsArray['page' + i] + ' ' + langVallydette.auditTxt7 +')' : '';
+		computationContent += '</li>';
+		computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
+		computationContent += '</ul>';
+	}
+	computationContent += '</div>'
+
+	computationContent += '  <div class="tab-pane" id="synthesePages" role="tabpanel" aria-labelledby="tabsynthesePages">';
+	computationContent += '<div class="table-responsive">'
+		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt4 + '</caption>';
+		computationContent += '<thead><tr>';
+		computationContent += '<th scope="row">' + langVallydette.auditTxt17 +'</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.compliant + '</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.nonCompliant + '</th>';
+		computationContent += '<th scope="col" class="text-center">' + langVallydette.notApplicable + '</th>';
+		computationContent += '<th scope="col" class="text-center bg-light">' + langVallydette.auditTxt8 + '</th>';
+		computationContent += '</tr></thead>';
+		computationContent += '<tbody>';
+	
+		
+		for (let i in pagesResultsArray) {
+			
+			computationContent += '<tr>';
+			computationContent += '<th scope="row" class="font-weight-bold"> <span class="visually-hidden">Page : </span>' + pagesResultsArray[i].name + '</th>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].totalconforme+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].totalnonconforme+ '</td>';
+			computationContent += '<td class="text-center">' + pagesResultsArray[i].totalnA+ '</td>';
+			computationContent += '<td class="text-center bg-light">';
+			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result + ' % ' : '';
+			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ')' : '';	
+			computationContent += '</td>';
+			computationContent += '</tr>';
+			
+		}
+		computationContent += '</tbody>';
+		computationContent += '</table>';
+		computationContent += ' </div>';
+		computationContent += ' </div>';
+
+	computationContent += ' <div class="tab-pane" id="nonConformites" role="tabpanel" aria-labelledby="tabNonConformites">';
+	/** 
+				*	Display the non-conformity list.
+				*	@param {object} listNonConformity - object of the falses wcag rules.
+			*/ 	
+			const listNonConformity = dataRGAA.items.filter(dataRGAAResult => dataRGAAResult.resultat === false);
+			
+			if (listNonConformity.length > 0) {
+				
+				for (let i in listNonConformity) {
+				
+					computationContent += '<ul>';
+					computationContent += '<li><strong>' + listNonConformity[i].name  + '</strong>';
+				
+					/** Remove undefined values */
+					listNonConformity[i].comment = listNonConformity[i].comment.filter(x => x);
+					
+					if (listNonConformity[i].comment.length > 0) {
+					
+							computationContent += '<ul>';
+							for (let j in listNonConformity[i].comment) {
+								computationContent += '<li>' + utils.htmlEntities(listNonConformity[i].comment[j]) + ' <span class="badge bg-light">' +  utils.htmlEntities(listNonConformity[i].page[j]) + '</span></li>';	
+							}
+							computationContent += '</ul>';	
+					} 
+					
+					computationContent += '</li>';
+					computationContent += '</ul>';
+		
+				}
+				
+			} else {
+				
+				computationContent += '<p>' + langVallydette.auditTxt11 + '</p>';
+				
+			}
+	computationContent += '</div>'
+
+	
+	computationContent += '</div>'
+
+
+    htmlMainContent.innerHTML = computationContent;
+}
+

@@ -461,6 +461,47 @@
 	},
 	{
 		"themes": "Common navigation",
+		"title": "Each link text explicit out of context?",
+		"ID": "testID-070",
+		"IDorigin": "testID-070",
+		"wcag": [
+			"2.4.9 AAA"
+		],
+		"verifier": "<p>The user must be able to understand the destination of the links even taken out of their context.</p><ul><li>verify that it is possible to determine the action or the destination of a link, only by from its accessible name</li><li>check that there are no identical labels pointing to different destinations</li></ul>",
+		"complement": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Each link wording to open/download a document understandable?",
+		"ID": "testID-071",
+		"IDorigin": "testID-071",
+		"wcag": [],
+		"verifier": "<p>The user must have the information if a link allows to open or download a document (pdf, word processing, video, audio...)</p><p>Each link allowing to download a file must be accompanied by information relating to its consultation.</p><p>Check that the label of the link contains:</p><ul><li>the name/title of the document</li><li> the type of document: pdf, text, mp3...</li><li>if necessary the language of the document</li><li>the size of the document</li></ul>",
+		"complement": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Is a user notified when a new window opens ?",
+		"ID": "testID-072",
+		"IDorigin": "testID-072",
+		"wcag": [],
+		"verifier": "<p>Check that the opening of a new window is mentioned to users, as desired:</p><ul><li>title of the link including the mention \"new window\"</li><li>presence of a visual clue (title, icon in the title, etc.) and the mention \"new window\" in the accessible name.</li></ul>",
+		"complement": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#warn-the-user-when-opening-a-new-window",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
+	},
+	{
+		"themes": "Common navigation",
 		"title": "Each button label is relevant?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
@@ -486,6 +527,32 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Is the global semantic structure consistent?",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
+		"wcag": [],
+		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li> <li>check that the main content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
+		"complement": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/components-examples/landmarks/#main-content",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Are skip links present ?",
+		"ID": "testID-074",
+		"IDorigin": "testID-074",
+		"wcag": [],
+		"verifier": "<p>Check for skip links (at the top of the page) if necessary.</p>",
+		"complement": "<p>The main reasons for setting up skip links:</p><ul><li>the page is long</li><li>the navigation contains a lot of links</li><li >the content contains a lot of links (several navigation menus, footers acting as a site map…)</li><li>the page is divided into many distinct parts (portal, dashboard…)</li ></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/articles/skip-links-best-practices/",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Common navigation",
@@ -560,6 +627,20 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Is information about the user's location within a page set available ?",
+		"ID": "testID-075",
+		"IDorigin": "testID-075",
+		"wcag": [
+			"2.4.8 AAA"
+		],
+		"verifier": "<p>Check that the user's current position within a site is materialized visually and programmatically:</p><ul><li>a system is present (breadcrumb trail…)</li><li>a visual indication is present (sufficiently contrasted and not based only on the color) and accompanied by a <a href=\"https://a11y-guidelines.orange.com/en/articles/using-aria-current-attribute/#main-content\">attribute aria-current</a></li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Common navigation",
@@ -788,6 +869,21 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Layout",
+		"title": "Are the click zones of sufficient size ?",
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.5.5 AAA"
+		],
+		"verifier": "<p>The user must be able to click easily on an interactive element. </p><p>Check that the click area of these elements exceeds 44px by 44px</p>",
+		"exception":"<ul><li>if several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>anchor links</li><li> link in the middle of a sentence</li><li>footnote</li><li>help icon in a sentence</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
+		"priority": "",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Touch and interactions",

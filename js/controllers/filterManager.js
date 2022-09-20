@@ -125,7 +125,7 @@ function goodPracticeFilter(){
     let htmlFilterList = document.getElementsByClassName('list-unstyled');
     var isChecked = ( dataVallydette.checklist.goodPractice===true ? "checked" :"" );
 
-    htmlTypes = '<div class="form-check form-switch"><label class="form-check-label pb-1" id="labelTypeGoodPractice"><input type="checkbox" class="form-check-input" id="resultGoodPractice" '+ isChecked+ '><span class="form-check-label" id="statusGoodPractice">' + langVallydette.goodPractice + '</span></label></div>';
+    htmlTypes = '<div class="form-check form-switch"><label class="form-check-label pb-1" id="labelTypeGoodPractice"><input type="checkbox" class="form-check-input" id="resultGoodPractice" '+ isChecked+ '><span class="form-check-label" id="statusGoodPractice">' + langVallydette.goodPracticeSwitch + '</span></label></div>';
     var listItem = document.createElement("li");
     listItem.innerHTML = htmlTypes;
     htmlFilterList[0].appendChild(listItem);

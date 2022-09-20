@@ -524,9 +524,9 @@ function dataWCAGComputation() {
 		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA"}).length;
 	
 		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => (item.resultat === true || item.resultat === false) && item.level!=="AAA").length;
-		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true).length;
-		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false).length;
-		dataWCAG.nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na").length;
+		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true && item.level!=="AAA").length;
+		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false && item.level!=="AAA").length;
+		dataWCAG.nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na" && item.level!=="AAA").length;
 
 		/**
 		* 	If all the wcag are non-applicables (hypothetical but tested)

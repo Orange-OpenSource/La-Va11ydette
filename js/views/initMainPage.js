@@ -314,7 +314,7 @@ function defaultView(currentRefTests){
 			}
 		}
 
-		htmlrefTests+='<article class="card mb-3 '+ goodPracticeClass +' " id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '</span></span>' : '') + '';
+		htmlrefTests+='<article class="card mb-3 '+ goodPracticeClass +' " id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '</span></span>' : '') + '';
 
 		hasGoodPractice = false;
 		
@@ -322,7 +322,7 @@ function defaultView(currentRefTests){
 			
 			if ((currentRefTests[i].wcag[0] === undefined || currentRefTests[i].wcag[0] === "")) {
 				hasGoodPractice = true;
-				htmlrefTests += '<span class="me-1 badge bg-warning">'+langVallydette.goodPractice+'</span>';
+				htmlrefTests += '<span class="m-1 badge bg-warning">'+langVallydette.goodPractice+'</span>';
 			}
 			
 			if (currentRefTests[i].wcag) {
@@ -331,14 +331,14 @@ function defaultView(currentRefTests){
 					
 					if(getAAA(currentWcag)) {
 						hasAAA = true;
-						htmlrefTests += '<span class="me-1 badge bg-warning">AAA</span>';
+						htmlrefTests += '<span class="m-1 badge bg-warning">AAA</span>';
 					}
 					
 				});
 			}
 		}
 
-		htmlrefTests += '<span id="resultID-' + currentTest + '" class="ms-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+		htmlrefTests += '<span id="resultID-' + currentTest + '" class="m-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
 		
 		htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 		htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status1 + '</label></li>';
@@ -450,12 +450,12 @@ function rgaaView(currentRefTests){
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>'
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>'
 			
 			hasGoodPractice = false;
 			if ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "")) {
 				hasGoodPractice = true;
-				htmlrefTests += '<span class="ms-auto me-1 badge bg-warning">'+langVallydette.goodPractice+'</span>';
+				htmlrefTests += '<span class="ms-auto m-1 badge bg-warning">'+langVallydette.goodPractice+'</span>';
 			}
 			
 			if (currentRefTests[i].wcag) {
@@ -464,7 +464,7 @@ function rgaaView(currentRefTests){
 					
 					if(getAAA(currentWcag)) {
 						hasAAA = true;
-						htmlrefTests += '<span class="ms-auto me-1 badge bg-warning">AAA</span>';
+						htmlrefTests += '<span class="ms-auto m-1 badge bg-warning">AAA</span>';
 					}
 					
 				});

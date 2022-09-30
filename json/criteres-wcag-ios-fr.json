@@ -11,7 +11,6 @@
 		},
 		"verifier": "<p>Vérifier que chaque champ a une étiquette (<code>TextField</code> associé) et que celle-ci est pertinente.</p>",
 		"group": "Écran de saisie",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -19,14 +18,13 @@
 		"themes": "Écran de saisie",
 		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-002",
-		"IDorigin": "testID-002",	
+		"IDorigin": "testID-002",
 		"wcag": {
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
 		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>Switch</code> étant nécessaire</li></ul>",
 		"group": "Écran de saisie",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -41,7 +39,6 @@
 		},
 		"verifier": "<ul><li>Vérifier la présence d'une identification visuelle du champ obligatoire ne reposant pas uniquement sur la couleur (ex&nbsp;: astérisque).</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li><li>Vérifier que le formulaire ne peut être validé si le champ obligatoire n'est pas renseigné.</li></ul>",
 		"group": "Écran de saisie",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -55,7 +52,6 @@
 		},
 		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
 		"group": "Écran de saisie",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -69,7 +65,6 @@
 		},
 		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge).</p>",
 		"group": "Écran de saisie",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -83,7 +78,6 @@
 		},
 		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
 		"group": "Écran de saisie",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -97,7 +91,6 @@
 		},
 		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies.</p>",
 		"group": "Écran de saisie",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -111,7 +104,6 @@
 		},
 		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
 		"group": "Écran de saisie",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -124,7 +116,6 @@
 			"0": "2.4.2 A"
 		},
 		"verifier": "<p>Vérifier que le titre de l'<code>UIView</code> est renseigné.</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -137,7 +128,6 @@
 			"0": "2.4.2 A"
 		},
 		"verifier": "<p>Vérifier que le titre de l'<code>UIView</code> est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -150,7 +140,6 @@
 			"0": "2.4.2 A"
 		},
 		"verifier": "<p>Vérifier que le titre de l'<code>UIView</code> permet à l'utilisateur de comprendre le contexte de la page.</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -163,7 +152,6 @@
 			"0": "1.4.3 AA"
 		},
 		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -176,7 +164,6 @@
 			"0": "1.4.11 AA"
 		},
 		"verifier": "<p>Vérifier que les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste suffisant pour transmettre l'information.</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>"
@@ -189,10 +176,7 @@
 		"wcag": {
 			"0": "1.4.1 A"
 		},
-		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3 :1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
-		"priority": "P2",
-		"resultatTest": "nt",
-		"goodPractice": false
+		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3 :1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>"
 	},
 	{
 		"themes": "Couleurs et contrastes",
@@ -202,10 +186,7 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
-		"priority": "P2",
-		"resultatTest": "nt",
-		"goodPractice": false
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>"
 	},
 	{
 		"themes": "Agrandissement des éléments",
@@ -217,7 +198,6 @@
 			"1": "1.4.10 AA"
 		},
 		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 200%.</p>",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -230,7 +210,6 @@
 			"0": "1.1.1 A"
 		},
 		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de l'activité est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li></ul>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -244,7 +223,6 @@
 			"1": "2.4.3 A"
 		},
 		"verifier": "<p>Vérifier que les éléments suivent un ordre logique et compréhensible en utilisant la navigation vocale.</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -257,7 +235,6 @@
 			"0": "1.3.1 A"
 		},
 		"verifier": "<p>Vérifier que les éléments liés sont vocalisés en un seul bloc :</p><ul><li>les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>les informations multidimensionnelles respectent-ils une bonne balance entre nombre de blocs et contenu dans chaque bloc ?</li></ul>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -270,7 +247,6 @@
 			"0": "2.4.6 AA"
 		},
 		"verifier": "<p>Vérifier qu'avec la navigation vocale et le paramètre de navigation par entête défini :</p><ul><li>tous les entêtes de section sont navigables et vocalisés</li><li>seuls les entêtes sont navigables et vocalisés</li></ul>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -283,7 +259,6 @@
 			"0": "1.1.1 A"
 		},
 		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran (activité) est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -296,7 +271,6 @@
 			"0": "4.1.3 AA"
 		},
 		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -309,7 +283,6 @@
 			"0": "4.1.2 A"
 		},
 		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -322,7 +295,6 @@
 			"0": "1.1.1 A"
 		},
 		"verifier": "<p>Vérifier qu'il n'y a aucun élément fantôme avec la navigation vocale.</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -335,7 +307,6 @@
 			"0": "1.1.1 A"
 		},
 		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés.</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -348,7 +319,6 @@
 			"0": "2.5.3 A"
 		},
 		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant. Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -361,7 +331,6 @@
 			"0": "2.1.1 A"
 		},
 		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection</li><li>seuls les éléments interactifs sont accessibles avec le contôle de selection</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li></ul>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -374,7 +343,6 @@
 			"0": "2.1.2 A"
 		},
 		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec le contrôle de selection.</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -387,7 +355,6 @@
 			"0": "2.4.3 A"
 		},
 		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -400,7 +367,6 @@
 			"0": "2.4.7 AA"
 		},
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran.</p>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -413,7 +379,6 @@
 			"0": "2.5.4 A"
 		},
 		"verifier": "<ul><li>Vérifier que ces actions ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Vérifier qu'il est possible de désactiver la détection de mouvement.</li></ul>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"exception": "<p>Le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>"
@@ -427,7 +392,6 @@
 			"0": "2.5.1 A"
 		},
 		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"complement": "<h4>Exemple</h4><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>"
@@ -441,7 +405,6 @@
 			"0": "2.5.2 A"
 		},
 		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>vérifier qu'aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément) et qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -454,7 +417,6 @@
 			"0": "1.3.4 AA"
 		},
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -467,7 +429,6 @@
 			"0": "2.5.5 AAA"
 		},
 		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic suffisante</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li></ul>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -480,7 +441,6 @@
 			"0": "3.2.4 AA"
 		},
 		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -493,7 +453,6 @@
 			"0": "2.2.1 A"
 		},
 		"verifier": "<p>Vérifier que le délai provoquant un changement de contexte automatique (par exemple, l'overflow de contrôle d'une vidéo qui disparaît après quelques secondes) est adaptable directement depuis l'application.</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -506,7 +465,6 @@
 			"0": "1.4.12 AA"
 		},
 		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
-		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -520,7 +478,6 @@
 			"1": "3.2.2 A"
 		},
 		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>"
@@ -534,7 +491,6 @@
 			"0": "2.2.2 A"
 		},
 		"verifier": "<p>Non applicable, si aucun mouvement ou clignotement ne dure plus de 5 secondes</p>",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -547,7 +503,6 @@
 			"0": "2.3.1 A"
 		},
 		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde </p>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -560,7 +515,6 @@
 			"0": "3.2.3 AA"
 		},
 		"verifier": "<p>Vérifier que les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -573,7 +527,6 @@
 			"0": "1.4.5 AA"
 		},
 		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte (hors cas particulier : logo, captcha, dénomination commerciale).</p>",
-		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -587,7 +540,6 @@
 		},
 		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
 		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li><li>dans un titre de niveau explicite précédent le lien</li></ul>",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -601,7 +553,6 @@
 		},
 		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -615,7 +566,6 @@
 		},
 		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -629,7 +579,6 @@
 		},
 		"verifier": "<ul><li>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -643,7 +592,6 @@
 		},
 		"verifier": "<ul><li>Vérifier que pour toute vidéo, une audiodescription est disponible.</li><li>Vérifier que l'audiodescription est correctement synchronisée.</li><li>Vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>Vérifier que l'audiodescription est pertinente.</li></ul>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -657,7 +605,6 @@
 		},
 		"verifier": "<ul><li>Vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -671,7 +618,6 @@
 		},
 		"verifier": "<ul><li>Vérifier que des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"complement": "<h4>Sous-titres transcrits</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
@@ -686,7 +632,6 @@
 		},
 		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Possibilité de régler le volume indépendamment du volume système.</li></ul>",
 		"group": "Multimédia",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -700,7 +645,6 @@
 		},
 		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio, ou un média vidéo.</p>",
 		"group": "Multimédia",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -714,7 +658,6 @@
 		},
 		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Dans le code HTML s'assurer que&nbsp;:</p><ul><li>les balises de début et de fin sont complètes</li><li>éléments imbriqués selon leurs spécifications</li><li>il n'y a pas d'attributs en double</li><li>les attributs sont définis correctement (ouverture et fermeture des guillemets)</li><li>chaque attribut <code>id</code> est unique</li></ul>",
 		"group": "WebView",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -728,7 +671,6 @@
 		},
 		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangères.</p>",
 		"group": "WebView",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
@@ -743,7 +685,6 @@
 		},
 		"verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\\\"en\\\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
 		"group": "WebView",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -757,7 +698,6 @@
 		},
 		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
 		"group": "WebView",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	}

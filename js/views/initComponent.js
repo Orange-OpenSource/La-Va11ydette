@@ -472,7 +472,7 @@ function runFinalComputationRGAA(pagesResultsArray){
 		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
 	} else if (nbNT === 0 && !isNaN(dataRGAA.globalPagesResult)) {
 		computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + dataRGAA.globalPagesResult + '%</span></p>';
-		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataRGAA.result) + '%</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + dataRGAA.result + '%</span></p>';
 	}	
 
 	computationContent += '<ul class="nav nav-tabs" role="tablist">';

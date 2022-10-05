@@ -467,7 +467,7 @@ function pagesResultsComputationRGAA(pagesResultsArray) {
 		if (nbTotal===0 && nbNA>0) {
 			pagesResultsArray[i].result = "NA";
 		} else {
-			pagesResultsArray[i].result = Math.round((nbTrue / nbTotal) * 100);
+			pagesResultsArray[i].result = ((nbTrue / nbTotal) * 100).toFixed(2);
 		}
 
 
@@ -475,17 +475,18 @@ function pagesResultsComputationRGAA(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalse;
 		pagesResultsArray[i].totalnA = nbNA;
 	}
-
+	
 	/** Final global pages result computation. */  
     for (let i in pagesResultsArray) {
         if (pagesResultsArray[i].result != "NA") {
-            finalTotal = finalTotal + pagesResultsArray[i].result;
+            finalTotal = (finalTotal + parseFloat(pagesResultsArray[i].result));
             nbPage = nbPage + 1;
         }
     }
 	
 	/** Final conformity rate. */ 
-    finalResult = Math.round((finalTotal / nbPage));
+
+    finalResult = (finalTotal / nbPage).toFixed(2);
 	dataRGAA.globalPagesResult = finalResult;
 	
 	return pagesResultsArray;
@@ -562,7 +563,7 @@ function dataRGAAComputation() {
 	if (dataRGAA.nbTotalWcag===0 && dataRGAA.nbNaWcag>0) {
 		dataRGAA.result = "NA";
 	} else {
-		dataRGAA.result = Math.round((dataRGAA.nbTrueRGAA / dataRGAA.nbTotalRGAA) * 100);
+		dataRGAA.result = ((dataRGAA.nbTrueRGAA / dataRGAA.nbTotalRGAA) * 100).toFixed(2);
 	}
 	
 }

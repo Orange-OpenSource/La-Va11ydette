@@ -1,6 +1,6 @@
 {
 	"va11ydette": "The va11ydette",
-	"auditNameWcag": "Orange WCAG 2.1 Audit check list",
+	"auditNameWcag": "Orange Audit check list",
 	"auditNameAuditor": "Orange auditor check list",
 	"homepage": "Homepage",
 	"va11ydetteOrange": "The Orange's v<span class=\"text-primary bg-transparent\">a11y</span>dette",
@@ -41,6 +41,7 @@
 	"auditTxt15": "Summary by levels",
 	"auditTxt16": "Compliance",
 	"auditTxt17": "Criteria",
+	"auditTxt18": "Compliance rate by pages",
 	"level": "level",
 	"showAudit": "View the results of the audit",
 	"scrollUp": "Back to top of page",
@@ -91,6 +92,7 @@
 	"wcagView": "WCAG view",
 	"result": "result",
 	"goodPractice": "good practice",
+	"goodPracticeSwitch": "activate good practice",
 	"summary": "summary",
 	"description": "description",
 	"solution": "solution",
@@ -194,7 +196,7 @@
 	"guidelines": "guidelines",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
-		"auditNameWcag": "Orange WCAG 2.1 Audit check list",
+		"auditNameWcag": "Orange Audit check list",
 		"btnShowResult": "Compliance",
 		"btnImportTxt": "Import",
 		"btnExportTxt": "Export",

@@ -28,7 +28,7 @@ function initAuditPage() {
 	var htmlAuditPage = '';
 	htmlAuditPage = `
 	<div class="container d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-3" id="auditInfoManager">
-                <h1 id="checklistName" class="mb-0"></h1>
+                <h2 id="checklistName" class="mb-0 h1"></h2>
                 <button class="btn btn-secondary btn-icon ms-auto d-print-none" id="btnChecklistName"
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
@@ -39,7 +39,7 @@ function initAuditPage() {
                         aria-label="" title=""
                         data-element="checklistName" data-property="checklist.name"
                         data-bs-toggle="modal" data-bs-target="#modalLocalStorage">
-                    `+htmlIcon.syncronise+`
+                    `+htmlIcon.history+`
                 </button>
                 <button class="btn btn-secondary ms-2 d-print-none" type="button"
                         id="btnShowResult">
@@ -52,7 +52,7 @@ function initAuditPage() {
             <div class="container">
                 <div class="row align-items-start position-relative">
                     <div class="col-md-2 sticky-md-top pt-4 pe-0 col-print-12" id="currentPageManager">
-                        <h1 id="pageName" class="mb-0"></h1>
+                        <h3 id="pageName" class="mb-0"></h3>
                         <div class="border-top border-light my-3"></div>
                         <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap w-100 d-print-none">
                             <button class="btn btn-secondary btn-icon" id="btnPageName"
@@ -71,7 +71,7 @@ function initAuditPage() {
                         </div>
 						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
-							<h2 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
+							<h4 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
 							<nav id="tableOfContents" aria-labelledby="title-nav-anchor">	
 							</nav>
 						</div>
@@ -112,7 +112,7 @@ function initAuditPage() {
 	var htmlHomePage = "";
 	
 	htmlHomePage += '<div class="container">';
-	htmlHomePage += '<h1 class="display-2">' + langVallydette.va11ydetteOrange +  '</h1>';
+	htmlHomePage += '<h2 class="display-2">' + langVallydette.va11ydetteOrange +  '</h2>';
 	htmlHomePage += '<p>' + langVallydette.homepageDescription +  '</p>';
 	
 	htmlHomePage += '<div class="row mb-5">';
@@ -122,7 +122,7 @@ function initAuditPage() {
 		htmlHomePage += '<div class="col-sm-6 col-md-4 col-xl-3 mb-3">';
 		htmlHomePage += '<div class="card h-100 border-0">';
 		htmlHomePage += '<div class="card-body">';
-        htmlHomePage += '  <h2 class="card-title bg-transparent">' + checklistVallydette[c]['name-' + globalLang] + '</h2>';
+        htmlHomePage += '  <h3 class="card-title bg-transparent">' + checklistVallydette[c]['name-' + globalLang] + '</h3>';
         htmlHomePage += ' <p class="card-subtitle">' + checklistVallydette[c]['description-' + globalLang] + '</p>';
 		htmlHomePage += ' </div>';
         htmlHomePage += '<div class="card-footer py-3 border-0">';
@@ -302,7 +302,7 @@ function defaultView(currentRefTests){
 			headingTheme = currentRefTests[i].themes;
 			let formattedHeadingTheme = utils.formatHeading(headingTheme);
 			htmlrefTests += '<a id="anchor-'+formattedHeadingTheme+'"></a>';
-			htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h2>';
+			htmlrefTests += '<h3 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom h2" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</span></button></h3>';
 			htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 		}
 
@@ -314,7 +314,7 @@ function defaultView(currentRefTests){
 			}
 		}
 
-		htmlrefTests+='<article class="card mb-3 '+ goodPracticeClass +' " id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '</span></span>' : '') + '';
+		htmlrefTests+='<article class="card mb-3 '+ goodPracticeClass +' " id="' + currentTest + '"><div class="card-header border-light"><h4 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '</span></span>' : '') + '';
 
 		hasGoodPractice = false;
 		
@@ -338,7 +338,7 @@ function defaultView(currentRefTests){
 			}
 		}
 
-		htmlrefTests += '<span id="resultID-' + currentTest + '" class="m-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+		htmlrefTests += '<span id="resultID-' + currentTest + '" class="m-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h4></div>';
 		
 		htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 		htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status1 + '</label></li>';
@@ -369,7 +369,7 @@ function defaultView(currentRefTests){
 		htmlrefTests += '<div class="border-top border-light my-3 w-100"></div>';
 		
 		if (currentRefTests[i].verifier) {
-			htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
+			htmlrefTests += '<h5>' + langVallydette.toCheckHeading + '</h5>';
 			htmlrefTests += currentRefTests[i].verifier;
 		}
 		
@@ -378,7 +378,7 @@ function defaultView(currentRefTests){
 		}
 
 		if (currentRefTests[i].exception) {
-			htmlrefTests += '<h4 class="h5">' + langVallydette.exceptionHeading + '</h4>';
+			htmlrefTests += '<h5>' + langVallydette.exceptionHeading + '</h5>';
 			htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
 		}
 		
@@ -446,11 +446,11 @@ function rgaaView(currentRefTests){
 				headingTheme = currentRefTests[i].themes;
 				let formattedHeadingTheme = utils.formatHeading(headingTheme);
 				htmlrefTests += '<a id="anchor-'+formattedHeadingTheme+'"></a>';
-				htmlrefTests += '<h2 class="sticky-top d-flex bg-white pt-4 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h2>';
+				htmlrefTests += '<h3 class="sticky-top d-flex bg-white pt-4 h2 pb-3 border-bottom" id="test-' + formattedHeadingTheme + '">' + currentRefTests[i].themes + '<button class="btn btn-secondary btn-icon ms-auto btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + formattedHeadingTheme + '" aria-expanded="true" aria-controls="collapse-' + formattedHeadingTheme + '" aria-label="' + langVallydette.expanded + '">'+htmlIcon.arrowDown+'</button></h3>';
 				htmlrefTests += '<div class="collapse show px-2" id="collapse-' + formattedHeadingTheme + '">';
 			}
 
-			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h3 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>'
+			htmlrefTests += '<article class="card mb-3" id="' + currentTest + '"><div class="card-header border-light"><h4 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>'
 			
 			hasGoodPractice = false;
 			if ((currentRefTests[i].wcag === undefined || currentRefTests[i].wcag[0] === "")) {
@@ -470,7 +470,7 @@ function rgaaView(currentRefTests){
 				});
 			}
 			
-			htmlrefTests += '<span id="resultID-' + currentTest + '" class="' + ((!hasAAA && !hasGoodPractice) ? 'ms-auto ' : '') + 'badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h3></div>';
+			htmlrefTests += '<span id="resultID-' + currentTest + '" class="' + ((!hasAAA && !hasGoodPractice) ? 'ms-auto ' : '') + 'badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h4></div>';
 			
 			htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';
 			htmlrefTests += '<li class="form-check form-check-inline mb-0"><input class="form-check-input" type="radio" id="conforme-' + currentTest + '" name="test-' + currentTest + '" value="ok" ' + ((currentRefTests[i].resultatTest === arrayFilterNameAndValue[0][1]) ? "checked" : "") + '/><label for="conforme-' + currentTest + '" class="form-check-label">' + langVallydette.template.status1 + '</label></li>';
@@ -494,27 +494,27 @@ function rgaaView(currentRefTests){
 			htmlrefTests += '<div class="collapse ' + ((currentRefTests[i].verifier || currentRefTests[i].exception) ? 'border-top' : '' ) + ' border-light pt-3 mx-3 d-print-block" id="collapse-' + currentTest + '">';
 
 			if (currentRefTests[i].tests) {
-				htmlrefTests += '<h4 class="h5">' + langVallydette.processHeading + '</h4>';
+				htmlrefTests += '<h5>' + langVallydette.processHeading + '</h5>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].tests);
 			}
 			
 			if (currentRefTests[i].verifier) {
-				htmlrefTests += '<h4 class="h5">' + langVallydette.toCheckHeading + '</h4>';
+				htmlrefTests += '<h5>' + langVallydette.toCheckHeading + '</h5>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].verifier);
 			}
 			
 			if (currentRefTests[i].resultat) {
-				htmlrefTests += '<h4 class="h5">' + langVallydette.resultHeading + '</h4>';
+				htmlrefTests += '<h5>' + langVallydette.resultHeading + '</h5>';
 				htmlrefTests += utils.listOrParagraph(currentRefTests[i].resultat);
 			}
 			
 			if (currentRefTests[i].exception) {
-				htmlrefTests += '<h4 class="h5">' + langVallydette.exceptionHeading + '</h4>';
+				htmlrefTests += '<h5>' + langVallydette.exceptionHeading + '</h5>';
 				htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
 			}
 			
 			if (currentRefTests[i].raccourcis) {
-				htmlrefTests += '<h4 class="h5">' + langVallydette.informations + '</h4>';
+				htmlrefTests += '<h5>' + langVallydette.informations + '</h5>';
 				htmlrefTests += '<p>' + currentRefTests[i].raccourcis+ '</p>';
 			}
 

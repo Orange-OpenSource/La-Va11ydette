@@ -1,6 +1,6 @@
 {
 	"va11ydette": "The va11ydette",
-	"auditNameWcag": "Orange WCAG 2.1 Audit check list",
+	"auditNameWcag": "Orange Audit check list",
 	"auditNameAuditor": "Orange auditor check list",
 	"homepage": "Homepage",
 	"va11ydetteOrange": "The Orange's v<span class=\"text-primary bg-transparent\">a11y</span>dette",
@@ -196,7 +196,7 @@
 	"guidelines": "guidelines",
 	"template": {
 		"va11ydette": "The v<span class=\"text-primary\">a11y</span>dette",
-		"auditNameWcag": "Orange WCAG 2.1 Audit check list",
+		"auditNameWcag": "Orange Audit check list",
 		"btnShowResult": "Compliance",
 		"btnImportTxt": "Import",
 		"btnExportTxt": "Export",

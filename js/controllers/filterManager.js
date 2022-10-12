@@ -45,8 +45,9 @@ function globalFilter(){
     htmlFilterContent.innerHTML = '';
 
     /* Display part */
-    let htmlDisplayHeading = document.createElement('h2');
+    let htmlDisplayHeading = document.createElement('h3');
     htmlDisplayHeading.textContent = langVallydette.display;
+    htmlDisplayHeading.className = "h4";
     htmlFilterContent.appendChild(htmlDisplayHeading);
 
     let htmlDisplayButtonExpand = document.createElement("button");
@@ -86,8 +87,9 @@ function globalFilter(){
 
 
     /* Filter part */
-    let htmlFilterHeading = document.createElement('h2');
+    let htmlFilterHeading = document.createElement('h3');
     htmlFilterHeading.textContent = langVallydette.template.filters;
+    htmlFilterHeading.className = "h4";
     htmlFilterContent.appendChild(htmlFilterHeading);
 
     let htmlFilterFeedback = document.createElement('div');
@@ -234,12 +236,12 @@ if (wcagDisplayModeInput.checked) {
 
         let wcagDisplayContent = '';
         
-        wcagDisplayContent += '<h2 class="sticky-md-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h2>';
+        wcagDisplayContent += '<h3 class="sticky-md-top d-flex bg-white pt-4 pb-2">' + langVallydette.wcagView + '</h3>';
         
         for (let i in wcagDisplayObj[currentPage].items) {
             
             if ((globalTemplate==="wcag" && wcagDisplayObj[currentPage].items[i].level!="AAA") || globalTemplate!="wcag") {
-                wcagDisplayContent += '<h3 class="sticky-md-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h3>';
+                wcagDisplayContent += '<h4 class="sticky-md-top d-flex bg-white pt-4 pb-3 border-bottom">'+ wcagDisplayObj[currentPage].items[i].wcag + ' ' + wcagDisplayObj[currentPage].items[i].name +' ' + wcagDisplayObj[currentPage].items[i].level + '</h4>';
 
                 wcagDisplayContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.wcagView + '</caption>';
                 wcagDisplayContent += '<thead><tr>';

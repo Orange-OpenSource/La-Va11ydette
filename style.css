@@ -87,6 +87,16 @@ body,
     border-width: .0625rem !important;
   }  
 
+  li::marker {
+    color: #060606;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+li li::marker {
+  color: #f16e00;
+}
+
 /* Print */
 
 @media print {

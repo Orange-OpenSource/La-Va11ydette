@@ -1,6 +1,6 @@
 {
 	"va11ydette": "La va11ydette",
-	"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
+	"auditNameWcag": "Grille Audit d’Orange",
 	"auditNameAuditor": "Grille Auditeur d’Orange",
 	"homepage": "Accueil",
 	"va11ydetteOrange": "La v<span class=\"text-primary bg-transparent\">a11y</span>dette d'Orange",
@@ -195,7 +195,7 @@
 	"guidelines": "recommandations",
 	"template": {
 		"va11ydette": "La v<span class=\"text-primary\">a11y</span>dette",
-		"auditNameWcag": "Grille Audit WCAG 2.1 d’Orange",
+		"auditNameWcag": "Grille Audit d’Orange",
 		"btnShowResult": "Conformité",
 		"btnImportTxt": "Importer",
 		"btnExportTxt": "Exporter",

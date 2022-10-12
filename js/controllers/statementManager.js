@@ -112,7 +112,7 @@ function initStatementObject() {
 					
 				}
 				if (p === "technology") {
-					if (currentCriteriaListName === "wcag-web") {
+					if (dataVallydette.checklist.referentiel === "wcag-web") {
 						dataVallydette.statement.technology = [{
 							"name": "HTML",
 							"version": ""
@@ -124,7 +124,7 @@ function initStatementObject() {
 							"version": ""
 						}];
 					}
-					if (currentCriteriaListName === "wcag-android") {
+					if (dataVallydette.checklist.referentiel === "wcag-android") {
 						dataVallydette.statement.technology = [{
 							"name": "Java",
 							"version": ""
@@ -136,7 +136,7 @@ function initStatementObject() {
 							"version": ""
 						}];
 					}
-					if (currentCriteriaListName === "wcag-ios") {
+					if (dataVallydette.checklist.referentiel === "wcag-ios") {
 						dataVallydette.statement.technology = [{
 							"name": "Swift",
 							"version": ""
@@ -144,7 +144,7 @@ function initStatementObject() {
 					}
 				}
 				if (p === "tests") {
-					if (currentCriteriaListName === "wcag-web") {
+					if (dataVallydette.checklist.referentiel === "wcag-web") {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
 						"name": "aXe",
@@ -166,7 +166,7 @@ function initStatementObject() {
 						"version": ""
 						}];
 					}
-					if (currentCriteriaListName === "wcag-android") {
+					if (dataVallydette.checklist.referentiel === "wcag-android") {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
 						"name": "aXe",
@@ -188,7 +188,7 @@ function initStatementObject() {
 						"version": ""
 						}];
 					}
-					if (currentCriteriaListName === "wcag-ios") {
+					if (dataVallydette.checklist.referentiel === "wcag-ios") {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
 						"name": "Accessibility Inspector",
@@ -202,19 +202,19 @@ function initStatementObject() {
 					}
 				}
 				if (p === "environments") {
-					if (currentCriteriaListName === "wcag-web") {
+					if (dataVallydette.checklist.referentiel === "wcag-web") {
 						dataVallydette.statement.environments = [{
 							"environment": langStatement.environmentEx1
 						},{
 							"environment": langStatement.environmentEx2
 						}];
 					}
-					if (currentCriteriaListName === "wcag-android") {
+					if (dataVallydette.checklist.referentiel === "wcag-android") {
 						dataVallydette.statement.environments = [{
 							"environment": langStatement.environmentEx3
 						}];
 					}
-					if (currentCriteriaListName === "wcag-ios") {
+					if (dataVallydette.checklist.referentiel === "wcag-ios") {
 						dataVallydette.statement.environments = [{
 							"environment": langStatement.environmentEx4
 						}];

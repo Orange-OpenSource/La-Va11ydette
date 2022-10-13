@@ -92,6 +92,16 @@
 		}
 		
 	};
+
+	var btnExport = document.getElementById('export');
+
+	btnExport.onclick = function(){
+		let exportFileName = utils.fileName('json');
+		let dataStr = JSON.stringify(dataVallydette);
+		let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+		this.setAttribute('href', dataUri);
+		this.setAttribute('download', exportFileName);
+	}
 	
 	
 }

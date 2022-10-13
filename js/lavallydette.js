@@ -355,17 +355,13 @@ validateUrl = function( url ){
  */
 jsonUpdate = function () {
 
-	let exportFileName = utils.fileName('json');
 	dataVallydette.checklist.timestamp = Date.now();
 	let dataStr = JSON.stringify(dataVallydette);
-	let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
 
 	linkElement = document.getElementById("export");
 	linkElement.classList.remove("disabled");
 	linkElement.removeAttribute('disabled');
 	linkElement.setAttribute('aria-disabled', false);
-	linkElement.setAttribute('href', dataUri);
-	linkElement.setAttribute('download', exportFileName);
 
 	let allLocalStorage = getAllStorage();
 

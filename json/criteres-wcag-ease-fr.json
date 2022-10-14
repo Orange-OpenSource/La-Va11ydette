@@ -117,7 +117,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<ul><li>vérifier que le label ou le nom accessible du champ en erreur est modifié afin que l'on comprenne que ce champ est en erreur (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône, ajout d'un <code>aria-labelledby</code>...)</li><li>si l'information visuelle ne possède pas d'alternative texte (ex&nbsp;: icône sans alternative), vérifier que le champ possède un attribut <code>aria-invalid='true'</code></li></ul>",
+		"verifier": "<ul><li>vérifier que le label ou le nom accessible du champ en erreur est modifié afin que l'on comprenne que ce champ est en erreur (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône, ajout d'un <code>aria-labelledby</code>…)</li><li>si l'information visuelle ne possède pas d'alternative texte (ex&nbsp;: icône sans alternative), vérifier que le champ possède un attribut <code>aria-invalid='true'</code></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P1",
@@ -132,7 +132,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex&nbsp;: champ téléphone obligatoire, format de l'email invalide...).</ul>",
+		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
@@ -177,7 +177,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchronement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu...), l'utilisateur est notifié par modification du titre</li></ul>",
+		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchronement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -264,7 +264,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>...) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous : <br>* Attention : en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous :<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est : <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous : <br>* Attention : en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous :<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est : <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -484,7 +484,7 @@
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [],
-		"verifier": "<p>L’utilisateur doit avoir l’information si un lien permet d’ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio...)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d’informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient :</p><ul><li>le nom/titre du document</li><li>le type de document : pdf, texte, mp3...</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
+		"verifier": "<p>L’utilisateur doit avoir l’information si un lien permet d’ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio…)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d’informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient :</p><ul><li>le nom/titre du document</li><li>le type de document : pdf, texte, mp3…</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
@@ -498,7 +498,7 @@
 		"IDorigin": "testID-072",
 		"wcag": [],
 		"verifier": "<p>Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs, au choix :</p><ul><li>intitulé du lien incluant la mention « nouvelle fenêtre »</li><li>présence d’un indice visuelle (title, icone dans l’intitulé…) et de la mention « nouvelle fenêtre » dans le nom accessible.</li></ul>",
-		"complement": "",
+		"complement": "Si possible, éviter de mettre un attribut `title` incluant la mention \"nouvelle fenêtre\"_",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#prevenir-lutilisateur-de-louverture-dune-nouvelle-fenetre",
 		"priority": "",
 		"resultatTest": "nt",
@@ -552,7 +552,7 @@
 		"IDorigin": "testID-074",
 		"wcag": [],
 		"verifier": "<p>Vérifier la présence de liens d'évitement (en haut de page) si nécessaire.</p>",
-		"complement": "<p>Les principales raisons de la mise en place de liens d'évitements :</p><ul><li>la page est longue</li><li>la navigation contient beaucoup de lien</li><li>le contenu contient beaucoup de liens (plusieurs menus de navigation, pieds de page faisant office de plan de site…)</li><li>la page est découpée en nombreuses parties distinctes (portail, tableau de bord…)</li></ul>",
+		"complement": "<p>Les principales raisons de la mise en place de liens d'évitements&nbsp;:</p><ul><li>la page est longue</li><li>la navigation contient beaucoup de lien</li><li>le contenu contient beaucoup de liens (plusieurs menus de navigation, pieds de page faisant office de plan de site…)</li><li>la page est découpée en nombreuses parties distinctes (portail, tableau de bord…)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/articles/liens-evitement/",
 		"priority": "",
 		"resultatTest": "nt",
@@ -641,7 +641,7 @@
 		"wcag": [
 			"2.4.8 AAA"
 		],
-		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement :</p><ul><li>un système est présent (fil d’Ariane…)</li><li>une indication visuelle est présente (suffisamment contrasté et ne reposant pas que sur la couleur) et accompagnée d’un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\">attribut aria-current</a></li></ul>",
+		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement :</p><ul><li>un système est présent (fil d’Ariane…)</li><li>une indication visuelle est présente (suffisamment contrasté et ne reposant pas que sur la couleur) et accompagnée d’un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\">attribut `aria-current`</a></li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-acces-multiples-et-une-localisation",
 		"priority": "",
 		"resultatTest": "nt",
@@ -655,7 +655,7 @@
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>...) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
+		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…) :</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
 		"complement": "<h4>Exemples</h4><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-de-connaitre-le-resultat-dune-interaction-utilisateur-a-laide-de-messages-contextuels",
 		"priority": "P2",
@@ -885,7 +885,7 @@
 			"2.5.5 AAA"
 		],
 		"verifier": "<p>L’utilisateur doit pouvoir cliquer facilement sur un élément interactif. </p><p>Vérifier que la zone de click de ces éléments dépasse 44px par 44px</p>",
-		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérer par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icone d'aide dans une phrase, liens d’ancrage, note de bas de page...)<li><li>lla  taille réduite est nécessaire pour convoyer l'information</li></ul>",
+		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérer par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icone d'aide dans une phrase, liens d’ancrage, note de bas de page…)<li><li>lla  taille réduite est nécessaire pour convoyer l'information</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
 		"priority": "",
 		"resultatTest": "nt",

@@ -700,7 +700,6 @@
 		],
 		"verifier": "<ul><li>vérifier que les fonctionnalités disponibles à la souris sont également disponibles au clavier</li><li>vérifier que les contenus apparaissant au survol (exemple&nbsp;: <span lang=\"en\">popin</span>, modale, infobulle) apparaissent également au focus</li></ul>", 
 		"exception": "<p>Le critère est non applicable&nbsp;: </p><ul><li>pour les infobulles générés par l'agent utilisateur (par exemple, celui de l'attribut <code>title</code>)</li><li>pour le cas où la fonction sous-jacente nécessite l’exécution d'un chemin par l'utilisateur et pas seulement des deux points terminaux</li></ul>", 
-		"complement" : ""
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#permettre-dutiliser-les-principales-fonctionnalites-de-lapplication-au-clavier",
 		"priority": "P0",
 		"resultatTest": "nt",

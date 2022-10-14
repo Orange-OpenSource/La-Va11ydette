@@ -221,6 +221,7 @@
 			"4.1.1 A"
 		],
 		"verifier": "<p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
+		"exception": "Unless the technical specifications of the application allow it",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -263,7 +264,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>If the table is a presentation table, add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
+		"verifier": "<p>If the table is a presentation table, remove any semantic tag or attribute of a table (<code>caption, summary, th, scope, headers</code>...) and add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -292,7 +293,7 @@
 			"1.4.5 AA"
 		],
 		"verifier": "<ul><li>Check that image and graphics elements (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) are not used to present text.</li></ul>\n<p>Not applicable if there is no image containing text</p>",
-		"exceptions": "<ul><li>SVG (real text),</li><li>special cases (eg: logo, captcha, tradename)</li></ul>",
+		"exceptions": "<ul><li>SVG (real text),</li><li>special cases (eg: logo, captcha, tradename)</li><li>The item is essential</li><li>The image is customizable by the user</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -366,6 +367,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text or image of text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"exception": "<p>Logos or all purely decorative elements.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -395,7 +397,7 @@
 			"1.4.11 AA"
 		],
 		"verifier": "<p> Check that as well as graphics, icons and graphic interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exceptions": "<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>disabled components</li></ul>",
+		"exceptions": "<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>inactive components or its display is managed as is by the user agent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -453,6 +455,7 @@
 			"2.4.4 A"
 		],
 		"verifier": "<p>The user should be able to determine whether they want to follow a link, with context, if needed, to understand his destination.</p><ul><li>check that there are not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link can be inferred from its context</li></ul>",
+		"exception": "Except if the link is ambiguous for all users.",
 		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "P3",
@@ -509,6 +512,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>The user must be able to find the button function with the button text. Verify that the action carried by the accessible name of each button is relevant.</p>",
+		"exception": "Except if the link is ambiguous for all users.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -592,7 +596,7 @@
 		"wcag": [
 			"3.2.1 A"
 		],
-		"verifier": "<p>When using forms or any interactive component, verify that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). But an element can change when the focus is taken, if the context does not change, for example, the appearance when focusing a drop-down menu or even the visual modification when hovering over a link.</p>",
+		"verifier": "<p>When using forms or any interactive component, verify that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). </p><p>The criterion is not applicable if, when the focus is taken, the context does not change, for example, the appearance, on focus, of a menu or even the visual modification when hovering over a link.</p>",
 		"complement": "<h4> Change of context </h4> <p> Major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P2",
@@ -622,7 +626,8 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Check that at least 2 of the following mechanisms are present on the page, to allow a user to determine their location on the website:</p> <ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>\n<p>when there is less than 3 or 4 pages and/or the content is short, this criterion is not applicable.</p>",
+		"verifier": "<p>Check that at least 2 of the following mechanisms are present on the page, to allow a user to determine their location on the website:</p> <ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>\n<p>when there is less than 3 or 4 pages and/or the content is short, this criterion is not applicable.</p>", 
+		"exception": " except if the Web Page is the result of, or a step in a process.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -659,13 +664,13 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "For any moving, scrolling, blinking information that lasts more than five seconds or updated content, start automatically , is there a mechanism for the user to pause, stop, or hide it?",
+		"title": "If content on the page is moving, scrolling, blinking or updating, lasting more than 5 seconds and starting automatically, does the user have the option to stop, pause, hide or modify its update frequency of this content?",
 		"ID": "testID-035",
 		"IDorigin": "testID-035",
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Not applicable, if no movement, scrolling or flashing lasts more than 5 seconds or does not start automatically or if updates also start automatically</p>",
+		"verifier": "<p>If content from part of the page, starting automatically and lasting more than 5 seconds, is moving, scrolling, blinking, there is a way to stop it, pause it or hide it.< /p><p>For content on a part of the page that updates or is automatically refreshed, there is a way to stop it, pause it, hide it or play on its update frequency .</p><p>Not applicable, if no movement, no scrolling, no blinking and no automatic update or refresh that lasts more than 5 seconds or starts automatically</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allowing-animations-control",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -693,7 +698,8 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li> Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (eg: popin, tooltip) is also displayed when focus is received </li></ul>",
+		"verifier": "<ul><li> Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (eg: popin, tooltip) is also displayed when focus is received </li></ul><p>Criteria is not applicable for tooltips generated by the user agent (for example, that of the <code>title</code> attribute)</p>", 
+		"exception": "<p>Criteria is not applicable: </p><ul><li>for user-agent generated tooltips (e.g., <code>title</code> attribute)</li><li>for the case where the underlying function requires the user to execute a path and not just the two endpoints</li></ul>"
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#allow-the-use-of-the-main-features-of-the-application-with-the-keyboard",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -778,7 +784,7 @@
 			"1.4.10 AA"
 		],
 		"verifier": "<p>Check that a horizontal scroll bar does not appear.</p>",
-		"exceptions": "Certain specific types of content, such as maps, data tables, games, etc. may require two dimensional scrolling.",
+		"exceptions": "Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games, etc..",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",

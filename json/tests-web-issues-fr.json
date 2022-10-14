@@ -201,7 +201,7 @@
 		{
 			"title" : "Absence d'audiodescription",
 			"detail" : "Une audiodescription est nécessaire pour les vidéos présentant des informations sous forme visuelle.",
-			"solution" : "Ajouter une audio-description est présente en complément de la bande audio, si besoin. Celle-ci présente, sous format texte, les informations convoyées uniquement par l’image.",
+			"solution" : "Ajouter une audio-description est présente en complément de la bande audio, si besoin. Celle-ci présente, sous format audio synchronisé avec la piste audio, les informations convoyées uniquement par l’image.",
 			"technicalSolution" : ""
 		}
 	],

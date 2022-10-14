@@ -12,7 +12,7 @@
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
-		"resultatTest": "nt",
+		"enresultatTest": "nt",
 		"goodPractice": false
 	},
 	{

@@ -12,7 +12,7 @@
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
-		"enresultatTest": "nt",
+		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{
@@ -148,6 +148,7 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
+		"exception":"<p>Lorsqu'il est impossible de faire une suggestion, le critère est non applicable</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P3",
@@ -264,7 +265,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous : <br>* Attention : en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous :<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est : <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous&nrbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -337,7 +338,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte <br>exemples : <ul><li>utilisation d’une balise <code>abbr</code> avec l'attribut <code>title</code></li><li>utilisation d’un contenu adjacent </li></ul></li><li>vérifier que l'alternative est pertinente</li></ul>",
+		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte <br>exemples&nbsp;: <ul><li>utilisation d’une balise <code>abbr</code> avec l'attribut <code>title</code></li><li>utilisation d’un contenu adjacent </li></ul></li><li>vérifier que l'alternative est pertinente</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -382,7 +383,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Si la couleur du texte est redéfinie (<code>color</code>), la couleur du fond doit l'être également (<code>background-color</code>).</li><li>Si la couleur du fond est redéfinie (<code>background-color</code>), la couleur du texte doit l'être également (<code>color</code>).</li><li>Si une image de fond est utilisée pour un élément contenant du texte (<code>background-image</code>), la couleur du fond doit être définie (<code>background-color</code>).</li></ul>",
-		"complement": "<h4>Complément</h4><p>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent. Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</p>",
+		"complement": "<h4>Complément</h4><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -411,7 +412,7 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particuliers des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus et au survol de la souris (ex. : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
+		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particuliers des liens non soulignés dans du texte&nbsp;: <ul> <li>le lien doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus et au survol de la souris (ex.&nbsp;: souligné)</li> </ul></li></ul><p><strong>Remarques&nbsp;:</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -425,7 +426,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d’une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -456,7 +457,7 @@
 		],
 		"verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son nom accessible</li><li>si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
 		"exception": "Sauf si le lien est ambigu pour tout utilisateur.",
-		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
+		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit&nbsp;:</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -484,7 +485,7 @@
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [],
-		"verifier": "<p>L’utilisateur doit avoir l’information si un lien permet d’ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio…)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d’informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient :</p><ul><li>le nom/titre du document</li><li>le type de document : pdf, texte, mp3…</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
+		"verifier": "<p>L’utilisateur doit avoir l’information si un lien permet d’ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio…)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d’informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient&nbsp;:</p><ul><li>le nom/titre du document</li><li>le type de document&nbsp;: pdf, texte, mp3…</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
@@ -497,8 +498,8 @@
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [],
-		"verifier": "<p>Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs, au choix :</p><ul><li>intitulé du lien incluant la mention « nouvelle fenêtre »</li><li>présence d’un indice visuelle (title, icone dans l’intitulé…) et de la mention « nouvelle fenêtre » dans le nom accessible.</li></ul>",
-		"complement": "Si possible, éviter de mettre un attribut `title` incluant la mention \"nouvelle fenêtre\"_",
+		"verifier": "<p>Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs, au choix&nbsp;:</p><ul><li>intitulé du lien incluant la mention « nouvelle fenêtre »</li><li>présence d’un indice visuelle (title, icône dans l’intitulé…) et de la mention « nouvelle fenêtre » dans le nom accessible.</li></ul>",
+		"complement": "Si possible, éviter de mettre un attribut `title` incluant la mention \"nouvelle fenêtre\" du fait de sa faiblesse robustesse parmi les aides techniques",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#prevenir-lutilisateur-de-louverture-dune-nouvelle-fenetre",
 		"priority": "",
 		"resultatTest": "nt",
@@ -538,7 +539,7 @@
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [],
-		"verifier": "<ul><li>vérifier que chaque région de la page possède une sémantique pertinente à travers des balises de structures HTML5 au minimum <code>header</code>, <code>main</code>, <code>footer</code> (ou leur équivalent sous forme de roles ARIA : <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>vérifier que le contenu principal est inclus dans une balise main</li><li>vérifier que le contenu de la page est inclus au minimum dans une balise structure</li></ul>",
+		"verifier": "<ul><li>vérifier que chaque région de la page possède une sémantique pertinente à travers des balises de structures HTML5 au minimum <code>header</code>, <code>main</code>, <code>footer</code> (ou leur équivalent sous forme de roles ARIA&nbsp;: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>vérifier que le contenu principal est inclus dans une balise main</li><li>vérifier que le contenu de la page est inclus au minimum dans une balise structure</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/exemples-de-composants/landmarks-aria/#main-content",
 		"priority": "",
@@ -566,7 +567,7 @@
 		"wcag": [
 			"1.4.13 AA"
 		],
-		"verifier": "<p>Le contenu apparaissant au focus ou survol&nbsp;:</p><ul><li>doit pouvoir être masqué sans déplacer le focus ou le pointeur de la souris</li><li>doit pouvoir être survolé à la souris (sans entraîner sa disparition)</li><li>doit rester affiché tant que l'utilisateur ne déclenche pas sa fermeture (en déplaçant la souris, le focus, touche <kbd>Échap</kbd>…) et tant que ce contenu reste valide</li></ul>",
+		"verifier": "<p>Le contenu apparaissant au focus ou survol&nbsp;:</p><ul><li>doit pouvoir être masqué sans déplacer le focus ou le pointeur de la souris</li><li>doit pouvoir être survolé à la souris (sans entraîner sa disparition)</li><li>doit rester affiché tant que l'utilisateur ne déclenche pas sa fermeture (en déplaçant la souris, le focus, touche <kbd>Échap.</kbd>…) et tant que ce contenu reste valide</li></ul>",
 		"exception": "<ul><li>Les contenus additionnels contrôlés par l'agent utilisateur, par exemple&nbsp;: infobulle générée par l'utilisation d'un attribut <code>title</code>.</li><li>Si le contenu additionnel ne masque pas de contenu informatif, le critère est non applicable</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",
@@ -582,7 +583,7 @@
 			"2.2.1 A"
 		],
 		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>possibilité de supprimer la limite de temps</li><li>possibilité d'augmenter jusqu'à 10 fois minimum le temps par défaut</li><li>l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement</li></ul>",
-		"exception": "<ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un événement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li><li>l'exception des 20 heures&nbsp;: la limite de temps est supérieure à 20 heures.</li></ul>",
+		"exception": "<ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un évènement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li><li>l'exception des 20 heures&nbsp;: la limite de temps est supérieure à 20 heures.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -641,7 +642,7 @@
 		"wcag": [
 			"2.4.8 AAA"
 		],
-		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement :</p><ul><li>un système est présent (fil d’Ariane…)</li><li>une indication visuelle est présente (suffisamment contrasté et ne reposant pas que sur la couleur) et accompagnée d’un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\">attribut `aria-current`</a></li></ul>",
+		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement&nbsp;:</p><ul><li>un système est présent (fil d’Ariane…)</li><li>une indication visuelle est présente (suffisamment contrasté et ne reposant pas que sur la couleur) et accompagnée d’un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\">attribut `aria-current`</a></li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-acces-multiples-et-une-localisation",
 		"priority": "",
 		"resultatTest": "nt",
@@ -655,7 +656,7 @@
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…) :</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
+		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
 		"complement": "<h4>Exemples</h4><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-de-connaitre-le-resultat-dune-interaction-utilisateur-a-laide-de-messages-contextuels",
 		"priority": "P2",
@@ -783,7 +784,7 @@
 		"wcag": [
 			"1.4.10 AA"
 		],
-		"verifier": "<p>Vérifier qu'aucune barre de défilement n'apparaît dans le sens horizontal.</p>",
+		"verifier": "<p>Vérifier qu'aucune barre de défilement n'apparait dans le sens horizontal.</p>",
 		"exception": "Certains contenus nécessitant les deux dimensions pour être compréhensibles comme des images, cartes, présentations, tableaux de données, jeux….",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#utiliser-des-tailles-relatives-et-faire-du-web-adaptatif",
 		"priority": "P3",
@@ -841,8 +842,8 @@
 		"wcag": [
 			"1.3.2 A"
 		],
-		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page :<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p><strong>Exemple :</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre sans CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
-		"complement": "<h4>Compléments d'information</h4><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester :</p><ul><li>Mise en page via ces propriétés CSS : <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
+		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page&nbsp;:<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p><strong>Exemple&nbsp;:</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre sans CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
+		"complement": "<h4>Compléments d'information</h4><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -857,7 +858,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Vérifier l'absence de perte d'information</p>",
-		"complement": "<h4>Complément d'information</h4><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (ex : propriété <code>content</code> des pseudo classes <code>::before / :before</code> et <code>::after / : after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
+		"complement": "<h4>Complément d'information</h4><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (ex.&nbsp;: propriété <code>content</code> des pseudo classes <code>::before / :before</code> et <code>::after / : after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -885,7 +886,7 @@
 			"2.5.5 AAA"
 		],
 		"verifier": "<p>L’utilisateur doit pouvoir cliquer facilement sur un élément interactif. </p><p>Vérifier que la zone de click de ces éléments dépasse 44px par 44px</p>",
-		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérer par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icone d'aide dans une phrase, liens d’ancrage, note de bas de page…)<li><li>lla  taille réduite est nécessaire pour convoyer l'information</li></ul>",
+		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérer par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…)<li><li>lla  taille réduite est nécessaire pour convoyer l'information</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
 		"priority": "",
 		"resultatTest": "nt",
@@ -900,7 +901,7 @@
 			"2.5.1 A"
 		],
 		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
-		"complement": "<h4>Exemple</h4><p><strong>Zoom sur une carte&nbsp;: </strong>Des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
+		"complement": "<h4>Exemple</h4><p><strong>Zoom sur une carte&nbsp;: </strong>Des boutons (+ / -) sont disponibles, en alternative au resserrement à deux doigts.</p>",
 		"group": "Tactile",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P1",
@@ -1037,7 +1038,7 @@
 			"1.2.4 AA"
 		],
 		"verifier": "<ul><li>vérifier que des sous-titres sont disponibles</li><li>vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs)</li></ul>",
-		"complement": "<h4>Sous-titres transcrits</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
+		"complement": "<h4>Sous-titres</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications et position des interlocuteurs, effets sonores, musique…).</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
 		"priority": "P2",

@@ -886,7 +886,7 @@
 			"2.5.5 AAA"
 		],
 		"verifier": "<p>L’utilisateur doit pouvoir cliquer facilement sur un élément interactif. </p><p>Vérifier que la zone de click de ces éléments dépasse 44px par 44px</p>",
-		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérer par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…)<li><li>lla  taille réduite est nécessaire pour convoyer l'information</li></ul>",
+		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérer par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…)<li><li>la  taille réduite est nécessaire pour convoyer l'information</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
 		"priority": "",
 		"resultatTest": "nt",

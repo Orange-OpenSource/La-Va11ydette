@@ -208,7 +208,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), for any triggering of an action, validation or selection</li></ul><p> Warning: <code>rome</code> ARIA can modify the semantics of HTML tags but not the interactivity, check that they are used in an accessible way</p>",
-		"moreInfo": "https://a11y-guidelines.ora:nge.com/en/web/develop/textual-content/#use-html-semantics",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -499,7 +499,7 @@
 		"IDorigin": "testID-072",
 		"wcag": [],
 		"verifier": "<p>Check that the opening of a new window is mentioned to users, choose between these solutions:</p><ul><li>text of the link including the mention \"new window\"</li><li>presence of a visual clue (title, icon in the title…) and the mention \"new window\" in the accessible name.</li></ul>",
-		"complement": "Try to avoid using a `title` attribute in the link including the mention \"new window\"due to its weak robustness among assistive technologies$",
+		"complement": "Try to avoid using a `title` attribute in the link including the mention \"new window\"due to its weak robustness among assistive technologies",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#warn-the-user-when-opening-a-new-window",
 		"priority": "",
 		"resultatTest": "nt",
@@ -539,7 +539,7 @@
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [],
-		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>check that the lmain content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
+		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>check that the main content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/components-examples/landmarks/#main-content",
 		"priority": "",

@@ -201,7 +201,7 @@
 		{
 			"title" : "Audio description is missing",
 			"detail" : "Audio description is required for videos presenting information in visual form.",
-			"solution" : "Adding an audio description is present in addition to the audio track, if necessary. This presents, in text format, the information conveyed only by the image.",
+			"solution" : "Adding an audio description is present in addition to the audio track, if necessary. This presents, in audio format synchronized with the audio track, the information conveyed only by the image.",
 			"technicalSolution" : ""
 		}
 	],

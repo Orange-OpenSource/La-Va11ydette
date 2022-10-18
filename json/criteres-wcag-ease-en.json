@@ -72,7 +72,7 @@
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Check that color is not used as the only visual means for identifying that a form element is required (eg: asterisk)</li><li>Check that one of the following techniques is used to convey programmatically the information:<ul><li>the visible information is provided within the <code>label</code></li><li>presence of <code>required</code> attribute</li><li>presence of <code>aria-required</code> property</li></ul></li></ul>",
+		"verifier": "<ul><li>Check that color is not used as the only visual means for identifying that a form element is required (e.g.: asterisk)</li><li>Check that one of the following techniques is used to convey programmatically the information:<ul><li>the visible information is provided within the <code>label</code></li><li>presence of <code>required</code> attribute</li><li>presence of <code>aria-required</code> property</li></ul></li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P1",
@@ -117,7 +117,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<ul><li>check that the label or the accessible name of the field in error is modified so that it is understood that the field is in error (eg: addition of the mention 'error', addition of an icon, addition of an <code>aria-labelledby</code>.. .)</li><li>if the visual information does not have a text alternative (eg: icon without alternative), check that the field has an attribute <code>aria-invalid='true'</code ></li></ul>",
+		"verifier": "<ul><li>check that the label or the accessible name of the field in error is modified so that it is understood that the field is in error (e.g.: addition of the mention 'error', addition of an icon, addition of an <code>aria-labelledby</code>.. .)</li><li>if the visual information does not have a text alternative (e.g.: icon without alternative), check that the field has an attribute <code>aria-invalid='true'</code ></li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P1",
@@ -132,7 +132,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Check that:</p><ul><li> an error message is present visually, </li><li>and the field in error is precisely identified by the error message, </li> the nature of the error is clear (eg.: required phone field, invalid email format...).</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li> an error message is present visually, </li><li>and the field in error is precisely identified by the error message, </li> the nature of the error is clear (e.g.: required phone field, invalid email format…).</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P2",
@@ -147,7 +147,8 @@
 		"wcag": [
 			"3.3.3 AA"
 		],
-		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors.</p>\n<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
+		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
+		"exception":"<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P3",
@@ -162,7 +163,7 @@
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>For forms that:</p><ul><li>modify or delete user-specific data,</li><li>submit user test responses,</li><li> cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>Check that the user can modify or cancel before and after validation, unless the validation is explicit (eg: use of a checkbox).</p>",
+		"verifier": "<p>For forms that:</p><ul><li>modify or delete user-specific data,</li><li>submit user test responses,</li><li> cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>Check that the user can modify or cancel before and after validation, unless the validation is explicit (e.g.: use of a checkbox).</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P2",
@@ -177,7 +178,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<ul><li>Check that there is a page title,</li><li>Check that the page title is unique and allows the user to understand the context of the page.</li><li>Check that, when the context of the page is modified asynchronously (search, validation or error in a form, dynamic modification of the content... without reloading the page), the user is notified by modification of the title  (without strict requirement of a single heading level skip) </li> </ul>",
+		"verifier": "<ul><li>Check that there is a page title,</li><li>Check that the page title is unique and allows the user to understand the context of the page.</li><li>Check that, when the context of the page is modified asynchronously (search, validation or error in a form, dynamic modification of the content… without reloading the page), the user is notified by modification of the title</li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#set-a-title-for-each-page",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -192,7 +193,7 @@
 			"1.3.1 A",
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>Check that section headings are present (a least one <code>h1</code>), and that they represent the structure of the document</li><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical manner</li></ul>",
+		"verifier": "<ul><li>Check that section headings are present (a least one <code>h1</code>), and that they represent the structure of the document</li><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -221,6 +222,7 @@
 			"4.1.1 A"
 		],
 		"verifier": "<p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
+		"exception": "Unless the technical specifications of the application allow it",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -263,7 +265,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>If the table is a presentation table, add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
+		"verifier": "<p>If the table is a presentation table, remove any semantic tag or attribute of a table (<code>caption, summary, th, scope, headers</code>…) and add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -292,7 +294,7 @@
 			"1.4.5 AA"
 		],
 		"verifier": "<ul><li>Check that image and graphics elements (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) are not used to present text.</li></ul>\n<p>Not applicable if there is no image containing text</p>",
-		"exceptions": "<ul><li>SVG (real text),</li><li>special cases (eg: logo, captcha, tradename)</li></ul>",
+		"exceptions": "<ul><li>SVG (real text),</li><li>special cases (e.g.: logo, captcha, tradename)</li><li>The item is essential</li><li>The image is customizable by the user</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -306,7 +308,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (eg: 'captcha (anti-spam image) ' ).</p>",
+		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (e.g.: \"captcha (anti-spam image)\").</p>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#avoid-captcha",
 		"priority": "P2",
@@ -336,7 +338,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Check that there is a text alternative provided<br/>examples :<ul><li>use of an <code>abbr</code> tag with the <code>title</code> attribute</li><li>Use of adjacent content</li></ul></li><li>Check that the alternative is appropriate</li></ul>",
+		"verifier": "<ul><li>Check that there is a text alternative provided<br/>examples:<ul><li>use of an <code>abbr</code> tag with the <code>title</code> attribute</li><li>Use of adjacent content</li></ul></li><li>Check that the alternative is appropriate</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -366,6 +368,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text or image of text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"exception": "<p>Logos or all purely decorative elements.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -380,7 +383,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul> <li> If the text color is defined (<code> color </code>), the background color must also be defined (<code> background-color </code>). </li> <li> If the background color is defined (<code> background-color </code>), the text color must be defined too (<code> color </code>). </li> <li> If a background image is used for an element containing text (<code> background-image </code>), the background color must be set (<code> background-color </code>). </li> </ul><h4>More details</h4> <p> These properties can be applied directly to an element or inherited from a parent. To test, the easiest way is to change the default colors of your browser. </p>",
-		"complement": "<h4>Additionally: </h4><ul><li>If the <code>color</code> property is not defined, then the <code>background-color</code> is not necessary</li><li>It is possible to change the browser's default background color in order to identify at a glance if background colors are defined for text containers</li></ul>",
+		"complement": "<h4>Additionally: </h4><ul><li>These properties can be set directly on the element or inherited from a parent</li><li>It is possible to change the browser's default background color in order to identify, at a glance, if background colors are defined for text containers</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -395,7 +398,7 @@
 			"1.4.11 AA"
 		],
 		"verifier": "<p> Check that as well as graphics, icons and graphic interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exceptions": "<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>disabled components</li></ul>",
+		"exceptions": "<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>inactive components or its display is managed as is by the user agent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -409,7 +412,7 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (eg: icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link or hovers over it with the mouse (eg: underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a website’s navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
+		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g.: icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link or hovers over it with the mouse (e.g.: underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a website’s navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -438,7 +441,7 @@
 			"2.5.3 A"
 		],
 		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a>)</p>\n<p>Not applicable, if no interface component has a visible text label (icon without text, for example)</p>",
-		"complement": "<p>For example: for a 'start ' link, use an <code>aria-label</code> 'start playing', but not 'commence playing'</p>",
+		"complement": "<p>For example: for a 'start' link, use an <code>aria-label</code> 'start playing', but not 'begin playing'</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -453,6 +456,7 @@
 			"2.4.4 A"
 		],
 		"verifier": "<p>The user should be able to determine whether they want to follow a link, with context, if needed, to understand his destination.</p><ul><li>check that there are not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link can be inferred from its context</li></ul>",
+		"exception": "Except if the link is ambiguous for all users.",
 		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "P3",
@@ -467,7 +471,8 @@
 		"wcag": [
 			"2.4.9 AAA"
 		],
-		"verifier": "<p>The user must be able to understand the destination of the links even taken out of their context.</p><ul><li>verify that it is possible to determine the action or the destination of a link, only by from its accessible name</li><li>check that there are no identical labels pointing to different destinations</li></ul>",
+		"verifier": "<p>The user must be able to understand the destination of the links even taken out of their context.</p><ul><li>check that it is possible to determine the action or the destination of a link, only by from its accessible name</li><li>check that there are no identical labels pointing to different destinations</li></ul>",
+		"exception": "Unless the link is ambiguous to any user.",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "",
@@ -480,7 +485,7 @@
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [],
-		"verifier": "<p>The user must have the information if a link allows to open or download a document (pdf, word processing, video, audio...)</p><p>Each link allowing to download a file must be accompanied by information relating to its consultation.</p><p>Check that the label of the link contains:</p><ul><li>the name/title of the document</li><li> the type of document: pdf, text, mp3...</li><li>if necessary the language of the document</li><li>the size of the document</li></ul>",
+		"verifier": "<p>The user must have the information if a link is used to open or download a document (pdf, word processing, video, audio…)</p><p>Each link allowing to download a file must be accompanied by information relating to its consultation.</p><p>Check that the label of the link contains:</p><ul><li>the name/title of the document</li><li> the type of document: pdf, text, mp3…</li><li>if necessary the language of the document</li><li>the we of the document</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "",
@@ -493,8 +498,8 @@
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [],
-		"verifier": "<p>Check that the opening of a new window is mentioned to users, as desired:</p><ul><li>title of the link including the mention \"new window\"</li><li>presence of a visual clue (title, icon in the title, etc.) and the mention \"new window\" in the accessible name.</li></ul>",
-		"complement": "",
+		"verifier": "<p>Check that the opening of a new window is mentioned to users, choose between these solutions:</p><ul><li>text of the link including the mention \"new window\"</li><li>presence of a visual clue (title, icon in the title…) and the mention \"new window\" in the accessible name.</li></ul>",
+		"complement": "Try to avoid using a `title` attribute in the link including the mention \"new window\"due to its weak robustness among assistive technologies",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#warn-the-user-when-opening-a-new-window",
 		"priority": "",
 		"resultatTest": "nt",
@@ -508,7 +513,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>The user must be able to find the button function with the button text. Verify that the action carried by the accessible name of each button is relevant.</p>",
+		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -534,7 +539,7 @@
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [],
-		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li> <li>check that the main content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
+		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>check that the main content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/components-examples/landmarks/#main-content",
 		"priority": "",
@@ -556,14 +561,14 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Can the content that appears when focusing on or hovering over an interface component (eg: tooltip) be controlled by the user?",
+		"title": "Can the content that appears when focusing on or hovering over an interface component (e.g.: tooltip) be controlled by the user?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": [
 			"1.4.13 AA"
 		],
 		"verifier": "<p>Content on hover or focus:</p><ul><li>must be able to dismiss this additional content without moving the focus nor the mouse pointer</li><li>must be able to hover over it with the mouse (without this additional content disappearing)</li><li>it must remain displayed as long as the user does not trigger its closure (by moving the mouse, the focus, <kbd>ESCAPE</kbd> key…) and as long as this content remains valid</li></ul>",
-		"exceptions": "<ul><li>Additional content controlled by the user agent, eg: tooltip generated by the use of a <code>title</code> attribute.</li><li>If the additional content does not mask informative content, the criterion is not applicable</li></ul>",
+		"exceptions": "<ul><li>Additional content controlled by the user agent, e.g.: tooltip generated by the use of a <code>title</code> attribute.</li><li>If the additional content does not mask informative content, the criterion is not applicable</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -592,8 +597,8 @@
 		"wcag": [
 			"3.2.1 A"
 		],
-		"verifier": "<p>When using forms or any interactive component, verify that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). But an element can change when the focus is taken, if the context does not change, for example, the appearance when focusing a drop-down menu or even the visual modification when hovering over a link.</p>",
-		"complement": "<h4> Change of context </h4> <p> Major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
+		"verifier": "<p>When using forms or any interactive component, check that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). </p><p>The criterion is not applicable if, when the focus is taken, the context does not change, for example, the appearance, on focus, of a menu or even the visual modification when hovering over a link.</p>",
+		"complement": "<h4> Change of context </h4> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -607,8 +612,8 @@
 		"wcag": [
 			"3.2.2 A"
 		],
-		"verifier": "<p>Verify the absence of context change, without prior warning of the user, when modifying the parameter of any interactive component. Modifying a parameter can be, for example, checking a checkbox, entering content in a text field, selecting an option in a form control, all of this must have predictable results (classic behavior, expected by the user) but the activation of a link or of a button is not a parameter change.</p>",
-		"complement": "<h4>Context Switch</h4><p>A major change in web page content that, when done without the knowledge of the user, can be confusing.</p> <p>Context switches include:</p><ul><li>user agent (opening an application from the browser)</li><li>changes to <span lang=\" in\">viewport</span> (another part of the displayed page, opening a new window)</li><li>of focus (moving the focus)</li><li>of content that modifies the web page meaning</li></ul><p>Context switching is compliant if:</p><ul><li>the action is initiated by an explicit button or link</li ><li>the user is warned by a text before it is triggered</li></ul>",
+		"verifier": "<p>Check the absence of context change, without prior warning of the user, when modifying the parameter of any interactive component. Modifying a parameter can be, for example, checking a checkbox, entering content in a text field, selecting an option in a form control, all of this must have predictable results (classic behavior, expected by the user) but the activation of a link or of a button is not a parameter change.</p>",
+		"complement": "<h4> Change of context </h4> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interaction",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -622,7 +627,8 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Check that at least 2 of the following mechanisms are present on the page, to allow a user to determine their location on the website:</p> <ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>\n<p>when there is less than 3 or 4 pages and/or the content is short, this criterion is not applicable.</p>",
+		"verifier": "<p>when there is less than 3 or 4 pages and/or the content is short, this criterion is not applicable.</p><p>Check that at least 2 of the following mechanisms are present on the page, to allow a user to determine their location on the website:</p>\n<ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>", 
+		"exception": " except if the Web Page is the result of, or a step in a process.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -636,7 +642,7 @@
 		"wcag": [
 			"2.4.8 AAA"
 		],
-		"verifier": "<p>Check that the user's current position within a site is materialized visually and programmatically:</p><ul><li>a system is present (breadcrumb trail…)</li><li>a visual indication is present (sufficiently contrasted and not based only on the color) and accompanied by a <a href=\"https://a11y-guidelines.orange.com/en/articles/using-aria-current-attribute/#main-content\">attribute aria-current</a></li></ul>",
+		"verifier": "<p>Check that the user's current position within a site is materialized visually and programmatically:</p><ul><li>a system is present (breadcrumb trail…)</li><li>a visual indication is present (sufficiently contrasted and not based only on the color) and accompanied by a <a href=\"https://a11y-guidelines.orange.com/en/articles/using-aria-current-attribute/#main-content\">`aria-current` attribute</a></li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
 		"priority": "",
 		"resultatTest": "nt",
@@ -650,7 +656,7 @@
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chatbot, upload of a file, product registration in a basket, progressive loading of a page (next 20 items) ... ): </p> <ul> <li>check that a mechanism based on the ARIA roles (<code>status</code>, <code>alert</code>, <code> lertdialog </code>, ...) or on dynamic regions <code>aria-live</code> is implemented </li> <li> Check that they are rendered in a relevant way to the screen reader </li> </ul>",
+		"verifier": "<p>For all status messages (results of a search, a notification, dialogue in a chatbot, upload of a file, product registration in a basket, progressive loading of a page (next 20 items)…): </p> <ul> <li>check that a mechanism based on the ARIA roles (<code>status</code>, <code>alert</code>, <code> alertdialog </code>…) or on dynamic regions <code>aria-live</code> is implemented </li> <li> Check that they are rendered in a relevant way to the screen reader </li> </ul>",
 		"complement": "<h4>Examples</h4><ul> <li> message that informs about the result of an action or the state of the application: <code>role='status'</code></ li > <li> error message: <code>role='alert'</code></li> <li> message indicating progress: <code>role='log'</code>, <code>'progressbar'</code> or <code>'status'</code></li></ul> <p>More information on <a href =\"https://a11y-guidelines.orange.com/en/articles/aria-status-messages/ \" target=\"_ blank\" title=\"Messages status (new window) \"> status messages</a>. </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allow-to-know-the-result-of-a-user-interaction-with-status-messages",
 		"priority": "P2",
@@ -659,13 +665,13 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "For any moving, scrolling, blinking information that lasts more than five seconds or updated content, start automatically , is there a mechanism for the user to pause, stop, or hide it?",
+		"title": "If content on the page is moving, scrolling, blinking or updating, lasting more than 5 seconds and starting automatically, does the user have the option to stop, pause, hide or modify its update frequency of this content?",
 		"ID": "testID-035",
 		"IDorigin": "testID-035",
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Not applicable, if no movement, scrolling or flashing lasts more than 5 seconds or does not start automatically or if updates also start automatically</p>",
+		"verifier": "<p>If content from part of the page, starting automatically and lasting more than 5 seconds, is moving, scrolling, blinking, there is a way to stop it, pause it or hide it.< /p><p>For content on a part of the page that updates or is automatically refreshed, there is a way to stop it, pause it, hide it or play on its update frequency .</p><p>Not applicable, if no movement, no scrolling, no blinking and no automatic update or refresh that lasts more than 5 seconds or starts automatically</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allowing-animations-control",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -693,7 +699,8 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li> Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (eg: popin, tooltip) is also displayed when focus is received </li></ul>",
+		"verifier": "<ul><li> Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (e.g.: popin, tooltip) is also displayed when focus is received </li></ul><p>Criteria is not applicable for tooltips generated by the user agent (for example, that of the <code>title</code> attribute)</p>", 
+		"exception": "<p>Criteria is not applicable: </p><ul><li>for user-agent generated tooltips (e.g.: <code>title</code> attribute)</li><li>for the case where the underlying function requires the user to execute a path and not just the two endpoints</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#allow-the-use-of-the-main-features-of-the-application-with-the-keyboard",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -720,7 +727,7 @@
 		"wcag": [
 			"2.1.4 A"
 		],
-		"verifier": "<ul><li> the shortcut can be disabled by the user </li><li>the shortcut is only active when the interface component has focus </li><li> A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) </li></ul>",
+		"verifier": "<ul><li>the shortcut can be disabled by the user </li><li>the shortcut is only active when the interface component has focus </li><li> A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) </li></ul>",
 		"exceptions": "<p>Keyboard shortcuts that include a modifier key and accesskeys (<code> accesskey </code>) are not affected.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P3",
@@ -763,7 +770,7 @@
 		"wcag": [
 			"1.4.4 AA"
 		],
-		"verifier": "<p>Verify that there is no loss of information (no unusable, truncated or hidden content or functionality) following the enlargement of the text size to 200%.</p><p><em>Note:</em> text zoom must be allowed on mobile. There must not be a \"&lt;meta name= 'viewport'&gt;\" tag with:</p><ul><li>the parameter user-scalable='no' </li><li>or, the parameter maximum-scale less than 2</li></ul>",
+		"verifier": "<p>Check that there is no loss of information (no unusable, truncated or hidden content or functionality) following the enlargement of the text size to 200%.</p><p><em>Note:</em> text zoom must be allowed on mobile. There must not be a \"&lt;meta name= 'viewport'&gt;\" tag with:</p><ul><li>the parameter user-scalable='no' </li><li>or, the parameter maximum-scale less than 2</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -778,7 +785,7 @@
 			"1.4.10 AA"
 		],
 		"verifier": "<p>Check that a horizontal scroll bar does not appear.</p>",
-		"exceptions": "Certain specific types of content, such as maps, data tables, games, etc. may require two dimensional scrolling.",
+		"exceptions": "Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -836,7 +843,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>If a specific reading order is required to understand a content on the page<br/> when CSS is disabled, check that this content read linearly remains understandable.</p><p> <strong> Example: </strong> a content implemented with multiple columns in CSS must be rendered in the correct order without CSS. </p><p> If no content requires a specific reading order, then the criterion is not applicable.</p>",
-		"complement": "<h4> Additional information </h4> <p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p> <p>Examples of content to test: </p> <ul><li>Layout via these CSS properties:<ul> <li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code> …)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li> </ul> <li>Formatting table</li></ul>",
+		"complement": "<h4> Additional information </h4> <p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p> <p>Examples of content to test: </p> <ul><li>Layout via these CSS properties:<ul> <li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li> </ul> <li>Formatting table</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -879,7 +886,7 @@
 			"2.5.5 AAA"
 		],
 		"verifier": "<p>The user must be able to click easily on an interactive element. </p><p>Check that the click area of these elements exceeds 44px by 44px</p>",
-		"exception":"<ul><li>if several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>anchor links</li><li> link in the middle of a sentence</li><li>footnote</li><li>help icon in a sentence</li></ul>",
+		 "exception":"<ul><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>elements managed by the agent users used as is</li><li>The link is in the middle of a sentence or paragraph (help icon in a sentence, anchor links, footnote…)<li><li> The reduced size is necessary to convey the information</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "",
 		"resultatTest": "nt",
@@ -909,7 +916,7 @@
 		"wcag": [
 			"2.5.2 A"
 		],
-		"verifier": "<p>It must be possible to cancel actions triggered by a single pointer input that operates with one point of contact with the screen (eg: single taps and clicks, double-taps and clicks):</p><ul><li>Check that no action is triggered on the down-event (as soon as you touch or press an element) and that it is possible to abort the action by lifting the pointer outside that element.</li><li> if an action is triggered when an element is pressed, check that it is cancelled as soon as the pointer is released.</li><li>For complex actions (eg: drag and drop), check that the user can cancel the action before completing the process through, for example, a confirmation dialog.</li></ul>",
+		"verifier": "<p>It must be possible to cancel actions triggered by a single pointer input that operates with one point of contact with the screen (e.g.: single taps and clicks, double-taps and clicks):</p><ul><li>Check that no action is triggered on the down-event (as soon as you touch or press an element) and that it is possible to abort the action by lifting the pointer outside that element.</li><li> if an action is triggered when an element is pressed, check that it is cancelled as soon as the pointer is released.</li><li>For complex actions (e.g.: drag and drop), check that the user can cancel the action before completing the process through, for example, a confirmation dialog.</li></ul>",
 		"exceptions": "<p>Interactions that emulate a keyboard or a numeric keypad are allowed to implement actions on down-events.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#allow-to-cancel-the-triggering-of-gestural-interactions",
 		"priority": "P1",
@@ -924,8 +931,8 @@
 		"wcag": [
 			"2.5.4 A"
 		],
-		"verifier": "<ul><li>Check that these actions can also be operated by user interface components (eg: button)</li><li>Check that it is possible to disable the motion detection</li></ul>",
-		"exceptions": "<p>The motion is essential for the function (eg: pedometer)</p>",
+		"verifier": "<ul><li>Check that these actions can also be operated by user interface components (e.g.: button)</li><li>Check that it is possible to disable the motion detection</li></ul>",
+		"exceptions": "<p>The motion is essential for the function (e.g.: pedometer)</p>",
 		"group": "Touche Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
@@ -970,7 +977,7 @@
 		"wcag": [
 			"1.2.1 A"
 		],
-		"verifier": "<p>Check that a complete transcript (text that provides an equivalent to what is presented visually) is provided as plain text or HTML.<br> This text transcript should be: </p><ul><li> present in the page </li> <li> or available via a link immediately next to the link to the video clip</li></ul> ",
+		"verifier": "<p>Check that a complete transcript (text that provides an equivalent to what is presented visually) is provided as plain text or HTML.<br> This text transcript should be: </p><ul><li> present in the page </li> <li> or available via a link immediately next to the link to the video clip</li><li>or check for the presence of an audio track providing the information presented visually</li></ul> ",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"priority": "P2",
@@ -1061,7 +1068,7 @@
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "<p> Check all standard components (eg: form elements) as well as those components developed using JavaScript (eg: drop-down menu): </p><ul><li> each custom component uses an appropriate ARIA role (refer to the component's design pattern in order to validate this)</li><li> for components for which the user can change the value or state, these properties can also be defined via assistive technologies (eg: check or uncheck a checkbox)</li><li> every time the state changes, the user is notified via their assistive technology (example of this test passed: screen reader notification: 'checked' or 'unchecked')</li></ul>",
+		"verifier": "<p> Check all standard components (e.g.: form elements) as well as those components developed using JavaScript (e.g.: drop-down menu): </p><ul><li> each custom component uses an appropriate ARIA role (refer to the component's design pattern in order to validate this)</li><li> for components for which the user can change the value or state, these properties can also be defined via assistive technologies (e.g.: check or uncheck a checkbox)</li><li> every time the state changes, the user is notified via their assistive technology (example of this test passed: screen reader notification: 'checked' or 'unchecked')</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/assistive-technology/#make-sure-the-main-features-can-be-used-with-screen-readers",
 		"priority": "P2",
 		"resultatTest": "nt",

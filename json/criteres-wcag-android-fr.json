@@ -13,7 +13,7 @@
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -30,7 +30,7 @@
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -46,7 +46,7 @@
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -61,7 +61,7 @@
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -75,7 +75,7 @@
 		"verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>autofill</code>.</li><li>La valeur indiquée pour la propriété <code>autofill</code> est pertinente au regard du type d'information attendue.</li></ul>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -89,7 +89,7 @@
 		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge).</p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -104,7 +104,7 @@
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -119,7 +119,7 @@
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -133,7 +133,7 @@
 		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -147,7 +147,7 @@
 		"verifier": "<p>Vérifier que le titre de l'<code>Activity</code> est renseigné.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -161,7 +161,7 @@
 		"verifier": "<p>Vérifier que le titre de l'<code>Activity</code> est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -175,7 +175,7 @@
 		"verifier": "<p>Vérifier que le titre de l'<code>Activity</code> permet à l'utilisateur de comprendre le contexte de la page.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -190,7 +190,7 @@
 		"exception": "<p>Le brand name, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -205,7 +205,7 @@
 		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -219,7 +219,7 @@
 		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3 :1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -233,7 +233,7 @@
 		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -248,7 +248,7 @@
 		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 200%.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/agrandissement/",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -262,7 +262,7 @@
 		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de l'activité est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -277,7 +277,7 @@
 		"verifier": "<p>Vérifier que les éléments suivent un ordre logique et compréhensible en utilisant la navigation vocale.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#gerer-lordre-de-lecture-avec-la-navigation-vocale",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -291,7 +291,7 @@
 		"verifier": "<p>Vérifier que le libellé des champs de saisie sont bien associés à ceux-ci par le biais de l'attribut <code>LabelFor</code>. Les libellés doivent ainsi être vocalisés lorsqu'on navigue sur les champs de saisie avec lesquels ils sont associés.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -306,7 +306,7 @@
 		"verifier": "<p>Vérifier que les éléments liés sont vocalisés en un seul bloc :</p><ul><li>les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>les informations multidimensionnelles respectent-ils une bonne balance entre nombre de blocs et contenu dans chaque bloc ?</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#regrouper-les-elements",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -321,7 +321,7 @@
 		"verifier": "<p>Vérifier qu'avec la navigation vocale Talkback et le paramètre de navigation par entête défini :</p><ul><li>tous les entêtes de section sont navigables et vocalisés</li><li>seuls les entêtes sont navigables et vocalisés</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#gerer-la-navigation-par-entetes",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -335,7 +335,7 @@
 		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran (activité) est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -349,7 +349,7 @@
 		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -363,7 +363,7 @@
 		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-letat-des-elements",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -377,7 +377,7 @@
 		"verifier": "<p>Vérifier qu'il n'y a aucun élément fantôme avec la navigation vocale.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -391,7 +391,7 @@
 		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -405,7 +405,7 @@
 		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant. Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -419,7 +419,7 @@
 		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access et avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de scroller pour lire le contenu dans une scrollView</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -433,7 +433,7 @@
 		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec la navigation au clavier.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P0",
 		"goodPractice": false
 	},
 	{
@@ -447,7 +447,7 @@
 		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access et la navigation au clavier.",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -461,7 +461,7 @@
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran, que ce soit avec Switch Access ou la navigation clavier.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -476,7 +476,7 @@
 		"exception": "<p>Le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -491,7 +491,7 @@
 		"complement": "<h4>Exemple</h4><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -504,7 +504,7 @@
 		],
 		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>vérifier qu'aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément) et qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -518,7 +518,7 @@
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-une-application-utilisable-quelle-que-soit-lorientation",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -533,7 +533,7 @@
 		"exception": "<p>Cette règle comporte deux exceptions :</p><ul><li>Il y a un autre élément sur l'écran qui réalise la même action, et qui respecte la taille requise. Dans ce cas, précis, on accepte que l'élément soit trop petit.</li><li>L'élément interactif se trouve dans une phrase ou un bloc de texte (ex : liens).</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -546,7 +546,7 @@
 		],
 		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -560,7 +560,7 @@
 		"verifier": "<p>Vérifier que le délai provoquant un changement de contexte automatique (par exemple, l'overflow de contrôle d'une vidéo qui disparaît après quelques secondes) est adaptable : soit depuis le paramètre d'accessibilité 'Time to take action', soit directement depuis l'application. On peut alors proposer plusieurs options depuis l'application : <ul><li>désactiver la limite de temps, mais l'application doit permettre de réaliser le même changement de contexte par une alternative.</li><li>contrôler la limite de temps, en choississant un délai plus ou moins long selon son besoin</li></ul></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#rendre-adaptable-les-ui-avec-limite-de-temps",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -574,7 +574,7 @@
 		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -589,7 +589,7 @@
 		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
 		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -602,7 +602,7 @@
 		],
 		"verifier": "<p>Non applicable, si aucun mouvement ou clignotement ne dure plus de 5 secondes</p>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -616,7 +616,7 @@
 		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code>)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#eviter-le-contenu-a-risque-epileptique",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -629,7 +629,7 @@
 		],
 		"verifier": "<p>Vérifier que les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différentes activités de l'application).</p>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -642,7 +642,7 @@
 		],
 		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte (hors cas particulier : logo, captcha, dénomination commerciale).</p>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -656,7 +656,7 @@
 		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
 		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li><li>dans un titre de niveau explicite précédent le lien</li></ul>",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -671,7 +671,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -686,7 +686,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -701,7 +701,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -716,7 +716,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -731,7 +731,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -747,7 +747,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -762,7 +762,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -777,7 +777,7 @@
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -792,7 +792,7 @@
 		"group": "WebView",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -808,7 +808,7 @@
 		"group": "WebView",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -823,7 +823,7 @@
 		"group": "WebView",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-liens-devitement",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -838,7 +838,7 @@
 		"group": "WebView",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P3",
 		"goodPractice": false
 	}
 ]

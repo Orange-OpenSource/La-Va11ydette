@@ -283,7 +283,9 @@ updateCounter = function (activeFilter, nbTests) {
 let elFeedback = document.getElementById('feedback');
 let htmlFeedback = '';
 
-nbTests -=getNbGoodPractice();
+if(!activeFilter){
+    nbTests -=getNbGoodPractice();
+}
 if(nbTests<0){
     nbTests=0;
 }

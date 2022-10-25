@@ -242,7 +242,6 @@ function runFinalComputationWcag(pagesResultsArray) {
 	 @param {number} nbNT - number of non-tested items.
 	*/  
     nbNTResultsArray = getNbNotTested();
-	console.log('yoyo')
 
     var nbNT = nbNTResultsArray.total;
 

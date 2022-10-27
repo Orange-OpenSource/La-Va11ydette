@@ -499,7 +499,7 @@
 		"IDorigin": "testID-072",
 		"wcag": [],
 		"verifier": "<p>Check that the opening of a new window is mentioned to users, choose between these solutions:</p><ul><li>text of the link including the mention \"new window\"</li><li>presence of a visual clue (title, icon in the title…) and the mention \"new window\" in the accessible name.</li></ul>",
-		"complement": "Try to avoid using a `title` attribute in the link including the mention \"new window\"due to its weak robustness among assistive technologies",
+		"complement": "<p>Try to avoid using a `title` attribute in the link including the mention \"new window\"due to its weak robustness among assistive technologies</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#warn-the-user-when-opening-a-new-window",
 		"priority": "",
 		"resultatTest": "nt",
@@ -539,7 +539,7 @@
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [],
-		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complentary</code>).</li><li>check that the main content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
+		"verifier": "<ul><li>check that each region of the page has relevant semantics through HTML5 structural tags at least <code>header</code>, <code>main</code>, <code>footer</code> (or their equivalent in the form of ARIA roles: <code>role=banner</code>, <code>role=main</code>, <code>role=complementary</code>).</li><li>check that the main content is included in a main tag</li><li>check that the page content is included in at least one structure tag</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/components-examples/landmarks/#main-content",
 		"priority": "",
@@ -642,7 +642,7 @@
 		"wcag": [
 			"2.4.8 AAA"
 		],
-		"verifier": "<p>Check that the user's current position within a site is materialized visually and programmatically:</p><ul><li>a system is present (breadcrumb trail…)</li><li>a visual indication is present (sufficiently contrasted and not based only on the color) and accompanied by a <a href=\"https://a11y-guidelines.orange.com/en/articles/using-aria-current-attribute/#main-content\">`aria-current` attribute</a></li></ul>",
+		"verifier": "<p>Check that the user's current position within a site is materialized visually and programmatically:</p><ul><li>a system is present (breadcrumb trail…)</li><li>a visual indication is present (sufficiently contrasted and not based only on the color) and accompanied by a <a href=\"https://a11y-guidelines.orange.com/en/articles/using-aria-current-attribute/#main-content\" target=\"_blank\">`aria-current` attribute</a></li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
 		"priority": "",
 		"resultatTest": "nt",
@@ -886,7 +886,7 @@
 			"2.5.5 AAA"
 		],
 		"verifier": "<p>The user must be able to click easily on an interactive element. </p><p>Check that the click area of these elements exceeds 44px by 44px</p>",
-		 "exception":"<ul><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>elements managed by the agent users used as is</li><li>The link is in the middle of a sentence or paragraph (help icon in a sentence, anchor links, footnote…)<li><li> The reduced size is necessary to convey the information</li></ul>",
+		 "exception":"<ul><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>elements managed by the agent users used as is</li><li>The link is in the middle of a sentence or paragraph (help icon in a sentence, anchor links, footnote…)</li><li> The reduced size is necessary to convey the information</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "",
 		"resultatTest": "nt",

@@ -380,20 +380,21 @@ function filtrerParID(prop, arrayFilters) {
 
 filteredTest = dataVallydette.checklist.page[currentPage].items;
 
+if(dataVallydette.checklist.goodPractice == false){
+    filteredTest = filteredTest.filter(o => o.goodPractice==false);
+}
+
 if(arrayFilterActivated && arrayFilterActivated.length > 0){
-    
     filteredTest = filteredTest.filter(o => arrayFilterActivated.includes(o.resultatTest));
 
 } 
 
 if(arrayProfileActivated && arrayProfileActivated.length > 0){
-    
     filteredTest = filteredTest.filter(filtrerParID("profils", "arrayProfileActivated"));
     
 } 
 
 if(arrayTypeActivated && arrayTypeActivated.length > 0){
-    
     filteredTest = filteredTest.filter(filtrerParID("type", "arrayTypeActivated"));
 
 }

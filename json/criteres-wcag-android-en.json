@@ -455,7 +455,7 @@
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": [
-			"2.4.7 AA"
+			"2.4.7 A"
 		],
 		"verifier": "<p>Check that the focus is clearly and easily visible.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",

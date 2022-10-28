@@ -397,7 +397,7 @@
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": {
-			"0": "2.4.7 AA"
+			"0": "2.4.7 A"
 		},
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran.</p>",
 		"resultatTest": "nt",

@@ -290,7 +290,7 @@
 		},
 		{
 			"wcag": "2.4.7",
-			"level": "AA",
+			"level": "A",
 			"name": "Visibilité du focus",
 			"tests": [],
 			"resultat": "na",

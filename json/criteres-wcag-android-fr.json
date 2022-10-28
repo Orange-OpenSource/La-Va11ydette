@@ -456,7 +456,7 @@
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": [
-			"2.4.7 AA"
+			"2.4.7 A"
 		],
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran, que ce soit avec Switch Access ou la navigation clavier.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",

@@ -290,7 +290,7 @@
 		},
 		{
 			"wcag": "2.4.7",
-			"level": "AA",
+			"level": "A",
 			"name": "Focus Visible",
 			"tests": [],
 			"resultat": "na",

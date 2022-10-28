@@ -754,7 +754,7 @@
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
-			"2.4.7 AA"
+			"2.4.7 A"
 		],
 		"verifier": "<p>Vérifier que le style par défaut du navigateur est préservé ou qu'un focus personnalisé est présent.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",

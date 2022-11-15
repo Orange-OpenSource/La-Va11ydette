@@ -594,7 +594,7 @@
 			"technicalSolution" : ""
 		}, {
 			"title" : "Un composant interactifs n'est pas utilisable avec un lecteur d'écran",
-			"detail" : "Les fonctionnalités d'un composant ne pas utilisables avec un lecteur d'écran",
+			"detail" : "Les fonctionnalités d'un composant ne sont pas utilisables avec un lecteur d'écran",
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
 			"technicalSolution" : ""
 		}

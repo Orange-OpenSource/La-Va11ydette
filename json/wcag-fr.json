@@ -451,6 +451,15 @@
 			"page": []
 		},
 		{
+			"wcag": "3.3.7",
+			"level": "AA",
+			"name": "Authentification accessible",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "4.1.1",
 			"level": "A",
 			"name": "Analyse syntaxique",

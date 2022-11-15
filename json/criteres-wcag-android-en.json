@@ -487,7 +487,7 @@
 			"2.5.1 A"
 		],
 		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
-		"complement": "<h4>For example</h4><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"complement": "<h5>For example</h5><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -586,7 +586,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>When using forms or any interactive component, check that there is no change of context, without warning the user: </p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul>",
-		"complement": "<h4>Context changes</h4><p>Major change in the content of the screen which, when done without the knowledge of the user, can be confusing.</p> <p>The changes context include changes:</p><ul><li>the user agent (opening an other application) </li><li>the viewport (other part of the displayed screen, open a new screen)</li><li>the focus position (focus sequence) </li><li>content that changes the meaning of the screen </li></ul>The context switch is compliant if: <ul><li>the action is initiated by a button or an explicit link </li><li>the user is warned by a text before it is triggered</li></ul>",
+		"complement": "<h5>Context changes</h5><p>Major change in the content of the screen which, when done without the knowledge of the user, can be confusing.</p> <p>The changes context include changes:</p><ul><li>the user agent (opening an other application) </li><li>the viewport (other part of the displayed screen, open a new screen)</li><li>the focus position (focus sequence) </li><li>content that changes the meaning of the screen </li></ul>The context switch is compliant if: <ul><li>the action is initiated by a button or an explicit link </li><li>the user is warned by a text before it is triggered</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -653,7 +653,7 @@
 			"2.4.4 A"
 		],
 		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the page to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>if the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
-		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. Check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph</li><li> in the same list element</li><li> in the same table cell</li><li>in the table header cell, associated with the cell of the link</li><li>in a heading of a specific level preceding the link </li></ul>",
+		"complement": "<h5>How to determine the context of the link:</h5><p>The context of the link constitutes additional information that helps the user understand the purpose. Check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph</li><li> in the same list element</li><li> in the same table cell</li><li>in the table header cell, associated with the cell of the link</li><li>in a heading of a specific level preceding the link </li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -742,7 +742,7 @@
 			"1.2.4 AA"
 		],
 		"verifier": "<ul><li>check that captions are available</li><li>check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
-		"complement": "<h4>Captions</h4><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
+		"complement": "<h5>Captions</h5><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
 		"resultatTest": "nt",

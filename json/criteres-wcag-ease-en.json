@@ -56,7 +56,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>the presence of a <code>fieldset</code> group or <code>role='group'</code></li><li>each group possesses a legend (<code>legend</code>, <code>aria-labelledby</code>)</li><li>each legend is appropriate</li></ul>",
-		"complement": "<h4>Additionally: </h4><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
+		"complement": "<h5>Additionally: </h5><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
@@ -382,8 +382,8 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul> <li> If the text color is defined (<code> color </code>), the background color must also be defined (<code> background-color </code>). </li> <li> If the background color is defined (<code> background-color </code>), the text color must be defined too (<code> color </code>). </li> <li> If a background image is used for an element containing text (<code> background-image </code>), the background color must be set (<code> background-color </code>). </li> </ul><h4>More details</h4> <p> These properties can be applied directly to an element or inherited from a parent. To test, the easiest way is to change the default colors of your browser. </p>",
-		"complement": "<h4>Additionally: </h4><ul><li>These properties can be set directly on the element or inherited from a parent</li><li>It is possible to change the browser's default background color in order to identify, at a glance, if background colors are defined for text containers</li></ul>",
+		"verifier": "<ul> <li> If the text color is defined (<code> color </code>), the background color must also be defined (<code> background-color </code>). </li> <li> If the background color is defined (<code> background-color </code>), the text color must be defined too (<code> color </code>). </li> <li> If a background image is used for an element containing text (<code> background-image </code>), the background color must be set (<code> background-color </code>). </li> </ul><h5>More details</h5> <p> These properties can be applied directly to an element or inherited from a parent. To test, the easiest way is to change the default colors of your browser. </p>",
+		"complement": "<h5>Additionally: </h5><ul><li>These properties can be set directly on the element or inherited from a parent</li><li>It is possible to change the browser's default background color in order to identify, at a glance, if background colors are defined for text containers</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -457,7 +457,7 @@
 		],
 		"verifier": "<p>The user should be able to determine whether they want to follow a link, with context, if needed, to understand his destination.</p><ul><li>check that there are not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link can be inferred from its context</li></ul>",
 		"exception": "Except if the link is ambiguous for all users.",
-		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
+		"complement": "<h5>How to determine the context of the link:</h5><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -598,7 +598,7 @@
 			"3.2.1 A"
 		],
 		"verifier": "<p>When using forms or any interactive component, check that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). </p><p>The criterion is not applicable if, when the focus is taken, the context does not change, for example, the appearance, on focus, of a menu or even the visual modification when hovering over a link.</p>",
-		"complement": "<h4> Change of context </h4> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
+		"complement": "<h5> Change of context </h5> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -613,7 +613,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Check the absence of context change, without prior warning of the user, when modifying the parameter of any interactive component. Modifying a parameter can be, for example, checking a checkbox, entering content in a text field, selecting an option in a form control, all of this must have predictable results (classic behavior, expected by the user) but the activation of a link or of a button is not a parameter change.</p>",
-		"complement": "<h4> Change of context </h4> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
+		"complement": "<h5> Change of context </h5> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interaction",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -657,7 +657,7 @@
 			"4.1.3 A"
 		],
 		"verifier": "<p>For all status messages (results of a search, a notification, dialogue in a chatbot, upload of a file, product registration in a basket, progressive loading of a page (next 20 items)…): </p> <ul> <li>check that a mechanism based on the ARIA roles (<code>status</code>, <code>alert</code>, <code> alertdialog </code>…) or on dynamic regions <code>aria-live</code> is implemented </li> <li> Check that they are rendered in a relevant way to the screen reader </li> </ul>",
-		"complement": "<h4>Examples</h4><ul> <li> message that informs about the result of an action or the state of the application: <code>role='status'</code></ li > <li> error message: <code>role='alert'</code></li> <li> message indicating progress: <code>role='log'</code>, <code>'progressbar'</code> or <code>'status'</code></li></ul> <p>More information on <a href =\"https://a11y-guidelines.orange.com/en/articles/aria-status-messages/ \" target=\"_ blank\" title=\"Messages status (new window) \"> status messages</a>. </p>",
+		"complement": "<h5>Examples</h5><ul> <li> message that informs about the result of an action or the state of the application: <code>role='status'</code></ li > <li> error message: <code>role='alert'</code></li> <li> message indicating progress: <code>role='log'</code>, <code>'progressbar'</code> or <code>'status'</code></li></ul> <p>More information on <a href =\"https://a11y-guidelines.orange.com/en/articles/aria-status-messages/ \" target=\"_ blank\" title=\"Messages status (new window) \"> status messages</a>. </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allow-to-know-the-result-of-a-user-interaction-with-status-messages",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -843,7 +843,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>If a specific reading order is required to understand a content on the page<br/> when CSS is disabled, check that this content read linearly remains understandable.</p><p> <strong> Example: </strong> a content implemented with multiple columns in CSS must be rendered in the correct order without CSS. </p><p> If no content requires a specific reading order, then the criterion is not applicable.</p>",
-		"complement": "<h4> Additional information </h4> <p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p> <p>Examples of content to test: </p> <ul><li>Layout via these CSS properties:<ul> <li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li> </ul> <li>Formatting table</li></ul>",
+		"complement": "<h5> Additional information </h5> <p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p> <p>Examples of content to test: </p> <ul><li>Layout via these CSS properties:<ul> <li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li> </ul> <li>Formatting table</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -858,7 +858,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Check that no information is lost</p>",
-		"complement": "<h4>More details</h4><ul><li>No information must be provided by CSS generated content (example: pseudo classes<code> ::before / :before</code> and <code>::after / :after</code>, <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
+		"complement": "<h5>More details</h5><ul><li>No information must be provided by CSS generated content (example: pseudo classes<code> ::before / :before</code> and <code>::after / :after</code>, <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -901,7 +901,7 @@
 			"2.5.1 A"
 		],
 		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
-		"complement": "<h4>For example</h4><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"complement": "<h5>For example</h5><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
 		"group": "Touche Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
@@ -1038,7 +1038,7 @@
 			"1.2.4 AA"
 		],
 		"verifier": "<ul><li>Check that captions are available</li><li>Check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
-		"complement": "<h4>Captions</h4><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
+		"complement": "<h5>Captions</h5><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"priority": "P2",

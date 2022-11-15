@@ -4,7 +4,6 @@
   "description": "Pour travailler en local dans votre navigateur, utilisez `npx serve` — qui nécessite Node et npm installés globalement (et rien d’autre, promis !).",
   "main": "index.js",
   "scripts": {
-    "build": "serve"
   },
   "repository": {
     "type": "git",

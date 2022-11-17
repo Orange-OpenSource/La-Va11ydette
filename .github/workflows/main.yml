@@ -22,3 +22,4 @@ jobs:
           publish_dir: .
           publish_branch: gh-pages
           keep_files: true
+          cname: la-va11ydette.orange.com

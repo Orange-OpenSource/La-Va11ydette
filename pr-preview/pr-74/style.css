@@ -1,0 +1,112 @@
+
+/* Title */
+body,
+    .card-title,
+    .card-header {
+      background: #f6f6f6;
+      color: #000;
+    }
+
+    .navbar-brand h1 {
+      letter-spacing: 0;
+      line-height: 1;
+      opacity: 1;
+      transition: visibility 0s ease, max-height .15s ease, opacity .15s ease;
+      max-height: 4em;
+      visibility: visible;
+      transition-delay: 0s;
+    }
+
+    .navbar-brand .h2 {
+        line-height: 1.2;
+        align-self: flex-end;
+      }
+
+/* Bacground Color */
+
+.bg-light2 {
+    background-color: #F6F6F6;
+  }
+
+/* Focus hover */
+
+#selectFiles:hover , #selectFiles:focus{
+    border: .250rem solid #f16e00!important;
+    border-right: none;
+}
+
+#tableOfContents .nav-link:focus, #tableOfContents .nav-link:hover {
+    text-decoration: underline;
+    color:#000;
+}
+
+
+#pageManager .navbar-nav .nav-link.active, #pageManager .navbar-nav .show > .nav-link {
+  color: #000;
+}
+
+#pageManager .navbar-nav .nav-link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+#pageManager .navbar-nav .nav-link:focus{
+  color: #000
+}
+
+/* Table */
+
+.table > :not(:first-child) {
+    border-top: none;
+  }
+
+/* Custom Div ID */
+
+#tableOfContents .nav-link{
+    color:#666;
+  }
+
+    @media (min-width: 768px) {
+        #tableOfContents{
+        overflow-y: auto;
+        height: calc(100vh - 20rem);
+        }
+    } 
+
+    #filter {
+        max-height: calc(100vh - 9.6rem);
+      }
+
+/* Utilities */
+
+[aria-expanded="true"] .icon-arrow-down {
+    transform: rotate(180deg);
+  }
+
+  .border {
+    border-width: .0625rem !important;
+  }  
+
+  li::marker {
+    color: #060606;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+li li::marker {
+  color: #f16e00;
+}
+
+/* Print */
+
+@media print {
+    body {
+      padding-top: 0 !important;
+    }
+
+    .col-print-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+
+} 

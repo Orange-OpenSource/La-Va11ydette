@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
+		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul><p>Attention&nbsp; le placeholder n'est pas considéré comme assez robuste pour valider ce critère</p>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
@@ -207,7 +207,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment p) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
+		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment p) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -273,7 +273,7 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Les images possèdent-elles un texte de remplacement pertinent&nbsp;?",
+		"title": "Les images possédent-elles un texte de remplacement pertinent&nbsp;?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
@@ -656,7 +656,7 @@
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
+		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinente au lecteur d'écran</li></ul>",
 		"complement": "<h4>Exemples</h4><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-de-connaitre-le-resultat-dune-interaction-utilisateur-a-laide-de-messages-contextuels",
 		"priority": "P2",
@@ -685,7 +685,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde ou sur ne zone de moins de <code>21 824 px²</code></p>",
+		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P2",
 		"resultatTest": "nt",

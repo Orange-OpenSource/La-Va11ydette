@@ -468,7 +468,7 @@
 		{
 		"title" : "Use of color only to show focus",
 		"detail" : "Color cannot be the only element to distinguish the focus.",
-		"solution" : "Set up another way than changing color for the focus indicator (ex.: shape, size, outline, underline....",
+		"solution" : "Set up another way than changing color for the focus indicator (ex.: shape, size, outline, underline...).",
 		"technicalSolution": ""
 		},
 		{

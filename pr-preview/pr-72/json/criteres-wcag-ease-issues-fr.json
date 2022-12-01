@@ -245,13 +245,13 @@
 			"technicalSolution" : "<img alt=\"[…]\" […]> "
 		},{
 			"title" : "Le ALT d'une image-lien n'est pas renseigné ou non pertinent",
-			"detail" : "Le contenu de l'attribut ALT de chaque image-lien est pertinent par rapport à sa fonction de lien.",
+			"detail" : "Le contenu de l'attribut ALT de chaque image-lien n'est pas pertinent par rapport à sa fonction de lien.",
 			"solution" : "Renseigner la cible du lien dans le ALT.",
 			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[…]\" alt= \"Mon site\" > </a>"
 		},
 		{
 			"title" : "Le ALT d'une image porteuse d'information n'est pas renseigné ou non pertinent",
-			"detail" : "L'attribut ALT de chaque image est pertinent par rapport au rôle de l'image dans la page.",
+			"detail" : "L'attribut ALT de chaque image n'est pas pertinent par rapport au rôle de l'image dans la page.",
 			"solution" : "Renseigner dans le ALT, l'information portée par l'image.",
 			"technicalSolution" : ""
 		},
@@ -268,7 +268,7 @@
 			"technicalSolution" : "<img src=\"[…]\" alt=\"\" >"
 		},
 		{
-			"title" : "Le ALT d'une image complexe (schémas, graphes …) n'est pas pertinent",
+			"title" : "Le ALT d'une image complexe (schémas, graphes…) n'est pas pertinent",
 			"detail" : "",
 			"solution" : "Pour toute description d'image trop longue pour être mise dans un attribut ALT, la description de l'image sous forme de texte html est, soit présente dans la page, soit, un lien pointe vers une page html contenant la description, et ceci, à proximité de l'image à décrire.",
 			"technicalSolution" : ""
@@ -428,7 +428,7 @@
 		{
 			"title" : "Absence de rôles ARIA (status, alert, alertdialog…) ou de régions dynamiques aria-live",
 			"detail" : "Les messages d'alertes ne sont pas perçus depuis un lecteur d'écran.",
-			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc…) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement dés apparition.",
+			"solution" : "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\"…) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement dès son apparition.",
 			"technicalSolution" : "exemples :\n - <div role=\"status\"> […] </div> \n - <div aria-live=\"assertive\">[…]</div>"
 		}
 	],
@@ -477,6 +477,18 @@
 			"title" : "La visualisation du focus (outline) est désactivée",
 			"detail" : "Le outline ne doit pas être désactivé.",
 			"solution" : "Vérifier que le outline n'est pas supprimé depuis une propriété css (ex. : \"outline:none;\").",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "La couleur uniquement permet de visualiser le focus ",
+			"detail" : "La couleur ne peut être le seul élément permettant de distinguer le focus.",
+			"solution" : "Mettre en place un autre moyen que le changement de couleur pour l'indicateur de focus (ex.&nbsp;: forme, taille, encadré, souligné...).",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "La visualisation du focus est insuffisante",
+			"detail" : "Le contraste de l'indicateur du focus doit être suffisamment contrasté (3:1) pa rapport au fond de l'élément",
+			"solution" : "Assurer un contraste de 3:1 minimum pour les différents composants interactifs et l'indicateur de focus.",
 			"technicalSolution" : ""
 		}
 	],

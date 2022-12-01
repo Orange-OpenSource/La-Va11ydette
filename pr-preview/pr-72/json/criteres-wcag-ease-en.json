@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
+		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul><p>Warning: a placeholder is not robust enough to validate this criterion</p>",
 		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
@@ -207,7 +207,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), for any triggering of an action, validation or selection</li></ul><p> Warning: <code>rome</code> ARIA can modify the semantics of HTML tags but not the interactivity, check that they are used in an accessible way</p>",
+		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), for any triggering of an action, validation or selection</li></ul><p> Warning: <code>role</code> ARIA can modify the semantics of HTML tags but not the interactivity, check that they are used in an accessible way</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P2",
 		"resultatTest": "nt",

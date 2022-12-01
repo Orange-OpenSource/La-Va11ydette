@@ -19,7 +19,8 @@
 			"detail" : "All form elements must have an accessible name.",
 			"solution": "Apply one of the solutions below:\n- add a \"label\" element, in masking accessible if necessary, programmatically linked to the field\n- use an aria-labelledby pointing to relevant information to understand the nature of the field \n- addition of an aria-label attribute\n- addition of a title attribute",
 			"technicalSolution": "Examples: \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- < h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n- <input aria-label=\"[… ]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
-			}	],
+			}	
+	],
 	"testID-002": [
 		{
 			"title" : "Presence of irrelevant field labels",
@@ -463,6 +464,18 @@
 			"detail" : "The outline must not be deactivated.",
 			"solution" : "Check that the outline is not deleted from a css property (eg: \"outline: none;\").",
 			"technicalSolution" : ""
+		},
+		{
+		"title" : "Use of color only to show focus",
+		"detail" : "Color cannot be the only element to distinguish the focus.",
+		"solution" : "Set up another way than changing color for the focus indicator (ex.: shape, size, outline, underline...).",
+		"technicalSolution": ""
+		},
+		{
+		"title": "Visualization of the focus is insufficient",
+		"detail" : "The contrast of the focus indicator must be sufficiently contrasted (3:1) compare&d with the background of the element",
+		"solution": "Ensure a minimum 3:1 contrast for the different interactive components and the focus indicator.",
+		"technicalSolution": ""
 		}
 	],
 	"testID-042":[

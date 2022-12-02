@@ -188,7 +188,6 @@
 	"noCommentary": "Pas de commentaire",
 	"autocheckTxt1": "Ce test est lié à la page précédente",
 	"autocheckTxt2": "Appliquer automatiquement ce résultat à la page suivante.",
-	"autocheckTxt3": "La page suivante sera liée à ce test",
 	"autocheckTxtError": "Attention, vous venez de modifier un critère lié à la page précédente, cette liaison n'existe plus désormais.",
 	"moreInfo": "Plus d'informations",
 	"newWindow": "nouvelle fenêtre",

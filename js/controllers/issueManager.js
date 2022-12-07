@@ -248,6 +248,7 @@ editIssue = function (targetId, issueIndex) {
 	
 	document.getElementById('editIssueBtn-' + targetId + '-'+ issueIndex).style.display = "none";
 	document.getElementById('deleteIssueBtn-' + targetId + '-'+ issueIndex).style.display = "none";
+	document.getElementById('closeModalIssue').disabled=true;
 	
 	document.getElementById('cancelIssueBtn-' + targetId + '-' + issueIndex).addEventListener('click', function () {
 		cancelIssue(targetId, issueIndex, getIssue(targetId, 'issueTitle', issueIndex), getIssue(targetId, 'issueDetail', issueIndex));	
@@ -301,6 +302,7 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	
 	document.getElementById('editIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";
 	document.getElementById('deleteIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";
+	document.getElementById('closeModalIssue').disabled=false;
 
 	document.getElementById('editIssueBtn-' + targetId + '-' + issueIndex).focus();
 	

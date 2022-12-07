@@ -189,7 +189,6 @@
 	"noCommentary": "no commentary",
 	"autocheckTxt1": "This test is linked to the previous page",
 	"autocheckTxt2": "Automatically apply this result to next page.",
-	"autocheckTxt3": "The next page will be linked to this test",
 	"autocheckTxtError": "Warning, you have just modified a criterion linked to the previous page, this link no longer exists.",
 	"moreInfo": "More informations",
 	"newWindow": "new window",

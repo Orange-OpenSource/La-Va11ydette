@@ -314,7 +314,7 @@ function defaultView(currentRefTests){
 			}
 		}
 
-		htmlrefTests+='<article class="card mb-3 '+ goodPracticeClass +' " id="' + currentTest + '"><div class="card-header border-light"><h4 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + ((0 == currentPage)? langVallydette.autocheckTxt3 : langVallydette.autocheckTxt1) + '</span></span>' : '') + '';
+		htmlrefTests+='<article class="card mb-3 '+ goodPracticeClass +' " id="' + currentTest + '"><div class="card-header border-light"><h4 class="card-title h5 d-flex flex-column d-sm-flex flex-sm-row align-items-center mb-0" id="heading' + currentTest + '" style="scroll-margin-top: 10.35em;"><span class="w-75 me-auto">' + currentRefTests[i].title + ' <a class="header-anchor"  href="#heading' + currentTest + '" aria-label="' + langVallydette.anchorLink + '">#</a></span>' + ((getIfAutoCheck(currentRefTests[i].IDorigin,currentPage-1)) ? '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + currentRefTests[i].ID + '" title="' + langVallydette.autocheckTxt1 + '" >'+ htmlIcon.link+'<span class="visually-hidden">' + langVallydette.autocheckTxt1 + '</span></span>' : '') + '';
 
 		hasGoodPractice = false;
 		

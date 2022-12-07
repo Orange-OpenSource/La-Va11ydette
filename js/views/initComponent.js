@@ -116,7 +116,7 @@ displayIssue = function (targetId, title) {
 	htmlModal += '</div>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="modal-footer">';
-	htmlModal += '<button type="button" class="btn btn-primary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
+	htmlModal += '<button id="closeModalIssue" type="button" class="btn btn-primary" data-bs-dismiss="modal">' + langVallydette.close + '</button>';
 	htmlModal += '</div></div></div>';
 
 	/**  html modal container */

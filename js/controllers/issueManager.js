@@ -222,11 +222,11 @@ editIssue = function (targetId, issueIndex) {
 	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
 	htmlEditIssue += '<label class="is-required mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
-	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '" rows="8" required>' + getIssue(targetId, 'issueDetail', issueIndex) + '</textarea>';
+	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '" rows="8" required>' + utils.escape_html(getIssue(targetId, 'issueDetail', issueIndex)) + '</textarea>';
 	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2 form-label">' + langVallydette.solution + '</label>';
-	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueSolution', issueIndex) + '</textarea>';
+	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + utils.escape_html(getIssue(targetId, 'issueSolution', issueIndex)) + '</textarea>';
 	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2 v">' + langVallydette.technical_solution + '</label>';
-	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + getIssue(targetId, 'issueTechnicalSolution', issueIndex) + '</textarea>';
+	htmlEditIssue += '<textarea class="form-control" id="issueTechnicalSolutionValue-' + issueIndex + '">' + utils.escape_html(getIssue(targetId, 'issueTechnicalSolution', issueIndex)) + '</textarea>';
 	htmlEditIssue += '<button type="button" id="cancelIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm mt-1 me-1 mb-1">' + langVallydette.cancel + '</button>';
 	htmlEditIssue += '<button type="submit" id="saveIssueBtn-'+ targetId +'-'+ issueIndex +'" class="btn btn-primary btn-sm mt-1 mb-1">' + langVallydette.save + '</button>';
 	htmlEditIssue += '<div class="border-top border-light my-3"></div>';
@@ -275,7 +275,7 @@ saveIssue = function (targetId, issueIndex, issueEditForm) {
 		}
 	}
 
-	cancelIssue(targetId, issueIndex, utils.escape_html(issueEditForm.elements["issueNameValue-" + issueIndex].value), utils.escape_html(issueEditForm.elements["issueDetailValue-" + issueIndex].value));
+	cancelIssue(targetId, issueIndex, issueEditForm.elements["issueNameValue-" + issueIndex].value, issueEditForm.elements["issueDetailValue-" + issueIndex].value);
 	
 	jsonUpdate();	
 	
@@ -292,13 +292,13 @@ saveIssue = function (targetId, issueIndex, issueEditForm) {
 cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 
 	let htmlEditIssue = '';
-	htmlEditIssue += issueDetail;
+	htmlEditIssue += utils.escape_html(issueDetail);
 	
 
 	let elIssueCard = document.getElementById('issue-body-' + targetId + '-' + issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
 	let elIssueCardHeader = document.getElementById('btnIssue' + targetId + '-' + issueIndex);
-	elIssueCardHeader.innerHTML = issueTitle;
+	elIssueCardHeader.innerHTML = utils.escape_html(issueTitle);
 	
 	document.getElementById('editIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";
 	document.getElementById('deleteIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";

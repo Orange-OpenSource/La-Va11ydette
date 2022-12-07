@@ -196,7 +196,6 @@
  * @param {string} testID - current test ID property from dataVa11ydette
  */
  function setAutoCheckID(e, testIDorigin, testID) {
-	
 	if (e.checked) {
 		if (!dataVallydette.checklist.page[currentPage].autoCheckIDs) {
 			dataVallydette.checklist.page[currentPage].autoCheckIDs = [];
@@ -207,16 +206,13 @@
 			document.getElementById('link-' + testID).remove();
 		}
 		
-		const iconHtml = '<span class="icon icon-Link mx-1 badge bg-warning" id="link-' + testID + '" title="' + langVallydette.autocheckTxt3 + '">'+htmlIcon.link+'<span class="visually-hidden">' + langVallydette.autocheckTxt3 + '</span>';
-		const iconNode = new DOMParser().parseFromString(iconHtml, 'text/html').body.firstElementChild;
-		let headingNode = document.getElementById('heading' + testID);
-		headingNode.insertBefore(iconNode, headingNode.children[1]);
+		
 
 		if((currentPage != dataVallydette.checklist.page.length -1)){
-			//dataVallydette.checklist.page[(currentPage+1)].autoCheckIDs.push(testIDorigin);
 			nextPage = dataVallydette.checklist.page[(currentPage+1)].items.find(e => e.IDorigin == testIDorigin );
 			currentPageTab = dataVallydette.checklist.page[currentPage].items.find(e => e.IDorigin == testIDorigin );
 			nextPage.resultatTest = currentPageTab.resultatTest;
+			nextPage.issues=nextPage.issues.concat(currentPageTab.issues);
 		}
 
 	} else {
@@ -240,11 +236,6 @@
 		}else{
 			dataVallydette.checklist.page[currentPage].autoCheckIDs = dataVallydette.checklist.page[currentPage].autoCheckIDs.filter(item => item !== testIDorigin);
 		}
-		if(currentPage == 0){
-			document.getElementById('link-' + testID).remove();
-		}
-		
-		
 	}
 
 }
@@ -253,7 +244,7 @@ function getIfAutoCheck(currentIDorigin,previewPage = 0) {
 
 	let autoUpdateResult = false;
 	if (previewPage < 0 ){
-		previewPage = 0;
+		return autoUpdateResult;
 	}
 	if (dataVallydette.checklist.page[previewPage].autoCheckIDs) {
 		const autoUpdate = dataVallydette.checklist.page[previewPage].autoCheckIDs.filter(a => a === currentIDorigin);

@@ -105,7 +105,7 @@
     "testID-077":[
         {
 			"title" : "Une authentification possède seulement un test cognitif",
-			"detail" : "Il n'est possible de se connecter seulement avec un test cognitif",
+			"detail" : "Il n'est pas possible de se connecter autrement qu'avec un test cognitif",
 			"solution" : "Une autre technique d'authentification doit être présente et ne pas reposer sur un test cognitif, par exemple : \n- authentification par email \n- connexion à l'aide oAuth \n- les champs sont correctement balisés permettant de les remplir automatiquement",
 			"technicalSolution" : ""
 		}

@@ -157,6 +157,23 @@
 	},
 	{
 		"themes": "Form",
+		"title": "Can users authenticate themselves without going through a cognitive test ?",
+		"ID": "testID-077",
+		"IDorigin": "testID-077",
+		"wcag": [
+			"3.3.7 A"
+		],
+		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing unless that step provides:</p><ul><li>another authentication method</li><li>help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the website.</li></ul><p>Please note, that memorizing a username and password is a cognitive test.<br/>The copy/paste function must be authorized on these fields.<br/>If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
+		"exception": "",
+		"complement": "<h5>Complement&nbsp;: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
 		"title": "For each form requiring sensitive or personal data, does the user have control over their data?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",

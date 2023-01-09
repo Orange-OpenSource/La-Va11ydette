@@ -157,6 +157,23 @@
 	},
 	{
 		"themes": "Formulaire",
+		"title": "Si une information est fournie par ou à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redemandée ?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"3.3.9 AA"
+		],
+		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par le site sachant que l'autocomplete n'est pas jugé suffisant</p>",
+		"complement":"<h5>Complément</h5><p>exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
+		"exception":"<ol><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
+		"group": "Formulaire",
+		"moreInfo": "",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
 		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
@@ -780,6 +797,35 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Navigation clavier",
+		"title": "Le focus est-il suffisament visible ?",
+		"ID": "testID-082",
+		"IDorigin": "testID-082",
+		"wcag": [
+			"2.4.11 AA"
+		],
+		"verifier": "<p>Vérifier que l'indicateur de focus :</p><ul><li>A une surface minimum de 1px CSS de large sur 2 fois la longueur du côté le plus long du rectangle entourant le composant quand il n'a pas le focus sauf si il est d'au moins 4px CSS sur le plus petit côté </li><li>A un contraste minimum de 3:1 <ul><li>avec la ou les couleurs adjacentes au composant et </li><li>entre la couleur du composant au focus et sans focus, ou est d'au moins 2px CSS de large </li></ul></li></ul>",
+		"exception": "<p>L'indicateur de focus est déterminé par l'agent utilisateur par défaut ou est non modifiable, ou l'indicateur de focus est celui par défaut de l'agent utilisateur et à condition que la couleur de fond ne soit pas modifiée lors de la prise de focus </p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation clavier",
+		"title": "Le focus est-il complètement masqué ?",
+		"ID": "testID-081",
+		"IDorigin": "testID-081",
+		"wcag": [
+			"2.4.12 AA"
+		],
+		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
 		"themes": "Mise en page",
 		"title": "Le texte reste-t-il lisible lorsque la taille des caractères est augmentée de 200%&nbsp;?",
 		"ID": "testID-042",
@@ -853,6 +899,22 @@
 	},
 	{
 		"themes": "Mise en page",
+		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"3.2.6 A"
+		],
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur toutes les pages</p>",
+		"complement": "<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
+		"exception": "<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#identifier-et-conserver-la-coherence-des-regroupements-et-des-differentes-regions-de-la-page",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Mise en page",
 		"title": "Après désactivation du CSS, la page reste-t-elle compréhensible&nbsp;?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
@@ -896,18 +958,18 @@
 	},
 	{
 		"themes": "Mise en page",
-		"title": "Les zones de click ont-elles une taille suffisante ? ",
+		"title": "La taille des zones cliquables ou tactiles est-elle suffisante&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
-			"2.5.5 AAA"
+			"2.5.8 AA"
 		],
-		"verifier": "<p>L’utilisateur doit pouvoir cliquer facilement sur un élément interactif. </p><p>Vérifier que la zone de click de ces éléments dépasse 44px par 44px</p>",
-		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérés par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…)</li><li>la  taille réduite est nécessaire pour convoyer l'information</li></ul>",
+		"verifier": "<p>La zone cliquable ou tactile est au moins de 24\\*24 pixels CSS.</p>",
+		"exception":"<ol><li>Il existe un espacement d'au moins 24 pixels CSS avec les zones cliquables ou tactiles adjacentes.</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…).</li><li>La taille réduite est nécessaire pour convoyer l'information.</li><li>Les composants gérés par l'agent utilisateur sont utilisés tel quel.</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
-		"priority": "",
+		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": true
+		"goodPractice": false
 	},
 	{
 		"themes": "Tactile et interactions",
@@ -953,6 +1015,23 @@
 		"group": "Tactile",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Tactile et interactions",
+		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative ?",
+		"ID": "testID-080",
+		"IDorigin": "testID-080",
+		"wcag": [
+			"2.5.7 AA"
+		],
+		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
+		"exception": "<p>Le critère est non applicable : </p><ul><li>L’action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
+		"complement":"<h5>Complément</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d’arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"group": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
+		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},

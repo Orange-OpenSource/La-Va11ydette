@@ -157,6 +157,23 @@
 	},
 	{
 		"themes": "Form",
+		"title": "If information is provided by or to the user in the same process, is its input not requested again?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"3.3.9 AA"
+		],
+		"verifier": "<p>In a multi-step form and in the same session, an automatic completion system must be offered to the user to give information previously entered or provided by the site knowing that the autocomplete is not considered sufficient.</p>",
+		"complement":"<h5>Complement</h5><p>examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
+		"exception":"<ol><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
+		"group": "Form",
+		"moreInfo": "",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
 		"title": "Can users authenticate themselves without going through a cognitive test ?",
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
@@ -780,6 +797,35 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Keyboard navigation",
+		"title": "Is the focus visible enough?",
+		"ID": "testID-082",
+		"IDorigin": "testID-082",
+		"wcag": [
+			"2.4.11 A"
+		],
+		"verifier": "<p>Check that the focus indicator:</p><ul><li>Has a minimum area of 1px CSS wide by 2 times the length of the longest side of the rectangle surrounding the component when it has no focus unless it is at least 4px CSS on the shortest side</li><li>Has a minimum contrast of 3:1<ul><li>with the color or colors adjacent to the component and</li><li>between focus and unfocused component color, or is at least 2px CSS wide</li></ul></li></ul>",
+		"exception":"<p>The focus indicator is determined by the default user agent or is not editable, or the focus indicator is the user agent's default and provided that the background color is not changed when shooting focus</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Keyboard navigation",
+		"title": "Is the focus completely hidden?",
+		"ID": "testID-081",
+		"IDorigin": "testID-081",
+		"wcag": [
+			"2.4.12 A"
+		],
+		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
 		"themes": "Layout",
 		"title": "Does the text remain readable when the character size is increased up to 200%?",
 		"ID": "testID-042",
@@ -853,6 +899,22 @@
 	},
 	{
 		"themes": "Layout",
+		"title": "If help is offered and repeated on several pages, is it presented in a coherent manner?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"3.2.6 A"
+		],
+		"verifier": "<p>If one or more assistive devices are offered, these must always be located in the same place, presented in the same way and in the same order on all pages.</p>",
+		"complement": "<h5> Additional information </h5><p>Help mechanisms can be an email address, phone number, contact form, chat, FAQ, etc.)</p>",
+		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#identify-and-maintain-consistency-of-groupings-and-different-regions-of-the-page",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Layout",
 		"title": "Is the content still understandable after disabling CSS?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
@@ -896,18 +958,18 @@
 	},
 	{
 		"themes": "Layout",
-		"title": "Are the click zones of sufficient size ?",
+		"title": "Are the clickable or touchable areas large enough?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
-			"2.5.5 AAA"
+			"2.5.8 AA"
 		],
-		"verifier": "<p>The user must be able to click easily on an interactive element. </p><p>Check that the click area of these elements exceeds 44px by 44px</p>",
-		 "exception":"<ul><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>elements managed by the agent users used as is</li><li>The link is in the middle of a sentence or paragraph (help icon in a sentence, anchor links, footnote…)</li><li> The reduced size is necessary to convey the information</li></ul>",
+		"verifier": "<p>The clickable or touchable area is at least 24\\*24 CSS pixels.</p>",
+		 "exception":"<ol><li>There is a spacing of at least 24 CSS pixels with adjacent clickable or touchable areas.</li><li>The link is in the middle of a sentence or a paragraph (help icon in a sentence, anchor links, footnote…).</li><li>The reduced size is necessary to convey the information.</li><li>Components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
-		"priority": "",
+		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": true
+		"goodPractice": false
 	},
 	{
 		"themes": "Touch and interactions",
@@ -953,6 +1015,23 @@
 		"group": "Touche Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Touch and interactions",
+		"title": "Do features using drag and drop action have an alternative?",
+		"ID": "testID-080",
+		"IDorigin": "testID-080",
+		"wcag": [
+			"2.5.7 AA"
+		],
+		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single pointing action).</p>",
+		"exceptions": "<p>The criterion is not applicable: </p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native and unmodified< /li></ul>",
+		"complement":"<h5>Complement</h5><p>This criterion only targets actions for which only the start and end points are taken into account (dragging and then dropping a ticket in a Kanban board for example) and does not take into account so-called “multi- points”, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
+		"group": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
+		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},

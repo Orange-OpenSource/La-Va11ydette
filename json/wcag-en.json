@@ -316,6 +316,24 @@
 			"page": []
 		},
 		{
+			"wcag": "2.4.11",
+			"level": "AA",
+			"name": "Focus Appearance",
+			"tests": [],
+			"resultat": "nt",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "2.4.12",
+			"level": "AA",
+			"name": "Unmasked Focus",
+			"tests": [],
+			"resultat": "nt",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "2.5.1",
 			"level": "A",
 			"name": "Pointer Gestures",
@@ -352,8 +370,17 @@
 			"page": []
 		},
 		{
-			"wcag": "2.5.5",
-			"level": "AAA",
+			"wcag": "2.5.7",
+			"level": "AA",
+			"name": "Drag movement",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "2.5.8",
+			"level": "AA",
 			"name": "Minimal target size",
 			"tests": [],
 			"resultat": "na",
@@ -415,6 +442,15 @@
 			"page": []
 		},
 		{
+			"wcag": "3.2.6",
+			"level": "A",
+			"name": "Consistent Help",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "3.3.1",
 			"level": "A",
 			"name": "Error Identification",
@@ -445,6 +481,24 @@
 			"wcag": "3.3.4",
 			"level": "AA",
 			"name": "Error Prevention (Legal, Financial, Data)",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "3.3.7",
+			"level": "AA",
+			"name": "Accessible authentication",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "3.3.9",
+			"level": "AA",
+			"name": "Redundant input",
 			"tests": [],
 			"resultat": "na",
 			"comment": [],

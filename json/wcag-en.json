@@ -497,7 +497,7 @@
 		},
 		{
 			"wcag": "3.3.9",
-			"level": "AA",
+			"level": "A",
 			"name": "Redundant input",
 			"tests": [],
 			"resultat": "na",

@@ -72,7 +72,7 @@
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>vérifier la présence d'une identification visuelle du champ obligatoire ne reposant pas uniquement sur la couleur (ex&nbsp;: astérisque)</li><li>vérifier qu'une des techniques ci-dessous est implémentée pour transmettre l'information de manière programmatique&nbsp;:<ul><li>l'information visuelle est intégrée dans le <code>label</code></li><li>présence d'un attribut <code>required</code></li><li>présence d'un attribut <code>aria-required</code></li></ul></li></ul>",
+		"verifier": "<ul><li>vérifier la présence d'une identification visuelle du champ obligatoire ne reposant pas uniquement sur la couleur (ex : en mentionnant explicitement \"obligatoire\" à côté du champ)</li><li>si cette identification n'est pas réalisée de manière textuelle explicite, par exemple un astérisque (*), il faut en expliquer la signification comme, \"Tous les champs obligatoires sont marqués d'un *\", qui sera placée au début du formulaire.</li><li>vérifier qu'une des techniques ci-dessous est implémentée pour transmettre l'information de manière programmatique&nbsp;:<ul><li>l'information visuelle est intégrée dans le <code>label</code></li><li>présence d'un attribut <code>required</code></li><li>présence d'un attribut <code>aria-required</code></li></ul></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -161,7 +161,7 @@
 		"ID": "testID-079",
 		"IDorigin": "testID-079",
 		"wcag": [
-			"3.3.9 AA"
+			"3.3.9 A"
 		],
 		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par le site sachant que l'autocomplete n'est pas jugé suffisant</p>",
 		"complement":"<h5>Complément</h5><p>exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
@@ -178,7 +178,7 @@
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
 		"wcag": [
-			"3.3.7 A"
+			"3.3.7 AA"
 		],
 		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
 		"exception": "",

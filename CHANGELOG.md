@@ -7,6 +7,7 @@ Ce Change log commence à la version 1.7.0
 ## [2.2.0] - yyyy-mm-dd
 
 ### Ajouté
+
 - [Si une information est fournie par ou à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redemandée ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-079)
 
     Nouveau critère relié au [WCAG 3.3.9 A](https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry)
@@ -37,7 +38,8 @@ Ce Change log commence à la version 1.7.0
 
 
 
-  ### Modifié
+### Modifié
+
 - [Chaque champ de formulaire possède-t-il une étiquette?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-001)
 
     Ajout d'une information à la fin de la vérification "Attention, le placeholder n'est pas considéré comme assez robuste pour valider ce critère"

@@ -22,6 +22,10 @@ body,
         align-self: flex-end;
       }
 
+    .fs-7{
+      font-size: 0.8rem;
+    }
+
 /* Bacground Color */
 
 .bg-light2 {

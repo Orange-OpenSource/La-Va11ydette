@@ -135,7 +135,7 @@ function initGlobalCriteriaListName(criteriaListName) {
 			loadIssue();
 			
 		} else {
-			if(window.location.pathname=="/" || window.location.pathname==""){
+			if(window.location.pathname.indexOf('guide-user')==-1){
 				initHomePage();
 			}
 				

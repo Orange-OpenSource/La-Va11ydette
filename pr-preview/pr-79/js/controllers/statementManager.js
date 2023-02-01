@@ -388,7 +388,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technology + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologyEdit + '" title="' + langVallydette.technologyEdit + '">'+htmlIcon.edit+'</span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -593,6 +593,8 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<form id="listEditForm">';
 	htmlModal += '<ul id="listToEdit">';
+
+	console.log(statementProperty)
 	
 	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
 	
@@ -600,11 +602,11 @@ editStatementProperty = function (statementProperty) {
 		
 		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
 			htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
-			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + (index+1) + '</span>';
+			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette[statementProperty] + ' ' + (index+1) + '</span>';
 		} else {
 			htmlModal += '<span class="input-group"  role="group"  aria-labelledby="itemLegend-' + index + '">';
 			htmlModal += ' <span class="input-group-prepend">';
-			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + (index+1) + '</span>';
+			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette[statementProperty] + ' ' + (index+1) + '</span>';
 			htmlModal += '  </span>';	
 		}
 		

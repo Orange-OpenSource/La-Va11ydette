@@ -600,14 +600,14 @@ editStatementProperty = function (statementProperty) {
 		
 		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
 			htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
-			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + index + '</span>';
+			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + (index+1) + '</span>';
 		} else {
 			htmlModal += '<span class="input-group"  role="group"  aria-labelledby="itemLegend-' + index + '">';
 			htmlModal += ' <span class="input-group-prepend">';
-			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
+			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + (index+1) + '</span>';
 			htmlModal += '  </span>';	
 		}
-
+		
 		statementProperties.forEach(function(p) {
 			
 			if (listItem[p] !== undefined && p === 'type') {
@@ -624,7 +624,7 @@ editStatementProperty = function (statementProperty) {
 				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
 				
 			} else if (listItem[p] !== undefined && p === 'checked') {
-				
+				console.log(p +" 2")
 				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
 				
 			} else if (listItem[p] !== undefined) {
@@ -641,11 +641,8 @@ editStatementProperty = function (statementProperty) {
 	})
 	htmlModal += '</ul>';
 
-	if (statementProperty === "environments") {
-		htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt5 + '</p>';
-	} else {
-		htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
-	}
+	
+	htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
 	
 	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.addElement + '</button>';
 	htmlModal += '</form>';

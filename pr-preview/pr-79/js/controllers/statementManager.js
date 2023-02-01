@@ -593,45 +593,43 @@ editStatementProperty = function (statementProperty) {
 	htmlModal += '<div class="modal-body">';
 	htmlModal += '<form id="listEditForm">';
 	htmlModal += '<ul id="listToEdit">';
-
-	console.log(statementProperty)
 	
 	dataVallydette.statement[statementProperty].forEach(function(listItem, index){
 	
 		htmlModal += '<li>';
 		
-		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
-			htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
-			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette[statementProperty] + ' ' + (index+1) + '</span>';
-		} else {
-			htmlModal += '<span class="input-group"  role="group"  aria-labelledby="itemLegend-' + index + '">';
-			htmlModal += ' <span class="input-group-prepend">';
-			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette[statementProperty] + ' ' + (index+1) + '</span>';
-			htmlModal += '  </span>';	
-		}
+		
+		htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
+		htmlModal += '<h6 class="d-inline"><span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette[statementProperty] + ' ' + (index+1) + '</span></h6>';
+		
 		
 		statementProperties.forEach(function(p) {
 			
 			if (listItem[p] !== undefined && p === 'type') {
-				
-				htmlModal += '<select id="type-'+index+'" class="form-select mb-1" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlModal += '<div class="m-2">';
+				htmlModal += '<label for="type-'+index+'" class="form-label">' + langVallydette.type + '</label>'
+				htmlModal += '<select id="type-'+index+'" class="form-select mb-1" title="' + langVallydette.type + '" >';
 				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
 				htmlModal += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';
 				htmlModal += '</select>';
+				htmlModal += '</div>';
 				
 			} else if (listItem[p] !== undefined && p === 'content') {
-				
-				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
-				
+				htmlModal += '<div class="m-2">';
+				htmlModal += '<label for="' + p + '-' + index + '" class="form-label">' + langVallydette.content + '</label>'
+				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+				htmlModal += '</div>';
 			} else if (listItem[p] !== undefined && p === 'checked') {
-				console.log(p +" 2")
 				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
 				
 			} else if (listItem[p] !== undefined) {
 				
-				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlModal += '<div class="m-2">';
+				htmlModal += '<label for="' + p + '-' + index + '" class="form-label">'+ langVallydette[p] +'</label>';
+				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlModal += '</div>';
 				
 			}
 
@@ -674,15 +672,17 @@ saveListElement = function(listToEdit, statementProperty) {
 			
 	//vérifier les value
 	for (let listItem of listToEdit.children) {
+		let name = document.getElementById("name-"+index);
+		let environment = document.getElementById("environment-"+index);
 		
 		
-		if ((listItem.children[0].children["name-"+index] !== undefined && listItem.children[0].children["name-"+index].value !== "") || (listItem.children[0].children["environment-"+index] !== undefined && listItem.children[0].children["environment-"+index].value !== "")) {
+		if ((name !== null && name.value !== "") || (environment !== null && environment.value !== "")) {
 			
 			itemObj = {};
 			
 			statementProperties.forEach(function(p){
-				if (listItem.children[0].children[p+"-"+index]) {
-					itemObj[p] = listItem.children[0].children[p+"-"+index].value;
+				if (document.getElementById(p+"-"+index)) {
+					itemObj[p] = document.getElementById(p+"-"+index).value;
 				}
 			})
 			

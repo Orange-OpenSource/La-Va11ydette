@@ -301,6 +301,7 @@ function showStatementWizard() {
 
 	statementWizardContent += '<h3>2. ' + langVallydette.manualDataEntry + '</h3>';
 	statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
+	statementWizardContent += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';

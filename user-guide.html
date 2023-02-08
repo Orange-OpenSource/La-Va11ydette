@@ -170,13 +170,16 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
         <div class="col-md-9 col-print-12" id="currentPageContent">
           <h2 id="guide-utilisateur">La va11ydette : le guide utilisateur</h2>
           <h3 id="introduction">1. Introduction : Pourquoi La va11ydette ?</h3>
-          <p>La Va11ydette est une application web qui propose une liste de questions / réponses afin de faciliter les
+          <p>La va11ydette est une application web qui propose des grilles d'évaluations, des listes de questions /
+            réponses, qui permettent de faciliter les
             audits
             d'accessibilité.</p>
-          <p>Elle prend en charge le référentiel WCAG 2.2, les checklists sont divisées en trois parties ; Web, Android
+          <p>Elle prend en charge le référentiel WCAG 2.2, les grilles d'évaluations sont divisées en trois catégories ;
+            Web, Android
             et
             IOS. Le référentiel RGAA 4.1 est aussi disponible.</p>
-          <p>Une fois que vous aurez fini de répondre à la checklist, un taux de conformité sera attribué à votre audit.
+          <p>Une fois que vous aurez fini de répondre à la grille d'évaluation choisie, un taux de conformité sera
+            attribué à votre audit.
           </p>
           <p>Le but de ce guide utilisateur sera de vous montrer toutes les fonctionnalités disponibles et de vous aider
             à
@@ -185,10 +188,10 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
           <h4 id="creer-son-audit">2.1 Créer un nouvel audit</h4>
           <ol>
             <li class="pb-2">Pour créer un nouvel audit, <strong>choisissez une grille d'évaluation</strong> qui
-              correspond à ce que vous voulez tester, soit :
+              correspond à ce que vous voulez tester :
               <ul class="pt-2">
-                <li class="pb-2"><strong>sur la page d'accueil</strong> en cliquant sur la grille voulue</li>
-                <li class="pb-2">dans le <strong>menu "Sélectionner une checklist</strong> située dans le <span
+                <li class="pb-2">soit <strong>sur la page d'accueil</strong> en cliquant sur la grille voulue</li>
+                <li class="pb-2">soit dans le <strong>menu "Sélectionner une checklist</strong> située dans le <span
                     lang="en">header</span> du site</li>
               </ul>
               <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit14.png" />
@@ -207,7 +210,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                   le nom que vous souhaitez lui donner puis cliquer sur le bouton « <strong>Enregistrer</strong> ».
                   <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit17.png" />
                 </li>
-                <li class="pb-2">Suite au clic sur le bouton « Enregistrer », un <strong>message de
+                <li class="pb-2">À la suite du clic sur le bouton « Enregistrer », un <strong>message de
                     confirmation</strong> de la
                   modification du nom de l’audit s’affiche dans la modale. <br />
                   À savoir : la modale ne se ferme pas automatiquement. Pour cela, vous devez cliquer sur le bouton «
@@ -219,7 +222,8 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
           </ol>
           <h4 id="page">2.2 Les pages</h4>
           <h5 id="ajouter-page">2.2.1 Ajouter des pages</h5>
-          <p>Pour votre audit, il est important de sélectionner un échantillon de page, vous allez donc avoir d'une
+          <p>Pour votre audit, il est important de sélectionner un échantillon de page. Vous allez donc avoir besoin
+            d'une
             grille d'évaluation par page de l'application à auditer. Chacune de ces grilles représentera une "page" de
             l'audit.</p>
           <p>Pour générer une grille d'évaluation dédiée à une page de l'application, il faut :
@@ -228,7 +232,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
             <li class="pb-2">Cliquer sur le bouton "<strong>Ajouter une page</strong>".
               <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit20.png" />
             </li>
-            <li class="pb-2">Indiquer la modale qui s'affiche :
+            <li class="pb-2">Indiquer dans la modale qui s'affiche :
               <ol class="pt-2">
                 <li class="pb-2">le <strong>nom</strong> que vous souhaitez donner à cette page</li>
                 <li class="pb-2">son <strong>url</strong> dans l'application à auditer (cela vous permettra d'y accéder
@@ -257,34 +261,34 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
           <p>Toutes les fonctionnalités de la page sont décrites dans la liste ci-dessous :</p>
           <ul>
             <li class="pb-2">
-              <p><img alt="Modifier le nom de la page" src="./images/ic_Pencil.png" class="border border-2 m-1">Bouton
+              <p><img alt="Modifier le nom de la page" src="./images/ic_Pencil.png" class="border border-2 m-1">bouton
                 qui
                 permet de <strong>modifier</strong> le <strong>nom de la page</strong> et son <strong>URL</strong>.</p>
             </li>
             <li class="pb-2">
               <p><img alt="Ouvrir l'url de la page en cours (nouvelle fenetre)" src="./images/ic_External_link.png"
-                  class="border border-2 m-1">Bouton qui permet <strong>d'ouvrir l'URL de la page dans un nouvel
+                  class="border border-2 m-1">bouton qui permet <strong>d'ouvrir l'URL de la page dans un nouvel
                   onglet</strong>. Ce
                 bouton
                 sera désactivé si aucune URL n'est renseignée.</p>
             </li>
-            <li class="pb-2"><img alt="Supprimer la page" src="./images/ic_Trash.png" class="border border-2 m-1">Bouton
+            <li class="pb-2"><img alt="Supprimer la page" src="./images/ic_Trash.png" class="border border-2 m-1">bouton
               qui
               permet de <strong>supprimer la page</strong>. À noter : il est impossible de supprimer la première page de
               l'audit.</li>
             <li class="pb-2">
-              <p><strong>Section "Sur cette page"</strong>: menu de navigation qui permet d'aller directement sur
+              <p><strong>section "Sur cette page"</strong>: menu de navigation qui permet d'aller directement sur
                 chacune des différentes catégories de critères de la grille d'évaluation présentes sur la page.</p> <img
                 class="" alt="" src="./images/audit3.png" />
             </li>
             <li class="pb-2">
-              <p><strong>Rubrique Affichage</strong>: deux boutons permettant de <strong>déplier ou replier</strong>
+              <p><strong>section "Affichage"</strong>: deux boutons permettant de <strong>déplier ou replier</strong>
                 l'ensemble des <strong>critères</strong> de la grille d'évaluation. Les déplier
                 permettra d'afficher toutes les informations pour valider ou invalider un critère.</p><img
                 class="my-2 d-none d-lg-block border" alt="" src="./images/audit25.png" />
             </li>
             <li class="pb-2">
-              <p><strong>Filtres</strong>, ensemble de filtres permettant de <strong>modifier les critères affichés sur
+              <p><strong>filtres</strong> : ensemble de filtres permettant de <strong>modifier les critères affichés sur
                   la page</strong>. Il est possible de choisir d'afficher :</p>
               <ul>
                 <li class="pb-2">Les critères en fonction de leurs <strong>résultats</strong> (conforme, non-conforme
@@ -300,7 +304,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
           </ul>
           <h4 id="critere">2.3 Les critères de la grille d'évaluation</h4>
           <p>Chaque page créée dans l'audit contient un certain nombre de critères d'accessibilité à évaluer. La liste
-            des critères présents est en fonction de la grille d'évaluation choisie.</p>
+            des critères présents dépend de la grille d'évaluation choisie.</p>
           <p>Chaque critère d'accessibilité est composé :</p>
           <ul>
             <li class="pb-2">d'une <strong>question</strong> permettant d'évaluer un critère d'accessibilité donné</li>
@@ -317,10 +321,11 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                   class="border border-2 m-1">.
                 Ces informations supplémentaires expliquent plus en détails comment valider ou invalider le critère.</p>
               <p>Dans les informations supplémentaires, il y a une <strong>case à cocher "Appliquer automatiquement ce
-                  résultat à la page suivante</strong>. Cette fonctionnalité peut vous être utile lorsque vous trouvez
+                  résultat à la page suivante"</strong>. Cette fonctionnalité peut vous être utile lorsque vous trouvez
                 une erreur concernant un élément qui se retrouve dans plusieurs pages du site de votre audit. En cochant
-                cette case, le résultat donné au critère dans cette page sera automatique appliqué à ce même critère
-                dans la page suivant de votre audit (en respectant l'ordre des pages tels qu'elles sont présentées dans
+                cette case, le résultat donné au critère dans cette page sera automatiquement appliqué à ce même critère
+                dans la page suivante de votre audit (en respectant l'ordre des pages telles qu'elles sont présentées
+                dans
                 la
                 barre de navigation des pages). Les anomalies seront aussi copiées.</p>
               <p>Si des pages sont créées après avoir coché cette case, ce même critère dans les nouvelles pages
@@ -344,7 +349,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
               <ul class="pt-2">
                 <li class="pb-2">
                   <p><strong>Sélectionner dans la liste déroulante "sélectionner une anomalie pré-définie"</strong>
-                    l'une des anomalies prévues pour ce critère. <strong>À savoir :</strong> pour certains critères, il
+                    l'une des anomalies prévues pour ce critère. À savoir : pour certains critères, il
                     n'y a pas d'anomalies prévues.</p>
                   <p><strong>Cliquer sur</strong> le bouton <strong>"Importer"</strong> pour préremplir en conséquence
                     les autres champs du formulaire. Vous pourrez ensuite si besoin modifier et adapter les informations
@@ -392,8 +397,9 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
           <h4 id="restaurer">2.5 Restaurer un audit</h4>
 
           <p>Vous pouvez récupérer dans La va11ydette les données d'un audit précédemment sauvegardé. Il y a deux
-            manières qui correspondent chacune à la manière dont l'audit a été sauvegardé (voir la section 2.7
-            Sauvegarder son audit en cours). </p>
+            manières de faire, qui correspondent chacune à la manière dont l'audit a été sauvegardé (voir la <a
+              href="#sauvegarder">section 2.4
+              Sauvegarder son audit en cours)</a>. </p>
           <ul>
             <li class="pb-2"><strong>Audits sauvegardés automatiquement dans le navigateur</strong> :
               <ul class="pt-2">
@@ -410,7 +416,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
               <ul class="pt-2">
                 <li class="pb-2">Pour y accéder, cliquez sur le bouton <strong>"Importer"</strong> situé dans le <span
                     class="en">header</span> de La va11ydette.</li>
-                <li class="pb-2">Un menu caché s'ouvrira, cliquer sur <strong>"Choisir un fichier"</strong> et
+                <li class="pb-2">Un champ caché apparaitra. Cliquer sur <strong>"Parcourir"</strong> et
                   sélectionner sur votre ordinateur le fichier d'export de l'audit à récupérer dans La va11ydette.
                   Cliquez ensuite sur le bouton <strong>"Charger l'audit"</strong>.</li>
               </ul>
@@ -427,19 +433,21 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
             <li class="pb-2">le taux de <strong>Critères respectés</strong>, il s'obtient en divisant le nombre de
               critères conforme par le nombre de critères applicables (critères notés « conformes » + critères notés «
               non conformes »). </li>
+            <li class="pb-2"> 4 onglets :
+              <ul class="pt-2">
+                <li class="pb-2">Onglet <strong>"Résultat par page"</strong> : affiche la liste des pages créées dans
+                  l'audit avec pour chacune son nom, son pourcentage de conformité et son URL.</li>
+                <li class="pb-2">Onglet <strong>"Taux de conformité par page"</strong> (seulement disponible pour les
+                  grilles d'évaluations WCAG) : onglet qui récapitule les critères A et AA de chaque page </li>
+                <li class="pb-2">Onglet <strong>"Synthèse de niveau"</strong> (seulement disponible pour les grilles
+                  d'évaluations WCAG) : onglet qui récapitule les critères conformes/non-conformes/non-applicables </li>
+                <li class="pb-2">Onglet <strong>"Liste des non-conformités"</strong> : indique tous les critères
+                  non-conformes et le résumé des anomalies.</li>
+              </ul>
+            </li>
           </ul>
 
-          <p> 4 onglets :</p>
-          <ul>
-            <li class="pb-2">Onglet <strong>"Résultat par page"</strong> : affiche la liste des pages créées dans
-              l'audit avec pour chacune son nom, son pourcentage de conformité et son URL.</li>
-            <li class="pb-2">Onglet <strong>"Taux de conformité par page"</strong> (seulement disponible pour les
-              grilles d'évaluations WCAG) : onglet qui récapitule les critères A et AA de chaque page </li>
-            <li class="pb-2">Onglet <strong>"Synthèse de niveau"</strong> (seulement disponible pour les grilles
-              d'évaluations WCAG) : onglet qui récapitule les critères conformes/non-conformes/non-applicables </li>
-            <li class="pb-2">Onglet <strong>"Liste des non-conformités"</strong> : indique tous les critères
-              non-conformes et le résumé des anomalies.</li>
-          </ul>
+
           <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit8.png" />
           <h4 id="declaration">2.7 Générer la déclaration</h4>
           <p>Une fois tous les critères d'accessibilité évalués pour chacune des pages, vous pouvez générer une
@@ -459,22 +467,22 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
               <p>Aussi, ce n'est qu'une fois les champs du formulaire renseignés qu'il sera possible de générer le
                 fichier de la déclaration.</p>
             </li>
-            <li class="pb-2"><strong>Remplir le formulaire</strong>, deux manières de faire sont possibles :
+            <li class="pb-2"><strong>Remplir le formulaire</strong>. Deux manières de faire sont possibles :
               <ul class="pt-2">
                 <li class="pb-2">
-                  <p><strong>Renseigner manuellement tous les champs demandés</strong>, allez directement
-                    dans la section "<strong>2. Compléter les données</strong>" pour y renseigner manuellement les
+                  <p><strong>Renseigner manuellement tous les champs demandés</strong> en allant directement
+                    dans la section "<strong>2. Compléter les données</strong>" pour y saisir vous-même les
                     informations demandées, à savoir :</p>
                   <ul class="pt-2">
-                    <li class="pb-2"><strong>Nom du projet</strong>, indiquer le nom du projet que vous venez d'auditer
+                    <li class="pb-2"><strong>Nom du projet</strong> : indiquer le nom du projet que vous venez d'auditer
                     </li>
-                    <li class="pb-2"><strong>Langue</strong>, choisir la langue dans laquelle la déclaration doit être
+                    <li class="pb-2"><strong>Langue</strong> : choisir la langue dans laquelle la déclaration doit être
                       générée</li>
-                    <li class="pb-2"><strong>Date</strong>, indiquer la date à laquelle l'audit a été réalisé</li>
-                    <li class="pb-2"><strong>Type de résultat</strong>, choisir le type de mesure de conformité à
+                    <li class="pb-2"><strong>Date</strong> : indiquer la date à laquelle l'audit a été réalisé</li>
+                    <li class="pb-2"><strong>Type de résultat</strong> : choisir le type de mesure de conformité à
                       afficher sur
                       la déclaration</li>
-                    <li class="pb-2"><strong>Déclarant</strong>, choisir l'entité qui a réalisé l'audit et son siège
+                    <li class="pb-2"><strong>Déclarant</strong> : choisir l'entité qui a réalisé l'audit et son siège
                       social. <strong>Attention :</strong> il est important de modifier les informations du déclarant en
                       cliquant sur le bouton <img alt="Modifier la liste des déclarants" src="./images/ic_Pencil.png"
                         class="border border-2 m-1">, situé à côté du titre. Une modale s'ouvrira avec deux champs : le
@@ -482,7 +490,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                       <strong>contenu</strong> du déclarant. Le contenu sera le texte affiché sur la
                       déclaration
                     </li>
-                    <li class="pb-2"><strong>Contact</strong>, choisir le contact à faire apparaitre sur la déclaration
+                    <li class="pb-2"><strong>Contact</strong> : choisir le contact à faire apparaitre sur la déclaration
                       afin de permettre aux utilisateurs de
                       faire
                       des retours sur l'accessibilité du site. <strong>Attention :</strong> il est important de modifier
@@ -493,42 +501,42 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                       <strong>contenu</strong> du contact. Le contenu sera le texte affiché sur la
                       déclaration
                     </li>
-                    <li class="pb-2"><strong>Schéma pluriannuel</strong>, indiquer un lien vers le schéma pluriannuel.
+                    <li class="pb-2"><strong>Schéma pluriannuel</strong> : indiquer un lien vers le schéma pluriannuel.
                       Le contenu de ce champ sera le texte affiché sur la déclaration. Il faut donc faire des phrases
                       qui
                       introduisent le schéma pluriannuel.</li>
-                    <li class="pb-2"><strong>Technologies</strong>, indiquer la liste des technologies utilisées sur le
+                    <li class="pb-2"><strong>Technologies</strong> : indiquer la liste des technologies utilisées sur le
                       site audité. Une liste de technologies est proposée par défaut. Si elle ne convient pas en l'état,
                       cliquez sur le bouton <img alt="Modifier la liste des technologies" src="./images/ic_Pencil.png"
                         class="border border-2 m-1">, situé à côté du titre, pour la modifier.
                     </li>
-                    <li class="pb-2"><strong>Tests</strong>, indiquer la liste des outils de test utilisés pendant votre
+                    <li class="pb-2"><strong>Tests</strong> : indiquer la liste des outils de test utilisés pendant votre
                       audit. Une liste d'outils est proposée par défaut. Si elle ne convient pas en l'état,
                       cliquez sur le bouton <img alt="Modifier la liste des tests" src="./images/ic_Pencil.png"
                         class="border border-2 m-1">, situé à côté du titre, pour la modifier.</li>
-                    <li class="pb-2"><strong>Environnements</strong>, indiquer les environnements sur lesquels le site a
+                    <li class="pb-2"><strong>Environnements</strong> : indiquer les environnements sur lesquels le site a
                       été audité, par
                       exemple Firefox v78.15 et NVDA v2022.1. Une liste d'outils est proposée par défaut. Si elle ne
                       convient pas en l'état,
                       cliquez sur le bouton <img alt="Modifier la liste des environnements de test"
                         src="./images/ic_Pencil.png" class="border border-2 m-1">, situé à côté du titre, pour la
                       modifier.</li>
-                    <li class="pb-2"><strong>Tests utilisateurs</strong>, indiquer si des tests utilisateurs ont été
+                    <li class="pb-2"><strong>Tests utilisateurs</strong> : indiquer si des tests utilisateurs ont été
                       effectués. Préciser le nombre d'utilisateur, le nombre de point bloquant qui ont été identifiés,
                       et ajouter une description de ce qui a été testé (caractéristiques des utilisateurs testé, outils
                       utilisés, taches demandées…)</li>
-                    <li class="pb-2"><strong>Dérogation et Exemption</strong>, des contenus non accessibles qui sont
+                    <li class="pb-2"><strong>Dérogation et Exemption</strong> : des contenus non accessibles qui sont
                       soumis à
                       une dérogation pour charge disproportionnée. Chaque dérogation ou exemption mentionnée doit être
                       expliquée et motivée</li>
                   </ul>
                   <p>Une fois ces champs renseignés, vous pouvez sauvegarder les données que contient le formulaire de
-                    deux manière :</p>
+                    deux manières :</p>
                   <ul class="pt-2">
-                    <li class="pb-2">En cliquant sur le bouton "<strong>Enregistrer</strong>", les informations saisies
+                    <li class="pb-2">En cliquant sur le bouton "<strong>Enregistrer</strong>" : les informations saisies
                       dans le formulaire sont enregistrées afin de générer la déclaration.</li>
                     <li class="pb-2">En cliquant sur le bouton "<strong>Enregistrer et télécharger au format
-                        JSON</strong>", il a la même utilité que le bouton "Enregistrer", sauf qu'il téléchargera en
+                        JSON</strong>" : il a la même utilité que le bouton "Enregistrer", sauf qu'il téléchargera en
                       plus un fichier au format JSON. Vous pourrez utiliser ce fichier lors de vos prochaines
                       déclarations pour préremplir le formulaire en l'important dans la section "1.Préremplir le
                       formulaire". Cela vous permettra de gagner du temps.</li>
@@ -538,16 +546,16 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                 <li class="pb-2"><strong>Préremplir les champs du formulaire de cette page</strong>, vous pouvez
                   utiliser cette option et ainsi gagner du temps seulement si vous avez téléchargé un fichier JSON du
                   formulaire préalablement remplis. Si c'est le cas :
-                  <ul class="pt-2">
+                  <ol class="pt-2">
                     <li class="pb-2">Aller dans la section « 1. Préremplir le formulaire </li>
                     <li class="pb-2">Cliquer le bouton "<strong>Choisir un fichier</strong>" et sélectionner le fichier
-                      json qui contient les informations préremplies du formulaire.</li>
+                      JSON qui contient les informations préremplies du formulaire.</li>
                     <li class="pb-2">Cliquer sur le bouton "<strong>Importer</strong>". Les champs de la partie "2.
                       Compléter les données" sont automatiquement préremplis avec les informations présentes dans le
-                      fichier json importé.</li>
+                      fichier JSON importé.</li>
                     <li class="pb-2">Vérifier et modifier les informations préremplies</li>
                     <li class="pb-2">Enregistrer le formulaire</li>
-                  </ul>
+                  </ol>
                   <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit10.png" />
                 </li>
               </ul>
@@ -560,18 +568,18 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
                   <p>Choisir le <strong>format</strong> dans lequel générer le <strong>fichier de
                       déclaration</strong>, en cliquant sur le bouton "<strong>XML</strong>" ou "<strong>HTML</strong>".
                   </p>
-                  <p>À savoir : vous pourrez générer une déclaration seulement si l'audit est terminé et le formulaire
-                    de la déclaration remplie, les boutons ne seront pas disponibles dans le cas contraire.</p>
+                  <p>À savoir : vous ne pourrez générer une déclaration que lorsque l'audit sera terminé et le formulaire
+                    de la déclaration rempli. Les boutons ne seront pas disponibles dans le cas contraire.</p>
                 </li>
               </ol>
               <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit11.png" />
             </li>
           </ol>
 
-          <h4 id="export-excel">2.8 Exporter sous format Excel</h4>
+          <h4 id="export-excel">2.8 Exporter au format Excel</h4>
           <p>Il est aussi possible de faire un export au format Excel <img alt="Exporter les anomalies (excel)"
               src="./images/ic_File_Excel.png" class="border border-2 m-1">.</p>
-          <p>Toutes les anomalies renseignées pendant votre audit seront présentes dans le fichier excel. Ça peut être
+          <p>Toutes les anomalies renseignées pendant votre audit seront présentes dans le fichier Excel. Cela peut être
             utile pour faire du suivi de correction si vous souhaitez accompagner un projet.</p>
           <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit13.png" />
         </div>

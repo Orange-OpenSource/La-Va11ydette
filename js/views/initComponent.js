@@ -15,11 +15,11 @@
 		document.getElementById("title-nav-anchor").textContent=langVallydette.template.navAnchor;
 		document.getElementById("title-nav-anchor").classList.remove('d-none');
 
-		AnchorMenuHTML+='<ul class="nav flex-column">';
+		AnchorMenuHTML+='<ul>';
 		allThematiques.forEach(theme=>{
 		let formattedHeadingTheme = utils.formatHeading(theme);
-			AnchorMenuHTML+=' <li class="nav-item p-1">';
-			AnchorMenuHTML+=' <a class="nav-link" href="#anchor-'+formattedHeadingTheme+'">'+theme+'</a>'
+			AnchorMenuHTML+=' <li>';
+			AnchorMenuHTML+=' <a href="#anchor-'+formattedHeadingTheme+'">'+theme+'</a>'
 			AnchorMenuHTML+=' </li>';
 		})
 	 	AnchorMenuHTML+='</ul>';

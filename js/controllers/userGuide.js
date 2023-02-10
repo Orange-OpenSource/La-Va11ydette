@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
  *  init the anchor menu
  */
 function initSummaryMenu() {
-    let menuHTML='<ul class="nav flex-column">';
+    let menuHTML='<ul>';
     
     
     let level=3;
@@ -25,7 +25,7 @@ function initSummaryMenu() {
                 menuHTML+='</ul></li>';
             }
         }
-        menuHTML+='<li class="nav-item  px-1 position-relative"><a href="#'+heading.id+'" class="nav-link fs-7">'+heading.textContent+'</a>';
+        menuHTML+='<li ><a href="#'+heading.id+'">'+heading.textContent+'</a>';
 
         level=headingLevel;
 

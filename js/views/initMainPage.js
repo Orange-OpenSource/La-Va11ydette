@@ -72,8 +72,10 @@ function initAuditPage() {
 						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
 							<h4 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
+							<div class="bd-toc">
 							<nav id="tableOfContents" aria-labelledby="title-nav-anchor" style="min-height: 4rem;">	
 							</nav>
+							</div>
 						</div>
                     </div>
                     <div class="col-md-8 bg-white border border-light col-print-12" id="currentPageContent">

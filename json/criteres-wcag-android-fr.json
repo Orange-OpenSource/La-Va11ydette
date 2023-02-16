@@ -186,8 +186,8 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes.</p><ul><li><strong>Pour texte standard</strong> <ul><li>Taille inférieure à <code>18sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18sp</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14sp</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
-		"exception": "<p>Le brand name, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
+		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour texte standard</strong> <ul><li>Taille inférieure à <code>18sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18sp</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14sp</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
+		"exception": "<p>Les logos, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -613,7 +613,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code>)</p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code>)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#eviter-le-contenu-a-risque-epileptique",
 		"resultatTest": "nt",
 		"priority": "P3",

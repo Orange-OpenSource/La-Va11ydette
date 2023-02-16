@@ -193,7 +193,7 @@
 			"1.3.1 A",
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>Check that section headings are present (a least one <code>h1</code>), and that they represent the structure of the document</li><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
+		"verifier": "<ul><li>Check that section headings are present, and that they represent the structure of the document</li><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -368,7 +368,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text or image of text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
-		"exception": "<p>Logos or all purely decorative elements.</p>",
+		"exception": "<p>Logos, decorative texts and inactive elements do not need to respect this ratio and should therefore not be taken into account for the validation of this criterion.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -685,7 +685,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p> Not applicable, if the flashes flash less than 3 times per second or on an area of less than <code> 21 824 px² </code> </p>",
+		"verifier": "<p> Compliant, if the flashes flash less than 3 times per second or on an area of less than <code> 21 824 px² </code> </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allowing-animations-control",
 		"priority": "P2",
 		"resultatTest": "nt",

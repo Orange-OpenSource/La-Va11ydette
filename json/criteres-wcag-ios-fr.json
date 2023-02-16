@@ -162,10 +162,11 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes</p>",
+		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"exception":"<p>Les logos, textes décoratifs et les éléments inactifs n'ont pas besoin de respecter ce ratio et ne doivent donc pas entrer en compte pour la validation de ce critère</p>"
 	},
 	{
 		"themes": "Couleurs et contrastes",
@@ -546,7 +547,7 @@
 		"wcag": {
 			"0": "2.3.1 A"
 		},
-		"verifier": "<p>Non applicable, si les clignotements flashent moins de 3 fois par seconde </p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde </p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

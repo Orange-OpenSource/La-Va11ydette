@@ -113,6 +113,11 @@ li li::marker {
   color: #f16e00;
 }
 
+
+li li li::marker {
+  color: #666;
+}
+
 /* Print */
 
 @media print {

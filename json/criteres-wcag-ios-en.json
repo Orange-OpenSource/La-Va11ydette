@@ -39,7 +39,8 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Verify that color is not used as the only visual means for identifying that a form element is required (ex&nbsp;: asterisk).</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P1",

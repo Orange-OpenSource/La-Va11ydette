@@ -189,7 +189,7 @@
 	"noCommentary": "no commentary",
 	"autocheckTxt1": "This test is linked to the previous page",
 	"autocheckTxt2": "Automatically apply this result to next page.",
-	"autocheckTxtError": "Warning, you have just modified a criterion linked to the previous page, this link no longer exists.",
+	"autocheckTxtError": "Warning, you have just modified a criterion linked to the previous page, this link and that of the following pages no longer exists.",
 	"autocheckModalTitle": "Automatically apply this result",
 	"autocheckModalTxt": "Do you want to apply the result of this criterion to all subsequent pages?",
 	"autocheckModalTxt2": "If you answer no, the result will be applied only on the next page.",

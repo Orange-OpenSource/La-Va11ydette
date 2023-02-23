@@ -359,6 +359,28 @@ setStatusAndResults = function (ele, targetId, originID) {
 	testResult.classList.add(statutClass);
 
 
+	// check if test is linked to previouspage
+	if( 0 < currentPage)
+	{
+		
+		if(getIfAutoCheck(originID,currentPage-1)){
+			
+			
+
+			const index = dataVallydette.checklist.page[currentPage-1].autoCheckIDs.indexOf(originID);
+			if (index > -1) { 
+				dataVallydette.checklist.page[currentPage-1].autoCheckIDs.splice(index, 1);
+				if(document.getElementById('link-' + targetId) !== null){
+					document.getElementById('link-' + targetId).remove();
+				}
+			}
+			let alertAutocheck = document.getElementById('alert-'+targetId);
+			alertAutocheck.innerHTML = '<span class="alert-icon"></span><p>'+langVallydette.autocheckTxtError+'</p>'
+			alertAutocheck.classList.remove('d-none')
+			document.getElementById('autoCheck-'+targetId).click();
+		}
+	}
+	
 	if((currentPage != dataVallydette.checklist.page.length -1) && isAutoChecked.length > 0){
 			if (dataVallydette.checklist.page[currentPage].autoCheckIDs.length > 0) {
 			let critereLink=true;
@@ -378,24 +400,7 @@ setStatusAndResults = function (ele, targetId, originID) {
 		}
 	}
 
-	// check if test is linked to previouspage
-	if( 0 < currentPage)
-	{
-		
-		if(getIfAutoCheck(originID,currentPage-1)){
-
-			const index = dataVallydette.checklist.page[currentPage-1].autoCheckIDs.indexOf(originID);
-			if (index > -1) { 
-				dataVallydette.checklist.page[currentPage-1].autoCheckIDs.splice(index, 1);
-				if(document.getElementById('link-' + targetId) !== null){
-					document.getElementById('link-' + targetId).remove();
-				}
-			}
-			let alertAutocheck = document.getElementById('alert-'+targetId);
-			alertAutocheck.innerHTML = '<span class="alert-icon"></span><p>'+langVallydette.autocheckTxtError+'</p>'
-			alertAutocheck.classList.remove('d-none')
-		}
-	}
+	
 }
 
 /**

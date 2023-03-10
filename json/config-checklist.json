@@ -16,7 +16,7 @@
 		"filename": "criteres-wcag-android",
 		"template": "wcag",
 		"version": "1.0",
-		"lastId": "testID-061",
+		"lastId": "testID-064",
 		"name-fr": "Audit de conformité WCAG 2.1 / ANDROID",
 		"name-en": "Conformity audit WCAG 2.1 / ANDROID",
 		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'une application Android aux critères WCAG 2.1 A et AA",

@@ -225,6 +225,7 @@
 		"footerLinkGit" : "Signaler une erreur sur GitHub (nouvelle fenêtre)",
 		"link-about": "À propos (nouvelle fenêtre)",
 		"link-guide": "Guide utilisateur (nouvelle fenêtre)",
+		"link-guide-href":"./user-guide",
 		"link-to-top":"Retour en haut de la page"
 	},
 	"ariaLabelOnly": {

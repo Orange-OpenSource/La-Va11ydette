@@ -158,10 +158,16 @@ function initAuditPage() {
 	});
 	
 	Object.keys(langVallydette.title).forEach(function (key) {
+		
 		eleToLocalize = document.getElementById(key);
 		if(eleToLocalize){
 			eleToLocalize.setAttribute('title', langVallydette.title[key]);
 			eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+			if(eleToLocalize.tagName=="A" && (langVallydette.title[key+"-href"]!=undefined) ){
+				eleToLocalize.setAttribute('href',langVallydette.title[key+"-href"])
+			}
+				
+			
 		}
 	});
 	
@@ -184,8 +190,16 @@ function initAuditPage() {
 		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 	} else {
-		linkFr.setAttribute('href', './?lang=fr');
-		linkEn.setAttribute('href', './?lang=en');
+		if(window.location.pathname.indexOf('user-guide')==-1){
+			linkFr.setAttribute('href', './?lang=fr');
+			linkEn.setAttribute('href', './?lang=en');
+			
+		}
+		else{
+			linkFr.setAttribute('href', './user-guide');
+			linkEn.setAttribute('href', './user-guide-en?lang=en');
+		}
+		
 	}
 	
 	if (globalLang === "fr") {

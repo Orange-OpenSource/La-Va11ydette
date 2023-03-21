@@ -226,6 +226,7 @@
 		"footerLinkGit" : "Report an error on GitHub (new window)",
 		"link-about": "About (new window)",
 		"link-guide": "User guide (new window)",
+		"link-guide-href":"./user-guide-en?lang=en",
 		"link-to-top":"Back to top"
 	},
 	"ariaLabelOnly": {

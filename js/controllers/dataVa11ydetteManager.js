@@ -377,7 +377,10 @@ setStatusAndResults = function (ele, targetId, originID) {
 			let alertAutocheck = document.getElementById('alert-'+targetId);
 			alertAutocheck.innerHTML = '<span class="alert-icon"></span><p>'+langVallydette.autocheckTxtError+'</p>'
 			alertAutocheck.classList.remove('d-none')
-			document.getElementById('autoCheck-'+targetId).click();
+			if(document.getElementById('autoCheck-'+targetId).checked){
+				document.getElementById('autoCheck-'+targetId).click();
+			}
+			
 		}
 	}
 	

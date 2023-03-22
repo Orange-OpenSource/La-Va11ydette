@@ -310,6 +310,51 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	
 }
 
+/**
+ * Generate issue body
+ * @param {string} targetId - current test ID.
+ * @return {string} htmlModal - return html to issue body
+*/
+displayIssueBody= function(targetId){
+
+	htmlModal="";
+	
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
+			let auditNumber = 0;
+			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
+				auditNumber++;
+				htmlModal += '<div class="accordion-item" id="cardIssue'+targetId+'-'+ j +'">';
+				
+				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
+				htmlModal += ' <h5 class="mb-0">';
+				htmlModal += ' <button id="btnIssue'+targetId+'-'+ j +'" class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
+				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
+				htmlModal += ' </button>';
+				htmlModal += '</h5>';
+				htmlModal += ' </div>';
+
+				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-bs-parent="#issueList" class="accordion-collapse collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
+
+				htmlModal += ' <div class="accordion-body">';
+				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
+				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
+			
+				htmlModal += '  </div>';
+				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">' + langVallydette.edit + '</button>';
+				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">' + langVallydette.delete + '</button>';
+				
+				htmlModal += '  </div>';
+				htmlModal += ' </div>';
+				
+				htmlModal += ' </div>';
+			}
+		}
+	}
+
+	return htmlModal;
+}
 
 /**
  * Delete confirmation feedback
@@ -351,8 +396,11 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 		}
 	
 		utils.removeElement(document.getElementById("cardIssue"+targetId+"-"+ issueIndex));
-		utils.putTheFocus(document.getElementById("modal" + targetId + "Title"));
+		utils.putTheFocus(document.getElementById("modalEditIssueTitle"));
 		jsonUpdate();
+
+		document.getElementById('issueList').innerHTML = displayIssueBody(targetId);
+		
 		
 	} else {
 		

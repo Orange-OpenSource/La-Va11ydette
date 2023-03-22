@@ -427,6 +427,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '</div>';
 		
 	htmlModal += '<form id="editForm"><div class="modal-body">';
+	htmlModal += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="mb-3">';
 	htmlModal += '<label class="is-required form-label" for="nameValue">' + langVallydette.name + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';

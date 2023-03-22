@@ -41,7 +41,8 @@
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Verify that color is not used as the only visual means for identifying that a form element is required (e.g. asterisk)</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
 		"group": "Input screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/form/#explicitly-label-input-fields",
 		"resultatTest": "nt",
@@ -185,8 +186,8 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Verify that the contrast is sufficient in order that the information communicated by the text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>18sp</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18sp</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>14sp</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14sp</code>: contrast ratio 3:1</li></ul></li></ul></li>",
-		"exception": "<p>Brand name, decorative texts, and inactive elements do not need to meet this contrast ratio and therefore should not count towards the validation of this criteria.</p>",
+		"verifier": "<p>Verify that the contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p><ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>18sp</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18sp</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>14sp</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14sp</code>: contrast ratio 3:1</li></ul></li></ul>",
+		"exception": "<p>Logo, decorative texts, and inactive elements do not need to meet this contrast ratio and therefore should not count towards the validation of this criteria.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-sufficient-contrast-between-foreground-and-background-colors",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -612,7 +613,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p> Not applicable, if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code>) </p>",
+		"verifier": "<p> Compliant, if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code>) </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#avoid-epileptic-risk-contents",
 		"resultatTest": "nt",
 		"priority": "P3",

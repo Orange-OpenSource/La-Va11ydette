@@ -274,7 +274,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div id="alertContainer">';
 	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
 		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
-		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close information message</span></button>';   
+		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">'+langVallydette.closeAlert+'</span></button>';   
 		statementWizardContent += '</div>';
 	}
 	statementWizardContent += '</div>';

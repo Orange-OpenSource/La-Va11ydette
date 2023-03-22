@@ -318,6 +318,7 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 displayIssueBody= function(targetId){
 
 	htmlModal="";
+	
 	for (let i in dataVallydette.checklist.page[currentPage].items) {
 		
 		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
@@ -395,10 +396,11 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 		}
 	
 		utils.removeElement(document.getElementById("cardIssue"+targetId+"-"+ issueIndex));
-		utils.putTheFocus(document.getElementById("modal" + targetId + "Title"));
+		utils.putTheFocus(document.getElementById("modalEditIssueTitle"));
 		jsonUpdate();
 
 		document.getElementById('issueList').innerHTML = displayIssueBody(targetId);
+		
 		
 	} else {
 		

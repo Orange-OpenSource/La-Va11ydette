@@ -377,7 +377,10 @@ setStatusAndResults = function (ele, targetId, originID) {
 			let alertAutocheck = document.getElementById('alert-'+targetId);
 			alertAutocheck.innerHTML = '<span class="alert-icon"></span><p>'+langVallydette.autocheckTxtError+'</p>'
 			alertAutocheck.classList.remove('d-none')
-			document.getElementById('autoCheck-'+targetId).click();
+			if(document.getElementById('autoCheck-'+targetId).checked){
+				document.getElementById('autoCheck-'+targetId).click();
+			}
+			
 		}
 	}
 	
@@ -427,6 +430,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '</div>';
 		
 	htmlModal += '<form id="editForm"><div class="modal-body">';
+	htmlModal += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="mb-3">';
 	htmlModal += '<label class="is-required form-label" for="nameValue">' + langVallydette.name + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';

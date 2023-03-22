@@ -35,9 +35,16 @@ body,
     border-right: none;
 }
 
-#tableOfContents .nav-link:focus, #tableOfContents .nav-link:hover {
-    text-decoration: underline;
-    color:#000;
+.bd-toc nav a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+.bd-toc nav a {
+  color: #595959;
+  text-decoration: none;
+}
+.bd-toc nav li {
+  margin-bottom: .25rem;
 }
 
 
@@ -62,9 +69,18 @@ body,
 
 /* Custom Div ID */
 
-#tableOfContents .nav-link{
-    color:#666;
-  }
+.bd-toc nav {
+  font-size: .875rem;
+}
+.bd-toc nav ul {
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.bd-toc nav ul ul {
+  padding-left: 1rem;
+  margin-top: .25rem;
+}
 
     @media (min-width: 768px) {
         #tableOfContents{
@@ -95,6 +111,11 @@ body,
 
 li li::marker {
   color: #f16e00;
+}
+
+
+li li li::marker {
+  color: #666;
 }
 
 /* Print */

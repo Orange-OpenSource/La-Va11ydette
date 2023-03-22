@@ -15,11 +15,11 @@
 		document.getElementById("title-nav-anchor").textContent=langVallydette.template.navAnchor;
 		document.getElementById("title-nav-anchor").classList.remove('d-none');
 
-		AnchorMenuHTML+='<ul class="nav flex-column">';
+		AnchorMenuHTML+='<ul>';
 		allThematiques.forEach(theme=>{
 		let formattedHeadingTheme = utils.formatHeading(theme);
-			AnchorMenuHTML+=' <li class="nav-item p-1">';
-			AnchorMenuHTML+=' <a class="nav-link" href="#anchor-'+formattedHeadingTheme+'">'+theme+'</a>'
+			AnchorMenuHTML+=' <li>';
+			AnchorMenuHTML+=' <a href="#anchor-'+formattedHeadingTheme+'">'+theme+'</a>'
 			AnchorMenuHTML+=' </li>';
 		})
 	 	AnchorMenuHTML+='</ul>';
@@ -79,39 +79,7 @@ displayIssue = function (targetId, title) {
 	htmlModal += '<div class="">';
 	htmlModal += '<div id="issueList" class="accordion">';
 	
-	for (let i in dataVallydette.checklist.page[currentPage].items) {
-		
-		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
-			let auditNumber = 0;
-			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
-				auditNumber++;
-				htmlModal += '<div class="accordion-item" id="cardIssue'+targetId+'-'+ j +'">';
-				
-				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
-				htmlModal += ' <h5 class="mb-0">';
-				htmlModal += ' <button id="btnIssue'+targetId+'-'+ j +'" class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
-				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
-				htmlModal += ' </button>';
-				htmlModal += '</h5>';
-				htmlModal += ' </div>';
-
-				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-bs-parent="#issueList" class="accordion-collapse collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
-
-				htmlModal += ' <div class="accordion-body">';
-				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
-				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
-			
-				htmlModal += '  </div>';
-				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">' + langVallydette.edit + '</button>';
-				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">' + langVallydette.delete + '</button>';
-				
-				htmlModal += '  </div>';
-				htmlModal += ' </div>';
-				
-				htmlModal += ' </div>';
-			}
-		}
-	}
+	htmlModal += displayIssueBody(targetId);
 	
 	htmlModal += '</div>';
 	htmlModal += '</div>';

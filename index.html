@@ -46,6 +46,12 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
               </a>
             </li>
 
+            <li class="nav-item">
+              <a href="./user-guide.html" id="link-guide" class="nav-link" target="_blank"
+                title="Guide utilisateur (nouvelle fenêtre)">
+                <span id="link-guide-txt">Guide utilisateur</span>
+              </a>
+            </li>
 
             <li class="nav-item">
               <a href="./?lang=en" id="link-en" class="nav-link" lang="en">
@@ -93,8 +99,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
 
             <span id="btnImportTxt"></span>
           </button>
-          <a href="#" id="export" class="btn nav-link me-n3 d-inline disabled" title="" disabled
-            aria-disabled="true">
+          <a href="#" id="export" class="btn nav-link me-n3 d-inline disabled" title="" disabled aria-disabled="true">
             <svg class='me-1' aria-hidden="true" focusable="false" fill="currentColor"
               xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000">
               <defs>
@@ -116,14 +121,16 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
           <div class="row">
             <div class="col-sm-9">
               <div class="input-group">
-                  <input class="form-control" id="selectFiles" type="file" accept="application/JSON" aria-label="Sélectionner un audit">
+                <input class="form-control" id="selectFiles" type="file" accept="application/JSON"
+                  aria-label="Sélectionner un audit">
               </div>
-              
+
             </div>
             <div class="col-sm-3">
-            <button class="btn btn-info border-white" type="button" id="import">Charger</button>
+              <button class="btn btn-info border-white" type="button" id="import">Charger</button>
               <button id="btnImportClose" type="button" class="btn btn-secondary btn-info border-white" title=""
-                data-bs-toggle="collapse" data-bs-target="#import-form" aria-expanded="false" aria-controls="import-form">
+                data-bs-toggle="collapse" data-bs-target="#import-form" aria-expanded="false"
+                aria-controls="import-form">
                 <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                   width="20" height="20" viewBox="0 0 1000 1000">
                   <defs>
@@ -187,22 +194,47 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
   </footer>
 
   <nav id="nav-back-to-top" aria-label="Retour en haut de la page" class="back-to-top">
-    <a id="link-to-top" href="#top" class="back-to-top-link btn btn-icon btn-secondary" title="Retour en haut de la page">
+    <a id="link-to-top" href="#top" class="back-to-top-link btn btn-icon btn-secondary"
+      title="Retour en haut de la page">
     </a>
   </nav>
-  
+
 
   <div id="modal">
-    <div id="modalEdit" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalChecklistTitle"><div class="modal-dialog"></div></div>
-    <div id="modalDelete" class="modal fade" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"></div></div>
-    <div id="modalLocalStorage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLocalStorageTitle"><div class="modal-dialog modal-lg" role="document"></div></div>
-    <div id="modalAddIssue" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalAddIssueTitle"><div class="modal-dialog modal-lg " role="document"></div></div>
-    <div id="modalEditIssue" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalEditIssueTitle"><div class="modal-dialog modal-lg " role="document"></div></div>
-    <div id="modalStatement" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalStatementTitle"><div class="modal-dialog modal-lg" role="document"></div></div>
+    <div id="modalEdit" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="modalChecklistTitle">
+      <div class="modal-dialog"></div>
+    </div>
+    <div id="modalDelete" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document"></div>
+    </div>
+    <div id="modalLocalStorage" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLocalStorageTitle">
+      <div class="modal-dialog modal-lg" role="document"></div>
+    </div>
+    <div id="modalAddIssue" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="modalAddIssueTitle">
+      <div class="modal-dialog modal-lg " role="document"></div>
+    </div>
+    <div id="modalEditIssue" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="modalEditIssueTitle">
+      <div class="modal-dialog modal-lg " role="document"></div>
+    </div>
+    <div id="modalStatement" data-bs-backdrop="static" class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="modalStatementTitle">
+      <div class="modal-dialog modal-lg" role="document"></div>
+    </div>
+    <div id="modalAutoCheck" data-bs-backdrop="static" data-bs-keyboard="false" class="modal fade" tabindex="-1"
+      role="dialog" aria-labelledby="modalAutoCheckTitle">
+      <div class="modal-dialog modal-lg" role="document"></div>
+    </div>
   </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/boosted@5.1.3/dist/js/boosted.min.js" integrity="sha384-mBRgv/ye1bG9U6wfppOiHvHVz1KlD7VdRcVZLfOCoQkohsL9P61pQxzobjI4XxNr" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/boosted@5.1.3/dist/js/boosted.min.js"
+    integrity="sha384-mBRgv/ye1bG9U6wfppOiHvHVz1KlD7VdRcVZLfOCoQkohsL9P61pQxzobjI4XxNr"
+    crossorigin="anonymous"></script>
 
   <script src="./js/markdown-it.min.js"></script>
   <script src="./js/FileSaver.min.js"></script>
@@ -215,6 +247,7 @@ the Orange Source Charter (http://infoportal-opensource.innov.intraorange/en/ora
   <script src="./js/controllers/computationManager.js"></script>
   <script src="./js/controllers/pageManager.js"></script>
   <script src="./js/controllers/issueManager.js"></script>
+  <script src="./js/controllers/autoCheckManager.js"></script>
   <script src="./js/controllers/filterManager.js"></script>
   <script src="./js/controllers/statementManager.js"></script>
   <script src="./js/lavallydette.js"></script>

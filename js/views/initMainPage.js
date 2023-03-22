@@ -72,8 +72,10 @@ function initAuditPage() {
 						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
 							<h4 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
-							<nav id="tableOfContents" aria-labelledby="title-nav-anchor">	
+							<div class="bd-toc">
+							<nav id="tableOfContents" aria-labelledby="title-nav-anchor" style="min-height: 4rem;">	
 							</nav>
+							</div>
 						</div>
                     </div>
                     <div class="col-md-8 bg-white border border-light col-print-12" id="currentPageContent">
@@ -156,10 +158,16 @@ function initAuditPage() {
 	});
 	
 	Object.keys(langVallydette.title).forEach(function (key) {
+		
 		eleToLocalize = document.getElementById(key);
 		if(eleToLocalize){
 			eleToLocalize.setAttribute('title', langVallydette.title[key]);
 			eleToLocalize.setAttribute('aria-label', langVallydette.title[key]);
+			if(eleToLocalize.tagName=="A" && (langVallydette.title[key+"-href"]!=undefined) ){
+				eleToLocalize.setAttribute('href',langVallydette.title[key+"-href"])
+			}
+				
+			
 		}
 	});
 	
@@ -182,8 +190,16 @@ function initAuditPage() {
 		linkFr.setAttribute('href', './?lang=fr&list=' + currentCriteriaListName);
 		linkEn.setAttribute('href', './?lang=en&list=' + currentCriteriaListName);
 	} else {
-		linkFr.setAttribute('href', './?lang=fr');
-		linkEn.setAttribute('href', './?lang=en');
+		if(window.location.pathname.indexOf('user-guide')==-1){
+			linkFr.setAttribute('href', './?lang=fr');
+			linkEn.setAttribute('href', './?lang=en');
+			
+		}
+		else{
+			linkFr.setAttribute('href', './user-guide');
+			linkEn.setAttribute('href', './user-guide-en?lang=en');
+		}
+		
 	}
 	
 	if (globalLang === "fr") {

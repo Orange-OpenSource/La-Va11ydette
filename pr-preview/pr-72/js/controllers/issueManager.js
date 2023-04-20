@@ -70,6 +70,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '</div>';
 	htmlModal += '<form id="editIssueForm">';
 	htmlModal += '<div class="modal-body">';
+	htmlModal += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
 	htmlModal += '<div class="mb-3">';
 	htmlModal += '<label class="is-required form-label" for="issueNameValue">' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
@@ -219,6 +220,7 @@ editIssue = function (targetId, issueIndex) {
 	let htmlEditIssue = '';
 	
 	htmlEditIssue += '<form id="editIssueForm-'+ targetId +'-'+ issueIndex+'">';
+	htmlEditIssue += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
 	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
 	htmlEditIssue += '<label class="is-required mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
@@ -308,6 +310,51 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	
 }
 
+/**
+ * Generate issue body
+ * @param {string} targetId - current test ID.
+ * @return {string} htmlModal - return html to issue body
+*/
+displayIssueBody= function(targetId){
+
+	htmlModal="";
+	
+	for (let i in dataVallydette.checklist.page[currentPage].items) {
+		
+		if (dataVallydette.checklist.page[currentPage].items[i].ID === targetId && dataVallydette.checklist.page[currentPage].items[i].issues.length > 0 ) {
+			let auditNumber = 0;
+			for (let j in dataVallydette.checklist.page[currentPage].items[i].issues) {
+				auditNumber++;
+				htmlModal += '<div class="accordion-item" id="cardIssue'+targetId+'-'+ j +'">';
+				
+				htmlModal += ' <div class="accordion-header" id="issue'+targetId+'-'+ j +'">';
+				htmlModal += ' <h5 class="mb-0">';
+				htmlModal += ' <button id="btnIssue'+targetId+'-'+ j +'" class="accordion-button collapsed w-100 m-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapse'+targetId+'-'+j+'" aria-expanded="false" aria-controls="#collapse'+targetId+'-'+j+'">';
+				htmlModal += '#' + auditNumber + ' ' + utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueTitle);
+				htmlModal += ' </button>';
+				htmlModal += '</h5>';
+				htmlModal += ' </div>';
+
+				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-bs-parent="#issueList" class="accordion-collapse collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
+
+				htmlModal += ' <div class="accordion-body">';
+				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
+				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
+			
+				htmlModal += '  </div>';
+				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">' + langVallydette.edit + '</button>';
+				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">' + langVallydette.delete + '</button>';
+				
+				htmlModal += '  </div>';
+				htmlModal += ' </div>';
+				
+				htmlModal += ' </div>';
+			}
+		}
+	}
+
+	return htmlModal;
+}
 
 /**
  * Delete confirmation feedback
@@ -349,8 +396,11 @@ deleteIssue = function (targetId, issueIndex, issueValidation) {
 		}
 	
 		utils.removeElement(document.getElementById("cardIssue"+targetId+"-"+ issueIndex));
-		utils.putTheFocus(document.getElementById("modal" + targetId + "Title"));
+		utils.putTheFocus(document.getElementById("modalEditIssueTitle"));
 		jsonUpdate();
+
+		document.getElementById('issueList').innerHTML = displayIssueBody(targetId);
+		
 		
 	} else {
 		

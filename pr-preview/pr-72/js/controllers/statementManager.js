@@ -274,7 +274,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div id="alertContainer">';
 	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
 		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
-		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">Close information message</span></button>';   
+		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">'+langVallydette.closeAlert+'</span></button>';   
 		statementWizardContent += '</div>';
 	}
 	statementWizardContent += '</div>';
@@ -301,6 +301,7 @@ function showStatementWizard() {
 
 	statementWizardContent += '<h3>2. ' + langVallydette.manualDataEntry + '</h3>';
 	statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
+	statementWizardContent += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
@@ -388,7 +389,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="technologyLegend">';
-	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technologies + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologiesEdit + '" title="' + langVallydette.technologiesEdit + '">'+htmlIcon.edit+'</span></button></h4>';
+	statementWizardContent += '<h4 id="technologyLegend">' + langVallydette.technology + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologyEdit + '" title="' + langVallydette.technologyEdit + '">'+htmlIcon.edit+'</span></button></h4>';
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
@@ -598,38 +599,38 @@ editStatementProperty = function (statementProperty) {
 	
 		htmlModal += '<li>';
 		
-		if (statementProperty === 'approval' || statementProperty === 'contact' ) {
-			htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
-			htmlModal += '	<span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette.item + ' ' + index + '</span>';
-		} else {
-			htmlModal += '<span class="input-group"  role="group"  aria-labelledby="itemLegend-' + index + '">';
-			htmlModal += ' <span class="input-group-prepend">';
-			htmlModal += '	<span class="input-group-text" id="itemLegend-'+index+'">' + langVallydette.item + ' ' + index + '</span>';
-			htmlModal += '  </span>';	
-		}
-
+		
+		htmlModal += '<span role="group" aria-labelledby="itemLegend-' + index + '">';
+		htmlModal += '<h6 class="d-inline"><span id="itemLegend-'+index+'" class="font-weight-bold">' + langVallydette[statementProperty] + ' ' + (index+1) + '</span></h6>';
+		
+		
 		statementProperties.forEach(function(p) {
 			
 			if (listItem[p] !== undefined && p === 'type') {
-				
-				htmlModal += '<select id="type-'+index+'" class="form-select mb-1" aria-label="' + langVallydette.type + '" title="' + langVallydette.type + '" >';
+				htmlModal += '<div class="m-2">';
+				htmlModal += '<label for="type-'+index+'" class="form-label">' + langVallydette.type + '</label>'
+				htmlModal += '<select id="type-'+index+'" class="form-select mb-1" title="' + langVallydette.type + '" >';
 				htmlModal += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
 				htmlModal += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
 				htmlModal += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
 				htmlModal += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';
 				htmlModal += '</select>';
+				htmlModal += '</div>';
 				
 			} else if (listItem[p] !== undefined && p === 'content') {
-				
-				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" aria-label="' + langVallydette.content + '" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
-				
+				htmlModal += '<div class="m-2">';
+				htmlModal += '<label for="' + p + '-' + index + '" class="form-label">' + langVallydette.content + '</label>'
+				htmlModal += '<textarea rows="2" cols="20" id="' + p + '-' + index + '" class="form-control mb-1" title="' + langVallydette.content + '" >' + listItem.content + '</textarea>';
+				htmlModal += '</div>';
 			} else if (listItem[p] !== undefined && p === 'checked') {
-				
 				htmlModal += '<input type="hidden" id="checked-' + index + '" class="form-control mb-1" value="' + listItem.checked + '" aria-label="' + langVallydette.checked + '" title="' + langVallydette.checked + '" />';
 				
 			} else if (listItem[p] !== undefined) {
 				
-				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" aria-label="' + langVallydette[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlModal += '<div class="m-2">';
+				htmlModal += '<label for="' + p + '-' + index + '" class="form-label">'+ langVallydette[p] +'</label>';
+				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlModal += '</div>';
 				
 			}
 
@@ -641,11 +642,8 @@ editStatementProperty = function (statementProperty) {
 	})
 	htmlModal += '</ul>';
 
-	if (statementProperty === "environments") {
-		htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt5 + '</p>';
-	} else {
-		htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
-	}
+	
+	htmlModal += '<p id="itemDesc" class="form-text text-muted">' + langVallydette.statementTxt3 + '</p>';
 	
 	htmlModal += '<button type="button" id="addElement" class="btn btn-secondary btn-sm">' + langVallydette.addElement + '</button>';
 	htmlModal += '</form>';
@@ -675,15 +673,17 @@ saveListElement = function(listToEdit, statementProperty) {
 			
 	//vérifier les value
 	for (let listItem of listToEdit.children) {
+		let name = document.getElementById("name-"+index);
+		let environment = document.getElementById("environment-"+index);
 		
 		
-		if ((listItem.children[0].children["name-"+index] !== undefined && listItem.children[0].children["name-"+index].value !== "") || (listItem.children[0].children["environment-"+index] !== undefined && listItem.children[0].children["environment-"+index].value !== "")) {
+		if ((name !== null && name.value !== "") || (environment !== null && environment.value !== "")) {
 			
 			itemObj = {};
 			
 			statementProperties.forEach(function(p){
-				if (listItem.children[0].children[p+"-"+index]) {
-					itemObj[p] = listItem.children[0].children[p+"-"+index].value;
+				if (document.getElementById(p+"-"+index)) {
+					itemObj[p] = document.getElementById(p+"-"+index).value;
 				}
 			})
 			

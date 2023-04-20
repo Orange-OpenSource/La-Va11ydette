@@ -397,6 +397,10 @@ function defaultView(currentRefTests){
 			htmlrefTests += '<h5>' + langVallydette.exceptionHeading + '</h5>';
 			htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
 		}
+
+		if (currentRefTests[i].tools) {
+			htmlrefTests += '<p class="fw-bold text-muted">' + langVallydette.toolsText + currentRefTests[i].tools + '</p>';
+		}
 		
 		if (currentRefTests[i].moreInfo) {
 			htmlrefTests += '<a href="' + currentRefTests[i].moreInfo + '" id="mi-' + currentTest + '" aria-labelledby="heading' + currentTest + ' mi-' + currentTest + '" class="btn btn-secondary btn-sm" title="' + langVallydette.moreInfo + ' (' + langVallydette.newWindow +')" target="_blank">' + langVallydette.moreInfo + '</a>';

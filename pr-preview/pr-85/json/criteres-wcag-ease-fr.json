@@ -23,7 +23,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<p>Le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné</p>",
+		"verifier": "<p>Le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",

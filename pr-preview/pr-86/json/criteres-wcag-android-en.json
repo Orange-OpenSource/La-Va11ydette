@@ -1,4 +1,4 @@
-﻿[
+[
 	{
 		"themes": "Input screen",
 		"title": "Does every input field in the form have a label?",
@@ -410,13 +410,13 @@
 	},
 	{
 		"themes": "Keyboard navigation and Switch Access",
-		"title": "Is all functionality of the page content operable through a keyboard interface and Switch Access?",
+		"title": "Is all functionality of the page content operable through a keyboard interface or Switch Access?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<p>Check that:</p><ul><li>all features are available using Switch Access and keyboard navigation</li><li>only interactive elements are focusable using Switch Access and keyboard navigation</li><li>elements are gathered when they are linked (e.g. contents within a clickable row in a list).</li><li>it is possible to scroll to read the content in a scrollView</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li>all features are available using Switch Access or keyboard navigation</li><li>only interactive elements are focusable using Switch Access or keyboard navigation</li><li>elements are gathered when they are linked (e.g. contents within a clickable row in a list).</li><li>it is possible to scroll to read the content in a scrollView</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -430,7 +430,7 @@
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "<p>Check that the screen does not contain keyboard traps.</p>",
+		"verifier": "<p>Check that the screen does not contain keyboard traps: if the focus is on an element, the user must be able to exit this element using the standard keys (escape, enter, arrows...). If the focus seems trapped in a component, there must be information explaining the procedure to exit (via keyboard or selector control)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#keyboard-navigation-order",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -613,7 +613,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p> Compliant, if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code>) </p>",
+		"verifier": "<p>Compliant, if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code> i.e. a square of side 78 dp)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#avoid-epileptic-risk-contents",
 		"resultatTest": "nt",
 		"priority": "P3",

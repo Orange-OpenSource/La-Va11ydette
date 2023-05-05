@@ -68,7 +68,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p> Check that the field in error is modified (ex & nbsp;: addition of the mention « & nbsp; error & nbsp;», addition of an icon, change of the field in red color). </p>",
+		"verifier": "<p> Check that the field in error is modified (ex & nbsp;: addition of the mention « & nbsp; error & nbsp;», addition of an icon, change of the field in red color). </p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -137,7 +137,7 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-		"verifier": "<p>Verify that the title of the<code>UIView</code>  is unique. A common error is to use the same title for the whole application.</p>",
+		"verifier": "<p>Verify that the title of the<code>UIView</code>  is unique. A common error is to use the same title for the whole application.</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -163,7 +163,7 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Verify that the contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p>",
+		"verifier": "<p>Verify that the contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p><ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>18pt</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18pt</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>14pt</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14pt</code>: contrast ratio 3:1</li></ul></li></ul>",
 		"exception": "<p>Logo, decorative texts, and inactive elements do not need to meet this contrast ratio and therefore should not count towards the validation of this criteria.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -178,10 +178,10 @@
 			"0": "1.4.11 AA"
 		},
 		"verifier": "<p>Verify that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
+		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>disabled components</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
-		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>"
 	},
 	{
 		"themes": "Colors and constrasts",
@@ -231,7 +231,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The title of the activity is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li></ul>",
+		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The title of the activity is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -356,13 +356,13 @@
 	},
 	{
 		"themes": "Selection control",
-		"title": "Is all functionality of the page content operable through a selection control?",
+		"title": "Is all functionality of the page content operable through control selection tool or a keyboard interface?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Check that:</p><ul><li>all features are available using selection control</li><li>only interactive elements are accessible using selection control</li><li>elements are gathered when they are linked (e.g : contents within a clickable row in a list)</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li>all features are available using control selection tool or keyboard navigation</li><li>only interactive elements are accessible using selection control</li><li>elements are gathered when they are linked (e.g : contents within a clickable row in a list)</li><li>it is possible to scroll to read the content in a scrollView</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -375,7 +375,7 @@
 		"wcag": {
 			"0": "2.1.2 A"
 		},
-		"verifier": "<p>Check that the screen does not contain keyboard traps.</p>",
+		"verifier": "<p>Check that the screen does not contain keyboard traps: if the focus is on an element, the user must be able to exit this element using the standard keys (escape, enter, arrows...). If the focus seems trapped in a component, there must be information explaining the procedure to exit (via keyboard or selector control)</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -428,7 +428,7 @@
 		"wcag": {
 			"0": "2.5.1 A"
 		},
-		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture. Zoom functionality on a map: (+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture. Zoom functionality on a map: (+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -468,7 +468,8 @@
 		"wcag": {
 			"0": "2.5.5 AAA"
 		},
-		"verifier": "<p>Check that :</p><ul><li>interactive elements have sufficient click area</li><li>interactive elements have a margin that separates them from other elements or the edges of the screen.</li></ul>",
+		"verifier": "<p>Check that :</p><ul><li>interactive elements have sufficient click area (44pt - width and height)</li><li>interactive elements have a margin that separates them from other elements or the edges of the screen.</li></ul>",
+		"exception": "<p>There are two exceptions to this rule:</p><ul><li>There is another element on the screen that performs the same action, and meets the required size. In this specific case, it is accepted that the element is too small.</li><li>The interactive element is in a sentence or block of text (e.g. links).</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -494,7 +495,7 @@
 		"wcag": {
 			"0": "2.2.1 A"
 		},
-		"verifier": "<p>Check that the delay causing an automatic context change (for example, the control overflow of a video that disappears after a few seconds) is adaptable directly from the application.</p>",
+		"verifier": "<p>Check that the delay causing an automatic context change is adaptable (for example, the control overflow of a video that disappears after a few seconds) directly from the application. One can then propose several options from the application: <ul><li>disable the time limit, but the application must allow the same context change to be performed by an alternative.</li><li>control the time limit, choosing a longer delay.</li></ul></p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -548,7 +549,7 @@
 		"wcag": {
 			"0": "2.3.1 A"
 		},
-		"verifier": "<p>Compliant, if the flashes flash less than 3 times per second or on a very small area </p>",
+		"verifier": "<p>Compliant, if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code> i.e. a square of side 78 dp)</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

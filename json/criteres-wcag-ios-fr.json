@@ -163,7 +163,8 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre</p>",
+		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour texte standard</strong> <ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
+		"exception": "<p>Les logos, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -177,7 +178,8 @@
 		"wcag": {
 			"0": "1.4.11 AA"
 		},
-		"verifier": "<p>Vérifier que les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste suffisant pour transmettre l'information.</p>",
+		"verifier": "<p>Vérifier que les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
+		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -356,26 +358,26 @@
 	},
 	{
 		"themes": "Contrôle de sélection",
-		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ?",
+		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection</li><li>seuls les éléments interactifs sont accessibles avec le contôle de selection</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de scroller pour lire le contenu dans une scrollView</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
 		"themes": "Contrôle de sélection",
-		"title": "L'écran ne contient pas de piège clavier&nbsp;? (L'écran passe t-il par toutes les zones cliquable ?)",
+		"title": "L'écran ne contient pas de piège clavier&nbsp;?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
 		"wcag": {
 			"0": "2.1.2 A"
 		},
-		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec le contrôle de selection.</p>",
+		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec le contrôle de selection ou en navigation au clavier: si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...). Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -468,7 +470,8 @@
 		"wcag": {
 			"0": "2.5.5 AAA"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic suffisante</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic suffisante (44pt - hauteur et largeur)</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li></ul>",
+		"exception": "<p>Cette règle comporte deux exceptions :</p><ul><li>Il y a un autre élément sur l'écran qui réalise la même action, et qui respecte la taille requise. Dans ce cas, précis, on accepte que l'élément soit trop petit.</li><li>L'élément interactif se trouve dans une phrase ou un bloc de texte (ex : liens).</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -494,7 +497,7 @@
 		"wcag": {
 			"0": "2.2.1 A"
 		},
-		"verifier": "<p>Vérifier que le délai provoquant un changement de contexte automatique (par exemple, l'overflow de contrôle d'une vidéo qui disparaît après quelques secondes) est adaptable directement depuis l'application.</p>",
+		"verifier": "<p>Vérifier que le délai provoquant un changement de contexte automatique (par exemple, l'overflow de contrôle d'une vidéo qui disparaît après quelques secondes) est adaptable directement depuis l'application. On peut alors proposer plusieurs options depuis l'application : <ul><li>désactiver la limite de temps, mais l'application doit permettre de réaliser le même changement de contexte par une alternative.</li><li>contrôler la limite de temps, en choississant un délai plus ou moins long selon son besoin</li></ul></p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -548,7 +551,7 @@
 		"wcag": {
 			"0": "2.3.1 A"
 		},
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde </p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code> soit un carré de 78dp de côté)</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

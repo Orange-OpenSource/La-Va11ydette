@@ -1,4 +1,4 @@
-﻿[
+[
 	{
 		"themes": "Écran de saisie",
 		"title": "Chaque champ de saisie possède-t-il une étiquette ?",
@@ -411,13 +411,13 @@
 	},
 	{
 		"themes": "Navigation au clavier et Switch Access",
-		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access et avec un clavier ?",
+		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access ou avec un clavier ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access et avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de scroller pour lire le contenu dans une scrollView</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de scroller pour lire le contenu dans une scrollView</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -431,7 +431,7 @@
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec la navigation au clavier.</p>",
+		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec Switch Access ou en navigation au clavier: si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...). Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -614,7 +614,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code>)</p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code>, soit un carré de 78dp de côté)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#eviter-le-contenu-a-risque-epileptique",
 		"resultatTest": "nt",
 		"priority": "P3",

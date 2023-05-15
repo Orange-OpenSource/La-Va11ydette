@@ -316,6 +316,15 @@
 			"page": []
 		},
 		{
+			"wcag": "2.4.10",
+			"level": "AAA",
+			"name": "Titres de section",
+			"tests": [],
+			"resultat": "nt",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "2.5.1",
 			"level": "A",
 			"name": "Gestes multipoints ou trajectoires",

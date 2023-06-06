@@ -60,6 +60,20 @@
 		"priority": "P0",
 		"goodPractice": false
 	},
+    {
+        "themes": "Input screen",
+        "title": "Is an autocomplete present for the input fields intended for personal information about the user?",
+        "ID": "testID-005",
+        "IDorigin": "testID-005",
+        "wcag": [
+            "1.3.5 AA"
+        ],
+        "verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>textContentType</code> attribute is present</li><li>the value indicated for the <code>textContentType</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+        "group": "Input screen",
+        "resultatTest": "nt",
+        "priority": "P3",
+        "goodPractice": false
+    },
 	{
 		"themes": "Input screen",
 		"title": "Are the fields in error identifiable&nbsp;?",

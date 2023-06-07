@@ -1,15 +1,42 @@
 [
-	{
+		{
 		"themes": "Input screen",
 		"title": "Does every input field in the form have a label?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
-		"wcag": {
-			"0": "1.3.1 A",
-			"1": "2.4.6 AA",
-			"2": "3.3.2 A"
-		},
-		"verifier": "<p> Verify that the label name (<code> TextField </code>) of each input field is defined and appropriate.</p>",
+		"wcag": [
+			"3.3.2 A"
+		],
+		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
+		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception.</p>",
+        "group": "Écran de saisie",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+    {
+		"themes": "Input screen",
+		"title": "Is every input field's label relevant?",
+		"ID": "testID-001bis",
+		"IDorigin": "testID-001bis",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>Check that the accessible name of each input field is relevant.</p>",
+		"group": "Écran de saisie",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+    {
+		"themes": "Input screen",
+		"title": "Does each form field have an accessible name?",
+		"ID": "testID-001ter",
+		"IDorigin": "testID-001ter",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "All labels are properly linked to their fields",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -39,7 +66,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li></ul>",
 		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
@@ -68,7 +95,8 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p> Check that the field in error is modified (ex & nbsp;: addition of the mention « & nbsp; error & nbsp;», addition of an icon, change of the field in red color). </p>",
+		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
+		"exception":"<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -118,39 +146,13 @@
 	},
 	{
 		"themes": "Headers",
-		"title": "Does the screen have a visible title?",
+		"title": "Does the screen have a relevant title?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-		"verifier": "<p>Verify that the <code>UIView</code> title is visible.</p>",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false
-	},
-	{
-		"themes": "Headers",
-		"title": "Does the screen have a unique title?",
-		"ID": "testID-011",
-		"IDorigin": "testID-011",
-		"wcag": {
-			"0": "2.4.2 A"
-		},
-		"verifier": "<p>Verify that the title of the<code>UIView</code>  is unique. A common error is to use the same title for the whole application.</p>",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false
-	},
-	{
-		"themes": "Headers",
-		"title": "Does the screen have a relevant title?",
-		"ID": "testID-012",
-		"IDorigin": "testID-012",
-		"wcag": {
-			"0": "2.4.2 A"
-		},
-		"verifier": "<p>Verify that the page context is understandable with the<code>UIView</code> title</p>",
+		"verifier": "<p>Verify that&nbsp;:</p> <ul><li>le title of <code>UIView</code> is visible,</li><li>the title of the <code>UIView</code> is unique. A common error is to use the same title for the whole application,</li><li>the page context is understandable with the <code>UIView</code> title</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -178,7 +180,7 @@
 			"0": "1.4.11 AA"
 		},
 		"verifier": "<p>Verify that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>disabled components</li></ul>",
+		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>disabled components</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -231,7 +233,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The title of the activity is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li></ul>",
+		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The title of the activity is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li><li>For complex images, an alternative shall be present through an adjacent content</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -282,7 +284,7 @@
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": {
-			"0": "1.1.1 A"
+			"0": "3.2.2 A"
 		},
 		"verifier": "<p>Verify that using voice navigation, the content changes are vocalized to the user:</p><ul><li>the opening of (<code>pop-up</code>) s vocalized</li><li>the opening of a new screen (UIView) is vocalized by its title</li><li>the change of a part of the screen (such as a fragment that changes) is vocalizede</li><li>horizontal scrolling is vocalized</li></ul>",
 		"resultatTest": "nt",
@@ -297,8 +299,9 @@
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<p>Verify that a mechanism based on live regions is implemented:\n</p><ul><li>temporary messages are vocalized</li><li>the change of an element is vocalized if it is useful for the user to be informed about it</li><li>the progress of a content update is vocalized</li></ul>",
-		"resultatTest": "nt",
+		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chat, temporary or error messages, change of significant element, upload of a file, product registration in a basket, progressive loading of a list... ): </p><ul><li>check that a mechanism based on live regions is implemented</li><li>check that they are rendered in a relevant way to the screen reader</li></ul>",
+        "complement": "<h4>Examples</h4><ul><li>message that informs about the result of an action or the state of the application</li><li>error message</li><li>message indicating progress</li></ul>",
+        "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
@@ -350,7 +353,8 @@
 			"0": "2.5.3 A"
 		},
 		"verifier": "<p>Check that the element's label is present (first if possible) in the vocalization of this component. Not applicable if the element has no visible label (icon without text for example).</p>",
-		"resultatTest": "nt",
+		"complement": "<p>For example: for a 'start' link, use an alternative 'start playing', but not 'begin playing'</p>",
+        "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
@@ -362,7 +366,7 @@
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Check that:</p><ul><li>all features are available using control selection tool or keyboard navigation</li><li>only interactive elements are accessible using selection control</li><li>elements are gathered when they are linked (e.g : contents within a clickable row in a list)</li><li>it is possible to scroll to read the content in a scrollView</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li>all features are available using control selection tool or keyboard navigation</li><li>only interactive elements are accessible using selection control</li><li>elements are gathered when they are linked (e.g : contents within a clickable row in a list)</li><li>it is possible to scroll with keyboard to read the content in a scrollView</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -489,13 +493,14 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Does an UI with a time limit have an adaptable timeframe? (time limite) (exemple de netflix)",
+		"title": "Does a time limit involving a change of context is adaptable?",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": {
 			"0": "2.2.1 A"
 		},
-		"verifier": "<p>Check that the delay causing an automatic context change is adaptable (for example, the control overflow of a video that disappears after a few seconds) directly from the application. One can then propose several options from the application: <ul><li>disable the time limit, but the application must allow the same context change to be performed by an alternative.</li><li>control the time limit, choosing a longer delay.</li></ul></p>",
+		"verifier": "<p>Check that one of the conditions below is met:</p><ul><li>user is allowed to turn off the time limit</li><li>the user is allowed to increase the time limit up to 10 times the minimum default value</li><li>the user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action</li></ul>",
+		"exception": "<ul><li>real-time exception: the time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible;</li><li>essential exception: the time limit is essential and extending it would invalidate the activity;</li><li>20 hour exception: the time limit is longer than 20 hours.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -530,13 +535,13 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "For any moving, scrolling, blinking information that lasts more than five seconds or updated content, start automatically, is there a mechanism for the user to pause, stop, or hide it&nbsp;?",
+		"title": "If content on the page is moving, scrolling, blinking or updating, lasting more than 5 seconds and starting automatically, does the user have the option to stop, pause, hide or modify its update frequency of this content?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": {
 			"0": "2.2.2 A"
 		},
-		"verifier": "<p>Not applicable, if no movement, scrolling or flashing lasts more than 5 seconds</p>",
+		"verifier": "<p>If content from part of the page, starting automatically and lasting more than 5 seconds, is moving, scrolling, blinking, there is a way to stop it, pause it or hide it.< /p><p>For content on a part of the page that updates or is automatically refreshed, there is a way to stop it, pause it, hide it or play on its update frequency .</p><p>Not applicable, if no movement, no scrolling, no blinking and no automatic update or refresh that lasts more than 5 seconds or starts automatically</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -575,8 +580,9 @@
 		"wcag": {
 			"0": "1.4.5 AA"
 		},
-		"verifier": "<p>Check that images and graphics elements are not used to display text.(Except for special cases : e.g. logo, captcha, tradename).</p>",
-		"resultatTest": "nt",
+		"verifier": "<p>Check that images and graphics elements are not used to display text.</p>",
+		"exceptions": "<ul><li>special cases (e.g.: logo, captcha, tradename)</li><li>The item is essential</li><li>The image is customizable by the user</li></ul>",
+        "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
@@ -591,6 +597,34 @@
 		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the screen to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>if this is not the case, check that the target of a link or the action of a button may be inferred from its context.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"goodPractice": false
+	},
+    {
+		"themes": "Common navigation",
+		"title": "Each button label is relevant?",
+		"ID": "testID-068",
+		"IDorigin": "testID-068",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+        {
+		"themes": "Common navigation",
+		"title": "Does the application have at least 2 means of navigation?",
+		"ID": "testID-069",
+		"IDorigin": "testID-069",
+		"wcag": [
+			"2.4.5 AA"
+		],
+		"verifier": "<p>when there is less than 3 or 4 screens and/or the content is short, this criterion is not applicable.</p><p>Check that at least 2 of the following mechanisms are present on the screen, to allow a user to determine their location on the application:</p>\n<ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>", 
+		"exception": " except if the screen is the result of, or a step in a process.",
+		"priority": "P3",
+		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{
@@ -761,6 +795,108 @@
 		"group": "WebView",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"goodPractice": false
+	},
+        {
+		"themes": "WebView",
+		"title": "Is the source code valid?",
+		"ID": "testID-064",
+		"IDorigin": "testID-064",
+		"wcag": [
+			"4.1.1 A"
+		],
+		"verifier": "<p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
+		"exception": "Unless the technical specifications of the application allow it",
+        "group": "WebView",
+        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Webview",
+		"title": "Is the main language defined, and does it correspond to the document's primary language?",
+		"ID": "testID-062",
+		"IDorigin": "testID-062",
+		"wcag": [
+			"3.1.1 A"
+		],
+		"verifier": "<ul><li>Check there is a <code>lang</code> attribute present (N.B. the presence of the <code>xml:lang</code> attribute is not sufficient to pass this test)</li><li>The value of the <code>lang</code> attribute should correspond to the primary language used on the page</li></ul>",
+        "group": "WebView",
+        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "WebView",
+		"title": "Are changes in language clearly identified?",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
+		"wcag": [
+			"3.1.2 AA"
+		],
+		"verifier": "<p>Check that a <code>lang</code> attribute is present for words and expressions in a foreign language.</p>",
+		"exceptions": "<p>For words and expressions in a foreign language which are in everyday use (déjà vu, hors d'oeuvre…) or for proper nouns, do not indicate a change of language.</p>",
+		"group": "WebView",
+        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "WebView",
+		"title": "Are the tables structured properly?",
+		"ID": "testID-064",
+		"IDorigin": "testID-64",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>If the table is a presentation table, remove any semantic tag or attribute of a table (<code>caption, summary, th, scope, headers</code>…) and add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
+		"group": "WebView",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+    {
+		"themes": "Non-text Content",
+		"title": "Does every captcha image possess an alternative?",
+		"ID": "testID-065",
+		"IDorigin": "testID-065",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (e.g.: \"captcha (anti-spam image)\").</p>",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Non-text Content",
+		"title": "If a CAPTCHA is used, is there an alternative for visually impaired, blind and hearing impaired users?",
+		"ID": "testID-066",
+		"IDorigin": "testID-066",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Check that for each captcha which is exclusively visual or audio, one of the following alternatives is provided in addition: </p><ul><li>audio and visual captcha</li><li>logic problems (question for which the response is obvious, simple maths test…)</li><li>there is another method to access the functionality that is protected by the CAPTCHA</li></ul>",
+		"group": "Captcha",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Non-text Content",
+		"title": "Does each occurrence of cryptic content (ASCII art, emoticon, cryptic syntax) have an appropriate alternative?",
+		"ID": "testID-067",
+		"IDorigin": "testID-067",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<ul><li>Check that there is a text alternative provided</li><li>Check that the alternative is appropriate</li></ul>",
+		"priority": "P3",
+		"resultatTest": "nt",
 		"goodPractice": false
 	}
 ]

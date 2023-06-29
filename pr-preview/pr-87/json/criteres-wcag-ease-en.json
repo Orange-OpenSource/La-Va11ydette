@@ -39,10 +39,26 @@
 			"1.3.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "<ul><li>All labels are properly linked to their fields, using one of the following: <ul><li>an ARIA attribute <code>aria-labelledby</code> in the field</li><li>an ARIA attribute <code>aria-label</code> in the field</li><li>a <code>label</code> tag with a <code>for</code> attribute referencing the <code>id</code> of the field</li><li>a <code>title</code> attribute in the <code>input</code> tag of the field</li></ul></li><li>All data formats present are well linked to their input fields, by integrating it: <ul><li>directly in the tag <code>label</code></li><li>by modifying the field's <code>aria-label</code> attribute</li><li>by adding the format ID in the field's <code>aria-labelledby</code> attribute</li>< li>by modifying the accessible description of the field with the attribute <code>aria-describedby</code></li></ul></li></ul>",
+		"verifier": "<ul><li>All labels are properly linked to their fields, using one of the following: <ul><li>an ARIA attribute <code>aria-labelledby</code> in the field</li><li>an ARIA attribute <code>aria-label</code> in the field</li><li>a <code>label</code> tag with a <code>for</code> attribute referencing the <code>id</code> of the field</li><li>a <code>title</code> attribute in the <code>input</code> tag of the field</li></ul></li><li>All data formats present are well linked to their input fields, by integrating it: <ul><li>directly in the tag <code>label</code></li><li>by modifying the field's <code>aria-label</code> attribute</li><li>by adding the format ID in the field's <code>aria-labelledby</code> attribute</li><li>by modifying the accessible description of the field with the attribute <code>aria-describedby</code></li></ul></li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
+		"title": "Are the form elements grouped where it is necessary?",
+		"ID": "testID-003",
+		"IDorigin": "testID-003",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<ul><li>the presence of a <code>fieldset</code> group or <code>role='group'</code></li><li>each group possesses a legend (<code>legend</code>, <code>aria-labelledby</code>)</li></ul>",
+		"complement": "<h4>Additionally: </h4><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
+		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -54,28 +70,11 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>The label of each input field is relevant.</li><li>If a data format is indicated for a input field, it is relevant.</li></ul>",
+		"verifier": "<ul><li>The label of each input field is relevant.</li><li>If a data format is indicated for a input field, it is relevant.</li><li>If fields are grouped, check that the legend is relevant.</li></ul>",
 		"complement":"<h4>Complement</h4><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P0",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Form",
-		"title": "Are the form elements grouped where it is necessary?",
-		"ID": "testID-003",
-		"IDorigin": "testID-003",
-		"wcag": [
-			"1.3.1 A",
-			"3.3.2 A"
-		],
-		"verifier": "<ul><li>the presence of a <code>fieldset</code> group or <code>role='group'</code></li><li>each group possesses a legend (<code>legend</code>, <code>aria-labelledby</code>)</li><li>each legend is appropriate</li></ul>",
-		"complement": "<h4>Additionally: </h4><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
-		"group": "Form",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -192,14 +191,43 @@
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
 		"wcag": [
-			"1.3.1 A",
-			"2.4.6 AA"
+			"1.3.1 A"
 		],
-		"verifier": "<ul><li>Check that section headings are present, and that they represent the structure of the document</li><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
+		"verifier": "<ul><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
+		"complement":"<h4>Additionally: </h4><p>This criterion does not require the use of a title, if no title is present this criterion is not applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Textual Content",
+		"title": "Is the information structured by the use of relevant headings?",
+		"ID": "testID-083",
+		"IDorigin": "testID-083",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<ul><li>Level headings should be relevant and help understand the content of the page.</li><li>Headings should accurately describe the section of content they present.</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
+		"complement":"<h4>Additionally: </h4><p>This criterion does not require the use of a title, if no title is present this criterion is not applicable.</p>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Textual Content",
+		"title": "Are level headings present to organize content?",
+		"ID": "testID-084",
+		"IDorigin": "testID-084",
+		"wcag": [
+			"2.4.10 AAA"
+		],
+		"verifier": "<p>All sections of the page should have a title that introduces them.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Textual Content",

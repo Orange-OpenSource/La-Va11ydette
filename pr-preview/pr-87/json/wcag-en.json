@@ -316,6 +316,15 @@
 			"page": []
 		},
 		{
+			"wcag": "2.4.10",
+			"level": "AAA",
+			"name": "Section Headings",
+			"tests": [],
+			"resultat": "nt",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "2.5.1",
 			"level": "A",
 			"name": "Pointer Gestures",

@@ -1,7 +1,7 @@
 /**
  *  init the main menu
  */
- function initMainMenu() {
+function initMainMenu() {
 	
 	var htmlMainMenu = "";
 	

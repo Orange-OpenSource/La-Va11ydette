@@ -7,6 +7,14 @@
 			"technicalSolution" : ""
 		}
     ],
+    "testID-005":[
+        {
+			"title" : "A data format is missing",
+			"detail" : "A data format is necessary to allow all users to correctly enter informations.",
+			"solution" : "Add a data format. This format is programmatically linked to the field.",
+			"technicalSolution" : "Apply one of the solutions below: \n - integrate the data format into the label element \nexample: <label for=\"idInput\"> Date DD/MM/YYYY </label>\n - link the format to the field via an attribute aria-describedby \n exemple: <input aria-describedby=\"idDesc\" […]> <p id=\"idDesc\"> Input format: DD/MM/YYYY </p>"
+		}
+    ],
 	"testID-067":[
 		{
 			"title": "Presence of fields not linked to their labels",
@@ -19,7 +27,13 @@
 			"detail" : "All form elements must have an accessible name.",
 			"solution": "Apply one of the solutions below:\n- add a \"label\" element, in masking accessible if necessary, programmatically linked to the field\n- use an aria-labelledby pointing to relevant information to understand the nature of the field \n- addition of an aria-label attribute\n- addition of a title attribute",
 			"technicalSolution": "Examples: \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- < h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n- <input aria-label=\"[… ]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
-			}	],
+			},{
+				"title" : "The data format is not programmatically linked to the field",
+				"detail" : "The data format will not be perceived by an assistive technology (example: screen reader) when there is not a explicit link with the field.",
+				"solution" : "Add a data format. This format is programmatically linked to the field.",
+				"technicalSolution" : "Apply one of the solutions below: \n - integrate the data format into the label element \n example: <label for=\"idInput\"> Date DD/MM/YYYY </label>\n - link the format to the field via an attribute aria-describedby \nexemple: <input aria-describedby=\"idDesc\" […]> <p id=\"idDesc\"> Input format: DD/MM/YYYY </p>"
+			}	
+	],
 	"testID-002": [
 		{
 			"title" : "Presence of irrelevant field labels",
@@ -48,19 +62,6 @@
 			"detail" : "The identification of a mandatory field is not possible for assistive technologies (ex. : screen reader), if it is not given programmatically.",
 			"solution" : "Use one of the techniques below: \n - visual information integrated into the label \n- addition of a \"required\" attribute on the input \n - addition of an \"aria-required\" attribute on the input",
 			"technicalSolution" : ""
-		}
-    ],
-    "testID-005":[
-        {
-			"title" : "A data format is missing",
-			"detail" : "A data format is necessary to allow all users to correctly enter informations.",
-			"solution" : "Add a data format. This format is programmatically linked to the field.",
-			"technicalSolution" : "Apply one of the solutions below: \n - integrate the data format into the label element \nexample: <label for=\"idInput\"> Date DD/MM/YYYY </label>\n - link the format to the field via an attribute aria-describedby \n exemple: <input aria-describedby=\"idDesc\" […]> <p id=\"idDesc\"> Input format: DD/MM/YYYY </p>"
-		},{
-			"title" : "The data format is not programmatically linked to the field",
-			"detail" : "The data format will not be perceived by an assistive technology (example: screen reader) when there is not a explicit link with the field.",
-			"solution" : "Add a data format. This format is programmatically linked to the field.",
-			"technicalSolution" : "Apply one of the solutions below: \n - integrate the data format into the label element \n example: <label for=\"idInput\"> Date DD/MM/YYYY </label>\n - link the format to the field via an attribute aria-describedby \nexemple: <input aria-describedby=\"idDesc\" […]> <p id=\"idDesc\"> Input format: DD/MM/YYYY </p>"
 		}
     ],
     "testID-012":[

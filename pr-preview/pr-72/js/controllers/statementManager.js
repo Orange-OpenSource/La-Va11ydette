@@ -223,8 +223,11 @@ function initStatementObject() {
 			}
 		});
 	
+		setTimeout(() => {
+			showStatementWizard();
+		  }, "100")
+		  
 	
-	showStatementWizard();
 	
 }
 
@@ -808,7 +811,6 @@ saveStatement = function(statementForm, submitterBtn) {
 		dataVallydette.statement.status = "DONE";
 		
 		if (dataVallydette.statement.lang !== globalLang) {
-			
 			var langRequest = new XMLHttpRequest();
 			langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
 			langRequest.onreadystatechange = function () {

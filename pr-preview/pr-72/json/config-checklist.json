@@ -4,7 +4,7 @@
 		"filename": "criteres-wcag-ease",
 		"template": "wcag",
 		"version": "2.2.0",
-		"lastId": "testID-082",
+		"lastId": "testID-084",
 		"name-fr": "Audit de conformité WCAG 2.2 / WEB",
 		"name-en": "Conformity audit WCAG 2.2 / WEB",
 		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'une application web aux critères WCAG 2.2 A et AA.",

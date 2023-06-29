@@ -1,7 +1,7 @@
 /**
  *  init the main menu
  */
- function initMainMenu() {
+function initMainMenu() {
 	
 	var htmlMainMenu = "";
 	
@@ -396,10 +396,6 @@ function defaultView(currentRefTests){
 		if (currentRefTests[i].exception) {
 			htmlrefTests += '<h5>' + langVallydette.exceptionHeading + '</h5>';
 			htmlrefTests += '<p>' + currentRefTests[i].exception + '</p>';
-		}
-
-		if (currentRefTests[i].tools) {
-			htmlrefTests += '<p class="fw-bold text-muted">' + langVallydette.toolsText + currentRefTests[i].tools + '</p>';
 		}
 		
 		if (currentRefTests[i].moreInfo) {

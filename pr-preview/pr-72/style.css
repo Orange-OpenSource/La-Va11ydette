@@ -110,13 +110,22 @@ body,
 }
 
 li li::marker {
-  color: #f16e00;
+  color: #666;
 }
 
 
 li li li::marker {
   color: #666;
 }
+
+li ol {
+  margin:2px 0;
+}
+
+li ul {
+  margin:2px 0;
+}
+
 
 /* Print */
 

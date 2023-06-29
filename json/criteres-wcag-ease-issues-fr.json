@@ -7,6 +7,14 @@
 			"technicalSolution" : ""
 		}
     ],
+    "testID-005":[
+        {
+			"title" : "Absence de format de données",
+			"detail" : "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
+			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\n exemple : <input aria-describedby=\"idDesc\" […]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
+		}
+    ],
 	"testID-067":[
         {
 			"title" : "Présence de champs non liés au label",
@@ -19,6 +27,11 @@
 			"detail" : "Tous les éléments de formulaire doivent posséder un nom accessible.",
 			"solution" : "Appliquer une des solutions ci-dessous :\n- ajout d'un élément \"label\", en masquage accessible si nécessaire, lié de manière programmatique au champ\n- utilisation d'un aria-labelledby pointant vers une information pertinente pour comprendre la nature du champ \n- ajout d'un attribut aria-label\n- ajout d'un attribut title",
 			"technicalSolution" : "Exemples : \n- <label for=\"idInput\">[…]</label> <input id=\"idInput\" type=\"[…]\">\n- <h2 id=\"idHeading\">[…]</h2> <input aria-labelledby=\"idHeading\" type=\"[…]\">\n-  <input aria-label=\"[…]\" type=\"[…]\">\n- <input title=\"[…]\" type=\"[…]\">"
+		},{
+			"title" : "Le format de données n'est pas lié de manière programmatique au champ",
+			"detail" : "Le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran) lorsqu'il n'y a pas de lien explicite avec le champ.",
+			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
+			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\n exemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" […]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		}
     ],
 	"testID-002": [
@@ -49,19 +62,6 @@
 			"detail" : "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex. : lecteur d'écran), si elle n'est pas donnée de manière programmatique.",
 			"solution" : "Utiliser une des techniques ci-dessous :\n- information visuelle intégrée dans le label\n- ajout d'un attribut \"required\" sur l'input \n- ajout d'un attribut \"aria-required\" sur l'input",
 			"technicalSolution" : ""
-		}
-    ],
-    "testID-005":[
-        {
-			"title" : "Absence de format de données",
-			"detail" : "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
-			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\nexemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\n exemple : <input aria-describedby=\"idDesc\" […]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
-		},{
-			"title" : "Le format de données n'est pas lié de manière programmatique au champ",
-			"detail" : "Le format de données ne sera pas perçu depuis une aide technique (exemple : lecteur d'écran) lorsqu'il n'y a pas de lien explicite avec le champ.",
-			"solution" : "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-			"technicalSolution" : "Appliquer une des solutions ci-dessous :\n- intégrer le format de donnée dans l'élément label\n exemple : <label for=\"idInput\">Date JJ/MM/AAAA</label>\n- lier le format au champ via un attribut aria-describedby\nexemple : <input aria-describedby=\"idDesc\" […]><p id=\"idDesc\">Format de saisie : JJ/MM/AAAA</p>"
 		}
     ],
     "testID-012":[

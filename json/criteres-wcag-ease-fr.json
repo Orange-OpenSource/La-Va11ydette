@@ -1,34 +1,32 @@
 [
 	{
 		"themes": "Formulaire",
-		"title": "Chaque champ de formulaire possède-t-il une étiquette&nbsp;?",
+		"title": "Chaque champ de formulaire possède-t-il une étiquette visible&nbsp;?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul><p>Attention&nbsp; le placeholder n'est pas considéré comme assez robuste pour valider ce critère</p>",
+		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
-		"tools": "",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Chaque étiquette de champ est-elle pertinente&nbsp;?",
-		"ID": "testID-002",
-		"IDorigin": "testID-002",
+		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
+		"ID": "testID-005",
+		"IDorigin": "testID-005",
 		"wcag": [
-			"2.4.6 AA"
+			"3.3.2 A"
 		],
-		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
+		"verifier": "<p>Le format de saisie est présent visuellement, et sa position permet de l'associer au champ concerné.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
-		"tools": "NVDA",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -41,11 +39,10 @@
 			"1.3.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "Toutes les étiquettes sont bien liées à leurs champs, grâce à&nbsp;: <ol><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li></ol>",
+		"verifier": "<ul><li>Toutes les étiquettes sont bien liées à leurs champs, grâce à&nbsp;: <ul><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li></ul></li><li>Tous les formats de données présents sont bien liés à leurs champs, en l'intégrant : <ul><li>directement dans la balise <code>label</code></li><li>en modifiant l'attribut <code>aria-label</code> du champ</li><li>en ajoutant l'ID du format dans l'attribut <code>aria-labelledby</code> du champ</li><li>en modifiant l'accessible description du champ avec l'attribut <code>aria-describedby</code></li></ul></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
-		"tools": "ANDI - Axe DevTools - Chrome/Firefox (arbre d'accessibilité navigateur)",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -55,15 +52,29 @@
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
 		"wcag": [
-			"1.3.1 A",
-			"3.3.2 A"
+			"1.3.1 A"
 		],
-		"verifier": "<ul><li>la présence de groupe <code>fieldset</code> ou <code>role='group'</code></li><li>chaque groupe possède une légende (<code>legend</code>, <code>aria-labelledby</code>)</li><li>chaque légende est pertinente</li></ul>",
-		"complement": "<h5>Complément&nbsp;: </h5><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
+		"verifier": "<ul><li>la présence de groupe <code>fieldset</code> ou <code>role='group'</code></li><li>chaque groupe possède une légende (<code>legend</code>, <code>aria-labelledby</code>)</li></ul>",
+		"complement": "<h4>Complément&nbsp;: </h4><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P3",
-		"tools": "",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "Chaque étiquette de champ est-elle pertinente&nbsp;?",
+		"ID": "testID-002",
+		"IDorigin": "testID-002",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<ul><li>L'étiquette de chaque champ est pertinente.</li><li>Si un format de donnée est indiqué pour un champ, il est pertinent.</li><li>Si des champs sont regroupés, vérifier que la légende est pertinente.</li></ul>",
+		"complement":"<h4>Complément</h4><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -78,22 +89,6 @@
 		],
 		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Dans le code, l'une des techniques doit être implémentée :<ul><li>Le texte ou l'élément visuel doit être intégré dans la balise label ou lié au champ du formulaire (ex: avec un <code>aria-labelledby</code>...)</li><li>présence de l'attribut <code>required</code> ou <code>aria-required</code></li></ul></li></ul>",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
-		"group": "Formulaire",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
-		"priority": "P1",
-		"tools": "",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Formulaire",
-		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
-		"ID": "testID-005",
-		"IDorigin": "testID-005",
-		"wcag": [
-			"3.3.2 A"
-		],
-		"verifier": "<ul><li>vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné</li><li>vérifier que le format de saisie est présent dans l'<span lang=\"en\">accessible name</span> (<code>label</code>, <code>aria-label</code>, <code>aria-labelledby</code>) ou dans l'<span lang=\"en\">accessible description</span> du champ (<code>aria-describedby</code>)</li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -221,7 +216,6 @@
 		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchronement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
 		"priority": "P1",
-		"tools": "ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -231,15 +225,43 @@
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
 		"wcag": [
-			"1.3.1 A",
-			"2.4.6 AA"
+			"1.3.1 A"
 		],
-		"verifier": "<ul><li>vérifier que des titres sont présents, et représentent la structure du document</li><li>vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
+		"verifier": "<ul><li>vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-		"priority": "P1",		
-		"tools": "ANDI - HeadingsMap - Wave",
+		"complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Contenu textuel",
+		"title": "L'information est-elle structurée par l'utilisation de titres pertinents&nbsp;?",
+		"ID": "testID-083",
+		"IDorigin": "testID-083",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
+		"complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Contenu textuel",
+		"title": "Des titres de niveaux sont-ils présents pour organiser le contenu&nbsp;?",
+		"ID": "testID-084",
+		"IDorigin": "testID-084",
+		"wcag": [
+			"2.4.10 AAA"
+		],
+		"verifier": "<p>Toutes les sections de la page doivent avoir un titre qui les présentes.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": true
 	},
 	{
 		"themes": "Contenu textuel",
@@ -252,7 +274,6 @@
 		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment p) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P2",
-		"tools" :"NVDA",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -268,7 +289,6 @@
 		"exception": "Sauf si les spécifications techniques de l'applicatif le permettent",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P3",
-		"tools": "W3C Validator",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -283,7 +303,6 @@
 		"verifier": "<ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"priority": "P3",
-		"tools": "ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -313,7 +332,6 @@
 		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous&nrbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
-		"tools": "ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -328,7 +346,6 @@
 		"verifier": "<ul><li>vérifier l'<span lang=\"en\">accessible name</span> des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que l'<span lang=\"en\">accessible name</span> n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'alternative est vide</li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégré en CSS (<code>background-image</code>) </li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P0",
-		"tools": "a11y.css - a11y tools bookmarklets list images",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -344,7 +361,6 @@
 		"exception": "<ul><li>SVG (vrai texte)</li><li>cas particuliers (ex&nbsp;: logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
-		"tools": "a11y.css - a11y tools bookmarklets list images",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -404,7 +420,6 @@
 		"exception": "<ul><li>Une <code>frame</code> ou <code>iframe</code> non-informative masquée convenablement n'a pas besoin de <code>title</code>.</li><li>Un <code>title</code> n'est pas requis si le contenu de l'<code>iframe</code> n'est pas distinct du contenu environnant et n'a pas d'élément tabulable à l'intérieur, et qu'on a ajouté <code>tabindex='- 1'</code> sur l'<code>iframe</code> afin qu'il ne reçoive pas le focus.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
-		"tools": "ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -420,7 +435,6 @@
 		"exception":"<p>Les logos, textes décoratifs et les éléments inactifs n'ont pas besoin de respecter ce ratio et ne doivent donc pas entrer en compte pour la validation de ce critère</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",
-		"tools": "ANDI - Color Contrast Analyser",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -436,7 +450,6 @@
 		"complement": "<h5>Complément</h5><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P2",
-		"tools": "Firefox changer les couleurs systèmes",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -495,7 +508,6 @@
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre un <code>aria-label</code> «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P3",
-		"tools": "a11y tools bookmarklets list link et list button",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -512,7 +524,6 @@
 		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit&nbsp;:</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P3",
-		"tools": "a11y tools bookmarklets list link - ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -529,7 +540,6 @@
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
-		"tools": "a11y tools bookmarklets list link - ANDI",
 		"resultatTest": "nt",
 		"goodPractice": true
 	},
@@ -543,7 +553,6 @@
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
-		"tools": "a11y tools bookmarklets list link - ANDI",
 		"resultatTest": "nt",
 		"goodPractice": true
 	},
@@ -557,7 +566,6 @@
 		"complement": "<p>Si possible, éviter de mettre un attribut `title` incluant la mention \"nouvelle fenêtre\" du fait de sa faiblesse robustesse parmi les aides techniques</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#prevenir-lutilisateur-de-louverture-dune-nouvelle-fenetre",
 		"priority": "",
-		"tools": "a11y tools bookmarklets list link - ANDI",
 		"resultatTest": "nt",
 		"goodPractice": true
 	},
@@ -572,7 +580,6 @@
 		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P1",
-		"tools": "a11y tools bookmarklets list button - ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -600,7 +607,6 @@
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/exemples-de-composants/landmarks-aria/#main-content",
 		"priority": "",
-		"tools": "ANDI - HeadingsMap - Wave",
 		"resultatTest": "nt",
 		"goodPractice": true
 	},
@@ -718,7 +724,6 @@
 		"complement": "<h5>Exemples</h5><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-de-connaitre-le-resultat-dune-interaction-utilisateur-a-laide-de-messages-contextuels",
 		"priority": "P2",
-		"tools": "NVDA",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -790,7 +795,6 @@
 		"exception": "<p>Ne sont pas concernés les <code>accesskey</code> et les raccourcis clavier utilisant une touche de modification.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisaateur-garde-le-controle-lors-des-interactions",
 		"priority": "P3",
-		"tools": "ANDI - Trigger character key shortcuts bookmarklet",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -819,7 +823,6 @@
 		"verifier": "<p>Vérifier que le style par défaut du navigateur est préservé ou qu'un focus personnalisé est présent.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
-		"tools": "ANDI",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -893,7 +896,6 @@
 		"complement": "<h5>Bookmarklet</h5><p>Pour faciliter le test, vous pouvez utiliser le bookmarklet suivant (à glisser dans votre barre de favoris)&nbsp;: <a href='javascript:(function(){document.querySelector(%27body%27).classList.add(%27text-spacing%27);%20var%20style%20=%20document.createElement(%27style%27),%20styleContent%20=%20document.createTextNode(%27.text-spacing%20*%20{%20line-height:%201.5%20!important;%20letter-spacing:%200.12em%20!important;%20word-spacing:%200.16em%20!important;%20}%20.text-spacing%20p{%20margin-bottom:%202em%20!important;%20}%20%27);%20style.appendChild(styleContent%20);%20var%20caput%20=%20document.getElementsByTagName(%27head%27);%20caput[0].appendChild(style);%20})();'>Espacement du texte</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#permettre-daerer-le-texte",
 		"priority": "P3",
-		"tools": "a11y.css - Text Spacing",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -953,7 +955,6 @@
 		"complement": "<h5>Compléments d'information</h5><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
-		"tools": "Wave",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -969,7 +970,6 @@
 		"complement": "<h5>Complément d'information</h5><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (ex.&nbsp;: propriété <code>content</code> des pseudo classes <code>::before / :before</code> et <code>::after / : after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
-		"tools": "Wave",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -998,7 +998,6 @@
 		"exception":"<ol><li>Il existe un espacement d'au moins 24 pixels CSS avec les zones cliquables ou tactiles adjacentes.</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…).</li><li>La taille réduite est nécessaire pour convoyer l'information.</li><li>Les composants gérés par l'agent utilisateur sont utilisés tel quel.</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
 		"priority": "P2",
-		"tools": "a11y 24x24px bookmarklet",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -1198,7 +1197,6 @@
 		"verifier": "<p>Vérifier tous les composants standards (ex&nbsp;: éléments de formulaire) et créés via JavaScript (ex&nbsp;: menu déroulant)&nbsp;: </p><ul><li>chaque composant personnalisé utilise un rôle ARIA approprié (se référer au <span lang=\"en\">design pattern</span> du composant pour valider)</li><li>pour les composants dont l'utilisateur peut changer la valeur ou l'état, ces propriétés peuvent être également définies depuis un outil d'assistance (ex&nbsp;: cocher ou décocher une case à cocher)</li><li>à chaque changement d'état, l'utilisateur est notifié via son outil d'assistance (exemple valide&nbsp;: le lecteur d'écran notifie&nbsp;: «&nbsp;coché&nbsp;» ou «&nbsp;non coché&nbsp;»)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/aides-techniques/#sassurer-que-les-principales-fonctionnalites-sont-utilisables-avec-les-lecteurs-decran",
 		"priority": "P2",
-		"tools": "ANDI - NVDA - Jaws",
 		"resultatTest": "nt",
 		"goodPractice": false
 	}

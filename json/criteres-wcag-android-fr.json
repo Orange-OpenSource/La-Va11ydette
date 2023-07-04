@@ -421,7 +421,7 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang="en">scrollview</span></li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang=\"en\">scrollview</span></li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "P0",

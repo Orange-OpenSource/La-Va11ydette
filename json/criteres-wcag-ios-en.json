@@ -183,7 +183,7 @@
 		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>disabled components</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false,
+		"goodPractice": false
 	},
 	{
 		"themes": "Colors and constrasts",
@@ -847,8 +847,8 @@
 	{
 		"themes": "WebView",
 		"title": "Are the tables structured properly?",
-		"ID": "testID-064",
-		"IDorigin": "testID-64",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
 		"wcag": [
 			"1.3.1 A"
 		],

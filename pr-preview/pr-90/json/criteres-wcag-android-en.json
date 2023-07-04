@@ -17,8 +17,8 @@
     {
 		"themes": "Input screen",
 		"title": "Is every input field's label relevant?",
-		"ID": "testID-001bis",
-		"IDorigin": "testID-001bis",
+		"ID": "testID-071",
+		"IDorigin": "testID-071",
 		"wcag": [
 			"2.4.6 AA"
 		],
@@ -31,8 +31,8 @@
     {
 		"themes": "Input screen",
 		"title": "Does each form field have an accessible name?",
-		"ID": "testID-001ter",
-		"IDorigin": "testID-001ter",
+		"ID": "testID-072",
+		"IDorigin": "testID-072",
 		"wcag": [
 			"1.3.1 A"
 		],
@@ -887,7 +887,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Webview",
+		"themes": "WebView",
 		"title": "Is the main language defined, and does it correspond to the document's primary language?",
 		"ID": "testID-062",
 		"IDorigin": "testID-062",
@@ -920,8 +920,8 @@
 	{
 		"themes": "WebView",
 		"title": "Are the tables structured properly?",
-		"ID": "testID-064",
-		"IDorigin": "testID-64",
+		"ID": "testID-070",
+		"IDorigin": "testID-070",
 		"wcag": [
 			"1.3.1 A"
 		],

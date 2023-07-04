@@ -17,8 +17,8 @@
     {
 		"themes": "Écran de saisie",
 		"title": "Chaque étiquette de champ est-elle pertinente&nbsp;?",
-		"ID": "testID-001bis",
-		"IDorigin": "testID-001bis",
+		"ID": "testID-071",
+		"IDorigin": "testID-071",
 		"wcag": [
 			"2.4.6 AA"
 		],
@@ -31,8 +31,8 @@
     {
 		"themes": "Écran de saisie",
 		"title": "Chaque champ de formulaire a-t-il un nom accessible&nbsp;?",
-		"ID": "testID-001ter",
-		"IDorigin": "testID-001ter",
+		"ID": "testID-072",
+		"IDorigin": "testID-072",
 		"wcag": [
 			"1.3.1 A"
 		],
@@ -169,9 +169,8 @@
 		"exception": "<p>Les logos, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false,
-		"exception":"<p>Les logos, textes décoratifs et les éléments inactifs n'ont pas besoin de respecter ce ratio et ne doivent donc pas entrer en compte pour la validation de ce critère</p>"
-	},
+		"goodPractice": false
+		},
 	{
 		"themes": "Couleurs et contrastes",
 		"title": "Les couleurs utilisées dans les composants d'interface ou dans les éléments graphiques porteurs d'informations sont-elles suffisamment contrastées&nbsp;?",
@@ -184,8 +183,7 @@
 		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>Le manque de contraste est nécessaire pour convoyer l'information</li><li>les composants inactifs</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false,
-		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>les composants inactifs</li></ul>"
+		"goodPractice": false
 	},
 	{
 		"themes": "Couleurs et contrastes",
@@ -368,7 +366,7 @@
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang="en">scrollview</span></li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang=\"en\">scrollview</span></li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -800,7 +798,7 @@
 		"goodPractice": false
 	},
      {
-		"themes": "Webview",
+		"themes": "WebView",
 		"title": "Le code source est-il valide&nbsp;?",
 		"ID": "testID-062",
 		"IDorigin": "testID-062",

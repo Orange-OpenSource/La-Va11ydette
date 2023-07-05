@@ -797,22 +797,6 @@
 		"priority": "P3",
 		"goodPractice": false
 	},
-        {
-		"themes": "WebView",
-		"title": "Is the source code valid?",
-		"ID": "testID-064",
-		"IDorigin": "testID-064",
-		"wcag": [
-			"4.1.1 A"
-		],
-		"verifier": "<p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
-		"exception": "Unless the technical specifications of the application allow it",
-        "group": "WebView",
-        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
-		"priority": "P3",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
 	{
 		"themes": "Webview",
 		"title": "Is the main language defined, and does it correspond to the document's primary language?",
@@ -829,32 +813,14 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "WebView",
-		"title": "Are changes in language clearly identified?",
-		"ID": "testID-063",
-		"IDorigin": "testID-063",
-		"wcag": [
-			"3.1.2 AA"
-		],
-		"verifier": "<p>Check that a <code>lang</code> attribute is present for words and expressions in a foreign language.</p>",
-		"exceptions": "<p>For words and expressions in a foreign language which are in everyday use (déjà vu, hors d'oeuvre…) or for proper nouns, do not indicate a change of language.</p>",
-		"group": "WebView",
-        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
-		"priority": "P3",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
+		"themes": "Voice Navigation",
 		"title": "Are the tables structured properly?",
-		"ID": "testID-061",
-		"IDorigin": "testID-061",
+		"ID": "testID-070",
+		"IDorigin": "testID-070",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>If the table is a presentation table, remove any semantic tag or attribute of a table (<code>caption, summary, th, scope, headers</code>…) and add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
+		"verifier": "<p>If the table is a data table&nbsp;:</p><ol><li>If a title is present, check that it is rendered to the screen reader and is relevant (identifies the nature of the data presented in the table).</li><li>If the table is complex, a summary must be included (to help understand the nature of the data and the construction of the table).</li><li>Headers must not be empty</li><li>Row and column headers must be correctly rendered and linked to data cells</li></ol>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false

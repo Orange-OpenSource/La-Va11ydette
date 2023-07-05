@@ -359,6 +359,19 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Voice Navigation",
+		"title": "Are the tables structured properly?",
+		"ID": "testID-070",
+		"IDorigin": "testID-070",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>If the table is a data table&nbsp;:</p><ol><li>If a title is present, check that it is rendered to the screen reader and is relevant (identifies the nature of the data presented in the table).</li><li>If the table is complex, a summary must be included (to help understand the nature of the data and the construction of the table).</li><li>Headers must not be empty</li><li>Row and column headers must be correctly rendered and linked to data cells</li></ol>",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
 		"themes": "Selection control",
 		"title": "Is all functionality of the page content operable through control selection tool or a keyboard interface?",
 		"ID": "testID-027",
@@ -809,19 +822,6 @@
         "group": "WebView",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
 		"priority": "P3",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Voice Navigation",
-		"title": "Are the tables structured properly?",
-		"ID": "testID-070",
-		"IDorigin": "testID-070",
-		"wcag": [
-			"1.3.1 A"
-		],
-		"verifier": "<p>If the table is a data table&nbsp;:</p><ol><li>If a title is present, check that it is rendered to the screen reader and is relevant (identifies the nature of the data presented in the table).</li><li>If the table is complex, a summary must be included (to help understand the nature of the data and the construction of the table).</li><li>Headers must not be empty</li><li>Row and column headers must be correctly rendered and linked to data cells</li></ol>",
-		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},

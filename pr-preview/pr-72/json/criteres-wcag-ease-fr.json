@@ -818,24 +818,9 @@
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
-			"2.4.7 A"
+			"2.4.7 AA"
 		],
 		"verifier": "<p>Vérifier que le style par défaut du navigateur est préservé ou qu'un focus personnalisé est présent.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
-		"priority": "P2",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Navigation clavier",
-		"title": "Le focus est-il suffisament visible ?",
-		"ID": "testID-082",
-		"IDorigin": "testID-082",
-		"wcag": [
-			"2.4.11 AA"
-		],
-		"verifier": "<p>Vérifier que l'indicateur de focus :</p><ul><li>A une surface minimum de 1px CSS de large sur 2 fois la longueur du côté le plus long du rectangle entourant le composant quand il n'a pas le focus sauf si il est d'au moins 4px CSS sur le plus petit côté </li><li>A un contraste minimum de 3:1 <ul><li>avec la ou les couleurs adjacentes au composant et </li><li>entre la couleur du composant au focus et sans focus, ou est d'au moins 2px CSS de large </li></ul></li></ul>",
-		"exception": "<p>L'indicateur de focus est déterminé par l'agent utilisateur par défaut ou est non modifiable, ou l'indicateur de focus est celui par défaut de l'agent utilisateur et à condition que la couleur de fond ne soit pas modifiée lors de la prise de focus </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -847,7 +832,7 @@
 		"ID": "testID-081",
 		"IDorigin": "testID-081",
 		"wcag": [
-			"2.4.12 AA"
+			"2.4.11 AA"
 		],
 		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",

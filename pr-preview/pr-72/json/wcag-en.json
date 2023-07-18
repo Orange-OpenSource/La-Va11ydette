@@ -290,7 +290,7 @@
 		},
 		{
 			"wcag": "2.4.7",
-			"level": "A",
+			"level": "AA",
 			"name": "Focus Visible",
 			"tests": [],
 			"resultat": "na",
@@ -325,15 +325,6 @@
 		},
 		{
 			"wcag": "2.4.11",
-			"level": "AA",
-			"name": "Focus Appearance",
-			"tests": [],
-			"resultat": "nt",
-			"comment": [],
-			"page": []
-		},
-		{
-			"wcag": "2.4.12",
 			"level": "AA",
 			"name": "Unmasked Focus",
 			"tests": [],

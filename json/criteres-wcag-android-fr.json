@@ -170,8 +170,8 @@
 	{
 		"themes": "Écran de saisie",
 		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redondante ?",
-		"ID": "testID-065",
-		"IDorigin": "testID-065",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
 		"wcag": [
 			"3.3.9 AA"
 		],
@@ -559,8 +559,8 @@
 	{
 		"themes": "Navigation générale",
 		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative ?",
-		"ID": "testID-066",
-		"IDorigin": "testID-066",
+		"ID": "testID-074",
+		"IDorigin": "testID-074",
 		"wcag": [
 			"2.5.7 AA"
 		],

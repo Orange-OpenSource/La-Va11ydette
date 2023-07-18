@@ -499,8 +499,8 @@
 	{
 		"themes": "Navigation générale",
 		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative ?",
-		"ID": "testID-065",
-		"IDorigin": "testID-065",
+		"ID": "testID-074",
+		"IDorigin": "testID-074",
 		"wcag": {
 			"0": "2.5.7 AA"
 		},
@@ -567,8 +567,8 @@
 	{
 		"themes": "Navigation générale",
 		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
-		"ID": "testID-062",
-		"IDorigin": "testID-062",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
 		"wcag": {
 			"0": "3.2.6 A"
 		},

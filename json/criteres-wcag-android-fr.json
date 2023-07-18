@@ -504,7 +504,7 @@
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": [
-			"2.4.7 A"
+			"2.4.7 AA"
 		],
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran, que ce soit avec Switch Access ou la navigation clavier.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
@@ -518,7 +518,7 @@
 		"ID": "testID-062",
 		"IDorigin": "testID-062",
 		"wcag": [
-			"2.4.12 AA"
+			"2.4.11 AA"
 		],
 		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",

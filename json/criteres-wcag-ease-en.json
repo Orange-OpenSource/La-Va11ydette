@@ -818,24 +818,9 @@
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
-			"2.4.7 A"
+			"2.4.7 AA"
 		],
 		"verifier": "<p>Check that the default browser style is preserved or that a custom focus is applied.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
-		"priority": "P2",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Keyboard navigation",
-		"title": "Is the focus visible enough?",
-		"ID": "testID-082",
-		"IDorigin": "testID-082",
-		"wcag": [
-			"2.4.11 A"
-		],
-		"verifier": "<p>Check that the focus indicator:</p><ul><li>Has a minimum area of 1px CSS wide by 2 times the length of the longest side of the rectangle surrounding the component when it has no focus unless it is at least 4px CSS on the shortest side</li><li>Has a minimum contrast of 3:1<ul><li>with the color or colors adjacent to the component and</li><li>between focus and unfocused component color, or is at least 2px CSS wide</li></ul></li></ul>",
-		"exception":"<p>The focus indicator is determined by the default user agent or is not editable, or the focus indicator is the user agent's default and provided that the background color is not changed when shooting focus</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -847,7 +832,7 @@
 		"ID": "testID-081",
 		"IDorigin": "testID-081",
 		"wcag": [
-			"2.4.12 A"
+			"2.4.11 AA"
 		],
 		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",

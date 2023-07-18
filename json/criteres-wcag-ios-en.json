@@ -447,7 +447,7 @@
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": {
-			"0": "2.4.7 A"
+			"0": "2.4.7 AA"
 		},
 		"verifier": "<p>Check that the focus is clearly and easily visible.</p>",
 		"resultatTest": "nt",
@@ -460,7 +460,7 @@
 		"ID": "testID-061",
 		"IDorigin": "testID-061",
 		"wcag": {
-			"0": "2.4.12 AA"
+			"0": "2.4.11 AA"
 		},
 		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
 		"resultatTest": "nt",

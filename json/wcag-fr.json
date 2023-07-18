@@ -290,7 +290,7 @@
 		},
 		{
 			"wcag": "2.4.7",
-			"level": "A",
+			"level": "AA",
 			"name": "Visibilité du focus",
 			"tests": [],
 			"resultat": "na",
@@ -326,15 +326,6 @@
 		},
 		{
 			"wcag": "2.4.11",
-			"level": "AA",
-			"name": "Apparence du focus",
-			"tests": [],
-			"resultat": "nt",
-			"comment": [],
-			"page": []
-		},
-		{
-			"wcag": "2.4.12",
 			"level": "AA",
 			"name": "Focus non masqué",
 			"tests": [],

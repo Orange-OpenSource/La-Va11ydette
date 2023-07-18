@@ -448,7 +448,7 @@
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": {
-			"0": "2.4.7 A"
+			"0": "2.4.7 AA"
 		},
 		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran.</p>",
 		"resultatTest": "nt",
@@ -461,7 +461,7 @@
 		"ID": "testID-061",
 		"IDorigin": "testID-061",
 		"wcag": {
-			"0": "2.4.12 AA"
+			"0": "2.4.11 AA"
 		},
 		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
 		"resultatTest": "nt",
@@ -545,7 +545,7 @@
 		"wcag": {
 			"0": "2.5.8 AA"
 		},
-		"verifier": "<p>La zone cliquable ou tactile est au moins ed 44pt(hauteur ET largeur)</p>",
+		"verifier": "<p>La zone cliquable ou tactile est au moins de 44pt(hauteur ET largeur)</p>",
 		"exception":"<ul><li>Il existe un espacement d'au moins 21pt avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Les composants gérés par l'agent utilisateur sont utilisés tel quel.</li><li>Si plusieurs zones de clicks effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",

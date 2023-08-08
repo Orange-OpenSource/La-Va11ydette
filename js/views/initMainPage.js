@@ -6,14 +6,14 @@ function initMainMenu() {
 	var htmlMainMenu = "";
 	
 	htmlMainMenu += '<div class="nav-item dropdown">';
-	htmlMainMenu += '<a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+	htmlMainMenu += '<button class="nav-link dropdown-toggle" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 	htmlMainMenu += langVallydette.selectAchecklist;
-	htmlMainMenu += '</a>';
-	htmlMainMenu += '<div class="dropdown-menu dropdown-menu-right">';
+	htmlMainMenu += '</button>';
+	htmlMainMenu += '<ul class="dropdown-menu dropdown-menu-dark">';
 	
-	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += ' <a class="dropdown-item' + (c === currentCriteriaListName ? ' active' : '') + '" href="./?list=' + c + '&lang=' + globalLang + '" ' + (c === currentCriteriaListName ? ' aria-current="page"' : '') + '>' + checklistVallydette[c]['name-' + globalLang] + '</a>');
+	Object.keys(checklistVallydette).forEach(c => htmlMainMenu += '<li><a class="dropdown-item' + (c === currentCriteriaListName ? ' active' : '') + '" href="./?list=' + c + '&lang=' + globalLang + '" ' + (c === currentCriteriaListName ? ' aria-current="page"' : '') + '>' + checklistVallydette[c]['name-' + globalLang] + '</a></li>');
 	
-	htmlMainMenu += '</div>';
+	htmlMainMenu += '</ul>';
 	htmlMainMenu += '</div>';
 	
 	document.getElementById("checklist").innerHTML = htmlMainMenu;
@@ -47,12 +47,12 @@ function initAuditPage() {
               
             </div>
 
-            <div class="o-nav-local bg-white navbar-light my-3 d-print-none" id="pageManager"></div>
+            <div class="o-nav-local bg-white navbar my-3 p-0 d-print-none" id="pageManager"></div>
 
             <div class="container">
                 <div class="row align-items-start position-relative">
                     <div class="col-md-2 sticky-md-top pt-4 pe-0 col-print-12" id="currentPageManager">
-                        <h3 id="pageName" class="mb-0"></h3>
+                        <h3 id="pageName" class="mb-0 text-break"></h3>
                         <div class="border-top border-light my-3"></div>
                         <div id="contextualMenu" class="d-flex align-content-stretch flex-wrap w-100 d-print-none">
                             <button class="btn btn-secondary btn-icon" id="btnPageName"
@@ -122,12 +122,12 @@ function initAuditPage() {
 	Object.keys(checklistVallydette).forEach(function(c){
 		
 		htmlHomePage += '<div class="col-sm-6 col-md-4 col-xl-3 mb-3">';
-		htmlHomePage += '<div class="card h-100 border-0">';
+		htmlHomePage += '<div class="card h-100">';
 		htmlHomePage += '<div class="card-body">';
         htmlHomePage += '  <h3 class="card-title bg-transparent">' + checklistVallydette[c]['name-' + globalLang] + '</h3>';
-        htmlHomePage += ' <p class="card-subtitle">' + checklistVallydette[c]['description-' + globalLang] + '</p>';
+        htmlHomePage += ' <p class="card-text">' + checklistVallydette[c]['description-' + globalLang] + '</p>';
 		htmlHomePage += ' </div>';
-        htmlHomePage += '<div class="card-footer py-3 border-0">';
+        htmlHomePage += '<div class="card-footer py-3">';
         htmlHomePage += '  <a href="./?list=' + c + '&lang=' + globalLang + '" class="btn btn-info  stretched-link">';
         htmlHomePage +=  langVallydette.run;
         htmlHomePage += '   <span class="visually-hidden">' + checklistVallydette[c]['name-' + globalLang] + '</span>';
@@ -366,8 +366,8 @@ function defaultView(currentRefTests){
 		htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 		htmlrefTests += '<ul class="list-inline m-0">';
 		htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-		htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
-		htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
+		htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'</span><span class="visually-hidden">' + langVallydette.editIssue + ' : ' + currentRefTests[i].title  +'</span></button></li>';
+		htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue+ ' : ' + currentRefTests[i].title  +'</span></button></li>';
 		htmlrefTests += '</ul>';
 		htmlrefTests += '</div>';
 		htmlrefTests += '<button class="btn btn-secondary btn-icon d-print-none btn-expanded" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-' + currentTest + '" aria-expanded="false" aria-controls="collapse-' + currentTest + '">'+htmlIcon.arrowDown+'<span class="visually-hidden">' + langVallydette.informations + '</span></button></div>';
@@ -498,8 +498,8 @@ function rgaaView(currentRefTests){
 			htmlrefTests += '<div class="btn-group" role="group" aria-label="' + langVallydette.issueManagement + '">';
 			htmlrefTests += '<ul class="list-inline m-0">';
 			htmlrefTests += '<li class="list-inline-item" aria-hidden="true">' + langVallydette.issues + '</li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + '</span></button></li>';
-			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + '</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueDisplayBtn' + currentTest + '" class="btn btn-secondary btn-icon me-1 d-print-none" title="' + langVallydette.editIssue + '" data-bs-toggle="modal" data-bs-target="#modalEditIssue" ' + ((currentRefTests[i].issues.length === 0) ? "disabled" : "") + '>'+htmlIcon.edit+'<span class="visually-hidden">' + langVallydette.editIssue + ' : ' + currentRefTests[i].title  +'</span></button></li>';
+			htmlrefTests += '<li class="list-inline-item"><button type="button" id="issueBtn' + currentTest + '" class="btn btn-secondary btn-icon d-print-none" title="' + langVallydette.addIssue + '" data-bs-toggle="modal" data-bs-target="#modalAddIssue">'+htmlIcon.add+'</span><span class="visually-hidden">' + langVallydette.addIssue + ' : ' + currentRefTests[i].title  +'</span></button></li>';
 			htmlrefTests += '</ul>';
 			htmlrefTests += '</div>';
 				

@@ -13,7 +13,7 @@ function initSummaryMenu() {
      document.querySelectorAll("h3, h4, h5").forEach((heading,index) =>{
         let headingLevel = heading.tagName.slice(1)
         if(headingLevel>level){
-            menuHTML+='<ul>';
+            menuHTML+='<ul class="m-1">';
         }
         else if(index!=0){
             menuHTML+='</li>';

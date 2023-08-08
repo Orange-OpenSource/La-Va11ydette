@@ -164,6 +164,7 @@
 	
 	checkTheVersion(dataVallydette.checklist.version);	
 	loadIssue();
+	jsonUpdate();
 
 	runLangRequest();						
 }
@@ -433,7 +434,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="mb-3">';
-	htmlModal += '<label class="is-required form-label" for="nameValue">' + langVallydette.name + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
+	htmlModal += '<label class="form-label" for="nameValue">' + langVallydette.name + ' <span class="text-danger">*</span></label>';
 	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
 	htmlModal += '</div>';
 	

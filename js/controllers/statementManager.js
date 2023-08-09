@@ -225,6 +225,7 @@ function initStatementObject() {
 	
 		setTimeout(() => {
 			showStatementWizard();
+			initAnchorMenu();
 		  }, "100")
 		  
 	
@@ -237,7 +238,7 @@ function initStatementObject() {
 */
 function showStatementWizard() {
 	
-	setPageName(langVallydette.statement);
+	setPageName(langVallydette.statementExport);
 	utils.setPageTitle(langVallydette.statementTxt1);
 	removeContextualMenu();
 	removeFilterSection();
@@ -247,6 +248,7 @@ function showStatementWizard() {
 	btnStatementXmlExport.innerHTML = "XML";
 	btnStatementXmlExport.setAttribute('id', "btnStatementXmlExport");
 	btnStatementXmlExport.setAttribute('title', langVallydette.xmlBtn);
+	btnStatementXmlExport.setAttribute('aria-label', langVallydette.xmlBtn);
 	btnStatementXmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementXmlExport);
 	
@@ -254,6 +256,7 @@ function showStatementWizard() {
 	btnStatementHtmlExport.innerHTML = "HTML";
 	btnStatementHtmlExport.setAttribute('id', "btnStatementHtmlExport");
 	btnStatementHtmlExport.setAttribute('title', langVallydette.htmlBtn);
+	btnStatementHtmlExport.setAttribute('aria-label', langVallydette.htmlBtn);
 	btnStatementHtmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none");
 	document.getElementById("contextualMenu").appendChild(btnStatementHtmlExport);
 	
@@ -269,6 +272,13 @@ function showStatementWizard() {
 		btnStatementXmlExport.classList.add("disabled");
 		btnStatementHtmlExport.classList.add("disabled");
 	}
+
+
+	var now=new Date(2013,11,31);
+     var dateFormat=now.toLocaleDateString();
+     dateFormat=dateFormat.replace("31","dd");
+     dateFormat=dateFormat.replace("12","mm");
+     dateFormat=dateFormat.replace("2013","yyyy");
 
 	let statementWizardContent = '';
 	
@@ -309,27 +319,30 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-name" class="form-label">' + langVallydette.projectName + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<input type="text" class="form-control" id="input-name" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.name + '" required >';
-    statementWizardContent += '</div>';
+    statementWizardContent += '<label for="input-name" id="input-nameLabel" class="form-label">' + langVallydette.projectName + ' <span class="text-danger">*</span></label>';
+    statementWizardContent += '<input type="text" class="form-control" id="input-name" aria-labelledby="input-name-label" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.name + '" required aria-invalid="false">';
+    statementWizardContent += '<div id="input-nameError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.projectNameError + ' </p></div>';
+	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-lang" class="">' + langVallydette.lang + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<select class="form-select" id="input-lang"  style="scroll-margin-top: 10.35em;"  required>';
+    statementWizardContent += '<label for="input-lang" id="input-langLabel" class="form-label">' + langVallydette.lang + ' <span class="text-danger">*</span></label>';
+    statementWizardContent += '<select class="form-select" id="input-lang" aria-labelledby="input-langLabel"  style="scroll-margin-top: 10.35em;"  required aria-invalid="false">';
     statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
     statementWizardContent += '<option value="fr" ' + (dataVallydette.statement.lang === "fr" ? "selected" : "") + '>' + langVallydette.french + '</option>';
     statementWizardContent += '<option value="en" ' + (dataVallydette.statement.lang === "en" ? "selected" : "") + '>' + langVallydette.english + '</option>';
     statementWizardContent += '</select>';
-    statementWizardContent += '</div>';
+    statementWizardContent += '<div id="input-langError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.langError + ' </p></div>';
+	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
 	statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-date"  class="form-label">' + langVallydette.date + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<input type="date" class="form-control" id="input-date" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required>';
-    statementWizardContent += '</div>';
+    statementWizardContent += '<label for="input-date" id="input-dateLabel" class="form-label">' + langVallydette.date + ' <span class="text-danger">*</span></label>';
+    statementWizardContent += '<input type="date" class="form-control" id="input-date" aria-labelledby="input-dateLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required aria-invalid="false">';
+    statementWizardContent += '<div id="input-dateError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.dateError + ' ' + dateFormat +'</p></div>';
+	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="col-lg-3">';
@@ -471,7 +484,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-derogation">' + langVallydette.derogations + '</label>';
+    statementWizardContent += '<label class="form-label" for="input-derogation">' + langVallydette.derogations + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
 	statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
@@ -552,11 +565,23 @@ function showStatementWizard() {
 	let exportFileName = 'statementData.json';
 	document.getElementById("exportStatementData").setAttribute('download', exportFileName);
 	
-	document.getElementById("statementForm").addEventListener('submit', function (e) {
-		event.preventDefault();
-		saveStatement(this, e.submitter.id);
-	});
+	statementSaveAndDownloadBtn
 	
+	var statementSaveBtn = document.getElementById("statementSaveBtn");
+
+	statementSaveBtn.addEventListener('click',function(e){
+		e.preventDefault();
+		checkFormState("statementSaveBtn")
+	})
+
+	var statementSaveAndDownloadBtn = document.getElementById("statementSaveAndDownloadBtn");
+
+	statementSaveAndDownloadBtn.addEventListener('click',function(e){
+		e.preventDefault();
+		checkFormState("statementSaveAndDownloadBtn")
+	})
+
+
 	document.getElementById("statementForm").addEventListener('focusin', function (e) {
 		if (document.getElementById('StatementFormInfo')) {
 			document.getElementById('StatementFormInfo').remove();
@@ -564,6 +589,44 @@ function showStatementWizard() {
 	});
 		
 }
+
+/**
+ * Used to check form statement and what button sumbit
+*/
+checkFormState = function(buttonSubmitter){
+	var error =0;
+
+		var propertyDate = document.getElementById("input-date");
+		if(propertyDate.value!==""){
+			validField(document.getElementById('input-dateError'), propertyDate, "input-dateLabel")
+		}
+		else{
+			invalidField(document.getElementById('input-dateError'), propertyDate, "input-dateLabel", "input-dateError");
+			error++;
+		}
+
+
+		var propertyLang=document.getElementById("input-lang");
+		if(propertyLang.value!==""){
+			validField(document.getElementById('input-langError'), propertyLang, "input-langLabel")
+		}
+		else{
+			invalidField(document.getElementById('input-langError'), propertyLang, "input-langLabel", "input-langError");
+			error++;
+		}
+
+		var propertyName=document.getElementById("input-name");
+		if(propertyName.value!==""){
+			validField(document.getElementById('input-nameError'), propertyName, "input-nameLabel")
+		}
+		else{
+			invalidField(document.getElementById('input-nameError'), propertyName, "input-nameLabel", "input-nameError");
+			error++;
+		}
+		if(error==0){
+			saveStatement(document.getElementById("statementForm"), buttonSubmitter);
+		}
+} 
 
 /**
  * Used to update statement properties state

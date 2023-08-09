@@ -4,8 +4,6 @@
  function initAnchorMenu() {
 	let AnchorMenuHTML='';
 
-	
-
 	 let allThematiques=[];
 	 document.querySelectorAll("h3.sticky-top").forEach( h2Them =>{
 		allThematiques.push(h2Them.firstChild.textContent);

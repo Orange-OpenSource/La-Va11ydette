@@ -71,7 +71,7 @@ function initAuditPage() {
                         </div>
 						<div class="border-top border-light my-3 w-100"></div>
 						<div id="anchornav">
-							<h4 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
+							<h2 id="title-nav-anchor" class="d-block my-2 pb-2 border-bottom border-light border-1"></h2>
 							<div class="bd-toc">
 							<nav id="tableOfContents" aria-labelledby="title-nav-anchor" style="min-height: 4rem;">	
 							</nav>
@@ -426,7 +426,7 @@ function wcagView(currentRefTests){
 	if(document.getElementById('btnShowStatement') === null) {
 		var btnStatement = utils.addElement('button', 'btnShowStatement', langVallydette.statement, false, false, ["btn", "btn-secondary", "ms-2", "d-print-none"], langVallydette.statementTitle);
 		document.getElementById("auditInfoManager").appendChild(btnStatement);
-		document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject(); initAnchorMenu();});
+		document.getElementById("btnShowStatement").addEventListener('click',  function () {initStatementObject();});
 	}
 
 	return defaultView(currentRefTests);

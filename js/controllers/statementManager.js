@@ -276,7 +276,11 @@ function showStatementWizard() {
 
 	var now=new Date(2013,11,31);
      var dateFormat=now.toLocaleDateString();
-     dateFormat=dateFormat.replace("31","dd");
+	 dateFormat=dateFormat.replace("31","dd");
+	 if(navigator.language =="fr"){
+		dateFormat=dateFormat.replace("dd","jj");
+	 }
+    
      dateFormat=dateFormat.replace("12","mm");
      dateFormat=dateFormat.replace("2013","yyyy");
 
@@ -301,8 +305,8 @@ function showStatementWizard() {
     statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file" aria-describedby="descStatementImport">';
     statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' + langVallydette.dataBrowse + '">' + langVallydette.selectData + '</label>';
     statementWizardContent += '                    </div>';
-    statementWizardContent += '                    <div class="input-group-append">';
-    statementWizardContent += '                        <button class="btn btn-secondary" type="button" id="importStatementData">' + langVallydette.template.btnImportTxt + '</button>';
+    statementWizardContent += '                    <div class="input-group">';
+    statementWizardContent += '                        <button class="btn btn-secondary my-2" type="button" id="importStatementData">' + langVallydette.template.btnImportTxt + '</button>';
     statementWizardContent += '                    </div>';
     statementWizardContent += '                </div>';
     statementWizardContent += '            </div>';

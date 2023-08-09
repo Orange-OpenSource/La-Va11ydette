@@ -73,12 +73,14 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	htmlModal += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlModal += (issuesVallydette[targetIdOrigin]) ? getPredefinedIssues(targetIdOrigin) : "";
 	htmlModal += '<div class="mb-3">';
-	htmlModal += '<label class="is-required form-label" for="issueNameValue">' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
-	htmlModal += '<input type="text" class="form-control" id="issueNameValue" value="" required>';
+	htmlModal += '<label class="form-label" for="issueNameValue" id="issueNameValueLabel">' + langVallydette.summary + ' <span class="text-danger">*</span></label>';
+	htmlModal += '<input type="text" class="form-control" id="issueNameValue" aria-labelledby="issueNameValueLabel" value="" required aria-invalid="false">';
+	htmlModal += '<div id="issueNameValueError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.summaryError + ' </p></div>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="mb-3">';
-	htmlModal += '<label class="is-required mt-2 form-label" for="issueDetailValue">' + langVallydette.description + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span> </label>';
-	htmlModal += '<textarea class="form-control" id="issueDetailValue" rows="8" required></textarea>';
+	htmlModal += '<label class="mt-2 form-label" for="issueDetailValue" id="issueDetailValueLabel">' + langVallydette.description + ' <span class="text-danger">*</span></label>';
+	htmlModal += '<textarea class="form-control" id="issueDetailValue" aria-labelledby="issueDetailValueLabel" rows="8" required aria-invalid="false"></textarea>';
+	htmlModal += '<div id="issueDetailValueError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.descriptionError + ' </p></div>';
 	htmlModal += '</div>';
 	htmlModal += '<div class="mb-3">';
 	htmlModal += '<label for="issueSolutionValue" class="mt-2 form-label">' + langVallydette.solution + ' </label>';
@@ -101,22 +103,43 @@ setIssue = function (targetId, title, targetIdOrigin) {
 	let elModal = document.getElementById('modalAddIssue');
 	elModal.innerHTML = htmlModal;
 
-	let currentEditForm = document.getElementById('editIssueForm');
- 
-	currentEditForm.addEventListener('submit', function () {
-		event.preventDefault();
-		
-		addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);
-		document.getElementById('closeIssueBtnBtn').click();
-		
+	var saveIssueBtnBtn = document.getElementById('saveIssueBtnBtn');
 
-	});
+	saveIssueBtnBtn.addEventListener('click', function (e) {
+		e.preventDefault();
+		var error=0;
+		var propertyName = document.getElementById("issueNameValue");
+		var propertyDescription = document.getElementById("issueDetailValue");
+
+		if(propertyDescription.value==""){
+			invalidField(document.getElementById('issueDetailValueError'), propertyDescription, "issueDetailValueLabel", "issueDetailValueError")
+			error++;
+		}
+		else{
+			validField(document.getElementById('issueDetailValueError'), propertyDescription, "issueDetailValueLabel")
+		}
+		
+		if(propertyName.value==""){
+
+			invalidField(document.getElementById('issueNameValueError'), propertyName, "issueNameValueLabel", "issueNameValueError");
+			error++;
+		}
+		else{
+			validField(document.getElementById('issueNameValueError'), propertyDescription, "issueNameValueLabel")
+		}
+
+		if(error==0){
+			addIssue(targetId, issueNameValue.value, issueDetailValue.value, issueSolutionValue.value, issueTechnicalSolutionValue.value);
+			document.getElementById('closeIssueBtnBtn').click();
+		}
+		
+	})
 	
 	
 	if (document.getElementById('btnValidatePredefined')) {
 		
-			document.getElementById('btnValidatePredefined').addEventListener('click', function () {
-			event.preventDefault();
+			document.getElementById('btnValidatePredefined').addEventListener('click', function (e) {
+			e.preventDefault();
 			
 			issueNameValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].title;
 			issueDetailValue.value = issuesVallydette[targetIdOrigin][issuePredefined.value].detail;
@@ -221,10 +244,12 @@ editIssue = function (targetId, issueIndex) {
 	
 	htmlEditIssue += '<form id="editIssueForm-'+ targetId +'-'+ issueIndex+'">';
 	htmlEditIssue += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
-	htmlEditIssue += '<label class="is-required form-label" for="issueNameValue-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
-	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required >';
-	htmlEditIssue += '<label class="is-required mt-2 form-label" for="issueDetailValue-' + issueIndex + '">' + langVallydette.description + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
-	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '" rows="8" required>' + utils.escape_html(getIssue(targetId, 'issueDetail', issueIndex)) + '</textarea>';
+	htmlEditIssue += '<label class="form-label" for="issueNameValue-' + issueIndex + '" id="issueNameValueLabel-' + issueIndex + '"> ' + langVallydette.summary + ' <span class="text-danger">*</span></label>';
+	htmlEditIssue += '<input type="text" class="form-control" id="issueNameValue-' + issueIndex + '" aria-labelledby="issueNameValueLabel-' + issueIndex + '" value="' + utils.escape_html(getIssue(targetId, 'issueTitle', issueIndex)) + '" required aria-invalid="false">';
+	htmlEditIssue += '<div id="issueNameValueError-' + issueIndex + '" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.summaryError + ' </p></div>';
+	htmlEditIssue += '<label class="mt-2 form-label" for="issueDetailValue-' + issueIndex + '" id="issueDetailValueLabel-'+issueIndex+'">' + langVallydette.description + ' <span class="text-danger">*</span></label>';
+	htmlEditIssue += '<textarea class="form-control" id="issueDetailValue-' + issueIndex + '" aria-labelledby="issueDetailValueLabel-' + issueIndex + '" rows="8" required aria-invalid="false">' + utils.escape_html(getIssue(targetId, 'issueDetail', issueIndex)) + '</textarea>';
+	htmlEditIssue += '<div id="issueDetailValueError-' + issueIndex + '" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.descriptionError + ' </p></div>';
 	htmlEditIssue += '<label for="issueSolutionValue-' + issueIndex + '" class="mt-2 form-label">' + langVallydette.solution + '</label>';
 	htmlEditIssue += '<textarea class="form-control" id="issueSolutionValue-' + issueIndex + '">' + utils.escape_html(getIssue(targetId, 'issueSolution', issueIndex)) + '</textarea>';
 	htmlEditIssue += '<label for="issueTechnicalSolutionValue-' + issueIndex + '" class="mt-2 v">' + langVallydette.technical_solution + '</label>';
@@ -239,6 +264,36 @@ editIssue = function (targetId, issueIndex) {
 	
 	let elTitle = document.getElementById('issueNameValue-' + issueIndex);
 	elTitle.focus();
+
+	let saveIssueBtn = document.getElementById('saveIssueBtn-'+ targetId +'-'+ issueIndex );
+	saveIssueBtn.addEventListener('click', function (e) {
+		e.preventDefault();
+		var error=0;
+		var propertyName = document.getElementById('issueNameValue-' + issueIndex );
+		var propertyDescription = document.getElementById('issueDetailValue-' + issueIndex );
+
+		if(propertyDescription.value==""){
+			invalidField(document.getElementById('issueDetailValueError-' + issueIndex ), propertyDescription, 'issueDetailValueLabel-' + issueIndex , 'issueDetailValueError-' + issueIndex )
+			error++;
+		}
+		else{
+			validField(document.getElementById('issueDetailValueError-' + issueIndex ), propertyDescription, 'issueDetailValueLabel-' + issueIndex )
+		}
+		
+		if(propertyName.value==""){
+
+			invalidField(document.getElementById('issueNameValueError-' + issueIndex ), propertyName, 'issueNameValueLabel-' + issueIndex , 'issueNameValueError-' + issueIndex );
+			error++;
+		}
+		else{
+			validField(document.getElementById('issueNameValueError-' + issueIndex ), propertyDescription, 'issueNameValueLabel-' + issueIndex )
+		}
+
+		if(error==0){
+			saveIssue(targetId, issueIndex, document.getElementById('editIssueForm-'+ targetId +'-'+ issueIndex));
+		}
+
+	});
 
 	let issueForm = document.getElementById('editIssueForm-'+ targetId +'-'+ issueIndex);
 	issueForm.addEventListener('submit', function (event) {
@@ -300,7 +355,7 @@ cancelIssue = function (targetId, issueIndex, issueTitle, issueDetail) {
 	let elIssueCard = document.getElementById('issue-body-' + targetId + '-' + issueIndex);
 	elIssueCard.innerHTML = htmlEditIssue;
 	let elIssueCardHeader = document.getElementById('btnIssue' + targetId + '-' + issueIndex);
-	elIssueCardHeader.innerHTML = utils.escape_html(issueTitle);
+	elIssueCardHeader.innerHTML = '#' + (issueIndex+1) + ' '+ utils.escape_html(issueTitle);
 	
 	document.getElementById('editIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";
 	document.getElementById('deleteIssueBtn-' + targetId + '-' + issueIndex).style.display = "inline-flex";

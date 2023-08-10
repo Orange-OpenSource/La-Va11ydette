@@ -380,7 +380,7 @@ function showStatementWizard() {
 	
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
-	
+
 	statementWizardContent += '<div class="col-lg-3" role="group" aria-labelledby="contactListHeading">';
 	statementWizardContent += '<h4 class="text-break" id="contactListHeading">' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">'+htmlIcon.edit+'</span></button></h4>';
 	statementWizardContent += '<div class="mb-3" id="contactList">';

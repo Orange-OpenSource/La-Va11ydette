@@ -133,7 +133,8 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
+		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex.&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
+		"exception":"<p>Lorsqu'il est impossible de spécifiquement identifier le champ en erreur (ex.&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier spécifiquement lequel des deux champs est en erreur), le critère est conforme.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
@@ -397,8 +398,8 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24px</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5px</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li></ul>",
-		"exception":"<p>Les logos, textes décoratifs et les éléments inactifs n'ont pas besoin de respecter ce ratio et ne doivent donc pas entrer en compte pour la validation de ce critère</p>",
+		"verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24px</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5px</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li><li>vérifier que le rapport de contraste est suffisant au survol de la souris et au focus</li></ul>",
+		"exception":"<p>Les logos ou tous les éléments purement décoratifs.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -413,8 +414,8 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Si la couleur du texte est redéfinie (<code>color</code>), la couleur du fond doit l'être également (<code>background-color</code>).</li><li>Si la couleur du fond est redéfinie (<code>background-color</code>), la couleur du texte doit l'être également (<code>color</code>).</li><li>Si une image de fond est utilisée pour un élément contenant du texte (<code>background-image</code>), la couleur du fond doit être définie (<code>background-color</code>).</li></ul>",
-		"complement": "<h4>Complément</h4><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
+		"complement": "<h4>Complément</h4><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</li></ul> <p>Dans FireFox, il est facile de tester. Dans \"Paramètres > Langue et apparence > Couleurs\", ouvrir \"Gérer les couleurs...\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier, puis décocher \"Utiliser les couleurs systèmes\". Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme</p>",
+		"moreInfo": "",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -456,7 +457,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d’une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d’une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -485,8 +486,8 @@
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son nom accessible</li><li>si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
-		"exception": "Sauf si le lien est ambigu pour tout utilisateur.",
+		"verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son nom accessible</li><li>si aucun des points précédents n'est respecté, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
+		"exception": "Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.",
 		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit&nbsp;:</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P3",
@@ -502,7 +503,7 @@
 			"2.4.9 AAA"
 		],
 		"verifier": "<p>L’utilisateur doit pouvoir comprendre la destination des liens même sortis de leur contexte.</p><ul><li>vérifier qu’il est possible de déterminer l’action ou la destination d’un lien, uniquement à partir de son nom accessible</li><li>vérifier qu’il n’y a pas de libellés identiques pointant vers des destinations différentes</li></ul>",
-		"exception": "Sauf si le lien est ambigu pour tout utilisateur.",
+		"exception": "Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
@@ -621,14 +622,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'utilisateur a-t-il le contrôle des changements de contexte au clavier ou à la souris&nbsp;?",
+		"title": "L'utilisateur a-t-il le contrôle des changements de contexte à la prise de focus au clavier ou au survol souris ?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
 		"wcag": [
 			"3.2.1 A"
 		],
-		"verifier": "<p>Lors de l'utilisation de formulaires ou de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction à des résultats prédictibles (comportement classique, attendu par l'utilisateur).</p><p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas, par exemple, l'apparition, au focus, d'un menu ou encore, la modification visuelle lors du survol d'un lien.</p>", 
-		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"verifier": "<p>Lors de l'utilisation de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction à des résultats prédictibles (comportement classique, attendu par l'utilisateur).</p><p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>", 
+		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -738,12 +739,13 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "La page ne contient pas de pièges clavier&nbsp;?",
+		"title": "La page est-elle exempte de pièges clavier&nbsp;?",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
 		"wcag": [
 			"2.1.2 A"
 		],
+		"verifier": "Vérifier que le focus au clavier ne se retrouve pas bloqué à l'intérieur d'une zone ou d'un composant de la page web.",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -780,14 +782,15 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "La prise de focus est-elle visible&nbsp;?",
+		"title": "Le focus est-il présent et suffisament visible ?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
 			"2.4.7 AA"
 		],
-		"verifier": "<p>Vérifier que le style par défaut du navigateur est préservé ou qu'un focus personnalisé est présent.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
+		"verifier": "<p>Le focus doit toujours être présent et suffisament visible sur tous les éléments focusables.</p>",
+		"complement": "<h4>Complément</h4><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
+		"moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -978,6 +981,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'éléments tronqués).</p>",
+		"exception" : "<p>Si une orientation est jugé essentielle, le critère est non-applicable.</p><p>Exemple d'affichage jugé essentiel&nbsp;:</p><ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur..</li></ul>",
 		"group": "Tactile",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
 		"priority": "P3",
@@ -1077,13 +1081,14 @@
 	},
 	{
 		"themes": "Multimédia",
-		"title": "Si du son est lu automatiquement pendant plus de 3 secondes, l'utilisateur dispose-t-il d'un mécanisme pour le contrôler&nbsp;?",
+		"title": "Si du son est lu automatiquement pendant plus de 3 secondes, l'utilisateur dispose-t-il d'un mécanisme pour le contrôler ? ",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
 		"wcag": [
 			"1.4.2 A"
 		],
-		"verifier": "<ul><li>possibilité de mettre en pause ou d'arrêter le son</li><li>possibilité de régler le volume indépendamment du volume système</li></ul>",
+		"verifier": "<p>Il est possible de :</p> <ul><li>mettre en pause ou d'arrêter le son</li><li>régler le volume indépendamment du volume système</li></ul>",
+		"complement":"<h4>Complément</h4><p>Le mécanisme doit être facilement atteignable</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
 		"priority": "P3",

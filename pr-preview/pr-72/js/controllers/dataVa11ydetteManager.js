@@ -164,6 +164,7 @@
 	
 	checkTheVersion(dataVallydette.checklist.version);	
 	loadIssue();
+	jsonUpdate();
 
 	runLangRequest();						
 }
@@ -433,8 +434,9 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="mb-3">';
-	htmlModal += '<label class="is-required form-label" for="nameValue">' + langVallydette.name + ' <span class="visually-hidden"> (' + langVallydette.required + ')</span></label>';
-	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="modalChecklistTitle" value="' + getPropertyValue(targetProperty) + '" required >';
+	htmlModal += '<label id="nameValueLabel" class="form-label" for="nameValue">' + langVallydette.name + ' <span class="text-danger">*</span></label>';
+	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="nameValueLabel" value="' + getPropertyValue(targetProperty) + '" aria-invalid="false" required >';
+	htmlModal += '<div id="nameValueError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.errorNameRequired + ' </p></div>';
 	htmlModal += '</div>';
 	
 	/** If it's a page properties edition, when add the URL input */
@@ -461,25 +463,31 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 		initGroups();
 	}
 
-    var currentEditForm = document.getElementById('editForm');
- 
-	currentEditForm.addEventListener('submit', function () {
-		event.preventDefault();
-		
+	var saveValueBtn = document.getElementById('saveValueBtn');
+
+	saveValueBtn.addEventListener('click', function (e) {
+		e.preventDefault();
 		var propertyName = document.getElementById("nameValue");
-		arrayPropertyValue[0] = propertyName.value;
 		
-		if (targetElement === "pageName") {
-			var propertyUrl = document.getElementById("urlValue");
-			arrayPropertyValue[1] = propertyUrl.value;
+		if(propertyName.value!==""){
+			validField(document.getElementById('nameValueError'), propertyName, "nameValueLabel")
+		
+			arrayPropertyValue[0] = propertyName.value;
+			if (targetElement === "pageName") {
+				var propertyUrl = document.getElementById("urlValue");
+				arrayPropertyValue[1] = propertyUrl.value;
+				
+				getGroups();
+				
+			}
 			
-			getGroups();
-			
+			updateProperty(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement);
 		}
-		
-		updateProperty(arrayPropertyValue, targetElement, targetProperty, targetSecondaryElement);
-		
+		else{
+			invalidField(document.getElementById('nameValueError'), propertyName, "nameValueLabel", "nameValueError")
+		}
 	});
+    
 	
 	/** set the focus into the first popin field
 		* @todo jquery code from boosted 4.5.
@@ -574,4 +582,30 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 	utils.setPageTitle(dataVallydette.checklist.page[currentPage].name);
 	
 	jsonUpdate();
+}
+
+/**
+ * Invalid field in form.
+ * @param {HTMLElement} element - Div error.
+ * @param {HTMLElement} input - Field in error.
+ * @param {string} label - Label on field
+ * @param {string} error - error message.
+*/
+invalidField = function(element, input, label, error){
+	element.classList.remove("d-none");
+	input.attributes['aria-labelledby'].value=label+" "+ error;
+	input.attributes['aria-invalid'].value="true";
+	input.focus();
+}
+
+/**
+ * valid field in form.
+ * @param {HTMLElement} element - Div error.
+ * @param {HTMLElement} input - Field in error.
+ * @param {string} label - Label on field
+*/
+validField = function(element, input, label){
+	element.classList.add("d-none");
+	input.attributes['aria-labelledby'].value=label;
+	input.attributes['aria-invalid'].value="false";
 }

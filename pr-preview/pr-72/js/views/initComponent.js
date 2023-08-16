@@ -4,8 +4,6 @@
  function initAnchorMenu() {
 	let AnchorMenuHTML='';
 
-	
-
 	 let allThematiques=[];
 	 document.querySelectorAll("h3.sticky-top").forEach( h2Them =>{
 		allThematiques.push(h2Them.firstChild.textContent);
@@ -15,7 +13,7 @@
 		document.getElementById("title-nav-anchor").textContent=langVallydette.template.navAnchor;
 		document.getElementById("title-nav-anchor").classList.remove('d-none');
 
-		AnchorMenuHTML+='<ul>';
+		AnchorMenuHTML+='<ul class="m-1">';
 		allThematiques.forEach(theme=>{
 		let formattedHeadingTheme = utils.formatHeading(theme);
 			AnchorMenuHTML+=' <li>';
@@ -297,7 +295,7 @@ function runFinalComputationWcag(pagesResultsArray) {
 		computationContent += ' </div>';
 		computationContent += ' </div>';
 		
-		computationContent += '<div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabsyntheseNiveaux">';
+		computationContent += '<div class="tab-pane" id="syntheseNiveaux" role="tabpanel" tabindex="-1" aria-labelledby="tabsyntheseNiveaux">';
 		computationContent += '<div class="table-responsive">'
 		computationContent += '<table class="table table-striped"><caption class="visually-hidden">' + langVallydette.auditTxt15 + '</caption>';
 		computationContent += '<thead><tr>';
@@ -357,7 +355,7 @@ function runFinalComputationWcag(pagesResultsArray) {
 		computationContent += ' </div>';
 		computationContent += ' </div>';
 		
-		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-hidden="true" aria-labelledby="tabNonConformites">';
+		computationContent += '<div class="tab-pane" id="nonConformites" role="tabpanel" tabindex="-1" aria-labelledby="tabNonConformites">';
 		
 			/** 
 				*	Display the non-conformity list.
@@ -366,10 +364,10 @@ function runFinalComputationWcag(pagesResultsArray) {
 			const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
 			
 			if (listNonConformity.length > 0) {
-				
+				computationContent += '<ul>';
 				for (let i in listNonConformity) {
 				
-					computationContent += '<ul>';
+					
 					computationContent += '<li><strong>' + langVallydette.auditTxt9 + ' ' + listNonConformity[i].wcag + ', ' + listNonConformity[i].name  + ', ' + langVallydette.level + ' ' + listNonConformity[i].level + '</strong>';
 				
 					/** Remove undefined values */
@@ -385,10 +383,10 @@ function runFinalComputationWcag(pagesResultsArray) {
 					} 
 					
 					computationContent += '</li>';
-					computationContent += '</ul>';
+					
 		
 				}
-				
+				computationContent += '</ul>';
 			} else {
 				
 				computationContent += '<p>' + langVallydette.auditTxt11 + '</p>';

@@ -50,18 +50,24 @@ function globalFilter(){
     htmlDisplayHeading.className = "h4";
     htmlFilterContent.appendChild(htmlDisplayHeading);
 
+    let htmlDisplayDivButtonExpand = document.createElement("div");
+
     let htmlDisplayButtonExpand = document.createElement("button");
     htmlDisplayButtonExpand.classList.add("btn", "btn-secondary", "btn-sm","m-2");
     htmlDisplayButtonExpand.id="btnPageExpanded";
     htmlDisplayButtonExpand.textContent=langVallydette.expandedAll;
-    htmlFilterContent.appendChild(htmlDisplayButtonExpand);
+    htmlDisplayDivButtonExpand.appendChild(htmlDisplayButtonExpand);
+    htmlFilterContent.appendChild(htmlDisplayDivButtonExpand);
 
+
+    let htmlDisplayDivButtonCollapse = document.createElement("div");
 
     let htmlDisplayButtonCollapse = document.createElement("button");
     htmlDisplayButtonCollapse.classList.add("btn", "btn-secondary", "btn-sm","m-2");
     htmlDisplayButtonCollapse.id="btnPageCollapsed";
     htmlDisplayButtonCollapse.textContent=langVallydette.expandedAllFalse;
-    htmlFilterContent.appendChild(htmlDisplayButtonCollapse);
+    htmlDisplayDivButtonCollapse.appendChild(htmlDisplayButtonCollapse);
+    htmlFilterContent.appendChild(htmlDisplayDivButtonCollapse);
 
     let htmlBorderSeparate = document.createElement("div");
     htmlBorderSeparate.innerHTML = '<div class="border-top border-light my-3"></div>';

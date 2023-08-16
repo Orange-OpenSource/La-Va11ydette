@@ -592,6 +592,8 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
  * @param {string} error - error message.
 */
 invalidField = function(element, input, label, error){
+	console.log(input)
+	console.log(label)
 	element.classList.remove("d-none");
 	input.attributes['aria-labelledby'].value=label+" "+ error;
 	input.attributes['aria-invalid'].value="true";

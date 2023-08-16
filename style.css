@@ -1,11 +1,11 @@
 
 /* Title */
-body,
     .card-title,
     .card-header {
       background: #f6f6f6;
       color: #000;
     }
+
 
     .navbar-brand h1 {
       letter-spacing: 0;

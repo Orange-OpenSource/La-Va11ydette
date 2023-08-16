@@ -133,7 +133,8 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Check that:</p><ul><li> an error message is present visually, </li><li>and the field in error is precisely identified by the error message, </li> the nature of the error is clear (e.g.: required phone field, invalid email format…).</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li> an error message is present visually, </li><li>the field in error is precisely identified by the error message, </li> the nature of the error is clear (e.g., required phone field, invalid email format…).</li></ul>",
+		"exception":"<p>When it is impossible to specifically identify the field in error (e.g., authentication page with username, password for which, for security reasons, it is not possible to specifically identify which of the two fields is in error), the criterion is compliant.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P2",
@@ -286,7 +287,7 @@
 			"4.1.1 A"
 		],
 		"verifier": "<p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
-		"exception": "Unless the technical specifications of the application allow it",
+		"exception": "<p>Unless the technical specifications of the application allow it</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -431,26 +432,26 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by the text or image of text can be understood.<ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
-		"exception": "<p>Logos, decorative texts and inactive elements do not need to respect this ratio and should therefore not be taken into account for the validation of this criterion.</p>",
+		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by a text or by an image containing a text (text image) can be understood.<ul><li><strong>For regular text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"exception": "<p>Logos or all purely decorative elements.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{
-		"themes": "Colors and contrasts",
+		"themes": "Colors and contrast",
 		"title": "For each text whose color is defined by the CSS <code>color</code> property, is the <code>background-color</code> property also filled in and vice versa?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
-			"1.4.3 AA"
+		"1.4.3 AA"
 		],
-		"verifier": "<ul> <li> If the text color is defined (<code> color </code>), the background color must also be defined (<code> background-color </code>). </li> <li> If the background color is defined (<code> background-color </code>), the text color must be defined too (<code> color </code>). </li> <li> If a background image is used for an element containing text (<code> background-image </code>), the background color must be set (<code> background-color </code>). </li> </ul><h5>More details</h5> <p> These properties can be applied directly to an element or inherited from a parent. To test, the easiest way is to change the default colors of your browser. </p>",
-		"complement": "<h5>Additionally: </h5><ul><li>These properties can be set directly on the element or inherited from a parent</li><li>It is possible to change the browser's default background color in order to identify, at a glance, if background colors are defined for text containers</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
+		"verifier": "<ul><li>If the text color is defined (<code>color</code>), the background color must also be defined (<code>background-color</code>) .</li><li>If the background color is defined (<code>background-color</code>), the text color must also be defined (<code>color</code>).</ li><li>If a background image is used for an element containing text (<code>background-image</code>), the background color must be set (<code>background-color</code>) .</li></ul>",
+		"complement": "<h5>Complement</h5><ul><li>These properties can be applied directly to an element or inherited from a parent.</li><li> To test, the easiest way is to change your browser default colors.</li></ul> <p>In FireFox, it's easy to test. In \"Settings > Language and appearance > Colors\", open \"Manage colors...\" and in \"Text and background\", customize the \"Text\" and \"Background\" colors in order to clearly identify them. If in the page only one of these colors appears without the other appearing in the same element, the test is not compliant</p>",
+		"moreInfo": "",
 		"priority": "P2",
-		"resultatTest": "nt",
+		"resultTest": "nt",
 		"goodPractice": false
 	},
 	{
@@ -490,7 +491,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next page press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul><p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
+		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text, an alternative or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next page, press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul><p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -519,8 +520,8 @@
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>The user should be able to determine whether they want to follow a link, with context, if needed, to understand his destination.</p><ul><li>check that there are not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link given only its accessible name</li><li>If the above checks are inconclusive, ensure that the target of a link can be inferred from its context</li></ul>",
-		"exception": "Except if the link is ambiguous for all users.",
+		"verifier": "<p>Users should be able to determine, with the help of the context, if they want to follow a link to understand his destination.</p><ul><li>check that there is not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link only by its accessible name</li><li>If none of these above points are compliant, ensure that the target of a link can be inferred from its context</li></ul>",
+		"exception": "<p>He link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link. These cases are therefore not to be taken into account.</p>",
 		"complement": "<h5>How to determine the context of the link:</h5><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "P3",
@@ -535,8 +536,8 @@
 		"wcag": [
 			"2.4.9 AAA"
 		],
-		"verifier": "<p>The user must be able to understand the destination of the links even taken out of their context.</p><ul><li>check that it is possible to determine the action or the destination of a link, only by from its accessible name</li><li>check that there are no identical labels pointing to different destinations</li></ul>",
-		"exception": "Unless the link is ambiguous to any user.",
+		"verifier": "<p>The user must be able to understand the destination of links even taken out of their context.</p><ul><li>check that it is possible to determine the action or the destination of a link only from its accessible name</li><li>check that there are no identical labels pointing to different destinations</li></ul>",
+		"exception": "<p>The link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link. Therefore, these cases are not applicable.</p>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "",
@@ -654,20 +655,20 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Common navigation",
-		"title": "Does the user have control over context changes with keyboard or mouse?",
-		"ID": "testID-032",
-		"IDorigin": "testID-032",
-		"wcag": [
-			"3.2.1 A"
-		],
-		"verifier": "<p>When using forms or any interactive component, check that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user). </p><p>The criterion is not applicable if, when the focus is taken, the context does not change, for example, the appearance, on focus, of a menu or even the visual modification when hovering over a link.</p>",
-		"complement": "<h5> Change of context </h5> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
-		"priority": "P2",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
+        "themes": "Common navigation",
+        "title": "Does the user have control over context changes with keyboard or mouse?",
+        "ID": "testID-032",
+        "IDorigin": "testID-032",
+        "wcag": [
+            "3.2.1 A"
+        ],
+        "verifier": "<p>When using any interactive component, check that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user).</p><p>The criterion is not applicable if when the focus is taken the context does not change. For example the appearance of a menu on focus or even the visual modification when hovering a link are not changes of context.</p>",
+        "complement": "<h5> Change of context </h5> <p>A major change in the content of the web page, when done without the knowledge of the user, can be confusing. </p> <p> Change of context includes modifications of: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
 	{
 		"themes": "Common navigation",
 		"title": "Does the user have control over context changes on a parameter modification?",
@@ -692,7 +693,7 @@
 			"2.4.5 AA"
 		],
 		"verifier": "<p>when there is less than 3 or 4 pages and/or the content is short, this criterion is not applicable.</p><p>Check that at least 2 of the following mechanisms are present on the page, to allow a user to determine their location on the website:</p>\n<ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>", 
-		"exception": " except if the Web Page is the result of, or a step in a process.",
+		"exception": "<p>Except if the Web Page is the result of, or a step in a process.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -772,12 +773,13 @@
 	},
 	{
 		"themes": "Keyboard navigation",
-		"title": "The page does not contain keyboard traps?",
+		"title": "Is the page free of keyboard traps?",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
 		"wcag": [
 			"2.1.2 A"
 		],
+		"verifier": "Verify that keyboard focus is not stuck inside an area or a webpage component.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#the-focus-order-must-be-sequential-and-logical-without-keyboard-trap",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -814,14 +816,15 @@
 	},
 	{
 		"themes": "Keyboard navigation",
-		"title": "When focus is received, is there a visible focus indicator?",
+		"title": "When focus is received, is the focus indicator displayed and is it visible enough?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
 			"2.4.7 AA"
 		],
-		"verifier": "<p>Check that the default browser style is preserved or that a custom focus is applied.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
+		"verifier": "<p>Check if the focus indicator is displayed and if it is visible enough.</p>",
+		"complement": "<h4>Additionally</h4><p> if the browser focus is disabled, a custom focus must be present instead.</p>",
+		"moreInfo":"https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -863,7 +866,7 @@
 			"1.4.10 AA"
 		],
 		"verifier": "<p>Check that a horizontal scroll bar does not appear.</p>",
-		"exceptions": "Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…",
+		"exceptions": "<p>Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -1059,7 +1062,8 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Check that the content and functionalities are available in both orientations (no loss of information, no truncated elements).</p>",
-		"group": "Touche Screen",
+		"exception": "<p>If an orientation is considered essential, the criterion is not applicable.</p><p>Example of display deemed essential:</p><ul><li>a bank check</li><li>an application for playing the piano</li><li>slides for a television or projector...</li></ul>",
+		"group": "Touch Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#give-access-to-the-content-regardless-of-the-orientation-of-the-screen",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -1164,7 +1168,7 @@
 		"wcag": [
 			"1.4.2 A"
 		],
-		"verifier": "<ul><li>possible to pause or stop the sound</li><li>possible to control audio volume independently from the overall system volume level</li></ul>",
+		"verifier": "<p>It's possible to :</p><ul><li>pause or stop the sound</li><li>control audio volume independently from the overall system volume level</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"priority": "P3",

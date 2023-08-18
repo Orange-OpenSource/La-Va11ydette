@@ -9,7 +9,7 @@
 		],
 		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
 		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception.</p>",
-        "group": "Écran de saisie",
+        "group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -23,7 +23,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Check that the accessible name of each input field is relevant.</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -37,7 +37,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "All labels are properly linked to their fields",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -52,7 +52,7 @@
 			"1": "3.3.2 A"
 		},
 		"verifier": "<p> Are the elements grouped when it is necessary, for example : </p> <ul> <li> for an address (street, postal code, city, etc. fields) </li> <li> for a list of <code> Switch </code> </li>  </ul>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -68,7 +68,7 @@
 		},
 		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li></ul>",
 		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -82,7 +82,7 @@
 			"0": "3.3.2 A"
 		},
 		"verifier": "<ul><li>Check that the input format is present visually, and that its position allows it to be associated with the appropriate field.</li><li>Check that the input format is vocalized with VoiceOver.</li></ul>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -97,7 +97,7 @@
 		},
 		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
 		"exception":"<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -111,7 +111,7 @@
 			"0": "3.3.1 A"
 		},
 		"verifier": "<p>Check that an error message is present visually, and that it allows the field in error to be precisely identified and the nature of the error to be understood.</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -125,7 +125,7 @@
 			"0": "3.3.3 AA"
 		},
 		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors.</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -139,7 +139,7 @@
 			"0": "3.3.4 AA"
 		},
 		"verifier": "<p>For input screen that:&nbsp;:</p><ul><li>modify or delete data,</li><li>submit user test responses,\n</li><li>cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of checkbox).</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -359,7 +359,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice Navigation",
+		"themes": "Voice navigation",
 		"title": "Are the tables structured properly?",
 		"ID": "testID-070",
 		"IDorigin": "testID-070",
@@ -811,7 +811,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Webview",
+		"themes": "WebView",
 		"title": "Is the main language defined, and does it correspond to the document's primary language?",
 		"ID": "testID-062",
 		"IDorigin": "testID-062",

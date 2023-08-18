@@ -173,7 +173,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Is the page title appropriate?",
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
@@ -187,7 +187,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Is the information structured by the appropriate use of heading elements?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
@@ -202,7 +202,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Is the information structured by the use of relevant headings?",
 		"ID": "testID-083",
 		"IDorigin": "testID-083",
@@ -217,7 +217,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Are level headings present to organize content?",
 		"ID": "testID-084",
 		"IDorigin": "testID-084",
@@ -231,7 +231,7 @@
 		"goodPractice": true
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Does the document possess a semantic structure?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",
@@ -245,7 +245,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Is the source code valid?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
@@ -260,7 +260,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Is the main language defined, and does it correspond to the document's primary language?",
 		"ID": "testID-021",
 		"IDorigin": "testID-021",
@@ -274,7 +274,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Are changes in language clearly identified?",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
@@ -289,7 +289,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Textual Content",
+		"themes": "Text Content",
 		"title": "Are the tables structured properly?",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
@@ -406,7 +406,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Colors and contrast",
+		"themes": "Colors and contrasts",
 		"title": "For each text whose color is defined by the CSS <code>color</code> property, is the <code>background-color</code> property also filled in and vice versa?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
@@ -935,7 +935,7 @@
 		],
 		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
 		"complement": "<h4>For example</h4><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
-		"group": "Touche Screen",
+		"group": "Touch Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -966,7 +966,7 @@
 		],
 		"verifier": "<ul><li>Check that these actions can also be operated by user interface components (e.g.: button)</li><li>Check that it is possible to disable the motion detection</li></ul>",
 		"exceptions": "<p>The motion is essential for the function (e.g.: pedometer)</p>",
-		"group": "Touche Screen",
+		"group": "Touch Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
 		"resultatTest": "nt",

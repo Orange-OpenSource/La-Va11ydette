@@ -9,7 +9,7 @@
 		],
 		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
 		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception.</p>",
-        "group": "Écran de saisie",
+        "group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -23,7 +23,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Check that the accessible name of each input field is relevant.</p>",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -37,7 +37,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "All labels are properly linked to their fields",
-		"group": "Écran de saisie",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false

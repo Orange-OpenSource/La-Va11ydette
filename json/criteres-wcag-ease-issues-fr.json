@@ -776,16 +776,16 @@
 	],
 	"testID-060":[
 		{
-		   "title": "Informational content is not preserved",
-		   "detail": "After disabling CSS, content carrying information should be preserved. CSS-generated content should be only decorative.",
-			"solution": "No information should be contained in CSS properties (::before, ::after, content:...)",
-			"technicalSolution": ""
+			"title" : "Du contenu portant de l'information n'est pas préservé",
+			"detail" : "Après désactivation du CSS, le contenu portant de l'information doit être préservé. Le contenu généré par CSS doit être uniquement décoratif",
+			"solution" : "Aucune information ne doit être contenue dans des propriétés CSS (::before, ::after, content:...)",
+			"technicalSolution" : ""
 		},
 		{
-			"title": "Information-carrying images are embedded in CSS",
-			"detail": "After disabling CSS, images carrying information must be preserved (text images, button icons). CSS-generated content should be decorative only.",
-			"solution": "No information should be contained in CSS properties (::before, ::after, content:...), images carrying information should not be embedded in CSS background properties" ,
-			"technicalSolution": ""
+			"title" : "Des images porteuses d'informations sont intégrées en CSS",
+			"detail" : "Après désactivation du CSS, des images portants de l'information doivent être préservées (images textes, icones d'un bouton). Le contenu généré par CSS doit être uniquement décoratif",
+			"solution" : "Aucune information ne doit être contenue dans des propriétés CSS (::before, ::after, content:...), les images portant de l'information ne doit pas être intégrées avec les propriétés background de CSS ",
+			"technicalSolution" : ""
 		}
 	],
 	"testID-047":[

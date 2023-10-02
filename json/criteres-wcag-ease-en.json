@@ -982,8 +982,8 @@
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>The clickable or touchable area is at least 24\\*24 CSS pixels.</p>",
-		 "exception":"<ol><li>There is a spacing of at least 24 CSS pixels with adjacent clickable or touchable areas.</li><li>The link is in the middle of a sentence or a paragraph (help icon in a sentence, anchor links, footnote…).</li><li>The reduced size is necessary to convey the information.</li><li>Components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li></ol>",
+		"verifier": "<p>The clickable or touchable area is at least 24 by 24 CSS pixels.</p>",
+		 "exception":"<ol><li>There is a circle at least 24 CSS pixels in diameter with adjacent clickable or touchable areas.</li><li>The link is in the middle of a sentence or paragraph (link icon help in a sentence, anchor links, footnote, etc.) or at a height that is limited by a non-interactive component.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information. </li><li>The components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion. </li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "P2",
 		"resultatTest": "nt",

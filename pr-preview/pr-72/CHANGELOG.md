@@ -16,13 +16,9 @@ Ce Change log commence à la version 1.7.0
 
     Nouveau critère relié au [WCAG 3.3.7 AA](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication)
 
-- [Le focus est-il suffisament visible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-082)
-
-    Nouveau critère relié au [WCAG 2.4.11 AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance.html)
-
 - [Le focus est-il complètement masqué ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-081)
 
-    Nouveau critère relié au [WCAG 2.4.12 AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum)
+    Nouveau critère relié au [WCAG 2.4.11 AA](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum)
 
 - [Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-078)
 

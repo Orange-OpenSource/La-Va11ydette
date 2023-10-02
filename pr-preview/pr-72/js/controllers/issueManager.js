@@ -125,7 +125,7 @@ setIssue = function (targetId, title, targetIdOrigin) {
 			error++;
 		}
 		else{
-			validField(document.getElementById('issueNameValueError'), propertyDescription, "issueNameValueLabel")
+			validField(document.getElementById('issueNameValueError'), propertyName, "issueNameValueLabel")
 		}
 
 		if(error==0){
@@ -286,7 +286,7 @@ editIssue = function (targetId, issueIndex) {
 			error++;
 		}
 		else{
-			validField(document.getElementById('issueNameValueError-' + issueIndex ), propertyDescription, 'issueNameValueLabel-' + issueIndex )
+			validField(document.getElementById('issueNameValueError-' + issueIndex ), propertyName, 'issueNameValueLabel-' + issueIndex )
 		}
 
 		if(error==0){

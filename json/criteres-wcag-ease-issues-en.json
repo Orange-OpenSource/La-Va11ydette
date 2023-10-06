@@ -212,35 +212,6 @@
 			"technicalSolution" : ""
 		}
     ],
-    "testID-064":[
-        {
-			"title" : "Incomplete element",
-			"detail" : "Start or end tags are missing for one or more items.",
-			"solution" : "",
-			"technicalSolution" : ""
-		
-		},
-		{
-			"title" : "Nesting error",
-			"detail" : "Elements do not respect nesting rules (HTML conformance).",
-			"solution" : "",
-			"technicalSolution" : ""
-		
-		},
-		{
-			"title" : "Duplicate attributes",
-			"detail" : "Presence of duplicate attributes on the same element.",
-			"solution" : "",
-			"technicalSolution" : ""
-		
-		},
-		{
-			"title" : "Presence of duplicate IDs",
-			"detail" : "The page should not have duplicate IDs except if they are not displayed at the time.",
-			"solution" : "",
-			"technicalSolution" : ""
-		}
-    ],
     "testID-021":[
         {
 			"title" : "The lang attribute is missing",

@@ -745,7 +745,7 @@
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "Vérifier que le focus au clavier ne se retrouve pas bloqué à l'intérieur d'une zone ou d'un composant de la page web.",
+		"verifier": "<p>Vérifier que le focus au clavier ne se retrouve pas bloqué à l'intérieur d'une zone ou d'un composant de la page web.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-le-parcours-du-focus-sequentiel-et-logique-sans-piege-clavier",
 		"priority": "P0",
 		"resultatTest": "nt",

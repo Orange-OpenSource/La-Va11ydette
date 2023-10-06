@@ -309,7 +309,7 @@
 		"blockingPoint1": " point(s) bloquant(s) d'un point de vue utilisateur",
 		"approvalHeading": "Identité du déclarant",
 		"standardHeading": "Référentiel",
-		"wcagVersion": "<a href=\"https://www.w3.org/TR/WCAG21/\"><abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr> version 2.1, niveau AA</a>",
+		"wcagVersion": "<a href=\"https://www.w3.org/TR/WCAG21/\"><abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr> version 2.2, niveau AA</a>",
 		"technologyHeading": "Technologies utilisées pour la réalisation du site",
 		"environmentHeading": "Environnement de test",
 		"environmentContent": "Les vérifications ont été réalisées avec les combinaisons logicielles suivantes :",

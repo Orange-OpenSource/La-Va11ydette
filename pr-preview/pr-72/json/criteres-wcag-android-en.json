@@ -116,6 +116,7 @@
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -178,6 +179,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -521,6 +523,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -567,6 +570,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -609,6 +613,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#have-sufficiently-large-click-areas",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -637,6 +642,7 @@
 		"exception": "<p>The user initiated a change in the presentation of the help following the use of zoom or orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{

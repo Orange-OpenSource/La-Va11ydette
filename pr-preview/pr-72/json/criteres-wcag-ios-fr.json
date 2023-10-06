@@ -87,6 +87,7 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -160,6 +161,7 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -466,6 +468,7 @@
 		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -509,6 +512,7 @@
 		"exception":"<p>Le critère est non applicable :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dexterité par exemple)</li><li>La fonctionalité est native est non modifiée</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -549,6 +553,7 @@
 		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Les composants gérés par l'agent utilisateur sont utilisés tel quel.</li><li>Si plusieurs zones de clicks effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -577,6 +582,7 @@
 		"exception": "<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{

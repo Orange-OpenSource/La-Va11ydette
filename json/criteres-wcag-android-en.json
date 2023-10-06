@@ -907,21 +907,6 @@
 	},
 	{
 		"themes": "WebView",
-		"title": "Is the source code valid?",
-		"ID": "testID-057",
-		"IDorigin": "testID-057",
-		"wcag": [
-			"4.1.1 A"
-		],
-		"verifier": "<p>This criterion can only be verified if you have access to the URL of the WebView.</p><p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
 		"title": "Are changes in language clearly identified?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",

@@ -4,7 +4,11 @@ Tous les changements notables de la checklist Audit de conformité WCAG 2.2 / WE
 
 Ce Change log commence à la version 1.7.0
 
+<<<<<<< HEAD
 ## [2.2.0] - 2023-10-06
+=======
+## [2.2.0] - yyyy-mm-dd
+>>>>>>> 6520fda224de2399800757bdcb19127c11257cab
 
 ### Ajouté
 

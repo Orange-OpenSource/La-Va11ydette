@@ -212,35 +212,6 @@
 			"technicalSolution" : ""
 		}
     ],
-    "testID-064":[
-        {
-			"title" : "Élément incomplet",
-			"detail" : "Des balises de début ou de fin sont manquantes pour un ou plusieurs éléments.",
-			"solution" : "",
-			"technicalSolution" : ""
-		
-		},
-		{
-			"title" : "Erreur d'imbrication",
-			"detail" : "Des éléments ne respectent pas les règles d'imbrications (conformité HTML).",
-			"solution" : "",
-			"technicalSolution" : ""
-		
-		},
-		{
-			"title" : "Attributs dupliqués",
-			"detail" : "Présence d'attributs dupliqués sur un même élément.",
-			"solution" : "",
-			"technicalSolution" : ""
-		
-		},
-		{
-			"title" : "Présence d'ID dupliqués",
-			"detail" : "La page ne doit pas comporter des ID dupliqués sauf s'ils ne sont pas affichés au même moment.",
-			"solution" : "",
-			"technicalSolution" : ""
-		}
-    ],
     "testID-021":[
         {
 			"title" : "Absence d'attribut lang",

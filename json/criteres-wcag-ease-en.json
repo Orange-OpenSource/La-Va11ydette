@@ -745,7 +745,7 @@
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "Verify that keyboard focus is not stuck inside an area or a webpage component.",
+		"verifier": "<p>Verify that keyboard focus is not stuck inside an area or a webpage component.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#the-focus-order-must-be-sequential-and-logical-without-keyboard-trap",
 		"priority": "P0",
 		"resultatTest": "nt",

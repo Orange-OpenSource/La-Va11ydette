@@ -86,6 +86,7 @@
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -159,6 +160,7 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -465,6 +467,7 @@
 		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -508,6 +511,7 @@
 		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -548,6 +552,7 @@
 		"exception": "<ul><li>There is spacing of a circle of at least 21pt in diameter with adjacent clickable or touchable areas</li><li>The link is in the middle of a sentence or paragraph ( help icon, anchor links, footnote).</li><li>Reduced size is necessary to convey information</li><li>Components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -576,6 +581,7 @@
 		"exception": "<p>The user has initiated a change in the presentation of the help following the use of the zoom or the orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{

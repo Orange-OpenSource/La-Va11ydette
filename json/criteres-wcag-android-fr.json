@@ -120,6 +120,7 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -182,6 +183,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -524,6 +526,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -570,6 +573,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -612,6 +616,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -640,6 +645,7 @@
 		"complement":"<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
 		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"priority": "",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{

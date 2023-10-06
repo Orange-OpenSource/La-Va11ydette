@@ -114,6 +114,14 @@
 			"technicalSolution": ""
 		}
     ],
+    "testID-077":[
+        {
+			"title" : "An authentication has only a cognitive test",
+			"detail" : "It is not possible to connect other than with a cognitive test",
+			"solution" : "Another authentication technique must be present and not rely on a cognitive test, for example: \n- email authentication \n- login using oAuth \n- fields are properly marked up allowing them to be filled in automatically",
+			"technicalSolution" : ""
+		}
+    ],
     "testID-009":[
         {
 			"title": "Important data is submitted without the possibility of being canceled or verified",
@@ -691,6 +699,18 @@
 			"detail":"The outline must not be disabled.",
 			"solution":"Check that the focus indicator visibility is not disabled in the CSS properties (e.g., outline:none;).",
 			"technicalSolution" : ""
+		},
+		{
+		"title" : "Use of color only to show focus",
+		"detail" : "Color cannot be the only element to distinguish the focus.",
+		"solution" : "Set up another way than changing color for the focus indicator (ex.: shape, size, outline, underline...).",
+		"technicalSolution": ""
+		},
+		{
+		"title": "Visualization of the focus is insufficient",
+		"detail" : "The contrast of the focus indicator must be sufficiently contrasted (3:1) compare&d with the background of the element",
+		"solution": "Ensure a minimum 3:1 contrast for the different interactive components and the focus indicator.",
+		"technicalSolution": ""
 		}
 	],
 	"testID-042":[

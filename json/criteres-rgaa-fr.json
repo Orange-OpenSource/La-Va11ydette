@@ -541,7 +541,7 @@
         "wcag": [
             "1.3.1 A",
             "2.1.1 A",
-            "2.4.7 AA"
+            "2.4.7 A"
         ],
         "verifier": "<ol> <li class=\"py-1\">Chaque élément possédant un gestionnaire d'événement contrôlé par un script vérifie-t-il une de ces conditions (hors cas particuliers) ? <ul> <li>L'élément est <a href=\"https://accessibilite.numerique.gouv.fr/methode/glossaire/#accessible-et-activable-par-le-clavier-et-tout-dispositif-de-pointage\" target=\"_blank\">accessible par le clavier et tout dispositif de pointage <span class=\"visually-hidden\"> glossaire (nouvelle fenêtre)</span></a>.</li> <li>Un élément <a href=\"https://accessibilite.numerique.gouv.fr/methode/glossaire/#accessible-et-activable-par-le-clavier-et-tout-dispositif-de-pointage\" target=\"_blank\">accessible par le clavier et tout dispositif de pointage <span class=\"visually-hidden\"> glossaire (nouvelle fenêtre)</span></a> permettant de réaliser la même action est présent dans la page.</li> </ul> </li> <li class=\"py-1\">Un <a href=\"https://accessibilite.numerique.gouv.fr/methode/glossaire/#script\" target=\"_blank\">script <span class=\"visually-hidden\"> glossaire (nouvelle fenêtre)</span></a> ne doit pas supprimer le focus d'un élément qui le reçoit. Cette règle est-elle respectée (hors cas particuliers) ?</li> </ol>",
         "resultatTest": "nt",
@@ -849,7 +849,7 @@
         "IDorigin": "testID-063",
         "wcag": [
             "1.4.1 A",
-            "2.4.7 AA"
+            "2.4.7 A"
         ],
         "verifier": "<p>Pour chaque élément recevant le focus, la prise de focus vérifie-t-elle une de ces conditions ?</p><ul><li>Le style du focus natif du navigateur n'est pas supprimé ou dégradé.</li><li>Un style du focus défini par l'auteur est visible.</li></ul>",
         "resultatTest": "nt",

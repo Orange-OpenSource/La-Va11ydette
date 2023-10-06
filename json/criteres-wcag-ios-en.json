@@ -66,11 +66,27 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li></ul>",
-		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
+		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"exception": "<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Input screen",
+		"title": "Can the user authenticate without using a cognitive-based test?",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
+		"wcag": {
+			"0": "3.3.8 AA"
+		},
+		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing, unless that step provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the mobile application</li></ul><p>Warning, remembering a username and password is a cognitive test.<br/>The copy/paste function must be enabled on these fields.<br />If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
+		"complement": "<h5>Complementary information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"group": "Input screen",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -128,6 +144,23 @@
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"goodPractice": false
+	},
+	{
+		"themes": "Input screen",
+		"title": "If information is requested from the user in the same process, isn't entering it redundant?",
+		"ID": "testID-064",
+		"IDorigin": "testID-064",
+		"wcag": {
+			"0": "3.3.7 A"
+		},
+		"verifier": "<p>In a multi-step form and in the same session, an automatic completion system must be offered to the user to return information previously entered or provided by the application, knowing that automatic completion is not considered sufficient.</p>",
+		"complement": "<h5>Additional information</h5><p>Examples of valid mechanisms: automatic feeding, choice in a drop-down list, copy-paste from an area, checkbox to resume previously entered data ( billing address equals shipping address).</p>",
+		"exception": "<ul><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a password</li ><li>Previously entered information that is no longer valid</li></ul>",
+		"group": "Écran de saisie",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -424,6 +457,20 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Selection control",
+		"title": "Is the focus visible on all elements?",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": {
+			"0": "2.4.11 AA"
+		},
+		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"wcag22" : true,
+		"goodPractice": false
+	},
+	{
 		"themes": "Common navigation",
 		"title": "Is there an alternative for actions triggered by device motion or user motion?",
 		"ID": "testID-031",
@@ -449,7 +496,23 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h4>Exemple</h4><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>"
+		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>"
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Do features using drag and drop action have an alternative?",
+		"ID": "testID-065",
+		"IDorigin": "testID-065",
+		"wcag": {
+			"0": "2.5.7 AA"
+		},
+		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single point action).</p>",
+		"complement": "<h5>Complement</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging and then dropping a ticket in a Kanban board for example ) and does not take into account so-called “multi-point” actions, covered in criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\".</p>",
+		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"wcag22" : true,
+		"goodPractice": false
 	},
 	{
 		"themes": "Common navigation",
@@ -483,12 +546,13 @@
 		"ID": "testID-050",
 		"IDorigin": "testID-050",
 		"wcag": {
-			"0": "2.5.5 AAA"
+			"0": "2.5.8 AA"
 		},
-		"verifier": "<p>Check that :</p><ul><li>interactive elements have sufficient click area (44pt - width and height)</li><li>interactive elements have a margin that separates them from other elements or the edges of the screen.</li></ul>",
-		"exception": "<p>There are two exceptions to this rule:</p><ul><li>There is another element on the screen that performs the same action, and meets the required size. In this specific case, it is accepted that the element is too small.</li><li>The interactive element is in a sentence or block of text (e.g. links).</li></ul>",
+		"verifier": "<p>The clickable or touchable area is at least ed 44pt (height AND width)</p>",
+		"exception": "<ul><li>There is spacing of a circle of at least 21pt in diameter with adjacent clickable or touchable areas</li><li>The link is in the middle of a sentence or paragraph ( help icon, anchor links, footnote).</li><li>Reduced size is necessary to convey information</li><li>Components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -506,7 +570,23 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Does a time limit involving a change of context is adaptable?",
+		"title": "If help is offered and repeated on several pages, is it presented in a coherent manner?",
+		"ID": "testID-062",
+		"IDorigin": "testID-062",
+		"wcag": {
+			"0": "3.2.6 A"
+		},
+		"verifier": "<p>Check that if one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same order on all screens.</p>",
+		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc)</ p>",
+		"exception": "<p>The user has initiated a change in the presentation of the help following the use of the zoom or the orientation.</p>",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"wcag22" : true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Does an UI with a time limit have an adaptable timeframe? (time limite) (exemple de netflix)",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": {
@@ -544,7 +624,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter les utilisateurs incapables d'afficher la page dans sa totalité.</p>"
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter les utilisateurs incapables d'afficher la page dans sa totalité.</p>"
 	},
 	{
 		"themes": "Common navigation",
@@ -723,7 +803,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h4>Sous-titres transcrits</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
+		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
 	},
 	{
 		"themes": "Multimedia",

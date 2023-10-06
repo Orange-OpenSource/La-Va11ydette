@@ -325,6 +325,15 @@
 			"page": []
 		},
 		{
+			"wcag": "2.4.11",
+			"level": "AA",
+			"name": "Focus non masqué",
+			"tests": [],
+			"resultat": "nt",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "2.5.1",
 			"level": "A",
 			"name": "Gestes multipoints ou trajectoires",
@@ -361,8 +370,17 @@
 			"page": []
 		},
 		{
-			"wcag": "2.5.5",
-			"level": "AAA",
+			"wcag": "2.5.7",
+			"level": "AA",
+			"name": "Mouvement du glisser",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "2.5.8",
+			"level": "AA",
 			"name": "Taille minimum des zones sensibles",
 			"tests": [],
 			"resultat": "na",
@@ -424,6 +442,15 @@
 			"page": []
 		},
 		{
+			"wcag": "3.2.6",
+			"level": "A",
+			"name": "Aide cohérente",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
 			"wcag": "3.3.1",
 			"level": "A",
 			"name": "Identification des erreurs",
@@ -454,6 +481,24 @@
 			"wcag": "3.3.4",
 			"level": "AA",
 			"name": "Prévention des erreurs (juridiques, financières, de données)",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "3.3.7",
+			"level": "A",
+			"name": "Entrée redondante",
+			"tests": [],
+			"resultat": "na",
+			"comment": [],
+			"page": []
+		},
+		{
+			"wcag": "3.3.8",
+			"level": "AA",
+			"name": "Authentification accessible",
 			"tests": [],
 			"resultat": "na",
 			"comment": [],

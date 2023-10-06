@@ -26,7 +26,7 @@
 		"verifier": "<p>Le format de saisie est présent visuellement, et sa position permet de l'associer au champ concerné.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
-		"priority": "P1",
+		"priority": "P0",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -103,7 +103,7 @@
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de l'attribut <code>autocomplete</code></li><li>la valeur indiquée pour l'attribut <code>autocomplete</code> est pertinente (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='liste exhaustive des valeurs autorisées (nouvelle fenêtre)'>liste exhaustive des valeurs autorisées</a>) au regard du type d'information attendue</li></ul>",
+		"verifier": "<ul><li>pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de l'attribut <code>autocomplete</code></li><li>la valeur indiquée pour l'attribut <code>autocomplete</code> est pertinente (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='liste exhaustive des valeurs autorisées (nouvelle fenêtre)'>liste exhaustive des valeurs autorisées</a>) au regard du type d'information attendue</li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P3",
@@ -155,6 +155,42 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P3",
 		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "Si une information est fournie par ou à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redemandée ?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"3.3.7 A"
+		],
+		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par le site sachant que l'autocomplete n'est pas jugé suffisant</p>",
+		"complement":"<h5>Complément</h5><p>exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
+		"exception":"<ol><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
+		"group": "Formulaire",
+		"moreInfo": "",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
+		"ID": "testID-077",
+		"IDorigin": "testID-077",
+		"wcag": [
+			"3.3.8 AA"
+		],
+		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
+		"exception": "",
+		"complement": "<h5>Complément&nbsp;: </h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -238,7 +274,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment p) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
+		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment p) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -253,7 +289,7 @@
 			"4.1.1 A"
 		],
 		"verifier": "<p>Dans le code HTML s'assurer que&nbsp;:</p><ul><li>les balises de début et de fin sont complètes</li><li>éléments imbriqués selon leurs spécifications</li><li>il n'y a pas d'attributs en double</li><li>les attributs sont définis correctement (ouverture et fermeture des guillemets)</li><li>chaque attribut <code>id</code> est unique</li></ul>",
-		"exception": "Sauf si les spécifications techniques de l'applicatif le permettent",
+		"exception": "<p>Sauf si les spécifications techniques de l'applicatif le permettent</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -304,7 +340,7 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Les images possèdent-elles un texte de remplacement pertinent&nbsp;?",
+		"title": "Les images possédent-elles un texte de remplacement pertinent&nbsp;?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
@@ -414,7 +450,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Si la couleur du texte est redéfinie (<code>color</code>), la couleur du fond doit l'être également (<code>background-color</code>).</li><li>Si la couleur du fond est redéfinie (<code>background-color</code>), la couleur du texte doit l'être également (<code>color</code>).</li><li>Si une image de fond est utilisée pour un élément contenant du texte (<code>background-image</code>), la couleur du fond doit être définie (<code>background-color</code>).</li></ul>",
-		"complement": "<h4>Complément</h4><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</li></ul> <p>Dans FireFox, il est facile de tester. Dans \"Paramètres > Langue et apparence > Couleurs\", ouvrir \"Gérer les couleurs...\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier, puis décocher \"Utiliser les couleurs systèmes\". Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme</p>",
+		"complement": "<h5>Complément</h5><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur.</li></ul> <p>Dans FireFox, il est facile de tester. Dans \"Paramètres > Langue et apparence > Couleurs\", ouvrir \"Gérer les couleurs...\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier, puis décocher \"Utiliser les couleurs systèmes\". Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme</p>",
 		"moreInfo": "",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -487,8 +523,8 @@
 			"2.4.4 A"
 		],
 		"verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son nom accessible</li><li>si aucun des points précédents n'est respecté, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
-		"exception": "Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.",
-		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit&nbsp;:</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
+		"exception": "<p>Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.</p>",
+		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit&nbsp;:</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>p</code>)</li><li>dans le même élément de liste (<code>li</code>)</li><li>dans la même cellule de tableau (<code>td</code>)</li><li>dans la cellule d'entête du tableau (<code>th</code>), associée à la cellule du lien (<code>td</code>)</li><li>dans un titre de niveau explicite (<code>hn</code>) précédent le lien</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -503,7 +539,7 @@
 			"2.4.9 AAA"
 		],
 		"verifier": "<p>L’utilisateur doit pouvoir comprendre la destination des liens même sortis de leur contexte.</p><ul><li>vérifier qu’il est possible de déterminer l’action ou la destination d’un lien, uniquement à partir de son nom accessible</li><li>vérifier qu’il n’y a pas de libellés identiques pointant vers des destinations différentes</li></ul>",
-		"exception": "Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.",
+		"exception": "<p>Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.</p>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
@@ -628,8 +664,8 @@
 		"wcag": [
 			"3.2.1 A"
 		],
-		"verifier": "<p>Lors de l'utilisation de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction a des résultats prédictibles (comportement classique, attendu par l'utilisateur).</p><p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>", 
-		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul>",
+		"verifier": "<p>Lors de l'utilisation de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction à des résultats prédictibles (comportement classique, attendu par l'utilisateur).</p><p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>", 
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -644,7 +680,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur, lors de la modification de paramètre de tout composant interactif. La modification d'un paramètre peut être, par exemple, cocher une case, la saisie de contenu dans un champ de texte, la sélection d'une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement classique, attendu par l'utilisateur) mais l'activation d'un lien ou d'un bouton n'est pas une modification de paramètre.</p>",
-		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -659,7 +695,7 @@
 			"2.4.5 AA"
 		],
 		"verifier": "<p>Lorsque le nombre de pages est inférieur à 3 ou 4 et/ou le contenu succinct, ce critère est non applicable.</p>\n<p>vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>", 
-		"exception": "Sauf pour une page résultat ou étape d'un processus à étapes.",
+		"exception": "<p>Sauf pour une page résultat ou étape d'un processus à étapes.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-acces-multiples-et-une-localisation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -687,8 +723,8 @@
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
-		"complement": "<h4>Exemples</h4><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
+		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinente au lecteur d'écran</li></ul>",
+		"complement": "<h5>Exemples</h5><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-de-connaitre-le-resultat-dune-interaction-utilisateur-a-laide-de-messages-contextuels",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -796,6 +832,21 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Navigation clavier",
+		"title": "Le focus est-il complètement masqué ?",
+		"ID": "testID-081",
+		"IDorigin": "testID-081",
+		"wcag": [
+			"2.4.11 AA"
+		],
+		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
 		"themes": "Mise en page",
 		"title": "Le texte reste-t-il lisible lorsque la taille des caractères est augmentée de 200%&nbsp;?",
 		"ID": "testID-042",
@@ -818,7 +869,7 @@
 			"1.4.10 AA"
 		],
 		"verifier": "<p>Vérifier qu'aucune barre de défilement n'apparait dans le sens horizontal.</p>",
-		"exception": "Certains contenus nécessitant les deux dimensions pour être compréhensibles comme des images, cartes, présentations, tableaux de données, jeux….",
+		"exception": "<p>Certains contenus nécessitant les deux dimensions pour être compréhensibles comme des images, cartes, présentations, tableaux de données, jeux….</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#utiliser-des-tailles-relatives-et-faire-du-web-adaptatif",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -833,7 +884,7 @@
 			"1.4.12 AA"
 		],
 		"verifier": "<ul><li>la hauteur des lignes doit pouvoir être ajustée à 1.5 fois minimum la taille de la police de caractères</li><li>l'espace situé entre deux paragraphes doit pouvoir être ajusté à 2 fois minimum la taille de la police de caractères</li><li>l'espacement entre les lettres doit pouvoir être ajusté à 0.12 fois minimum la taille de la police de caractères</li><li>l'espacement entre les mots doit pouvoir être ajusté à 0.16 fois minimum la taille de la police de caractères</li><li>absence de textes tronqués ou superposés</li></ul>",
-		"complement": "<h4>Bookmarklet</h4><p>Pour faciliter le test, vous pouvez utiliser le bookmarklet suivant (à glisser dans votre barre de favoris)&nbsp;: <a href='javascript:(function(){document.querySelector(%27body%27).classList.add(%27text-spacing%27);%20var%20style%20=%20document.createElement(%27style%27),%20styleContent%20=%20document.createTextNode(%27.text-spacing%20*%20{%20line-height:%201.5%20!important;%20letter-spacing:%200.12em%20!important;%20word-spacing:%200.16em%20!important;%20}%20.text-spacing%20p{%20margin-bottom:%202em%20!important;%20}%20%27);%20style.appendChild(styleContent%20);%20var%20caput%20=%20document.getElementsByTagName(%27head%27);%20caput[0].appendChild(style);%20})();'>Espacement du texte</a></p>",
+		"complement": "<h5>Bookmarklet</h5><p>Pour faciliter le test, vous pouvez utiliser le bookmarklet suivant (à glisser dans votre barre de favoris)&nbsp;: <a href='javascript:(function(){document.querySelector(%27body%27).classList.add(%27text-spacing%27);%20var%20style%20=%20document.createElement(%27style%27),%20styleContent%20=%20document.createTextNode(%27.text-spacing%20*%20{%20line-height:%201.5%20!important;%20letter-spacing:%200.12em%20!important;%20word-spacing:%200.16em%20!important;%20}%20.text-spacing%20p{%20margin-bottom:%202em%20!important;%20}%20%27);%20style.appendChild(styleContent%20);%20var%20caput%20=%20document.getElementsByTagName(%27head%27);%20caput[0].appendChild(style);%20})();'>Espacement du texte</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#permettre-daerer-le-texte",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -869,6 +920,23 @@
 	},
 	{
 		"themes": "Mise en page",
+		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"3.2.6 A"
+		],
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur toutes les pages</p>",
+		"complement": "<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
+		"exception": "<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#identifier-et-conserver-la-coherence-des-regroupements-et-des-differentes-regions-de-la-page",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Mise en page",
 		"title": "Après désactivation du CSS, la page reste-t-elle compréhensible&nbsp;?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
@@ -876,7 +944,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page&nbsp;:<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p><strong>Exemple&nbsp;:</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre sans CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
-		"complement": "<h4>Compléments d'information</h4><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
+		"complement": "<h5>Compléments d'information</h5><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -891,7 +959,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Vérifier l'absence de perte d'information</p>",
-		"complement": "<h4>Complément d'information</h4><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (ex.&nbsp;: propriété <code>content</code> des pseudo classes <code>::before / :before</code> et <code>::after / : after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (ex.&nbsp;: propriété <code>content</code> des pseudo classes <code>::before / :before</code> et <code>::after / : after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -912,18 +980,19 @@
 	},
 	{
 		"themes": "Mise en page",
-		"title": "Les zones de click ont-elles une taille suffisante ? ",
+		"title": "La taille des zones cliquables ou tactiles est-elle suffisante&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
-			"2.5.5 AAA"
+			"2.5.8 AA"
 		],
-		"verifier": "<p>L’utilisateur doit pouvoir cliquer facilement sur un élément interactif. </p><p>Vérifier que la zone de click de ces éléments dépasse 44px par 44px</p>",
-		"exception":"<ul><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li><li>les éléments gérés par l'agent utilisateur utilisés tel quel</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…)</li><li>la  taille réduite est nécessaire pour convoyer l'information</li></ul>",
+		"verifier": "<p>La zone cliquable ou tactile est au moins de 24 par 24 pixels CSS.</p>",
+		"exception":"<ol><li>Il existe un cercle d'au moins 24 pixels CSS de diamètre avec les zones cliquables ou tactiles adjacentes.</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…) ou à une hauteur qui est limitée par un composant non intéractif.</li><li>La taille réduite est nécessaire pour convoyer l'information.</li><li>Les composants gérés par l'agent utilisateur sont utilisés tels quels.</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
-		"priority": "",
+		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": true
+		"wcag22": true,
+		"goodPractice": false
 	},
 	{
 		"themes": "Tactile et interactions",
@@ -934,7 +1003,7 @@
 			"2.5.1 A"
 		],
 		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
-		"complement": "<h4>Exemple</h4><p><strong>Zoom sur une carte&nbsp;: </strong>Des boutons (+ / -) sont disponibles, en alternative au resserrement à deux doigts.</p>",
+		"complement": "<h5>Exemple</h5><p><strong>Zoom sur une carte&nbsp;: </strong>Des boutons (+ / -) sont disponibles, en alternative au resserrement à deux doigts.</p>",
 		"group": "Tactile",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P1",
@@ -970,6 +1039,24 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P1",
 		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Tactile et interactions",
+		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative ?",
+		"ID": "testID-080",
+		"IDorigin": "testID-080",
+		"wcag": [
+			"2.5.7 AA"
+		],
+		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
+		"exception": "<p>Le critère est non applicable : </p><ul><li>L’action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
+		"complement":"<h5>Complément</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d’arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"group": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -1072,7 +1159,7 @@
 			"1.2.4 AA"
 		],
 		"verifier": "<ul><li>vérifier que des sous-titres sont disponibles</li><li>vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs)</li></ul>",
-		"complement": "<h4>Sous-titres</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications et position des interlocuteurs, effets sonores, musique…).</p>",
+		"complement": "<h5>Sous-titres</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications et position des interlocuteurs, effets sonores, musique…).</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
 		"priority": "P2",

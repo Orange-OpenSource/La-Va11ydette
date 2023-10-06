@@ -910,21 +910,6 @@
 	},
 	{
 		"themes": "WebView",
-		"title": "Le code source est-il valide&nbsp;?",
-		"ID": "testID-057",
-		"IDorigin": "testID-057",
-		"wcag": [
-			"4.1.1 A"
-		],
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Dans le code HTML s'assurer que&nbsp;:</p><ul><li>les balises de début et de fin sont complètes</li><li>éléments imbriqués selon leurs spécifications</li><li>il n'y a pas d'attributs en double</li><li>les attributs sont définis correctement (ouverture et fermeture des guillemets)</li><li>chaque attribut <code>id</code> est unique</li></ul>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
 		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",

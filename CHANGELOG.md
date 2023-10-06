@@ -4,7 +4,11 @@ Tous les changements notables de la checklist Audit de conformité WCAG 2.2 / WE
 
 Ce Change log commence à la version 1.7.0
 
+<<<<<<< HEAD
+## [2.2.0] - 2023-10-06
+=======
 ## [2.2.0] - yyyy-mm-dd
+>>>>>>> 6520fda224de2399800757bdcb19127c11257cab
 
 ### Ajouté
 
@@ -48,3 +52,8 @@ Ce Change log commence à la version 1.7.0
 
     Passage du critère WCAG 2.4.7 de AA à A.
 
+### Supprimé
+
+- [Le code source est-il valide?](https://www.w3.org/WAI/WCAG21/Understanding/parsing.html)
+
+    Le critère est déprécié, il est donc supprimé avec la sorti des WCAG 2.2

@@ -1,10 +1,10 @@
 /* 
 
-# Software Name: La Va11ydette
-# SPDX-FileCopyrightText: Copyright (c) 2021 Orange
-# SPDX-License-Identifier: MIT License
-#
-# This software is distributed under the MIT licens
+Software Name: La Va11ydette
+SPDX-FileCopyrightText: Copyright (c) 2016-2023 Orange
+SPDX-License-Identifier: MIT License
+
+This software is distributed under the MIT licens
 
 */
 

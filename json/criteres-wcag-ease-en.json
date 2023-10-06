@@ -103,7 +103,7 @@
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'> exhaustive list of allowed values</a>)</li></ul>",
+		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'> exhaustive list of allowed values</a>)</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
@@ -155,6 +155,42 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P3",
 		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
+		"title": "If information is provided by or to the user in the same process, is its input not requested again?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"3.3.7 A"
+		],
+		"verifier": "<p>In a multi-step form and in the same session, an automatic completion system must be offered to the user to give information previously entered or provided by the site knowing that the autocomplete is not considered sufficient.</p>",
+		"complement":"<h5>Complement</h5><p>examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
+		"exception":"<ol><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
+		"group": "Form",
+		"moreInfo": "",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
+		"title": "Can users authenticate themselves without going through a cognitive test ?",
+		"ID": "testID-077",
+		"IDorigin": "testID-077",
+		"wcag": [
+			"3.3.8 AA"
+		],
+		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing unless that step provides:</p><ul><li>another authentication method</li><li>help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the website.</li></ul><p>Please note, that memorizing a username and password is a cognitive test.<br/>The copy/paste function must be authorized on these fields.<br/>If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
+		"exception": "",
+		"complement": "<h5>Complement&nbsp;: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -238,7 +274,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button'&gt;</code>), for any triggering of an action, validation or selection</li></ul><p> Warning: <code>rome</code> ARIA can modify the semantics of HTML tags but not the interactivity, check that they are used in an accessible way</p>",
+		"verifier": "<ul> <li>content should always be placed between semantic tags (for instance <code>p</code>) in order that its relationship to the rest of the document structure may be understood</li> <li> long quotations (paragraph) use <code>blockquote</code> tags</li> <li> short quotations use <code>q</code> tags.</li> <li> the information presented visually, in a list format, is encoded as an HTML list </li> <li> unordered lists use the <code>ul</code> / <code>li</code> tags </li> <li> ordered lists use the <code>ol</code> / <code>li</code> tags</li> <li> description lists use the <code>dl</code> / <code>dt</code> / <code>dd</code> tags</li><li>link (<code>&lt;a&gt;</code>), for any change of context via loading a new URL</li><li>button (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), for any triggering of an action, validation or selection</li></ul><p> Warning: <code>role</code> ARIA can modify the semantics of HTML tags but not the interactivity, check that they are used in an accessible way</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -253,7 +289,7 @@
 			"4.1.1 A"
 		],
 		"verifier": "<p>In the HTML code make sure that:</p><ul><li>elements have complete start and end tags</li><li>elements are nested according to their specifications</li><li>elements do not contain duplicate attributes</li><li>attributes are correctly defined (quotation marks opened and closed)</li><li>each <code>id</code> attribute is unique</li></ul>",
-		"exception": "Unless the technical specifications of the application allow it",
+		"exception": "<p>Unless the technical specifications of the application allow it</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -414,7 +450,7 @@
 		"1.4.3 AA"
 		],
 		"verifier": "<ul><li>If the text color is defined (<code>color</code>), the background color must also be defined (<code>background-color</code>) .</li><li>If the background color is defined (<code>background-color</code>), the text color must also be defined (<code>color</code>).</ li><li>If a background image is used for an element containing text (<code>background-image</code>), the background color must be set (<code>background-color</code>) .</li></ul>",
-		"complement": "<h4>Complement</h4><ul><li>These properties can be applied directly to an element or inherited from a parent.</li><li> To test, the easiest way is to change your browser default colors.</li></ul> <p>In FireFox, it's easy to test. In \"Settings > Language and appearance > Colors\", open \"Manage colors...\" and in \"Text and background\", customize the \"Text\" and \"Background\" colors in order to clearly identify them. If in the page only one of these colors appears without the other appearing in the same element, the test is not compliant</p>",
+		"complement": "<h5>Complement</h5><ul><li>These properties can be applied directly to an element or inherited from a parent.</li><li> To test, the easiest way is to change your browser default colors.</li></ul> <p>In FireFox, it's easy to test. In \"Settings > Language and appearance > Colors\", open \"Manage colors...\" and in \"Text and background\", customize the \"Text\" and \"Background\" colors in order to clearly identify them. If in the page only one of these colors appears without the other appearing in the same element, the test is not compliant</p>",
 		"moreInfo": "",
 		"priority": "P2",
 		"resultTest": "nt",
@@ -487,8 +523,8 @@
 			"2.4.4 A"
 		],
 		"verifier": "<p>Users should be able to determine, with the help of the context, if they want to follow a link to understand his destination.</p><ul><li>check that there is not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link only by its accessible name</li><li>If none of these above points are compliant, ensure that the target of a link can be inferred from its context</li></ul>",
-		"exception": "he link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link. These cases are therefore not to be taken into account.",
-		"complement": "<h4>How to determine the context of the link:</h4><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
+		"exception": "<p>He link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link. These cases are therefore not to be taken into account.</p>",
+		"complement": "<h5>How to determine the context of the link:</h5><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li><li>in a heading of a specific level (<code>hn</code>) preceding the link </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -503,7 +539,7 @@
 			"2.4.9 AAA"
 		],
 		"verifier": "<p>The user must be able to understand the destination of links even taken out of their context.</p><ul><li>check that it is possible to determine the action or the destination of a link only from its accessible name</li><li>check that there are no identical labels pointing to different destinations</li></ul>",
-		"exception": "The link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link. Therefore, these cases are not applicable.",
+		"exception": "<p>The link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link. Therefore, these cases are not applicable.</p>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "",
@@ -629,7 +665,7 @@
             "3.2.1 A"
         ],
         "verifier": "<p>When using any interactive component, check that there is no context change when taking focus or when hovering the mouse on an element. This is to ensure that this type of interaction has predictable results (classic behavior, expected by the user).</p><p>The criterion is not applicable if when the focus is taken the context does not change. For example the appearance of a menu on focus or even the visual modification when hovering a link are not changes of context.</p>",
-        "complement": "<h4> Change of context </h4> <p>A major change in the content of the web page, when done without the knowledge of the user, can be confusing. </p> <p> Change of context includes modifications of: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
+        "complement": "<h5> Change of context </h5> <p>A major change in the content of the web page, when done without the knowledge of the user, can be confusing. </p> <p> Change of context includes modifications of: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
         "priority": "P2",
         "resultatTest": "nt",
@@ -644,7 +680,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Check the absence of context change, without prior warning of the user, when modifying the parameter of any interactive component. Modifying a parameter can be, for example, checking a checkbox, entering content in a text field, selecting an option in a form control, all of this must have predictable results (classic behavior, expected by the user) but the activation of a link or of a button is not a parameter change.</p>",
-		"complement": "<h4> Change of context </h4> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
+		"complement": "<h5> Change of context </h5> <p>A major change in the content of the web page which, when done without the knowledge of the user, can be confusing. </p> <p> The changes context include changes: </p> <ul> <li> the user agent (opening an application from the browser) </li> <li> the viewport (other part of the displayed page, open a new window) </li> <li>the focus position (focus sequence) </li> <li> content that changes the meaning of the web page </li></ul> <p> The context switch is compliant if: </p> <ul> <li> the action is initiated by a button or an explicit link </li> <li> the user is warned by a text before it is triggered </li> </ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interaction",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -659,7 +695,7 @@
 			"2.4.5 AA"
 		],
 		"verifier": "<p>when there is less than 3 or 4 pages and/or the content is short, this criterion is not applicable.</p><p>Check that at least 2 of the following mechanisms are present on the page, to allow a user to determine their location on the website:</p>\n<ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>", 
-		"exception": " except if the Web Page is the result of, or a step in a process.",
+		"exception": "<p>Except if the Web Page is the result of, or a step in a process.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-multiple-access-and-location",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -688,7 +724,7 @@
 			"4.1.3 A"
 		],
 		"verifier": "<p>For all status messages (results of a search, a notification, dialogue in a chatbot, upload of a file, product registration in a basket, progressive loading of a page (next 20 items)…): </p> <ul> <li>check that a mechanism based on the ARIA roles (<code>status</code>, <code>alert</code>, <code> alertdialog </code>…) or on dynamic regions <code>aria-live</code> is implemented </li> <li> Check that they are rendered in a relevant way to the screen reader </li> </ul>",
-		"complement": "<h4>Examples</h4><ul> <li> message that informs about the result of an action or the state of the application: <code>role='status'</code></ li > <li> error message: <code>role='alert'</code></li> <li> message indicating progress: <code>role='log'</code>, <code>'progressbar'</code> or <code>'status'</code></li></ul> <p>More information on <a href =\"https://a11y-guidelines.orange.com/en/articles/aria-status-messages/ \" target=\"_ blank\" title=\"Messages status (new window) \"> status messages</a>. </p>",
+		"complement": "<h5>Examples</h5><ul> <li> message that informs about the result of an action or the state of the application: <code>role='status'</code></ li > <li> error message: <code>role='alert'</code></li> <li> message indicating progress: <code>role='log'</code>, <code>'progressbar'</code> or <code>'status'</code></li></ul> <p>More information on <a href =\"https://a11y-guidelines.orange.com/en/articles/aria-status-messages/ \" target=\"_ blank\" title=\"Messages status (new window) \"> status messages</a>. </p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#allow-to-know-the-result-of-a-user-interaction-with-status-messages",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -796,6 +832,21 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Keyboard navigation",
+		"title": "Is the focus completely hidden?",
+		"ID": "testID-081",
+		"IDorigin": "testID-081",
+		"wcag": [
+			"2.4.11 AA"
+		],
+		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
 		"themes": "Layout",
 		"title": "Does the text remain readable when the character size is increased up to 200%?",
 		"ID": "testID-042",
@@ -818,7 +869,7 @@
 			"1.4.10 AA"
 		],
 		"verifier": "<p>Check that a horizontal scroll bar does not appear.</p>",
-		"exceptions": "Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…",
+		"exceptions": "<p>Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -869,6 +920,23 @@
 	},
 	{
 		"themes": "Layout",
+		"title": "If help is offered and repeated on several pages, is it presented in a coherent manner?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"3.2.6 A"
+		],
+		"verifier": "<p>If one or more assistive devices are offered, these must always be located in the same place, presented in the same way and in the same order on all pages.</p>",
+		"complement": "<h5> Additional information </h5><p>Help mechanisms can be an email address, phone number, contact form, chat, FAQ, etc.)</p>",
+		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#identify-and-maintain-consistency-of-groupings-and-different-regions-of-the-page",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Layout",
 		"title": "Is the content still understandable after disabling CSS?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
@@ -876,7 +944,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>If a specific reading order is required to understand a content on the page<br/> when CSS is disabled, check that this content read linearly remains understandable.</p><p> <strong> Example: </strong> a content implemented with multiple columns in CSS must be rendered in the correct order without CSS. </p><p> If no content requires a specific reading order, then the criterion is not applicable.</p>",
-		"complement": "<h4> Additional information </h4> <p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p> <p>Examples of content to test: </p> <ul><li>Layout via these CSS properties:<ul> <li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li> </ul> <li>Formatting table</li></ul>",
+		"complement": "<h5> Additional information </h5> <p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p> <p>Examples of content to test: </p> <ul><li>Layout via these CSS properties:<ul> <li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li> </ul> <li>Formatting table</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -891,7 +959,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Check that no information is lost</p>",
-		"complement": "<h4>More details</h4><ul><li>No information must be provided by CSS generated content (example: pseudo classes<code> ::before / :before</code> and <code>::after / :after</code>, <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
+		"complement": "<h5>More details</h5><ul><li>No information must be provided by CSS generated content (example: pseudo classes<code> ::before / :before</code> and <code>::after / :after</code>, <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -912,18 +980,19 @@
 	},
 	{
 		"themes": "Layout",
-		"title": "Are the click zones of sufficient size ?",
+		"title": "Are the clickable or touchable areas large enough?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
-			"2.5.5 AAA"
+			"2.5.8 AA"
 		],
-		"verifier": "<p>The user must be able to click easily on an interactive element. </p><p>Check that the click area of these elements exceeds 44px by 44px</p>",
-		 "exception":"<ul><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li><li>elements managed by the agent users used as is</li><li>The link is in the middle of a sentence or paragraph (help icon in a sentence, anchor links, footnote…)</li><li> The reduced size is necessary to convey the information</li></ul>",
+		"verifier": "<p>The clickable or touchable area is at least 24 by 24 CSS pixels.</p>",
+		 "exception":"<ol><li>There is a circle at least 24 CSS pixels in diameter with adjacent clickable or touchable areas.</li><li>The link is in the middle of a sentence or paragraph (link icon help in a sentence, anchor links, footnote, etc.) or at a height that is limited by a non-interactive component.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information. </li><li>The components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion. </li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
-		"priority": "",
+		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": true
+		"wcag22": true,
+		"goodPractice": false
 	},
 	{
 		"themes": "Touch and interactions",
@@ -934,7 +1003,7 @@
 			"2.5.1 A"
 		],
 		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
-		"complement": "<h4>For example</h4><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"complement": "<h5>For example</h5><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
 		"group": "Touch Screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
@@ -970,6 +1039,24 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P1",
 		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Touch and interactions",
+		"title": "Do features using drag and drop action have an alternative?",
+		"ID": "testID-080",
+		"IDorigin": "testID-080",
+		"wcag": [
+			"2.5.7 AA"
+		],
+		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single pointing action).</p>",
+		"exceptions": "<p>The criterion is not applicable: </p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native and unmodified< /li></ul>",
+		"complement":"<h5>Complement</h5><p>This criterion only targets actions for which only the start and end points are taken into account (dragging and then dropping a ticket in a Kanban board for example) and does not take into account so-called “multi- points”, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
+		"group": "",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -1072,7 +1159,7 @@
 			"1.2.4 AA"
 		],
 		"verifier": "<ul><li>Check that captions are available</li><li>Check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
-		"complement": "<h4>Captions</h4><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
+		"complement": "<h5>Captions</h5><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#provide-accessible-audio-or-video-tracks",
 		"priority": "P2",

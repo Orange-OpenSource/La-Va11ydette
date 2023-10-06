@@ -109,6 +109,22 @@
 	},
 	{
 		"themes": "Écran de saisie",
+		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
+		"ID": "testID-064",
+		"IDorigin": "testID-064",
+		"wcag": [
+			"3.3.8 AA"
+		],
+		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne repose pas sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au application mobile</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
+		"complement":"<h5>Compléments d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
+		"group": "Écran de saisie",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"wcag22" : true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Écran de saisie",
 		"title": "Les champs en erreur sont-ils identifiables&nbsp;?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
@@ -150,6 +166,24 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"goodPractice": false
+	},
+	{
+		"themes": "Écran de saisie",
+		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redondante ?",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
+		"wcag": [
+			"3.3.7 A"
+		],
+		"verifier": "<p>Dans un écran de saisi de données en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par le l’application tout en sachant que l'autocomplete n'est pas jugé suffisant.</p>",
+		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
+		"exception":"<ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
+		"group": "Écran de saisie",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -481,6 +515,21 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Navigation au clavier et Switch Access",
+		"title": "Le focus est-il visible sur tous les éléments?",
+		"ID": "testID-062",
+		"IDorigin": "testID-062",
+		"wcag": [
+			"2.4.11 AA"
+		],
+		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
+		"resultatTest": "nt",
+		"priority": "",
+		"wcag22" : true,
+		"goodPractice": false
+	},
+	{
 		"themes": "Navigation générale",
 		"title": "Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur disposent-elles d'une alternative ?",
 		"ID": "testID-031",
@@ -504,10 +553,27 @@
 			"2.5.1 A"
 		],
 		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
-		"complement": "<h4>Exemple</h4><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
+		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative ?",
+		"ID": "testID-074",
+		"IDorigin": "testID-074",
+		"wcag": [
+			"2.5.7 AA"
+		],
+		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
+		"complement": "<h5>Complément</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d’arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"exception":"<p>Le critère est non applicable :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -539,17 +605,18 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les éléments cliquables ont-ils une zone de clic suffisamment grande ?",
+		"title": "La taille des zones cliquables ou tactiles est-elle suffisante ? ",
 		"ID": "testID-050",
 		"IDorigin": "testID-050",
 		"wcag": [
-			"2.5.5 AAA"
+			"2.5.8 AA"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic supérieur ou égal à 48dp</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran, au moins égale à 8dp</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic supérieur ou égal à 26dp</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère</li></ul>",
 		"exception": "<p>Cette règle comporte deux exceptions :</p><ul><li>Il y a un autre élément sur l'écran qui réalise la même action, et qui respecte la taille requise. Dans ce cas, précis, on accepte que l'élément soit trop petit.</li><li>L'élément interactif se trouve dans une phrase ou un bloc de texte (ex : liens).</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -563,6 +630,22 @@
 		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
+		"wcag": [
+			"3.2.6 A"
+		],
+		"verifier": "<p>Vérifier que si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
+		"resultatTest": "nt",
+		"complement":"<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
+		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
+		"priority": "",
+		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
@@ -604,7 +687,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
-		"complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -672,7 +755,7 @@
 			"2.4.4 A"
 		],
 		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
-		"complement": "<h4>Comment déterminer le contexte de lien&nbsp;: </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li><li>dans un titre de niveau explicite précédent le lien</li></ul>",
+		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li><li>dans un titre de niveau explicite précédent le lien</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -788,7 +871,7 @@
 			"1.2.4 AA"
 		],
 		"verifier": "<ul><li>Vérifier que des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
-		"complement": "<h4>Sous-titres transcrits</h4><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
+		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",

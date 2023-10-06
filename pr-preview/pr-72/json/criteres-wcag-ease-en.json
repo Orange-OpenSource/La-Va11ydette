@@ -103,7 +103,7 @@
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected (<a href='https://www.w3.org/TR/WCAG21/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'> exhaustive list of allowed values</a>)</li></ul>",
+		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'> exhaustive list of allowed values</a>)</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
@@ -163,7 +163,7 @@
 		"ID": "testID-079",
 		"IDorigin": "testID-079",
 		"wcag": [
-			"3.3.9 A"
+			"3.3.7 A"
 		],
 		"verifier": "<p>In a multi-step form and in the same session, an automatic completion system must be offered to the user to give information previously entered or provided by the site knowing that the autocomplete is not considered sufficient.</p>",
 		"complement":"<h5>Complement</h5><p>examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
@@ -172,6 +172,7 @@
 		"moreInfo": "",
 		"priority": "P3",
 		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -180,7 +181,7 @@
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
 		"wcag": [
-			"3.3.7 AA"
+			"3.3.8 AA"
 		],
 		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing unless that step provides:</p><ul><li>another authentication method</li><li>help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the website.</li></ul><p>Please note, that memorizing a username and password is a cognitive test.<br/>The copy/paste function must be authorized on these fields.<br/>If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
 		"exception": "",
@@ -189,6 +190,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P0",
 		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -841,6 +843,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -929,6 +932,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#identify-and-maintain-consistency-of-groupings-and-different-regions-of-the-page",
 		"priority": "P1",
 		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -987,6 +991,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -1051,6 +1056,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"wcag22": true,
 		"goodPractice": false
 	},
 	{

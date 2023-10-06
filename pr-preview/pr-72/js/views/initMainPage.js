@@ -354,6 +354,10 @@ function defaultView(currentRefTests){
 			}
 		}
 
+		if(currentRefTests[i].wcag22){
+			htmlrefTests += '<span class="m-1 badge bg-warning">WCAG 2.2</span>';
+		}
+
 		htmlrefTests += '<span id="resultID-' + currentTest + '" class="m-1 badge ' + getStatutClass(currentRefTests[i].resultatTest) + '">' + setStatutText(currentRefTests[i].resultatTest) + '</span></h4></div>';
 		
 		htmlrefTests += '<div class="card-body py-2 d-flex align-items-center justify-content-between"><ul class="list-inline m-0">';

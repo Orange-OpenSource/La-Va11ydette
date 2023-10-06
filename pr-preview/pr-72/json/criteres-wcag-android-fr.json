@@ -113,7 +113,7 @@
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": [
-			"3.3.7 AA"
+			"3.3.8 AA"
 		],
 		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne repose pas sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au application mobile</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
@@ -173,7 +173,7 @@
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
-			"3.3.9 AA"
+			"3.3.7 A"
 		],
 		"verifier": "<p>Dans un écran de saisi de données en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par le l’application tout en sachant que l'autocomplete n'est pas jugé suffisant.</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",

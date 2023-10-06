@@ -487,17 +487,17 @@
 		},
 		{
 			"wcag": "3.3.7",
-			"level": "AA",
-			"name": "Accessible authentication",
+			"level": "A",
+			"name": "Redundant input",
 			"tests": [],
 			"resultat": "na",
 			"comment": [],
 			"page": []
 		},
 		{
-			"wcag": "3.3.9",
-			"level": "A",
-			"name": "Redundant input",
+			"wcag": "3.3.8",
+			"level": "AA",
+			"name": "Accessible authentication",
 			"tests": [],
 			"resultat": "na",
 			"comment": [],

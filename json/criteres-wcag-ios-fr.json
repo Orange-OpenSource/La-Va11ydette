@@ -79,7 +79,7 @@
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
 		"wcag": {
-			"0": "3.3.7 AA"
+			"0": "3.3.8 AA"
 		},
 		"verifier": "<p>Ensure that all steps in an authentication process do not rely on cognitive testing unless this provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the application mobile.</li></ul><p>Warning, memorizing a username and password is a cognitive test.<br/>The copy/paste function must be authorized on these fields .<br/>If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
@@ -152,7 +152,7 @@
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": {
-			"0": "3.3.9 AA"
+			"0": "3.3.7 A"
 		},
 		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par l’application tout en sachant que la saisie automatique n'est pas jugé suffisant.</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison).</p>",

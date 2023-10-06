@@ -10,11 +10,11 @@ Ce Change log commence à la version 1.7.0
 
 - [Si une information est fournie par ou à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redemandée ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-079)
 
-    Nouveau critère relié au [WCAG 3.3.9 A](https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry)
+    Nouveau critère relié au [WCAG 3.3.7 A](https://www.w3.org/WAI/WCAG22/Understanding/redundant-entry)
 
 - [L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-077)
 
-    Nouveau critère relié au [WCAG 3.3.7 AA](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication)
+    Nouveau critère relié au [WCAG 3.3.8 AA](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication)
 
 - [Le focus est-il complètement masqué ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-081)
 

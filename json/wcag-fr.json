@@ -488,17 +488,17 @@
 		},
 		{
 			"wcag": "3.3.7",
-			"level": "AA",
-			"name": "Authentification accessible",
+			"level": "A",
+			"name": "Entrée redondante",
 			"tests": [],
 			"resultat": "na",
 			"comment": [],
 			"page": []
 		},
 		{
-			"wcag": "3.3.9",
-			"level": "A",
-			"name": "Entrée redondante",
+			"wcag": "3.3.8",
+			"level": "AA",
+			"name": "Authentification accessible",
 			"tests": [],
 			"resultat": "na",
 			"comment": [],

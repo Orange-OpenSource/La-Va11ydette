@@ -397,7 +397,7 @@
 					"Examiner les contenus de type animations et vidéos de la page qui clignotent"
 				],
 				"verifier": [
-					"Vérifier qu'il n'y a pas de contenu présentant de clignotements rapides (plus de 3 flash à la seconde) ou les <a href='https://www.w3.org/TR/WCAG21/#dfn-general-flash-and-red-flash-thresholds' hreflang='en'>flashs sont inférieurs au seuil général ou seuil de rouge</a>."
+					"Vérifier qu'il n'y a pas de contenu présentant de clignotements rapides (plus de 3 flash à la seconde) ou les <a href='https://www.w3.org/TR/WCAG22/#dfn-general-flash-and-red-flash-thresholds' hreflang='en'>flashs sont inférieurs au seuil général ou seuil de rouge</a>."
 				],
 				"resultat": [
 					"Absence de clignotement ou de flash rapide ou dépassant le seuil général ou de rouge"

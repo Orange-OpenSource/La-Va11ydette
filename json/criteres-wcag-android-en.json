@@ -109,7 +109,7 @@
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": [
-			"3.3.7 AA"
+			"3.3.8 AA"
 		],
 		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing, unless that step provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the mobile application</li></ul><p>Warning, remembering a username and password is a cognitive test.<br/>The copy/paste function must be enabled on these fields.<br />If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
 		"complement": "<h5>Complementary information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
@@ -169,7 +169,7 @@
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
-			"3.3.9 AA"
+			"3.3.7 A"
 		],
 		"verifier": "<p>In a data entry screen in several steps and in the same session, an automatic filling system must be offered to the user to restore information previously entered or provided by the application while knowing that autocomplete is not considered sufficient.</p>",
 		"complement": "<h5>Additional information</h5><p>Examples of valid mechanisms: automatic feeding, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data ( billing address equals delivery address)</p>",

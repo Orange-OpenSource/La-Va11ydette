@@ -1344,42 +1344,59 @@ exportStatementHTML = function(statementResult) {
 				<li>${dataWCAG.result}${langStatement.statementTemplate.resultsContent2}</li>
 				<li>${langStatement.statementTemplate.resultsContent2bis} ${dataWCAG.globalPagesResult}%.</li>
 			</ul>
-			<p id="table-description" aria-hidden="true">
-			${langStatement.statementTemplate.resultsContent5}
-			</p>
-			
-			<table class="table table-striped" aria-describedby="table-description">
-			<caption class="visually-hidden">${langStatement.auditTxt4}</caption>
+				
+				<table class="table table-striped"><caption class="visually-hidden">${langStatement.auditTxt15}</caption>
+					<thead><tr>
+						<th scope="row">${langStatement.auditTxt10}</th>
+						<th scope="col" class="text-center">A</th>
+						<th scope="col" class="text-center">AA</th>
+						<th scope="col" class="text-center">Total</th>
+					</tr></thead>
+				<tbody>
+				
 				<tr>
-				<th scope="row">${langStatement.auditTxt17} / ${langStatement.auditTxt10}</th>
-				<th scope="col" class="text-center">${langStatement.compliant} / A</th>
-				<th scope="col" class="text-center">${langStatement.compliant} / AA</th>
-				<th scope="col"class="text-center">${langStatement.nonCompliant} / A</th>
-				<th scope="col"class="text-center">${langStatement.nonCompliant} / AA</th>
-				<th scope="col" class="text-center">${langStatement.notApplicable} / A</th>
-				<th scope="col" class="text-center">${langStatement.notApplicable} / AA</th>
-				<th scope="col" class="text-center bg-light">${langStatement.auditTxt8}</th>
+					<th scope="row" class="font-weight-bold">${langStatement.criteriaNumber}</th>
+					<td class="text-center">${dataWCAG.totalA}</td>
+					<td class="text-center">${dataWCAG.totalAA}</td>
+					<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
 				</tr>
 				
-			
-				${statementResult.map(r => 
-				`<tr>
-					<th scope="row"><span class="visually-hidden">Page : </span>${r.name}</th>
-					<td>${r.conformeA}</td>
-					<td>${r.conformeAA}</td>
-					<td>${r.nonconformeA}</td>
-					<td>${r.nonconformeAA}</td>
-					<td>${r.naA}</td>
-					<td>${r.naAA}</td>
-					<td style="background-color:#ddd !important;">${r.result} %</td>
-				</tr>`
-					
-				).join('')}
+				<tr>
+					<th scope="row" class="font-weight-bold">${langStatement.compliant}</th>
+					<td class="text-center">${dataWCAG.conformeA}</td>
+					<td class="text-center">${dataWCAG.conformeAA}</td>
+					<td class="text-center">${dataWCAG.totalconforme}</td>
+				</tr>
 				
-			</table>
-			
-			<p><strong>${langStatement.statementTemplate.resultsContent6}</strong> ${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent7}</p>
-		
+				<tr>
+					<th scope="row" class="font-weight-bold">${langStatement.nonCompliant}</th>
+					<td class="text-center">${dataWCAG.nonconformeA}</td>
+					<td class="text-center">${dataWCAG.nonconformeAA}</td>
+					<td class="text-center">${dataWCAG.totalnonconforme}</td>
+				</tr>
+				
+				<tr>
+					<th scope="row" class="font-weight-bold">${langStatement.notApplicable}</th>
+					<td class="text-center">${dataWCAG.naA}</td>
+					<td class="text-center">${dataWCAG.naAA}</td>
+					<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
+				</tr>
+				
+				<tr>
+					<th scope="row" class="font-weight-bold bg-light">${langStatement.auditTxt16}</th>
+					<td class="text-center bg-light">
+						${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
+					</td>
+					<td class="text-center bg-light">
+						${(!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultAA}% ` : ``}	
+					</td>
+					<td class="text-center bg-light">
+						${(!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? `${dataWCAG.result}% ` : ``}
+					</td>
+				</tr>
+				
+				</tbody>
+				</table>
 			</div>
         </div>
         <div class="row">

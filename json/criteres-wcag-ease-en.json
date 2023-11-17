@@ -533,7 +533,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Each link wording to open/download a document understandable?",
+		"title": "Each link text to open/download a document understandable?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [],
@@ -914,7 +914,7 @@
 		],
 		"verifier": "<p>If one or more assistive devices are offered, these must always be located in the same place, presented in the same way and in the same order on all pages.</p>",
 		"complement": "<h5> Additional information </h5><p>Help mechanisms can be an email address, phone number, contact form, chat, FAQ, etc.)</p>",
-		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation</p>",
+		"exception":"<p>The user initiates a change in the presentation of the help following the use of zoom or orientation</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#identify-and-maintain-consistency-of-groupings-and-different-regions-of-the-page",
 		"priority": "P1",
 		"resultatTest": "nt",

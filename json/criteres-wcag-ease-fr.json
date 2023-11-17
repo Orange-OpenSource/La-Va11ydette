@@ -55,7 +55,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<ul><li>la présence de groupe <code>fieldset</code> ou <code>role='group'</code></li><li>chaque groupe possède une légende (<code>legend</code>, <code>aria-labelledby</code>)</li></ul>",
-		"complement": "<h4>Complément&nbsp;: </h4><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
+		"complement": "<h5>Complément&nbsp;: </h5><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P3",
@@ -71,7 +71,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<ul><li>L'étiquette de chaque champ est pertinente.</li><li>Si un format de donnée est indiqué pour un champ, il est pertinent.</li><li>Si des champs sont regroupés, vérifier que la légende est pertinente.</li></ul>",
-		"complement":"<h4>Complément</h4><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
+		"complement":"<h5>Complément</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
@@ -159,7 +159,7 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Si une information est fournie par ou à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redemandée ?",
+		"title": "Si une information est fournie par ou à l'utilisateur dans un même processus, sa saisie n'est pas redemandée ?",
 		"ID": "testID-079",
 		"IDorigin": "testID-079",
 		"wcag": [
@@ -232,7 +232,7 @@
 		],
 		"verifier": "<ul><li>vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-		"complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+		"complement":"<h5>Complément</h5><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -247,7 +247,7 @@
 		],
 		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-		"complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+		"complement":"<h5>Complément</h5><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -810,7 +810,7 @@
 			"2.4.7 AA"
 		],
 		"verifier": "<p>Le focus doit toujours être présent et suffisament visible sur tous les éléments focusables.</p>",
-		"complement": "<h4>Complément</h4><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
+		"complement": "<h5>Complément</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
 		"moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -818,13 +818,14 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Le focus est-il complètement masqué ?",
+		"title": "Le composant recevant le focus n'est pas complètement masqué ? ",
 		"ID": "testID-081",
 		"IDorigin": "testID-081",
 		"wcag": [
 			"2.4.11 AA"
 		],
-		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"verifier": "<p>Vérifier que le composant recevant le focus n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Lorsque le contenu d'une interface configurable peut être repositionné par l'utilisateur, seules les positions initiales du contenu déplaçable par l'utilisateur sont prises en compte pour les tests et la conformité à ce critère de réussite.</li><li>Le contenu ouvert par l'utilisateur peut masquer le composant recevant le focus. Si l'utilisateur peut révéler le composant ciblé sans déplacer le focus, le composant avec le focus n'est pas considéré comme masqué en raison du contenu créé par l'auteur.</li><li>Si le composant qui reçoit le focus est recouvert par un autre élément dont l'opacité est inférieure à 100 % alors l'élément qui reçoit le focus n'est pas totalement masqué et le critère est validé.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -1160,7 +1161,7 @@
 			"1.4.2 A"
 		],
 		"verifier": "<p>Il est possible de :</p> <ul><li>mettre en pause ou d'arrêter le son</li><li>régler le volume indépendamment du volume système</li></ul>",
-		"complement":"<h4>Complément</h4><p>Le mécanisme doit être facilement atteignable</p>",
+		"complement":"<h5>Complément</h5><p>Le mécanisme doit être facilement atteignable</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
 		"priority": "P3",

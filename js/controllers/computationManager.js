@@ -217,6 +217,7 @@ function runComputationWcag(obj) {
 	* @param {array} pagesResults - Contains all wcag results by pages.
 	*/
     pagesResults = [];
+	countNocomplete=0;
 	
 	/**
 	* Initilization of the dataWCAG results, to be sure that the results are correctly re-computed each time the audit results are displayed.
@@ -242,6 +243,10 @@ function runComputationWcag(obj) {
 				}
 				
 				pagesResults[i].items[k].complete = true;
+				if(!countNocomplete){
+					dataWCAG.items[k].complete = true;
+				}
+				
 				pagesResults[i].items[k].test = [];
 				pagesResults[i].items[k].name = dataWCAG.items[k].name;
 				
@@ -252,7 +257,7 @@ function runComputationWcag(obj) {
 					/**
 					* Gets each test value, and updates the current wcag rules, basing on computation rules.
 					*/
-
+					
 					for (let j in dataVallydette.checklist.page[i].items) {
 						
 						if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
@@ -262,8 +267,11 @@ function runComputationWcag(obj) {
 							testObj.result = dataVallydette.checklist.page[i].items[j].resultatTest;
 							pagesResults[i].items[k].test.push(testObj);
 							
-							if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
+							
+							if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt" && dataVallydette.checklist.page[i].items[j].goodPractice === false) {
 								pagesResults[i].items[k].complete = false;
+								dataWCAG.items[k].complete = false;
+								countNocomplete++;
 							}
 
 							if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
@@ -385,7 +393,8 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 
 				pagesResultsArray[i].items[j].level === 'A' ? nbNaA++ :nbNaAA++;
 				pagesResultsArray[i].items[j].level === 'A' ? nbTotalA++ : nbTotalAA++;
-			} else if (pagesResultsArray[i].items[j].resultat === 'nt') {
+			}  
+			if (pagesResultsArray[i].items[j].complete === false) {
 				pagesResultsArray[i].complete = false;
 			}
 		}
@@ -498,15 +507,14 @@ function pagesResultsComputationRGAA(pagesResultsArray) {
 */
 function dataWCAGComputation() {
 	
-
 	dataWCAG.complete = true;
 
 	/**
-	 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
+	 * 	Check if all critere are completed.
 	*/
 	
 		for (let i in dataWCAG.items) {
-			if (dataWCAG.items[i].resultat === 'AAA' && dataWCAG.items[i].resultat === 'nt') {
+			if ((dataWCAG.items[i].level!=="AAA") && ((dataWCAG.items[i].resultat === 'nt' && dataWCAG.items[i].deprecated !== true) || dataWCAG.items[i].complete ===false)) {
 				dataWCAG.complete = false;
 			}
 		}

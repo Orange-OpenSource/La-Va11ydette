@@ -259,7 +259,7 @@ function showStatementWizard() {
 	
 	var statementResult = runComputationWcag(true);
 
-	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "DONE") {
+	if (dataWCAG.complete === true && dataVallydette.statement.status === "DONE") {
 		
 		initStatementExports(statementResult);
 		
@@ -285,7 +285,7 @@ function showStatementWizard() {
 	statementWizardContent += '<h2 class="pt-4 pb-3">' + langVallydette.statementTxt1 + '</h2>';
 	
 	statementWizardContent += '<div id="alertContainer">';
-	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
+	if (dataWCAG.complete === false) {
 		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
 		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">'+langVallydette.closeAlert+'</span></button>';   
 		statementWizardContent += '</div>';
@@ -352,6 +352,7 @@ function showStatementWizard() {
     statementWizardContent += '<label for="input-date" id="input-dateLabel" class="form-label">' + langVallydette.date + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<input type="date" class="form-control" id="input-date" aria-labelledby="input-dateLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required aria-invalid="false">';
     statementWizardContent += '<div id="input-dateError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.dateError + ' ' + dateFormat +'</p></div>';
+	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
@@ -875,7 +876,7 @@ saveStatement = function(statementForm, submitterBtn) {
 		dataVallydette.statement[input] = statementForm.elements["input-"+input].value;
 	});
 	
-	if (dataWCAG.globalPagesResult) {
+	if (dataWCAG.complete) {
 		
 		dataVallydette.statement.status = "DONE";
 		

@@ -5,9 +5,9 @@
  * @param {array} statementInputs - list of the input type properties
  * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
-const statementObjectProperties = ["name","app", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environments"];
+const statementObjectProperties = ["name","app", "lang", "status", "date", "dateUpdate", "nonCompliant", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "nonCompliantComment", "technology", "tests", "environments"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
-const statementInputs = ["name", "app", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
+const statementInputs = ["name", "app", "lang", "date", "dateUpdate", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption", "nonCompliantComment"];
 var langStatement = {};
 
 
@@ -60,6 +60,12 @@ function initStatementObject() {
 				if (p === "date") {
 					dataVallydette.statement.date = "";
 				}
+				if (p === "dateUpdate") {
+					dataVallydette.statement.dateUpdate = "";
+				}
+				if (p === "nonCompliant") {
+					dataVallydette.statement.nonCompliant = false;
+				}
 				if (p === "plan") {
 					dataVallydette.statement.plan = langVallydette.accessibilityPlanText;
 				}
@@ -102,6 +108,9 @@ function initStatementObject() {
 				}
 				if (p === "exemption") {
 					dataVallydette.statement.exemption = "";
+				}
+				if (p === "nonCompliantComment") {
+					dataVallydette.statement.nonCompliantComment = "";
 				}
 				if (p === "userTestDescription") {
 					dataVallydette.statement.userTestDescription = langStatement.userTestingContent;
@@ -258,8 +267,10 @@ function showStatementWizard() {
 	
 	
 	var statementResult = runComputationWcag(true);
-
-	if (dataWCAG.complete === true && dataVallydette.statement.status === "DONE") {
+	if(dataWCAG.complete === true){
+		dataVallydette.statement["nonCompliant"]=false;
+	}
+	if ((dataWCAG.complete === true && dataVallydette.statement.status === "DONE") || (dataVallydette.statement["nonCompliant"]===true && dataVallydette.statement.status === "DONE")) {
 		
 		initStatementExports(statementResult);
 		
@@ -316,8 +327,21 @@ function showStatementWizard() {
 	statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
 	statementWizardContent += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 
+	if(dataVallydette.checklist.page.length>1 && dataWCAG.complete==false){
+		statementWizardContent += '<div class="row">';
+		statementWizardContent += '<div class="col-lg-12">';
+		statementWizardContent += '<div class="form-check mb-3">';
+		statementWizardContent += '<input class="form-check-input" type="checkbox" value="" id="checkbox-noncompliant" aria-describedby="checkboxHelpBlock" '+ (dataVallydette.statement["nonCompliant"] === true ? 'checked' : '') +'>';
+		statementWizardContent += '<label class="form-check-label" for="checkbox-noncompliant">'+langVallydette.noncompliantInput+'</label>';
+		statementWizardContent += '<div id="checkboxHelpBlock" class="form-text">'+langVallydette.noncompliantDesc+'</div>'
+		statementWizardContent += '</div>';
+		statementWizardContent += '</div>';
+		statementWizardContent += '</div>';
+	}
+	
+
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-name" id="input-nameLabel" class="form-label">' + langVallydette.projectName + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<input type="text" class="form-control" id="input-name" aria-labelledby="input-nameLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.name + '" required aria-invalid="false">';
@@ -326,7 +350,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 
 
-	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-app" id="input-appLabel" class="form-label">' + langVallydette.projectSiteName + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<input type="text" class="form-control" id="input-app" aria-labelledby="input-appLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.app + '" required aria-invalid="false">';
@@ -335,7 +359,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	
-	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-lang" id="input-langLabel" class="form-label">' + langVallydette.lang + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<select class="form-select" id="input-lang" aria-labelledby="input-langLabel"  style="scroll-margin-top: 10.35em;"  required aria-invalid="false">';
@@ -347,13 +371,21 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-date" id="input-dateLabel" class="form-label">' + langVallydette.date + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<input type="date" class="form-control" id="input-date" aria-labelledby="input-dateLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required aria-invalid="false">';
     statementWizardContent += '<div id="input-dateError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.dateError + ' ' + dateFormat +'</p></div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
+
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label for="input-dateUpdate" class="form-label">' + langVallydette.dateUpdate + '</label>';
+    statementWizardContent += '<input type="date" class="form-control" id="input-dateUpdate" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.dateUpdate + '">';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="border-top border-light my-3"></div>';
@@ -478,7 +510,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label class="form-label" for="input-derogation">' + langVallydette.derogations + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
@@ -486,13 +518,22 @@ function showStatementWizard() {
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label class="form-label" for="input-exemption">' + langVallydette.exemptions + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' + dataVallydette.statement.exemption + '</textarea>';
 	statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
+
+	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label class="form-label" for="input-nonCompliantComment">' + langVallydette.nonCompliantComment + '</label>';
+    statementWizardContent += '<textarea class="form-control" id="input-nonCompliantComment" rows="5" aria-describedby="nonCompliantCommentDesc">' + dataVallydette.statement.nonCompliantComment + '</textarea>';
+	statementWizardContent += '<small id="nonCompliantCommentDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row mb-2">';
@@ -621,7 +662,7 @@ checkFormState = function(buttonSubmitter){
 		}
 
 		var propertyName=document.getElementById("input-name");
-		if(propertyApp.value!==""){
+		if(propertyName.value!==""){
 			validField(document.getElementById('input-nameError'), propertyName, "input-nameLabel")
 		}
 		else{
@@ -875,8 +916,10 @@ saveStatement = function(statementForm, submitterBtn) {
 	statementInputs.forEach(function(input){
 		dataVallydette.statement[input] = statementForm.elements["input-"+input].value;
 	});
+
+	dataVallydette.statement["nonCompliant"] = (statementForm.elements["checkbox-noncompliant"] !== undefined ? statementForm.elements["checkbox-noncompliant"].checked : false);
 	
-	if (dataWCAG.complete) {
+	if (dataWCAG.complete || dataVallydette.statement["nonCompliant"] ) {
 		
 		dataVallydette.statement.status = "DONE";
 		
@@ -1007,6 +1050,12 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += 'Format: YYYY-MM-DD\n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<audit_date>' + dataVallydette.statement.date + '</audit_date>\n\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'AUDIT UPDATE DATE\n';
+	xmlStatement += 'Format: YYYY-MM-DD\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<audit_date>' + dataVallydette.statement.dateUpdate + '</audit_date>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'DIGITAL ACCESSIBILITY PLAN\n';
@@ -1077,6 +1126,15 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += '******************************************************\n';
 	xmlStatement += '-->\n';
 
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'Comment of non-compliance\n';
+	xmlStatement += 'Comment of non-compliance. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<nonComplianceComment>\n<![CDATA[';
+	xmlStatement += md.render(dataVallydette.statement.nonCompliantComment);
+	xmlStatement += ']]>\n</nonComplianceComment>\n\n';
+
 	xmlStatement += '<!--\n';
 	xmlStatement += 'USERS\n';
 	xmlStatement += 'Number of real users that tested the pages\n';
@@ -1085,44 +1143,54 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += '<users>' + dataVallydette.statement.userNumber + '</users>\n';
 	xmlStatement += '<blocking_points>' + dataVallydette.statement.userBlockingPoints + '</blocking_points>\n\n';
 
-	
-	xmlStatement += '<!--\n';
-	xmlStatement += 'RESULTS DETAILS\n';
-	xmlStatement += '-->\n';
-	xmlStatement += '<results>\n';
-	xmlStatement += '	<result type="a">\n';
-	xmlStatement += '		<criteria>' + dataWCAG.totalA + '</criteria>\n';
-	xmlStatement += '		<ok>' + dataWCAG.conformeA + '</ok><!-- valid -->\n';
-	xmlStatement += '		<nok>' + dataWCAG.nonconformeA + '</nok><!-- not valid -->\n';
-	xmlStatement += '		<na>' + dataWCAG.naA + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.resultA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
-	xmlStatement += '	</result>\n\n';
+	if(dataVallydette.statement.nonCompliant==false){
+		xmlStatement += '<!--\n';
+		xmlStatement += 'RESULTS DETAILS\n';
+		xmlStatement += '-->\n';
+		xmlStatement += '<results>\n';
+		xmlStatement += '	<result type="a">\n';
+		xmlStatement += '		<criteria>' + dataWCAG.totalA + '</criteria>\n';
+		xmlStatement += '		<ok>' + dataWCAG.conformeA + '</ok><!-- valid -->\n';
+		xmlStatement += '		<nok>' + dataWCAG.nonconformeA + '</nok><!-- not valid -->\n';
+		xmlStatement += '		<na>' + dataWCAG.naA + '</na><!-- not applicable -->\n';
+		xmlStatement += '		<conformity>' + dataWCAG.resultA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n\n';
 
-	xmlStatement += '	<result type="aa">\n';
-	xmlStatement += '		<criteria>' + dataWCAG.totalAA + '</criteria>\n';
-	xmlStatement += '		<ok>' + dataWCAG.conformeAA + '</ok><!-- valid -->\n';
-	xmlStatement += '		<nok>' + dataWCAG.nonconformeAA + '</nok><!-- not valid -->\n';
-	xmlStatement += '		<na>' + dataWCAG.naAA + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.resultAA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
-	xmlStatement += '	</result>\n\n';
+		xmlStatement += '	<result type="aa">\n';
+		xmlStatement += '		<criteria>' + dataWCAG.totalAA + '</criteria>\n';
+		xmlStatement += '		<ok>' + dataWCAG.conformeAA + '</ok><!-- valid -->\n';
+		xmlStatement += '		<nok>' + dataWCAG.nonconformeAA + '</nok><!-- not valid -->\n';
+		xmlStatement += '		<na>' + dataWCAG.naAA + '</na><!-- not applicable -->\n';
+		xmlStatement += '		<conformity>' + dataWCAG.resultAA + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n\n';
 
-	xmlStatement += '	<result type="total">\n';
-	xmlStatement += '		<criteria>' + (dataWCAG.totalA+dataWCAG.totalAA) + '</criteria>\n';
-	xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
-	xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
-	xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
-	xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
-	xmlStatement += '	</result>\n';
-	xmlStatement += '</results>\n\n';
+		xmlStatement += '	<result type="total">\n';
+		xmlStatement += '		<criteria>' + (dataWCAG.totalA+dataWCAG.totalAA) + '</criteria>\n';
+		xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
+		xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
+		xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
+		xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n';
+		xmlStatement += '</results>\n\n';
 	
+		xmlStatement += '<!--\n';
+		xmlStatement += 'Pages results details\n';
+		xmlStatement += '-->\n';
+		xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
+		statementResult.forEach(item => xmlStatement += '	<page name="' + utils.escape_html(item.name) + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
+		xmlStatement += '</pages_results>\n\n';
+	}
+	else{
+		xmlStatement += '<!--\n';
+		xmlStatement += 'RESULTS DETAILS\n';
+		xmlStatement += '-->\n';
+		xmlStatement += '<results>\n';
+		xmlStatement += '	<result type="total">\n';
+		xmlStatement += '		<conformity>50</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n';
+		xmlStatement += '</results>\n\n';
+	}
 	
-	
-	xmlStatement += '<!--\n';
-	xmlStatement += 'Pages results details\n';
-	xmlStatement += '-->\n';
-	xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
-	statementResult.forEach(item => xmlStatement += '	<page name="' + utils.escape_html(item.name) + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
-	xmlStatement += '</pages_results>\n\n';
 	
 	
 	xmlStatement += '<!--\n';
@@ -1203,7 +1271,9 @@ exportStatementHTML = function(statementResult) {
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
 	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
 	var statementDate = new Date(dataVallydette.statement.date);
+	var statementDateUpdate = new Date(dataVallydette.statement.dateUpdate);
 	var localeStatementDate = statementDate.toLocaleDateString(dataVallydette.statement.lang);
+	var localeStatementDateUpdate = statementDateUpdate.toLocaleDateString(dataVallydette.statement.lang);
 	adaptPlan();
 	var md = window.markdownit();
 
@@ -1211,14 +1281,13 @@ exportStatementHTML = function(statementResult) {
 
 
 
-	if(dataWCAG.result == 100){
-		conformity="totalement conforme";
+	if(dataWCAG.result<50 || dataVallydette.statement.nonCompliant==true ){
+		conformity=langStatement.statementTemplate.noCompliant;
+	}else if(dataWCAG.result == 100){
+		conformity=langStatement.statementTemplate.totalyCompliant;
 	}
 	else if (dataWCAG.result>= 50){
-		conformity="partiellement conforme";
-	}
-	else {
-		conformity="non conforme"
+		conformity=langStatement.statementTemplate.partialyCompliant;
 	}
 	
 	htmlStatement = "";
@@ -1245,18 +1314,9 @@ exportStatementHTML = function(statementResult) {
         
             <div class="row">
         
-                <div class="col-lg-3">
-                        
-                    <h2 class="pie" data-value="${dataWCAG.result}">
-						<span class="visually-hidden">${langStatement.statementTemplate.state} </span> 
-                        <span class="pie-val">${dataWCAG.result}%</span>
-                    </h2>
-                    
-                    <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.result}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint1}` : `` }.
-					</p>
-				</div>
+               
         
-                <div class="col-lg-9">
+                <div class="col-lg-12">
 				
 					<h2 class="h4 mt-4">${langStatement.statementTemplate.contextHeading}</h2>
 					${md.render(dataVallydette.statement.plan)}                
@@ -1266,32 +1326,205 @@ exportStatementHTML = function(statementResult) {
             </div>
             
         </div>
+
+		<div class="row">
+			<div class="col-lg">
+
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.state}</h2>
+				<p>"${dataVallydette.statement.app}" ${langStatement.is} ${conformity} ${langStatement.statementTemplate.compliantContent2}.</p>
+				<p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.linkRGAAWCAG}</p>
+				<p>${langStatement.statementTemplate.method}</p>
+
+				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
+				
+				if(dataVallydette.statement.nonCompliant === false){
+					htmlStatement += `<div class="row summary">
+						<div class="col-lg-3">
+							<h4 class="pie" data-value="${dataWCAG.result}">
+								<span class="visually-hidden">${langStatement.auditTxt1} </span> 
+								<span class="pie-val">${dataWCAG.result}%</span>
+							</h4>
+					
+							<p class="lead">${langStatement.auditTxt1}
+							</p>
+						</div>
+						<div class="col-lg-3">
+							<h4 class="pie" data-value="${dataWCAG.globalPagesResult}">
+								<span class="visually-hidden">${langStatement.auditTxt13} </span> 
+								<span class="pie-val">${dataWCAG.globalPagesResult}%</span>
+							</h4>
+
+							<p class="lead">${langStatement.auditTxt13}</p>
+						</div>
+					</div>`;
+					
+					
+				
+					htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
+					<ul>
+						<li>${dataWCAG.result}${langStatement.statementTemplate.resultsContent2}</li>
+						<li>${langStatement.statementTemplate.resultsContent2bis} ${dataWCAG.globalPagesResult}%.</li>
+					</ul>
+					<div class="table-responsive">
+					<table class="table table-striped"><caption>${langStatement.auditTxt15}</caption>
+						<thead><tr>
+							<th scope="row">${langStatement.auditTxt10}</th>
+							<th scope="col" class="text-center">A</th>
+							<th scope="col" class="text-center">AA</th>
+							<th scope="col" class="text-center">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.criteriaNumber}</th>
+								<td class="text-center">${dataWCAG.totalA}</td>
+								<td class="text-center">${dataWCAG.totalAA}</td>
+								<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.compliant}</th>
+								<td class="text-center">${dataWCAG.conformeA}</td>
+								<td class="text-center">${dataWCAG.conformeAA}</td>
+								<td class="text-center">${dataWCAG.totalconforme}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.nonCompliant}</th>
+								<td class="text-center">${dataWCAG.nonconformeA}</td>
+								<td class="text-center">${dataWCAG.nonconformeAA}</td>
+								<td class="text-center">${dataWCAG.totalnonconforme}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.notApplicable}</th>
+								<td class="text-center">${dataWCAG.naA}</td>
+								<td class="text-center">${dataWCAG.naAA}</td>
+								<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold bg-light">${langStatement.auditTxt16}</th>
+								<td class="text-center bg-light">
+									${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
+								</td>
+								<td class="text-center bg-light">
+									${(!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultAA}% ` : ``}	
+								</td>
+								<td class="text-center bg-light">
+									${(!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? `${dataWCAG.result}% ` : ``}
+								</td>
+							</tr>
+					
+						</tbody>
+					</table>
+					</div>
+
+					<div class="table-responsive">
+					<table class="table table-striped">
+					<caption>${langStatement.auditTxt4}</caption>
+					<tr>
+						<th scope="row">${langStatement.auditTxt17} / ${langStatement.auditTxt10}</th>
+						<th scope="col" class="text-center">${langStatement.compliant} / A</th>
+						<th scope="col" class="text-center">${langStatement.compliant} / AA</th>
+						<th scope="col"class="text-center">${langStatement.nonCompliant} / A</th>
+						<th scope="col"class="text-center">${langStatement.nonCompliant} / AA</th>
+						<th scope="col" class="text-center">${langStatement.notApplicable} / A</th>
+						<th scope="col" class="text-center">${langStatement.notApplicable} / AA</th>
+						<th scope="col" class="text-center bg-light">${langStatement.auditTxt8}</th>
+					</tr>
+					
+					
+					${statementResult.map(r => 
+						`<tr>
+							<th scope="row"><span class="visually-hidden">Page : </span>${r.name}</th>
+							<td>${r.conformeA}</td>
+							<td>${r.conformeAA}</td>
+							<td>${r.nonconformeA}</td>
+							<td>${r.nonconformeAA}</td>
+							<td>${r.naA}</td>
+							<td>${r.naAA}</td>
+							<td style="background-color:#ddd !important;">${r.result} %</td>
+						</tr>`
+						
+						).join('')}
+					
+					</table>
+					</div>
+
+				</div>
+			</div>`;
+		}
+		else{
+			htmlStatement += `<div class="row summary">
+						<div class="col-lg-3">
+							<h4 class="pie" data-value="50">
+								<span class="visually-hidden">${langStatement.auditTxt1} </span> 
+								<span class="pie-val pie-noncompliant">${langStatement.template.status2}</span>
+							</h4>
+					
+							<p class="lead">${langStatement.auditTxt1}
+							</p>
+						</div>
+					</div>`;
+					
+					htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
+					<ul>
+						<li>${langStatement.statementTemplate.resultsContentnonCompliant}${langStatement.statementTemplate.resultsContent2}</li>
+					</ul>`;
+		}
+		htmlStatement += `<div class="row">
+        
+            <div class="col-lg">
+
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.noncompliancesHeading1}</h2>
+
+				<p>${langStatement.statementTemplate.noncompliancestext}</p>
+				
+                <h3 class="h6 mt-4">${langStatement.statementTemplate.noncompliancesHeading2}</h3>`;
+
+				if (dataVallydette.statement.nonCompliantComment !== "") {
+					htmlStatement += `${md.render(dataVallydette.statement.nonCompliantComment)}`;
+					
+				}
+		
+				if (listNonConformity.length > 0) {
+					htmlStatement += `
+					<p>${langStatement.statementTemplate.wcagNonCompliant}</p>
+					<ul>
+					${listNonConformity.map(nc => 
+						`	<li>
+							${nc.wcag} ${langStatement.wcag[nc.wcag]}, ${langStatement.auditTxt10} ${nc.level}
+						</li>`).join('\n					')}
+					</ul>`;
+	
+				} else {
+					htmlStatement += `<p>${langStatement.statementTemplate.noNonCompliance}</p>`;
+				}
+	
+	
+	
+    htmlStatement += `
+            </div>
+        </div>
         
         <div class="row">
 
 			<div class="col-lg">
 				<h2 class="h4 mt-4">${langStatement.statementTemplate.environmentStatement}</h2>
-				<p>${langStatement.statementTemplate.auditDate} ${localeStatementDate}.</p>
+				<p>${langStatement.statementTemplate.auditDate} ${localeStatementDate}. ${dataVallydette.statement.dateUpdate === "" ? "" : langStatement.statementTemplate.auditUpdateDate +" " +localeStatementDateUpdate+"."}</p>
 			</div>
 		</div>
 		<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg">
 							
-							<h3>${langStatement.statementTemplate.approvalHeading}</h3>
-							${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}
 							
-							<h3>${langStatement.statementTemplate.standardHeading}</h3>
-							<p>
-							${langStatement.statementTemplate.wcagVersion}
-							</p>
-							<h3>${langStatement.statementTemplate.technologyHeading}</h3>
-							<ul>
-								${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n						')}
-							</ul>
+					<h3>${langStatement.statementTemplate.technologyHeading}</h3>
+					<ul>
+						${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n						')}
+					</ul>
 							
-				</div>
-					
-				<div class="col-lg-6">
 					
 					<h3>${langStatement.statementTemplate.environmentHeading}</h3>
 					<p>${langStatement.statementTemplate.environmentContent}</p>
@@ -1330,104 +1563,9 @@ exportStatementHTML = function(statementResult) {
 						${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>`).join('\n					')}
 					</ol>
 				</div>
-        </div>
-		<div class="row">
-			<div class="col-lg">
-
-				<h2 class="h4 mt-4">${langStatement.statementTemplate.state}</h2>
-				<p>"${dataVallydette.statement.app}" ${langStatement.is} ${conformity} ${langStatement.statementTemplate.compliantContent2}.</p>
-
-				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
-				
-			
-			htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
-			<ul>
-				<li>${dataWCAG.result}${langStatement.statementTemplate.resultsContent2}</li>
-				<li>${langStatement.statementTemplate.resultsContent2bis} ${dataWCAG.globalPagesResult}%.</li>
-			</ul>
-				
-				<table class="table table-striped"><caption class="visually-hidden">${langStatement.auditTxt15}</caption>
-					<thead><tr>
-						<th scope="row">${langStatement.auditTxt10}</th>
-						<th scope="col" class="text-center">A</th>
-						<th scope="col" class="text-center">AA</th>
-						<th scope="col" class="text-center">Total</th>
-					</tr></thead>
-				<tbody>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.criteriaNumber}</th>
-					<td class="text-center">${dataWCAG.totalA}</td>
-					<td class="text-center">${dataWCAG.totalAA}</td>
-					<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.compliant}</th>
-					<td class="text-center">${dataWCAG.conformeA}</td>
-					<td class="text-center">${dataWCAG.conformeAA}</td>
-					<td class="text-center">${dataWCAG.totalconforme}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.nonCompliant}</th>
-					<td class="text-center">${dataWCAG.nonconformeA}</td>
-					<td class="text-center">${dataWCAG.nonconformeAA}</td>
-					<td class="text-center">${dataWCAG.totalnonconforme}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.notApplicable}</th>
-					<td class="text-center">${dataWCAG.naA}</td>
-					<td class="text-center">${dataWCAG.naAA}</td>
-					<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold bg-light">${langStatement.auditTxt16}</th>
-					<td class="text-center bg-light">
-						${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
-					</td>
-					<td class="text-center bg-light">
-						${(!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultAA}% ` : ``}	
-					</td>
-					<td class="text-center bg-light">
-						${(!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? `${dataWCAG.result}% ` : ``}
-					</td>
-				</tr>
-				
-				</tbody>
-				</table>
-			</div>
-        </div>
-        <div class="row">
-        
-            <div class="col-lg">
-
-				<h2 class="h4 mt-4">${langStatement.statementTemplate.noncompliancesHeading1}</h2>
-
-				<p>${langStatement.statementTemplate.noncompliancestext}</p>
-				
-                <h3 class="h6 mt-4">${langStatement.statementTemplate.noncompliancesHeading2}</h3>`;
-		
-				if (listNonConformity.length > 0) {
-					htmlStatement += `
-					<ul>
-					${listNonConformity.map(nc => 
-						`	<li>
-							${nc.wcag} ${langStatement.wcag[nc.wcag]}, ${langStatement.auditTxt10} ${nc.level}
-						</li>`).join('\n					')}
-					</ul>`;
-	
-				} else {
-					htmlStatement += `<p>${langStatement.statementTemplate.noNonCompliance}</p>`;
-				}
-	
-	
-	
-    htmlStatement += `
-            </div>
         </div>`;
+		
+        
 		
 	if (dataVallydette.statement.derogation !== "") {
 		htmlStatement += `<div class="row">

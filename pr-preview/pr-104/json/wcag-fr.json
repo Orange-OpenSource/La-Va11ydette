@@ -510,6 +510,7 @@
 			"name": "Analyse syntaxique",
 			"tests": [],
 			"resultat": "na",
+			"deprecated": true,
 			"comment": [],
 			"page": []
 		},

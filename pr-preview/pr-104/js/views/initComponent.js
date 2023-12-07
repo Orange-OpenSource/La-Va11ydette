@@ -225,12 +225,11 @@ function runFinalComputationWcag(pagesResultsArray) {
 	 computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt14 + '</h2>';
 	 
     if (nbNT >= 1) {
-        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
-		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
-    } else if (nbNT === 0 && !isNaN(dataWCAG.globalPagesResult)) {
-        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + dataWCAG.globalPagesResult + '%</span></p>';
-		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + Math.round(dataWCAG.result) + '%</span></p>';
-	}	
+        computationContent+='<div class="alert alert-warning" role="alert"><span class="alert-icon"></span><p>' + langVallydette.auditTxt2 + '</p></div>'
+    } 
+        computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + Math.round(dataWCAG.result) + '%</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + dataWCAG.globalPagesResult + '%</span></p>';
+		
 	
 		computationContent += '<ul class="nav nav-tabs" role="tablist">';
 		computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link active" id="tabResultatPage" data-bs-toggle="tab" data-bs-target="#resultatPage" type="button" role="tab" aria-controls="resultatPage" aria-selected="true">' + langVallydette.auditTxt3 + '</button></li>';
@@ -433,13 +432,13 @@ function runFinalComputationRGAA(pagesResultsArray){
 	
 	computationContent += '<h2 class="pt-4 pb-3">' + langVallydette.auditTxt14 + '</h2>';
 	
-	if (nbNT >= 1) {
-		computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
-		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + langVallydette.auditTxt2 + '</span></p>';
-	} else if (nbNT === 0 && !isNaN(dataRGAA.globalPagesResult)) {
-		computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + dataRGAA.globalPagesResult + '%</span></p>';
-		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + dataRGAA.result + '%</span></p>';
-	}	
+	
+		if (nbNT >= 1) {
+			computationContent+='<div class="alert alert-warning" role="alert"><span class="alert-icon"></span><p>' + langVallydette.auditTxt2 + '</p></div>'
+		} 
+		computationContent += '<p class="h3">' + langVallydette.auditTxt1 + ' : <span class="text-primary">' + dataRGAA.result + '%</span></p>';
+		computationContent += '<p class="h3 pb-3">' + langVallydette.auditTxt13 + ' : <span class="text-primary">' + dataRGAA.globalPagesResult + '%</span></p>';
+	
 
 	computationContent += '<ul class="nav nav-tabs" role="tablist">';
 	computationContent += '	<li class="nav-item" role="presentation"><button class="nav-link active" id="tabResultatPage" data-bs-toggle="tab" data-bs-target="#resultatPage" type="button" role="tab" aria-controls="resultatPage" aria-selected="true">' + langVallydette.auditTxt3 + '</button></li>';

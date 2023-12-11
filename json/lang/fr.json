@@ -327,7 +327,7 @@
 		"partialyCompliant": "partiellement conforme",
 		"noCompliant": "non conforme",
 		"method":"L'audit a été effectué via <a href=\"https://la-va11ydette.orange.com/\">la Va11ydette</a>.",
-		"linkRGAAWCAG":"utilise une autre méthode que les RGAA, les WCAG. Voici le lien de correspondance entre les RGAA et les WCAG.",
+		"linkRGAAWCAG":"utilise une autre méthode que les RGAA, les WCAG. <a href=\"https://a11y-guidelines.orange.com/fr/cadrage/correspondance-rgaa-wcag/\">Voici le lien de correspondance entre les RGAA et les WCAG</a>.",
 		"blockingPoint1": " point(s) bloquant(s) d'un point de vue utilisateur",
 		"approvalHeading": "Identité du déclarant",
 		"standardHeading": "Référentiel",

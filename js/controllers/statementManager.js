@@ -1055,7 +1055,7 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += 'AUDIT UPDATE DATE\n';
 	xmlStatement += 'Format: YYYY-MM-DD\n';
 	xmlStatement += '-->\n';
-	xmlStatement += '<audit_date>' + dataVallydette.statement.dateUpdate + '</audit_date>\n\n';
+	xmlStatement += '<audit_updatedate>' + dataVallydette.statement.dateUpdate + '</audit_updatedate>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'DIGITAL ACCESSIBILITY PLAN\n';

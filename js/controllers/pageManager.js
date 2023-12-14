@@ -35,7 +35,7 @@ initPagination = function (pages) {
 
 		let newBtnPage = document.createElement("button");
 
-		newBtnPage.innerHTML = allPages[i].name;
+		newBtnPage.innerHTML = utils.escape_html(allPages[i].name);
 		newBtnPage.setAttribute('id', allPages[i].IDPage);
 		newBtnPage.classList.add("btn", "btn-link", "nav-link", "border-0");
 		if (i == 0) {
@@ -276,6 +276,6 @@ deletePage = function (currentPage, targetElement) {
 function setPageName(value) {
 	
 	var currentPageName = document.getElementById('pageName');
-	currentPageName.innerHTML = value;
+	currentPageName.innerHTML = utils.escape_html(value);
 	
 }

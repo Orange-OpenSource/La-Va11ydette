@@ -381,7 +381,7 @@ jsonUpdate = function () {
 		  }
 		  window.localStorage.removeItem(deleteitem);
 	}
-	window.localStorage.setItem('lavallydette__'+dataVallydette.checklist.name, dataStr);
+	window.localStorage.setItem('lavallydette__'+utils.escape_html(dataVallydette.checklist.name), dataStr);
 	btnLocalStorage.disabled=false;
 	btnLocalStorage.classList.remove("disabled");
 }

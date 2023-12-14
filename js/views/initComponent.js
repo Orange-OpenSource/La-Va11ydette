@@ -118,7 +118,7 @@ function runLocalStorage() {
 	var localStorageSaveBtn = document.getElementById("localStorageSaveBtn");
 	localStorageSaveBtn.addEventListener('click', function () {
 		valueSelect = document.querySelector('input[name="auditRadioRestore"]:checked').value;
-		getLocalStorage(valueSelect);
+		getLocalStorage(utils.escape_html(valueSelect));
 	});
 
 	var localStorageDeleteBtn = document.getElementById("localStorageDeleteBtn");
@@ -178,9 +178,9 @@ function createFormLocalStorage(){
 	for (const [key, value] of Object.entries(allLocalStorage)) {
 		let auditStorage = JSON.parse(value);
 		htmlModal += '<div class="form-check">';
-		htmlModal += '<input class="form-check-input" type="radio" name="auditRadioRestore" value="'+key+'" id="'+utils.formatHeading(key)+'"'+ (checked ? 'checked' : '')+'>';
-		htmlModal += '<label class="form-check-label" for="'+ utils.formatHeading(key)+'" '+ ( globalLang!== auditStorage.checklist.lang ? 'lang="'+auditStorage.checklist.lang+'"' : '')+'>';
-		htmlModal += auditStorage.checklist.name;
+		htmlModal += '<input class="form-check-input" type="radio" name="auditRadioRestore" value="'+key+'" id="'+utils.formatHeading(utils.escape_html(key))+'"'+ (checked ? 'checked' : '')+'>';
+		htmlModal += '<label class="form-check-label" for="'+ utils.formatHeading(utils.escape_html(key))+'" '+ ( globalLang!== auditStorage.checklist.lang ? 'lang="'+auditStorage.checklist.lang+'"' : '')+'>';
+		htmlModal += utils.escape_html(auditStorage.checklist.name);
 		htmlModal += '</label>';
 		htmlModal += '</div>';
 		checked = false;
@@ -244,14 +244,14 @@ function runFinalComputationWcag(pagesResultsArray) {
 		
 		
 		for (let i in pagesResultsArray) {
-			computationContent += '<h3>' + pagesResultsArray[i].name + ' : </h3>';
+			computationContent += '<h3>' + utils.escape_html(pagesResultsArray[i].name) + ' : </h3>';
 			
 			computationContent += '<ul>';
 			computationContent += '<li><strong>' + langVallydette.auditTxt12 + '</strong> ';
 			computationContent += (!isNaN(pagesResultsArray[i].result) && pagesResultsArray[i].result!=="NA") ? pagesResultsArray[i].result + ' % ' : '';
 			computationContent += (pagesResultsArray[i].complete === false) ?  '(' + langVallydette.auditTxt6 + ' / ' + nbNTResultsArray['page' + i] + ' ' + langVallydette.auditTxt7 +')' : '';
 			computationContent += '</li>';
-			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + pagesResultsArray[i].url + '</li>': '';
+			computationContent += (pagesResultsArray[i].url!== undefined && pagesResultsArray[i].url!== '') ? '<li><strong> url : </strong>' + utils.escape_html(pagesResultsArray[i].url) + '</li>': '';
 			computationContent += '</ul>';
 		}
 		
@@ -276,7 +276,7 @@ function runFinalComputationWcag(pagesResultsArray) {
 		for (let i in pagesResultsArray) {
 			
 			computationContent += '<tr>';
-			computationContent += '<th scope="row" class="font-weight-bold"> <span class="visually-hidden">Page : </span>' + pagesResultsArray[i].name + '</th>';
+			computationContent += '<th scope="row" class="font-weight-bold"> <span class="visually-hidden">Page : </span>' + utils.escape_html(pagesResultsArray[i].name) + '</th>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].conformeAA+ '</td>';
 			computationContent += '<td class="text-center">' + pagesResultsArray[i].nonconformeA+ '</td>';

@@ -426,7 +426,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<div class="modal-dialog modal-lg">';
 	htmlModal += '<div class="modal-content">';
 	htmlModal += '<div class="modal-header">';
-	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">' + langVallydette.edit + ' : ' + getPropertyValue(targetProperty) + '</h5>';
+	htmlModal += '<h5 class="modal-title" id="modalChecklistTitle">' + langVallydette.edit + ' : ' + utils.escape_html(getPropertyValue(targetProperty)) + '</h5>';
 	htmlModal += '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="' + langVallydette.close + '"></button>';
 	htmlModal += '</div>';
 		

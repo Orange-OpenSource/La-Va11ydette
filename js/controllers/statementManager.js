@@ -1643,6 +1643,6 @@ exportStatementHTML = function(statementResult) {
  * update plan with variable 
 */
 adaptPlan = function() {
-	dataVallydette.statement.plan=dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace1,dataVallydette.statement.name);
+	dataVallydette.statement.plan=dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace,dataVallydette.statement.name);
 	dataVallydette.statement.plan=dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace2,dataVallydette.statement.app);
 }

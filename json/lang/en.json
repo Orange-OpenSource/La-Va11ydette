@@ -165,7 +165,7 @@
 	"accessibilityPlanTextReplace":"[Name of the organization]",
 	"accessibilityPlanTextReplace2":"[Project name or URL]",
 	"markdownDesc": "This field supports markdown",
-	"noncompliant": "Statement non compliant",
+	"noncompliantInput": "Statement non compliant",
 	"noncompliantDesc": "Check this checkbox only if you want to generate a non-compliant statement of an uncompleted audit.",
 	"derogations": "Derogations",
 	"exemptions": "Exemptions",

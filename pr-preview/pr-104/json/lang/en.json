@@ -323,7 +323,7 @@
 		"wcagNonCompliant": "List of non-compliant WCAG criteria :",
 		"state": "Conformity level:",
 		"compliantContent1": "This site is ",
-		"compliantContent2": " compliant with <a href=\"https://www.w3.org/TR/WCAG22/\"><abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr> version 2.2, level AA</a>",
+		"compliantContent2": " to the criteria with <a href=\"https://www.w3.org/TR/WCAG22/\"><abbr lang=\"en\" title=\"Web Content Accessibility Guidelines\">WCAG</abbr> version 2.2, level AA</a>",
 		"totalyCompliant": "fully compliant",
 		"partialyCompliant": "partially compliant",
 		"noCompliant": "no compliant",

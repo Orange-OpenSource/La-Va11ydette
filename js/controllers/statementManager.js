@@ -5,9 +5,9 @@
  * @param {array} statementInputs - list of the input type properties
  * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
-const statementObjectProperties = ["name", "lang", "status", "date", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "technology", "tests", "environments"];
+const statementObjectProperties = ["name","app", "lang", "status", "date", "dateUpdate", "nonCompliant", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "nonCompliantComment", "technology", "tests", "environments"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
-const statementInputs = ["name", "lang", "date", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption"];
+const statementInputs = ["name", "app", "lang", "date", "dateUpdate", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption", "nonCompliantComment"];
 var langStatement = {};
 
 
@@ -51,25 +51,23 @@ function initStatementObject() {
 				if (p === "name") {
 					dataVallydette.statement.name = "";
 				}
+				if (p === "app") {
+					dataVallydette.statement.app = "";
+				}
 				if (p === "status") {
 					dataVallydette.statement.status = "WIP";
 				}
 				if (p === "date") {
 					dataVallydette.statement.date = "";
 				}
-				if (p === "results") {
-					dataVallydette.statement.results = [{
-							"type" : "pagesAverage",
-							"checked" : "true"
-						},
-						{
-							"type" : "criteriaPercentage",
-						}
-						
-					];
+				if (p === "dateUpdate") {
+					dataVallydette.statement.dateUpdate = "";
+				}
+				if (p === "nonCompliant") {
+					dataVallydette.statement.nonCompliant = false;
 				}
 				if (p === "plan") {
-					dataVallydette.statement.plan = "";
+					dataVallydette.statement.plan = langVallydette.accessibilityPlanText;
 				}
 				if (p === "userNumber") {
 					dataVallydette.statement.userNumber = 0;
@@ -83,21 +81,25 @@ function initStatementObject() {
 				if (p === "approval") {
 					dataVallydette.statement.approval = [{
 						"name": langStatement.customerService,
-						"content": ""
+						"content": "",
+						"checked": "true"
 					},{
 						"name": langStatement.internalService,
 						"content": "",
+						"checked": "false"
 					}
 					];
 				}
 				if (p === "contact") {
 					dataVallydette.statement.contact = [{
 						"name": "Orange France",
-						"content": ""
+						"content": langStatement.textService,
+						"checked": "true"
 					},
 					{
 						"name": langStatement.orangeGroup,
-						"content": ""
+						"content": langStatement.textService,
+						"checked": "false"
 					}
 					];
 				}
@@ -106,6 +108,9 @@ function initStatementObject() {
 				}
 				if (p === "exemption") {
 					dataVallydette.statement.exemption = "";
+				}
+				if (p === "nonCompliantComment") {
+					dataVallydette.statement.nonCompliantComment = "";
 				}
 				if (p === "userTestDescription") {
 					dataVallydette.statement.userTestDescription = langStatement.userTestingContent;
@@ -148,17 +153,17 @@ function initStatementObject() {
 						dataVallydette.statement.tests = [{
 						"type": "auto",
 						"name": "aXe",
-						"version": "4.9.3"
+						"version": "4.7.2"
 						},
 						{
 						"type": "auto",
 						"name": "Wave",
-						"version": "3.1.3"
+						"version": "3.2.4"
 						},
 						{	
 						"type": "functional",
 						"name": "NVDA",
-						"version": "2020.4"
+						"version": "2023.3"
 						},
 						{	
 						"type": "functional",
@@ -262,8 +267,10 @@ function showStatementWizard() {
 	
 	
 	var statementResult = runComputationWcag(true);
-
-	if (dataWCAG.globalPagesResult !== undefined && !isNaN(dataWCAG.globalPagesResult) && dataVallydette.statement.status === "DONE") {
+	if(dataWCAG.complete === true){
+		dataVallydette.statement["nonCompliant"]=false;
+	}
+	if ((dataWCAG.complete === true && dataVallydette.statement.status === "DONE") || (dataVallydette.statement["nonCompliant"]===true && dataVallydette.statement.status === "DONE")) {
 		
 		initStatementExports(statementResult);
 		
@@ -289,7 +296,7 @@ function showStatementWizard() {
 	statementWizardContent += '<h2 class="pt-4 pb-3">' + langVallydette.statementTxt1 + '</h2>';
 	
 	statementWizardContent += '<div id="alertContainer">';
-	if (dataWCAG.globalPagesResult === undefined || isNaN(dataWCAG.globalPagesResult)) {
+	if (dataWCAG.complete === false) {
 		statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
 		statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">'+langVallydette.closeAlert+'</span></button>';   
 		statementWizardContent += '</div>';
@@ -320,16 +327,39 @@ function showStatementWizard() {
 	statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
 	statementWizardContent += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
 
+	if(dataVallydette.checklist.page.length>1 && dataWCAG.complete==false){
+		statementWizardContent += '<div class="row">';
+		statementWizardContent += '<div class="col-lg-12">';
+		statementWizardContent += '<div class="form-check mb-3">';
+		statementWizardContent += '<input class="form-check-input" type="checkbox" value="" id="checkbox-noncompliant" aria-describedby="checkboxHelpBlock" '+ (dataVallydette.statement["nonCompliant"] === true ? 'checked' : '') +'>';
+		statementWizardContent += '<label class="form-check-label" for="checkbox-noncompliant">'+langVallydette.noncompliantInput+'</label>';
+		statementWizardContent += '<div id="checkboxHelpBlock" class="form-text">'+langVallydette.noncompliantDesc+'</div>'
+		statementWizardContent += '</div>';
+		statementWizardContent += '</div>';
+		statementWizardContent += '</div>';
+	}
+	
+
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-name" id="input-nameLabel" class="form-label">' + langVallydette.projectName + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<input type="text" class="form-control" id="input-name" aria-labelledby="input-name-label" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.name + '" required aria-invalid="false">';
+    statementWizardContent += '<input type="text" class="form-control" id="input-name" aria-labelledby="input-nameLabel" style="scroll-margin-top: 10.35em;" value="' + utils.escape_html(dataVallydette.statement.name) + '" required aria-invalid="false">';
     statementWizardContent += '<div id="input-nameError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.projectNameError + ' </p></div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
+
+
+	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label for="input-app" id="input-appLabel" class="form-label">' + langVallydette.projectSiteName + ' <span class="text-danger">*</span></label>';
+    statementWizardContent += '<input type="text" class="form-control" id="input-app" aria-labelledby="input-appLabel" style="scroll-margin-top: 10.35em;" value="' + utils.escape_html(dataVallydette.statement.app) + '" required aria-invalid="false">';
+    statementWizardContent += '<div id="input-appError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.projectSiteNameError + ' </p></div>';
+	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-3">';
+	
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-lang" id="input-langLabel" class="form-label">' + langVallydette.lang + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<select class="form-select" id="input-lang" aria-labelledby="input-langLabel"  style="scroll-margin-top: 10.35em;"  required aria-invalid="false">';
@@ -341,27 +371,21 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-3">';
+	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-date" id="input-dateLabel" class="form-label">' + langVallydette.date + ' <span class="text-danger">*</span></label>';
     statementWizardContent += '<input type="date" class="form-control" id="input-date" aria-labelledby="input-dateLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required aria-invalid="false">';
     statementWizardContent += '<div id="input-dateError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.dateError + ' ' + dateFormat +'</p></div>';
 	statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
-	
-	statementWizardContent += '<div class="col-lg-3">';
-	statementWizardContent += '<div class="mb-3" role="group">';
-	statementWizardContent += '<span class="d-block"><strong>' + langVallydette.typeOfResult + '</strong></span>';
-    statementWizardContent += '<label class="mt-1 font-weight-normal">';
-    statementWizardContent += '<input id="input-pagesAverage"  name="input-pagesAverage" class="me-1" type="checkbox" autocomplete="off" ' + (dataVallydette.statement.results[0].checked === "true" ? " checked " : "") + '>';
-    statementWizardContent += '<span>' + langVallydette.averageRate + '</span>';
-    statementWizardContent += '</label>';
-	statementWizardContent += '<label class="font-weight-normal">';
-    statementWizardContent += '<input id="input-criteriaPercentage"  name="input-criteriaPercentage"  class="me-1" type="checkbox" autocomplete="off" '+ (dataVallydette.statement.results[1].checked === "true" ? " checked " : "") + '>';
-    statementWizardContent += '<span>' + langVallydette.criteriaPercentage + '</span>';
-    statementWizardContent += '</label>';
-    statementWizardContent += '</div>';
+
+	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label for="input-dateUpdate" class="form-label">' + langVallydette.dateUpdate + '</label>';
+    statementWizardContent += '<input type="date" class="form-control" id="input-dateUpdate" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.dateUpdate + '">';
 	statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="border-top border-light my-3"></div>';
@@ -374,7 +398,7 @@ function showStatementWizard() {
 	dataVallydette.statement.approval.forEach(function(a, index){ 
 		statementWizardContent += '<div class="form-check">';
 		statementWizardContent += '<input type="radio" id="approval' +  index + '" name="approvalRadio" class="form-check-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked === "true" ? " checked " : "") + ' >';
-		statementWizardContent += '<label class="form-check-label" for="approval' +  index + '">' + a.name + '</label>';
+		statementWizardContent += '<label class="form-check-label" for="approval' +  index + '">' + utils.escape_html(a.name) + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
@@ -388,7 +412,7 @@ function showStatementWizard() {
 	dataVallydette.statement.contact.forEach(function(c, index){ 
 		statementWizardContent += '<div class="form-check">';
 		statementWizardContent += '<input type="radio" id="contact' +  index + '" name="contactRadio" class="form-check-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked === "true" ? " checked " : "") + ' >';
-		statementWizardContent += '<label class="form-check-label" for="contact' +  index + '">' + c.name + '</label>';
+		statementWizardContent += '<label class="form-check-label" for="contact' +  index + '">' + utils.escape_html(c.name) + '</label>';
 		statementWizardContent += '</div>';
 	})
 	
@@ -398,7 +422,7 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="col-lg-6">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label for="input-plan" class="form-label">' + langVallydette.accessibilityPlan + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-plan" rows="5" aria-describedby="planDesc">' + dataVallydette.statement.plan + '</textarea>';
+    statementWizardContent += '<textarea class="form-control" id="input-plan" rows="8" aria-describedby="planDesc">' + dataVallydette.statement.plan + '</textarea>';
 	statementWizardContent += '<small id="planDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
@@ -413,7 +437,7 @@ function showStatementWizard() {
     statementWizardContent += '<ul id="technologyList">';	
 
 	dataVallydette.statement.technology.forEach(function(listItem, index){
-		statementWizardContent += '<li>'+listItem.name+' '+listItem.version+'</li>';
+		statementWizardContent += '<li>'+utils.escape_html(listItem.name)+' '+utils.escape_html(listItem.version)+'</li>';
 	})
 	
 	statementWizardContent += '</ul>';
@@ -428,7 +452,7 @@ function showStatementWizard() {
 	statementWizardContent += '<ul id="testsList">';	
 	
     dataVallydette.statement.tests.forEach(function(listItem, index){
-		statementWizardContent += '<li>' +listItem.name + ' ' + listItem.version + '</li>';
+		statementWizardContent += '<li>' +utils.escape_html(listItem.name) + ' ' + utils.escape_html(listItem.version) + '</li>';
 	})
 	
 	statementWizardContent += '</ul>';
@@ -443,7 +467,7 @@ function showStatementWizard() {
 	statementWizardContent += '<ul id="environmentsList">';	
 	
     dataVallydette.statement.environments.forEach(function(listItem, index){
-		statementWizardContent += '<li>' + listItem.environment + '</li>';
+		statementWizardContent += '<li>' + utils.escape_html(listItem.environment) + '</li>';
 	})
 	
 	statementWizardContent += '</ul>';
@@ -486,7 +510,7 @@ function showStatementWizard() {
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row">';
-	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label class="form-label" for="input-derogation">' + langVallydette.derogations + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
@@ -494,13 +518,22 @@ function showStatementWizard() {
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
 	
-	statementWizardContent += '<div class="col-lg-6">';
+	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label class="form-label" for="input-exemption">' + langVallydette.exemptions + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' + dataVallydette.statement.exemption + '</textarea>';
 	statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
     statementWizardContent += '</div>';
 	statementWizardContent += '</div>';
+
+	statementWizardContent += '<div class="col-lg-4">';
+	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label class="form-label" for="input-nonCompliantComment">' + langVallydette.nonCompliantComment + '</label>';
+    statementWizardContent += '<textarea class="form-control" id="input-nonCompliantComment" rows="5" aria-describedby="nonCompliantCommentDesc">' + dataVallydette.statement.nonCompliantComment + '</textarea>';
+	statementWizardContent += '<small id="nonCompliantCommentDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
+    statementWizardContent += '</div>';
+	statementWizardContent += '</div>';
+
 	statementWizardContent += '</div>';
 	
 	statementWizardContent += '<div class="row mb-2">';
@@ -619,6 +652,15 @@ checkFormState = function(buttonSubmitter){
 			error++;
 		}
 
+		var propertyApp=document.getElementById("input-app");
+		if(propertyApp.value!==""){
+			validField(document.getElementById('input-appError'), propertyApp, "input-appLabel")
+		}
+		else{
+			invalidField(document.getElementById('input-appError'), propertyApp, "input-appLabel", "input-appError");
+			error++;
+		}
+
 		var propertyName=document.getElementById("input-name");
 		if(propertyName.value!==""){
 			validField(document.getElementById('input-nameError'), propertyName, "input-nameLabel")
@@ -699,7 +741,7 @@ editStatementProperty = function (statementProperty) {
 				
 				htmlModal += '<div class="m-2">';
 				htmlModal += '<label for="' + p + '-' + index + '" class="form-label">'+ langVallydette[p] +' ' + (index+1) + '</label>';
-				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + listItem[p] + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+				htmlModal += '<input type="text" id="' + p + '-' + index + '" class="form-control mb-1" value="' + utils.escape_html(listItem[p]) + '" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
 				htmlModal += '</div>';
 				
 			}
@@ -761,8 +803,8 @@ saveListElement = function(listToEdit, statementProperty) {
 			if (statementProperty === 'technology' || statementProperty === 'tests' ) {
 				
 				listMarkup += '<li>';
-				listMarkup += itemObj.name ? itemObj.name + ' ' : '';	
-				listMarkup += itemObj.version ? itemObj.version  + ' ' : '';
+				listMarkup += itemObj.name ? utils.escape_html(itemObj.name) + ' ' : '';	
+				listMarkup += itemObj.version ? utils.escape_html(itemObj.version)  + ' ' : '';
 				listMarkup += '</li>';
 				
 			}
@@ -773,14 +815,14 @@ saveListElement = function(listToEdit, statementProperty) {
 				listMarkup += '<input type="radio" id="' + statementProperty +  index + '" name="' + statementProperty + 'Radio" class="form-check-input" onClick="radioIsChecked(\'' + statementProperty + '\', ' + index + ')" ';
 				listMarkup += itemObj.checked === "true" ? "checked" : "";
 				listMarkup += '>';
-				listMarkup += '<label class="form-check-label" for="' + statementProperty +  index + '">' + itemObj.name + '</label>';
+				listMarkup += '<label class="form-check-label" for="' + statementProperty +  index + '">' + utils.escape_html(itemObj.name) + '</label>';
 				listMarkup += '</div>';
 			}
 			
 			if (statementProperty === 'environments') {
 				
 				listMarkup += '<li>';
-				listMarkup += itemObj.environment ? itemObj.environment + ' ' : '';	
+				listMarkup += itemObj.environment ? utils.escape_html(itemObj.environment) + ' ' : '';	
 				listMarkup += '</li>';
 				
 			}
@@ -816,6 +858,10 @@ addListElement = function(statementProperty) {
 		}
 
 		statementProperties.forEach(function(p){
+
+			if(p==='checked'){
+				return;
+			}
 			
 			if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'type') {
 
@@ -870,20 +916,10 @@ saveStatement = function(statementForm, submitterBtn) {
 	statementInputs.forEach(function(input){
 		dataVallydette.statement[input] = statementForm.elements["input-"+input].value;
 	});
+
+	dataVallydette.statement["nonCompliant"] = (statementForm.elements["checkbox-noncompliant"] !== undefined ? statementForm.elements["checkbox-noncompliant"].checked : false);
 	
-	if (statementForm.elements["input-pagesAverage"].checked) {
-		dataVallydette.statement.results[0].checked = "true";
-	} else {
-		dataVallydette.statement.results[0].checked = "false";
-	}
-	
-	if (statementForm.elements["input-criteriaPercentage"].checked) {
-		dataVallydette.statement.results[1].checked = "true";
-	} else {
-		dataVallydette.statement.results[1].checked = "false";
-	}
-	
-	if (dataWCAG.globalPagesResult) {
+	if (dataWCAG.complete || dataVallydette.statement["nonCompliant"] ) {
 		
 		dataVallydette.statement.status = "DONE";
 		
@@ -950,6 +986,7 @@ function initStatementExports(statementResult){
  * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
 */
 exportStatementXML = function(statementResult) {
+	adaptPlan();
 
 	var md = window.markdownit();
 
@@ -963,7 +1000,7 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += 'This is the name for the site, or page, or section of a site that was audited\n ';
 	xmlStatement += '-->\n ';
 
-	xmlStatement += '<title><![CDATA[' + dataVallydette.statement.name + ']]></title>\n\n';
+	xmlStatement += '<title><![CDATA[' + dataVallydette.statement.app + ']]></title>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'LANGUAGE\n';
@@ -1013,6 +1050,12 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += 'Format: YYYY-MM-DD\n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<audit_date>' + dataVallydette.statement.date + '</audit_date>\n\n';
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'AUDIT UPDATE DATE\n';
+	xmlStatement += 'Format: YYYY-MM-DD\n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<audit_updatedate>' + dataVallydette.statement.dateUpdate + '</audit_updatedate>\n\n';
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'DIGITAL ACCESSIBILITY PLAN\n';
@@ -1083,6 +1126,15 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += '******************************************************\n';
 	xmlStatement += '-->\n';
 
+
+	xmlStatement += '<!--\n';
+	xmlStatement += 'Comment of non-compliance\n';
+	xmlStatement += 'Comment of non-compliance. This is CDATA-protected, please add properly formatted HTML. \n';
+	xmlStatement += '-->\n';
+	xmlStatement += '<nonComplianceComment>\n<![CDATA[';
+	xmlStatement += md.render(dataVallydette.statement.nonCompliantComment);
+	xmlStatement += ']]>\n</nonComplianceComment>\n\n';
+
 	xmlStatement += '<!--\n';
 	xmlStatement += 'USERS\n';
 	xmlStatement += 'Number of real users that tested the pages\n';
@@ -1091,7 +1143,7 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += '<users>' + dataVallydette.statement.userNumber + '</users>\n';
 	xmlStatement += '<blocking_points>' + dataVallydette.statement.userBlockingPoints + '</blocking_points>\n\n';
 
-	if (dataVallydette.statement.results[1].checked === "true") {
+	if(dataVallydette.statement.nonCompliant==false){
 		xmlStatement += '<!--\n';
 		xmlStatement += 'RESULTS DETAILS\n';
 		xmlStatement += '-->\n';
@@ -1120,9 +1172,7 @@ exportStatementXML = function(statementResult) {
 		xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
 		xmlStatement += '	</result>\n';
 		xmlStatement += '</results>\n\n';
-	}
 	
-	if (dataVallydette.statement.results[0].checked === "true") {
 		xmlStatement += '<!--\n';
 		xmlStatement += 'Pages results details\n';
 		xmlStatement += '-->\n';
@@ -1130,6 +1180,18 @@ exportStatementXML = function(statementResult) {
 		statementResult.forEach(item => xmlStatement += '	<page name="' + utils.escape_html(item.name) + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');;
 		xmlStatement += '</pages_results>\n\n';
 	}
+	else{
+		xmlStatement += '<!--\n';
+		xmlStatement += 'RESULTS DETAILS\n';
+		xmlStatement += '-->\n';
+		xmlStatement += '<results>\n';
+		xmlStatement += '	<result type="total">\n';
+		xmlStatement += '		<conformity>50</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+		xmlStatement += '	</result>\n';
+		xmlStatement += '</results>\n\n';
+	}
+	
+	
 	
 	xmlStatement += '<!--\n';
 	xmlStatement += 'Non conformity details\n';
@@ -1188,7 +1250,7 @@ exportStatementXML = function(statementResult) {
 	if (dataVallydette.statement.status === "DONE") {
 		
 		var bb = new Blob([xmlStatement], {type: 'application/octet-stream'});
-		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.xml';
+		var statementFileName = utils.slugify(dataVallydette.statement.app) + '.xml';
 		
 		var btnStatementXmlExport = document.getElementById("btnStatementXmlExport");
 		btnStatementXmlExport.classList.remove('disabled');
@@ -1209,8 +1271,24 @@ exportStatementHTML = function(statementResult) {
 	const arrayTypeTest = ["auto", "manual", "functional", "user"];
 	const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
 	var statementDate = new Date(dataVallydette.statement.date);
+	var statementDateUpdate = new Date(dataVallydette.statement.dateUpdate);
 	var localeStatementDate = statementDate.toLocaleDateString(dataVallydette.statement.lang);
+	var localeStatementDateUpdate = statementDateUpdate.toLocaleDateString(dataVallydette.statement.lang);
+	adaptPlan();
 	var md = window.markdownit();
+
+	var conformity ="";
+
+
+
+	if(dataWCAG.result<50 || dataVallydette.statement.nonCompliant==true ){
+		conformity=langStatement.statementTemplate.noCompliant;
+	}else if(dataWCAG.result == 100){
+		conformity=langStatement.statementTemplate.totalyCompliant;
+	}
+	else if (dataWCAG.result>= 50){
+		conformity=langStatement.statementTemplate.partialyCompliant;
+	}
 	
 	htmlStatement = "";
 	htmlStatement = `<!DOCTYPE html>
@@ -1224,217 +1302,196 @@ exportStatementHTML = function(statementResult) {
   <link rel="stylesheet" href="boosted-grid.min.css">
   <link rel="stylesheet" href="pie.css">
   
-  <title>${langStatement.statementTemplate.title} - ${dataVallydette.statement.name}</title>
+  <title>${langStatement.statementTemplate.title} - ${dataVallydette.statement.app}</title>
 
 </head>
 
 <body>    
     <main class="container-md content">        
-        <h1>${langStatement.statementTemplate.title} : ${dataVallydette.statement.name}</h1>
+        <h1>${langStatement.statementTemplate.title} : ${utils.escape_html(dataVallydette.statement.app)}</h1>
         
         <div class="summary">
         
             <div class="row">
         
-                <div class="col-lg-3">
-                        
-                    <h2 class="pie" data-value="${dataWCAG.globalPagesResult}">
-						<span class="visually-hidden">${langStatement.statementTemplate.state} </span> 
-                        <span class="pie-val">${dataWCAG.globalPagesResult}%</span>
-                    </h2>
-                    
-                    <p class="lead">${langStatement.statementTemplate.compliantContent1} ${dataWCAG.globalPagesResult}% ${langStatement.statementTemplate.compliantContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3} ${dataVallydette.statement.userBlockingPoints} ${langStatement.statementTemplate.blockingPoint1}` : `` }.
-					</p>
-				</div>
+               
         
-                <div class="col-lg-3">
-                    
-                    <h3>${langStatement.statementTemplate.auditDate}</h3>
-                    <p>${localeStatementDate}</p>
-                    
-                    <h3>${langStatement.statementTemplate.approvalHeading}</h3>
-					${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => md.render(a.content)).join('')}
-					
-                    <h3>${langStatement.statementTemplate.standardHeading}</h3>
-                    <p>
-                       ${langStatement.statementTemplate.wcagVersion}
-                    </p>
-                    
-                </div>
-                
-                <div class="col-lg-6">
-                
-                    <h3>${langStatement.statementTemplate.technologyHeading}</h3>
-                    <ul>
-						${dataVallydette.statement.technology.map(e => `<li>${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}</li>`).join('\n						')}
-                    </ul>
-					
-                    <h3>${langStatement.statementTemplate.environmentHeading}</h3>
-					<p>${langStatement.statementTemplate.environmentContent}</p>
-                    <ul>
-						${dataVallydette.statement.environments.map(e => `<li>${e.environment}</li>`).join('\n						')}
-                    </ul>
-                    
-                    <h3>${langStatement.statementTemplate.methodsHeading}</h3>
-                    <ul>
-					`;
-						
-					arrayTypeTest.forEach(function(t){
-						
-						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
-						let separator = ', '
-						
-						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langStatement[t + "Test"]}:</strong> ${arrayTypeResult.map(e => `${e.name}${e.version.length > 0 ? ` ${e.version}` : ``}`).join(separator)}</li>\n					` : '';
-						
-					});
-					
-					if (dataVallydette.statement.userNumber > 0 && dataVallydette.statement.userTestDescription !== '') {
-						htmlStatement += `<li><strong>${langStatement.userTest}:</strong> ${dataVallydette.statement.userTestDescription}</li>`
-					}
+                <div class="col-lg-12">
+				
+					<h2 class="h4 mt-4">${langStatement.statementTemplate.contextHeading}</h2>
+					${md.render(dataVallydette.statement.plan)}                
 	
-	htmlStatement += `</ul>
-                
-                </div>
+            	</div>
             
             </div>
             
         </div>
-        
-        <div class="row">
-        
-            <div class="col-md">
-				
-				<h2 class="h4 mt-4">${langStatement.statementTemplate.contextHeading}</h2>
-				${md.render(dataVallydette.statement.plan)}
-				
-				<h2 class="h4 mt-4">${langStatement.statementTemplate.pagesHeading}</h2>
-                
-                <p>${langStatement.statementTemplate.pagesContent}</p>
-				
-                <ol>
-					${dataVallydette.checklist.page.map(item => `<li><strong>${item.name} : </strong>${item.url}</li>`).join('\n					')}
-				</ol>
-                
-						
-            </div>
-            
-            <div class="col-md">
-				<h2 class="h4 mt-4">${langStatement.statementTemplate.resultsHeading}</h2>`;
-				
-			if (dataVallydette.statement.results[0].checked === "true") {
-               htmlStatement += ` <p>
-				${langStatement.statementTemplate.resultsContent1}${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent2}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).
-				</p>
-				<p id="table-description" aria-hidden="true">
-				${langStatement.statementTemplate.resultsContent5}
-				</p>
-				
-                <table class="table table-striped" aria-describedby="table-description">
-				<caption class="visually-hidden">${langStatement.auditTxt4}</caption>
-				  <tr>
-					<th scope="row">${langStatement.auditTxt17} / ${langStatement.auditTxt10}</th>
-					<th scope="col" class="text-center">${langStatement.compliant} / A</th>
-					<th scope="col" class="text-center">${langStatement.compliant} / AA</th>
-					<th scope="col"class="text-center">${langStatement.nonCompliant} / A</th>
-					<th scope="col"class="text-center">${langStatement.nonCompliant} / AA</th>
-					<th scope="col" class="text-center">${langStatement.notApplicable} / A</th>
-					<th scope="col" class="text-center">${langStatement.notApplicable} / AA</th>
-					<th scope="col" class="text-center bg-light">${langStatement.auditTxt8}</th>
-				  </tr>
-				 
-				
-				  ${statementResult.map(r => 
-					`<tr>
-						<th scope="row"><span class="visually-hidden">Page : </span>${r.name}</th>
-						<td>${r.conformeA}</td>
-						<td>${r.conformeAA}</td>
-						<td>${r.nonconformeA}</td>
-						<td>${r.nonconformeAA}</td>
-						<td>${r.naA}</td>
-						<td>${r.naAA}</td>
-						<td style="background-color:#ddd !important;">${r.result} %</td>
-					</tr>`
-					  
-					).join('')}
-				  
-				</table>
-				
-				<p><strong>${langStatement.statementTemplate.resultsContent6}</strong> ${dataWCAG.globalPagesResult}${langStatement.statementTemplate.resultsContent7}</p>
-				`;
-	
-			}
-			
-			if (dataVallydette.statement.results[1].checked === "true") {
-               htmlStatement += `
-				<p>
-				${langStatement.statementTemplate.resultsContent1}${dataWCAG.result}${langStatement.statementTemplate.resultsContent8}${dataVallydette.statement.userNumber > 0 ? `${langStatement.statementTemplate.resultsContent3}${dataVallydette.statement.userBlockingPoints}${langStatement.statementTemplate.resultsContent4}` : `` }).
-				</p>	
 
-				<table class="table table-striped"><caption class="visually-hidden">${langStatement.auditTxt15}</caption>
-					<thead><tr>
-						<th scope="row">${langStatement.auditTxt10}</th>
-						<th scope="col" class="text-center">A</th>
-						<th scope="col" class="text-center">AA</th>
-						<th scope="col" class="text-center">Total</th>
-					</tr></thead>
-				<tbody>
+		<div class="row">
+			<div class="col-lg">
+
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.state}</h2>
+				<p>"${utils.escape_html(dataVallydette.statement.app)}" ${langStatement.is} ${conformity} ${langStatement.statementTemplate.compliantContent2}.</p>
+				<p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => utils.escape_html(a.name)).join('')} ${langStatement.statementTemplate.linkRGAAWCAG}</p>
+				<p>${langStatement.statementTemplate.method}</p>
+
+				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
 				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.criteriaNumber}</th>
-					<td class="text-center">${dataWCAG.totalA}</td>
-					<td class="text-center">${dataWCAG.totalAA}</td>
-					<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
-				</tr>
+				if(dataVallydette.statement.nonCompliant === false){
+					htmlStatement += `<div class="row summary">
+						<div class="col-lg-3">
+							<h4 class="pie" data-value="${dataWCAG.result}">
+								<span class="visually-hidden">${langStatement.auditTxt1} </span> 
+								<span class="pie-val">${dataWCAG.result}%</span>
+							</h4>
+					
+							<p class="lead">${langStatement.auditTxt1}
+							</p>
+						</div>
+						<div class="col-lg-3">
+							<h4 class="pie" data-value="${dataWCAG.globalPagesResult}">
+								<span class="visually-hidden">${langStatement.auditTxt13} </span> 
+								<span class="pie-val">${dataWCAG.globalPagesResult}%</span>
+							</h4>
+
+							<p class="lead">${langStatement.auditTxt13}</p>
+						</div>
+					</div>`;
+					
+					
 				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.compliant}</th>
-					<td class="text-center">${dataWCAG.conformeA}</td>
-					<td class="text-center">${dataWCAG.conformeAA}</td>
-					<td class="text-center">${dataWCAG.totalconforme}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.nonCompliant}</th>
-					<td class="text-center">${dataWCAG.nonconformeA}</td>
-					<td class="text-center">${dataWCAG.nonconformeAA}</td>
-					<td class="text-center">${dataWCAG.totalnonconforme}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold">${langStatement.notApplicable}</th>
-					<td class="text-center">${dataWCAG.naA}</td>
-					<td class="text-center">${dataWCAG.naAA}</td>
-					<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
-				</tr>
-				
-				<tr>
-					<th scope="row" class="font-weight-bold bg-light">${langStatement.auditTxt16}</th>
-					<td class="text-center bg-light">
-						${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
-					</td>
-					<td class="text-center bg-light">
-						${(!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultAA}% ` : ``}	
-					</td>
-					<td class="text-center bg-light">
-						${(!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? `${dataWCAG.result}% ` : ``}
-					</td>
-				</tr>
-				
-				</tbody>
-				</table>`;
-			}
-			
-		htmlStatement += `		
-            </div>
-        </div>
-        
-        <div class="row">
+					htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => utils.escape_html(a.name)).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
+					<ul>
+						<li>${dataWCAG.result}${langStatement.statementTemplate.resultsContent2}</li>
+						<li>${langStatement.statementTemplate.resultsContent2bis} ${dataWCAG.globalPagesResult}%.</li>
+					</ul>
+					<div class="table-responsive">
+					<table class="table table-striped"><caption>${langStatement.auditTxt15}</caption>
+						<thead><tr>
+							<th scope="row">${langStatement.auditTxt10}</th>
+							<th scope="col" class="text-center">A</th>
+							<th scope="col" class="text-center">AA</th>
+							<th scope="col" class="text-center">Total</th>
+							</tr>
+						</thead>
+						<tbody>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.criteriaNumber}</th>
+								<td class="text-center">${dataWCAG.totalA}</td>
+								<td class="text-center">${dataWCAG.totalAA}</td>
+								<td class="text-center">${(dataWCAG.totalA+dataWCAG.totalAA)}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.compliant}</th>
+								<td class="text-center">${dataWCAG.conformeA}</td>
+								<td class="text-center">${dataWCAG.conformeAA}</td>
+								<td class="text-center">${dataWCAG.totalconforme}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.nonCompliant}</th>
+								<td class="text-center">${dataWCAG.nonconformeA}</td>
+								<td class="text-center">${dataWCAG.nonconformeAA}</td>
+								<td class="text-center">${dataWCAG.totalnonconforme}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold">${langStatement.notApplicable}</th>
+								<td class="text-center">${dataWCAG.naA}</td>
+								<td class="text-center">${dataWCAG.naAA}</td>
+								<td class="text-center">${(dataWCAG.naA+dataWCAG.naAA)}</td>
+							</tr>
+					
+							<tr>
+								<th scope="row" class="font-weight-bold bg-light">${langStatement.auditTxt16}</th>
+								<td class="text-center bg-light">
+									${(!isNaN(dataWCAG.resultA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultA}% ` : ``}		
+								</td>
+								<td class="text-center bg-light">
+									${(!isNaN(dataWCAG.resultAA) && dataWCAG.result!=="NA") ? `${dataWCAG.resultAA}% ` : ``}	
+								</td>
+								<td class="text-center bg-light">
+									${(!isNaN(dataWCAG.result) && dataWCAG.result!=="NA") ? `${dataWCAG.result}% ` : ``}
+								</td>
+							</tr>
+					
+						</tbody>
+					</table>
+					</div>
+
+					<div class="table-responsive">
+					<table class="table table-striped">
+					<caption>${langStatement.auditTxt4}</caption>
+					<tr>
+						<th scope="row">${langStatement.auditTxt17} / ${langStatement.auditTxt10}</th>
+						<th scope="col" class="text-center">${langStatement.compliant} / A</th>
+						<th scope="col" class="text-center">${langStatement.compliant} / AA</th>
+						<th scope="col"class="text-center">${langStatement.nonCompliant} / A</th>
+						<th scope="col"class="text-center">${langStatement.nonCompliant} / AA</th>
+						<th scope="col" class="text-center">${langStatement.notApplicable} / A</th>
+						<th scope="col" class="text-center">${langStatement.notApplicable} / AA</th>
+						<th scope="col" class="text-center bg-light">${langStatement.auditTxt8}</th>
+					</tr>
+					
+					
+					${statementResult.map(r => 
+						`<tr>
+							<th scope="row"><span class="visually-hidden">Page : </span>${utils.escape_html(r.name)}</th>
+							<td>${r.conformeA}</td>
+							<td>${r.conformeAA}</td>
+							<td>${r.nonconformeA}</td>
+							<td>${r.nonconformeAA}</td>
+							<td>${r.naA}</td>
+							<td>${r.naAA}</td>
+							<td style="background-color:#ddd !important;">${r.result} %</td>
+						</tr>`
+						
+						).join('')}
+					
+					</table>
+					</div>
+
+				</div>
+			</div>`;
+		}
+		else{
+			htmlStatement += `<div class="row summary">
+						<div class="col-lg-3">
+							<h4 class="pie" data-value="50">
+								<span class="visually-hidden">${langStatement.auditTxt1} </span> 
+								<span class="pie-val pie-noncompliant">${langStatement.template.status2}</span>
+							</h4>
+					
+							<p class="lead">${langStatement.auditTxt1}
+							</p>
+						</div>
+					</div>`;
+					
+					htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
+					<ul>
+						<li>${langStatement.statementTemplate.resultsContentnonCompliant}${langStatement.statementTemplate.resultsContent2}</li>
+					</ul>`;
+		}
+		htmlStatement += `<div class="row">
         
             <div class="col-lg">
-                <h3 class="h6 mt-4">${langStatement.statementTemplate.noncompliancesHeading}</h3>`;
+
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.noncompliancesHeading1}</h2>
+
+				<p>${langStatement.statementTemplate.noncompliancestext}</p>
+				
+                <h3 class="h6 mt-4">${langStatement.statementTemplate.noncompliancesHeading2}</h3>`;
+
+				if (dataVallydette.statement.nonCompliantComment !== "") {
+					htmlStatement += `${md.render(dataVallydette.statement.nonCompliantComment)}`;
+					
+				}
 		
 				if (listNonConformity.length > 0) {
 					htmlStatement += `
+					<p>${langStatement.statementTemplate.wcagNonCompliant}</p>
 					<ul>
 					${listNonConformity.map(nc => 
 						`	<li>
@@ -1450,7 +1507,65 @@ exportStatementHTML = function(statementResult) {
 	
     htmlStatement += `
             </div>
+        </div>
+        
+        <div class="row">
+
+			<div class="col-lg">
+				<h2 class="h4 mt-4">${langStatement.statementTemplate.environmentStatement}</h2>
+				<p>${langStatement.statementTemplate.auditDate} ${localeStatementDate}. ${dataVallydette.statement.dateUpdate === "" ? "" : langStatement.statementTemplate.auditUpdateDate +" " +localeStatementDateUpdate+"."}</p>
+			</div>
+		</div>
+		<div class="row">
+				<div class="col-lg">
+							
+							
+					<h3>${langStatement.statementTemplate.technologyHeading}</h3>
+					<ul>
+						${dataVallydette.statement.technology.map(e => `<li>${utils.escape_html(e.name)}${e.version.length > 0 ? ` ${utils.escape_html(e.version)}` : ``}</li>`).join('\n						')}
+					</ul>
+							
+					
+					<h3>${langStatement.statementTemplate.environmentHeading}</h3>
+					<p>${langStatement.statementTemplate.environmentContent}</p>
+					<ul>
+						${dataVallydette.statement.environments.map(e => `<li>${utils.escape_html(e.environment)}</li>`).join('\n						')}
+					</ul>
+					
+					<h3>${langStatement.statementTemplate.methodsHeading}</h3>
+					<ul>
+					`;
+						
+					arrayTypeTest.forEach(function(t){
+						
+						let arrayTypeResult = dataVallydette.statement.tests.filter(e => e.type === t);
+						let separator = ', '
+						
+						arrayTypeResult.length > 0 ? htmlStatement += `	<li><strong>${langStatement[t + "Test"]}:</strong> ${arrayTypeResult.map(e => `${utils.escape_html(e.name)}${e.version.length > 0 ? ` ${utils.escape_html(e.version)}` : ``}`).join(separator)}</li>\n					` : '';
+						
+					});
+					
+					if (dataVallydette.statement.userNumber > 0 && dataVallydette.statement.userTestDescription !== '') {
+						htmlStatement += `<li><strong>${langStatement.userTest}:</strong> ${utils.escape_html(dataVallydette.statement.userTestDescription)}</li>`
+					}
+
+	htmlStatement += `</ul>
+				
+			</div>
+		</div>
+
+		<div class="row">
+				<div class="col-lg">
+					<h3>${langStatement.statementTemplate.pagesHeading}</h3>
+					<p>${langStatement.statementTemplate.pagesContent}</p>
+							
+					<ol>
+						${dataVallydette.checklist.page.map(item => `<li><strong>${utils.escape_html(item.name)} : </strong>${utils.escape_html(item.url)}</li>`).join('\n					')}
+					</ol>
+				</div>
         </div>`;
+		
+        
 		
 	if (dataVallydette.statement.derogation !== "") {
 		htmlStatement += `<div class="row">
@@ -1484,6 +1599,7 @@ exportStatementHTML = function(statementResult) {
             <div class="col-lg">
         
                 <h2 class="h4 mt-4">${langStatement.statementTemplate.contactsHeading}</h2>
+				<p>${langStatement.statementTemplate.contactsText}</p>
 				
 				${dataVallydette.statement.contact.filter(c => c.checked === "true").map(c => md.render(c.content)).join('')}
 
@@ -1512,7 +1628,7 @@ exportStatementHTML = function(statementResult) {
 	if (dataVallydette.statement.status === "DONE") {
 		
 		var bb = new Blob([htmlStatement], {type: 'application/octet-stream'});
-		var statementFileName = utils.slugify(dataVallydette.statement.name) + '.html';
+		var statementFileName = utils.slugify(dataVallydette.statement.app) + '.html';
 		
 		var btnStatementHtmlExport = document.getElementById("btnStatementHtmlExport");
 		btnStatementHtmlExport.classList.remove('disabled');
@@ -1521,4 +1637,12 @@ exportStatementHTML = function(statementResult) {
 		
 	
 	}
+}
+
+/**
+ * update plan with variable 
+*/
+adaptPlan = function() {
+	dataVallydette.statement.plan=dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace,dataVallydette.statement.name);
+	dataVallydette.statement.plan=dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace2,dataVallydette.statement.app);
 }

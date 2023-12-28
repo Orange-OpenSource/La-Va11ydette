@@ -41,7 +41,7 @@ initContextualMenu = function (currentPageIndex, currentPageID) {
 		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2 disabled" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" target="_blank" aria-disabled="true">'+htmlIcon.link_external+'</a>';
 	}
 	else{
-		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ getPropertyValue("checklist.page." + currentPageIndex + ".url") +'" target="_blank" aria-disabled="false">'+htmlIcon.link_external+'</a>';
+		htmlMenu += '<a role="link" id="btnOpenUrl" class="btn btn-secondary btn-icon ms-2" aria-label="' + langVallydette.openPageUrl + '" title="' + langVallydette.openPageUrl + '" href="'+ utils.escape_html(getPropertyValue("checklist.page." + currentPageIndex + ".url")) +'" target="_blank" aria-disabled="false">'+htmlIcon.link_external+'</a>';
 	}
 
 	if (currentPage === 0) {

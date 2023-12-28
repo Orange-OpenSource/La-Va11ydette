@@ -71,7 +71,7 @@
 					if (dataVallydette.checklist.referentiel === "wcagEase") {
 						dataVallydette.checklist.referentiel = "wcag-web";
 					}
-					
+					console.log(dataVallydette.checklist.page[0].url)
 					currentCriteriaListName = dataVallydette.checklist.referentiel;
 					initAuditPage();
 					initGlobalLang(dataVallydette.checklist.lang, true);
@@ -435,7 +435,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	htmlModal += '<div id="modal-alert"></div>';
 	htmlModal += '<div class="mb-3">';
 	htmlModal += '<label id="nameValueLabel" class="form-label" for="nameValue">' + langVallydette.name + ' <span class="text-danger">*</span></label>';
-	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="nameValueLabel" value="' + getPropertyValue(targetProperty) + '" aria-invalid="false" required >';
+	htmlModal += '<input type="text" class="form-control" id="nameValue" aria-labelledby="nameValueLabel" value="' + utils.escape_html(getPropertyValue(targetProperty)) + '" aria-invalid="false" required >';
 	htmlModal += '<div id="nameValueError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.errorNameRequired + ' </p></div>';
 	htmlModal += '</div>';
 	
@@ -443,7 +443,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 	if (targetElement === "pageName") {
 		htmlModal += '<div class="mb-3">';
 		htmlModal += '<label  class="form-label" for="urlValue">URL</label>';
-		htmlModal += '<input type="text" class="form-control" id="urlValue" placeholder="URL" value="' + getPropertyValue("checklist.page." + currentPage + ".url") + '">';
+		htmlModal += '<input type="text" class="form-control" id="urlValue" placeholder="URL" value="' + utils.escape_html(getPropertyValue("checklist.page." + currentPage + ".url")) + '">';
 		htmlModal += '</div>';
 		htmlModal += '<div id="themeManager" class="mb-3">';
 		htmlModal += '</div>';
@@ -475,7 +475,7 @@ setValue = function (targetElement, targetProperty, targetSecondaryElement) {
 			arrayPropertyValue[0] = propertyName.value;
 			if (targetElement === "pageName") {
 				var propertyUrl = document.getElementById("urlValue");
-				arrayPropertyValue[1] = propertyUrl.value;
+				arrayPropertyValue[1] = utils.escape_html(propertyUrl.value);
 				
 				getGroups();
 				
@@ -557,7 +557,7 @@ updateProperty = function(arrayPropertyValue, targetElement, targetProperty, tar
 
 		/**  Enabled url button */
 		var currentbtnOpenUrl = document.getElementById('btnOpenUrl');
-		currentbtnOpenUrl.href = getPropertyValue("checklist.page." + currentPage + ".url");
+		currentbtnOpenUrl.href = utils.escape_html(getPropertyValue("checklist.page." + currentPage + ".url"));
 		currentbtnOpenUrl.classList.remove('disabled');
 		currentbtnOpenUrl.setAttribute('aria-disabled', 'false');
 	}

@@ -178,7 +178,7 @@ showPage = function (id) {
 		}
 		else{
 			currentbtnOpenUrl.classList.remove('disabled');
-			currentbtnOpenUrl.href = getPropertyValue("checklist.page." + currentPage + ".url");
+			currentbtnOpenUrl.href = utils.escape_html(getPropertyValue("checklist.page." + currentPage + ".url"));
 			currentbtnOpenUrl.setAttribute('aria-disabled', 'false');
 		}
 		

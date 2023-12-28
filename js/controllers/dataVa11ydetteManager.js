@@ -71,7 +71,7 @@
 					if (dataVallydette.checklist.referentiel === "wcagEase") {
 						dataVallydette.checklist.referentiel = "wcag-web";
 					}
-					
+					console.log(dataVallydette.checklist.page[0].url)
 					currentCriteriaListName = dataVallydette.checklist.referentiel;
 					initAuditPage();
 					initGlobalLang(dataVallydette.checklist.lang, true);

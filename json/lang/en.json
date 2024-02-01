@@ -328,7 +328,7 @@
 		"partialyCompliant": "partially compliant",
 		"noCompliant": "no compliant",
 		"method":"The audit was carried out via <a href=\"https://la-va11ydette.orange.com/?lang=en\">la Va11ydette</a>.",
-		"linkRGAAWCAG":"uses another method than the RGAA, the WCAG. <a href=\"https://a11y-guidelines.orange.com/fr/cadrage/correspondance-rgaa-wcag/\">Here is the correspondence link between the RGAA and the WCAG</a>.",
+		"linkRGAAWCAG":"refers to the WCAG international recommendations. <a href=\"https://a11y-guidelines.orange.com/fr/cadrage/correspondance-rgaa-wcag/\">Here is the correspondence link between the RGAA and the WCAG</a>.",
 		"blockingPoint1": " blocking point(s) from a user point of view",
 		"approvalHeading": "Formal approval of this accessibility statement",
 		"standardHeading": "Standard applied",

@@ -3,21 +3,21 @@
  * Conformity computation functions
 */
 
-/**  
+/**
 *	Initialization properties, needed for computation.
-*	@param {object} item - items (rules) 
+*	@param {object} item - items (rules)
 */
 initProperties = function (item) {
-	item.resultat = 'nt';
+	item.resultat = 'na';
 	item.comment = [];
 	item.page = [];
 }
 
 /**
  * Computation initialization. The dataWcag object is downloaded.
- * 
+ *
  * Load data wcag
- * 
+ *
 */
 function initComputationWcag() {
 
@@ -29,7 +29,7 @@ function initComputationWcag() {
 	matriceRequest.onreadystatechange = function () {
 	  if(matriceRequest.readyState === 4 && matriceRequest.status === 200) {
 			dataWCAG = JSON.parse(matriceRequest.responseText);
-			
+
 			dataWCAG.items.forEach(initRulesAndTests);
 
             var btnShowResult = document.getElementById("btnShowResult");
@@ -40,24 +40,24 @@ function initComputationWcag() {
 				utils.putTheFocus(document.getElementById("pageName"));
 				initAnchorMenu()
             }, false);
-		
+
 	    runTestListMarkup(dataVallydette.checklist.page[currentPage].items);
 		if(window.location.hash !== ""){
 			document.getElementById(window.location.hash.substring(1)).scrollIntoView();
 		}
-		
+
 
 	  }
 	};
 	matriceRequest.send();
-	
+
 }
 
 /**
  * Computation initialization. The dataWcag object is downloaded.
- * 
+ *
  * Load data wcag
- * 
+ *
 */
 function initComputationRGAA(){
 
@@ -94,7 +94,7 @@ function initComputationRGAA(){
 		if(window.location.hash !== ""){
 			document.getElementById(window.location.hash.substring(1)).scrollIntoView();
 		}
-	
+
 }
 
 /**
@@ -104,18 +104,19 @@ function initComputationRGAA(){
 function initRulesAndTests (rules) {
 	 for (let i in dataVallydette.checklist.page[0].items) {
 		 for (let j in dataVallydette.checklist.page[0].items[i].wcag) {
-			
+
 			var testWCAG = dataVallydette.checklist.page[0].items[i].wcag[j].split(" ");
 			if (testWCAG[0] === rules.wcag) {
-				
+
 				rules.tests.push(dataVallydette.checklist.page[0].items[i].IDorigin);
-				rules.resultat = "nt";
+
+                rules.resultat = "nt";
 			}
-			
+
 		}
-	
+
 	}
-	
+
 }
 
 
@@ -124,7 +125,7 @@ function initRulesAndTests (rules) {
  * @return {array} pagesResults - Contains all Rgaa results by pages.
 */
 function runComputationRgaa(){
-	
+
 	/**
 	* @param {array} pagesResults - Contains all wcag results by pages.
 	*/
@@ -139,19 +140,19 @@ function runComputationRgaa(){
 		pagesResults[i].url = dataVallydette.checklist.page[i].url;
 
 
-			
+
 
 			for (let j in dataVallydette.checklist.page[i].items) {
 				pagesResults[i].items[j] = {};
-			   
+
 				pagesResults[i].items[j].complete = true;
 				pagesResults[i].items[j].name = dataRGAA.items[j].name;
-				pagesResults[i].items[j].resultat = "nt";
-						
+                pagesResults[i].items[j].resultat = "nt";
+
 				testObj = {};
 				testObj.title = dataVallydette.checklist.page[i].items[j].title;
 				testObj.result = dataVallydette.checklist.page[i].items[j].resultatTest;
-				
+
 				if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt") {
 					pagesResults[i].items[j].complete = false;
 				}
@@ -169,39 +170,39 @@ function runComputationRgaa(){
 
 				if (pagesResults[i].items[j].resultat) {
 					if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
-						
+
 						pagesResults[i].items[j].resultat = true;
 						if (dataRGAA.items[j].resultat !== false) {
 
 							dataRGAA.items[j].resultat = true;
 						}
 
-						
+
 					} else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
 						pagesResults[i].items[j].resultat = false;
 
-						
-						
+
+
 					} else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[j].resultat === "nt")) {
 						pagesResults[i].items[j].resultat = "na";
-						
+
 						if (dataRGAA.items[j].resultat !== false && dataRGAA.items[j].resultat !== true ) {
 							dataRGAA.items[j].resultat = "na";
 						}
 
-						
-					} 
 
-				}	
+					}
+
+				}
 			}
 	}
 
 	pagesResults = pagesResultsComputationRGAA(pagesResults);
 	dataRGAAComputation();
 
-	
-	
-		
+
+
+
 	return runFinalComputationRGAA(pagesResults);
 
 }
@@ -218,38 +219,38 @@ function runComputationWcag(obj) {
 	*/
     pagesResults = [];
 	countNocomplete=0;
-	
+
 	/**
 	* Initilization of the dataWCAG results, to be sure that the results are correctly re-computed each time the audit results are displayed.
 	*/
 	dataWCAG.items.forEach(initProperties);
-	
+
     for (let i in dataVallydette.checklist.page) {
         pagesResults[i] = [];
         pagesResults[i].items = [];
         pagesResults[i].name = dataVallydette.checklist.page[i].name;
 		pagesResults[i].url = dataVallydette.checklist.page[i].url;
-		
+
         for (let k in dataWCAG.items) {
 
 				pagesResults[i].items[k] = {};
 				pagesResults[i].items[k].wcag = dataWCAG.items[k].wcag;
 				pagesResults[i].items[k].level = dataWCAG.items[k].level;
-			   
+
 				if (dataWCAG.items[k].tests.length > 0) {
 					pagesResults[i].items[k].resultat = "nt";
 				} else {
 					pagesResults[i].items[k].resultat = "na";
 				}
-				
+
 				pagesResults[i].items[k].complete = true;
 				if(!countNocomplete){
 					dataWCAG.items[k].complete = true;
 				}
-				
+
 				pagesResults[i].items[k].test = [];
 				pagesResults[i].items[k].name = dataWCAG.items[k].name;
-				
+
 				/**
 				* Pass through each test of a wcag.
 				*/
@@ -257,17 +258,17 @@ function runComputationWcag(obj) {
 					/**
 					* Gets each test value, and updates the current wcag rules, basing on computation rules.
 					*/
-					
+
 					for (let j in dataVallydette.checklist.page[i].items) {
-						
+
 						if (dataWCAG.items[k].tests[l] === dataVallydette.checklist.page[i].items[j].IDorigin) {
-							
+
 							testObj = {};
 							testObj.title = dataVallydette.checklist.page[i].items[j].title;
 							testObj.result = dataVallydette.checklist.page[i].items[j].resultatTest;
 							pagesResults[i].items[k].test.push(testObj);
-							
-							
+
+
 							if (dataVallydette.checklist.page[i].items[j].resultatTest === "nt" && dataVallydette.checklist.page[i].items[j].goodPractice === false) {
 								pagesResults[i].items[k].complete = false;
 								dataWCAG.items[k].complete = false;
@@ -286,48 +287,47 @@ function runComputationWcag(obj) {
 							 }
 
 							if (pagesResults[i].items[k].resultat) {
-								
+
 								if (dataVallydette.checklist.page[i].items[j].resultatTest === "ok") {
 									pagesResults[i].items[k].resultat = true;
-									
+
 									if (dataWCAG.items[k].resultat !== false) {
 
 										dataWCAG.items[k].resultat = true;
 									}
-									
-									break;	
-									
+
+									break;
+
 								} else if (dataVallydette.checklist.page[i].items[j].resultatTest === "ko") {
 									pagesResults[i].items[k].resultat = false;
-									break;	
-									
-									
+									break;
+
+
 								} else if ((dataVallydette.checklist.page[i].items[j].resultatTest === "na") && (pagesResults[i].items[k].resultat === "nt")) {
-									pagesResults[i].items[k].resultat = "na";
-									
+                                    pagesResults[i].items[k].resultat = "na";
+
 									if (dataWCAG.items[k].resultat !== false && dataWCAG.items[k].resultat !== true ) {
 										dataWCAG.items[k].resultat = "na";
 									}
-									
-									break;	
-								} 
 
-							}	
+									break;
+								}
+
+							}
 						}
 					}
 				}
-			
+
         }
     }
-	
 	pagesResults = pagesResultsComputationWcag(pagesResults);
 	dataWCAGComputation();
 
-	
-	
+
+
 	if (obj) {
 		return pagesResults;
-	} else {		
+	} else {
 		return runFinalComputationWcag(pagesResults);
 	}
 
@@ -342,7 +342,7 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 	var finalTotal = 0;
     var finalResult = 0;
     var nbPage = 0;
-	
+
 	for (let i in pagesResultsArray) {
         var nbTrue = 0;
         var nbFalse = 0;
@@ -393,7 +393,7 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 
 				pagesResultsArray[i].items[j].level === 'A' ? nbNaA++ :nbNaAA++;
 				pagesResultsArray[i].items[j].level === 'A' ? nbTotalA++ : nbTotalAA++;
-			}  
+			}
 			if (pagesResultsArray[i].items[j].complete === false) {
 				pagesResultsArray[i].complete = false;
 			}
@@ -401,7 +401,7 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 
 		/**
 		 * 	If all the tests of a page are non-applicables (hypothetical but tested)
-		*/  
+		*/
 		if (nbTotal===0 && nbNA>0) {
 			pagesResultsArray[i].result = "NA";
 		} else {
@@ -409,7 +409,7 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 		}
 
 
-		/** Adds the result to the pages result array. */  
+		/** Adds the result to the pages result array. */
 		pagesResultsArray[i].conformeA = nbTrueA;
 		pagesResultsArray[i].conformeAA = nbTrueAA;
 		pagesResultsArray[i].nonconformeA = nbFalseA;
@@ -420,18 +420,18 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalseA + nbFalseAA;
 	}
 
-	/** Final global pages result computation. */  
+	/** Final global pages result computation. */
     for (let i in pagesResultsArray) {
         if (pagesResultsArray[i].result != "NA") {
             finalTotal = finalTotal + pagesResultsArray[i].result;
             nbPage = nbPage + 1;
         }
     }
-	
-	/** Final conformity rate. */ 
+
+	/** Final conformity rate. */
     finalResult = Math.round((finalTotal / nbPage));
 	dataWCAG.globalPagesResult = finalResult;
-	
+
 	return pagesResultsArray;
 }
 
@@ -472,7 +472,7 @@ function pagesResultsComputationRGAA(pagesResultsArray) {
 
 		/**
 		 * 	If all the tests of a page are non-applicables (hypothetical but tested)
-		*/  
+		*/
 		if (nbTotal===0 && nbNA>0) {
 			pagesResultsArray[i].result = "NA";
 		} else {
@@ -484,20 +484,20 @@ function pagesResultsComputationRGAA(pagesResultsArray) {
 		pagesResultsArray[i].totalnonconforme = nbFalse;
 		pagesResultsArray[i].totalnA = nbNA;
 	}
-	
-	/** Final global pages result computation. */  
+
+	/** Final global pages result computation. */
     for (let i in pagesResultsArray) {
         if (pagesResultsArray[i].result != "NA") {
             finalTotal = (finalTotal + parseFloat(pagesResultsArray[i].result));
             nbPage = nbPage + 1;
         }
     }
-	
-	/** Final conformity rate. */ 
+
+	/** Final conformity rate. */
 
     finalResult = (finalTotal / nbPage).toFixed(2);
 	dataRGAA.globalPagesResult = finalResult;
-	
+
 	return pagesResultsArray;
 }
 
@@ -506,20 +506,20 @@ function pagesResultsComputationRGAA(pagesResultsArray) {
 	*  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
 */
 function dataWCAGComputation() {
-	
+
 	dataWCAG.complete = true;
 
 	/**
 	 * 	Check if all critere are completed.
 	*/
-	
+
 		for (let i in dataWCAG.items) {
 			if ((dataWCAG.items[i].level!=="AAA") && ((dataWCAG.items[i].resultat === 'nt' && dataWCAG.items[i].deprecated !== true) || dataWCAG.items[i].complete ===false)) {
-				dataWCAG.complete = false;
+                dataWCAG.complete = false;
 			}
 		}
-		
-		/** Adds the results to the WCAG object. */  
+
+		/** Adds the results to the WCAG object. */
 		dataWCAG.conformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === true).length;
 		dataWCAG.conformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === true).length;
 		dataWCAG.nonconformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === false).length;
@@ -531,7 +531,7 @@ function dataWCAGComputation() {
 
 		dataWCAG.totalA = dataWCAG.items.filter(function(item){return item.level==="A"}).length;
 		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA"}).length;
-	
+
 		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => (item.resultat === true || item.resultat === false) && item.level!=="AAA").length;
 		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true && item.level!=="AAA").length;
 		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false && item.level!=="AAA").length;
@@ -539,7 +539,7 @@ function dataWCAGComputation() {
 
 		/**
 		* 	If all the wcag are non-applicables (hypothetical but tested)
-		*/ 
+		*/
 		if (dataWCAG.nbTotalWcag===0 && dataWCAG.nbNaWcag>0) {
 			dataWCAG.result = "NA";
 		} else {
@@ -547,7 +547,7 @@ function dataWCAGComputation() {
 			dataWCAG.resultA = Math.round((dataWCAG.conformeA / (dataWCAG.conformeA+dataWCAG.nonconformeA)) * 100);
 			dataWCAG.resultAA = Math.round((dataWCAG.conformeAA / (dataWCAG.conformeAA+dataWCAG.nonconformeAA)) * 100);
 		}
-	
+
 }
 
 /**
@@ -555,7 +555,7 @@ function dataWCAGComputation() {
 	*  If one result is non-tested, then the property 'complete' is passed false, and the final result is not displayed (only the number of non-tested items).
 */
 function dataRGAAComputation() {
-	
+
 
 	dataRGAA.complete = true;
 
@@ -567,11 +567,11 @@ function dataRGAAComputation() {
 
 	/**
 	* 	If all the wcag are non-applicables (hypothetical but tested)
-	*/ 
+	*/
 	if (dataRGAA.nbTotalWcag===0 && dataRGAA.nbNaWcag>0) {
 		dataRGAA.result = "NA";
 	} else {
 		dataRGAA.result = ((dataRGAA.nbTrueRGAA / dataRGAA.nbTotalRGAA) * 100).toFixed(2);
 	}
-	
+
 }

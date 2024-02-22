@@ -1,6 +1,6 @@
 [
 		{
-		"themes": "Input screen",
+		"themes": "Input field",
 		"title": "Does every input field in the form have a label?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
@@ -185,7 +185,7 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-		"verifier": "<p>Verify that&nbsp;:</p> <ul><li>le title of <code>UIView</code> is visible,</li><li>the title of the <code>UIView</code> is unique. A common error is to use the same title for the whole application,</li><li>the page context is understandable with the <code>UIView</code> title</li></ul>",
+		"verifier": "<p>Verify that&nbsp;:</p> <ul><li>the page title is visible,</li><li>the page title is unique. A common error is to use the same title for the whole application,</li><li>the page context is understandable with the page title</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -253,7 +253,7 @@
 			"0": "1.4.4 AA",
 			"1": "1.4.10 AA"
 		},
-		"verifier": "<p>Verify that there is no loss of information (no unusable, truncated or hidden content or functionality) as a result of enlarging the text size to 200%.</p>",
+		"verifier": "<p>Verify that there is no loss of information (no unusable, truncated or hidden content or functionality) as a result of enlarging the text size to 235%.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -266,7 +266,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The title of the activity is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li><li>For complex images, an alternative shall be present through an adjacent content</li></ul>",
+		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The page title is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li><li>For complex images, an alternative shall be present through an adjacent content</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -293,7 +293,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Check that the linked elements are vocalized in a single block:</p><ul><li>lare the linked elements gathered in the same announcement block for vocalization?</li><li>does the multidimensional information respect a good balance between the number of blocks and the content within each block?</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li>the linked elements are vocalized in the same announcement block</li><li>an information is returned when focusing on the first field, which makes it possible to identify the group to which the linked fields belong</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -333,7 +333,7 @@
 			"0": "4.1.3 AA"
 		},
 		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chat, temporary or error messages, change of significant element, upload of a file, product registration in a basket, progressive loading of a list... ): </p><ul><li>check that a mechanism based on live regions is implemented</li><li>check that they are rendered in a relevant way to the screen reader</li></ul>",
-        "complement": "<h4>Examples</h4><ul><li>message that informs about the result of an action or the state of the application</li><li>error message</li><li>message indicating progress</li></ul>",
+        "complement": "<h4>Examples</h4><ul><li>message informing about the result of an action or the state of the application</li><li>error message</li><li>message indicating progress</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -385,11 +385,13 @@
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Check that the element's label is present (first if possible) in the vocalization of this component. Not applicable if the element has no visible label (icon without text for example).</p>",
+		"verifier": "<p>Check that the element's label is present (first if possible) in the vocalization of this component.</p>",
 		"complement": "<p>For example: for a 'start' link, use an alternative 'start playing', but not 'begin playing'</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
+		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>"
+
 	},
 	{
 		"themes": "Voice navigation",
@@ -405,20 +407,20 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Selection control",
-		"title": "Is all functionality of the page content operable through control selection tool or a keyboard interface?",
+		"themes": "Switch control and keyboard",
+		"title": "Is all functionality of the page content operable through Switch Control and Full Keyboard Access?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Check that:</p><ul><li>all features are available using control selection tool or keyboard navigation</li><li>only interactive elements are accessible using selection control</li><li>elements are gathered when they are linked (e.g : contents within a clickable row in a list)</li><li>it is possible to scroll with keyboard to read the content in a scrollView</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li>all features are available using Switch Control and Full Keyboard Access navigation</li><li>only interactive elements are accessible</li><li>elements are gathered when they are linked (e.g : contents within a clickable row in a list)</li><li>it is possible to scroll with to read the content in a ScrollView</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Selection control",
+		"themes": "Switch control and keyboard",
 		"title": "The screen does not contain keyboard traps&nbsp;? ",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
@@ -431,7 +433,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Selection control",
+		"themes": "Switch control and keyboard",
 		"title": "Is the order in which focusable components receive focus logical and consistent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
@@ -444,7 +446,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Selection control",
+		"themes": "Switch control and keyboard",
 		"title": "When focus is received, is there a visible focus indicator&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
@@ -457,7 +459,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Selection control",
+		"themes": "Switch control and keyboard",
 		"title": "Is the focus visible on all elements?",
 		"ID": "testID-061",
 		"IDorigin": "testID-061",
@@ -549,7 +551,7 @@
 			"0": "2.5.8 AA"
 		},
 		"verifier": "<p>The clickable or touchable area is at least ed 44pt (height AND width)</p>",
-		"exception": "<ul><li>There is spacing of a circle of at least 21pt in diameter with adjacent clickable or touchable areas</li><li>The link is in the middle of a sentence or paragraph ( help icon, anchor links, footnote).</li><li>Reduced size is necessary to convey information</li><li>Components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li></ul>",
+		"exception": "<ul><li>There is spacing of a circle of at least 21pt in diameter with adjacent clickable or touchable areas</li><li>The link is in the middle of a sentence or paragraph ( help icon, anchor links, footnote).</li><li>Reduced size is necessary to convey information</li><li>Native component is used and can't be modified</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"wcag22" : true,
@@ -606,7 +608,7 @@
 		"wcag": {
 			"0": "1.4.12 AA"
 		},
-		"verifier": "<p>Check that:</p><ul><li>texts have a sufficient size to be read easily</li><li>the font used is sans serif</li><li>text is not in italic</li></ul>",
+		"verifier": "<p>Check that:</p><ul><li>texts have a sufficient size to be read easily</li><li>the fond enables to differentiate letters, such as i,l,I,L</li><li>spacing between letters and lines is sufficient</li><li>text is not in italic</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -714,7 +716,7 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>when there is less than 3 or 4 screens and/or the content is short, this criterion is not applicable.</p><p>Check that at least 2 of the following mechanisms are present on the screen, to allow a user to determine their location on the application:</p>\n<ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>", 
+		"verifier": "<p>when there is a limited number of screens and/or the content is short, this criterion is not applicable.</p><p>Check there are multiple mechanisms to reach a content and allow a user to locate himself on the application:</p>\n<ul><li>a main navigation menu</li><li>a sitemap</li><li>a search feature</li><li>...</li></ul>", 
 		"exception": " except if the screen is the result of, or a step in a process.",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -389,9 +389,8 @@
 		"complement": "<p>For example: for a 'start' link, use an alternative 'start playing', but not 'begin playing'</p>",
         "resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
 		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>"
-
 	},
 	{
 		"themes": "Voice navigation",

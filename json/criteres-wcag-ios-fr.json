@@ -1,7 +1,7 @@
 [
 	{
-		"themes": "Écran de saisie",
-		"title": "Chaque champ de saisie possède-t-il une étiquette ?",
+		"themes": "Champ de formulaire",
+		"title": "Chaque champ de formulaire possède-t-il une étiquette ?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
@@ -9,13 +9,13 @@
 		],
 	    "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
     {
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Chaque étiquette de champ est-elle pertinente&nbsp;?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
@@ -23,13 +23,13 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
     {
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Chaque champ de formulaire a-t-il un nom accessible&nbsp;?",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
@@ -37,13 +37,13 @@
 			"1.3.1 A"
 		],
 		"verifier": "Toutes les étiquettes sont bien liées à leurs champs",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
@@ -52,13 +52,13 @@
 			"1": "3.3.2 A"
 		},
 		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>Switch</code> étant nécessaire</li></ul>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Les champs obligatoires sont-ils identifiables&nbsp;?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
@@ -67,14 +67,14 @@
 			"1": "3.3.2 A"
 		},
 		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": " L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
@@ -84,14 +84,14 @@
 		"verifier": "<p>Ensure that all steps in an authentication process do not rely on cognitive testing unless this provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the application mobile.</li></ul><p>Warning, memorizing a username and password is a cognitive test.<br/>The copy/paste function must be authorized on these fields .<br/>If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
 		"ID": "testID-004",
 		"IDorigin": "testID-004",
@@ -99,13 +99,13 @@
 			"0": "3.3.2 A"
 		},
 		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",  
+		"themes": "Champ de formulaire",  
 		"title": "Les champs en erreur sont-ils identifiables&nbsp;?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
@@ -113,13 +113,13 @@
 			"0": "3.3.1 A"
 		},
 		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge et changement d'aspect').</p>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Les messages d'erreur sont-ils explicites&nbsp;?",
 		"ID": "testID-007",
 		"IDorigin": "testID-007",
@@ -127,13 +127,13 @@
 			"0": "3.3.1 A"
 		},
 		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "En cas d'erreur, est-ce qu'une suggestion de correction est proposée à l'utilisateur&nbsp;?",
 		"ID": "testID-008",
 		"IDorigin": "testID-008",
@@ -142,13 +142,13 @@
 		},
 		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
 		"exception":"<p>Lorsqu'il est impossible de faire une suggestion, le critère est non applicable</p>",
-        "group": "Écran de saisie",
+        "group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
+		"themes": "Champ de formulaire",
 		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redondante ?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
@@ -158,22 +158,22 @@
 		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par l’application tout en sachant que la saisie automatique n'est pas jugé suffisant.</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison).</p>",
 		"exception": "<ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
-		"themes": "Écran de saisie",
-		"title": "Si l'écran de saisie est sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
+		"themes": "Champ de formulaire",
+		"title": "Si l'Champ de formulaire est sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",
 		"wcag": {
 			"0": "3.3.4 AA"
 		},
 		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
-		"group": "Écran de saisie",
+		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -186,7 +186,7 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-        "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le titre de l'<code>UIView</code> est renseigné,</li><li>le titre de l'<code>UIView</code> est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>le titre de l'<code>UIView</code> permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
+        "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le titre de la page est renseigné,</li><li>le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -254,7 +254,7 @@
 			"0": "1.4.4 AA",
 			"1": "1.4.10 AA"
 		},
-		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 200%.</p>",
+		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 235%.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -267,7 +267,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de l'activité est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li><li>Vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li></ul>",
+		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de la page est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li><li>Vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -294,7 +294,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Vérifier que les éléments liés sont vocalisés en un seul bloc :</p><ul><li>les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>les informations multidimensionnelles respectent-ils une bonne balance entre nombre de blocs et contenu dans chaque bloc ?</li></ul>",
+		"verifier": "<p> Vérifier que :</p><ul><li>les éléments reliés sont groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>une information est vocalisée lors du focus sur le premier champ, permettant d'identifier le groupe auquel appartiennent les champs liés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -320,7 +320,7 @@
 		"wcag": {
 			"0": "3.2.2 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran (activité) est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
+		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -334,7 +334,7 @@
 			"0": "4.1.3 AA"
 		},
 		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
-        "complement": "<h4>Exemples</h4><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application</li><li>message d'erreu</li><li>message qui indique la progression</li></ul>",
+        "complement": "<h4>Exemples</h4><ul><li>message informant du résultat d'une action ou de l'état de l'application</li><li>message d'erreur</li><li>message indiquant la progression</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -386,11 +386,13 @@
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant. Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
+		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant.</p>",
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
+		"exception": "<p>Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>"
+
 	},
 	{
 		"themes": "Navigation vocale",
@@ -406,20 +408,20 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
-		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier ?",
+		"themes": "Contrôle de sélection et clavier",
+		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de sélection et l'accès complet au clavier ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang=\"en\">scrollview</span></li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de sélection et l'accès complet au clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et clavier",
 		"title": "L'écran ne contient pas de piège clavier&nbsp;?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
@@ -432,7 +434,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et clavier",
 		"title": "L'ordre de prise de focus des éléments est-il logique et cohérent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
@@ -445,7 +447,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et clavier",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
@@ -458,7 +460,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et clavier",
 		"title": "Le focus est-il visible sur tous les éléments ?",
 		"ID": "testID-061",
 		"IDorigin": "testID-061",
@@ -549,8 +551,8 @@
 		"wcag": {
 			"0": "2.5.8 AA"
 		},
-		"verifier": "<p>La zone cliquable ou tactile est au moins de 44pt(hauteur ET largeur)</p>",
-		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Les composants gérés par l'agent utilisateur sont utilisés tel quel.</li><li>Si plusieurs zones de clicks effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
+		"verifier": "<p>La zone cliquable ou tactile est au moins de 44pt (hauteur ET largeur)</p>",
+		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones de clicks effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"wcag22" : true,
@@ -607,7 +609,7 @@
 		"wcag": {
 			"0": "1.4.12 AA"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police de caractère permet de bien différencier les lettres, comme i,l,I,L)</li><li>l'espacement entre les lettres et les lignes est suffisant</li><li>le texte n'est pas en italique</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -715,7 +717,7 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Lorsque le nombre d'écrans est inférieur à 3 ou 4 et/ou le contenu succinct, ce critère est non applicable.</p>\n<p>vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur ll'écran, pour permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>", 
+		"verifier": "<p>Lorsque le nombre d'écrans est limité et/ou que le contenu est court, ce critère est non applicable.</p>\n<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>un plan de site</li><li>un mécanisme de recherche</li><li>...</li></ul>", 
 		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -390,9 +390,8 @@
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
         "resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
 		"exception": "<p>Non applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>"
-
 	},
 	{
 		"themes": "Navigation vocale",

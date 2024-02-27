@@ -12,7 +12,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#formulaire"
 	},
     {
 		"themes": "Écran de saisie",
@@ -26,7 +27,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#formulaire"
 	},
     {
 		"themes": "Écran de saisie",
@@ -40,7 +42,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#formulaire"
 	},
 	{
 		"themes": "Écran de saisie",
@@ -55,7 +58,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
 	},
 	{
 		"themes": "Écran de saisie",
@@ -71,7 +75,8 @@
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
 	},
 	{
 		"themes": "Écran de saisie",
@@ -102,7 +107,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
 	},
 	{
 		"themes": "Écran de saisie",  
@@ -116,7 +122,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
 	},
 	{
 		"themes": "Écran de saisie",
@@ -130,7 +137,8 @@
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
 	},
 	{
 		"themes": "Écran de saisie",
@@ -145,7 +153,8 @@
         "group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
 	},
 	{
 		"themes": "Écran de saisie",
@@ -189,7 +198,8 @@
         "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le titre de l'<code>UIView</code> est renseigné,</li><li>le titre de l'<code>UIView</code> est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>le titre de l'<code>UIView</code> permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#titre-et-en-tete"
 	},
 	{
 		"themes": "Couleurs et contrastes",
@@ -203,7 +213,8 @@
 		"exception": "<p>Les logos, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#couleurs"
 		},
 	{
 		"themes": "Couleurs et contrastes",
@@ -217,7 +228,8 @@
 		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>Le manque de contraste est nécessaire pour convoyer l'information</li><li>les composants inactifs</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#couleurs"
 	},
 	{
 		"themes": "Couleurs et contrastes",
@@ -243,7 +255,8 @@
 		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#alternative-textuelle"
 	},
 	{
 		"themes": "Agrandissement des éléments",
@@ -257,7 +270,8 @@
 		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 200%.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -270,7 +284,8 @@
 		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de l'activité est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li><li>Vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#nature-des-elements"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -284,7 +299,8 @@
 		"verifier": "<p>Vérifier que les éléments suivent un ordre logique et compréhensible en utilisant la navigation vocale.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -297,7 +313,8 @@
 		"verifier": "<p>Vérifier que les éléments liés sont vocalisés en un seul bloc :</p><ul><li>les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>les informations multidimensionnelles respectent-ils une bonne balance entre nombre de blocs et contenu dans chaque bloc ?</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -310,7 +327,8 @@
 		"verifier": "<p>Vérifier qu'avec la navigation vocale et le paramètre de navigation par entête défini :</p><ul><li>tous les entêtes de section sont navigables et vocalisés</li><li>seuls les entêtes sont navigables et vocalisés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#nature-des-elements"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -323,7 +341,8 @@
 		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran (activité) est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#informer-dune-modification-sur-la-page"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -337,7 +356,8 @@
         "complement": "<h4>Exemples</h4><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application</li><li>message d'erreu</li><li>message qui indique la progression</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#declencher-une-vocalisation"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -350,7 +370,8 @@
 		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#nature-des-elements"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -363,7 +384,8 @@
 		"verifier": "<p>Vérifier qu'il n'y a aucun élément fantôme avec la navigation vocale.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#vue-modale"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -376,7 +398,8 @@
 		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés.</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#images"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -403,10 +426,11 @@
 		"verifier": "<p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau)</li><li>Les entêtes ne doivent pas être vides</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données</li></ol>",
 		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
@@ -416,10 +440,11 @@
 		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de selection ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang=\"en\">scrollview</span></li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#controle-de-selection"
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "L'écran ne contient pas de piège clavier&nbsp;?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
@@ -432,7 +457,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "L'ordre de prise de focus des éléments est-il logique et cohérent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
@@ -445,7 +470,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
@@ -458,7 +483,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection",
+		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "Le focus est-il visible sur tous les éléments ?",
 		"ID": "testID-061",
 		"IDorigin": "testID-061",
@@ -539,7 +564,8 @@
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#orientation-de-lecran"
 	},
 	{
 		"themes": "Navigation générale",
@@ -554,7 +580,8 @@
 		"resultatTest": "nt",
 		"priority": "P2",
 		"wcag22" : true,
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#zone-de-clic"
 	},
 	{
 		"themes": "Navigation générale",
@@ -610,7 +637,8 @@
 		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
 	},
 	{
 		"themes": "Navigation générale",
@@ -625,7 +653,8 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>"
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
 	},
 	{
 		"themes": "Navigation générale",
@@ -651,7 +680,8 @@
 		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code> soit un carré de 78dp de côté)</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/navigation-generale/#permettre-le-controle-des-animations"
 	},
 	{
 		"themes": "Navigation générale",
@@ -678,7 +708,8 @@
 		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur'</li></ul>",
         "resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particulier-mise-en-forme-via-une-image"
 	},
 	{
 		"themes": "Navigation générale",
@@ -705,7 +736,8 @@
 		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 	}, 
     {
 		"themes": "Navigation générale",
@@ -733,7 +765,8 @@
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -747,7 +780,8 @@
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -761,7 +795,8 @@
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -775,7 +810,8 @@
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -789,7 +825,8 @@
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -804,6 +841,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio",
 		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
 	},
 	{
@@ -847,6 +885,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#modifier-la-langue-de-vocalisation",
 		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
 	},
 	{
@@ -875,22 +914,8 @@
 		"group": "WebView",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
-	},
-    {
-		"themes": "WebView",
-		"title": "La langue principale est-elle définie et correspond-elle à la langue principale du document&nbsp;?",
-		"ID": "testID-062",
-		"IDorigin": "testID-062",
-		"wcag": [
-			"3.1.1 A"
-		],
-		"verifier": "<ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
-        "group": "WebView",
-        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
-		"priority": "P3",
-		"resultatTest": "nt",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue"
 	},
     {
 		"themes": "Contenu non-textuel",
@@ -903,7 +928,8 @@
 		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
 		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha"
 	},
 	{
 		"themes": "Contenu non-textuel",
@@ -916,7 +942,8 @@
 		"verifier": "<p>Vérifier que pour tout captcha uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha"
 	},
 	{
 		"themes": "Contenu non-textuel",

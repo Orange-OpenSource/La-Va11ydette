@@ -614,7 +614,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Une UI avec limite de temps a-t-elle son délai adaptable ? (time limite) (exemple de netflix)",
+		"title": "Une UI avec limite de temps a-t-elle son délai adaptable ?",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": {

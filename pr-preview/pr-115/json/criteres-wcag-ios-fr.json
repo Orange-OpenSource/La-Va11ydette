@@ -737,7 +737,7 @@
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
 	}, 
     {
 		"themes": "Navigation générale",

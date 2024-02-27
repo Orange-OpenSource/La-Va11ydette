@@ -431,7 +431,7 @@
 	},
 	{
 		"themes": "Switch control and keyboard navigation",
-		"title": "Is all functionality of the page content operable through "Switch control" tool or a keyboard interface?",
+		"title": "Is all functionality of the page content operable through switch control or a keyboard interface?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {

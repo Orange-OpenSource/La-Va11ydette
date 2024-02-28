@@ -432,7 +432,7 @@
 	},
 	{
 		"themes": "Switch control and keyboard navigation",
-		"title": "Are all functionaliiesy of the page content operable through Switch Control or an external keyboard interface?"
+		"title": "Are all functionaliiesy of the page content operable through Switch Control or an external keyboard interface?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {

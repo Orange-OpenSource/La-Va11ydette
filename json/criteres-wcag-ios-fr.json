@@ -432,7 +432,7 @@
 	},
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
-		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier externe ?"
+		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier externe ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {

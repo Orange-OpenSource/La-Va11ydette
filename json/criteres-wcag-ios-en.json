@@ -721,7 +721,7 @@
 			"0": "2.4.4 A"
 		},
 		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the screen to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>if this is not the case, check that the target of a link or the action of a button may be inferred from its context.</li></ul>",
-		"complement": "<h5>How to determine the contexte of a link &nbsp;: </h5><p>The context of the link represents the additional information required to understand its title. Check that this additional information is positioned either:</p><ul><li>in the same sentence</li><li>in the same paragraph</li><li>in the same list element</li><li>in the same tabe cell</li><li>in the table header cell, linked to the cell with the link</li><li>in an explicit heading just before the link</li></ul>",
+		"complement": "<h5>How to determine the contexte of a link &nbsp;: </h5><p>The context of the link represents the additional information required to understand its title. Check that this additional information is positioned either:</p><ul><li>in the same sentence</li><li>in the same paragraph</li><li>in the same list element</li><li>in the same tabe cell</li><li>in the table header cell, linked to the cell with the link</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

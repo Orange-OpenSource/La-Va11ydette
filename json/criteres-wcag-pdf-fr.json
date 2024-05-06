@@ -1,0 +1,760 @@
+[
+    {
+	"themes": "Formulaire",
+	"title": "PDF - Chaque champ de formulaire possède-t-il une étiquette visible&nbsp;?",
+	"ID": "testID-001",
+	"IDorigin": "testID-001",
+	"wcag": [
+	"3.3.2 A",
+	"PDF10"
+	],
+	"verifier": "<p>Une étiquette est visuellement présente à proximité des champs de formulaire</p>",
+	"group": "Formulaire",
+	"moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+	"priority": "P0",
+	"resultatTest": "nt",
+	"goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
+        "ID": "testID-005",
+        "IDorigin": "testID-005",
+        "wcag": [
+        "3.3.2 A",
+        "PDF10"
+        ],
+        "verifier": "<ul><li>Le format de saisie est présent visuellement, et sa position permet de l'associer au champ concerné.</li><li>Le format de saisie est restitué par les outils d'assistance</li></ul>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Chaque champ de formulaire a-t-il un nom accessible&nbsp;?",
+        "ID": "testID-067",
+        "IDorigin": "testID-067",
+        "wcag": [
+        "1.3.1 A",
+        "4.1.2 A",
+        "PDF10"
+        ],
+        "verifier": "<p>Toutes les étiquettes sont bien restituées par les outils d'assistance technique</p>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+        "ID": "testID-003",
+        "IDorigin": "testID-003",
+        "wcag": [
+        "1.3.1 A",
+        "PDF10"
+        ],
+        "verifier": "<p>Les champs sont regroupés lorsque cela est nécessaire.</p>",
+        "complement": "<h4>Complément&nbsp;: </h4><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Chaque étiquette de champ est-elle pertinente&nbsp;?",
+        "ID": "testID-002",
+        "IDorigin": "testID-002",
+        "wcag": [
+        "2.4.6 AA",
+        "PDF12"
+        ],
+        "verifier": "<ul><li>L'étiquette de chaque champ est pertinente.</li><li>Si un format de donnée est indiqué pour un champ, il est pertinent.</li><li>Si des champs sont regroupés, vérifier que la légende est pertinente.</li></ul>",
+        "complement":"<h4>Complément</h4><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P0",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Les champs obligatoires sont-ils identifiables&nbsp;?",
+        "ID": "testID-004",
+        "IDorigin": "testID-004",
+        "wcag": [
+        "1.3.1 A",
+        "3.3.2 A",
+        "PDF5"
+        ],
+        "verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérisque, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Ce texte doit apparaitre avant la première utilisation.</li><li>Le caractère obligatoire doit être restitué par les outils d'assistances</ul>",
+        "exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Les champs en erreur sont-ils identifiables&nbsp;?",
+        "ID": "testID-006",
+        "IDorigin": "testID-006",
+        "wcag": [
+        "3.3.1 A",
+        "PDF22"
+        ],
+        "verifier": "<ul><li>vérifier que le label ou le nom accessible du champ en erreur est modifié afin que l'on comprenne que ce champ est en erreur (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône…)</li><li>l'information doit être correctement restituée par les outils d'assistance</li></ul>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Les messages d'erreur sont-ils explicites&nbsp;?",
+        "ID": "testID-007",
+        "IDorigin": "testID-007",
+        "wcag": [
+        "3.3.1 A",
+        "PDF22"
+        ],
+        "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - En cas d'erreur, est-ce qu'une suggestion de correction est proposée à l'utilisateur&nbsp;?",
+        "ID": "testID-008",
+        "IDorigin": "testID-008",
+        "wcag": [
+        "3.3.3 AA",
+        "PDF22"
+        ],
+        "verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
+        "exception":"<p>Le critère est non applicable dans les cas suivants :</<p><ul><li>lorsqu'il est impossible de faire une suggestion</li><li>Lorsque le message d'erreur est issue d'un script ou du logiciel d'édition PDF</li>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - Pour chaque formulaire sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
+        "ID": "testID-009",
+        "IDorigin": "testID-009",
+        "wcag": [
+        "3.3.4 AA"
+        ],
+        "verifier": "<p>Pour les formulaires avec&nbsp;:</p><ul><li>modification ou suppression de données propres à l'utilisateur,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation)</li></ul><p>Vérifier que l'utilisateur peut modifier ou annuler avant et après validation, sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+        "group": "Formulaire",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Formulaire",
+        "title": "PDF - L'utilisateur a-t-il le contrôle des changements de contexte lors d'une modification de paramètre&nbsp;?",
+        "ID": "testID-XXX",
+        "IDorigin": "testID-XXX",
+        "wcag": [
+            "3.2.2 A"
+        ],
+        "verifier": "<p>Vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur, lors de la modification de paramètre de tout composant interactif. La modification d'un paramètre peut être, par exemple, cocher une case, la saisie de contenu dans un champ de texte, la sélection d'une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement classique, attendu par l'utilisateur) mais l'activation d'un lien ou d'un bouton n'est pas une modification de paramètre.</p>",
+        "complement": "<h4>Changement de contexte</h4><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le document)</li><li>de contenu qui modifie le sens du document</li></ul><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - Le titre du document est-il pertinent&nbsp;?",
+        "ID": "testID-017",
+        "IDorigin": "testID-017",
+        "wcag": [
+        "2.4.2 A",
+        "PDF18"
+        ],
+        "verifier": "<ul><li>Vérifier que le titre du document est renseigné,</li><li>vérifier que le titre du document est unique et qu'il permet à l'utilisateur de comprendre le contexte du document.</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
+        "complement":"<h4>Exception</h4><p>Certains logiciels d'édition peuvent supprimer le titre suite à l'anonymisation du document (suppression des propriété : auteur, date de modification, etc.). Dans ce cas ce critère est non-applicable.</p>",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - L'information est-elle structurée par l'utilisation appropriée de titres de niveaux&nbsp;?",
+        "ID": "testID-010",
+        "IDorigin": "testID-010",
+        "wcag": [
+        "1.3.1 A",
+        "PDF9"
+        ],
+        "verifier": "<ul><li>Vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>HN</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - L'information est-elle structurée par l'utilisation de titres pertinents&nbsp;?",
+        "ID": "testID-083",
+        "IDorigin": "testID-083",
+        "wcag": [
+        "2.4.6 AA",
+        "PDF9"
+        ],
+        "verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisément la section de contenu qu'ils présentent.</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - Des titres de niveaux sont-ils présents pour organiser le contenu&nbsp;?",
+        "ID": "testID-084",
+        "IDorigin": "testID-084",
+        "wcag": [
+        "2.4.10 AAA",
+        "PDF9"
+        ],
+        "verifier": "<p>Toutes les sections de la page doivent avoir un titre qui les présentes.</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": true
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - Le contenu est-il structuré sémantiquement&nbsp; ?",
+        "ID": "testID-068",
+        "IDorigin": "testID-068",
+        "wcag": [
+        "1.3.1 A",
+        "PDF10",
+        "PDF21"
+        ],
+        "verifier": "<ul><li>Tout contenu textuel doit être entouré d'une balise (tag) pertinente</li><li>Pas de succession de paragraphe vide</code></li><li>Pas de bloc de texte avec chaque ligne balisé comme paragraphe<code>P</code></li><li>Les informations présentées visuellement sous forme de liste sont présentés au moyen d'un élément \"L\" pouvant contenir un ou plusieurs \"LI\"</li><li>Les listes d'items sont balisées avec des éléments \"LI\". Une liste d'item \"LI\" peut contenir des balises \"Lbl\" et \"Lbody\"/li><li>Les listes d'items de labels sont balisées avec des éléments \"Lbl\"</li><li>Les listes d'items body sont balisées avec des éléments \"LBody\"</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - La langue principale est-elle définie et correspond-elle à la langue principale du document&nbsp;?",
+        "ID": "testID-021",
+        "IDorigin": "testID-021",
+        "wcag": [
+        "3.1.1 A",
+        "PDF16"
+        ],
+        "verifier": "<p>Vérifier que la langue définie dans les propriétés du document correspondre à la langue principale du document</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - Les changements de langues sont-ils indiqués&nbsp;?",
+        "ID": "testID-022",
+        "IDorigin": "testID-022",
+        "wcag": [
+        "3.1.2 AA",
+        "PDF19"
+        ],
+        "verifier": "<p>Vérifier que si besoin, la langue est redéfinie au niveau de chaque mots et expressions en langue étrangère. (Vérifier avec un lecteur d'écran)</p>",
+        "exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu textuel",
+        "title": "PDF - Les tableaux sont-ils correctement structurés&nbsp;?",
+        "ID": "testID-023",
+        "IDorigin": "testID-023",
+        "wcag": [
+        "1.3.1 A",
+        "PDF6"
+        ],
+        "verifier": "<p>Pour les tableaux de données</p><p>Sélectionner la balise <code><Table></code> et vérifier qu'elle contient l'un des éléments suivants :</p><ul><li>Chacune des rangés de tableau contient une en-tête de tableau <code><TH></code> ou des cellules de données de tableau <code><TD></code>.</li><li>les sections <code><TR> contiennent  les rangées de tableau. (Les rangées de tableau contiennent des cellules <code><TH></code>, des cellules <code><TD></code> ou les deux.>/li></ul><p>Pour les tableaux de données</p><p>Vérifier que: </p><ul><li> les données sous forme linéarisées sont compréhensibles (ordre de lecture cohérent)</li><li>Pas de sémantique propre aux tableaux de données, donc pas de \"TH\"</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu non-textuel",
+        "title": "PDF - Les images possèdent-elles un texte de remplacement pertinent&nbsp;?",
+        "ID": "testID-013",
+        "IDorigin": "testID-013",
+        "wcag": [
+        "1.1.1 A",
+        "PDF1",
+        "PDF4"
+        ],
+        "verifier": "<p>Chaque image ou contenu porteur d'information est associé à au moins une de ces solutions :</p><ul><li>Possède une alternative textuelle <code>ALT</code></li><li>Un lien <code>LINK</code> à côté de l'image permettant d'accéder à l'alternative textuelle</li><li>Un texte adjacent décrivant de manière détaillé le contenu</li></ul><p>Dans tous les cas, cette alternative doit être pertinente et doit contenir les informations nécessaires à la compréhension du contenu auquel l'image est associée.</p><Cas d'une légende associé à une image : Si une légende est associé à une image, vérifier que l'alternative de l'image contient une référence explicite à la légende.</p><p>Indication explicite (exemple : « Voir la légende ci-après ») ou terme commun (par exemple « Image : [alternative] » et « Image : [légende] ») entre l'alternative et la légende qui permet de comprendre que la légende est associée à l'image</p>",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P0",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu non-textuel",
+        "title": "PDF - Aucune image ne présente du texte qui pourrait être mis en forme via le logiciel d'édition PDF",
+        "ID": "testID-062",
+        "IDorigin": "testID-062",
+        "wcag": [
+        "1.4.5 AA",
+        "PDF7"
+        ],
+        "verifier": "<ul><li>vérifier que des images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter du texte.</li></ul>\n<p>Non applicable, si aucune image ne contient de texte</p>",
+        "exception": "<ul><li>Cas particuliers (ex&nbsp;: logo, dénomination commerciale)</li><li>l'élément est nécessaire</li></ul>",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Contenu non-textuel",
+        "title": "PDF - Chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
+        "ID": "testID-016",
+        "IDorigin": "testID-016",
+        "wcag": [
+        "1.1.1 A",
+        "PDF1"
+        ],
+        "verifier": "<ul><li>Vérifier qu'une alternative est fournie sous forme de texte <br>exemples&nbsp;: Utilisation d'un contenu adjacent </li><li>Vérifier que l'alternative est pertinente</li></ul>",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Couleurs et contrastes",
+        "title": "PDF - Le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors cas particuliers)&nbsp;?",
+        "ID": "testID-024",
+        "IDorigin": "testID-024",
+        "wcag": [
+        "1.4.3 AA"
+        ],
+        "verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24px</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5px</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5px</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li><li>vérifier que le rapport de contraste est suffisant au survol de la souris et au focus</li></ul>",
+        "exception":"<p>Les logos ou tous les éléments purement décoratifs</p>",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#couleurs",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Couleurs et contrastes",
+        "title": "PDF - Les couleurs utilisées dans les composants d'interface ou les éléments graphiques porteurs d'informations sont-elles suffisamment contrastées&nbsp;?",
+        "ID": "testID-026",
+        "IDorigin": "testID-026",
+        "wcag": [
+        "1.4.11 AA"
+        ],
+        "verifier": "<p>Vérifier que les graphiques, les icônes et les composants interactifs graphiques ont un contraste minimum de 3:1 pour transmettre l'information</p>",
+        "exception": "<ul><li>les logos</li><li>si un texte, comme un label ou un tableau de données, apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>Le manque de contraste est nécessaire pour convoyer l'information</li><li>les composants inactifs ou son affichage est gérés tel quel par l'agent utilisateur</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#couleurs",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Couleurs et contrastes",
+        "title": "PDF - L'information est-elle également transmise à l'utilisateur par un autre moyen que par la couleur&nbsp;?",
+        "ID": "testID-027",
+        "IDorigin": "testID-027",
+        "wcag": [
+        "1.4.1 A"
+        ],
+        "verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particuliers des liens non soulignés dans du texte&nbsp;: <ul> <li>le lien doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus et au survol de la souris (ex.&nbsp;: souligné)</li> </ul></li></ul><p><strong>Remarques&nbsp;:</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#couleurs",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Couleurs et contrastes",
+        "title": "PDF - L'information est-elle également transmise à l'utilisateur par un autre moyen qu'une caractéristique sensorielle&nbsp;?",
+        "ID": "testID-051",
+        "IDorigin": "testID-051",
+        "wcag": [
+        "1.3.3 A"
+        ],
+        "verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative, ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#couleurs",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Chaque libellé de lien est-il explicite, au minimum dans son contexte ?",
+        "ID": "testID-028",
+        "IDorigin": "testID-028",
+        "wcag": [
+            "2.4.4 A",
+            "PDF13"
+        ],
+        "verifier": "<p>L'utilisateur doit savoir s'il souhaite suivre un lien avec, si besoin, le contexte pour en comprendre la destination. Il faut donc s'assurer que le texte alternatif a un sens dans le contexte du texte de l'écran avant et après le lien.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer la destination d'un lien uniquement à partir de son texte alternatif</li><li>si aucun des points précédents n'est respecté, vérifier que la cible d'un lien est au moins compréhensible grâce à son contexte.</li></ul>",
+        "exception": "Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.",
+        "complement": "<h4>Comment déterminer le contexte de lien : </h4><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe (<code>P</code>)</li><li>dans le même élément de liste (<code>LI</code>)</li><li>dans la même cellule de tableau (<code>TD</code>)</li><li>dans la cellule d'entête du tableau (<code>TH</code>), associée à la cellule du lien (<code>TD</code>)</li><li>dans un \"titre\" de niveau explicite (<code>HX</code>) précédent le lien</li></ul>",
+        "moreInfo": "  https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#liens",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Chaque libellé de lien est-il explicite hors contexte&nbsp;?",
+        "ID": "testID-070",
+        "IDorigin": "testID-070",
+        "wcag": [
+            "2.4.9 AAA",
+            "PDF13"
+        ],
+        "verifier": "<p>L'utilisateur doit pouvoir comprendre la destination des liens même sortis de leur contexte.</p><ul><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien, uniquement à partir de son nom</li><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>le nom visible doit être compris dans la restitution par les outils d'assistance technique</li></ul>",
+        "exception": "Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.",
+        "complement": "",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#liens",
+        "priority": "",
+        "resultatTest": "nt",
+        "goodPractice": true
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Chaque libellé de lien permettant d'ouvrir/télécharger un document est-il compréhensible ?",
+        "ID": "testID-071",
+        "IDorigin": "testID-071",
+        "wcag": [],
+        "verifier": "<p>L'utilisateur doit avoir l'information si un lien permet d'ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio…)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d'informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient&nbsp;:</p><ul><li>le nom/titre du document</li><li>le type de document&nbsp;: pdf, texte, mp3…</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
+        "complement": "",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "",
+        "resultatTest": "nt",
+        "goodPractice": true
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Un utilisateur est-il prévenu de l'ouverture d'une nouvelle fenêtre ? ",
+        "ID": "testID-072",
+        "IDorigin": "testID-072",
+        "wcag": [],
+        "verifier": "<p>Vérifier que l'ouverture d'une nouvelle destination est mentionnée aux utilisateurs, au choix :</p><ul><li>intitulé du lien incluant une mention sur le type de document (Document Word, lien Internet…</li><li>présence d'un indice visuel (title, icône dans l'intitulé…) et d'une mention du type de document dans le texte de remplacement.</li></ul>",
+        "exception": "Le lien est une adresse URL explicite",
+        "complement": "",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "",
+        "resultatTest": "nt",
+        "goodPractice": true
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Chaque libellé de bouton est-il pertinent ?",
+        "ID": "testID-069",
+        "IDorigin": "testID-069",
+        "wcag": [
+            "2.4.6 AA",
+            "PDF12"
+        ],
+        "verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom restitué par les outils techniques d'assistance est pertinente pour chaque bouton.</p>",
+        "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P1",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Un mécanisme pour naviguer au sein du document est-il présent ?",
+        "ID": "testID-029",
+        "IDorigin": "testID-029",
+        "wcag": [
+            "2.4.1 A",
+            "PDF9",
+            "PDF2"
+        ],
+        "verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire (nombre de page important) à la navigation, mais absent du document, le test est alors non-conforme :</p><ul><li>des titres de niveaux</li><li>un sommaire ou signets, présents en début du document et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>footer</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
+        "exception":"<p>Le critère est non applicable dans les cas suivants :</<p><ul><li>Lorsque le document n'est constitué que de quelques pages.</li><li>Lorsque le contenu n'a pas vocation à être structuré par une arborescence de titres</li>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Si un contenu de la page est en mouvement, défile, clignote ou se met à jour, durant plus de 5 secondes et démarrant automatiquement, l'utilisateur a-t-il la possibilité de stopper, mettre en pause, masquer ou modifier sa fréquence de rafraichissement de ce contenu ?",
+        "ID": "testID-035",
+        "IDorigin": "testID-035",
+        "wcag": [
+            "2.2.2 A"
+        ],
+        "verifier": "<p>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</p><p>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</p><p>Non applicable, si aucun mouvement, pas défilement, pas de clignotement et pas de mise à jour ou rafraichissement automatique qui durent plus de 5 secondes ou démarre automatiquement</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation générale",
+        "title": "PDF - Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à <code>21 824 px²</code>",
+        "ID": "testID-036",
+        "IDorigin": "testID-036",
+        "wcag": [
+            "2.3.1 A"
+        ],
+        "verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation clavier",
+        "title": "PDF - Les fonctionnalités de la page sont-elles utilisables au clavier ?",
+        "ID": "testID-037",
+        "IDorigin": "testID-037",
+        "wcag": [
+            "2.1.1 A",
+            "PDF3"
+        ],
+        "verifier": "<ul><li>Vérifier que les fonctionnalités disponibles à la souris sont également disponibles au clavier</li><li>Vérifier que l'on peut remplir les formulaires et cliquer sur les boutons et les liens</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P0",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation clavier",
+        "title": "PDF - La page est-elle exempte de pièges clavier&nbsp;?",
+        "ID": "testID-038",
+        "IDorigin": "testID-038",
+        "wcag": [
+            "2.1.2 A"
+        ],
+        "verifier": "Vérifier que le focus au clavier ne se retrouve pas bloqué à l'intérieur d'une zone ou d'un composant de la page.",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P0",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Navigation clavier",
+        "title": "PDF - L'ordre de prise de focus des éléments est-il logique et cohérent ?",
+        "ID": "testID-040",
+        "IDorigin": "testID-040",
+        "wcag": [
+            "2.4.3 A",
+            "PDF3"
+        ],
+        "verifier": "<p>Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel).</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "PDF - Mise en page",
+        "title": "Le positionnement des éléments communs (mécanismes de navigation, composants, regroupement) est-il cohérent par rapport aux autres pages du document ?",
+        "ID": "testID-045",
+        "IDorigin": "testID-045",
+        "wcag": [
+            "3.2.3 AA",
+            "PDF14",
+            "PDF17"
+        ],
+        "verifier": "<p>Vérifier que les mécanismes de navigation et autres éléments récurrents (En-têtes, pieds de page et numérotation des pages…) sont toujours situés au même endroit dans un ensemble de pages (à l'écran et dans le code).</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Mise en page",
+        "title": "PDF - Les libellés des composants interactifs sont-ils cohérents par rapport aux autres pages du document ?",
+        "ID": "testID-046",
+        "IDorigin": "testID-046",
+        "wcag": [
+            "3.2.4 AA",
+            "PDF14"
+        ],
+        "verifier": "Vérifier que les composants qui ont la même fonction sont nommés de manière identique (restitution vocale par les outils d'assistance technique cohérente) dans un même document. ",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Mise en page",
+        "title": "PDF - Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
+        "ID": "testID-078",
+        "IDorigin": "testID-078",
+        "wcag": [
+            "3.2.6 A"
+        ],
+        "verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur toutes les pages</p>",
+        "complement": "<h4>Compléments d'information</h4><p> Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc).</p>",
+        "exception": "L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Mise en page",
+        "title": "PDF - Les changements de l'ordre séquentiel de lecture sont-ils signalés ?",
+        "ID": "testID-059",
+        "IDorigin": "testID-059",
+        "wcag": [
+            "1.3.2 A",
+            "PDF3"
+        ],
+        "verifier": "<p>Vérifier que,  pour les aides techniques, un ordre de lecture garantissant la compréhension du contenu est respecté.</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Mise en page",
+        "title": "PDF - La taille des zones cliquables ou tactiles est-elle suffisante ?",
+        "ID": "testID-076",
+        "IDorigin": "testID-076",
+        "wcag": [
+            "2.5.5 AAA"
+        ],
+        "verifier": "<p>La zone cliquable ou tactile est au moins de 24 par 24 pixels CSS</p>",
+        "exception":"<ul><li>Il existe un cercle d'au moins 24 pixels CSS de diamètre avec les zones cliquables ou tactiles adjacentes.</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…) ou à une hauteur qui est limitée par un composant non intéractif</li><li>La taille réduite est nécessaire pour convoyer l'information.</li><li>Les composants gérés par l'agent utilisateur sont utilisés tels quels.</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "",
+        "resultatTest": "nt",
+        "goodPractice": true
+    },
+    {
+        "themes": "Multimédia",
+        "title": "PDF - Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente&nbsp;?",
+        "ID": "testID-052",
+        "IDorigin": "testID-052",
+        "wcag": [
+            "1.2.1 A"
+        ],
+        "verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte brut.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+        "group": "Multimédia",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Multimédia",
+        "title": "PDF - Vidéo préenregistrée sans audio&nbsp;: une transcription textuelle ou une piste audio équivalente au contenu de la vidéo sont-elles présentes&nbsp;?",
+        "ID": "testID-053",
+        "IDorigin": "testID-053",
+        "wcag": [
+            "1.2.1 A"
+        ],
+        "verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte brut.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+        "group": "Multimédia",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Multimédia",
+        "title": "PDF - Vidéo préenregistrée (avec ou sans audio)&nbsp;: une transcription textuelle ou une audiodescription sont-elles présentes&nbsp;?",
+        "ID": "testID-055",
+        "IDorigin": "testID-055",
+        "wcag": [
+            "1.2.3 A"
+        ],
+        "verifier": "<ul><li>vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et !visuelles) est fourni sous forme de texte brut.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans la page</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
+        "group": "Multimédia",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Multimédia",
+        "title": "PDF - Vidéo préenregistrée (avec ou sans audio)&nbsp;: une audiodescription est-elle présente&nbsp;?",
+        "ID": "testID-057",
+        "IDorigin": "testID-057",
+        "wcag": [
+            "1.2.5 AA"
+        ],
+        "verifier": "<ul><li>vérifier que pour toute vidéo, une audiodescription est disponible</li><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul>",
+        "group": "Multimédia",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Multimédia",
+        "title": "PDF - Vidéo préenregistrée avec audio&nbsp;: des sous-titres transcrits sont-ils fournis pour tout le contenu&nbsp;?",
+        "ID": "testID-054",
+        "IDorigin": "testID-054",
+        "wcag": [
+            "1.2.2 A"
+        ],
+        "verifier": "<ul><li>vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles</li><li>vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs)</li><li>vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo</li></ul>",
+        "group": "Multimédia",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Multimédia",
+        "title": "PDF - Si du son est lu automatiquement pendant plus de 3 secondes, l'utilisateur dispose-t-il d'un mécanisme pour le contrôler ? ",
+        "ID": "testID-063",
+        "IDorigin": "testID-063",
+        "wcag": [
+            "1.4.2 A"
+        ],
+        "verifier": "<p>Il est possible de :</p> <ul><li>mettre en pause ou d'arrêter le son</li><li>régler le volume indépendamment du volume système</li></ul>",
+        "complement":"<h4>Complément</h4><p>Le mécanisme doit être facilement atteignable</p>",
+        "group": "Multimédia",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
+        "priority": "P3",
+        "resultatTest": "nt",
+        "goodPractice": false
+    },
+    {
+        "themes": "Aides techniques",
+        "title": "PDF - Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance ?",
+        "ID": "testID-066",
+        "IDorigin": "testID-066",
+        "wcag": [
+            "4.1.2 A",
+            "PDF12"
+        ],
+        "verifier": "<p>Vérifier tous les composants (ex : éléments de formulaire,  menu déroulant…) : </p><ul><li>Chaque composant doit être interprété par l'outil d'assistance technique</li><li>Pour les composants dont l'utilisateur peut changer la valeur ou l'état, ces propriétés peuvent être également définies depuis un outil d'assistance (ex : cocher ou décocher une case à cocher)</li><li>À chaque changement d'état, l'utilisateur est notifié via son outil d'assistance (exemple : «coché» ou «non coché»)</li></ul>",
+        "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
+        "priority": "P2",
+        "resultatTest": "nt",
+        "goodPractice": false
+    }
+]

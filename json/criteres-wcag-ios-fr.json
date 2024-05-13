@@ -174,7 +174,7 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Si l'Champ de formulaire est sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
+		"title": "Si le champ de formulaire est sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",
 		"wcag": {

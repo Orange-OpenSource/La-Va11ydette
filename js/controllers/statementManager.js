@@ -103,6 +103,9 @@ function initStatementObject() {
 					}
 					];
 				}
+                if (p === "compliantStateComment") {
+                    dataVallydette.statement.compliantStateComment = "";
+                }
 				if (p === "derogation") {
 					dataVallydette.statement.derogation = "";
 				}
@@ -548,6 +551,14 @@ function showStatementWizard() {
 	statementWizardContent += '<div class="row">';
 	statementWizardContent += '<div class="col-lg-4">';
 	statementWizardContent += '<div class="mb-3">';
+    statementWizardContent += '<label class="form-label" for="input-compliantStateComment">' + langVallydette.compliantStateComment + '</label>';
+    statementWizardContent += '<textarea class="form-control" id="input-compliantStateComment" rows="5" aria-describedby="compliantStateCommentDesc">' + dataVallydette.statement.compliantStateComment + '</textarea>';
+    statementWizardContent += '<small id="compliantStateCommentDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
+    statementWizardContent += '</div>';
+    statementWizardContent += '</div>';
+
+    statementWizardContent += '<div class="col-lg-4">';
+    statementWizardContent += '<div class="mb-3">';
     statementWizardContent += '<label class="form-label" for="input-derogation">' + langVallydette.derogations + '</label>';
     statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
 	statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
@@ -1266,6 +1277,14 @@ exportStatementXML = function(statementResult) {
 			}
 	xmlStatement += '</details>\n\n';
 
+    xmlStatement += '<!--\n';
+    xmlStatement += 'COMPLIANT STATE Comment\n';
+    xmlStatement += 'Compliant state comment. This is CDATA-protected, please add properly formatted HTML. \n';
+    xmlStatement += '-->\n';
+    xmlStatement += '<compliantStateComment>\n<![CDATA[';
+    xmlStatement += md.render(dataVallydette.statement.compliantStateComment);
+    xmlStatement += ']]>\n</compliantStateComment>\n\n';
+
 	xmlStatement += '<!--\n';
 	xmlStatement += 'DEROGATIONS\n';
 	xmlStatement += 'Derogations list. This is CDATA-protected, please add properly formatted HTML. \n';
@@ -1275,7 +1294,7 @@ exportStatementXML = function(statementResult) {
 	xmlStatement += ']]>\n</derogations>\n\n';
 
 	xmlStatement += '<!--\n';
-	xmlStatement += 'DEROGATIONS\n';
+	xmlStatement += 'EXEMPTIONS\n';
 	xmlStatement += 'Exemptions list. This is CDATA-protected, please add properly formatted HTML. \n';
 	xmlStatement += '-->\n';
 	xmlStatement += '<exemptions>\n<![CDATA[';
@@ -1369,7 +1388,8 @@ exportStatementHTML = function(statementResult) {
 
 				<h2 class="h4 mt-4">${langStatement.statementTemplate.state}</h2>
 				<p>"${utils.escape_html(dataVallydette.statement.app)}" ${langStatement.is} ${conformity} ${langStatement.statementTemplate.compliantContent2}.</p>
-				<p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => utils.escape_html(a.name)).join('')} ${langStatement.statementTemplate.linkRGAAWCAG}</p>
+				${dataVallydette.statement.compliantStateComment !== "" ? `${md.render(dataVallydette.statement.compliantStateComment)}` : ""}
+                <p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => utils.escape_html(a.name)).join('')} ${langStatement.statementTemplate.linkRGAAWCAG}</p>
 				<p>${langStatement.statementTemplate.method}</p>
 
 				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;

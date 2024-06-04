@@ -22,6 +22,9 @@
         align-self: flex-end;
       }
 
+    .menu-select-list {
+        z-index: 1021;
+    }
 /* Bacground Color */
 
 .bg-light2 {
@@ -87,7 +90,7 @@
         overflow-y: auto;
         height: calc(100vh - 20rem);
         }
-    } 
+    }
 
     #filter {
         max-height: calc(100vh - 9.6rem);
@@ -101,7 +104,7 @@
 
   .border {
     border-width: .0625rem !important;
-  }  
+  }
 
   li::marker {
     color: #060606;
@@ -139,4 +142,4 @@ li ul {
       max-width: 100%;
     }
 
-} 
+}

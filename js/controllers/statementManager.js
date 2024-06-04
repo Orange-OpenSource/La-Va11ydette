@@ -5,9 +5,9 @@
  * @param {array} statementInputs - list of the input type properties
  * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
  */
-const statementObjectProperties = ["name", "app", "lang", "status", "date", "dateUpdate", "nonCompliant", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "derogation", "exemption", "nonCompliantComment", "technology", "tests", "environments"];
+const statementObjectProperties = ["name", "app", "lang", "status", "date", "dateUpdate", "nonCompliant", "results", "plan", "userNumber", "userBlockingPoints", "userTestDescription", "approval", "contact", "compliantStateComment", "derogation", "exemption", "nonCompliantComment", "technology", "tests", "environments"];
 const statementProperties = ["name", "type", "version", "content", "email", "checked", "environment"];
-const statementInputs = ["name", "app", "lang", "date", "dateUpdate", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "derogation", "exemption", "nonCompliantComment"];
+const statementInputs = ["name", "app", "lang", "date", "dateUpdate", "userNumber", "userBlockingPoints", "userTestDescription", "plan", "compliantStateComment", "derogation", "exemption", "nonCompliantComment"];
 var langStatement = {};
 
 

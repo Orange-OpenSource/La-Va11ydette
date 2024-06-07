@@ -109,6 +109,20 @@
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
 	},
+    {
+        "themes": "Input screen",
+        "title": "Is an autocomplete present for the input fields intended for personal information about the user?",
+        "ID": "testID-005",
+        "IDorigin": "testID-005",
+        "wcag": [
+            "1.3.5 AA"
+        ],
+        "verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>textContentType</code> attribute is present</li><li>the value indicated for the <code>textContentType</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+        "group": "Input screen",
+        "resultatTest": "nt",
+        "priority": "P3",
+        "goodPractice": false
+    },
 	{
 		"themes": "Input screen",
 		"title": "Are the fields in error identifiable&nbsp;?",
@@ -301,6 +315,20 @@
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#reading-order"
 	},
+    {
+        "themes": "Voice navigation",
+        "title": "Is an input field vocalized with its associated label?",
+        "ID": "testID-061",
+        "IDorigin": "testID-061",
+        "wcag": [
+            "1.3.5 AA"
+        ],
+        "verifier": "<p>Check that the label of the input fields are well associated with them through the <code>AccessbilityLabel</code> attribute. The labels must therefore be vocalized when navigating the input fields with which they are associated.</p>",
+        "moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#text-alternatives",
+        "resultatTest": "nt",
+        "priority": "P2",
+        "goodPractice": false
+    },
 	{
 		"themes": "Voice navigation",
 		"title": "Are the linked elements gathered in the same announcement block for vocalization?",

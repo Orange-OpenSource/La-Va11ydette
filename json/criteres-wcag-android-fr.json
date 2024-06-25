@@ -170,7 +170,7 @@
 	},
 	{
 		"themes": "Écran de saisie",
-		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redondante ?",
+		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [

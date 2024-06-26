@@ -858,6 +858,7 @@
 		"priority": "P3",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
+		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
 	},
 	{
 		"themes": "Multimédia",
@@ -867,7 +868,7 @@
 		"wcag": {
 			"0": "1.2.4 AA"
 		},
-		"verifier": "<ul><li>Vérifier que des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
+		"verifier": "<ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

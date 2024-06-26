@@ -836,7 +836,7 @@
 		"wcag": {
 			"0": "1.2.5 AA"
 		},
-		"verifier": "<ul><li>Vérifier que pour toute vidéo, une audiodescription est disponible.</li><li>Vérifier que l'audiodescription est correctement synchronisée.</li><li>Vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>Vérifier que l'audiodescription est pertinente.</li></ul>",
+		"verifier": "<ul><li>Pour toute vidéo, une audiodescription est disponible.</li><li>L'audiodescription est correctement synchronisée.</li><li>L'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>L'audiodescription est pertinente.</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

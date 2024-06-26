@@ -785,13 +785,13 @@
 	},
 	{
 		"themes": "Multimédia",
-		"title": "Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente&nbsp;?",
+		"title": "Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente à proximité&nbsp;?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": {
 			"0": "1.2.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"verifier": "<p>Un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -800,13 +800,13 @@
 	},
 	{
 		"themes": "Multimédia",
-		"title": "Vidéo préenregistrée sans audio&nbsp;: une transcription textuelle ou une piste audio équivalente au contenu de la vidéo sont-elles présentes&nbsp;?",
+		"title": "Vidéo préenregistrée sans audio&nbsp;: une transcription textuelle ou une piste audio équivalente au contenu de la vidéo sont-elles présentes à proximité&nbsp;?",
 		"ID": "testID-042",
 		"IDorigin": "testID-042",
 		"wcag": {
 			"0": "1.2.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+		"verifier": "<p>Un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

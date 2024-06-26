@@ -295,7 +295,8 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de la page est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li><li>Vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li></ul>",
+		"verifier": "<p>Tous les éléments graphiques signifiants sont vocalisés et accessibles en utilisant la navigation vocale : </p><ul><li>Chaque élément graphique porteur d'information est vocalisé de façon pertinente.</li><li>Les images contenant du texte ont une alternative reprenant au moins le texte visible.</li><li>Les images complexes ont une alternative détaillée fournie par un contenu adjacent.</li><li>Chaque élément interactif est restitué au moins par un nom pertinent.</li><li>Les contenus multimédias pré-enregistrés sont facilement identifiables (par une alternative pertinente ou un contenu textuel adjacent).</li></ul>",
+		"complement": "<ul><li>Si le contenu non textuel est un test ou un exercice qui serait invalide s’il était présenté sous forme de texte, alors l'alternative fournit au moins une description succinte de ce contenu.</li><li>Si le contenu non textuel est principalement destiné à créer une expérience sensorielle spécifique, alors l'alternative textuelle fournit au moins une description succinte de ce contenu.</li></ul>"<
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -409,7 +410,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier qu'il n'y a aucun élément fantôme avec la navigation vocale.</p>",
+		"verifier": "<p>Il n'y a aucun élément fantôme (non-visible) restitué par la navigation vocale.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -423,7 +424,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés.</p>",
+		"verifier": "<p>Les éléments graphiques décoratifs ne sont pas vocalisés.</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -954,7 +955,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"verifier": "<p>L'aternative à chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -968,7 +969,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que pour tout captcha uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"verifier": "<p>Pour tout captcha uniquement visuel ou sonore, l'une des alternatives ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -982,7 +983,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte</li><li>vérifier que l'alternative est pertinente</li></ul>",
+		"verifier": "<ul><li>Une alternative est fournie sous forme de texte</li><li>L'alternative est pertinente</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

@@ -821,7 +821,7 @@
 		"wcag": {
 			"0": "1.2.3 A"
 		},
-		"verifier": "<ul><li>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
+		"verifier": "<ul><li>Soit un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle doit alors être présente dans l'écran ou disponible via un lien positionné à proximité de la vidéo</li><li>Soit, une audiodescription est disponible, vérifier alors que : <ul><li>l'audiodescription est correctement synchronisée</li><li>l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>l'audiodescription est pertinente</li></ul></li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

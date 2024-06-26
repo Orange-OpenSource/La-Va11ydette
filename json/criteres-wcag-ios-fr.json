@@ -851,7 +851,8 @@
 		"wcag": {
 			"0": "1.2.2 A"
 		},
-		"verifier": "<ul><li>Vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"verifier": "<ul><li>Pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"exception": "<p>Les sous-titres ne sont pas nécessaires lorsque les informations présentes dans la vidéo sont également présentées sous forme de texte ou d'alternative textuelle sur la même page.</p>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

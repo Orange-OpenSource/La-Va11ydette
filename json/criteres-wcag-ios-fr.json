@@ -38,7 +38,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "Toutes les étiquettes sont bien liées à leurs champs",
+		"verifier": "<p>A l'aide du lecteur d'écran ou du contrôle vocal, vérifier que toutes les étiquettes sont bien liées à leurs champs.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -54,7 +54,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>Switch</code> étant nécessaire</li></ul>",
+		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -70,7 +70,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
+		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur, par exemple un astérique, un picto,...) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
 		"group": "Champ de formulaire",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"resultatTest": "nt",
@@ -347,13 +347,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les entêtes de section sont-ils exploités lors de la navigation vocale par entête ? ",
+		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête ? ",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": {
-			"0": "2.4.6 AA"
+			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale et le paramètre de navigation par entête défini :</p><ul><li>tous les entêtes de section sont navigables et vocalisés</li><li>seuls les entêtes sont navigables et vocalisés</li></ul>",
+		"verifier": "<p>Vérifier qu'avec la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés</li><li>seuls les titres ou entêtes sont navigables et vocalisés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -447,13 +447,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les tableaux sont-ils correctement structurés&nbsp;?",
+		"title": "Les tableaux de données sont-ils correctement structurés&nbsp;?",
 		"ID": "testID-070",
 		"IDorigin": "testID-070",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau)</li><li>Les entêtes ne doivent pas être vides</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données</li></ol>",
+		"verifier": "<ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau)</li><li>Les entêtes ne doivent pas être vides</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,

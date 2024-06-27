@@ -317,20 +317,6 @@
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
 	},
-    {
-        "themes": "Navigation vocale",
-        "title": "Un champ de saisie est-il vocalisé avec le label qui lui est associé ? ",
-        "ID": "testID-061",
-        "IDorigin": "testID-061",
-        "wcag": [
-            "1.3.5 AA"
-        ],
-        "verifier": "<p>Vérifier que le libellé des champs de saisie sont bien associés à ceux-ci par le biais de l'attribut <code>AccessbilityLabel</code>. Les libellés doivent ainsi être vocalisés lorsqu'on navigue sur les champs de saisie avec lesquels ils sont associés.</p>",
-        "moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#alternatives-textuelles",
-        "resultatTest": "nt",
-        "priority": "P2",
-        "goodPractice": false
-    },
 	{
 		"themes": "Navigation vocale",
 		"title": "Les éléments liés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation ?",

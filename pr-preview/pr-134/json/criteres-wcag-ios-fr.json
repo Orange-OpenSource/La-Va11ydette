@@ -339,7 +339,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p> Vérifier que :</p><ul><li>les éléments reliés sont groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>une information est vocalisée lors du focus sur le premier champ, permettant d'identifier le groupe auquel appartiennent les champs liés</li></ul>",
+		"verifier": "<ul><li>Les éléments reliés sont groupés au sein d'un même bloc d'annonce pour la vocalisation.</li><li>Une information est vocalisée lors du focus sur le premier champ, permettant d'identifier le groupe auquel appartiennent les champs liés.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -353,7 +353,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste</p>",
+		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -367,7 +367,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés</li><li>seuls les titres ou entêtes sont navigables et vocalisés</li></ul>",
+		"verifier": "<p>Vérifier qu'avec la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -467,7 +467,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau)</li><li>Les entêtes ne doivent pas être vides</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données</li></ul>",
+		"verifier": "<ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les entêtes ne doivent pas être vides.</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,

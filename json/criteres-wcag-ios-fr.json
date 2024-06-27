@@ -347,6 +347,20 @@
 	},
 	{
 		"themes": "Navigation vocale",
+		"title": "Les éléments présentés sous forme de liste sont-ils correctement restitués ?",
+		"ID": "testID-021",
+		"IDorigin": "testID-021",
+		"wcag": {
+			"0": "1.3.1 A"
+		},
+		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste</p>",
+		"resultatTest": "nt",
+		"priority": "P2",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
+	},
+	{
+		"themes": "Navigation vocale",
 		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête ? ",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",

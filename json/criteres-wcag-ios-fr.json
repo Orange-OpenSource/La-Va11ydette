@@ -266,7 +266,7 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -605,9 +605,10 @@
 		"wcag": {
 			"0": "1.3.4 AA"
 		},
-		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
+		"verifier": "<p>Le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemple d'affichage jugé essentiel : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li>",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#orientation-de-lecran"
 	},

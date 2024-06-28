@@ -738,7 +738,7 @@
 			"0": "1.4.5 AA"
 		},
 		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte.</p>",
-		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur'</li></ul>",
+		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,

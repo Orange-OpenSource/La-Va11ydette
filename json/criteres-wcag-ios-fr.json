@@ -661,20 +661,6 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les textes sont-ils lisibles sans difficulté ?",
-		"ID": "testID-037",
-		"IDorigin": "testID-037",
-		"wcag": {
-			"0": "1.4.12 AA"
-		},
-		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police de caractère permet de bien différencier les lettres, comme i,l,I,L)</li><li>l'espacement entre les lettres et les lignes est suffisant</li><li>le texte n'est pas en italique</li></ul>",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
-	},
-	{
-		"themes": "Navigation générale",
 		"title": "L'utilisateur a-t-il le contrôle des changements de contexte&nbsp;? (Confimation de validation avant de changer / si l'on tape dessus pas de changement auto ?)",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",

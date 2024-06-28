@@ -490,13 +490,13 @@
 	},
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
-		"title": "Si un raccourci clavier utilisant une seule touche est disponible, celui-ci vérifie-t-il l'une des conditions ci-dessous ?",
+		"title": "Si un raccourci clavier utilisant une seule touche est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
 		"ID": "testID-028",
 		"IDorigin": "testID-075",
 		"wcag": {
 			"0": "2.1.4 A"
 		},
-		"verifier": "<ul><li>le raccourci peut être désactivé par l'utilisateur</li>li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
+		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li>li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false

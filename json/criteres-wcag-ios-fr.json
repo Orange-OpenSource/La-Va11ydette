@@ -893,20 +893,6 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Multimédia",
-		"title": "Des contrôles sont-ils présents pour interagir avec un média temporel(pause, stop, volume, sous titres, etc...) ?",
-		"ID": "testID-048",
-		"IDorigin": "testID-048",
-		"wcag": {
-			"0": "2.2.2 A"
-		},
-		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio un média vidéo, mais aussi avec un média basé sur le temps. Par exemple, un caroussel qui change de contenu automatiquement après un certain délai doit lui aussi proposer un sytème de contrôle pour pouvoir revenir au contenu précédent ou aller au contenu suivant.</p>",
-		"group": "Multimédia",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
 		"themes": "WebView",
 		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
 		"ID": "testID-058",

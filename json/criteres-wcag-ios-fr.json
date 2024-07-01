@@ -209,7 +209,7 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-        "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le titre de la page est renseigné,</li><li>le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
+        "verifier": "<ul><li>Le titre de la page est visible.</li><li>Le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>Le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -911,15 +911,15 @@
 		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
 	},
 	{
-		"themes": "WebView",
-		"title": "Un mécanisme pour naviguer au sein de la WebView est-il présent&nbsp;?",
+		"themes": "Navigation vocale",
+		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
-		"group": "WebView",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide du Rotor Voice Over, par exemple navigation: </p><ul><li>par entêtes</li><li>par liens</li><li>par conteneur</li><li>par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false

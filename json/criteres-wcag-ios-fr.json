@@ -747,13 +747,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de lien ou de bouton est-il explicite, au minimum dans son contexte ?",
+		"title": "Le libellé/nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": {
 			"0": "2.4.4 A"
 		},
-		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
+		"verifier": "<p>L'utilisateur doit être capable de comprendre l'objectif d'un lien ou d'un bouton sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>Vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>Vérifier qu'il est possible de déterminer la destination d'un lien ou l'action d'un bouton uniquement à partir de son nom accessible</li><li>Si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte (phrase, paragraphe, cellule...)</li></ul>",
 		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -781,8 +781,9 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Lorsque le nombre d'écrans est limité et/ou que le contenu est court, ce critère est non applicable.</p>\n<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>un plan de site</li><li>un mécanisme de recherche</li><li>...</li></ul>", 
 		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
+		"verifier": "<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
+		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

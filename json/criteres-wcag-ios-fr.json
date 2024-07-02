@@ -781,7 +781,6 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
 		"verifier": "<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
 		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",

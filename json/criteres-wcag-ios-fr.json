@@ -563,7 +563,7 @@
 		"wcag": {
 			"0": "2.5.1 A"
 		},
-		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
+		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,

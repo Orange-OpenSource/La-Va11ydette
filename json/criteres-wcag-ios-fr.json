@@ -434,14 +434,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "La vocalisation d'un élément textuel contient-il au minimum le libellé visible à l'écran pour ce même élément ? ",
+		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran pour ce composant ? ",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant.</p>",
-		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
+		"verifier": "<p>Vérifier que le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
+		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -588,7 +588,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les erreurs de clic (ou de toucher) peuvent-elles être annulées&nbsp;?",
+		"title": "Les erreurs de toucher (ou tap) peuvent-elles être annulées&nbsp;?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": {

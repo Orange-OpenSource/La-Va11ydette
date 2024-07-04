@@ -209,7 +209,7 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-        "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le titre de la page est renseigné,</li><li>le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
+        "verifier": "<ul><li>Le titre de la page est visible.</li><li>Le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>Le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -281,11 +281,11 @@
 			"0": "1.4.4 AA",
 			"1": "1.4.10 AA"
 		},
-		"verifier": "<li>Sur iOS, suite à l'agrandissement de texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple). </li><li>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué).</li>",
-		"complement": "<h5>Compléments d'information</h5><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS)</li>",
+		"verifier": "<ul><li>Sur iOS, suite à l'agrandissement de texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d’information ni de fonctionnalité(contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
+		"complement": "<h5>Compléments d'information</h5><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"exception": "<p>Non-applicable pour les sous-titres et textes sous forme d’image</p>",
+		"exception": "<p>Non-applicable pour les sous-titres et textes sous forme d’image.</p>",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
 	},
@@ -434,14 +434,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "La vocalisation d'un élément textuel contient-il au minimum le libellé visible à l'écran pour ce même élément ? ",
+		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran pour ce composant ? ",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant.</p>",
-		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
+		"verifier": "<p>Vérifier que le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
+		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -469,7 +469,7 @@
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de sélection et l'accès complet au clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec le contrôle de sélection et l'accès complet au clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -483,7 +483,20 @@
 		"wcag": {
 			"0": "2.1.2 A"
 		},
-		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec le contrôle de selection ou en navigation au clavier: si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...). Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
+		"verifier": "<p>L'écran ne contient aucun piège :</p><ul><li>en navigation au clavier si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...).</li><li>avec le contrôle de selection, le focus ne doit pas rester bloqué au sein d'un conteneur.</li></ul><p>Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+	{
+		"themes": "Contrôle de sélection et navigation clavier",
+		"title": "Si un raccourci clavier utilisant une seule touche est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
+		"ID": "testID-028",
+		"IDorigin": "testID-075",
+		"wcag": {
+			"0": "2.1.4 A"
+		},
+		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li>li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -509,7 +522,7 @@
 		"wcag": {
 			"0": "2.4.7 AA"
 		},
-		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran.</p>",
+		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -544,14 +557,15 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;? (exemple zoom map)",
+		"title": "Les gestes complexes disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;? (exemple zoom map)",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
 		"wcag": {
 			"0": "2.5.1 A"
 		},
-		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
+		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
 		"resultatTest": "nt",
+		"exception" : "<p>Le geste complexe est indispensable à la fonctionnalité</p>",
 		"priority": "P3",
 		"goodPractice": false,
 		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>"
@@ -574,7 +588,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les erreurs de clic (ou de toucher) peuvent-elles être annulées&nbsp;?",
+		"title": "Les erreurs de toucher (ou tap) peuvent-elles être annulées&nbsp;?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": {
@@ -661,20 +675,6 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les textes sont-ils lisibles sans difficulté ?",
-		"ID": "testID-037",
-		"IDorigin": "testID-037",
-		"wcag": {
-			"0": "1.4.12 AA"
-		},
-		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police de caractère permet de bien différencier les lettres, comme i,l,I,L)</li><li>l'espacement entre les lettres et les lignes est suffisant</li><li>le texte n'est pas en italique</li></ul>",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
-	},
-	{
-		"themes": "Navigation générale",
 		"title": "L'utilisateur a-t-il le contrôle des changements de contexte&nbsp;? (Confimation de validation avant de changer / si l'on tape dessus pas de changement auto ?)",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
@@ -698,6 +698,8 @@
 			"0": "2.2.2 A"
 		},
 		"verifier": "<p>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</p><p>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</p><p>Non applicable, si aucun mouvement, pas défilement, pas de clignotement et pas de mise à jour ou rafraichissement automatique qui durent plus de 5 secondes ou démarre automatiquement</p>",
+		"complement": "<p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
+		"exception": "<p>Exception si le mouvement, défilement, cligontement ou rafraichissement est essentiel au service</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -738,7 +740,7 @@
 			"0": "1.4.5 AA"
 		},
 		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte.</p>",
-		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur'</li></ul>",
+		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -746,13 +748,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de lien ou de bouton est-il explicite, au minimum dans son contexte ?",
+		"title": "L'étiquette/nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": {
 			"0": "2.4.4 A"
 		},
-		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
+		"verifier": "<p>L'utilisateur doit être capable de comprendre l'objectif d'un lien ou d'un bouton sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>Vérifier qu'il n'y a pas d'étiquettes identiques pointant vers des destinations différentes</li><li>Vérifier qu'il est possible de déterminer la destination d'un lien ou l'action d'un bouton uniquement à partir de son nom accessible</li><li>Si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte (phrase, paragraphe, cellule...)</li></ul>",
 		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -760,18 +762,32 @@
 	},
     {
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de bouton est-il pertinent&nbsp;?",
+		"title": "Chaque étiquette de composant est-elle pertinente&nbsp;?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p>",
+		"verifier": "<p>Pour chaque composant intéractif possédant une étiquette visible, celle-ci doit être suffisamment descriptive pour permettre à l'utilisateur de comprendre la fonction du composant</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
-	}, 
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "L'information est-elle structurée par l'utilisation de titres pertinents ?",
+		"ID": "testID-068",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
+	},
     {
 		"themes": "Navigation générale",
 		"title": "L'application dispose-t-elle d'au moins 2 mécanismes de navigation&nbsp;?",
@@ -780,8 +796,8 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Lorsque le nombre d'écrans est limité et/ou que le contenu est court, ce critère est non applicable.</p>\n<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>un plan de site</li><li>un mécanisme de recherche</li><li>...</li></ul>", 
-		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
+		"verifier": "<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
+		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -894,20 +910,6 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Multimédia",
-		"title": "Des contrôles sont-ils présents pour interagir avec un média temporel(pause, stop, volume, sous titres, etc...) ?",
-		"ID": "testID-048",
-		"IDorigin": "testID-048",
-		"wcag": {
-			"0": "2.2.2 A"
-		},
-		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio un média vidéo, mais aussi avec un média basé sur le temps. Par exemple, un caroussel qui change de contenu automatiquement après un certain délai doit lui aussi proposer un sytème de contrôle pour pouvoir revenir au contenu précédent ou aller au contenu suivant.</p>",
-		"group": "Multimédia",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
 		"themes": "WebView",
 		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
 		"ID": "testID-058",
@@ -924,15 +926,15 @@
 		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
 	},
 	{
-		"themes": "WebView",
-		"title": "Un mécanisme pour naviguer au sein de la WebView est-il présent&nbsp;?",
+		"themes": "Navigation vocale",
+		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
-		"group": "WebView",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide du Rotor Voice Over, par exemple navigation: </p><ul><li>par entêtes</li><li>par liens</li><li>par conteneur</li><li>par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false

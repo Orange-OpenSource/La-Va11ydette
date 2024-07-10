@@ -910,20 +910,19 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "WebView",
+		"themes": "Navigation vocale",
 		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
 		"wcag": {
 			"0": "3.1.2 AA"
 		},
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangères.</p>",
-		"group": "WebView",
+		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#modifier-la-langue-de-vocalisation",
-		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
+		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>"
 	},
 	{
 		"themes": "Navigation vocale",

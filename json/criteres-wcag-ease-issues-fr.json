@@ -686,7 +686,7 @@
 		},
 		{
 			"title" : "La visualisation du focus est insuffisante",
-			"detail" : "Le contraste de l'indicateur du focus doit être suffisamment contrasté (3:1) pa rapport au fond de l'élément",
+			"detail" : "Le contraste de l'indicateur du focus doit être suffisamment contrasté (3:1) par rapport au fond de l'élément",
 			"solution" : "Assurer un contraste de 3:1 minimum pour les différents composants interactifs et l'indicateur de focus.",
 			"technicalSolution" : ""
 		}

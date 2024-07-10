@@ -947,7 +947,7 @@
 		"wcag": {
 			"0": "3.1.1 A"
 		},
-		"verifier": "Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page",
+		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page</p>",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",

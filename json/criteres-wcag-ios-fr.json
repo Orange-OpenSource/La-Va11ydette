@@ -940,19 +940,18 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "WebView",
-		"title": "La langue principale est-elle définie et correspond-elle à la langue principale du document&nbsp;?",
+		"themes": "Navigation vocale",
+		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
 		"ID": "testID-060",
 		"IDorigin": "testID-060",
 		"wcag": {
 			"0": "3.1.1 A"
 		},
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
-		"group": "WebView",
+		"verifier": "Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue"
 	},
     {
 		"themes": "Contenu non-textuel",

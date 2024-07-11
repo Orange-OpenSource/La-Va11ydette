@@ -377,14 +377,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués ?",
+		"title": "Les messages d'état ou contextuels sont-ils correctement restitués ?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
-        "complement": "<h4>Exemples</h4><ul><li>message informant du résultat d'une action ou de l'état de l'application</li><li>message d'erreur</li><li>message indiquant la progression</li></ul>",
+		"verifier": "<ul><li>Chaque message d'état est restitué par le lecteur d'écran sans déplacement du focus (mécanisme reposant sur les annonces ou <span lang=\"en\">live regions</span>)</li><li>Chaque message d'état est restitué de façon pertinente</li></ul>",
+        "complement": "<h4>Exemples de message d'état</h4><ul><li>résultat d'une recherche</li><li>état de l'application (par ex. hors-ligne)</li><li>message d'erreur</li><li>message indiquant la progression</li><li>notification</li><li>message suite à l'ajout d'un produit dans un panier</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,

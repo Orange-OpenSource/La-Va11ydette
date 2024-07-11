@@ -638,7 +638,7 @@
 		"wcag": {
 			"0": "3.2.4 AA"
 		},
-		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
+		"verifier": "<p>Les composants qui ont la même fonction ont un nom accessible similaire d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false

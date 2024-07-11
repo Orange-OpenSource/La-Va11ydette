@@ -38,7 +38,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>A l'aide du lecteur d'écran ou du contrôle vocal, vérifier que toutes les étiquettes sont bien liées à leurs champs.</p>",
+		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que toutes les étiquettes sont bien liées à leurs champs.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -282,7 +282,7 @@
 			"1": "1.4.10 AA"
 		},
 		"verifier": "<ul><li>Sur iOS, suite à l'agrandissement de texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d’information ni de fonctionnalité(contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
-		"complement": "<h5>Compléments d'information</h5><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li>",
+		"complement": "<h5>Compléments d'information</h5><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li><br>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"exception": "<p>Non-applicable pour les sous-titres et textes sous forme d’image.</p>",
@@ -355,7 +355,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
+		"verifier": "<p>À l'aide de la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -369,7 +369,7 @@
 		"wcag": {
 			"0": "3.2.2 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
+		"verifier": "<p>Les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -496,7 +496,7 @@
 		"wcag": {
 			"0": "2.1.4 A"
 		},
-		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li>li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
+		"verifier": "<p>Une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li>li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -825,7 +825,7 @@
 		"wcag": {
 			"0": "1.2.1 A"
 		},
-		"verifier": "<p>Un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée sans audio,un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -840,7 +840,7 @@
 		"wcag": {
 			"0": "1.2.3 A"
 		},
-		"verifier": "<ul><li>Soit un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte : cette transcription textuelle doit alors être présente dans l'écran ou disponible via un lien positionné à proximité de la vidéo</li><li>Soit, une audiodescription est disponible, vérifier alors que : <ul><li>l'audiodescription est correctement synchronisée</li><li>l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>l'audiodescription est pertinente</li></ul></li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée (avec ou sans audio) :</p><ul><li>Soit un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte : cette transcription textuelle doit alors être présente dans l'écran ou disponible via un lien positionné à proximité de la vidéo</li><li>Soit, une audiodescription est disponible, vérifier alors que : <ul><li>l'audiodescription est correctement synchronisée</li><li>l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>l'audiodescription est pertinente</li></ul></li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -855,7 +855,7 @@
 		"wcag": {
 			"0": "1.2.5 AA"
 		},
-		"verifier": "<ul><li>Pour toute vidéo, une audiodescription est disponible.</li><li>L'audiodescription est correctement synchronisée.</li><li>L'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>L'audiodescription est pertinente.</li></ul>",
+		"verifier": "<p>Pour toute vidéo :</p><ul><li>Une audiodescription est disponible.</li><li>L'audiodescription est correctement synchronisée.</li><li>L'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>L'audiodescription est pertinente.</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -870,7 +870,7 @@
 		"wcag": {
 			"0": "1.2.2 A"
 		},
-		"verifier": "<ul><li>Pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"verifier": "<p>Pour toute vidéo avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
 		"exception": "<p>Les sous-titres ne sont pas nécessaires lorsque les informations présentes dans la vidéo sont également présentées sous forme de texte ou d'alternative textuelle sur la même page.</p>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
@@ -887,7 +887,7 @@
 		"wcag": {
 			"0": "1.2.4 AA"
 		},
-		"verifier": "<ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
+		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -932,7 +932,7 @@
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide du Rotor Voice Over, par exemple navigation: </p><ul><li>par entêtes</li><li>par liens</li><li>par conteneur</li><li>par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -946,7 +946,7 @@
 		"wcag": {
 			"0": "3.1.1 A"
 		},
-		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page</p>",
+		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page.</p>",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",

@@ -398,7 +398,7 @@
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li>",
+		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,

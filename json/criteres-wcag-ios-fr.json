@@ -162,8 +162,8 @@
 		"wcag": {
 			"0": "3.3.3 AA"
 		},
-		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Lorsqu'il est impossible de faire une suggestion, le critère est non applicable</p>",
+		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
+		"exception":"<p>Lorsqu'il est impossible de faire une suggestion (par exemple pour des quesions de sécurité), le critère est non applicable</p>",
         "group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",

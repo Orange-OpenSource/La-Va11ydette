@@ -950,7 +950,7 @@
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false,
+		"goodPractice": false
 	},
     {
 		"themes": "Contenu non-textuel",

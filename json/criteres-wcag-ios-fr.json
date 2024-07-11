@@ -392,13 +392,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les états des éléments sont-ils vocalisés ? ",
+		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés ? ",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
+		"verifier": "<li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,

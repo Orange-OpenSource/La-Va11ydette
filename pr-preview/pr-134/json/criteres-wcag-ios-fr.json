@@ -622,8 +622,8 @@
 		"wcag": {
 			"0": "2.5.8 AA"
 		},
-		"verifier": "<p>La zone cliquable ou tactile est au moins de 44pt (hauteur ET largeur)</p>",
-		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones de clicks effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
+		"verifier": "<p>La zone tactile est au moins de 44pt (hauteur ET largeur)</p>",
+		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones tactiles effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"wcag22" : true,
@@ -686,7 +686,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements :</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">de viewport</span> (ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
 	},
 	{
@@ -910,20 +910,19 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "WebView",
+		"themes": "Navigation vocale",
 		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
 		"wcag": {
 			"0": "3.1.2 AA"
 		},
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangères.</p>",
-		"group": "WebView",
+		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#modifier-la-langue-de-vocalisation",
-		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
+		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -940,19 +939,18 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "WebView",
-		"title": "La langue principale est-elle définie et correspond-elle à la langue principale du document&nbsp;?",
+		"themes": "Navigation vocale",
+		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
 		"ID": "testID-060",
 		"IDorigin": "testID-060",
 		"wcag": {
 			"0": "3.1.1 A"
 		},
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
-		"group": "WebView",
+		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page</p>",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue"
 	},
     {
 		"themes": "Contenu non-textuel",

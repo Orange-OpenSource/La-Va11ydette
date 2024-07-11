@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
+	    "verifier": "<ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -47,14 +47,14 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"title": "Les champs de même nature sont-ils regroupés ?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": {
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
+		"verifier": "<p>Les champs de même nature sont regroupés, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -70,7 +70,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur, par exemple un astérique, un picto,...) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
+		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
 		"group": "Champ de formulaire",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"resultatTest": "nt",
@@ -86,7 +86,7 @@
 		"wcag": {
 			"0": "3.3.8 AA"
 		},
-		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",		
+		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si :</p><ul><li>une autre méthode d'authentification est proposée</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",		
         "exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
 		"group": "Champ de formulaire",
@@ -103,7 +103,7 @@
 		"wcag": {
 			"0": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
+		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -132,7 +132,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge et changement d'aspect').</p>",
+		"verifier": "<p>Les champs en erreur sont visuellement modifiés, par exemple :</p><ul><li>ajout de la mention «&nbsp;erreur&nbsp;»</li><li>ajout d'une icône</li><li>passage du champ en couleur rouge avec changement d'aspect</li>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -147,7 +147,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
+		"verifier": "<p>Un message d'erreur est présent visuellement et permet d'identifier explicitement les champs en erreur et de comprendre la nature des erreurs.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -162,8 +162,8 @@
 		"wcag": {
 			"0": "3.3.3 AA"
 		},
-		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Lorsqu'il est impossible de faire une suggestion, le critère est non applicable</p>",
+		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
+		"exception":"<p>Lorsqu'il est impossible de faire une suggestion (par exemple pour des quesions de sécurité), le critère est non applicable</p>",
         "group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -172,14 +172,14 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
+		"title": "Si une information est demandée à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": {
 			"0": "3.3.7 A"
 		},
 		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par l’application tout en sachant que la saisie automatique n'est pas jugé suffisant.</p>",
-		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison).</p>",
+		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : remplissage automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (par exemple : adresse de facturation égale adresse de livraison).</p>",
 		"exception": "<ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -195,7 +195,7 @@
 		"wcag": {
 			"0": "3.3.4 AA"
 		},
-		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation, sauf si celle-ci est explicitement confirmée (par exemple avec une case à cocher \"Je confirme que je souhaite supprimer ces données\").</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -377,14 +377,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués ?",
+		"title": "Les messages d'état ou contextuels sont-ils correctement restitués ?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
-        "complement": "<h4>Exemples</h4><ul><li>message informant du résultat d'une action ou de l'état de l'application</li><li>message d'erreur</li><li>message indiquant la progression</li></ul>",
+		"verifier": "<ul><li>Chaque message d'état est restitué par le lecteur d'écran sans déplacement du focus (mécanisme reposant sur les annonces ou <span lang=\"en\">live regions</span>)</li><li>Chaque message d'état est restitué de façon pertinente</li></ul>",
+        "complement": "<h4>Exemples de message d'état</h4><ul><li>résultat d'une recherche</li><li>état de l'application (par ex. hors-ligne)</li><li>message d'erreur</li><li>message indiquant la progression</li><li>notification</li><li>message suite à l'ajout d'un produit dans un panier</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -392,13 +392,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les états des éléments sont-ils vocalisés ? ",
+		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés ? ",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
+		"verifier": "<li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -638,7 +638,7 @@
 		"wcag": {
 			"0": "3.2.4 AA"
 		},
-		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
+		"verifier": "<p>Les composants qui ont la même fonction ont un nom accessible similaire d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false

@@ -132,7 +132,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge et changement d'aspect').</p>",
+		"verifier": "<p>Les champs en erreur sont visuellement modifiés, par exemple :</p><ul><li>ajout de la mention «&nbsp;erreur&nbsp;»</li><li>ajout d'une icône</li><li>passage du champ en couleur rouge avec changement d'aspect</li>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -147,7 +147,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
+		"verifier": "<p>Un message d'erreur est présent visuellement et permet d'identifier explicitement les champs en erreur et de comprendre la nature des erreurs.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",

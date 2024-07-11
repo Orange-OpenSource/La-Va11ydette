@@ -440,7 +440,7 @@
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Vérifier que le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
+		"verifier": "<p>Le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
 		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
         "resultatTest": "nt",
 		"priority": "P1",
@@ -509,7 +509,7 @@
 		"wcag": {
 			"0": "2.4.3 A"
 		},
-		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
+		"verifier": "L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -535,7 +535,7 @@
 		"wcag": {
 			"0": "2.4.11 AA"
 		},
-		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"verifier": "<p>Le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -549,7 +549,7 @@
 		"wcag": {
 			"0": "2.5.4 A"
 		},
-		"verifier": "<ul><li>Vérifier que ces actions ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Vérifier qu'il est possible de désactiver la détection de mouvement.</li></ul>",
+		"verifier": "<ul><li>Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Il est possible de désactiver la détection de mouvement.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -563,7 +563,7 @@
 		"wcag": {
 			"0": "2.5.1 A"
 		},
-		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
+		"verifier": "<p>Pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
 		"resultatTest": "nt",
 		"exception" : "<p>Le geste complexe est indispensable à la fonctionnalité</p>",
 		"priority": "P3",
@@ -651,7 +651,7 @@
 		"wcag": {
 			"0": "3.2.6 A"
 		},
-		"verifier": "<p>Vérifier que si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
 		"complement": "<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
 		"exception": "<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"resultatTest": "nt",
@@ -720,13 +720,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Le mécanisme de navigation est cohérent avec les autres écrans de l'application",
+		"title": "Les mécanismes de navigation sont cohérents avec les autres écrans de l'application",
 		"ID": "testID-056",
 		"IDorigin": "testID-056",
 		"wcag": {
 			"0": "3.2.3 AA"
 		},
-		"verifier": "<p>Vérifier que les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
+		"verifier": "<p>Les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -739,7 +739,7 @@
 		"wcag": {
 			"0": "1.4.5 AA"
 		},
-		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte.</p>",
+		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte.</p>",
 		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
         "resultatTest": "nt",
 		"priority": "P1",

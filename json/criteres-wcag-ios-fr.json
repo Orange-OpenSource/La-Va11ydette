@@ -172,14 +172,14 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
+		"title": "Si une information est demandée à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": {
 			"0": "3.3.7 A"
 		},
 		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par l’application tout en sachant que la saisie automatique n'est pas jugé suffisant.</p>",
-		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison).</p>",
+		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : remplissage automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (par exemple : adresse de facturation égale adresse de livraison).</p>",
 		"exception": "<ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",

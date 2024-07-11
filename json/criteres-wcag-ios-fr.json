@@ -195,7 +195,7 @@
 		"wcag": {
 			"0": "3.3.4 AA"
 		},
-		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation, sauf si celle-ci est explicitement confirmée (par exemple avec une case à cocher \"Je confirme que je souhaite supprimer ces données\").</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",

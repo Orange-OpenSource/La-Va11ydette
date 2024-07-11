@@ -23,7 +23,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
+		"verifier": "<p>L'étiquette de chaque champ est pertinente.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",

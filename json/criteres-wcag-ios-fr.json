@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
+	    "verifier": "<ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -47,14 +47,14 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"title": "Les champs de même nature sont-ils regroupés ?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": {
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
+		"verifier": "<p>Les champs de même nature sont regroupés, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -70,7 +70,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur, par exemple un astérique, un picto,...) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
+		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
 		"group": "Champ de formulaire",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"resultatTest": "nt",
@@ -103,7 +103,7 @@
 		"wcag": {
 			"0": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
+		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",

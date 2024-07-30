@@ -605,7 +605,7 @@
 			"0": "2.5.8 AA"
 		},
 		"verifier": "<p>La zone cliquable ou tactile est au moins de 44pt (hauteur ET largeur)</p>",
-		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones de clicks effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
+		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones de clic effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"wcag22" : true,

@@ -611,7 +611,7 @@
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic supérieur ou égal à 26dp</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère</li></ul>",
+		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic supérieur ou égal à 26dp</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li><li>Si plusieurs zones de clic effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère</li></ul>",
 		"exception": "<p>Cette règle comporte deux exceptions :</p><ul><li>Il y a un autre élément sur l'écran qui réalise la même action, et qui respecte la taille requise. Dans ce cas, précis, on accepte que l'élément soit trop petit.</li><li>L'élément interactif se trouve dans une phrase ou un bloc de texte (ex : liens).</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt",

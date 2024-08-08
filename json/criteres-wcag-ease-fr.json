@@ -854,7 +854,7 @@
 		"wcag": [
 			"1.4.10 AA"
 		],
-		"verifier": "<p>Vérifier qu'aucune barre de défilement n'apparait dans le sens horizontal.</p>",
+		"verifier": "<p>Vérifiez l'absence de barre de défilement horizontale sur la page. Si une barre de défilement horizontale est présente, assurez-vous qu'elle n'entrave pas la consultation du contenu.</p>",
 		"exception": "<p>Certains contenus nécessitant les deux dimensions pour être compréhensibles comme des images, cartes, présentations, tableaux de données, jeux….</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#utiliser-des-tailles-relatives-et-faire-du-web-adaptatif",
 		"priority": "P3",

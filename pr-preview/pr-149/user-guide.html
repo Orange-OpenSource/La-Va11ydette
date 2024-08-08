@@ -1,0 +1,637 @@
+<!-- 
+
+Software Name: La Va11ydette
+SPDX-FileCopyrightText: Copyright (c) 2016-2023 Orange
+SPDX-License-Identifier: MIT License
+
+This software is distributed under the MIT license
+
+-->
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Guide utilisateur — La va11ydette Orange</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous">
+  <!-- Copyright © 2014 Monotype Imaging Inc. All rights reserved -->
+  <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.1/dist/css/orange-helvetica.min.css" rel="stylesheet" integrity="sha384-A0Qk1uKfS1i83/YuU13i2nx5pk79PkIfNFOVzTcjCMPGKIDj9Lqx9lJmV7cdBVQZ" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/boosted@5.3.1/dist/css/boosted.min.css" rel="stylesheet" integrity="sha384-Q3wzptfwnbw1u019drn+ouP2GvlrCu/YVFXSu5YNe4jBpuFwU738RcnKa8PVyj8u" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <a id="top"></a>
+  <header id="docs-navbar" class="d-print-none">
+    <div class="navbar navbar-dark bg-dark navbar-expand supra">
+      <div class="d-flex flex-row-reverse container-lg">
+
+        <nav role="navigation" id="nav-lang" aria-label="A propos et changement de langue">
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a href="https://a11y-guidelines.orange.com/fr/web/audit-wcag/" id="link-about" target="_blank"
+                title="À propos (nouvelle fenêtre)" class="nav-link">
+                <span id="link-about-txt">À propos</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="./user-guide.html" id="link-guide" class="nav-link active" target="_blank"
+                title="Guide utilisateur (nouvelle fenêtre)" aria-current="page">
+                <span id="link-guide-txt">Guide utilisateur</span>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="./?lang=en" id="link-en" class="nav-link" lang="en">
+                English
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a href="./?lang=fr" id="link-fr" class="nav-link active" aria-current="true" lang="fr">
+                Français
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md flex-wrap" role="navigation">
+      <div class="container navbar-nav w-100">
+        <a class="navbar-brand" href="/">
+          <img src="https://cdn.jsdelivr.net/npm/boosted@4.4.1/dist/img/orange_logo.svg" alt="" width="50" height="50">
+          <span class="h2 title my-0">
+            <span id="va11ydette">La v<span class="text-primary">a11y</span>dette</span><br>
+            <h1 class="small text-primary m-0" id="auditNameWcag"></h1>
+          </span>
+        </a>
+        <div class="ms-auto" id="checklist"></div>
+        <div id="importexport">
+          <div class="d-inline">
+            <button id="btnImport" type="button" class="btn nav-link d-inline me-n3" title="" data-bs-toggle="collapse"
+            data-bs-target="#import-form" aria-expanded="false" aria-controls="import-form">
+            <svg class='me-1' aria-hidden="true" focusable="false" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000">
+              <defs>
+                <style>
+                  .cls-1 {
+                    fill-rule: evenodd;
+                  }
+                </style>
+              </defs>
+              <path id="Modifier_upload" data-name="Modifier upload" class="cls-1"
+                d="M500,825a323.673,323.673,0,1,1,126.474-25.5A322.87,322.87,0,0,1,500,825m0,100c234.721,0,425-190.279,425-425S734.721,75,500,75,75,265.279,75,500,265.279,925,500,925h0ZM697.7,486.574,600,488V663a36.759,36.759,0,0,1-37,37H437a36.759,36.759,0,0,1-37-37V488H288L466.569,313.569l0,0C475.4,305.162,485.846,300,499,300h2a47.818,47.818,0,0,1,33.429,13.571l0,0L713,488H600Z" />
+            </svg>
+
+            <span id="btnImportTxt"></span>
+          </button>
+          </div>
+          <div class="d-inline">
+            <a href="#" id="export" class="btn nav-link me-n3 d-inline disabled" title="" disabled aria-disabled="true">
+              <svg class='me-1' aria-hidden="true" focusable="false" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 1000 1000">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill-rule: evenodd;
+                    }
+                  </style>
+                </defs>
+                <path id="Modifier_download" data-name="Modifier download" class="cls-1"
+                  d="M500,175a323.673,323.673,0,1,1-126.474,25.5A322.87,322.87,0,0,1,500,175m0-100C265.279,75,75,265.279,75,500S265.279,925,500,925,925,734.721,925,500,734.721,75,500,75h0ZM302.3,513.426,400,512V337a36.759,36.759,0,0,1,37-37H563a36.759,36.759,0,0,1,37,37V512H712L533.431,686.431l0,0C524.6,694.838,514.154,700,501,700h-2a47.818,47.818,0,0,1-33.429-13.571l0,0L287,512H400Z" />
+              </svg>
+              <span id="btnExportTxt"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="collapse w-100 border-top border-900" id="import-form">
+        <div class="container py-3">
+          <div class="row">
+            <div class="col-sm-9">
+              <div class="input-group">
+                <input class="form-control" id="selectFiles" type="file" accept="application/JSON"
+                  aria-label="Sélectionner un audit">
+              </div>
+
+            </div>
+            <div class="col-sm-3">
+              <button class="btn btn-info border-white" type="button" id="import">Charger</button>
+              <button id="btnImportClose" type="button" class="btn btn-secondary btn-info border-white" title=""
+                data-bs-toggle="collapse" data-bs-target="#import-form" aria-expanded="false"
+                aria-controls="import-form">
+                <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                  width="20" height="20" viewBox="0 0 1000 1000">
+                  <defs>
+                    <style>
+                      .cls-1 {
+                        fill-rule: evenodd;
+                      }
+                    </style>
+                  </defs>
+                  <path id="Delete" class="cls-1"
+                    d="M817.493,676.165a49.977,49.977,0,0,1,0,70.664l-70.664,70.664a49.977,49.977,0,0,1-70.664,0L499.5,640.828,322.835,817.493a49.977,49.977,0,0,1-70.664,0l-70.664-70.664a49.977,49.977,0,0,1,0-70.664L358.172,499.5,181.507,322.835a49.977,49.977,0,0,1,0-70.664l70.664-70.664a49.977,49.977,0,0,1,70.664,0L499.5,358.172,676.165,181.507a49.977,49.977,0,0,1,70.664,0l70.664,70.664a49.977,49.977,0,0,1,0,70.664L640.828,499.5Z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="bg-dark pt-3">
+            <div id="import-alert" class="alert alert-danger d-none" role="alert">
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main role="main" class="bg-white" id="main">
+    <div class="container py-2">
+      <div class="row align-items-start position-relative">
+        <div class="col-md-3 sticky-md-top pt-4 pe-0 col-print-12 border border-light" id="currentPageManager">
+          <div id="anchornav">
+            <h2 id="title-nav-anchor" class="d-block my-2 pb-2 h4 border-bottom border-light border-1">Sur cette page
+            </h2>
+            <div class="bd-toc">
+              <nav id="tableOfContents" class="py-1" aria-labelledby="title-nav-anchor" style="min-height: 4rem;">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-print-12" id="currentPageContent">
+          <h2 id="guide-utilisateur">La va11ydette : le guide utilisateur</h2>
+          <h3 id="introduction">1. Introduction : Pourquoi La va11ydette ?</h3>
+          <p>La va11ydette est une application web qui propose des grilles d'évaluations et des listes de questions /
+            réponses, facilitant les
+            audits
+            d'accessibilité numérique.</p>
+          <p>Elle prend en charge le référentiel WCAG 2.2. Les grilles d'évaluations sont divisées en trois catégories ;
+            Web, Android
+            et
+            IOS. Le référentiel RGAA 4.1 est aussi disponible.</p>
+          <p>Une fois que vous aurez fini de répondre à la grille d'évaluation choisie, un taux de conformité sera
+            calculé pour votre audit.
+          </p>
+          <p>Le but de ce guide utilisateur est de vous montrer toutes les fonctionnalités disponibles et de vous aider
+            à
+            compléter votre audit.</p>
+          <h3 id="utiliser-va11ydette">2. Utiliser La va11ydette</h3>
+          <h4 id="creer-son-audit">2.1 Créer un nouvel audit</h4>
+          <ol>
+            <li class="pb-2">Pour créer un nouvel audit, <strong>choisissez une grille d'évaluation</strong> qui
+              correspond à ce que vous voulez tester :
+              <ul class="pt-2">
+                <li class="pb-2">soit <strong>sur la page d'accueil</strong> en cliquant sur la grille voulue</li>
+                <li class="pb-2">soit dans le <strong>menu "Sélectionner une checklist</strong> située dans le <span
+                    lang="en">header</span> du site</li>
+              </ul>
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit14.png" />
+            </li>
+            <li class="pb-2">L'audit est créé. Son nom par défaut est celui de la grille d'évaluation sélectionnée.
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit15.png" />
+            </li>
+            <li class="pb-2">Nous vous recommandons de <strong>modifier le nom par défaut</strong> de l'audit.<br />
+              Pour cela :
+              <ol class="pt-2">
+                <li class="pb-2">Cliquer sur le bouton <img alt="Modifier le nom de l'audit"
+                    src="./images/ic_Pencil.png" class="border border-2 m-1"> situé juste après le titre de l'audit.
+                  <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit16.png" />
+                </li>
+                <li class="pb-2">Dans la modale qui s’ouvre, <strong>remplacer le nom par défaut</strong> de l’audit par
+                  le nom que vous souhaitez lui donner puis cliquer sur le bouton « <strong>Enregistrer</strong> ».
+                  <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit17.png" />
+                </li>
+                <li class="pb-2">À la suite du clic sur le bouton « Enregistrer », un <strong>message de
+                    confirmation</strong> de la
+                  modification du nom de l’audit s’affiche dans la modale. <br />
+                  À savoir : la modale ne se ferme pas automatiquement. Pour cela, vous devez cliquer sur le bouton «
+                  <strong>Fermer</strong> ».
+                  <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit19.png" />
+                </li>
+              </ol>
+            </li>
+          </ol>
+          <h4 id="page">2.2 Les pages</h4>
+          <h5 id="ajouter-page">2.2.1 Ajouter des pages</h5>
+          <p>Pour votre audit, il est important de sélectionner un échantillon de pages. Vous allez donc avoir besoin
+            d'une
+            grille d'évaluation par page de l'application à auditer.</p>
+          <p>Pour générer une grille d'évaluation dédiée à une page de l'application, il faut :
+          </p>
+          <ol class="pt-2">
+            <li class="pb-2">Cliquer sur le bouton "<strong>Ajouter une page</strong>".
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit20.png" />
+            </li>
+            <li class="pb-2">Indiquer dans la modale qui s'affiche :
+              <ol class="pt-2">
+                <li class="pb-2">le <strong>nom</strong> que vous souhaitez donner à cette page</li>
+                <li class="pb-2">son <strong>url</strong> dans l'application à auditer (cela vous permettra d'y accéder
+                  plus facilement)</li>
+                <li class="pb-2"><strong>la présence dans la page des différentes catégories d'éléments
+                    indiquées</strong>, en cochant ou décochant les différentes cases proposées.</li>
+              </ol>
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit21.png" />
+            </li>
+            <li class="pb-2">Cliquer sur le bouton "<strong>Enregistrer</strong>" pour générer la nouvelle page.
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit22.png" />
+            </li>
+            <li class="pb-2">Suite au clic sur le bouton "Enregistrer", un <strong>message de confirmation</strong> de
+              la création de la page s'affiche dans la modale.<br />
+              À savoir, la modale ne se ferme pas automatiquement. Pour cela vous devez cliquer sur le bouton
+              "<strong>Fermer</strong>".
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit23.png" />
+            </li>
+            <li class="pb-2">La page d'audit ainsi créée apparait dans le menu situé sous le titre de l'audit.<br />
+              Lorsque plusieurs pages ont été créées dans l'audit, vous pouvez passer de l'une à l'autre en cliquant sur
+              son nom :
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit24.png" />
+            </li>
+          </ol>
+          <h5 id="gestion-page">2.2.2 Gérer une page de l'audit</h5>
+          <p>Toutes les fonctionnalités de la page sont décrites dans la liste ci-dessous :</p>
+          <ul>
+            <li class="pb-2">
+              <p><img alt="Modifier le nom de la page" src="./images/ic_Pencil.png" class="border border-2 m-1">bouton
+                qui
+                permet de <strong>modifier</strong> le <strong>nom de la page</strong> et son <strong>URL</strong>.</p>
+            </li>
+            <li class="pb-2">
+              <p><img alt="Ouvrir l'url de la page en cours (nouvelle fenetre)" src="./images/ic_External_link.png"
+                  class="border border-2 m-1">bouton qui permet <strong>d'ouvrir l'URL de la page dans un nouvel
+                  onglet</strong>. Ce
+                bouton
+                sera désactivé si aucune URL n'est renseignée.</p>
+            </li>
+            <li class="pb-2"><img alt="Supprimer la page" src="./images/ic_Trash.png" class="border border-2 m-1">bouton
+              qui
+              permet de <strong>supprimer la page</strong>. À noter : il est impossible de supprimer la première page de
+              l'audit.</li>
+            <li class="pb-2">
+              <p><strong>section "Sur cette page"</strong>: menu de navigation qui permet d'aller directement sur
+                chacune des différentes catégories de critères de la grille d'évaluation présentes sur la page.</p> <img
+                class="" alt="" src="./images/audit3.png" />
+            </li>
+            <li class="pb-2">
+              <p><strong>section "Affichage"</strong>: deux boutons permettant de <strong>déplier ou replier</strong>
+                l'ensemble des <strong>critères</strong> de la grille d'évaluation. Les déplier
+                permettra d'afficher toutes les informations pour valider ou invalider un critère.</p><img
+                class="my-2 d-none d-lg-block border" alt="" src="./images/audit25.png" />
+            </li>
+            <li class="pb-2">
+              <p><strong>filtres</strong> : ensemble de filtres permettant de <strong>modifier les critères affichés sur
+                  la page</strong>. Il est possible de choisir d'afficher :</p>
+              <ul>
+                <li class="pb-2">Les critères en fonction de leurs <strong>résultats</strong> (conforme, non-conforme
+                  ...).</li>
+                <li class="pb-2">Les critères de <strong>bonnes pratiques</strong> (à noter : ces critères ne sont pas
+                  pris en compte lors
+                  du
+                  calcul du taux de conformité).</li>
+                <li class="pb-2">Les critères selon la norme WCAG.</li>
+              </ul>
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit26.png" />
+            </li>
+          </ul>
+          <h4 id="critere">2.3 Les critères de la grille d'évaluation</h4>
+          <p>Chaque page créée dans l'audit contient un certain nombre de critères d'accessibilité à évaluer. La liste
+            des critères présents dépend de la grille d'évaluation choisie.</p>
+          <p>Chaque critère d'accessibilité est composé :</p>
+          <ul>
+            <li class="pb-2">d'une <strong>question</strong> permettant d'évaluer un critère d'accessibilité donné</li>
+            <li class="pb-2">de boutons radio permettant d'indiquer <strong>l'état du critère</strong> (conforme,
+              non-conforme,
+              non-applicable, non-testé).</li>
+            <li class="pb-2">des boutons permettant d'<strong>ajouter</strong> <img alt="Éditer une anomalie"
+                src="./images/ic_Pencil.png" class="border border-2 m-1">, et de <strong>modifier</strong> <img
+                alt="Ajouter une anomalie" src="./images/ic_Add.png" class="border border-2 m-1"> une anomalie
+              (<strong>critère non respecté</strong>).</li>
+            <li class="pb-2">
+              <p>d'un bouton permettant d'afficher <strong>les informations supplémentaires</strong> du critère <img
+                  alt="Informations supplémentaires" src="./images/ic_Form_Chevron_down.png"
+                  class="border border-2 m-1">.
+                Ces informations supplémentaires expliquent plus en détails comment valider ou invalider le critère.</p>
+              <p>Dans les informations supplémentaires, il y a une <strong>case à cocher "Appliquer automatiquement ce
+                  résultat à la page suivante"</strong>. Cette fonctionnalité peut vous être utile lorsque vous trouvez
+                une erreur concernant un élément qui se retrouve dans plusieurs pages du site de votre audit. En cochant
+                cette case, le résultat donné au critère dans cette page sera automatiquement appliqué à ce même critère
+                dans la page suivante de votre audit (en respectant l'ordre des pages telles qu'elles sont présentées
+                dans
+                la
+                barre de navigation des pages). Les anomalies seront aussi copiées.</p>
+              <p>Si des pages sont créées après avoir coché cette case, ce même critère dans les nouvelles pages
+                récupèrera également automatiquement le résultat qu'il lui a été donné dans les pages précédentes, de
+                mêmes que ses anomalies.</p>
+              <p>Le numéro WCAG auquel le critère est rattaché sera affiché dans les informations supplémentaires, si ce
+                critère est un critère d'accessibilité</p>
+            </li>
+          </ul>
+
+          <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit6.png" />
+          <h5 id="add-anomalie">2.3.1 Ajouter une anomalie</h5>
+          <p>Lorsqu'un critère évalué est considéré comme non-conforme, il est <strong>important d'ajouter une
+              anomalie</strong> pour ce critère. Cela vous permettra de retrouver facilement les non-conformités
+            relevées sur les différentes pages auditées.</p>
+          <p>Pour ajouter une anomalie :</p>
+          <ol class="pt-2">
+            <li class="pb-2">Cliquer sur le bouton <img alt="Ajouter une anomalie" src="./images/ic_Add.png"
+                class="border border-2 m-1">.</li>
+            <li class="pb-2">Dans le formulaire de la modale qui apparait :
+              <ul class="pt-2">
+                <li class="pb-2">
+                  <p><strong>Sélectionner dans la liste déroulante "sélectionner une anomalie pré-définie"</strong>
+                    l'une des anomalies prévues pour ce critère. À savoir : pour certains critères, il
+                    n'y a pas d'anomalies prévues.</p>
+                  <p><strong>Cliquer sur</strong> le bouton <strong>"Importer"</strong> pour préremplir en conséquence
+                    les autres champs du formulaire. Vous pourrez ensuite si besoin modifier et adapter les informations
+                    préremplies.</p>
+                </li>
+                <li class="pb-2">Dans le champ obligatoire "<strong>résumé</strong>", écrire un bref descriptif de
+                  l'anomalie.
+                </li>
+                <li class="pb-2">Dans le champ obligatoire "<strong>description</strong>", écrire une description
+                  complète de l'anomalie. Le but est de laisser une information qui permettra de retrouver rapidement
+                  l'anomalie qui a entrainé la non-conformité, il faut donc <strong>être le plus précis
+                    possible</strong>.</li>
+                <li class="pb-2">Dans le champ facultatif "<strong>solution</strong>", vous pouvez indiquer ce qui
+                  aiderait ou permettrait de corriger la non-conformité.
+                </li>
+                <li class="pb-2">Dans le champ facultatif "<strong>solution technique</strong>", indiquer, si cela est
+                  possible, le code qui permet de corriger la non-conformité.
+                </li>
+              </ul>
+            </li>
+          </ol>
+
+          <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit27.png" />
+          <h5 id="update-anomalie">2.3.2 Modifier ou supprimer une anomalie</h5>
+          <p>Il est possible de modifier ou supprimer chaque anomalie créée. Pour cela, cliquer sur le bouton <img
+              alt="" src="./images/ic_Pencil.png" class="border border-2 m-1"> "Éditer une anomalie".</p>
+          <h4 id="sauvegarder">2.4 Sauvegarder un audit</h4>
+          <p>Il existe deux façons de sauvegarder son audit en cours :</p>
+          <ul>
+            <li class="pb-2">
+              <p><strong>Sauvegarde automatique</strong> : vos <strong>8 derniers audits</strong> sont sauvegardés
+                automatiquement dans le stockage local (<span lang="en">local storage</span>) de votre navigateur.</p>
+              <p>Cette solution n'est pas la plus sûre car vous pouvez perdre vos données si vous effacez le cache de
+                votre navigateur ou si vous faites beaucoup d'audits.</p>
+              <p><strong>Attention, la sauvegarde automatique ne fonctionne pas en navigation privée.</strong></p>
+            </li>
+            <li class="pb-2">
+              <p><strong>Export de l'audit au format JSON</strong> : pour cela, cliquez sur le bouton
+                <strong>"Exporter"</strong> situé dans le <span lang="en">header</span> de La va11ydette et enregistrer
+                le fichier sur votre ordinateur.
+              </p>
+            </li>
+          </ul>
+          <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit12.png" />
+          <h4 id="restaurer">2.5 Restaurer un audit</h4>
+
+          <p>Vous pouvez récupérer dans La va11ydette les données d'un audit précédemment sauvegardé. Il y a deux
+            manières de faire, qui correspondent chacune à la manière dont l'audit a été sauvegardé (voir la <a
+              href="#sauvegarder">section 2.4
+              Sauvegarder son audit en cours)</a>. </p>
+          <ul>
+            <li class="pb-2"><strong>Audits sauvegardés automatiquement dans le navigateur</strong> :
+              <ul class="pt-2">
+                <li class="pb-2">Pour y accéder, cliquez sur le bouton <img alt="Restaurer / Supprimer un audit"
+                    src="./images/ic_History.png" class="border border-2 m-1"> situé à droite du nom de l'audit.</li>
+                <li class="pb-2">Une modale s'ouvrira avec la liste des audits sauvegardés, <strong>choisissez l'audit
+                    à restaurer</strong> parmi ceux proposés et cliquer sur le bouton <strong>"Restaurer"</strong>.</li>
+                <li class="pb-2">À savoir : c'est ici aussi que vous avez accès à la suppression d’un audit sauvegardé
+                  dans le navigateur.</li>
+              </ul>
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit28.png" />
+            </li>
+            <li class="pb-2"><strong>Audits sauvegardés dans un fichier exporté au format JSON</strong>
+              <ul class="pt-2">
+                <li class="pb-2">Pour y accéder, cliquez sur le bouton <strong>"Importer"</strong> situé dans le <span
+                    lang="en">header</span> de La va11ydette.</li>
+                <li class="pb-2">Un champ caché apparaitra. Cliquer sur <strong>"Parcourir"</strong> et
+                  sélectionner sur votre ordinateur le fichier d'export de l'audit à récupérer dans La va11ydette.
+                  Cliquez ensuite sur le bouton <strong>"Charger l'audit"</strong>.</li>
+              </ul>
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit29.png" />
+            </li>
+          </ul>
+          <h4 id="conformite">2.6 Afficher le récapitulatif</h4>
+          <p>Pour afficher un récapitulatif chiffré de votre audit, cliquer sur le bouton <strong>"Conformité"</strong>
+            situé à droite du titre de l'audit.</p>
+          <p>Le récapitulatif contient :</p>
+          <ul>
+            <li class="pb-2">le taux de <strong>Conformité globale</strong>, c'est la moyenne des mesures de chaque
+              page.</li>
+            <li class="pb-2">le taux de <strong>Critères respectés</strong>, il s'obtient en divisant le nombre de
+              critères conforme par le nombre de critères applicables (critères notés « conformes » + critères notés «
+              non conformes »). </li>
+            <li class="pb-2"> 4 onglets :
+              <ul class="pt-2">
+                <li class="pb-2">Onglet <strong>"Résultats par page"</strong> : affiche la liste des pages créées dans
+                  l'audit avec pour chacune son nom, son pourcentage de conformité et son URL.</li>
+                <li class="pb-2">Onglet <strong>"Taux de conformité par page"</strong> (seulement disponible pour les
+                  grilles d'évaluations WCAG) : onglet qui récapitule les critères A et AA de chaque page </li>
+                <li class="pb-2">Onglet <strong>"Synthèse par niveaux"</strong> (seulement disponible pour les grilles
+                  d'évaluations WCAG) : onglet qui récapitule les critères conformes/non-conformes/non-applicables </li>
+                <li class="pb-2">Onglet <strong>"Liste des non-conformités"</strong> : indique tous les critères
+                  non-conformes et le résumé des anomalies.</li>
+              </ul>
+            </li>
+          </ul>
+
+
+          <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit8.png" />
+          <h4 id="declaration">2.7 Générer la déclaration</h4>
+          <p>Une fois tous les critères d'accessibilité évalués pour chacune des pages, vous pouvez générer une
+            déclaration d'accessibilité.</p>
+          <p>À savoir : La possibilité de générer cette déclaration <strong>n'est actuellement pas disponible pour les
+              grilles
+              d'évaluation RGAA</strong>.</p>
+          <p>Cette déclaration sera générée sous la forme d'un <strong>fichier</strong> au format <strong>XML</strong>
+            ou au format <strong>HTML</strong>. La déclaration d'accessibilité devra être publiée sur le site audité
+            dans un format accessible. </p>
+          <p>Voici les étapes à suivre pour générer le fichier de déclaration d'accessibilité :</p>
+          <ol class="pt-2">
+            <li class="pb-2">
+              <p><strong>Cliquer sur le bouton "Déclaration"</strong>. Une page "Configuration de la
+                déclaration" s'affiche. Cette page contient un formulaire destiné à collecter les informations que l'on
+                souhaite voir figurer sur la déclaration d'accessibilité.</p>
+              <p>Aussi, ce n'est qu'une fois les champs du formulaire renseignés qu'il sera possible de générer le
+                fichier de la déclaration.</p>
+            </li>
+            <li class="pb-2"><strong>Remplir le formulaire</strong>. Deux manières de faire sont possibles :
+              <ul class="pt-2">
+                <li class="pb-2">
+                  <p><strong>Renseigner manuellement tous les champs demandés</strong> en allant directement
+                    dans la section "<strong>2. Compléter les données</strong>" pour y saisir vous-même les
+                    informations demandées, à savoir :</p>
+                  <ul class="pt-2">
+                    <li class="pb-2"><strong>Nom du projet</strong> : indiquer le nom du projet que vous venez d'auditer
+                    </li>
+                    <li class="pb-2"><strong>Langue</strong> : choisir la langue dans laquelle la déclaration doit être
+                      générée</li>
+                    <li class="pb-2"><strong>Date</strong> : indiquer la date à laquelle l'audit a été réalisé</li>
+                    <li class="pb-2"><strong>Type de résultat</strong> : choisir le type de mesure de conformité à
+                      afficher sur
+                      la déclaration</li>
+                    <li class="pb-2"><strong>Déclarant</strong> : choisir l'entité qui a réalisé l'audit et son siège
+                      social. <strong>Attention :</strong> il est important de modifier les informations du déclarant en
+                      cliquant sur le bouton <img alt="Modifier la liste des déclarants" src="./images/ic_Pencil.png"
+                        class="border border-2 m-1">, situé à côté du titre. Une modale s'ouvrira avec deux champs : le
+                      <strong>nom</strong> et le
+                      <strong>contenu</strong> du déclarant. Le contenu sera le texte affiché sur la
+                      déclaration
+                    </li>
+                    <li class="pb-2"><strong>Contact</strong> : choisir le contact à faire apparaitre sur la déclaration
+                      afin de permettre aux utilisateurs de
+                      faire
+                      des retours sur l'accessibilité du site. <strong>Attention :</strong> il est important de modifier
+                      les informations du déclarant en
+                      cliquant sur le bouton <img alt="Modifier la liste des contacts" src="./images/ic_Pencil.png"
+                        class="border border-2 m-1">, situé à côté du titre. Une modale s'ouvrira avec deux champs : le
+                      <strong>nom</strong> et le
+                      <strong>contenu</strong> du contact. Le contenu sera le texte affiché sur la
+                      déclaration
+                    </li>
+                    <li class="pb-2"><strong>Schéma pluriannuel</strong> : indiquer un lien vers le schéma pluriannuel.
+                      Le contenu de ce champ sera le texte affiché sur la déclaration. Il faut donc faire des phrases
+                      qui
+                      introduisent le schéma pluriannuel.</li>
+                    <li class="pb-2"><strong>Technologies</strong> : indiquer la liste des technologies utilisées sur le
+                      site audité. Une liste de technologies est proposée par défaut. Si elle ne convient pas en l'état,
+                      cliquez sur le bouton <img alt="Modifier la liste des technologies" src="./images/ic_Pencil.png"
+                        class="border border-2 m-1">, situé à côté du titre, pour la modifier.
+                    </li>
+                    <li class="pb-2"><strong>Tests</strong> : indiquer la liste des outils de test utilisés pendant votre
+                      audit. Une liste d'outils est proposée par défaut. Si elle ne convient pas en l'état,
+                      cliquez sur le bouton <img alt="Modifier la liste des tests" src="./images/ic_Pencil.png"
+                        class="border border-2 m-1">, situé à côté du titre, pour la modifier.</li>
+                    <li class="pb-2"><strong>Environnements</strong> : indiquer les environnements sur lesquels le site a
+                      été audité, par
+                      exemple Firefox v78.15 et NVDA v2022.1. Une liste d'environnements est proposée par défaut. Si elle ne
+                      convient pas en l'état,
+                      cliquez sur le bouton <img alt="Modifier la liste des environnements de test"
+                        src="./images/ic_Pencil.png" class="border border-2 m-1">, situé à côté du titre, pour la
+                      modifier.</li>
+                    <li class="pb-2"><strong>Tests utilisateurs</strong> : indiquer si des tests utilisateurs ont été
+                      effectués. Préciser le nombre d'utilisateusr, le nombre de points bloquants qui ont été identifiés,
+                      et ajouter une description de ce qui a été testé (caractéristiques des utilisateurs testé, outils
+                      utilisés, taches demandées…)</li>
+                    <li class="pb-2"><strong>Dérogation et Exemption</strong> : des contenus non accessibles qui sont
+                      soumis à
+                      une dérogation pour charge disproportionnée. Chaque dérogation ou exemption mentionnée doit être
+                      expliquée et motivée</li>
+                  </ul>
+                  <p>Une fois ces champs renseignés, vous pouvez sauvegarder les données que contient le formulaire de
+                    deux manières :</p>
+                  <ul class="pt-2">
+                    <li class="pb-2">En cliquant sur le bouton "<strong>Enregistrer</strong>" : les informations saisies
+                      dans le formulaire sont enregistrées afin de générer la déclaration.</li>
+                    <li class="pb-2">En cliquant sur le bouton "<strong>Enregistrer et télécharger au format
+                        JSON</strong>" : il a la même utilité que le bouton "Enregistrer", sauf qu'il téléchargera en
+                      plus un fichier au format JSON. Vous pourrez utiliser ce fichier lors de vos prochaines
+                      déclarations pour préremplir le formulaire en l'important dans la section "1.Préremplir le
+                      formulaire". Cela vous permettra de gagner du temps.</li>
+                  </ul>
+                  <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit9.png" />
+                </li>
+                <li class="pb-2"><strong>Préremplir les champs du formulaire de cette page</strong>, vous pouvez
+                  utiliser cette option et ainsi gagner du temps seulement si vous avez téléchargé un fichier JSON du
+                  formulaire préalablement remplis. Si c'est le cas :
+                  <ol class="pt-2">
+                    <li class="pb-2">Aller dans la section « 1. Préremplir le formulaire </li>
+                    <li class="pb-2">Cliquer le bouton "<strong>Choisir un fichier</strong>" et sélectionner le fichier
+                      JSON qui contient les informations préremplies du formulaire.</li>
+                    <li class="pb-2">Cliquer sur le bouton "<strong>Importer</strong>". Les champs de la partie "2.
+                      Compléter les données" sont automatiquement préremplis avec les informations présentes dans le
+                      fichier JSON importé.</li>
+                    <li class="pb-2">Vérifier et modifier les informations préremplies</li>
+                    <li class="pb-2">Enregistrer le formulaire</li>
+                  </ol>
+                  <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit10.png" />
+                </li>
+              </ul>
+            </li>
+            <li class="pb-2"><strong>Générer le fichier de déclaration d'accessibilité</strong>, avec les informations
+              renseignées :
+              <ol class="pt-2">
+                <li class="pb-2">Allez dans la section "<strong>Déclaration</strong>"</li>
+                <li class="pb-2">
+                  <p>Choisir le <strong>format</strong> dans lequel générer le <strong>fichier de
+                      déclaration</strong>, en cliquant sur le bouton "<strong>XML</strong>" ou "<strong>HTML</strong>".
+                  </p>
+                  <p>À savoir : vous ne pourrez générer une déclaration que lorsque l'audit sera terminé et le formulaire
+                    de la déclaration rempli. Les boutons ne seront pas disponibles dans le cas contraire.</p>
+                </li>
+              </ol>
+              <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit11.png" />
+            </li>
+          </ol>
+
+          <h4 id="export-excel">2.8 Exporter au format Excel</h4>
+          <p>Il est aussi possible de faire un export au format Excel <img alt="Exporter les anomalies (excel)"
+              src="./images/ic_File_Excel.png" class="border border-2 m-1">.</p>
+          <p>Toutes les anomalies renseignées pendant votre audit seront présentes dans le fichier Excel. Cela peut être
+            utile pour faire du suivi de corrections si vous souhaitez accompagner un projet.</p>
+          <img class="my-2 d-none d-lg-block border" alt="" src="./images/audit13.png" />
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <footer class="footer bg-dark mt-0" id="footer" role="contentinfo">
+    <div class="o-footer-body">
+      <div class="container navbar-dark py-3">
+        <div class="row navbar-nav">
+          <div class="col-8">
+            <p class="mb-0" id="footerTxt1">Documentation sous <a class="nav-link d-inline"
+                href="https://github.com/Orange-OpenSource/La-Va11ydette/blob/master/LICENSE">licence MIT</a>.</p>
+            <p class="mb-0" id="footerTxt2">Le logo Orange ainsi que certaines images et captures sont la propriété
+              d'Orange&nbsp;: Copyright © 2016 Orange SA <em lang="en">All rights reserved</em>.</p>
+          </div>
+          <div class="ms-sm-auto">
+            <a id="footerLinkGit" href="https://github.com/Orange-OpenSource/La-Va11ydette/issues/new/choose"
+              class="nav-link" rel="noopener noreferrer" target="_blank" title="">
+              Signaler une erreur sur GitHub<span class="visually-hidden">&nbsp;(nouvelle fenêtre)</span>
+              <svg aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
+                width="20" height="20" viewBox="0 0 1000 1000">
+                <defs>
+                  <style>
+                    .cls-1 {
+                      fill-rule: evenodd;
+                    }
+                  </style>
+                </defs>
+                <path class="cls-1"
+                  d="M374.908,308.958L600,309V109L921.719,430.9a74.988,74.988,0,0,1,0,106.044L600,859V659H325A150.027,150.027,0,0,0,175,809v81C98.941,830.528,50,737.929,50,633.891,50,454.436,195.466,308.958,374.908,308.958Z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <nav id="nav-back-to-top" aria-label="Retour en haut de la page" class="back-to-top">
+    <a id="link-to-top" href="#top" class="back-to-top-link btn btn-icon btn-secondary"
+      title="Retour en haut de la page">
+    </a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/boosted@5.3.1/dist/js/boosted.min.js" integrity="sha384-5/uuaktuMuP89rRLLF12Nmffr7aMWkLWFVq2xzMjqdXlOiMsRRHpbz3oG92Gvj7u" crossorigin="anonymous"></script>
+
+
+  <script src="./js/views/initMainPage.js"></script>
+  <script src="./js/controllers/dataVa11ydetteManager.js"></script>
+  <script src="./js/controllers/userGuide.js"></script>
+  <script src="./js/lavallydette.js"></script>
+
+</body>
+
+</html>

@@ -226,7 +226,7 @@
 		"status4": "not tested",
 		"filters": "Filters",
 		"navAnchor": "On this page",
-		"footerTxt1": "Documentation under <a class=\"nav-link d-inline\" href=\"https://github.com/Orange-OpenSource/a11y-guidelines/blob/master/LICENSE\">licence CC BY SA 3.0</a>.",
+		"footerTxt1": "Documentation under <a class=\"nav-link d-inline\" href=\"https://github.com/Orange-OpenSource/La-Va11ydette/blob/master/LICENSE\">MIT License</a>.",
 		"footerTxt2": "The Orange logo as well as certain images and screenshots are the property of Orange: Copyright © 2016 Orange SA All rights reserved.",
 		"footerLinkGit": "Report an error on GitHub <span class=\"visually-hidden\">&nbsp;(new window)</span><svg class=\"ms-1\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 1000 1000\"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class=\"cls-1\" d=\"M374.908,308.958L600,309V109L921.719,430.9a74.988,74.988,0,0,1,0,106.044L600,859V659H325A150.027,150.027,0,0,0,175,809v81C98.941,830.528,50,737.929,50,633.891,50,454.436,195.466,308.958,374.908,308.958Z\"/></svg>",
 		"link-about-txt": "About",
@@ -329,7 +329,7 @@
 		"partialyCompliant": "partially compliant",
 		"noCompliant": "no compliant",
 		"method":"The audit was carried out via <a href=\"https://la-va11ydette.orange.com/?lang=en\">la Va11ydette</a>.",
-		"linkRGAAWCAG":"refers to the WCAG international recommendations. <a href=\"https://a11y-guidelines.orange.com/fr/cadrage/correspondance-rgaa-wcag/\">Here is the correspondence link between the RGAA and the WCAG (french)</a>.",
+		"linkRGAAWCAG":"refers to the WCAG international recommendations. <a href=\"https://a11y-guidelines.orange.com/fr/cadrage/correspondance-rgaa-wcag/\" hreflang=\"fr\">Here is the correspondence link between the RGAA and the WCAG (french)</a>.",
 		"blockingPoint1": " blocking point(s) from a user point of view",
 		"approvalHeading": "Formal approval of this accessibility statement",
 		"standardHeading": "Standard applied",
@@ -363,8 +363,8 @@
 		"contactsText": "If you are unable to access content or a service, you can contact the site manager to be directed to an accessible alternative or obtain the content in another form.",
 		"legalHeading": "Legal remedies",
 		"legalContent": "You have reported to the website manager an accessibility problem that prevents you from accessing content or one of the portal's services and you have not received a satisfactory response, in this case:",
-		"legalList1": "Write a message to the <a href=\"https://formulaire.defenseurdesdroits.fr/\">Défenseurs des Droits</a>.",
-		"legalList2": "Or contact the <a href=\"https://www.defenseurdesdroits.fr/saisir/delegues\">Défenseurs des Droits delegate in your department</a>.",
-		"legalList3": "Or send a letter by post (free of charge, do not put a stamp) <br><address> Défenseur des droits <br> Libre réponse 71120 <br> 75342 Paris CEDEX 07 </address>"
+		"legalList1": "Write a message to the <a href=\"https://formulaire.defenseurdesdroits.fr/formulaire_saisine/?locale=en_GB\">Defender of Rights</a>.",
+		"legalList2": "Or contact the <a href=\"https://www.defenseurdesdroits.fr/defender-rights-311\">Defender of Rights delegate in your department</a>.",
+		"legalList3": "Or send a letter by post (free of charge, do not put a stamp) <br><address> Défenseur des droits <br> Free answer 71120 <br> 75342 Paris CEDEX 07 </address>"
 	}
 }

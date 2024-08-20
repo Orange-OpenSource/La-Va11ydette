@@ -132,7 +132,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Les champs en erreur sont visuellement modifiés, par exemple :</p><ul><li>ajout de la mention «&nbsp;erreur&nbsp;»</li><li>ajout d'une icône</li><li>passage du champ en couleur rouge avec changement d'aspect</li>",
+		"verifier": "<p>Les champs en erreur sont visuellement modifiés, par exemple :</p><ul><li>ajout de la mention «&nbsp;erreur&nbsp;»</li><li>ajout d'une icône</li><li>passage du champ en couleur rouge avec changement d'aspect</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -163,7 +163,7 @@
 			"0": "3.3.3 AA"
 		},
 		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Lorsqu'il est impossible de faire une suggestion (par exemple pour des quesions de sécurité), le critère est non applicable</p>",
+		"exception":"<p>Lorsqu'il est impossible de faire une suggestion (par exemple pour des questions de sécurité), le critère est non applicable</p>",
         "group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -775,20 +775,6 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
 	},
 	{
-		"themes": "Entêtes",
-		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes ?",
-		"ID": "testID-076",
-		"IDorigin": "testID-076",
-		"wcag": [
-			"2.4.6 AA"
-		],
-		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
-		"priority": "P1",
-		"resultatTest": "nt",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
-	},
-    {
 		"themes": "Navigation générale",
 		"title": "L'application dispose-t-elle d'au moins 2 mécanismes de navigation&nbsp;?",
 		"ID": "testID-069",
@@ -801,6 +787,20 @@
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Entêtes",
+		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes ?",
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
 	},
 	{
 		"themes": "Multimédia",

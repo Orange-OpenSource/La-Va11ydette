@@ -973,7 +973,7 @@
 			"2.5.8 AA"
 		],
 		"verifier": "<p>La zone cliquable ou tactile est au moins de 24 par 24 pixels CSS.</p>",
-		"exception":"<ol><li>Il existe un cercle d'au moins 24 pixels CSS de diamètre avec les zones cliquables ou tactiles adjacentes.</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…) ou à une hauteur qui est limitée par un composant non intéractif.</li><li>La taille réduite est nécessaire pour convoyer l'information.</li><li>Les composants gérés par l'agent utilisateur sont utilisés tels quels.</li><li>Si plusieurs zones de click effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ol>",
+		"exception":"<ol><li>Il existe un cercle d'au moins 24 pixels CSS de diamètre avec les zones cliquables ou tactiles adjacentes.</li><li>Le lien est au milieu d'une phrase ou un paragraphe (icône d'aide dans une phrase, liens d’ancrage, note de bas de page…) ou à une hauteur qui est limitée par un composant non intéractif.</li><li>La taille réduite est nécessaire pour convoyer l'information.</li><li>Les composants gérés par l'agent utilisateur sont utilisés tels quels.</li><li>Si plusieurs zones de clic effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
 		"priority": "P2",
 		"resultatTest": "nt",

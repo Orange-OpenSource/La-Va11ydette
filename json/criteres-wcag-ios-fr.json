@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
+	    "verifier": "<ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -23,7 +23,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
+		"verifier": "<p>L'étiquette de chaque champ est pertinente.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -38,7 +38,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "Toutes les étiquettes sont bien liées à leurs champs",
+		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que toutes les étiquettes sont bien liées à leurs champs.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -47,14 +47,14 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"title": "Les champs de même nature sont-ils regroupés ?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": {
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>Switch</code> étant nécessaire</li></ul>",
+		"verifier": "<p>Les champs de même nature sont regroupés, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -70,7 +70,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
+		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
 		"group": "Champ de formulaire",
 		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"resultatTest": "nt",
@@ -86,7 +86,7 @@
 		"wcag": {
 			"0": "3.3.8 AA"
 		},
-		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",		
+		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si :</p><ul><li>une autre méthode d'authentification est proposée</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",		
         "exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
 		"complement":"<h5>Compléments d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
 		"group": "Champ de formulaire",
@@ -103,7 +103,7 @@
 		"wcag": {
 			"0": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
+		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -132,7 +132,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Vérifier que le champ en erreur est modifié (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'une icône, passage du champ en couleur rouge et changement d'aspect').</p>",
+		"verifier": "<p>Les champs en erreur sont visuellement modifiés, par exemple :</p><ul><li>ajout de la mention «&nbsp;erreur&nbsp;»</li><li>ajout d'une icône</li><li>passage du champ en couleur rouge avec changement d'aspect</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -147,7 +147,7 @@
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
+		"verifier": "<p>Un message d'erreur est présent visuellement et permet d'identifier explicitement les champs en erreur et de comprendre la nature des erreurs.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -162,8 +162,8 @@
 		"wcag": {
 			"0": "3.3.3 AA"
 		},
-		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Lorsqu'il est impossible de faire une suggestion, le critère est non applicable</p>",
+		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
+		"exception":"<p>Lorsqu'il est impossible de faire une suggestion (par exemple pour des questions de sécurité), le critère est non applicable</p>",
         "group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -172,14 +172,14 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
+		"title": "Si une information est demandée à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": {
 			"0": "3.3.7 A"
 		},
 		"verifier": "<p>Dans un formulaire en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par l’application tout en sachant que la saisie automatique n'est pas jugé suffisant.</p>",
-		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison).</p>",
+		"complement":"<h5>Compléments d'information</h5><p>Exemples de mécanismes valides : remplissage automatique, choix dans une liste déroulante, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (par exemple : adresse de facturation égale adresse de livraison).</p>",
 		"exception": "<ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -195,7 +195,7 @@
 		"wcag": {
 			"0": "3.3.4 AA"
 		},
-		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation, sauf si celle-ci est explicitement confirmée (par exemple avec une case à cocher \"Je confirme que je souhaite supprimer ces données\").</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -209,11 +209,25 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-        "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>le titre de la page est renseigné,</li><li>le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
+        "verifier": "<ul><li>Le titre de la page est visible.</li><li>Le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>Le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#titre-et-en-tete"
+	},
+    {
+		"themes": "Entêtes",
+		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes ?",
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
 	},
 	{
 		"themes": "Couleurs et contrastes",
@@ -223,7 +237,7 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour texte standard</strong> <ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
+		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour les textes non gras</strong> <ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
 		"exception": "<p>Les logos, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -253,7 +267,7 @@
 		"wcag": {
 			"0": "1.4.1 A"
 		},
-		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3 :1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
+		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier d'un lien ou bouton sans mise en forme dans du texte : <ul> <li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>Si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -266,7 +280,7 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -281,9 +295,11 @@
 			"0": "1.4.4 AA",
 			"1": "1.4.10 AA"
 		},
-		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenu ou de fonctionnalité inutilisable, tronqué ou masqué) suite à l'agrandissement de la taille du texte à 235%.</p>",
+		"verifier": "<ul><li>Sur iOS, suite à l'agrandissement de texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d’information ni de fonctionnalité(contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
+		"complement": "<h5>Compléments d'information</h5><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li><br>",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"exception": "<p>Non-applicable pour les sous-titres et textes sous forme d’image.</p>",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
 	},
@@ -295,7 +311,8 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier que tous les éléments signifiants sont vocalisés et accessibles en utilisant la navigation vocale.</p><ul><li>Chaque élément est vocalisé de façon pertinente (point d'attention notamment sur les images porteuses d'informations et les <code>ImageButton</code> qui n'ont pas de texte initialement).</li><li>Chaque élément interactif est vocalisé avec l'action associée.</li><li>Le titre de la page est vocalisé.</li><li>Chaque élément d'une liste a-t-il une description pertinente et unique ?</li><li>Vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li></ul>",
+		"verifier": "<p>Tous les éléments graphiques signifiants sont vocalisés et accessibles en utilisant la navigation vocale : </p><ul><li>Chaque élément graphique porteur d'information est vocalisé de façon pertinente.</li><li>Les images contenant du texte ont une alternative reprenant au moins le texte visible.</li><li>Les images complexes ont une alternative détaillée fournie par un contenu adjacent.</li><li>Chaque élément interactif est restitué au moins par un nom pertinent.</li><li>Les contenus multimédias pré-enregistrés sont facilement identifiables (par une alternative pertinente ou un contenu textuel adjacent).</li></ul>",
+		"complement": "<h5>Compléments d'information</h5><ul><li>Si le contenu non textuel est un test ou un exercice qui serait invalide s’il était présenté sous forme de texte, alors l'alternative fournit au moins une description succinte de ce contenu.</li><li>Si le contenu non textuel est principalement destiné à créer une expérience sensorielle spécifique, alors l'alternative textuelle fournit au moins une description succinte de ce contenu.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -316,29 +333,15 @@
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
 	},
-    {
-        "themes": "Navigation vocale",
-        "title": "Un champ de saisie est-il vocalisé avec le label qui lui est associé ? ",
-        "ID": "testID-061",
-        "IDorigin": "testID-061",
-        "wcag": [
-            "1.3.5 AA"
-        ],
-        "verifier": "<p>Vérifier que le libellé des champs de saisie sont bien associés à ceux-ci par le biais de l'attribut <code>AccessbilityLabel</code>. Les libellés doivent ainsi être vocalisés lorsqu'on navigue sur les champs de saisie avec lesquels ils sont associés.</p>",
-        "moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#alternatives-textuelles",
-        "resultatTest": "nt",
-        "priority": "P2",
-        "goodPractice": false
-    },
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation ?",
+		"title": "Les éléments liés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation ?",
 		"ID": "testID-020",
 		"IDorigin": "testID-020",
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p> Vérifier que :</p><ul><li>les éléments reliés sont groupés au sein d'un même bloc d'annonce pour la vocalisation</li><li>une information est vocalisée lors du focus sur le premier champ, permettant d'identifier le groupe auquel appartiennent les champs liés</li></ul>",
+		"verifier": "<p>Les éléments, dont le regroupement visuel est primordial pour comprendre l'information, doivent être groupés au sein d'un même bloc d'annonce pour la vocalisation.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -346,13 +349,27 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les entêtes de section sont-ils exploités lors de la navigation vocale par entête ? ",
+		"title": "Les éléments présentés sous forme de liste sont-ils correctement restitués ?",
+		"ID": "testID-021",
+		"IDorigin": "testID-021",
+		"wcag": {
+			"0": "1.3.1 A"
+		},
+		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste.</p>",
+		"resultatTest": "nt",
+		"priority": "P2",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
+	},
+	{
+		"themes": "Navigation vocale",
+		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête ? ",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": {
-			"0": "2.4.6 AA"
+			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale et le paramètre de navigation par entête défini :</p><ul><li>tous les entêtes de section sont navigables et vocalisés</li><li>seuls les entêtes sont navigables et vocalisés</li></ul>",
+		"verifier": "<p>À l'aide de la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -366,7 +383,7 @@
 		"wcag": {
 			"0": "3.2.2 A"
 		},
-		"verifier": "<p>Vérifier qu'avec la navigation vocale, les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
+		"verifier": "<p>Les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -374,14 +391,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués ?",
+		"title": "Les messages d'état ou contextuels sont-ils correctement restitués ?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, messages d'erreurs ou temporaires, une notification, changement d'un élément significatif, dialogue dans un chat, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une liste...) :</p><ul><li>vérifier qu'un mécanisme reposant sur les régions dynamique live est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinentes au lecteur d'écran</li></ul>",
-        "complement": "<h4>Exemples</h4><ul><li>message informant du résultat d'une action ou de l'état de l'application</li><li>message d'erreur</li><li>message indiquant la progression</li></ul>",
+		"verifier": "<ul><li>Chaque message d'état est restitué par le lecteur d'écran sans déplacement du focus (mécanisme reposant sur les annonces ou <span lang=\"en\">live regions</span>)</li><li>Chaque message d'état est restitué de façon pertinente</li></ul>",
+        "complement": "<h4>Exemples de message d'état</h4><ul><li>résultat d'une recherche</li><li>état de l'application (par ex. hors-ligne)</li><li>message d'erreur</li><li>message indiquant la progression</li><li>notification</li><li>message suite à l'ajout d'un produit dans un panier</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -389,13 +406,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les états des éléments sont-ils vocalisés ? ",
+		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés ? ",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<p>Vérifier que les états des éléments sont vocalisés (onglets, case à cocher, bouton radio, etc).</p>",
+		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -409,7 +426,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier qu'il n'y a aucun élément fantôme avec la navigation vocale.</p>",
+		"verifier": "<p>Il n'y a aucun élément fantôme (non-visible) restitué par la navigation vocale.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -423,7 +440,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Vérifier que les éléments décoratifs (comme certaines images) ne sont pas vocalisés.</p>",
+		"verifier": "<p>Les éléments graphiques décoratifs ne sont pas vocalisés.</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -431,14 +448,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "La vocalisation d'un élément textuel contient-il au minimum le libellé visible à l'écran pour ce même élément ? ",
+		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran pour ce composant ? ",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Vérifier que le libellé de l'élément est présent (en premier si possible) dans la vocalisation de ce composant.</p>",
-		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
+		"verifier": "<p>Le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
+		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -446,17 +463,60 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les tableaux sont-ils correctement structurés&nbsp;?",
+		"title": "Les tableaux de données sont-ils correctement structurés&nbsp;?",
 		"ID": "testID-070",
 		"IDorigin": "testID-070",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau)</li><li>Les entêtes ne doivent pas être vides</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données</li></ol>",
+		"verifier": "<ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d’identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les entêtes ne doivent pas être vides.</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
+	},
+    {
+		"themes": "Navigation vocale",
+		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
+		"ID": "testID-058",
+		"IDorigin": "testID-058",
+		"wcag": {
+			"0": "3.1.2 AA"
+		},
+		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>"
+	},
+	{
+		"themes": "Navigation vocale",
+		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
+		"ID": "testID-059",
+		"IDorigin": "testID-059",
+		"wcag": {
+			"0": "2.4.1 A"
+		},
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation vocale",
+		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": {
+			"0": "3.1.1 A"
+		},
+		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page.</p>",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false
 	},
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
@@ -466,7 +526,7 @@
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec le contrôle de sélection et l'accès complet au clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec le contrôle de sélection et l'accès complet au clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -480,7 +540,20 @@
 		"wcag": {
 			"0": "2.1.2 A"
 		},
-		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec le contrôle de selection ou en navigation au clavier: si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...). Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
+		"verifier": "<p>L'écran ne contient aucun piège :</p><ul><li>en navigation au clavier si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...).</li><li>avec le contrôle de selection, le focus ne doit pas rester bloqué au sein d'un conteneur.</li></ul><p>Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+	{
+		"themes": "Contrôle de sélection et navigation clavier",
+		"title": "Si un raccourci clavier utilisant une seule touche est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
+		"ID": "testID-028",
+		"IDorigin": "testID-075",
+		"wcag": {
+			"0": "2.1.4 A"
+		},
+		"verifier": "<p>Une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li>li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -493,7 +566,7 @@
 		"wcag": {
 			"0": "2.4.3 A"
 		},
-		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
+		"verifier": "L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -506,7 +579,7 @@
 		"wcag": {
 			"0": "2.4.7 AA"
 		},
-		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran.</p>",
+		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -519,7 +592,7 @@
 		"wcag": {
 			"0": "2.4.11 AA"
 		},
-		"verifier": "<p>Vérifier que le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"verifier": "<p>Le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -533,7 +606,7 @@
 		"wcag": {
 			"0": "2.5.4 A"
 		},
-		"verifier": "<ul><li>Vérifier que ces actions ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Vérifier qu'il est possible de désactiver la détection de mouvement.</li></ul>",
+		"verifier": "<ul><li>Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Il est possible de désactiver la détection de mouvement.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -541,14 +614,15 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;? (exemple zoom map)",
+		"title": "Les gestes complexes disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;? (exemple zoom map)",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
 		"wcag": {
 			"0": "2.5.1 A"
 		},
-		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
+		"verifier": "<p>Pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
 		"resultatTest": "nt",
+		"exception" : "<p>Le geste complexe est indispensable à la fonctionnalité</p>",
 		"priority": "P3",
 		"goodPractice": false,
 		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>"
@@ -571,7 +645,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les erreurs de clic (ou de toucher) peuvent-elles être annulées&nbsp;?",
+		"title": "Les erreurs de toucher (ou tap) peuvent-elles être annulées&nbsp;?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": {
@@ -590,9 +664,10 @@
 		"wcag": {
 			"0": "1.3.4 AA"
 		},
-		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
+		"verifier": "<p>Le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
+		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemple d'affichage jugé essentiel : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li>",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#orientation-de-lecran"
 	},
@@ -604,8 +679,8 @@
 		"wcag": {
 			"0": "2.5.8 AA"
 		},
-		"verifier": "<p>La zone cliquable ou tactile est au moins de 44pt (hauteur ET largeur)</p>",
-		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones cliquables ou tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones de clic effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
+		"verifier": "<p>La zone tactile est au moins de 44pt (hauteur ET largeur)</p>",
+		"exception":"<ul><li>Il existe un espacement d'un cercle d'au moins 21pt de diamètre avec les zones tactiles adjacentes</li><li>Le lien est au milieu d'une phrase ou d'un paragraphe(icône d'aide, liens d'ancrage, note de bas de page).</li><li>La taille réduite est nécessaire pour convoyer l'information</li><li>Un composant natif est utilisé et ne peut être modifié</li><li>Si plusieurs zones tactiles effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"wcag22" : true,
@@ -620,7 +695,7 @@
 		"wcag": {
 			"0": "3.2.4 AA"
 		},
-		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
+		"verifier": "<p>Les composants qui ont la même fonction ont un nom accessible similaire d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -633,7 +708,7 @@
 		"wcag": {
 			"0": "3.2.6 A"
 		},
-		"verifier": "<p>Vérifier que si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
 		"complement": "<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
 		"exception": "<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"resultatTest": "nt",
@@ -657,20 +732,6 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les textes sont-ils lisibles sans difficulté ?",
-		"ID": "testID-037",
-		"IDorigin": "testID-037",
-		"wcag": {
-			"0": "1.4.12 AA"
-		},
-		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police de caractère permet de bien différencier les lettres, comme i,l,I,L)</li><li>l'espacement entre les lettres et les lignes est suffisant</li><li>le texte n'est pas en italique</li></ul>",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
-	},
-	{
-		"themes": "Navigation générale",
 		"title": "L'utilisateur a-t-il le contrôle des changements de contexte&nbsp;? (Confimation de validation avant de changer / si l'on tape dessus pas de changement auto ?)",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
@@ -682,7 +743,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements :</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">de viewport</span> (ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
 	},
 	{
@@ -693,7 +754,9 @@
 		"wcag": {
 			"0": "2.2.2 A"
 		},
-		"verifier": "<p>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</p><p>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</p><p>Non applicable, si aucun mouvement, pas défilement, pas de clignotement et pas de mise à jour ou rafraichissement automatique qui durent plus de 5 secondes ou démarre automatiquement</p>",
+		"verifier": "<ul><li>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</li><li>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
+		"exception": "<p>Exception si le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -714,13 +777,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Le mécanisme de navigation est cohérent avec les autres écrans de l'application",
+		"title": "Les mécanismes de navigation sont cohérents avec les autres écrans de l'application",
 		"ID": "testID-056",
 		"IDorigin": "testID-056",
 		"wcag": {
 			"0": "3.2.3 AA"
 		},
-		"verifier": "<p>Vérifier que les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
+		"verifier": "<p>Les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -733,8 +796,8 @@
 		"wcag": {
 			"0": "1.4.5 AA"
 		},
-		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte.</p>",
-		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur'</li></ul>",
+		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte. Non applicable, si aucune image ne contient du texte.</p>",
+		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -742,13 +805,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de lien ou de bouton est-il explicite, au minimum dans son contexte ?",
+		"title": "L'étiquette/nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": {
 			"0": "2.4.4 A"
 		},
-		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
+		"verifier": "<p>L'utilisateur doit être capable de comprendre l'objectif d'un lien ou d'un bouton sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>Vérifier qu'il n'y a pas d'étiquettes identiques pointant vers des destinations différentes</li><li>Vérifier qu'il est possible de déterminer la destination d'un lien ou l'action d'un bouton uniquement à partir de son nom accessible</li><li>Si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte (phrase, paragraphe, cellule...)</li></ul>",
 		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -756,19 +819,19 @@
 	},
     {
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de bouton est-il pertinent&nbsp;?",
+		"title": "Chaque étiquette de composant est-elle pertinente&nbsp;?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p>",
+		"verifier": "<p>Pour chaque composant intéractif possédant une étiquette visible, celle-ci doit être suffisamment descriptive pour permettre à l'utilisateur de comprendre la fonction du composant</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
-	}, 
-    {
+	},
+	{
 		"themes": "Navigation générale",
 		"title": "L'application dispose-t-elle d'au moins 2 mécanismes de navigation&nbsp;?",
 		"ID": "testID-069",
@@ -776,21 +839,21 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Lorsque le nombre d'écrans est limité et/ou que le contenu est court, ce critère est non applicable.</p>\n<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>un plan de site</li><li>un mécanisme de recherche</li><li>...</li></ul>", 
-		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
+		"verifier": "<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
+		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{
 		"themes": "Multimédia",
-		"title": "Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente&nbsp;?",
+		"title": "Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente à proximité&nbsp;?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": {
 			"0": "1.2.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"verifier": "<p>Un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -799,13 +862,13 @@
 	},
 	{
 		"themes": "Multimédia",
-		"title": "Vidéo préenregistrée sans audio&nbsp;: une transcription textuelle ou une piste audio équivalente au contenu de la vidéo sont-elles présentes&nbsp;?",
+		"title": "Vidéo préenregistrée sans audio&nbsp;: une transcription textuelle ou une piste audio équivalente au contenu de la vidéo sont-elles présentes à proximité&nbsp;?",
 		"ID": "testID-042",
 		"IDorigin": "testID-042",
 		"wcag": {
 			"0": "1.2.1 A"
 		},
-		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée sans audio,un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -820,7 +883,7 @@
 		"wcag": {
 			"0": "1.2.3 A"
 		},
-		"verifier": "<ul><li>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée (avec ou sans audio) :</p><ul><li>Soit un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte : cette transcription textuelle doit alors être présente dans l'écran ou disponible via un lien positionné à proximité de la vidéo</li><li>Soit, une audiodescription est disponible, vérifier alors que : <ul><li>l'audiodescription est correctement synchronisée</li><li>l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>l'audiodescription est pertinente</li></ul></li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -835,7 +898,7 @@
 		"wcag": {
 			"0": "1.2.5 AA"
 		},
-		"verifier": "<ul><li>Vérifier que pour toute vidéo, une audiodescription est disponible.</li><li>Vérifier que l'audiodescription est correctement synchronisée.</li><li>Vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>Vérifier que l'audiodescription est pertinente.</li></ul>",
+		"verifier": "<p>Pour toute vidéo :</p><ul><li>Une audiodescription est disponible.</li><li>L'audiodescription est correctement synchronisée.</li><li>L'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>L'audiodescription est pertinente.</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -850,12 +913,14 @@
 		"wcag": {
 			"0": "1.2.2 A"
 		},
-		"verifier": "<ul><li>Vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"verifier": "<p>Pour toute vidéo avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"exception": "<p>Les sous-titres ne sont pas nécessaires lorsque les informations présentes dans la vidéo sont également présentées sous forme de texte ou d'alternative textuelle sur la même page.</p>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio",
+		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
 	},
 	{
 		"themes": "Multimédia",
@@ -865,7 +930,7 @@
 		"wcag": {
 			"0": "1.2.4 AA"
 		},
-		"verifier": "<ul><li>Vérifier que des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
+		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -881,70 +946,11 @@
 		"wcag": {
 			"0": "1.4.2 A"
 		},
-		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Possibilité de régler le volume indépendamment du volume système.</li></ul>",
+		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Ou possibilité de régler le volume indépendamment du volume système.</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
-	},
-	{
-		"themes": "Multimédia",
-		"title": "Des contrôles sont-ils présents pour interagir avec un média temporel(pause, stop, volume, sous titres, etc...) ?",
-		"ID": "testID-048",
-		"IDorigin": "testID-048",
-		"wcag": {
-			"0": "2.2.2 A"
-		},
-		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio un média vidéo, mais aussi avec un média basé sur le temps. Par exemple, un caroussel qui change de contenu automatiquement après un certain délai doit lui aussi proposer un sytème de contrôle pour pouvoir revenir au contenu précédent ou aller au contenu suivant.</p>",
-		"group": "Multimédia",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
-		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
-		"ID": "testID-058",
-		"IDorigin": "testID-058",
-		"wcag": {
-			"0": "3.1.2 AA"
-		},
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangères.</p>",
-		"group": "WebView",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#modifier-la-langue-de-vocalisation",
-		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, ne pas indiquer de changement de langue.</p>"
-	},
-	{
-		"themes": "WebView",
-		"title": "Un mécanisme pour naviguer au sein de la WebView est-il présent&nbsp;?",
-		"ID": "testID-059",
-		"IDorigin": "testID-059",
-		"wcag": {
-			"0": "2.4.1 A"
-		},
-		"verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
-		"group": "WebView",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
-		"title": "La langue principale est-elle définie et correspond-elle à la langue principale du document&nbsp;?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": {
-			"0": "3.1.1 A"
-		},
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
-		"group": "WebView",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue"
 	},
     {
 		"themes": "Contenu non-textuel",
@@ -954,7 +960,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"verifier": "<p>L'aternative à chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -968,7 +974,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que pour tout captcha uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"verifier": "<p>Pour tout captcha uniquement visuel ou sonore, l'une des alternatives ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -982,7 +988,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte</li><li>vérifier que l'alternative est pertinente</li></ul>",
+		"verifier": "<ul><li>Une alternative est fournie sous forme de texte</li><li>L'alternative est pertinente</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

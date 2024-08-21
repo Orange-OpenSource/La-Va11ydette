@@ -215,6 +215,20 @@
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#titre-et-en-tete"
 	},
+    {
+		"themes": "Entêtes",
+		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes ?",
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
+	},
 	{
 		"themes": "Couleurs et contrastes",
 		"title": "Le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors cas particuliers)&nbsp;?",
@@ -460,6 +474,49 @@
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
+	},
+    {
+		"themes": "Navigation vocale",
+		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
+		"ID": "testID-058",
+		"IDorigin": "testID-058",
+		"wcag": {
+			"0": "3.1.2 AA"
+		},
+		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>"
+	},
+	{
+		"themes": "Navigation vocale",
+		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
+		"ID": "testID-059",
+		"IDorigin": "testID-059",
+		"wcag": {
+			"0": "2.4.1 A"
+		},
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation vocale",
+		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": {
+			"0": "3.1.1 A"
+		},
+		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page.</p>",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false
 	},
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
@@ -789,20 +846,6 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Entêtes",
-		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes ?",
-		"ID": "testID-076",
-		"IDorigin": "testID-076",
-		"wcag": [
-			"2.4.6 AA"
-		],
-		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
-		"priority": "P1",
-		"resultatTest": "nt",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
-	},
-	{
 		"themes": "Multimédia",
 		"title": "Contenu préenregistré seulement audio&nbsp;: une transcription textuelle équivalente au contenu de l'audio est-elle présente à proximité&nbsp;?",
 		"ID": "testID-041",
@@ -905,49 +948,6 @@
 		},
 		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Ou possibilité de régler le volume indépendamment du volume système.</li></ul>",
 		"group": "Multimédia",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
-		"themes": "Navigation vocale",
-		"title": "Les changements de langues sont-ils indiqués&nbsp;?",
-		"ID": "testID-058",
-		"IDorigin": "testID-058",
-		"wcag": {
-			"0": "3.1.2 AA"
-		},
-		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
-		"group": "Navigation vocale",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false,
-		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>"
-	},
-	{
-		"themes": "Navigation vocale",
-		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
-		"ID": "testID-059",
-		"IDorigin": "testID-059",
-		"wcag": {
-			"0": "2.4.1 A"
-		},
-		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
-		"group": "Navigation vocale",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Navigation vocale",
-		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": {
-			"0": "3.1.1 A"
-		},
-		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page.</p>",
-		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

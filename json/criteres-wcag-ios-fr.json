@@ -548,7 +548,7 @@
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "Si un raccourci clavier utilisant une seule touche est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
-		"ID": "testID-028",
+		"ID": "testID-075",
 		"IDorigin": "testID-075",
 		"wcag": {
 			"0": "2.1.4 A"

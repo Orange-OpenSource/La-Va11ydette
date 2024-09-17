@@ -161,7 +161,7 @@
 	"contact": "Contact",
 	"contactEdit": "Modifier la liste des contacts",
 	"accessibilityPlan": "Schéma pluriannuel",
-	"accessibilityPlanText": "[Nom de l’organisme concerné] s'engage à rendre ses sites internet, intranet, extranet et ses applications mobiles accessibles conformément à l'article 47 de la loi n° 2005-102 du 11 février 2005.\n\nÀ cette fin, il met en œuvre la stratégie et les actions suivantes [liens vers le schéma pluriannuel et vers le plan d'action de l'année en cours incluant le bilan des actions réalisées l'année précédente].\n\nCette déclaration de conformité s'applique à [Nom du site web de l’application mobile, ou d’un autre service auquel la déclaration s’applique].",
+	"accessibilityPlanText": "[Nom de l’organisme concerné] s'engage à rendre ses sites internet, intranet, extranet et ses applications mobiles accessibles conformément à l'article 47 de la loi n° 2005-102 du 11 février 2005.\n\nÀ cette fin, il met en œuvre la stratégie et les actions suivantes [liens vers le schéma pluriannuel et vers le plan d'action de l'année en cours incluant le bilan des actions réalisées l'année précédente].\n\nCette déclaration d'accessibilité s'applique à [Nom du site web de l’application mobile, ou d’un autre service auquel la déclaration s’applique].",
 	"accessibilityPlanTextReplace":"[Nom de l’organisme concerné]",
 	"accessibilityPlanTextReplace2":"[Nom du site web de l’application mobile, ou d’un autre service auquel la déclaration s’applique]",
 	"markdownDesc": "Ce champ supporte le markdown",

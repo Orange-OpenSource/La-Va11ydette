@@ -1391,21 +1391,19 @@ exportStatementHTML = function (statementResult) {
 				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
 
         htmlStatement += `<div class="row summary">
-						<div class="col-lg-3">
+						<div class="col-lg-auto">
 							<h4 class="pie" data-value="${dataWCAG.result}">
 								<span class="visually-hidden">${langStatement.auditTxt1} </span>
 								<span class="pie-val">${dataWCAG.result}%</span>
 							</h4>
-
-							<p class="lead">${langStatement.auditTxt1}
+							<p class="lead text-center">${langStatement.auditTxt1}
 							</p>
 						</div>
-						<div class="col-lg-3">
+						<div class="col-lg-auto">
 							<h4 class="pie" data-value="${dataWCAG.globalPagesResult}">
 								<span class="visually-hidden">${langStatement.auditTxt13} </span>
 								<span class="pie-val">${dataWCAG.globalPagesResult}%</span>
 							</h4>
-
 							<p class="lead">${langStatement.auditTxt13}</p>
 						</div>
 					</div>`;

@@ -854,8 +854,8 @@
 		"wcag": [
 			"1.4.10 AA"
 		],
-		"verifier": "<p>Check that a horizontal scroll bar does not appear.</p>",
-		"exceptions": "<p>Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…</p>",
+		"verifier": "<p>Check for the absence of a horizontal scrollbar on the page.</p>",
+		"exceptions": "<p>Some content requiring both dimensions to be understandable such as images, maps, presentations, data tables, games…</p><p>Compliant if a horizontal scrollbar is present but its use is not necessary to access informative content or utilize features.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",

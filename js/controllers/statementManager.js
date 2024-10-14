@@ -687,6 +687,13 @@ function showStatementWizard() {
         }
     });
 
+    document.getElementById("checkbox-noncompliant").addEventListener('change', function (e) {
+        if (this.checked) {
+            dataVallydette.statement.compliantStateComment = langVallydette.nonFinishedAudit;
+            document.getElementById("input-compliantStateComment").value = dataVallydette.statement.compliantStateComment;
+        }
+    });
+
 }
 
 /**

@@ -168,6 +168,7 @@
 	"noncompliantInput": "Déclaration non conforme",
 	"noncompliantDesc": "Cochez cette case seulement si vous voulez générer une déclaration non conforme d'un audit non terminé.",
     "compliantStateComment": "Commentaire de l'état de conformité",
+	"nonFinishedAudit": "Les résultats des premiers tests sont issus d'une analyse partielle. Cette analyse a été interrompue au vu du nombre important de non-conformités observées.",
     "derogations": "Dérogations",
 	"exemptions": "Exemptions",
 	"nonCompliantComment": "Commentaire pour les non-conformités",

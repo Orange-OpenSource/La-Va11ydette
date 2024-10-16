@@ -1398,11 +1398,6 @@ exportStatementHTML = function (statementResult) {
 				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
 
                 if(dataVallydette.statement.nonCompliant === false){
-                    htmlStatement += `<div class="row summary">
-                                        <div class="col-lg-3">
-                                            <h4 class="pie" data-value="${dataWCAG.result}">
-                            		    </div>
- 			                        </div>`;
 
         htmlStatement += `<div class="row summary">
 						<div class="col-lg-auto text-center">

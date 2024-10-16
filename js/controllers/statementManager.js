@@ -1397,6 +1397,13 @@ exportStatementHTML = function (statementResult) {
 
 				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
 
+                if(dataVallydette.statement.nonCompliant === false){
+                    htmlStatement += `<div class="row summary">
+                                        <div class="col-lg-3">
+                                            <h4 class="pie" data-value="${dataWCAG.result}">
+                            		    </div>
+ 			                        </div>`;
+
         htmlStatement += `<div class="row summary">
 						<div class="col-lg-auto text-center">
 							<h4 class="pie" data-value="${dataWCAG.result}">
@@ -1512,6 +1519,24 @@ exportStatementHTML = function (statementResult) {
 
 				</div>
 			</div>`;
+
+        }
+        else{
+            htmlStatement += `<div class="row summary">
+            					<div class="col-lg-auto text-center">
+            						<h4 class="pie" data-value="50">
+            							<span class="visually-hidden">${langStatement.auditTxt1} </span>
+            							<span class="pie-val pie-noncompliant">${langStatement.template.status2}</span>
+            						</h4>
+            						<p class="lead">${langStatement.auditTxt1}</p>
+            				</div>
+            			</div>`;
+
+            htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
+            				<ul>
+            					<li>${langStatement.statementTemplate.resultsContentnonCompliant}${langStatement.statementTemplate.resultsContent2}</li>
+            				</ul>`;
+        }
 
     htmlStatement += `<div class="row">
 

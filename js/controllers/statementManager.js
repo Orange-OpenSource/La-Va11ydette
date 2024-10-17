@@ -687,6 +687,13 @@ function showStatementWizard() {
         }
     });
 
+    document.getElementById("checkbox-noncompliant").addEventListener('change', function (e) {
+        if (this.checked) {
+            dataVallydette.statement.compliantStateComment = langVallydette.nonFinishedAudit;
+            document.getElementById("input-compliantStateComment").value = dataVallydette.statement.compliantStateComment;
+        }
+    });
+
 }
 
 /**
@@ -1390,8 +1397,10 @@ exportStatementHTML = function (statementResult) {
 
 				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
 
+                if(dataVallydette.statement.nonCompliant === false){
+
         htmlStatement += `<div class="row summary">
-						<div class="col-lg-3">
+						<div class="col-lg-auto text-center">
 							<h4 class="pie" data-value="${dataWCAG.result}">
 								<span class="visually-hidden">${langStatement.auditTxt1} </span>
 								<span class="pie-val">${dataWCAG.result}%</span>
@@ -1400,7 +1409,7 @@ exportStatementHTML = function (statementResult) {
 							<p class="lead">${langStatement.auditTxt1}
 							</p>
 						</div>
-						<div class="col-lg-3">
+						<div class="col-lg-auto text-center">
 							<h4 class="pie" data-value="${dataWCAG.globalPagesResult}">
 								<span class="visually-hidden">${langStatement.auditTxt13} </span>
 								<span class="pie-val">${dataWCAG.globalPagesResult}%</span>
@@ -1505,6 +1514,24 @@ exportStatementHTML = function (statementResult) {
 
 				</div>
 			</div>`;
+
+        }
+        else{
+            htmlStatement += `<div class="row summary">
+            					<div class="col-lg-auto text-center">
+            						<h4 class="pie" data-value="50">
+            							<span class="visually-hidden">${langStatement.auditTxt1} </span>
+            							<span class="pie-val pie-noncompliant">${langStatement.template.status2}</span>
+            						</h4>
+            						<p class="lead">${langStatement.auditTxt1}</p>
+            				</div>
+            			</div>`;
+
+            htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
+            				<ul>
+            					<li>${langStatement.statementTemplate.resultsContentnonCompliant}${langStatement.statementTemplate.resultsContent2}</li>
+            				</ul>`;
+        }
 
     htmlStatement += `<div class="row">
 

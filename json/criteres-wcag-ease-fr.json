@@ -744,6 +744,22 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Navigation générale",
+		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs pages, celui-ci est-il présenté dans le même ordre relatif ?",
+		"ID": "testID-085",
+		"IDorigin": "testID-085",
+		"wcag": [
+			"3.2.6 A"
+		],
+		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit et dans le même ordre relatif sur toutes les pages.</p>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</li><li>Ce critère n'impose pas la présence de mécanismes d'aide. S'ils sont présents, vérifier que leur positionnement relatif est le même sur les différents pages du site ou de l'application.><li>Si la structure des pages est modifiée selon les profils d'utilisation (par exemple profil visiteur ou profil connecté), il convient de faire la vérification indépendamment pour chaque profil.</li></ul>",
+		"exception": "<ul><li>Conforme : Un élément n'est pas positionné visuellement au même endroit mais pourtant dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Conforme : Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, de résolution de la page, activation du zoom, etc.).</li><li>Conforme : Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li><li>Non-applicable : Des pages qui n'auraient rien à voir d'un point de vue visuel et fonctionnel (exemple : sur un site de e-commerce, lors du processus de paiement, le template peut changer et la page de paiement est fonctionnellement et visuellement totalement différente).</li><li>Non applicable si un mécanisme d'aide n'est présent que sur une seule page OU si le mécanisme d'aide est absent de la page en cours.</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/designer/navigation-generale/#sassurer-que-les-elements-daide-sont-places-dans-le-meme-ordre-relatif-sur-les-pages-qui-les-integrent</li>",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
 		"themes": "Navigation clavier",
 		"title": "Les fonctionnalités de la page sont-elles utilisables au clavier&nbsp;?",
 		"ID": "testID-037",

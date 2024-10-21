@@ -225,7 +225,7 @@
 		"status4": "non testé",
 		"filters": "Filtres",
 		"navAnchor": "Sur cette page",
-		"footerStatementText": "<a class=\"nav-link d-inline\" href=\"/declaration-accessibilite.html\">Accessibilité : Partiellement conforme</a>",
+		"footerStatementText": "<a class=\"nav-link d-inline\" href=\"/declaration-accessibilite.html\">Accessibilité : partiellement conforme</a>",
 		"footerTxt1": "Documentation sous <a class=\"nav-link d-inline\" href=\"https://github.com/Orange-OpenSource/La-Va11ydette/blob/master/LICENSE\">licence MIT</a>.",
 		"footerTxt2": "Le logo Orange ainsi que certaines images et captures sont la propriété d’Orange&nbsp;: Copyright © 2016 Orange SA <em lang=\"en\">All rights reserved</em>.",
 		"footerLinkGit": "Signaler une erreur sur GitHub<span class=\"visually-hidden\">&nbsp;(nouvelle fenêtre)</span><svg class=\"ms-1\" aria-hidden=\"true\" focusable=\"false\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 1000 1000\"><defs><style>.cls-1 {fill-rule: evenodd;}</style></defs><path class=\"cls-1\" d=\"M374.908,308.958L600,309V109L921.719,430.9a74.988,74.988,0,0,1,0,106.044L600,859V659H325A150.027,150.027,0,0,0,175,809v81C98.941,830.528,50,737.929,50,633.891,50,454.436,195.466,308.958,374.908,308.958Z\"/></svg>",

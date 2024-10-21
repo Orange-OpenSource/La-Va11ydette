@@ -1356,7 +1356,7 @@ exportStatementHTML = function (statementResult) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="boosted-grid.min.css">
   <link rel="stylesheet" href="pie.css">
@@ -1530,7 +1530,9 @@ exportStatementHTML = function (statementResult) {
             htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => a.name).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
             				<ul>
             					<li>${langStatement.statementTemplate.resultsContentnonCompliant}${langStatement.statementTemplate.resultsContent2}</li>
-            				</ul>`;
+            				</ul>
+                        </div>
+            		</div>`;
         }
 
     htmlStatement += `<div class="row">

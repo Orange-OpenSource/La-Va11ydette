@@ -133,7 +133,7 @@
 		},
 		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
 		"exception":"<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
-		"group": "Input screen",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -955,6 +955,7 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (e.g.: \"captcha (anti-spam image)\").</p>",
+		"group": "Captcha",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,

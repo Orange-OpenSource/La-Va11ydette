@@ -119,7 +119,7 @@
             "1.3.5 AA"
         ],
         "verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>textContentType</code>.</li><li>La valeur indiquée pour la propriété <code>textContentType</code> est pertinente au regard du type d'information attendue.</li></ul>",
-        "group": "Écran de saisie",
+        "group": "Champ de formulaire",
         "resultatTest": "nt",
         "priority": "P3",
         "goodPractice": false

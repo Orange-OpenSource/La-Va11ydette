@@ -757,6 +757,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/common-navigation/#ensure-that-the-help-elements-are-placed-in-the-same-relative-order-on-the-pages-that-include-them",
 		"priority": "P1",
 		"resultatTest": "nt",
+        "wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -918,23 +919,6 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#identify-and-maintain-consistency-of-groupings-and-different-regions-of-the-page",
 		"priority": "P3",
 		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Layout",
-		"title": "If help is offered and repeated on several pages, is it presented in a coherent manner?",
-		"ID": "testID-078",
-		"IDorigin": "testID-078",
-		"wcag": [
-			"3.2.6 A"
-		],
-		"verifier": "<p>If one or more assistive devices are offered, these must always be located in the same place, presented in the same way and in the same order on all pages.</p>",
-		"complement": "<h5> Additional information </h5><p>Help mechanisms can be an email address, phone number, contact form, chat, FAQ, etc.)</p>",
-		"exception":"<p>The user initiates a change in the presentation of the help following the use of zoom or orientation</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#identify-and-maintain-consistency-of-groupings-and-different-regions-of-the-page",
-		"priority": "P1",
-		"resultatTest": "nt",
-		"wcag22": true,
 		"goodPractice": false
 	},
 	{

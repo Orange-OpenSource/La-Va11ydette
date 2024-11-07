@@ -757,6 +757,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/navigation-generale/#sassurer-que-les-elements-daide-sont-places-dans-le-meme-ordre-relatif-sur-les-pages-qui-les-integrent",
 		"priority": "P1",
 		"resultatTest": "nt",
+        "wcag22": true,
 		"goodPractice": false
 	},
 	{
@@ -918,23 +919,6 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#identifier-et-conserver-la-coherence-des-regroupements-et-des-differentes-regions-de-la-page",
 		"priority": "P3",
 		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Mise en page",
-		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
-		"ID": "testID-078",
-		"IDorigin": "testID-078",
-		"wcag": [
-			"3.2.6 A"
-		],
-		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur toutes les pages</p>",
-		"complement": "<h5>Compléments d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
-		"exception": "<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#identifier-et-conserver-la-coherence-des-regroupements-et-des-differentes-regions-de-la-page",
-		"priority": "P1",
-		"resultatTest": "nt",
-		"wcag22": true,
 		"goodPractice": false
 	},
 	{

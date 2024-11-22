@@ -159,13 +159,13 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Si une information est demandée à l'utilisateur dans un même processus, sa saisie n'est t-elle pas redondante ?",
+		"title": "Si une même information est demandée plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie manuelle n'est pas requise plus d'une fois ?",
 		"ID": "testID-079",
 		"IDorigin": "testID-079",
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>Dans un écran de saisie de données en plusieurs étapes et dans un même processus, un système de remplissage automatique doit être proposé à l'utilisateur pour restituer une information préalablement saisie ou fournie par l'application tout en sachant que l'autocomplete n'est pas jugé suffisant.</p>",
+		"verifier": "<p>Dans un formulaire en plusieurs étapes et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisant.</p>",
 		"complement":"<h5>Complément</h5><p>exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
 		"exception":"<ol><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
 		"group": "Formulaire",

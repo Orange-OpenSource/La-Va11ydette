@@ -159,15 +159,15 @@
 	},
 	{
 		"themes": "Form",
-		"title": "If information is provided by or to the user in the same process, is its input not requested again?",
+		"title": "If the same information is requested multiple times during the same process or session, manual entry is not requierd more than once?",
 		"ID": "testID-079",
 		"IDorigin": "testID-079",
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>In a multi-step form and in the same session, an automatic completion system must be offered to the user to give information previously entered or provided by the site knowing that the autocomplete is not considered sufficient.</p>",
-		"complement":"<h5>Complement</h5><p>examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
-		"exception":"<ol><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
+		"verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p>",
+		"complement":"<h5>Complement</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
+		"exception":"<ol><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ol>",
 		"group": "Form",
 		"moreInfo": "",
 		"priority": "P3",

@@ -159,7 +159,7 @@
 	},
 	{
 		"themes": "Form",
-		"title": "If the same information is requested multiple times during the same process or session, manual entry is not requierd more than once?",
+		"title": "If the same information is requested multiple times during the same process or session, manual entry is not required more than once?",
 		"ID": "testID-079",
 		"IDorigin": "testID-079",
 		"wcag": [
@@ -177,7 +177,7 @@
 	},
 	{
 		"themes": "Form",
-		"title": "Can users authenticate themselves without going through a cognitive test ?",
+		"title": "Can users authenticate themselves without going through a cognitive test?",
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
 		"wcag": [

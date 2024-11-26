@@ -628,7 +628,7 @@
 	"testID-036":[
 		{
 			"title" : "Présence de clignotements rapides",
-			"detail" : "Présence de contenu présentant des clignotements rapides (plus de 3 flash à la seconde) ou les flashs sont inférieurs au seuil général ou seuil de rouge.",
+			"detail" : "Présence de contenu présentant des clignotements rapides (plus de 3 flashs à la seconde) ou les flashs sont inférieurs au seuil général ou seuil de rouge.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -858,7 +858,7 @@
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n - sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected…)",
 			"technicalSolution" : ""
 		}, {
-			"title" : "Un composant interactifs n'est pas utilisable avec un lecteur d'écran",
+			"title" : "Un composant interactif n'est pas utilisable avec un lecteur d'écran",
 			"detail" : "Les fonctionnalités d'un composant ne sont pas utilisables avec un lecteur d'écran",
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
 			"technicalSolution" : ""

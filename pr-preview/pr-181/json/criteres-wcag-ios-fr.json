@@ -498,7 +498,7 @@
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...</ul>",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P1",

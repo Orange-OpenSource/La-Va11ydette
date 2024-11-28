@@ -29,10 +29,10 @@
 		"template": "wcag",
 		"version": "2.2.2",
 		"lastId": "testID-074",
-		"name-fr": "Audit de conformité WCAG 2.2 / IOS",
-		"name-en": "Conformity audit WCAG 2.2 / IOS",
-		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'un application IOS aux critères WCAG 2.2 A et AA",
-		"description-en": "Audit grid to assess the level of compliance of a IOS application with WCAG 2.2 A and AA criteria",
+		"name-fr": "Audit de conformité WCAG 2.2 / iOS",
+		"name-en": "Conformity audit WCAG 2.2 / iOS",
+		"description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité d'un application iOS aux critères WCAG 2.2 A et AA",
+		"description-en": "Audit grid to assess the level of compliance of a iOS application with WCAG 2.2 A and AA criteria",
 		"about-fr": "https://a11y-guidelines.orange.com/fr/mobile/ios/audit-wcag/",
 		"about-en": "https://a11y-guidelines.orange.com/en/mobile/ios/wcag-audit/"
 	}

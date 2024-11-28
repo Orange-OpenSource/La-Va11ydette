@@ -142,7 +142,7 @@
         "PDF22"
         ],
         "verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-        "exception":"<p>Le critère est non applicable dans les cas suivants :</<p><ul><li>lorsqu'il est impossible de faire une suggestion</li><li>Lorsque le message d'erreur est issue d'un script ou du logiciel d'édition PDF</li>",
+        "exception":"<p>Le critère est non applicable dans les cas suivants :</p><ul><li>lorsqu'il est impossible de faire une suggestion</li><li>Lorsque le message d'erreur est issue d'un script ou du logiciel d'édition PDF</li></ul>",
         "group": "Formulaire",
         "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
         "priority": "P3",
@@ -496,7 +496,7 @@
             "PDF2"
         ],
         "verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire (nombre de page important) à la navigation, mais absent du document, le test est alors non-conforme :</p><ul><li>des titres de niveaux</li><li>un sommaire ou signets, présents en début du document et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>footer</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
-        "exception":"<p>Le critère est non applicable dans les cas suivants :</<p><ul><li>Lorsque le document n'est constitué que de quelques pages.</li><li>Lorsque le contenu n'a pas vocation à être structuré par une arborescence de titres</li>",
+        "exception":"<p>Le critère est non applicable dans les cas suivants :</p><ul><li>Lorsque le document n'est constitué que de quelques pages.</li><li>Lorsque le contenu n'a pas vocation à être structuré par une arborescence de titres</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
         "priority": "P3",
         "resultatTest": "nt",

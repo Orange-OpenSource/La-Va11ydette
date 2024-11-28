@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
+	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -267,7 +267,7 @@
 		"wcag": {
 			"0": "1.4.1 A"
 		},
-		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier d'un lien ou bouton sans mise en forme dans du texte : <ul> <li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>Si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
+		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier d'un lien ou bouton sans mise en forme dans du texte : <ul> <li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>Sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>Si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li> <li>Critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -280,7 +280,7 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>Identification d’une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l’image pour en savoir plus \"</li> <li>Identification d’une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -296,7 +296,7 @@
 			"1": "1.4.10 AA"
 		},
 		"verifier": "<ul><li>Sur iOS, suite à l'agrandissement de texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d’information ni de fonctionnalité(contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
-		"complement": "<h5>Compléments d'information</h5><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li><br>",
+		"complement": "<h5>Compléments d'information</h5><ul><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"exception": "<p>Non-applicable pour les sous-titres et textes sous forme d’image.</p>",
@@ -498,7 +498,7 @@
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li>...",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -637,7 +637,7 @@
 		},
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"complement": "<h5>Complement</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d’arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\".</p>",
-		"exception":"<p>Le critère est non applicable :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dexterité par exemple)</li><li>La fonctionalité est native est non modifiée</li></ul>",
+		"exception":"<p>Le critère est non applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dexterité par exemple)</li><li>La fonctionalité est native et non modifiée</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"wcag22" : true,
@@ -651,7 +651,7 @@
 		"wcag": {
 			"0": "2.5.2 A"
 		},
-		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>vérifier qu'aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément) et qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
+		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>Aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément) et qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>Si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>Pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -667,7 +667,7 @@
 		"verifier": "<p>Le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemple d'affichage jugé essentiel : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li>",
+		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemple d'affichage jugé essentiel : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li></ul>",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#orientation-de-lecran"
 	},

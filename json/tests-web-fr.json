@@ -199,7 +199,7 @@
 	"title": "Rendre accessible les clignotements",
 	"type": ["Test manuel"],
 	"tests": ["Examiner les contenus de type animations et vidéos de la page qui clignotent"],
-	"verifier": ["Vérifier qu'il n'y a pas de contenu présentant des clignotements rapides (plus de 3 flash à la seconde) ou les <a href='https://www.w3.org/TR/WCAG22/#dfn-general-flash-and-red-flash-thresholds' target='_blank' hreflang='en'>flashs sont inférieurs au seuil général ou seuil de rouge</a>."],
+	"verifier": ["Vérifier qu'il n'y a pas de contenu présentant des clignotements rapides (plus de 3 flashs à la seconde) ou les <a href='https://www.w3.org/TR/WCAG22/#dfn-general-flash-and-red-flash-thresholds' target='_blank' hreflang='en'>flashs sont inférieurs au seuil général ou seuil de rouge</a>."],
 	"resultat": ["Absence de clignotement ou de flash rapide ou dépassant le seuil général ou de rouge"],
 	"exception": "",
 	"raccourcis": "",

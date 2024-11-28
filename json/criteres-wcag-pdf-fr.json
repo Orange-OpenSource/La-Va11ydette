@@ -142,7 +142,7 @@
         "PDF22"
         ],
         "verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-        "exception":"<p>Le critère est non applicable dans les cas suivants :</<p><ul><li>lorsqu'il est impossible de faire une suggestion</li><li>Lorsque le message d'erreur est issue d'un script ou du logiciel d'édition PDF</li>",
+        "exception":"<p>Le critère est non applicable dans les cas suivants :</<p><ul><li>lorsqu'il est impossible de faire une suggestion</li><li>Lorsque le message d'erreur est issue d'un script ou du logiciel d'édition PDF</li></ul>",
         "group": "Formulaire",
         "moreInfo": " https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#formulaires",
         "priority": "P3",

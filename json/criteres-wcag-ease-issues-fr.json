@@ -862,6 +862,11 @@
 			"detail" : "Les fonctionnalités d'un composant ne sont pas utilisables avec un lecteur d'écran",
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
 			"technicalSolution" : ""
+		}, {
+			"title" : "Un composant interactif n'a pas de nom accessible",
+			"detail" : "Un composant interactif n'a pas de nom accessible",
+			"solution" : "Privilégier les méthodes natives en rensseignant un libellé de bouton.\n Au besoin, le nom accessible peut être modifié à l'aide des attributs ARIA aria-label et aria-labelledby.",
+			"technicalSolution" : ""
 		}
 	]
 }

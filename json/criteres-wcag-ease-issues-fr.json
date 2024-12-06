@@ -865,7 +865,7 @@
 		}, {
 			"title" : "Un composant interactif n'a pas de nom accessible",
 			"detail" : "Un composant interactif n'a pas de nom accessible",
-			"solution" : "Privilégier les méthodes natives en rensseignant un libellé de bouton.\n Au besoin, le nom accessible peut être modifié à l'aide des attributs ARIA aria-label et aria-labelledby.",
+			"solution" : "Privilégier les méthodes natives en renseignant un libellé de bouton.\n Au besoin, le nom accessible peut être modifié à l'aide des attributs ARIA aria-label et aria-labelledby.",
 			"technicalSolution" : ""
 		}
 	]

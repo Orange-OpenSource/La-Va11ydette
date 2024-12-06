@@ -559,13 +559,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de bouton est-il pertinent&nbsp;?",
+		"title": "Chaque libellé de bouton est-il présent et pertinent&nbsp;?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p>",
+		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p><p>En cas d'absence de nom accessible, penser à invalider le critère 4.1.2 A.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",

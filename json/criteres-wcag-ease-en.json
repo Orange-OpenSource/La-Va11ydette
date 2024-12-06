@@ -118,7 +118,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<ul><li>check that the label or the accessible name of the field in error is modified so that it is understood that the field is in error (e.g.: addition of the mention 'error', addition of an icon, addition of an <code>aria-labelledby</code>.. .)</li><li>if the visual information does not have a text alternative (e.g.: icon without alternative), check that the field has an attribute <code>aria-invalid='true'</code ></li></ul>",
+		"verifier": "<ul><li>check that the label, the accessible name or the accessible desscription of the field in error is modified so that it is understood that the field is in error (e.g.: addition of the mention 'error', addition of an icon, addition of an <code>aria-labelledby</code>, addition of an <code>aria-describedby</code>.. .)</li><li>and check that the field has an attribute <code>aria-invalid='true'</code ></li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P1",

@@ -855,6 +855,11 @@
 			"detail" : "The features of a component that cannot be used with a screen reader",
 			"solution" : "- use native components as a priority (example: use input checkboxes for checkboxes, the state will be managed natively \n - otherwise make sure to apply the ARIA patterns, to ensure correct semantics",
 			"technicalSolution" : ""
+		}, {
+			"title" : "An interactive component does not have an accessible name",
+			"detail" : "An interactive component does not have an accessible name",
+			"solution" : "Prefer native methods by providing a button label.\n If needed, the accessible name can be modified using the ARIA attributes aria-label and aria-labelledby.",
+			"technicalSolution" : ""
 		}
 	]
 }

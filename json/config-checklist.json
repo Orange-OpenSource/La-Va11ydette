@@ -54,10 +54,10 @@
         "template": "wcag",
         "version": "2.2.2",
         "name-fr": "Audit de conformité WCAG 2.2 / PDF",
-        "name-en": "Conformity audit WCAG 2.2 / PDF",
+        "name-en": "",
         "description-fr": "Grille d'audit permettant d'évaluer le niveau de conformité des documents PDF aux critères WCAG 2.2 A et AA",
-        "description-en": "Audit grid to assess the level of compliance of a PDF document with WCAG 2.2 A and AA criteria",
+        "description-en": "",
         "about-fr": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
-        "about-en": "https://a11y-guidelines.orange.com/en/content-and-communication/pdf/"
+        "about-en": ""
     }
 }

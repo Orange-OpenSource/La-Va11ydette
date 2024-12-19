@@ -565,7 +565,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p><p>En cas d'absence de nom accessible, penser à invalider le critère 4.1.2 A.</p>",
+		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p><p>En cas d'absence de nom accessible, penser à invalider le critère 4.1.2 A \"Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance ?\" (testID-066)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",

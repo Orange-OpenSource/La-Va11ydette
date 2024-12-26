@@ -781,7 +781,7 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Lorsque le nombre d'écrans est inférieur à 3 ou 4 et/ou le contenu succinct, ce critère est non applicable.</p>\n<p>vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur ll'écran, pour permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>", 
+		"verifier": "<p>Lorsque le nombre d'écrans est inférieur à 3 ou 4 et/ou le contenu succinct, ce critère est non applicable.</p>\n<p>Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur ll'écran, pour permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>", 
 		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
 		"priority": "P3",
 		"resultatTest": "nt",

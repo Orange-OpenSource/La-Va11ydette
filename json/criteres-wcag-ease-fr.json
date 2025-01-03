@@ -177,15 +177,54 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
-		"ID": "testID-077",
-		"IDorigin": "testID-077",
+		"title": "L'utilisateur peut-il s'authentifier avec un nom d'utilisateur et un mot de passe sans utiliser de test s'appuyant sur des fonctions cognitives&nbsp;?",
+		"ID": "testID-086",
+		"IDorigin": "testID-086",
 		"wcag": [
-			"3.3.8 AA"
+			"3.3.8 AA",
+			"3.3.9 AAA"
 		],
-		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
+		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
 		"exception": "",
-		"complement": "<h5>Complément&nbsp;: </h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
+		"complement": "<h5>Complément&nbsp;:</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "L'utilisateur peut-il s'authentifier avec un système à double facteur (2FA) sans utiliser de test s'appuyant sur des fonctions cognitives&nbsp;?",
+		"ID": "testID-087",
+		"IDorigin": "testID-087",
+		"wcag": [
+			"3.3.8 AA",
+			"3.3.9 AAA"
+		],
+		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification avec un système à double facteur (2FA) ne repose sur un test cognitif sauf si cette étape permet au choix :</p><ul><li>à l'utilisateur :<ul><li>de coller le code de vérification</li><li>de brancher une clé USB où il lui suffit d'appuyer sur un bouton pour entrer un jeton valable pendant une durée limitée</li><li>de scanner un QR code par une application présente sur son appareil pour confirmer son identité</li><li>de recevoir une notification sur son appareil qui lui permet de confirmer son identité (par exemple, par un code PIN défini par l'utilisateur, une empreinte digitale, une reconnaissance faciale)</li></ul></li><li>à un agent utilisateur de renseigner automatiquement le code de vérification</li></ul>",
+		"exception": "",
+		"complement": "<h5>Complément&nbsp;:</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "Lorsque l'authentification inclut un CAPTCHA, une alternative qui ne repose pas sur un test cognitif est-elle proposée&nbsp;?",
+		"ID": "testID-088",
+		"IDorigin": "testID-088",
+		"wcag": [
+			"3.3.8 AA",
+			"3.3.9 AAA"
+		],
+		"verifier": "<p>Vérifier que lorsqu'un parcours d'authentification inclut un CAPTCHA, une méthode alternative qui ne repose pas sur un test cognitif (retenir, recopier un mot, reconnaitre une image donnée par le site web) est proposée. Note : la reconnaissance d'objets ou l'identification d'un contenu personnel non textuel est tolérée.</p><ul><li>S'il s'agit d'une authentification à double facteur qui se fait par la reconnaissance d'un contenu personnel non textuel, les conditions de sécurité doivent permettre d'éviter à une tierce personne de deviner quelle est l'image à reconnaitre.</li><li>Dans le cas où l'utilisateur est obligé de transcrire du texte (ex : création pour la première fois d'un mot de passe qui sera ensuite enregistré dans un logiciel de gestion de mot de passe), la possibilité de montrer les caractères saisis doit être proposée.</li><ul>",
+		"exception": "",
+		"complement": "<h5>Complément&nbsp;:</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",

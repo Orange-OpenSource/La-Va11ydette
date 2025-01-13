@@ -339,7 +339,7 @@
         {
 			"title" : "Contraste insuffisant entre texte et fond",
 			"detail" : "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
-			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de tailles normales (inférieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de taille normale (inférieure à 24px CSS ou 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grande taille (supérieure à 24px CSS ou 19px CSS en gras).",
 			"technicalSolution" : ""
 		},
 		{

@@ -700,8 +700,8 @@
 	],
 	"testID-043":[
 		{
-			"title" : "Presence of a horizontal scroll bar",
-			"detail" : "A horizontal scroll bar appears after resizing the interface to 320px css wide.",
+			"title" : "Need to scroll horizontally to access information or functions",
+			"detail" : "Content (informative text or functionality) is hidden and requires horizontal scrolling to be displayed.",
 			"solution" : "- apply relative units (em, rem,%) to text containers \n - or use \"min-width\" and \"min-height\" properties instead of \"width\" and \"height\" properties.",
 			"technicalSolution" : ""
 		}

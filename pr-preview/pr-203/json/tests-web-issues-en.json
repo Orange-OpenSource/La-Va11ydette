@@ -507,7 +507,7 @@
 	"testWebID-43": [
 		{
 			"title" : "Need to scroll horizontally to access information or functions",
-			"detail" : "After resizing to 320 px css width, content (informative text or functionality) is hidden and requires horizontal scrolling to be displayed.",
+			"detail" : "Content (informative text or functionality) is hidden and requires horizontal scrolling to be displayed.",
 			"solution" : "- apply relative units (em, rem,%) to text containers \n- or use \"min-width\" and \"min-height\" properties instead of \"width\" and \"height\" properties.",
 			"technicalSolution" : ""
 		}

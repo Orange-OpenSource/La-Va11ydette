@@ -340,7 +340,7 @@
         {
 			"title" : "Insufficient contrast between text and background",
 			"detail" : "The contrast must be sufficient to understand the information carried by all the texts.",
-			"solution" : "Ensure a contrast of 4.5:1 minimum for texts of normal sizes (less than 24px CSS and 19px CSS bold). Ensure a minimum contrast of 3:1 for large texts (greater than 24px CSS and 19px CSS bold).",
+			"solution" : "Ensure a contrast of 4.5:1 minimum for normal size texts (less than 24px CSS or 19px CSS bold). Ensure a minimum contrast of 3:1 for large size texts (greater than 24px CSS or 19px CSS bold).",
 			"technicalSolution" : ""
 		},
 		{

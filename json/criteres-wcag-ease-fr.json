@@ -791,7 +791,7 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Si un raccourci clavier utilisant un seul caractère, celui-ci vérifie-t-il l'une des conditions ci-dessous&nbsp;?",
+		"title": "Si un raccourci clavier utilisant un seul caractère imprimable, celui-ci vérifie-t-il l'une des conditions ci-dessous&nbsp;?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [

@@ -339,13 +339,13 @@
         {
 			"title" : "Contraste insuffisant entre texte et fond",
 			"detail" : "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
-			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de taille normale (inférieure à 24px CSS ou 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grande taille (supérieure à 24px CSS ou 19px CSS en gras).",
+			"solution" : "Assurer un contraste de 4.5:1 minimum pour les textes de taille normale (inférieure à 24px CSS non gras ou 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grande taille (supérieure à 24px CSS non gras ou 19px CSS en gras).",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Contraste insuffisant pour des liens non-soulignés",
 			"detail" : "Les liens non-soulignés doivent avoir un rapport de contraste suffisant avec le texte environnant.",
-			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (inférieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+			"solution" : "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (inférieur à 24px CSS non gras ou 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS non gras ou 19px CSS en gras).",
 			"technicalSolution" : ""
 		}
     ],

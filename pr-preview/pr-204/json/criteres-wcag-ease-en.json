@@ -546,7 +546,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Is a user notified when a new window opens ?",
+		"title": "Is a user notified when a new window opens?",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [],
@@ -565,7 +565,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p><p>If the accessible name is missing, consider invalidating criterion 4.1.2 A.</p>",
+		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p><p>If the accessible name is missing, consider invalidating criterion 4.1.2 A 'Are all user interface components (native or custom controls) compatible with assistive technologies?' (testID-066)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -600,7 +600,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Are skip links present ?",
+		"title": "Are skip links present?",
 		"ID": "testID-074",
 		"IDorigin": "testID-074",
 		"wcag": [],
@@ -688,7 +688,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Is information about the user's location within a page set available ?",
+		"title": "Is information about the user's location within a page set available?",
 		"ID": "testID-075",
 		"IDorigin": "testID-075",
 		"wcag": [

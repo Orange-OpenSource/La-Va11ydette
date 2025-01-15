@@ -791,7 +791,7 @@
 	},
 	{
 		"themes": "Keyboard navigation",
-		"title": "If a keyboard shortcut uses a printable character is available, does it meet one of the conditions below?",
+		"title": "If a keyboard shortcut using a printable character is available, does it meet one of the conditions below?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [
@@ -799,7 +799,7 @@
 		],
 		"verifier": "<ul><li>the shortcut can be disabled by the user </li><li>the shortcut is only active when the interface component has focus </li><li> A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) </li></ul>",
 		"exception": "<p>Keyboard shortcuts that include <code>accesskey</code> or a modifier key are not affected (non-printable character key, for instance <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>Shift></kbd>).</p>",
-		"complement": "<h5>Additional information</h5><p>The presence of shortcuts can be detected using this <a href='http://3needs.org/en/testing/code/kb-shortcuts.html' target='_blank' title='keyboard shorcuts bookmarklet (new window)'>keyboard shorcuts bookmarklet</a></p>",
+		"complement": "<h5>Additional information</h5><p>The presence of shortcuts can be detected using this <a href='javascript:(function(){var n=32;var end=8365;key();function key(){console.log(n+': '+String.fromCharCode(n));e=document.createEvent('Event');e.initEvent('keydown', true, false);e.key=String.fromCharCode(n);e.which = n;e.keyCode=n;e.charCode=n;document.getElementsByTagName('BODY')[0].dispatchEvent(e);e=document.createEvent('Event');e.initEvent('keypress', true, false);e.key=String.fromCharCode(n);e.which = n;e.keyCode=n;e.charCode=n;document.getElementsByTagName('BODY')[0].dispatchEvent(e);e=document.createEvent('Event');e.initEvent('keyup', true, false);e.key=String.fromCharCode(n);e.which = n;e.keyCode=n;e.charCode=n;document.getElementsByTagName('BODY')[0].dispatchEvent(e); n++; if(n<end){if(n==256) n=8364; x=window.setTimeout(key, 20);}}})();' title='keyboard shorcuts bookmarklet (new window)'>keyboard shorcuts bookmarklet</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P3",
 		"resultatTest": "nt",

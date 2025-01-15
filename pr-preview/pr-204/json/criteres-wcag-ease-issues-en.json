@@ -340,13 +340,13 @@
         {
 			"title" : "Insufficient contrast between text and background",
 			"detail" : "The contrast must be sufficient to understand the information carried by all the texts.",
-			"solution" : "Ensure a contrast of 4.5:1 minimum for normal size texts (less than 24px CSS non-bold or 19px CSS bold). Ensure a minimum contrast of 3:1 for large size texts (greater than 24px CSS non-bold or 19px CSS bold).",
+			"solution" : "Ensure a contrast of 4.5:1 minimum for normal size texts (less than 24px CSS non-bold and 19px CSS bold). Ensure a minimum contrast of 3:1 for large size texts (greater than 24px CSS non-bold and 19px CSS bold).",
 			"technicalSolution" : ""
 		},
 		{
 			"title" : "Insufficient contrast for non-underlined links",
 			"detail" : "Non-underlined links must have a sufficient contrast ratio with the surrounding text.",
-			"solution" : "Ensure a minimum contrast of 4.5: 1 between an un-underlined link and the surrounding text of normal sizes (less than 24px CSS non-bold or 19px CSS in bold). Ensure a minimum 3: 1 contrast between a non-underlined link and the surrounding text of large sizes (greater than 24px CSS non-bold or 19px CSS in bold).",
+			"solution" : "Ensure a minimum contrast of 4.5: 1 between an un-underlined link and the surrounding text of normal sizes (less than 24px CSS non-bold and 19px CSS in bold). Ensure a minimum 3: 1 contrast between a non-underlined link and the surrounding text of large sizes (greater than 24px CSS non-bold and 19px CSS in bold).",
 			"technicalSolution" : ""
 		}
     ],

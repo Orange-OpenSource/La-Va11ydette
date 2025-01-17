@@ -1005,14 +1005,14 @@
 	},
 	{
 		"themes": "Layout",
-		"title": "Are the clickable or touchable areas large enough?",
+		"title": "Do interactive elements have a minimum target size of 24x24 pixels or sufficient spacing?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>The clickable or touchable area is at least 24 by 24 CSS pixels.</p>",
-		 "exception":"<ol><li>There is a circle at least 24 CSS pixels in diameter with adjacent clickable or touchable areas.</li><li>The link is in the middle of a sentence or paragraph (link icon help in a sentence, anchor links, footnote, etc.) or at a height that is limited by a non-interactive component.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information. </li><li>The components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion. </li></ol>",
+		"verifier": "<p>Verify that each interactive element meets the minimum target size of 24x24 pixels in all display conditions (zoom, viewport size, etc.).</p>",
+		"exception":"<ul><li>Compliant: if interactive elements have a target size smaller than the minimum of 24x24 pixels but are positioned so that a circle with a diameter of 24 pixels centered on each does not overlap with other interactive elements.</li><li>Compliant: if the target size of the interactive element is less than 24x24 pixels but there is a compliant alternative that allows the same action.</li><li>Compliant: if the interactive element is embedded in a sentence or its size is constrained by the line height of surrounding non-interactive text.</li><li>Non-applicable: if the rendering of interactive elements is the default rendering of the user agent.</li><li>Non applicable: if the size and position of interactive elements are crucial for the content (e.g., markers on a map) or constrained by legal obligations. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "P2",
 		"resultatTest": "nt",

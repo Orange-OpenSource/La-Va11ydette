@@ -1005,7 +1005,7 @@
 	},
 	{
 		"themes": "Mise en page",
-		"title": "Les éléments interactifs ont-ils une surface minimale de 24*24 pixels ou un espacement suffisant ?",
+		"title": "Les éléments interactifs ont-ils une surface minimale de 24*24 pixels ou un espacement suffisant&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [

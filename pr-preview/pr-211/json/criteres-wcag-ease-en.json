@@ -458,7 +458,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by a text or by an image containing a text (text image) can be understood.<ul><li><strong>For regular text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by a text or by an image containing a text (text image) can be understood.<ul><li><strong>For regular text:</strong> <ul><li>Font size less than <code>24 CSS pixels </code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24 CSS pixels </code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5 CSS pixels </code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5 CSS pixels </code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
 		"exception": "<p>Logos or all purely decorative elements.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
@@ -1005,13 +1005,13 @@
 	},
 	{
 		"themes": "Layout",
-		"title": "Do interactive elements have a minimum target size of 24x24px or sufficient spacing?",
+		"title": "Do interactive elements have a minimum target size of 24x24 CSS pixels or sufficient spacing?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>Verify that each interactive element meets the minimum target size of 24*24px in all display conditions (zoom, viewport size, etc.).</p><p>The criterion is also compliant for the following exceptions:</p><ul><li>If the interactive element has a target size smaller than the minimum of 24*24px but is placed so that a circle with a diameter of 24px centered on the target does not overlap with another target or the circle for an undersized target.</li><li>If the target size of the interactive element is less than 24*24px but there is a compliant alternative in the page that allows the same action.</li><li>If the interactive element is embedded in a sentence or its size is constrained by the line height of surrounding non-interactive text.</li></ul>",
+		"verifier": "<p>Verify that each interactive element meets the minimum target size of 24*24 CSS pixels  in all display conditions (zoom, viewport size, etc.).</p><p>The criterion is also compliant for the following exceptions:</p><ul><li>If the interactive element has a target size smaller than the minimum of 24*24 CSS pixels  but is placed so that a circle with a diameter of 24 CSS pixels  centered on the target does not overlap with another target or the circle for an undersized target.</li><li>If the target size of the interactive element is less than 24*24 CSS pixels  but there is a compliant alternative in the page that allows the same action.</li><li>If the interactive element is embedded in a sentence or its size is constrained by the line height of surrounding non-interactive text.</li></ul>",
 		"exception":"<p>Not applicable if:</p><ul><li>The rendering of interactive elements is the default rendering of the user agent.</li><li>The size and position of interactive elements are crucial for the content (e.g., markers on a map) or constrained by legal obligations. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "P2",

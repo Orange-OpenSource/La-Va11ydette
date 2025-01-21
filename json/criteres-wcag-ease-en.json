@@ -1005,7 +1005,7 @@
 	},
 	{
 		"themes": "Layout",
-		"title": "Do interactive elements have a minimum target size of 24x24 pixels or sufficient spacing?",
+		"title": "Do interactive elements have a minimum target size of 24x24px or sufficient spacing?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [

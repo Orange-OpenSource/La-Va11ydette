@@ -799,7 +799,7 @@
 		],
 		"verifier": "<ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) à la combinaison</li></ul>",
 		"exception": "<p>Ne sont pas concernés les <code>accesskey</code> et les raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, par exemple <kbd>Ctrl</kbd>, <kbd>Alt</kbd> ou <kbd>Shift></kbd>).</p>",
-		"complement": "<h5>Complément</h5><p>La présence de raccourcis peut être détectée en utilisant ce <a href='https://a11y-guidelines.orange.com/fr/web/outils/methodes-et-outils-de-test/'>bookmarklet raccourcis clavier</a></p>",
+		"complement": "<h5>Complément</h5><p>La présence de raccourcis peut être détectée en utilisant ce <a href='https://a11y-guidelines.orange.com/fr/web/outils/methodes-et-outils-de-test/raccourcis-clavier/'>bookmarklet raccourcis clavier</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisaateur-garde-le-controle-lors-des-interactions",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -631,7 +631,7 @@
 	"title": "Utiliser des tailles relatives et faire du web adaptatif / Reflow",
 	"type": ["Test manuel"],
 	"tests": ["Dimensionner le viewport à 320 px CSS de large ou utiliser un smartphone de cette taille"],
-	"verifier": ["Le contenu est présenté sans perte d'informations ni de fonctionnalités sur la fenêtre réduite à 320px de large, sans nécessité de défiler horizontalement sur la page"],
+	"verifier": ["Le contenu est présenté sans perte d'informations ni de fonctionnalités sur la fenêtre réduite à 320px de large et sans nécessité de faire défiler la page horizontalement"],
 	"resultat": ["Les pages conçues pour défiler verticalement (donc avec un texte horizontal), ne font par apparaître d'ascenseur horizontal lorsqu'on fixe une largeur d'affichage à 320px CSS.","Conforme si une barre de défilement horizontale est présente mais que son utilisation n'est pas nécessaire pour accéder au contenu informatif ou utiliser les fonctionnalités de la page."],
 	"exception": "Certains contenus tels des cartes, tableaux de données, jeux, etc. peuvent nécessiter un défilement à 2 dimensions.",
 	"raccourcis": "",

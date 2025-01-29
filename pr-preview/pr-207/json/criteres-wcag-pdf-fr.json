@@ -374,8 +374,8 @@
         "wcag": [
         "1.4.11 AA"
         ],
-        "verifier": "<p>Vérifier que les graphiques, les icônes et les composants interactifs graphiques ont un contraste minimum de 3:1 pour transmettre l'information</p>",
-        "exception": "<ul><li>les logos</li><li>si un texte, comme un label ou un tableau de données, apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>Le manque de contraste est nécessaire pour convoyer l'information</li><li>les composants inactifs ou son affichage est gérés tel quel par l'agent utilisateur</li></ul>",
+        "verifier": "<p>Vérifier que les graphiques, les icônes et les composants interactifs graphiques ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
+        "exception": "<ul><li>les logos</li><li>si un texte, comme un label ou un tableau de données, apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>le composant est inactif</li><li>l'affichage par défaut de l'agent utilisateur n'est pas modifié</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/#couleurs",
         "priority": "P1",
         "resultatTest": "nt",

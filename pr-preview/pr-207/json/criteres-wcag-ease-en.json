@@ -177,17 +177,56 @@
 	},
 	{
 		"themes": "Form",
-		"title": "Can users authenticate themselves without going through a cognitive test?",
-		"ID": "testID-077",
-		"IDorigin": "testID-077",
+		"title": "Can the user authenticate with a username and password without using tests based on cognitive functions?",
+		"ID": "testID-086",
+		"IDorigin": "testID-086",
 		"wcag": [
-			"3.3.8 AA"
+			"3.3.8 AA",
+			"3.3.9 AAA"
 		],
-		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing unless that step provides:</p><ul><li>another authentication method</li><li>help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the website.</li></ul><p>Please note, that memorizing a username and password is a cognitive test.<br/>The copy/paste function must be authorized on these fields.<br/>If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
+		"verifier": "<p>Check that no step in an login/password authentication process relies on a cognitive test, unless that step provides:</p><ul><li>an alternate authentication method</li><li>help for the user</li><li>a cognitive test that consists in recognizing objects (images, video, audio)</li><li>a cognitive test that consists in identifying non-textual personal content (images, video, audio) that the user has previously provided to the website</li></ul><p>Since memorizing a login and password is a cognitive test, to satisfy the criterion, the copy/paste function must be allowed on these fields or the login and password must be filled in automatically (e.g., password manager).</p>",
 		"exception": "",
-		"complement": "<h5>Complement&nbsp;: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"complement": "<h5>Complement: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
 		"group": "Form",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/forms/#accessible-authentication",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
+		"title": "Can the user authenticate with a two-factor authentication (2FA) system without using tests based on cognitive functions?",
+		"ID": "testID-087",
+		"IDorigin": "testID-087",
+		"wcag": [
+			"3.3.8 AA",
+			"3.3.9 AAA"
+		],
+		"verifier": "<p>Check that no step in an authentication process with a two-factor system (2FA) relies on a cognitive test, unless this step allows:</p><ul><li>the user:<ul><li>to paste the verification code</li><li>to plug in a USB key and click a button to enter a code available for a limited time</li><li>to scan a QR code via an application on their device to confirm their identity</li><li>to receive a notification on their device to confirm their identity (e.g., by a user-defined PIN code, fingerprint, facial recognition)</li></ul></li><li>a user agent to automatically enter the verification code</li></ul><p>The proposed authentication process meets criterion 3.3.8 or 3.3.9, which means it does not rely on a cognitive test (e.g., memorizing or entering a login and password that must be copied without error, reproducing a gesture pattern on a touch screen, solving a puzzle).</p>",
+		"exception": "",
+		"complement": "<h5>Complement: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/forms/#accessible-authentication",
+		"priority": "P0",
+		"resultatTest": "nt",
+		"wcag22": true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Form",
+		"title": "When authentication includes a CAPTCHA, is there an alternative that does not rely on a cognitive test provided?",
+		"ID": "testID-088",
+		"IDorigin": "testID-088",
+		"wcag": [
+			"3.3.8 AA",
+			"3.3.9 AAA"
+		],
+		"verifier": "<p>Verify that when an authentication pathway includes a CAPTCHA, an alternative method that does not rely on a cognitive test (e.g., memorizing, copying a word, recognizing an image given by the website) is offered. Note:  Object recognition or identification of non-textual personal content is permitted.</p><ul><li>In the case of a two-factor authentication process based on the recognition of a non-textual personal content, the security conditions must prevent a third party from guessing which image to be recognized.</li><li>If the user has to transcribe text (e.g.: creating a password for the 1st time, which will then be saved in password management software), the option of showing the characters entered must be proposed.</li></ul>",
+		"exception": "",
+		"complement": "<h5>Complement: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/forms/#accessible-authentication",
 		"priority": "P0",
 		"resultatTest": "nt",
 		"wcag22": true,
@@ -419,7 +458,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by a text or by an image containing a text (text image) can be understood.<ul><li><strong>For regular text:</strong> <ul><li>Font size less than <code>24px</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24px</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5px</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5px</code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
+		"verifier": "<ul><li>Check that the contrast is sufficient in order that the information communicated by a text or by an image containing a text (text image) can be understood.<ul><li><strong>For regular text:</strong> <ul><li>Font size less than <code>24 CSS pixels </code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>24 CSS pixels </code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>18.5 CSS pixels </code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>18.5 CSS pixels </code>: contrast ratio 3:1</li></ul></li></ul></li><li>For non-underlined links, check that there is sufficient contrast between the body text and the link text</li></ul>",
 		"exception": "<p>Logos or all purely decorative elements.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
@@ -967,14 +1006,14 @@
 	},
 	{
 		"themes": "Layout",
-		"title": "Are the clickable or touchable areas large enough?",
+		"title": "Do interactive elements have a minimum target size of 24x24 CSS pixels or sufficient spacing?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>The clickable or touchable area is at least 24 by 24 CSS pixels.</p>",
-		 "exception":"<ol><li>There is a circle at least 24 CSS pixels in diameter with adjacent clickable or touchable areas.</li><li>The link is in the middle of a sentence or paragraph (link icon help in a sentence, anchor links, footnote, etc.) or at a height that is limited by a non-interactive component.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information.</li><li>The reduced size is necessary to convey the information. </li><li>The components managed by the user agent are used as is.</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion. </li></ol>",
+		"verifier": "<p>Verify that each interactive element meets the minimum target size of 24*24 CSS pixels in all display conditions (zoom, viewport size, etc.).</p><p>The criterion is also compliant for the following exceptions:</p><ul><li>If the interactive element has a target size smaller than the minimum of 24*24 CSS pixels but is placed so that a circle with a diameter of 24 CSS pixels centered on the target does not overlap with another target or the circle for an undersized target.</li><li>If the target size of the interactive element is less than 24*24 CSS pixels but there is a compliant alternative in the page that allows the same action.</li><li>If the interactive element is embedded in a sentence or its size is constrained by the line height of surrounding non-interactive text.</li></ul>",
+		"exception":"<p>Not applicable if:</p><ul><li>The rendering of interactive elements is the default rendering of the user agent.</li><li>The size and position of interactive elements are crucial for the content (e.g., markers on a map) or constrained by legal obligations. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
 		"priority": "P2",
 		"resultatTest": "nt",

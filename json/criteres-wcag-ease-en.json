@@ -837,7 +837,7 @@
 			"2.1.4 A"
 		],
 		"verifier": "<ul><li>the shortcut can be disabled by the user </li><li>the shortcut is only active when the interface component has focus </li><li> A mechanism is available to remap the shortcut to include one or more non-printable keyboard keys (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) </li></ul>",
-		"exception": "<p>Keyboard shortcuts that include <code>accesskey</code> or a modifier key are not affected (non-printable character key, for instance <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>Shift></kbd>).</p>",
+		"exception": "<p>Keyboard shortcuts that include <code>accesskey</code> or a modifier key are not affected (non-printable character key, for instance <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>Shift</kbd>).</p>",
 		"complement": "<h5>Additional information</h5><p>The presence of shortcuts can be detected using this <a href='https://a11y-guidelines.orange.com/en/web/toolbox/methods-and-test-tools/keyboard-shortcuts/'>keyboard shorcuts bookmarklet</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P3",

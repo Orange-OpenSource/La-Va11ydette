@@ -9,6 +9,7 @@
 		],
 		"verifier": "<ul><li>A label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
 		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
+		"complement": "<h5>Additionally</h5><p>A placeholder alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text neat the form field.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P0",
@@ -40,6 +41,7 @@
 			"4.1.2 A"
 		],
 		"verifier": "<ul><li>All labels are properly linked to their fields, using one of the following: <ul><li>an ARIA attribute <code>aria-labelledby</code> in the field</li><li>an ARIA attribute <code>aria-label</code> in the field</li><li>a <code>label</code> tag with a <code>for</code> attribute referencing the <code>id</code> of the field</li><li>a <code>title</code> attribute in the <code>input</code> tag of the field</li></ul></li><li>All data formats present are well linked to their input fields, by integrating it: <ul><li>directly in the tag <code>label</code></li><li>by modifying the field's <code>aria-label</code> attribute</li><li>by adding the format ID in the field's <code>aria-labelledby</code> attribute</li><li>by modifying the accessible description of the field with the attribute <code>aria-describedby</code></li></ul></li></ul>",
+		"complement": "<h5>Additionally</h5><p>A placeholder alone is not sufficient to provide an accessible name; it must be accompanied by one of the techniques listed above.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P1",
@@ -55,7 +57,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<ul><li>the presence of a <code>fieldset</code> group or <code>role='group'</code></li><li>each group possesses a legend (<code>legend</code>, <code>aria-labelledby</code>)</li></ul>",
-		"complement": "<h5>Additionally: </h5><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
+		"complement": "<h5>Additionally</h5><p>Group elements only when it is necessary, for example:</p><ul><li>in order to differentiate between several fields having the same label (road, postcode, town – for delivery address and billing address)</li><li>legend text is necessary in order to facilitate the choice among a list of <code>radio</code> buttons or <code>checkbox</code> elements</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
@@ -71,7 +73,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<ul><li>The label of each input field is relevant.</li><li>If a data format is indicated for a input field, it is relevant.</li><li>If fields are grouped, check that the legend is relevant.</li></ul>",
-		"complement":"<h5>Complement</h5><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
+		"complement":"<h5>Additionally</h5><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P0",
@@ -166,7 +168,7 @@
 			"3.3.7 A"
 		],
 		"verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p>",
-		"complement":"<h5>Complement</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
+		"complement":"<h5>Additionally</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
 		"exception":"<ol><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ol>",
 		"group": "Form",
 		"moreInfo": "",
@@ -186,7 +188,7 @@
 		],
 		"verifier": "<p>Check that no step in an login/password authentication process relies on a cognitive test, unless that step provides:</p><ul><li>an alternate authentication method</li><li>help for the user</li><li>a cognitive test that consists in recognizing objects (images, video, audio)</li><li>a cognitive test that consists in identifying non-textual personal content (images, video, audio) that the user has previously provided to the website</li></ul><p>Since memorizing a login and password is a cognitive test, to satisfy the criterion, the copy/paste function must be allowed on these fields or the login and password must be filled in automatically (e.g., password manager).</p>",
 		"exception": "",
-		"complement": "<h5>Complement: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
+		"complement": "<h5>Additionally</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/forms/#accessible-authentication",
 		"priority": "P0",
@@ -205,7 +207,7 @@
 		],
 		"verifier": "<p>Check that no step in an authentication process with a two-factor system (2FA) relies on a cognitive test, unless this step allows:</p><ul><li>the user:<ul><li>to paste the verification code</li><li>to plug in a USB key and click a button to enter a code available for a limited time</li><li>to scan a QR code via an application on their device to confirm their identity</li><li>to receive a notification on their device to confirm their identity (e.g., by a user-defined PIN code, fingerprint, facial recognition)</li></ul></li><li>a user agent to automatically enter the verification code</li></ul><p>The proposed authentication process meets criterion 3.3.8 or 3.3.9, which means it does not rely on a cognitive test (e.g., memorizing or entering a login and password that must be copied without error, reproducing a gesture pattern on a touch screen, solving a puzzle).</p>",
 		"exception": "",
-		"complement": "<h5>Complement: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
+		"complement": "<h5>Additionally</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/forms/#accessible-authentication",
 		"priority": "P0",
@@ -224,7 +226,7 @@
 		],
 		"verifier": "<p>Verify that when an authentication pathway includes a CAPTCHA, an alternative method that does not rely on a cognitive test (e.g., memorizing, copying a word, recognizing an image given by the website) is offered. Note:  Object recognition or identification of non-textual personal content is permitted.</p><ul><li>In the case of a two-factor authentication process based on the recognition of a non-textual personal content, the security conditions must prevent a third party from guessing which image to be recognized.</li><li>If the user has to transcribe text (e.g.: creating a password for the 1st time, which will then be saved in password management software), the option of showing the characters entered must be proposed.</li></ul>",
 		"exception": "",
-		"complement": "<h5>Complement: </h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
+		"complement": "<h5>Additionally</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>In the authentication process, do not use methods based on:</p><ul><li>object recognition</li><li>identification of non-textual personal content (images, video, audio) previously supplied to the website by the user.</li></ul><p>In the case of a hidden password, provide the option of displaying the characters entered in plain text.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/design/forms/#accessible-authentication",
 		"priority": "P0",
@@ -271,7 +273,7 @@
 		],
 		"verifier": "<ul><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
-		"complement":"<h5>Additionally: </h5><p>This criterion does not require the use of a title, if no title is present this criterion is not applicable.</p>",
+		"complement":"<h5>Additionally</h5><p>This criterion does not require the use of a title, if no title is present this criterion is not applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -286,7 +288,7 @@
 		],
 		"verifier": "<ul><li>Level headings should be relevant and help understand the content of the page.</li><li>Headings should accurately describe the section of content they present.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
-		"complement":"<h5>Additionally: </h5><p>This criterion does not require the use of a title, if no title is present this criterion is not applicable.</p>",
+		"complement":"<h5>Additionally</h5><p>This criterion does not require the use of a title, if no title is present this criterion is not applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -356,7 +358,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>If the table is a presentation table, remove any semantic tag or attribute of a table (<code>caption, summary, th, scope, headers</code>…) and add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title’s <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn’t empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
+		"verifier": "<p>If the table is a presentation table, remove any semantic tag or attribute of a table (<code>caption, summary, th, scope, headers</code>…) and add a <code>role='presentation'</code> attribute to the <code>table</code> and therefore this table becomes not applicable for this criterion</p><p>If the table is a data array:</p><ol><li> If a data table has a title (or a caption), check that the title is programmatically linked to the table using one of the following techniques: <br /><ul><li><code>Caption</code> tag</li><li><code>Aria-label</code> on the table element *</li><li><code>Aria-labelledby</code> on the element pointing to the title's <code>ID</code> *</li><li> Title on the table element *</li> * Warning: In addition, the technique must be validated with a functional test on the specific environment(s) (browser or technical assistance) targeted by the audit.</ul></li><li> If the data table has a title, check that the title is relevant.<ul><li>The title isn't empty</li><li>The title helps the user to understand the nature of the data in the table</li></ul></li><li> If the table includes a summary, check that it is programmatically linked to the table using one of the following techniques:<ul><li><strong>HTML5</strong>: presence of a summary, in accessible masking if necessary or <code>display:none</code>, linked to the table with a <code>aria-describedby</code></li><li><strong>Older HTML version:</strong> the summary is in a <code>summary</code> attribute</li></ul></li><li> If a summary is provided, check that it is:<ul><li>relevant</li><li>different from the title</li></ul></li><li><strong>Single header table</strong> (a row, or a column header only), check that there are headers (<code>th</code>)</li><li>Headers <code>th</code> must not be empty</li><li> <strong>Double header table</strong> (a row and a column header):<ul><li>For each <code>th</code> check that there is a <code>scope='col'</code> attribute for the column headers,</li><li> and that there is a <code>scope='row'</code> attribute for the row headers</li></ul></li><li><strong>Complex tables</strong> (multiple and irregular headers), check that there are headers (<code>th</code>) and/or <code>id</code> and <code>headers</code> attributes</li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -474,7 +476,7 @@
 		"1.4.3 AA"
 		],
 		"verifier": "<ul><li>If the text color is defined (<code>color</code>), the background color must also be defined (<code>background-color</code>) .</li><li>If the background color is defined (<code>background-color</code>), the text color must also be defined (<code>color</code>).</ li><li>If a background image is used for an element containing text (<code>background-image</code>), the background color must be set (<code>background-color</code>) .</li></ul>",
-		"complement": "<h5>Complement</h5><ul><li>These properties can be applied directly to an element or inherited from a parent.</li><li> To test, the easiest way is to change your browser default colors.In Firefox, go to \"Settings > Language and appearance > Colors\", open \"Manage colors...\" and in \"Text and background\", customize the \"Text\" and \"Background\" colors in order to clearly identify them. If in the page only one of these colors appears without the other appearing in the same element, the test is not compliant</li><li>In case of some texts on a background image declared as \"background-image\", it's possible to check using the Web Developer extension, then in the menu \"Images\" > \"Hide background images\", locate texts whose background has disappeared and check that they are readable and sufficiently contrasted.</li></ul>",
+		"complement": "<h5>Additionally</h5><ul><li>These properties can be applied directly to an element or inherited from a parent.</li><li> To test, the easiest way is to change your browser default colors.In Firefox, go to \"Settings > Language and appearance > Colors\", open \"Manage colors...\" and in \"Text and background\", customize the \"Text\" and \"Background\" colors in order to clearly identify them. If in the page only one of these colors appears without the other appearing in the same element, the test is not compliant</li><li>In case of some texts on a background image declared as \"background-image\", it's possible to check using the Web Developer extension, then in the menu \"Images\" > \"Hide background images\", locate texts whose background has disappeared and check that they are readable and sufficiently contrasted.</li></ul>",
 		"moreInfo": "",
 		"priority": "P2",
 		"resultTest": "nt",
@@ -503,7 +505,7 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g.: icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link or hovers over it with the mouse (e.g.: underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a website’s navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
+		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g.: icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link or hovers over it with the mouse (e.g.: underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a website's navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -1077,7 +1079,7 @@
 		],
 		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single pointing action).</p>",
 		"exceptions": "<p>The criterion is not applicable: </p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native and unmodified< /li></ul>",
-		"complement":"<h5>Complement</h5><p>This criterion only targets actions for which only the start and end points are taken into account (dragging and then dropping a ticket in a Kanban board for example) and does not take into account so-called “multi- points”, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
+		"complement":"<h5>Additionally</h5><p>This criterion only targets actions for which only the start and end points are taken into account (dragging and then dropping a ticket in a Kanban board for example) and does not take into account so-called “multi- points”, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
 		"group": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P2",

@@ -9,7 +9,7 @@
 		],
 		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d'un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximté du champ de formulaire.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",

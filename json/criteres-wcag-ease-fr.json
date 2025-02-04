@@ -7,8 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
-		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d'un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
+		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Lorsque le champ de formulaire n'a pas de libellé visible mais que son rôle est évident (champ de recherche accompagné d'un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p> ",
 		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
@@ -41,7 +40,7 @@
 			"4.1.2 A"
 		],
 		"verifier": "<ul><li>Toutes les étiquettes sont bien liées à leurs champs, grâce à&nbsp;: <ul><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li></ul></li><li>Tous les formats de données présents sont bien liés à leurs champs, en l'intégrant : <ul><li>directement dans la balise <code>label</code></li><li>en modifiant l'attribut <code>aria-label</code> du champ</li><li>en ajoutant l'ID du format dans l'attribut <code>aria-labelledby</code> du champ</li><li>en modifiant l'accessible description du champ avec l'attribut <code>aria-describedby</code></li></ul></li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir un nom accessible, il doit être accompagné par une des techniques citées ci-dessus.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir un nom accessible, il doit être accompagné d'une des techniques citées ci-dessus.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -90,7 +89,8 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Dans le code, l'une des techniques doit être implémentée :<ul><li>Le texte ou l'élément visuel doit être intégré dans la balise label ou lié au champ du formulaire (ex: avec un <code>aria-labelledby</code>...)</li><li>présence de l'attribut <code>required</code> ou <code>aria-required</code></li></ul></li></ul>",
-		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
+		"complement":"<h5>Complément d'information</h5><p>Le critère est également applicable si tous les champs d'un formulaire sont obligatoires, à l'exception d'un champ optionnel. Il est alors possible d'identifier uniquement le champ optionnel selon la méthode détaillée ci-dessus.</p>",
+		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe). Dans ce cas le test est non-applicable.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -136,7 +136,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (ex.&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
-		"exception":"<p>Lorsqu'il est impossible de spécifiquement identifier le champ en erreur (ex.&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier spécifiquement lequel des deux champs est en erreur), le critère est conforme.</p>",
+		"complement": "<p>Le critère est conforme s'il est impossible d'identifier précisement le champ en erreur (ex.&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier précisement lequel des deux champs est en erreur).</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
@@ -167,9 +167,8 @@
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p>",
+		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p></p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
-		"exception":"<ol><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
 		"group": "Formulaire",
 		"moreInfo": "",
 		"priority": "P3",

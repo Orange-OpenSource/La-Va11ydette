@@ -7,8 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>A label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
-		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
+		"verifier": "<ul><li>A label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul><p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
 		"complement": "<h5>Additionally</h5><p>A placeholder alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text neat the form field.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
@@ -90,8 +89,9 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>A text or a visual element (symbol such as an asterisk, an image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>In the code, one of the techniques must be implemented:<ul><li>The text or visual element must be embedded in the label tag or linked to the form field (e.g. with a <code>aria-labelledby</code>...)</li><li>presence of the <code>required</code> attribute or <code>aria-required</code></li></ul></li></ul>",
+		"complement": "<h5>Additionally</h5><p>The criterion is also applicable if all fields in a form are mandatories, except for one optional field. It is then possible to identify only the optional field using the method detailed above.</p>",
 		"group": "Form",
-		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
+		"exception":"<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>. In this case, the criterion is not applicable.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -136,7 +136,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Check that:</p><ul><li> an error message is present visually, </li><li>the field in error is precisely identified by the error message, </li> the nature of the error is clear (e.g., required phone field, invalid email format…).</li></ul>",
-		"exception":"<p>When it is impossible to specifically identify the field in error (e.g., authentication page with username, password for which, for security reasons, it is not possible to specifically identify which of the two fields is in error), the criterion is compliant.</p>",
+		"complement":"<p>The criterion is compliant if it is impossible to specifically identify the field in error (e.g., authentication page with username, password for which, for security reasons, it is not possible to specifically identify which of the two fields is in error).</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P2",
@@ -167,9 +167,8 @@
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p>",
+		"verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p><p>The criterion is also compliant for following exceptions:</p><ul><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ul>",
 		"complement":"<h5>Additionally</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
-		"exception":"<ol><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ol>",
 		"group": "Form",
 		"moreInfo": "",
 		"priority": "P3",

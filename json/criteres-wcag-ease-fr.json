@@ -7,8 +7,9 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d’un texte qui devient visible à la prise de focus.</li></ul>",
-		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d’un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
+		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut title </li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
+		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d'un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
@@ -40,6 +41,7 @@
 			"4.1.2 A"
 		],
 		"verifier": "<ul><li>Toutes les étiquettes sont bien liées à leurs champs, grâce à&nbsp;: <ul><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li></ul></li><li>Tous les formats de données présents sont bien liés à leurs champs, en l'intégrant : <ul><li>directement dans la balise <code>label</code></li><li>en modifiant l'attribut <code>aria-label</code> du champ</li><li>en ajoutant l'ID du format dans l'attribut <code>aria-labelledby</code> du champ</li><li>en modifiant l'accessible description du champ avec l'attribut <code>aria-describedby</code></li></ul></li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir un nom accessible, il doit être accompagné par une des techniques citées ci-dessus.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -55,7 +57,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<ul><li>la présence de groupe <code>fieldset</code> ou <code>role='group'</code></li><li>chaque groupe possède une légende (<code>legend</code>, <code>aria-labelledby</code>)</li></ul>",
-		"complement": "<h5>Complément&nbsp;: </h5><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P3",
@@ -71,7 +73,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<ul><li>L'étiquette de chaque champ est pertinente.</li><li>Si un format de donnée est indiqué pour un champ, il est pertinent.</li><li>Si des champs sont regroupés, vérifier que la légende est pertinente.</li></ul>",
-		"complement":"<h5>Complément</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
+		"complement":"<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
@@ -166,7 +168,7 @@
 			"3.3.7 A"
 		],
 		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p>",
-		"complement":"<h5>Complément</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
+		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
 		"exception":"<ol><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ol>",
 		"group": "Formulaire",
 		"moreInfo": "",
@@ -186,7 +188,7 @@
 		],
 		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
 		"exception": "",
-		"complement": "<h5>Complément&nbsp;:</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
 		"priority": "P0",
@@ -203,9 +205,9 @@
 			"3.3.8 AA",
 			"3.3.9 AAA"
 		],
-		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification avec un système à double facteur (2FA) ne repose sur un test cognitif sauf si cette étape permet au choix :</p><ul><li>à l'utilisateur :<ul><li>de coller le code de vérification</li><li>de brancher une clé USB où il lui suffit d'appuyer sur un bouton pour entrer un jeton valable pendant une durée limitée</li><li>de scanner un QR code par une application présente sur son appareil pour confirmer son identité</li><li>de recevoir une notification sur son appareil qui lui permet de confirmer son identité (par exemple, par un code PIN défini par l'utilisateur, une empreinte digitale, une reconnaissance faciale)</li></ul></li><li>à un agent utilisateur de renseigner automatiquement le code de vérification</li></ul><p>Le processus d'authentification proposé répond au critère 3.3.8 ou 3.3.9, c’est-à-dire qu'il ne repose pas sur un test cognitif (ex : mémoriser ou saisir un identifiant et mot de passe qui doivent être recopiés sans erreur, reproduire un schéma gestuel sur un écran tactile, résoudre une énigme)</p>",
+		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification avec un système à double facteur (2FA) ne repose sur un test cognitif sauf si cette étape permet au choix :</p><ul><li>à l'utilisateur :<ul><li>de coller le code de vérification</li><li>de brancher une clé USB où il lui suffit d'appuyer sur un bouton pour entrer un jeton valable pendant une durée limitée</li><li>de scanner un QR code par une application présente sur son appareil pour confirmer son identité</li><li>de recevoir une notification sur son appareil qui lui permet de confirmer son identité (par exemple, par un code PIN défini par l'utilisateur, une empreinte digitale, une reconnaissance faciale)</li></ul></li><li>à un agent utilisateur de renseigner automatiquement le code de vérification</li></ul><p>Le processus d'authentification proposé répond au critère 3.3.8 ou 3.3.9, c'est-à-dire qu'il ne repose pas sur un test cognitif (ex : mémoriser ou saisir un identifiant et mot de passe qui doivent être recopiés sans erreur, reproduire un schéma gestuel sur un écran tactile, résoudre une énigme)</p>",
 		"exception": "",
-		"complement": "<h5>Complément&nbsp;:</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
 		"priority": "P0",
@@ -224,7 +226,7 @@
 		],
 		"verifier": "<p>Vérifier que lorsqu'un parcours d'authentification inclut un CAPTCHA, une méthode alternative qui ne repose pas sur un test cognitif (retenir, recopier un mot, reconnaitre une image donnée par le site web) est proposée. Note : la reconnaissance d'objets ou l'identification d'un contenu personnel non textuel est tolérée.</p><ul><li>S'il s'agit d'une authentification à double facteur qui se fait par la reconnaissance d'un contenu personnel non textuel, les conditions de sécurité doivent permettre d'éviter à une tierce personne de deviner quelle est l'image à reconnaitre.</li><li>Dans le cas où l'utilisateur est obligé de transcrire du texte (ex : création pour la première fois d'un mot de passe qui sera ensuite enregistré dans un logiciel de gestion de mot de passe), la possibilité de montrer les caractères saisis doit être proposée.</li></ul>",
 		"exception": "",
-		"complement": "<h5>Complément&nbsp;:</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
 		"priority": "P0",
@@ -271,7 +273,7 @@
 		],
 		"verifier": "<ul><li>vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-		"complement":"<h5>Complément</h5><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+		"complement":"<h5>Complément d'information</h5><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -286,7 +288,7 @@
 		],
 		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-		"complement":"<h5>Complément</h5><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
+		"complement":"<h5>Complément d'information</h5><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -356,7 +358,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l’une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l’audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l’élément table *</li><li><code>Aria-labelledby</code> sur l’élément pointant vers l’<code>ID</code> du titre *</li><li>Title sur l’élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n’est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l’une des techniques ci-dessous&nrbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d’entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d’entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l'une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l'audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l'élément table *</li><li><code>Aria-labelledby</code> sur l'élément pointant vers l'<code>ID</code> du titre *</li><li>Title sur l'élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n'est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l'une des techniques ci-dessous&nrbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d'entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d'entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -429,7 +431,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte <br>exemples&nbsp;: <ul><li>utilisation d’une balise <code>abbr</code> avec l'attribut <code>title</code></li><li>utilisation d’un contenu adjacent </li></ul></li><li>vérifier que l'alternative est pertinente</li></ul>",
+		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte <br>exemples&nbsp;: <ul><li>utilisation d'une balise <code>abbr</code> avec l'attribut <code>title</code></li><li>utilisation d'un contenu adjacent </li></ul></li><li>vérifier que l'alternative est pertinente</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -474,7 +476,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Si la couleur du texte est redéfinie (<code>color</code>), la couleur du fond doit l'être également (<code>background-color</code>).</li><li>Si la couleur du fond est redéfinie (<code>background-color</code>), la couleur du texte doit l'être également (<code>color</code>).</li><li>Si une image de fond est utilisée pour un élément contenant du texte (<code>background-image</code>), la couleur du fond doit être définie (<code>background-color</code>).</li></ul>",
-		"complement": "<h5>Complément</h5><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur. Dans Firefox, aller dans \"Paramètres > Langue et apparence > Couleurs\", ouvrir \"Gérer les couleurs...\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier, puis décocher \"Utiliser les couleurs systèmes\". Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme</li><li>Dans le cas d'un texte sur une image de fond déclarée en \"background-image\", il est possible de vérifier en utilisant l'extension Web Developer puis dans le menu \"Images\" > \"Hide background images\", repérer les textes dont le fond a disparu et vérifier qu'ils sont lisibles et suffisamment contrastés.</li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur. Dans Firefox, aller dans \"Paramètres > Langue et apparence > Couleurs\", ouvrir \"Gérer les couleurs...\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier, puis décocher \"Utiliser les couleurs systèmes\". Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme</li><li>Dans le cas d'un texte sur une image de fond déclarée en \"background-image\", il est possible de vérifier en utilisant l'extension Web Developer puis dans le menu \"Images\" > \"Hide background images\", repérer les textes dont le fond a disparu et vérifier qu'ils sont lisibles et suffisamment contrastés.</li></ul>",
 		"moreInfo": "",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -517,7 +519,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d’une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l’image pour en savoir plus \"</li> <li>identification d’une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -562,7 +564,7 @@
 		"wcag": [
 			"2.4.9 AAA"
 		],
-		"verifier": "<p>L’utilisateur doit pouvoir comprendre la destination des liens même sortis de leur contexte.</p><ul><li>vérifier qu’il est possible de déterminer l’action ou la destination d’un lien, uniquement à partir de son nom accessible</li><li>vérifier qu’il n’y a pas de libellés identiques pointant vers des destinations différentes</li></ul>",
+		"verifier": "<p>L'utilisateur doit pouvoir comprendre la destination des liens même sortis de leur contexte.</p><ul><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien, uniquement à partir de son nom accessible</li><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li></ul>",
 		"exception": "<p>Le lien est ambigu pour tout utilisateur ou le contexte de la page ne permet pas de comprendre la destination du lien. Ces cas ne sont donc pas à prendre en compte.</p>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
@@ -572,11 +574,11 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de lien permettant d’ouvrir/télécharger un document est-il compréhensible ?",
+		"title": "Chaque libellé de lien permettant d'ouvrir/télécharger un document est-il compréhensible ?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [],
-		"verifier": "<p>L’utilisateur doit avoir l’information si un lien permet d’ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio…)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d’informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient&nbsp;:</p><ul><li>le nom/titre du document</li><li>le type de document&nbsp;: pdf, texte, mp3…</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
+		"verifier": "<p>L'utilisateur doit avoir l'information si un lien permet d'ouvrir ou de télécharger un document (pdf, traitement de texte, vidéo, audio…)</p><p>Chaque lien permettant de télécharger un fichier doit être accompagné d'informations relatives à sa consultation.</p><p>Vérifier que le libellé du lien contient&nbsp;:</p><ul><li>le nom/titre du document</li><li>le type de document&nbsp;: pdf, texte, mp3…</li><li>si besoin la langue du document</li><li>le poids du document</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "",
@@ -585,11 +587,11 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Un utilisateur est-il prévenu de l’ouverture d’une nouvelle fenêtre ? ",
+		"title": "Un utilisateur est-il prévenu de l'ouverture d'une nouvelle fenêtre ? ",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [],
-		"verifier": "<p>Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs, au choix&nbsp;:</p><ul><li>intitulé du lien incluant la mention « nouvelle fenêtre »</li><li>présence d’un indice visuel (title, icône dans l’intitulé…) et de la mention « nouvelle fenêtre » dans le nom accessible.</li></ul>",
+		"verifier": "<p>Vérifier que l'ouverture d'une nouvelle fenêtre est mentionnée aux utilisateurs, au choix&nbsp;:</p><ul><li>intitulé du lien incluant la mention « nouvelle fenêtre »</li><li>présence d'un indice visuel (title, icône dans l'intitulé…) et de la mention « nouvelle fenêtre » dans le nom accessible.</li></ul>",
 		"complement": "<p>Si possible, éviter de mettre un attribut `title` incluant la mention \"nouvelle fenêtre\" du fait de sa faiblesse robustesse parmi les aides techniques</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#prevenir-lutilisateur-de-louverture-dune-nouvelle-fenetre",
 		"priority": "",
@@ -639,7 +641,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Des liens d’évitement sont-ils présents ? ",
+		"title": "Des liens d'évitement sont-ils présents ? ",
 		"ID": "testID-074",
 		"IDorigin": "testID-074",
 		"wcag": [],
@@ -727,13 +729,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Des informations sur l’emplacement de l’utilisateur dans un ensemble de page sont-elles disponibles ? ",
+		"title": "Des informations sur l'emplacement de l'utilisateur dans un ensemble de page sont-elles disponibles ? ",
 		"ID": "testID-075",
 		"IDorigin": "testID-075",
 		"wcag": [
 			"2.4.8 AAA"
 		],
-		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement&nbsp;:</p><ul><li>un système est présent (fil d’Ariane…)</li><li>une indication visuelle est présente (suffisamment contrastée et ne reposant pas que sur la couleur) et accompagnée d’un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\" target=\"_blank\">attribut `aria-current`</a></li></ul>",
+		"verifier": "<p>Vérifier que la position courante de l'utilisateur au sein d'un site est matérialisée visuellement et programmatiquement&nbsp;:</p><ul><li>un système est présent (fil d'Ariane…)</li><li>une indication visuelle est présente (suffisamment contrastée et ne reposant pas que sur la couleur) et accompagnée d'un <a href=\"https://a11y-guidelines.orange.com/fr/articles/utilisation-de-l-attribut-aria-current/#main-content\" target=\"_blank\">attribut `aria-current`</a></li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-acces-multiples-et-une-localisation",
 		"priority": "",
 		"resultatTest": "nt",
@@ -808,7 +810,7 @@
 			"2.1.1 A"
 		],
 		"verifier": "<ul><li>vérifier que les fonctionnalités disponibles à la souris sont également disponibles au clavier</li><li>vérifier que les contenus apparaissant au survol (exemple&nbsp;: <span lang=\"en\">popin</span>, modale, infobulle) apparaissent également au focus</li></ul>", 
-		"exception": "<p>Le critère est non applicable&nbsp;: </p><ul><li>pour les infobulles générés par l'agent utilisateur (par exemple, celui de l'attribut <code>title</code>)</li><li>pour le cas où la fonction sous-jacente nécessite l’exécution d'un chemin par l'utilisateur et pas seulement des deux points terminaux</li></ul>", 
+		"exception": "<p>Le critère est non applicable&nbsp;: </p><ul><li>pour les infobulles générés par l'agent utilisateur (par exemple, celui de l'attribut <code>title</code>)</li><li>pour le cas où la fonction sous-jacente nécessite l'exécution d'un chemin par l'utilisateur et pas seulement des deux points terminaux</li></ul>", 
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#permettre-dutiliser-les-principales-fonctionnalites-de-lapplication-au-clavier",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -838,7 +840,7 @@
 		],
 		"verifier": "<ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) à la combinaison</li></ul>",
 		"exception": "<p>Ne sont pas concernés les <code>accesskey</code> et les raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, par exemple <kbd>Ctrl</kbd>, <kbd>Alt</kbd> ou <kbd>Shift</kbd>).</p>",
-		"complement": "<h5>Complément</h5><p>La présence de raccourcis peut être détectée en utilisant ce <a href='https://a11y-guidelines.orange.com/fr/web/outils/methodes-et-outils-de-test/raccourcis-clavier/'>bookmarklet raccourcis clavier</a></p>",
+		"complement": "<h5>Complément d'information</h5><p>La présence de raccourcis peut être détectée en utilisant ce <a href='https://a11y-guidelines.orange.com/fr/web/outils/methodes-et-outils-de-test/raccourcis-clavier/'>bookmarklet raccourcis clavier</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisaateur-garde-le-controle-lors-des-interactions",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -867,7 +869,7 @@
 			"2.4.7 AA"
 		],
 		"verifier": "<p>Le focus doit toujours être présent et suffisament visible sur tous les éléments focusables.</p>",
-		"complement": "<h5>Complément</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
 		"moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -970,7 +972,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page&nbsp;:<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p><strong>Exemple&nbsp;:</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre sans CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
-		"complement": "<h5>Compléments d'information</h5><p>L’ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l’ordre d’affichage des contenus à l’écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
+		"complement": "<h5>Compléments d'information</h5><p>L'ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l'ordre d'affichage des contenus à l'écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -1076,8 +1078,8 @@
 			"2.5.7 AA"
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
-		"exception": "<p>Le critère est non applicable : </p><ul><li>L’action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
-		"complement":"<h5>Complément</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d’arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"exception": "<p>Le critère est non applicable : </p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
+		"complement":"<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
 		"group": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P2",
@@ -1201,7 +1203,7 @@
 			"1.4.2 A"
 		],
 		"verifier": "<p>Il est possible de :</p> <ul><li>mettre en pause ou d'arrêter le son</li><li>régler le volume indépendamment du volume système</li></ul>",
-		"complement":"<h5>Complément</h5><p>Le mécanisme doit être facilement atteignable</p>",
+		"complement":"<h5>Complément d'information</h5><p>Le mécanisme doit être facilement atteignable</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
 		"priority": "P3",

@@ -8,7 +8,8 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form field,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
-		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception.</p>",
+		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
+		"complement": "<h5>Additional information</h5><p>A placeholder alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text near the form field.</p>",
         "group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -87,7 +88,7 @@
 			"0": "3.3.8 AA"
 		},
 		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing, unless that step provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the mobile application</li></ul><p>Warning, remembering a username and password is a cognitive test.<br/>The copy/paste function must be enabled on these fields.<br />If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
-		"complement": "<h5>Complementary information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"complement": "<h5>Additional information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -238,7 +239,7 @@
 			"0": "1.4.11 AA"
 		},
 		"verifier": "<p>Verify that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>disabled components</li></ul>",
+		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>the lack of contrast is necessary to convey information</li><li>disabled components</li><li>display is managed by the user agent</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -252,7 +253,7 @@
 		"wcag": {
 			"0": "1.4.1 A"
 		},
-		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g. icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link (e.g. underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a webviews’s navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
+		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g. icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link (e.g. underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a webviews's navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -547,11 +548,11 @@
 		"wcag": {
 			"0": "2.5.1 A"
 		},
-		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture. Zoom functionality on a map: (+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>"
+		"complement": "<h5>Example</h5><p><stong>Zoom functionality on a map: (+ / -) buttons are available, as an alternative to a two-finger pinch.</p>"
 	},
 	{
 		"themes": "Common navigation",
@@ -562,7 +563,7 @@
 			"0": "2.5.7 AA"
 		},
 		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single point action).</p>",
-		"complement": "<h5>Complement</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging and then dropping a ticket in a Kanban board for example ) and does not take into account so-called “multi-point” actions, covered in criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\".</p>",
+		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging and then dropping a ticket in a Kanban board for example ) and does not take into account so-called “multi-point” actions, covered in criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\".</p>",
 		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",

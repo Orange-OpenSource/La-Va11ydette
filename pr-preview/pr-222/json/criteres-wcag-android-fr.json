@@ -39,7 +39,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "Toutes les étiquettes sont bien liées à leurs champs",
+		"verifier": "<p>Toutes les étiquettes sont bien liées à leurs champs</p>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",

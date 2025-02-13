@@ -8,10 +8,10 @@
 			"3.3.2 A"
 		],
 	    "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
-		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais son rôle est évident (champ de recherche accompagné d'un bouton en forme de loupe par exemple, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
+		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
-		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -25,6 +25,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
@@ -37,9 +38,11 @@
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [
-			"1.3.1 A"
+			"1.3.1 A",
+			"4.1.2 A"
 		],
-		"verifier": "<p>Toutes les étiquettes sont bien liées à leurs champs</p>",
+		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que toutes les étiquettes sont bien liées à leurs champs.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
@@ -55,7 +58,7 @@
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<p>Vérifier que les champs sont regroupés lorsque nécessaire, par exemple :</p><ul><li>pour une adresse (champs rue, code postal, ville, etc...)</li><li>pour une liste de <code>RadioButton</code>, l'utilisation de la propriété <code>RadioGroup</code> étant nécessaire</li><li>pour une liste de <code>Checkbox</code></li></ul>",
+		"verifier": "<p>Les champs de même nature sont regroupés, par exemple :</p><ul><li>pour une adresse (plusieurs champs rue, code postal et ville selon l'adresse de livraison ou de facturation)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
@@ -73,7 +76,7 @@
 		],
 		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
 		"group": "Écran de saisie",
-		"exception":"<p>L'élément visuel est facultatif dans le cas où le caractère obligatoire des champs est évident (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe)</p>",
+		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -132,24 +135,9 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Lorsqu'il est impossible de faire une suggestion, le critère est non applicable</p>",
+		"verifier": "<p>Les champs en erreur sont visuellement identifiables:</p><ul><li>soit par l'ajout d'un texte à proximité de chaque champ</li><li>soit par l'affichage d'un message listant les différentes erreurs (exemple: en début de formulaire)</li></ul><p>La nature de l'erreur doit être suffisamment explicite (exemple : champ téléphone obligatoire, format de l'email invalide…)</p>",
+		"complement":"<h5>Complément d'information</h5><p>Il est également possible de compléter l'information textuelle par l'ajout d'un picto, changement de couleur, etc.</p>",
         "group": "Écran de saisie",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Écran de saisie",
-		"title": "Les messages d'erreur sont-ils explicites&nbsp;?",
-		"ID": "testID-007",
-		"IDorigin": "testID-007",
-		"wcag": [
-			"3.3.1 A"
-		],
-		"verifier": "<p>Vérifier qu'un message d'erreur est présent visuellement, qu'il permet d'identifier explicitement le champ en erreur et de comprendre la nature de l'erreur.</p>",
-		"group": "Écran de saisie",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -162,7 +150,8 @@
 		"wcag": [
 			"3.3.3 AA"
 		],
-		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies.</p>",
+		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
+		"exception":"<p>Le critère est non applicable lorsqu'il est impossible de faire une suggestion (exemple: pour des questions de sécurité).</p>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
@@ -171,15 +160,14 @@
 	},
 	{
 		"themes": "Écran de saisie",
-		"title": "Si une information est demandé à l'utilisateur dans un même processus, sa saisie n'est-elle pas redondante ?",
+		"title": "Si une information est demandé plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie n'est-elle pas redondante ?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>Dans un écran de saisi de données en plusieurs étapes et dans une même session, un système de remplissage automatique doit être proposé à l'utilisateur pour redonner une information préalablement saisie ou fournie par le l'application tout en sachant que l'autocomplete n'est pas jugé suffisant.</p>",
+		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
-		"exception":"<ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"group": "Écran de saisie",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
@@ -195,7 +183,7 @@
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>l'utilisateur peut modifier ou annuler avant et après validation sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>Vérifier que l'utilisateur peut modifier ou annuler avant et après validation, sauf si celle-ci est explicitement confirmée (par exemple avec une case à cocher \"Je confirme que je souhaite supprimer ces données\").</p>",
 		"group": "Écran de saisie",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -569,7 +557,7 @@
 			"2.5.7 AA"
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
-		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de “multi-points”, couvert dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
 		"exception":"<p>Le critère est non applicable :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
@@ -612,8 +600,8 @@
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>les éléments interactifs ont une zone de clic supérieur ou égal à 26dp</li><li>Les éléments interactifs ont une marge qui les sépare des autres éléments ou des bords de l'écran</li><li>Si plusieurs zones de clic effectuent la même action, une seule de ces zones doit respecter la taille nécessaire pour valider le critère</li></ul>",
-		"exception": "<p>Cette règle comporte deux exceptions :</p><ul><li>Il y a un autre élément sur l'écran qui réalise la même action, et qui respecte la taille requise. Dans ce cas, précis, on accepte que l'élément soit trop petit.</li><li>L'élément interactif se trouve dans une phrase ou un bloc de texte (ex : liens).</li></ul>",
+		"verifier": "<p>Vérifier que chaque élément interactif respecte la surface minimale de 48dp (recommandations Google) dans toutes les conditions d'affichage (zoom, orientation).</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Si l'élément interactif a une surface inférieure à la surface minimale de 48dp mais est placé de manière à ce qu'un cercle de 48dp de diamètre centré sur l'élément ne chevauche pas un autre élément interactif ou le cercle d'un élément sous-dimensionné.</li><li>Si la surface de l'élément interactif est inférieure à 48dp mais qu'il existe dans la page une alternative conforme permettant de réaliser la même action.</li><li>Si l'élément interactif est intégré dans une phrase ou si sa taille est contrainte par la hauteur de ligne du texte non interactif environnant.</li></ul>",
+		"exception":"<p>Critère non applicable si :</p><ul><li>Le rendu des éléments interactifs est le rendu par défaut de l'agent utilisateur.</li><li>La taille et la position des éléments interactifs sont cruciales pour le contenu (exemple : des repères sur une carte) ou contraintes par une obligation légale. Dans ce cas il est toutefois recommandé de fournir des alternatives lorsque cela est possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -643,7 +631,7 @@
 		],
 		"verifier": "<p>Vérifier que si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
 		"resultatTest": "nt",
-		"complement":"<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc)</p>",
+		"complement":"<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p>",
 		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"priority": "",
 		"wcag22" : true,
@@ -687,8 +675,8 @@
 			"3.2.1 A",
 			"3.2.2 A"
 		],
-		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul>",
-		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>Le changement de contexte est conforme si: <ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

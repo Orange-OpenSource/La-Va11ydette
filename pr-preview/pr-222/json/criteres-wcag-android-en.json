@@ -8,7 +8,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
-		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
+		"exception": "<p>When the form field has no visible label but its role is obvious (example: search field accompanied by a magnifying glass button, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
 		"complement": "<h5>Additional information</h5><p>A placeholder alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text near the form field.</p>",
         "group": "Input screen",
 		"resultatTest": "nt",
@@ -24,6 +24,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Check that the accessible name of each input field is relevant.</p>",
+		"complement":"<h5>Additional information</h5><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -35,9 +36,11 @@
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [
-			"1.3.1 A"
+			"1.3.1 A",
+			"4.1.2 A"
 		],
-		"verifier": "<p>All labels are properly linked to their fields</p>",
+		"verifier": "<p>Using screen reader or voice control, check that all labels are properly linked to their fields</p>",
+		"complement": "<h5>Additional information</h5><p>A <code>placeholder</code> alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text near the form field.</p>",
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -68,7 +71,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
-		"exception": "<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
+		"exception": "The criterion is not applicable if the mandatory nature of a field is obvious, then the visual element is optional (eg: search field, subscription to a newsletter, username / password).",
 		"group": "Input screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/form/#explicitly-label-input-fields",
 		"resultatTest": "nt",
@@ -122,29 +125,16 @@
 	},
 	{
 		"themes": "Input screen",
-		"title": "Are the fields that are in error identified?",
+		"title": "Are the form fields in error identifiable and explicit?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Check that the field that is in error is modified (e.g. by inserting an error message into the page prefixed by the word  'error ', by the use of an error-icon, field change to red color and aspect)</p>",
-		"group": "Input screen",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Input screen",
-		"title": "Are the error messages explicit?",
-		"ID": "testID-007",
-		"IDorigin": "testID-007",
-		"wcag": [
-			"3.3.1 A"
-		],
-		"verifier": "<p>Check that an error message is present visually, and that it allows the field in error to be precisely identified and the nature of the error to be understood.</p>",
-		"group": "Input screen",
+		"verifier": "<p>Fields with errors are visually identifiable:</p><ul><li>either by adding text near each field</li><li>or by displaying a message listing the different errors (e.g., at the beginning of the form)</li></ul><p>The nature of the error should be sufficiently clear (e.g., required phone field, invalid email format…)</p>",
+		"complement": "<h5>Additional information</h5><p>It is also possible to complement the textual information with the addition of an icon, color change, etc.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
+		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -158,7 +148,7 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
-		"exception":"<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
+		"exception":"<p>The criterion is not applicable if it's impossible to make a suggestion to correct (example: safety reason).</p>",
 		"group": "Input screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
 		"resultatTest": "nt",
@@ -167,15 +157,14 @@
 	},
 	{
 		"themes": "Input screen",
-		"title": "If information is requested from the user in the same process, isn't entering it redundant?",
+		"title": "If an information is requested several times from the user in the same process, isn't entering it redundant?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>In a data entry screen in several steps and in the same session, an automatic filling system must be offered to the user to restore information previously entered or provided by the application while knowing that autocomplete is not considered sufficient.</p>",
-		"complement": "<h5>Additional information</h5><p>Examples of valid mechanisms: automatic feeding, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data ( billing address equals delivery address)</p>",
-		"exception": "<ul><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password 'user</li><li>Previously entered information that is no longer valid</li></ul>",
+		"verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p><p>The criterion is also compliant for following exceptions:</p><ul><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ul>",
+		"complement":"<h5>Additional information</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
 		"group": "Input screen",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
 		"resultatTest": "nt",
@@ -191,7 +180,7 @@
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>For input screen that:</p><ul><li>modify or delete data,</li><li>submit user test responses,</li><li> cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of checkbox).</p>>",
+		"verifier": "<p>For form field that:&nbsp;:</p><ul><li>modify or delete data,</li><li>submit user test responses,\n</li><li>cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>Check that the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of checkbox).</p>",
 		"group": "Input screen",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -566,7 +555,7 @@
 			"2.5.7 AA"
 		],
 		"verifier": "<p>Drag-and-drop functionality should have an alternative that does not require the dexterity specific to this type of movement (single-pointing action).</p>",
-		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging then dropping a ticket in a Kanban board for example ) and does not take into account so-called “multi-point” actions, covered in criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\"</p>",
+		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging then dropping a ticket in a Kanban board for example ) and does not take into account so-called \"multi-point\" actions, covered by criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\"</p>",
 		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
@@ -609,8 +598,8 @@
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>Check that:</p><ul><li>interactive elements have a click area greater than or equal to 26dp</li><li>Interactive elements have a margin that separates them from other elements or edges of the screen</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion</li></ul>",
-		"exception": "<p>There are two exceptions to this rule:</p><ul><li>There is another element on the screen that performs the same action, and meets the required size. In this specific case, it is accepted that the element is too small.</li><li>The interactive element is in a sentence or block of text (e.g. links).</li></ul>",
+		"verifier": "<p>Check that each interactive element meets the minimum area of 48dp (Google recommendations) in all display conditions (zoom, orientation).</p><p>The criterion is also compliant for the following exceptions:</p><ul><li>If the interactive element has an area smaller than the minimum area of 48dp but is positioned so that a circle of 48dp in diameter centered on the element does not overlap another interactive element or the circle of an undersized element.</li><li>If the area of the interactive element is less than 48dp but there is a compliant alternative on the page that allows for the same action.</li><li>If the interactive element is embedded in a sentence or if its size is constrained by the line height of the surrounding non-interactive text.</li></ul>",
+		"exception": "<p>Criterion not applicable if:</p><ul><li>The rendering of interactive elements is the default rendering of the user agent.</li><li>The size and position of interactive elements are crucial for the content (e.g., markers on a map) or constrained by a legal requirement. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#have-sufficiently-large-click-areas",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -639,7 +628,7 @@
 			"3.2.6 A"
 		],
 		"verifier": "<p>Check that if one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same order on all screens.</p>",
-		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc)</ p>",
+		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc.</ p>",
 		"exception": "<p>The user initiated a change in the presentation of the help following the use of zoom or orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -684,8 +673,8 @@
 			"3.2.1 A",
 			"3.2.2 A"
 		],
-		"verifier": "<p>When using forms or any interactive component, check that there is no change of context, without warning the user: </p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul>",
-		"complement": "<h5>Context changes</h5><p>Major change in the content of the screen which, when done without the knowledge of the user, can be confusing.</p> <p>The changes context include changes:</p><ul><li>the user agent (opening an other application) </li><li>the viewport (other part of the displayed screen, open a new screen)</li><li>the focus position (focus sequence) </li><li>content that changes the meaning of the screen </li></ul>The context switch is compliant if: <ul><li>the action is initiated by a button or an explicit link </li><li>the user is warned by a text before it is triggered</li></ul>",
+		"verifier": "<p>When using forms or any interactive component, check that there is no change of context&nbsp;:</p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul><p>Context change is compliant if:</p><ul><li>the action is initiated by an explicit button or link</li><li>the user is warned by text before its activation</li></ul>",
+		"complement": "<h5>Context Change</h5><p>Major change in the screen content that, when done without the user's knowledge, can be disorienting.</p><p>Context changes include changes in:</p><ul><li>user agent (opening another application)</li><li><span lang=\"en\">viewport</span> (opening a new screen, another part of the displayed screen)</li><li>focus (moving the focus)</li><li>content that alters the meaning of the screen</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

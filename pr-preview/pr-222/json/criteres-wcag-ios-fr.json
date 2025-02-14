@@ -51,7 +51,7 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Les champs de même nature sont-ils regroupés ?",
+		"title": "Les champs de même nature sont-ils regroupés si nécessaire ?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": {
@@ -84,6 +84,35 @@
 	},
 	{
 		"themes": "Champ de formulaire",
+		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
+		"ID": "testID-004",
+		"IDorigin": "testID-004",
+		"wcag": {
+			"0": "3.3.2 A"
+		},
+		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
+		"group": "Champ de formulaire",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
+	},
+	{
+        "themes": "Champ de formulaire",
+        "title": "Un remplissage automatique est-il présent pour les champs de saisie destinés à contenir des informations sur l'utilisateur&nbsp;?",
+        "ID": "testID-005",
+        "IDorigin": "testID-005",
+        "wcag": [
+            "1.3.5 AA"
+        ],
+        "verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>textContentType</code>.</li><li>La valeur indiquée pour la propriété <code>textContentType</code> est pertinente au regard du type d'information attendue.</li></ul>",
+        "group": "Champ de formulaire",
+        "resultatTest": "nt",
+        "priority": "P3",
+        "goodPractice": false
+    },
+	{
+		"themes": "Champ de formulaire",
 		"title": " L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
@@ -99,35 +128,6 @@
 		"wcag22" : true,
 		"goodPractice": false
 	},
-	{
-		"themes": "Champ de formulaire",
-		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
-		"ID": "testID-004",
-		"IDorigin": "testID-004",
-		"wcag": {
-			"0": "3.3.2 A"
-		},
-		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
-		"group": "Champ de formulaire",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
-	},
-    {
-        "themes": "Champ de formulaire",
-        "title": "Un remplissage automatique est-il présent pour les champs de saisie destinés à contenir des informations sur l'utilisateur&nbsp;?",
-        "ID": "testID-005",
-        "IDorigin": "testID-005",
-        "wcag": [
-            "1.3.5 AA"
-        ],
-        "verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>textContentType</code>.</li><li>La valeur indiquée pour la propriété <code>textContentType</code> est pertinente au regard du type d'information attendue.</li></ul>",
-        "group": "Champ de formulaire",
-        "resultatTest": "nt",
-        "priority": "P3",
-        "goodPractice": false
-    },
 	{
 		"themes": "Champ de formulaire",  
 		"title": "Les champs en erreur sont-ils identifiables et explicites ?",
@@ -192,7 +192,7 @@
 	},
 	{
 		"themes": "Entêtes",
-		"title": "Le titre de la page est-il pertinent&nbsp;?",
+		"title": "Le titre de la page est-il unique et pertinent&nbsp;?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
 		"wcag": {
@@ -213,6 +213,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
+		"exception":"Le critère est non-applicable si aucune entête n'est présente.",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -269,14 +270,15 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>Identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>Identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul><p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>Identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>Identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"exception": "<p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#alternative-textuelle"
 	},
 	{
-		"themes": "Agrandissement des éléments",
+		"themes": "Agrandissement de texte",
 		"title": "Le texte peut-il être agrandi sans perte de contenu ou de fonctionnalité ? ",
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
@@ -284,11 +286,11 @@
 			"0": "1.4.4 AA",
 			"1": "1.4.10 AA"
 		},
-		"verifier": "<ul><li>Sur iOS, suite à l'agrandissement de texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d'information ni de fonctionnalité(contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
+		"verifier": "<ul><li>Sur iOS, après agrandissement du texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d'information ni de fonctionnalité (contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"exception": "<p>Non-applicable pour les sous-titres et textes sous forme d'image.</p>",
+		"exception": "<p>Critère non-applicable pour les sous-titres et textes sous forme d'image.</p>",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#taille-des-textes"
 	},
@@ -347,8 +349,7 @@
 		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
+		"goodPractice": false
 	},
 	{
 		"themes": "Navigation vocale",
@@ -358,7 +359,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>À l'aide de la navigation vocale et le mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
+		"verifier": "<p>À l'aide du lecteur d'écran et en mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -395,7 +396,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés ? ",
+		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés ?",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": {
@@ -415,7 +416,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Il n'y a aucun élément fantôme (non-visible) restitué par la navigation vocale.</p>",
+		"verifier": "<p>Il n'y a aucun élément fantôme (non-visible) restitué par le lecteur d'écran.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -437,14 +438,14 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran pour ce composant ? ",
+		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran ?",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": {
 			"0": "2.5.3 A"
 		},
 		"verifier": "<p>Le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
-		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre une alternative «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
+		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple : pour un lien \"démarrer\", mettre une alternative \"démarrer la lecture\", mais pas \"lancer la lecture\"</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -452,13 +453,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les tableaux de données sont-ils correctement structurés&nbsp;?",
+		"title": "Les tableaux sont-ils correctement structurés&nbsp;?",
 		"ID": "testID-070",
 		"IDorigin": "testID-070",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d'identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les entêtes ne doivent pas être vides.</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
+		"verifier": "<p>Pour les tableaux de données :</p><ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d'identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les entêtes ne doivent pas être vides.</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -473,11 +474,11 @@
 			"0": "3.1.2 AA"
 		},
 		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
+		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false,
-		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>"
+		"goodPractice": false
 	},
 	{
 		"themes": "Navigation vocale",

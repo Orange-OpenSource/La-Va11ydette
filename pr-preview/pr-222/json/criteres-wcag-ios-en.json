@@ -51,7 +51,7 @@
 	},
 	{
 		"themes": "Form field",
-		"title": "Are the form elements grouped where it is necessary?&nbsp;?",
+		"title": "Are the form elements grouped where it is necessary?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": {
@@ -84,6 +84,35 @@
 	},
 	{
 		"themes": "Form field",
+		"title": "For the form fields which require a specific data format, is this expected data format clearly communicated to the user&nbsp;?",
+		"ID": "testID-004",
+		"IDorigin": "testID-004",
+		"wcag": {
+			"0": "3.3.2 A"
+		},
+		"verifier": "<ul><li>Check that the input format is clearly displayed, and that its position allows it to be associated with the appropriate field.</li><li>Check that the input format is vocalized with VoiceOver.</li></ul>",
+		"group": "Form field",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
+	},
+	{
+        "themes": "Form field",
+        "title": "Is an autocomplete present for the form fields intended for personal information about the user?",
+        "ID": "testID-005",
+        "IDorigin": "testID-005",
+        "wcag": [
+            "1.3.5 AA"
+        ],
+        "verifier": "<ul><li>For the form fields intended for information about the user (name, address…), check that the <code>textContentType</code> attribute is present</li><li>the value indicated for the <code>textContentType</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+        "group": "Form field",
+        "resultatTest": "nt",
+        "priority": "P3",
+        "goodPractice": false
+    },
+	{
+		"themes": "Form field",
 		"title": "Can the user authenticate without using a cognitive-based test?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
@@ -98,35 +127,6 @@
 		"wcag22" : true,
 		"goodPractice": false
 	},
-	{
-		"themes": "Form field",
-		"title": "For the form fields which require a specific data format, is this expected data format clearly communicated to the user&nbsp;?",
-		"ID": "testID-004",
-		"IDorigin": "testID-004",
-		"wcag": {
-			"0": "3.3.2 A"
-		},
-		"verifier": "<ul><li>Check that the input format is clearly displayed, and that its position allows it to be associated with the appropriate field.</li><li>Check that the input format is vocalized with VoiceOver.</li></ul>",
-		"group": "Form field",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
-	},
-    {
-        "themes": "Form field",
-        "title": "Is an autocomplete present for the form fields intended for personal information about the user?",
-        "ID": "testID-005",
-        "IDorigin": "testID-005",
-        "wcag": [
-            "1.3.5 AA"
-        ],
-        "verifier": "<ul><li>For the form fields intended for information about the user (name, address…), check that the <code>textContentType</code> attribute is present</li><li>the value indicated for the <code>textContentType</code> attribute is appropriate with respect to the type of information expected</li></ul>",
-        "group": "Form field",
-        "resultatTest": "nt",
-        "priority": "P3",
-        "goodPractice": false
-    },
 	{
 		"themes": "Form field",
 		"title": "Are the form fields in error identifiable and explicit?",
@@ -191,7 +191,7 @@
 	},
 	{
 		"themes": "Headers",
-		"title": "Does the screen have a relevant title?",
+		"title": "Does the screen have a unique and relevant title?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
 		"wcag": {
@@ -202,6 +202,20 @@
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#title-and-header"
+	},
+    {
+		"themes": "Headers",
+		"title": "Is the information structured by the use of relevant headings?",		
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>Headings should be relevant, help understand the content of the page, and accurately describe the section of content they present.</p>",
+		"exception":"The criterion is not applicable if no heading is present.",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
 	},
 	{
 		"themes": "Colors and constrasts",
@@ -254,14 +268,15 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul><p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
+		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
+		"exception": "<p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#alternative-text"
 	},
 	{
-		"themes": "Elements magnification",
+		"themes": "Text enlargement",
 		"title": "Can the text be enlarged without loss of content or functionality?",
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
@@ -269,7 +284,9 @@
 			"0": "1.4.4 AA",
 			"1": "1.4.10 AA"
 		},
-		"verifier": "<p>Verify that there is no loss of information (no unusable, truncated or hidden content or functionality) as a result of enlarging the text size to 235%.</p>",
+		"verifier": "<ul><li>On iOS, following text enlargement to 235%, \"standard\" text sizes must enlarge according to native settings (e.g., 17pt text enlarged to 40pt according to Apple specifications).</li><li>Content is presented without loss of information or functionality (no truncated, hidden, or overlapping content) and without the need for scrolling in both dimensions.</li></ul>",
+		"complement": "<h5>Additional information</h5><ul><li>Some texts, such as headings, may be enlarged by less than 200% depending on their original size (e.g., 28pt heading enlarged to 48pt according to Apple specifications).</li><li>Similarly, certain native elements, such as the tab bar, may not enlarge (OS limitation).</li></ul>",
+		"exception": "<p>The criterion is not applicable for captions and images of text.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -283,7 +300,8 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and which have no text initially)..</li><li>Each interactive element is vocalized with the associated action.</li><li>The page title is vocalized.</li><li>Does each row of a list have a relevant and unique description?</li><li>For complex images, an alternative shall be present through an adjacent content</li></ul>",
+		"verifier": "<p>All significant graphical elements are vocalized and accessible using voice navigation:</p><ul><li>Each graphical element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
+		"complement": "<h5>Additional information</h5><ul><li>If the non-text content is a test or exercise that would be invalid if presented in text form, then the alternative provides at least a brief description of that content.</li><li>If the non-text content is primarily intended to create a specific sensory experience, then the textual alternative provides at least a brief description of that content.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -304,20 +322,6 @@
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#reading-order"
 	},
-    {
-        "themes": "Voice navigation",
-        "title": "Is an input field vocalized with its associated label?",
-        "ID": "testID-061",
-        "IDorigin": "testID-061",
-        "wcag": [
-            "1.3.5 AA"
-        ],
-        "verifier": "<p>Check that the label of the input fields are well associated with them through the <code>AccessbilityLabel</code> attribute. The labels must therefore be vocalized when navigating the input fields with which they are associated.</p>",
-        "moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#text-alternatives",
-        "resultatTest": "nt",
-        "priority": "P2",
-        "goodPractice": false
-    },
 	{
 		"themes": "Voice navigation",
 		"title": "Are the linked elements gathered in the same announcement block for vocalization?",
@@ -326,11 +330,24 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Check that:</p><ul><li>the linked elements are vocalized in the same announcement block</li><li>an information is returned when focusing on the first field, which makes it possible to identify the group to which the linked fields belong</li></ul>",
+		"verifier": "<p>Elements whose visual grouping is essential for understanding the information must be grouped within the same announcement block for vocalization.</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#grouping-elements"
+	},
+	{
+		"themes": "Voice navigation",
+		"title": "Are the elements presented as a list correctly rendered?",
+		"ID": "testID-021",
+		"IDorigin": "testID-021",
+		"wcag": {
+			"0": "1.3.1 A"
+		},
+		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
+		"resultatTest": "nt",
+		"priority": "P2",
+		"goodPractice": false
 	},
 	{
 		"themes": "Voice navigation",
@@ -340,7 +357,7 @@
 		"wcag": {
 			"0": "2.4.6 AA"
 		},
-		"verifier": "<p>Verify that with VoiceOver voice navigation and the header navigation setting set:</p><ul><li>all section headers are navigable and vocalized</li><li>only headers are navigable and vocalized</li></ul>",
+		"verifier": "<p>Verify that with screen reader and the header navigation mode:</p><ul><li>all section headers are navigable and vocalized</li><li>only headers are navigable and vocalized</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -354,7 +371,7 @@
 		"wcag": {
 			"0": "3.2.2 A"
 		},
-		"verifier": "<p>Verify that using voice navigation, the content changes are vocalized to the user:</p><ul><li>the opening of (<code>pop-up</code>) is vocalized</li><li>the opening of a new screen (UIView) is vocalized by its title</li><li>the change of a part of the screen (such as a fragment that changes) is vocalizede</li><li>horizontal scrolling is vocalized</li></ul>",
+		"verifier": "<p>Content changes are vocally communicated to the user:</p><ul><li>The opening of pop-up windows (<code>dialogs</code>) is vocalized.</li><li>The opening of a new screen is vocalized by its title.</li><li>The information about a change in a part of the screen (such as a changing fragment) is vocalized.</li><li>Horizontal scrolling is vocalized.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -368,8 +385,8 @@
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chat, temporary or error messages, change of significant element, upload of a file, product registration in a basket, progressive loading of a list... ): </p><ul><li>check that a mechanism based on live regions is implemented</li><li>check that they are rendered in a relevant way to the screen reader</li></ul>",
-        "complement": "<h4>Examples</h4><ul><li>message informing about the result of an action or the state of the application</li><li>error message</li><li>message indicating progress</li></ul>",
+		"verifier": "<ul><li>Each status message is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li></ul>",
+        "complement": "<h4>Examples of status messages</h4><ul><li>Search result</li><li>Application status (e.g., offline)</li><li>Error message</li><li>Progress indication message</li><li>Notification</li><li>Message following the addition of a product to a cart</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -377,13 +394,13 @@
 	},
 	{
 		"themes": "Voice navigation",
-		"title": "Are element states vocalized?",
+		"title": "Are the name, role, and value of each interface component vocalized?",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<p>Check that element states are vocalized (tabs, checkbox, radio button, etc).</p>",
+		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -397,7 +414,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Verify that there are no ghost elements using voice navigation.</p>",
+		"verifier": "<p>There are no phantom (invisible) elements conveyed by screen reader.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -411,7 +428,7 @@
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>Check that decorative elements (such as certain images) are not vocalized.</p>",
+		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -420,14 +437,14 @@
 	},
 	{
 		"themes": "Voice navigation",
-		"title": "Does the vocalization of a text contain at least its label visible on the screen?",
+		"title": "Does the accessible name of each component include at least the visible label on the screen?",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": {
 			"0": "2.5.3 A"
 		},
-		"verifier": "<p>Check that the element's label is present (first if possible) in the vocalization of this component.</p>",
-		"complement": "<p>For example: for a 'start' link, use an alternative 'start playing', but not 'begin playing'</p>",
+		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
+		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -441,11 +458,26 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>If the table is a data table&nbsp;:</p><ol><li>If a title is present, check that it is rendered to the screen reader and is relevant (identifies the nature of the data presented in the table).</li><li>If the table is complex, a summary must be included (to help understand the nature of the data and the construction of the table).</li><li>Headers must not be empty</li><li>Row and column headers must be correctly rendered and linked to data cells</li></ol>",
+		"verifier": "<p>For data tables:</p><ul><li>If a title is present, ensure it is conveyed to the screen reader and is relevant (helps identify the nature of the data presented in the table).</li><li>If the table is complex, a summary must be present and relevant (helps understand the nature of the data and the structure of the table).</li><li>Headers must not be empty.</li><li>Row and column headers must be correctly conveyed and linked to the data cells.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#reading-order"
+	},	
+	{
+		"themes": "Voice navigation",
+		"title": "Are changes in language clearly identified?",
+		"ID": "testID-058",
+		"IDorigin": "testID-058",
+		"wcag": {
+			"0": "3.1.2 AA"
+		},
+		"verifier": "<p>The screen reader changes language for textual content that does not match the primary language of the page.</p>",
+		"exception": "<p>For words or or proper namesin foreign languages that are commonly used (e.g., Google, newsletter), it is not necessary to indicate a language change.</p>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#change-the-vocalization-language"
 	},
 	{
 		"themes": "Switch control and keyboard navigation",
@@ -889,22 +921,6 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
-		"title": "Are changes in language clearly identified?",
-		"ID": "testID-058",
-		"IDorigin": "testID-058",
-		"wcag": {
-			"0": "3.1.2 AA"
-		},
-		"verifier": "<p>This criterion can only be verified if you have access to the URL of the WebView.</p><p>Check that a <code>lang</code> attribute is present for words and expressions in a foreign language.</p>",
-		"group": "WebView",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#change-the-vocalization-language",
-		"exception": "<p>For words and expressions in a foreign language which are in everyday use (déjà vu, hors d'oeuvre…) or for proper nouns, do not indicate a change of language.</p>"
 	},
 	{
 		"themes": "WebView",

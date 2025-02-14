@@ -1022,6 +1022,22 @@
 		"goodPractice": false
 	},
 	{
+		"themes": "Mise en page",
+		"title": "Le contenu est-il consultable quelle que soit l'orientation (portrait ou paysage)&nbsp;?",
+		"ID": "testID-050",
+		"IDorigin": "testID-050",
+		"wcag": [
+			"1.3.4 AA"
+		],
+		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'éléments tronqués).</p>",
+		"exception" : "Le critère est non-applicable si une orientation est jugé essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur..</li></ul>",
+		"group": "Tactile",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
 		"themes": "Tactile et interactions",
 		"title": "Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?",
 		"ID": "testID-047",
@@ -1083,22 +1099,6 @@
 		"priority": "P2",
 		"resultatTest": "nt",
 		"wcag22": true,
-		"goodPractice": false
-	},
-	{
-		"themes": "Tactile et interactions",
-		"title": "Le contenu est-il consultable quelle que soit l'orientation (portrait ou paysage)&nbsp;?",
-		"ID": "testID-050",
-		"IDorigin": "testID-050",
-		"wcag": [
-			"1.3.4 AA"
-		],
-		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'éléments tronqués).</p>",
-		"exception" : "Le critère est non-applicable si une orientation est jugé essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur..</li></ul>",
-		"group": "Tactile",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
-		"priority": "P3",
-		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{

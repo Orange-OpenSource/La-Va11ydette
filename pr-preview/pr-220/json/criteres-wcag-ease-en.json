@@ -395,7 +395,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (example: \"captcha (anti-spam image)\").</p>",
+		"verifier": "<p>Check that the accessible name of each CAPTCHA image conveys the purpose of the image and not its content (example: \"CAPTCHA (anti-spam image)\").</p>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#avoid-captcha",
 		"priority": "P2",

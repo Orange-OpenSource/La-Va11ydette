@@ -986,7 +986,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Vérifier l'absence de perte d'information</p>",
-		"complement": "<h5>Complément d'information</h5><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (exemples&nbsp;: propriété <code>content</code> des pseudo classes <code>::before / :before</code> et <code>::after / : after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (exemples&nbsp;: propriété <code>content</code> des pseudo classes <code>::before</code> / <code>:before</code> et <code>::after</code> / <code>: after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",

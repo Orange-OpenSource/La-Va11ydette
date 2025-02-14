@@ -986,7 +986,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Check that no information is lost</p>",
-		"complement": "<h5>More details</h5><ul><li>No information must be provided by CSS generated content (examples: pseudo classes<code> ::before / :before</code> and <code>::after / :after</code>, <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
+		"complement": "<h5>More details</h5><ul><li>No information must be provided by CSS generated content (examples: pseudo classes<code> ::before</code> / <code>:before</code> and <code>::after</code> / <code>:after</code>, <code>content</code> property , background CSS images </li><li>CSS generated content must only provide decorative informations</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",

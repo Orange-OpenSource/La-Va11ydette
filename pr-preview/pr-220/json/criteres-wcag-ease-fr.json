@@ -1077,7 +1077,7 @@
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"exception": "Le critère est non applicable dans les cas suivants :<ul><li>L'action de glisser/déposer est essentielle (exemple : un jeux de dextérité)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
-		"complement":"<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (exemple : glisser puis déposer un ticket dans un tableau Kanban) et ne tient pas compte des actions "multi-points", couvertes dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"complement":"<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (exemple : glisser puis déposer un ticket dans un tableau Kanban) et ne tient pas compte des actions \"multi-points\", couvertes dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
 		"group": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P2",

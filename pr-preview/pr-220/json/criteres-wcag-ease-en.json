@@ -485,7 +485,7 @@
 			"1.4.11 AA"
 		],
 		"verifier": "<p> Check that as well as graphics, icons and graphic interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exception": "The criterion is not applicable for followinf cases:<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>inactive components or its display is managed as is by the user agent</li></ul>",
+		"exception": "The criterion is not applicable for following cases:<ul><li>logos</li><li>if text, such as a label or data table, provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>inactive components or its display is managed as is by the user agent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",

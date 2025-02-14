@@ -603,7 +603,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p><p>If the accessible name is missing, consider invalidating criterion <a href=#headingtestID-066)>4.1.2 A 'Are all user interface components (native or custom controls) compatible with assistive technologies?' (testID-066)</a></p>",
+		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p><p>If the accessible name is missing, consider invalidating criterion <a href=#headingtestID-066>4.1.2 A 'Are all user interface components (native or custom controls) compatible with assistive technologies?' (testID-066)</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",

@@ -482,7 +482,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
+		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent ?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": {
@@ -509,14 +509,14 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de sélection et navigation clavier",
+		"themes": "Contrôle de Sélection et navigation clavier",
 		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier externe ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec le contrôle de sélection et l'accès complet au clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec le Contrôle de Sélection et l'Accès Complet au Clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -530,20 +530,21 @@
 		"wcag": {
 			"0": "2.1.2 A"
 		},
-		"verifier": "<p>L'écran ne contient aucun piège :</p><ul><li>en navigation au clavier si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...).</li><li>avec le contrôle de selection, le focus ne doit pas rester bloqué au sein d'un conteneur.</li></ul><p>Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
+		"verifier": "<p>L'écran ne contient aucun piège :</p><ul><li>en navigation au clavier si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...).</li><li>avec le contrôle de selection, le focus ne doit pas rester bloqué au sein d'un conteneur.</li></ul><p>Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (avec clavier et contrôle de sélection)</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
-		"title": "Si un raccourci clavier utilisant une seule touche est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
+		"title": "Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
 		"ID": "testID-075",
 		"IDorigin": "testID-075",
 		"wcag": {
 			"0": "2.1.4 A"
 		},
 		"verifier": "<p>Une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
+		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : Ctrl, Alt ou Shift).</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -556,7 +557,7 @@
 		"wcag": {
 			"0": "2.4.3 A"
 		},
-		"verifier": "L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection.",
+		"verifier": "L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec le contrôle de selection et avec un clavier externe.",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -570,6 +571,7 @@
 			"0": "2.4.7 AA"
 		},
 		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour le focus natif qui n'est pas modifiable.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -708,21 +710,35 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Une UI avec limite de temps a-t-elle son délai adaptable ?",
+		"title": "Une limite de temps impliquant un changement de contexte a-t-elle son délai adaptable ?",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": {
 			"0": "2.2.1 A"
 		},
-		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>possibilité de supprimer la limite de temps</li><li>possibilité d'augmenter jusqu'à 10 fois minimum le temps par défaut</li><li>l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement</li></ul>",
-		"exception": "<ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un évènement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li><li>l'exception des 20 heures&nbsp;: la limite de temps est supérieure à 20 heures.</li></ul>",
+		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>possibilité de supprimer la limite de temps</li><li>possibilité d'augmenter jusqu'à 10 fois minimum le temps par défaut</li><li>l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement</li><li>la limite de temps est supérieure à 20 heures.</li></ul>",
+		"exception": "<p>Le critère est non-applicable dans les cas suivants :</p><ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un évènement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'utilisateur a-t-il le contrôle des changements de contexte&nbsp;? (Confimation de validation avant de changer / si l'on tape dessus pas de changement auto ?)",
+		"title": "Les textes sont-ils lisibles sans difficulté ?",
+		"ID": "testID-037",
+		"IDorigin": "testID-037",
+		"wcag": [
+			"1.4.12 AA"
+		],
+		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": true
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "L'utilisateur a-t-il le contrôle des changements de contexte ?",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
 		"wcag": {
@@ -731,6 +747,7 @@
 		},
 		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
+		"exception": "<p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -746,7 +763,7 @@
 		},
 		"verifier": "<ul><li>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</li><li>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
-		"exception": "<p>Exception si le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</p>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -786,8 +803,8 @@
 		"wcag": {
 			"0": "1.4.5 AA"
 		},
-		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte. Non applicable, si aucune image ne contient du texte.</p>",
-		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"exception": "Non applicable si aucune image ne contient de texte",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -829,7 +846,7 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Vérifier qu'il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
+		"verifier": "<p>Il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
 		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -843,7 +860,8 @@
 		"wcag": {
 			"0": "1.2.1 A"
 		},
-		"verifier": "<p>Un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"verifier": "<p>Pour toute contenu préenregistré seulement audio, un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -909,8 +927,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio",
-		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -925,8 +942,7 @@
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio",
-		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>"
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/contenu-non-textuel/#cas-particuliers-des-animations-contenus-video-et-audio"
 	},
 	{
 		"themes": "Multimédia",
@@ -943,35 +959,37 @@
 		"goodPractice": false
 	},
     {
-		"themes": "Contenu non-textuel",
-		"title": "Chaque image captcha a-t-elle une alternative&nbsp;?",
+		"themes": "CAPTCHA",
+		"title": "Chaque image CAPTCHA a-t-elle une alternative&nbsp;?",
 		"ID": "testID-065",
 		"IDorigin": "testID-065",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>L'aternative à chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"verifier": "<p>L'alternative à chaque image CAPTCHA communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;CAPTCHA (image anti-spam)&nbsp;» ).</p>",
+		"group": "CAPTCHA",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha"
 	},
 	{
-		"themes": "Contenu non-textuel",
+		"themes": "CAPTCHA",
 		"title": "Si un CAPTCHA est utilisé, une alternative est-elle prévue pour les utilisateurs malvoyants, non-voyants et malentendants&nbsp;?",
 		"ID": "testID-066",
 		"IDorigin": "testID-066",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Pour tout captcha uniquement visuel ou sonore, l'une des alternatives ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"verifier": "<p>Pour tout CAPTCHA uniquement visuel ou sonore, l'une des alternatives ci-dessous est proposée en complément&nbsp;: </p><ul><li>CAPTCHA audio et visuel</li><li>tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"group": "CAPTCHA",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha"
 	},
 	{
-		"themes": "Contenu non-textuel",
+		"themes": "Contenu cryptique",
 		"title": "Chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
 		"ID": "testID-067",
 		"IDorigin": "testID-067",

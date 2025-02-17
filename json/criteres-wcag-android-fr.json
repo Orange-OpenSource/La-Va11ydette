@@ -475,77 +475,122 @@
 		],
 		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
 		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>",
-		"group": "WebView",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
+		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Navigation au clavier et Switch Access",
-		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access ou avec un clavier ?",
+		"themes": "Navigation vocale",
+		"title": "Un mécanisme pour naviguer au sein de la WebView est-il présent ?",
+		"ID": "testID-059",
+		"IDorigin": "testID-059",
+		"wcag": [
+			"2.4.1 A"
+		],
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de TalkBack, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par paragraphes</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-liens-devitement",
+		"group": "Navigation vocale",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation vocale",
+		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": [
+			"3.1.1 A"
+		],
+		"verifier": "<p>Le lecteur d'écran restitue les contenus textuels dans la langue principale de la page.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
+		"resultatTest": "nt",
+		"group": "Navigation vocale",
+		"priority": "P3",
+		"goodPractice": false
+	},
+	{
+		"themes": "Switch Access et navigation clavier",
+		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access ou avec un clavier externe ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>toutes les fonctionnalités sont disponibles avec Switch Access ou avec un clavier</li><li>seuls les éléments interactifs sont focusables</li><li>les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>il est possible de faire le défilement au clavier pour lire le contenu dans une <span lang=\"en\">scrollview</span></li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec Switch Access et avec un clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Navigation au clavier et Switch Access",
+		"themes": "Switch Access et navigation clavier",
 		"title": "L'écran ne contient pas de piège clavier&nbsp;?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "<p>Vérifier que l'écran ne contient aucun piège clavier avec Switch Access ou en navigation au clavier: si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...). Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (via clavier ou contrôle de sélection)</p>",
+		"verifier": "<p>L'écran ne contient aucun piège :</p><ul><li>en navigation au clavier si le focus arrive sur un élément, l'utilisateur doit pouvoir sortir de cet élément en utilisant les touches standards (échap, entrée, flèches...).</li><li>avec Switch Access, le focus ne doit pas rester bloqué au sein d'un conteneur.</li></ul><p>Si le focus semble piégé dans un composant, il doit y avoir une information expliquant la procédure pour sortir (avec le clavier et Switch Access)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Navigation au clavier et Switch Access",
+		"themes": "Switch Access et navigation clavier",
+		"title": "Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
+		"ID": "testID-075",
+		"IDorigin": "testID-075",
+		"wcag": {
+			"0": "2.1.4 A"
+		},
+		"verifier": "<p>Une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
+		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : Ctrl, Alt ou Shift).</p>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+	{
+		"themes": "Switch Access et navigation clavier",
 		"title": "L'ordre de prise de focus des éléments est-il logique et cohérent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
 		"wcag": [
 			"2.4.3 A"
 		],
-		"verifier": "Vérifier que l'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access et la navigation au clavier.",
+		"verifier": "L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access et avec un clavier externe.",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Navigation au clavier et Switch Access",
+		"themes": "Switch Access et navigation clavier",
 		"title": "La prise de focus est-elle visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": [
 			"2.4.7 AA"
 		],
-		"verifier": "<p>Vérifier que le focus est visible d'un coup d'oeil et qu'il se distingue bien du reste de l'écran, que ce soit avec Switch Access ou la navigation clavier.</p>",
+		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour le focus natif qui n'est pas modifiable.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Navigation au clavier et Switch Access",
+		"themes": "Switch Access et navigation clavier",
 		"title": "Le focus est-il visible sur tous les éléments?",
-		"ID": "testID-062",
-		"IDorigin": "testID-062",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
 		"wcag": [
 			"2.4.11 AA"
 		],
-		"verifier": "<p>Check that a component's focus is not completely obscured by page content during keyboard navigation.</p>",
+		"verifier": "<p>Le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "",
@@ -560,12 +605,11 @@
 		"wcag": [
 			"2.5.4 A"
 		],
-		"verifier": "<ul><li>Vérifier que ces actions ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Vérifier qu'il est possible de désactiver la détection de mouvement.</li></ul>",
-		"exception": "<p>Le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
+		"verifier": "<ul><li>Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Il est possible de désactiver la détection de mouvement.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
-		"goodPractice": false
+		"goodPractice": false,
+		"exception": "<p>Le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>"
 	},
 	{
 		"themes": "Navigation générale",
@@ -575,7 +619,7 @@
 		"wcag": [
 			"2.5.1 A"
 		],
-		"verifier": "<p>Vérifier que pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant des trajectoires gestuelles, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible.</p>",
+		"verifier": "<p>Pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
 		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
@@ -592,7 +636,7 @@
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
-		"exception":"<p>Le critère est non applicable :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
+		"exception":"<p>Le critère est non applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -621,6 +665,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
+		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemple d'affichage jugé essentiel : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-une-application-utilisable-quelle-que-soit-lorientation",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -650,7 +695,7 @@
 		"wcag": [
 			"3.2.4 AA"
 		],
-		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
+		"verifier": "<p>Les composants qui ont la même fonction ont un nom accessible similaire d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -663,10 +708,11 @@
 		"wcag": [
 			"3.2.6 A"
 		],
-		"verifier": "<p>Vérifier que si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
-		"resultatTest": "nt",
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
+
 		"complement":"<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p>",
 		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
+		"resultatTest": "nt",
 		"priority": "",
 		"wcag22" : true,
 		"goodPractice": false
@@ -679,8 +725,8 @@
 		"wcag": [
 			"2.2.1 A"
 		],
-		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>possibilité de supprimer la limite de temps</li><li>possibilité d'augmenter jusqu'à 10 fois minimum le temps par défaut</li><li>l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement</li></ul>",
-		"exception": "<ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un évènement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li><li>l'exception des 20 heures&nbsp;: la limite de temps est supérieure à 20 heures.</li></ul>",
+		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>possibilité de supprimer la limite de temps</li><li>possibilité d'augmenter jusqu'à 10 fois minimum le temps par défaut</li><li>l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement</li><li>la limite de temps est supérieure à 20 heures.</li></ul>",
+		"exception": "<p>Le critère est non-applicable dans les cas suivants :</p><ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un évènement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#rendre-adaptable-les-ui-avec-limite-de-temps",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -698,7 +744,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": true
 	},
 	{
 		"themes": "Navigation générale",
@@ -711,6 +757,7 @@
 		],
 		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
+		"exception": "<p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -723,7 +770,9 @@
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</p><p>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</p><p>Non applicable, si aucun mouvement, pas défilement, pas de clignotement et pas de mise à jour ou rafraichissement automatique qui durent plus de 5 secondes ou démarre automatiquement</p>",
+		"verifier": "<ul><li>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</li><li>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -750,7 +799,7 @@
 		"wcag": [
 			"3.2.3 AA"
 		],
-		"verifier": "<p>Vérifier que les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différentes activités de l'application).</p>",
+		"verifier": "<p>Les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -763,21 +812,21 @@
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Vérifier que les images ne sont pas utilisées pour présenter du texte.</p>",
-		"exception": "<ul><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur'</li></ul>",
+		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"exception": "Non applicable si aucune image ne contient de texte",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de lien ou de bouton est-il explicite, au minimum dans son contexte ?",
+		"title": "L'étiquette/nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>L'utilisateur doit être capable de savoir s'il souhaite suivre un lien sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>vérifier qu'il n'y a pas de libellés identiques pointant vers des destinations différentes</li><li>vérifier qu'il est possible de déterminer l'action ou la destination d'un lien ou d'un bouton uniquement à partir de son nom accessible</li><li>si vérifications précédentes non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte.</li></ul>",
+		"verifier": "<p>L'utilisateur doit être capable de comprendre l'objectif d'un lien ou d'un bouton sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>Vérifier qu'il n'y a pas d'étiquettes identiques pointant vers des destinations différentes</li><li>Vérifier qu'il est possible de déterminer la destination d'un lien ou l'action d'un bouton uniquement à partir de son nom accessible</li><li>Si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte (phrase, paragraphe, cellule...)</li></ul>",
 		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -791,7 +840,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p>",
+		"verifier": "<p>Pour chaque composant intéractif possédant une étiquette visible, celle-ci doit être suffisamment descriptive pour permettre à l'utilisateur de comprendre la fonction du composant</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -804,8 +853,8 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Lorsque le nombre d'écrans est inférieur à 3 ou 4 et/ou le contenu succinct, ce critère est non applicable.</p>\n<p>Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur ll'écran, pour permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>", 
-		"exception": "Sauf pour un écran résultat ou étape d'un processus à étapes.",
+		"verifier": "<p>Il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
+		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -818,7 +867,8 @@
 		"wcag": [
 			"1.2.1 A"
 		],
-		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"verifier": "<p>Pour toute contenu préenregistré seulement audio, un transcrit complet (texte contenant l'ensemble des informations auditives) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;:</p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la piste audio</li></ul>",
+		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -833,7 +883,7 @@
 		"wcag": [
 			"1.2.1 A"
 		],
-		"verifier": "<p>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée sans audio,un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -848,7 +898,7 @@
 		"wcag": [
 			"1.2.3 A"
 		],
-		"verifier": "<ul><li>Vérifier qu'un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: <ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li></ul></li><li>ou vérifier que pour toute vidéo, une audiodescription est disponible<ul><li>vérifier que l'audiodescription est correctement synchronisée</li><li>vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>vérifier que l'audiodescription est pertinente</li></ul></li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée (avec ou sans audio) :</p><ul><li>Soit un transcrit complet (texte contenant l'ensemble des informations auditives et visuelles) est fourni sous forme de texte : cette transcription textuelle doit alors être présente dans l'écran ou disponible via un lien positionné à proximité de la vidéo</li><li>Soit, une audiodescription est disponible, vérifier alors que : <ul><li>l'audiodescription est correctement synchronisée</li><li>l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information)</li><li>l'audiodescription est pertinente</li></ul></li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -863,7 +913,7 @@
 		"wcag": [
 			"1.2.5 AA"
 		],
-		"verifier": "<ul><li>Vérifier que pour toute vidéo, une audiodescription est disponible.</li><li>Vérifier que l'audiodescription est correctement synchronisée.</li><li>Vérifier que l'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>Vérifier que l'audiodescription est pertinente.</li></ul>",
+		"verifier": "<p>Pour toute vidéo :</p><ul><li>Une audiodescription est disponible.</li><li>L'audiodescription est correctement synchronisée.</li><li>L'audiodescription n'entre pas en conflit avec la piste audio de la vidéo (pas de perte d'information).</li><li>L'audiodescription est pertinente.</li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -878,7 +928,8 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "<ul><li>Vérifier que pour toute vidéo avec audio, des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Vérifier que les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"verifier": "<p>Pour toute vidéo avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"exception": "<p>Les sous-titres ne sont pas nécessaires lorsque les informations présentes dans la vidéo sont également présentées sous forme de texte ou d'alternative textuelle sur la même page.</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -893,8 +944,7 @@
 		"wcag": [
 			"1.2.4 AA"
 		],
-		"verifier": "<ul><li>Vérifier que des sous-titres sont disponibles.</li><li>Vérifier que les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
-		"complement": "<h5>Sous-titres transcrits</h5><p>Les sous-titres ne communiquent pas uniquement les dialogues, mais également toutes les autres informations audio nécessaires à la compréhension du contenu (ex&nbsp;: identifications des interlocuteurs, effets sonores…).</p>",
+		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -909,7 +959,7 @@
 		"wcag": [
 			"1.4.2 A"
 		],
-		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Possibilité de régler le volume indépendamment du volume système.</li></ul>",
+		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Ou possibilité de régler le volume indépendamment du volume système.</li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
 		"resultatTest": "nt",
@@ -931,64 +981,36 @@
 		"priority": "P3",
 		"goodPractice": false
 	},
-	{
-		"themes": "WebView",
-		"title": "Un mécanisme pour naviguer au sein de la WebView est-il présent&nbsp;?",
-		"ID": "testID-059",
-		"IDorigin": "testID-059",
-		"wcag": [
-			"2.4.1 A"
-		],
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-liens-devitement",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
-		"title": "La langue principale est-elle définie et correspond-elle à la langue principale du document&nbsp;?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": [
-			"3.1.1 A"
-		],
-		"verifier": "<p>Ce critère ne peut être vérifié que si on a accès à l'URL de la WebView.</p><ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
     {
-		"themes": "Contenu non-textuel",
-		"title": "Chaque image captcha a-t-elle une alternative&nbsp;?",
+		"themes": "CAPTCHA",
+		"title": "Chaque image CAPTCHA a-t-elle une alternative&nbsp;?",
 		"ID": "testID-065",
 		"IDorigin": "testID-065",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"verifier": "<p>L'alternative à chaque image CAPTCHA communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;CAPTCHA (image anti-spam)&nbsp;» ).</p>",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
 		"goodPractice": false
 	},
 	{
-		"themes": "Contenu non-textuel",
+		"themes": "CAPTCHA",
 		"title": "Si un CAPTCHA est utilisé, une alternative est-elle prévue pour les utilisateurs malvoyants, non-voyants et malentendants&nbsp;?",
 		"ID": "testID-066",
 		"IDorigin": "testID-066",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que pour tout captcha uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"verifier": "<p>Pour tout CAPTCHA uniquement visuel ou sonore, l'une des alternatives ci-dessous est proposée en complément&nbsp;: </p><ul><li>CAPTCHA audio et visuel</li><li>tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
 		"goodPractice": false
 	},
 	{
-		"themes": "Contenu non-textuel",
+		"themes": "Contenu cryptique",
 		"title": "Chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
 		"ID": "testID-067",
 		"IDorigin": "testID-067",

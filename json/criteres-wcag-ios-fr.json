@@ -279,7 +279,7 @@
 	},
 	{
 		"themes": "Agrandissement de texte",
-		"title": "Le texte peut-il être agrandi sans perte de contenu ou de fonctionnalité ? ",
+		"title": "Le texte peut-il être agrandi sans perte de contenu ou de fonctionnalité&nbsp? ",
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
 		"wcag": {
@@ -509,7 +509,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Contrôle de Sélection et navigation clavier",
+		"themes": "Contrôle de sélection et navigation clavier",
 		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec le contrôle de selection ou avec un clavier externe ?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",

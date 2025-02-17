@@ -280,7 +280,7 @@
 	},
 	{
 		"themes": "Agrandissement de texte",
-		"title": "Le texte peut-il être agrandi sans perte de contenu ou de fonctionnalité ? ",
+		"title": "Le texte peut-il être agrandi sans perte de contenu ou de fonctionnalité&nbsp? ",
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
 		"wcag": [

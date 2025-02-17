@@ -958,6 +958,21 @@
 		"priority": "P3",
 		"goodPractice": false
 	},
+	{
+		"themes": "Multimédia",
+		"title": "Des contrôles sont-ils présents pour interagir avec un média temporel(pause, stop, volume, sous titres, etc...) ?",
+		"ID": "testID-048",
+		"IDorigin": "testID-048",
+		"wcag": [
+			"2.2.2 A"
+		],
+		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio, un média vidéo, mais aussi avec un média basé sur le temps. Par exemple, un caroussel qui change de contenu automatiquement après un certain délai doit lui aussi proposer un sytème de contrôle pour pouvoir revenir au contenu précédent ou aller au contenu suivant.</p>",
+		"group": "Multimédia",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false
+	},
     {
 		"themes": "CAPTCHA",
 		"title": "Chaque image CAPTCHA a-t-elle une alternative&nbsp;?",

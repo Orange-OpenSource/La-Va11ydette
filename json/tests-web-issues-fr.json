@@ -503,11 +503,17 @@
 			"technicalSolution" : ""
 		}
 	],
-	"testWebID-43": [
+	"testID-043":[
 		{
 			"title" : "Nécessité de faire défiler le contenu horizontalement pour accéder à une information ou fonctionnalité",
 			"detail" : "Après un redimensionnement à 320 px css de large, du contenu (texte informatif ou fonctionnalité) est masqué et nécessite d'utiliser le défilement horizontal pour être affiché.",
-			"solution" : "- appliquer des unités relatives (em, rem, %) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
+			"solution" : "- appliquer des unités relatives (em, rem, %,…) aux textes \n - appliquer des unités relatives (em, rem, %…) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
+			"technicalSolution" : ""
+		},
+		{
+			"title" : "Nécessité de faire défiler le contenu verticalement pour accéder à une information ou fonctionnalité",
+			"detail" : "Après un redimensionnement à 256 px css de haut, du contenu (texte informatif ou fonctionnalité) est masqué et nécessite d'utiliser le défilement vertical pour être affiché.",
+			"solution" : "- appliquer des unités relatives (em, rem, %,…) aux textes \n - appliquer des unités relatives (em, rem, %,…) aux conteneurs de textes \n- ou utiliser des propriétés \"min-width\" et \"min-height\" à la place des propriétés \"width\" et \"height\".",
 			"technicalSolution" : ""
 		}
 	],

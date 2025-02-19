@@ -60,7 +60,7 @@
 		],
 		"verifier": "<p>Les champs de même nature sont regroupés, par exemple :</p><ul><li>pour une adresse (plusieurs champs rue, code postal et ville selon l'adresse de livraison ou de facturation)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
 		"group": "Champ de formulaire",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#regrouper-les-elements",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -221,7 +221,7 @@
 	},
 	{
 		"themes": "Couleurs et contrastes",
-		"title": "Le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé (hors exceptions)&nbsp;?",
+		"title": "Le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisamment élevé&nbsp;?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
@@ -376,7 +376,7 @@
 		"wcag": [
 			"3.2.2 A"
 		],
-		"verifier": "<p>Les changements de contenu sont restitués vocalement à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>) est vocalisée</li><li>l'ouverture d'un nouvel écran est vocalisée par son titre</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change) est vocalisée</li><li>les défilements horizontaux sont vocalisés</li></ul>",
+		"verifier": "<p>Les changements de contenu sont annoncés à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>).</li><li>l'ouverture d'un nouvel écran.</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change).</li><li>les défilements horizontaux.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -648,7 +648,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les erreurs de clic (ou de toucher) peuvent-elles être annulées&nbsp;?",
+		"title": "Les erreurs de toucher ou de clic peuvent-elles être annulées&nbsp;?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": [
@@ -767,7 +767,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Si un contenu de la page est en mouvement, défile, clignote ou se met à jour, durant plus de 5 secondes et démarrant automatiquement, l'utilisateur a-t-il la possibilité de stopper, mettre en pause, masquer ou modifier sa fréquence de rafraichissement de ce contenu&nbsp;?",
+		"title": "L'utilisateur a-t-il le contrôle d'un contenu en mouvement, défilant, clignotant ou se mettant à jour durant plus de 5 secondes et démarrant automatiquement&nbsp;?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [

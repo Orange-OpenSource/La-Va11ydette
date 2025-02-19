@@ -1,13 +1,13 @@
 [
 	{
-		"themes": "Form field",
-		"title": "Does every input field in the form have a label?",
+		"themes": "Form fields",
+		"title": "Does every form field in the form have a label?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>A label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
+		"verifier": "<ul><li>A label is visually present near the form fields,</li><li>or the form field has a title attribute</li><li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
 		"exception": "<p>When the form field has no visible label but its role is obvious (example: search field accompanied by a magnifying glass button, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
 		"complement": "<h5>Additional information</h5><p>A <code>placeholder</code> alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text near the form field.</p>",
         "group": "Form field",
@@ -16,22 +16,22 @@
 		"goodPractice": false
 	},
     {
-		"themes": "Form field",
-		"title": "Is every input field's label relevant?",
+		"themes": "Form fields",
+		"title": "Is every form field's label relevant?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>The accessible name of each input field is relevant.</p>",
-		"complement":"<h5>Additional information</h5><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
+		"verifier": "<p>The accessible name of each form field is relevant.</p>",
+		"complement":"<h5>Additional information</h5><p>It is important to check the relevance of the visible label and the accessible name of the form field.</p>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
     {
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "Does each form field have an accessible name?",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
@@ -47,7 +47,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "Are the form elements grouped where it is necessary?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
@@ -55,15 +55,16 @@
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<p>Are the elements grouped when it is necessary, for example:</p><ul><li>for an address (road, postcode, town, etc...)</li><li>for a <code>RadioButton</code> list, use of <code>RadioGroup</code> property is necessary</li><li>for a <code>Checkbox</code> list</li></ul>",
+		"verifier": "<p>Fields of the same nature are grouped, for example:</p><ul><li>for an address (multiple fields for street, postal code, and city based on the delivery or billing address)</li><li>for a list of radio buttons or checkboxes linked to the same setting</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
-		"title": "Are the required input fields clearly identified?",
+		"themes": "Form fields",
+		"title": "Are the required form fields clearly identified?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
 		"wcag": [
@@ -79,14 +80,14 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
-		"title": "For the input fields which require a specific data format, is this expected data format clearly communicated to the user?",
+		"themes": "Form fields",
+		"title": "For the form fields which require a specific data format, is this expected data format clearly communicated to the user?",
 		"ID": "testID-004",
 		"IDorigin": "testID-004",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>The input format is visually present, and its positioning allows it to be associated with the relevant field.</li><li>The input format remains visible during input (do not display the expected format within the input field).</li><li>The input format is included in the vocalization of the field.</li></ul>",
+		"verifier": "<ul><li>The input format is visually present, and its positioning allows it to be associated with the relevant field.</li><li>The input format remains visible during input (do not display the expected format within the form field).</li><li>The input format is included in the vocalization of the field.</li></ul>",
 		"group": "Form field",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/form/#explicitly-label-input-fields",
 		"resultatTest": "nt",
@@ -94,21 +95,21 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
-		"title": "Is an autocomplete present for the input fields intended for personal information about the user?",
+		"themes": "Form fields",
+		"title": "Is an autocomplete present for the form fields intended for personal information about the user?",
 		"ID": "testID-005",
 		"IDorigin": "testID-005",
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>autofill</code> attribute is present</li><li>the value indicated for the <code>autofill</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+		"verifier": "<ul><li>for the form fields intended for information about the user (name, address…), check that the <code>autofill</code> attribute is present</li><li>the value indicated for the <code>autofill</code> attribute is appropriate with respect to the type of information expected</li></ul>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "Can the user authenticate without using a cognitive-based test?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
@@ -124,7 +125,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "Are the form fields in error identifiable and explicit?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
@@ -140,7 +141,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "If an error is detected, is a suggestion for correction provided to the user?",
 		"ID": "testID-008",
 		"IDorigin": "testID-008",
@@ -156,7 +157,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "If an information is requested several times from the user in the same process, isn't entering it redundant?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
@@ -173,14 +174,14 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Form field",
+		"themes": "Form fields",
 		"title": "For each form field requiring sensitive or personal data, does the user have control over their data?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>For form field that:&nbsp;:</p><ul><li>modify or delete data,</li><li>submit user test responses,\n</li><li>cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>Check that the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of checkbox).</p>",
+		"verifier": "<p>For form fields that:</p><ul><li>modify or delete data,</li><li>submit user test responses,\n</li><li>cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>Check that the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of a checkbox).</p>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -194,7 +195,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<p>Verify that&nbsp;:</p> <ul><li>the page title is visible,</li><li>the page title is unique. A common error is to use the same title for the whole application,</li><li>the page context is understandable with the page title</li></ul>",
+		"verifier": "<ul><li>The page title is visible,</li><li>The page title is unique. A common error is to use the same title for the whole application,</li><li>The page context is understandable with the page title</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/entetes/#avoir-un-titre-decran-pertinent-et-unique",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -217,7 +218,7 @@
 	},
 	{
 		"themes": "Colors and constrasts",
-		"title": "Is there sufficient contrast between the text color and the background color (except for special cases)?",
+		"title": "Is there sufficient contrast between the text color and the background color?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
@@ -293,8 +294,8 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Are all the significant elements vocalized and relevant ?",
+		"themes": "Screen reader",
+		"title": "Are all the significant elements vocalized and relevant?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
@@ -308,23 +309,23 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Is the order of vocalisation of the elements logical and understandable?",
+		"themes": "Screen reader",
+		"title": "Is the reading order of the elements logical and understandable?",
 		"ID": "testID-019",
 		"IDorigin": "testID-019",
 		"wcag": [
 			"1.3.2 A",
 			"2.4.3 A"
 		],
-		"verifier": "<p>The elements follow a logical and understandable order using voice navigation.</p>",
+		"verifier": "<p>Using the screen reader, the elements follow a logical and understandable order.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#manage-the-vocalization-order",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Are the linked elements gathered in the same announcement block for vocalization?",
+		"themes": "Screen reader",
+		"title": "Are the linked elements read together?",
 		"ID": "testID-020",
 		"IDorigin": "testID-020",
 		"wcag": [
@@ -338,7 +339,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the elements presented as a list correctly rendered?",
 		"ID": "testID-021",
 		"IDorigin": "testID-021",
@@ -351,7 +352,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the section headers used in the header-based voice navigation?",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
@@ -359,28 +360,28 @@
 			"1.3.1 A",
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Verify that with screen reader and the header navigation mode:</p><ul><li>all section headers are navigable and vocalized</li><li>only headers are navigable and vocalized</li></ul>",
+		"verifier": "<p>Verify that with screen reader and header navigation mode:</p><ul><li>all headings are navigable and vocalized</li><li>only headings are navigable and vocalized</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#enable-header-navigation",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are content changes vocalized?",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
 			"3.2.2 A"
 		],
-		"verifier": "<p>Content changes are vocally communicated to the user:</p><ul><li>The opening of pop-up windows (<code>dialogs</code>) is vocalized.</li><li>The opening of a new screen is vocalized by its title.</li><li>The information about a change in a part of the screen (such as a changing fragment) is vocalized.</li><li>Horizontal scrolling is vocalized.</li></ul>",
+		"verifier": "<p>Content changes are announced to the user:</p><ul><li>The opening of pop-up windows (<code>dialogs</code>).</li><li>The opening of a new screen.</li><li>The information about a change in a part of the screen (such as a changing fragment).</li><li>Horizontal scrolling.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-content-change",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are status or contextual messages correctly rendered?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
@@ -395,7 +396,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the name, role, and value of each interface component vocalized?",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
@@ -409,21 +410,21 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the visible elements the only ones vocalized?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>There are no phantom (invisible) elements conveyed by screen reader.</p>",
+		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are decorative elements ignored when using voice navigation?",
 		"ID": "testID-026",
 		"IDorigin": "testID-026",
@@ -437,22 +438,23 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Does the accessible name of each component include at least the visible label on the screen?",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Check that the element's label is present (first if possible) in the vocalization of this component. Not applicable if the element has no visible label (icon without text for example).</p>",
+		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
 		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
+		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the tables structured properly?",
 		"ID": "testID-070",
 		"IDorigin": "testID-070",
@@ -465,7 +467,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are changes in language clearly identified?",
 		"ID": "testID-058",
 		"IDorigin": "testID-058",
@@ -481,14 +483,14 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Is there a mechanism to navigate within the page?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": [
 			"2.4.1 A"
 		],
-		"verifier": "If deemed necessary, the application should offer quick navigation using TalkBack, for example:<ul><li>Navigation by headings</li><li>Navigation by links</li><li>Navigation by paragraphs</li><li>Navigation by form fields</li><li>Or any other specific navigation method</li></ul>",
+		"verifier": "<p>If deemed necessary, the application should offer quick navigation using TalkBack, for example:</p><ul><li>Navigation by headings</li><li>Navigation by links</li><li>Navigation by paragraphs</li><li>Navigation by form fields</li><li>Or any other specific navigation method</li></ul>",
 		"group": "Voice navigation",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-skip-links",
 		"resultatTest": "nt",
@@ -496,14 +498,14 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Is the content of the page conveyed in the primary language of the page?",
 		"ID": "testID-060",
 		"IDorigin": "testID-060",
 		"wcag": [
 			"3.1.1 A"
 		],
-		"verifier": "The screen reader conveys textual content in the primary language of the page.",
+		"verifier": "<p>The screen reader conveys textual content in the primary language of the page.</p>",
 		"group": "Voice navigation",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
 		"resultatTest": "nt",
@@ -604,7 +606,7 @@
 			"2.5.4 A"
 		],
 		"verifier": "<ul><li>Actions triggered by device movement or user gestures have alternatives available from an interface component (e.g., button).</li><li>It is possible to disable motion detection.</li></ul>",
-		"exceptions": "<p>The motion is essential for the function (e.g. pedometer)</p>",
+		"exception": "<p>The criterion is not applicable if the motion is essential to accomplish the feature (ex.&nbsp;: pedometer)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -645,7 +647,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Can click (or touch) errors be cancelled?",
+		"title": "Can touch or click errors be cancelled?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": [
@@ -702,7 +704,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "If help is offered and repeated on several pages, is it presented in a coherent manner?",
+		"title": "If help is offered and repeated on several pages, is it presented in a consistent manner?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
 		"wcag": [
@@ -763,7 +765,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "If content on the page is moving, scrolling, blinking or updating, lasting more than 5 seconds and starting automatically, does the user have the option to stop, pause, hide or modify its update frequency of this content?",
+		"title": "Does the user have control over content that is moving, scrolling, blinking, or updating for more than 5 seconds and starting automatically?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [
@@ -803,7 +805,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "No image is used to display text?",
+		"title": "Is there any image used to display text?",
 		"ID": "testID-052",
 		"IDorigin": "testID-052",
 		"wcag": [
@@ -830,7 +832,7 @@
 	},
     {
 		"themes": "Common navigation",
-		"title": "Each button label is relevant?",
+		"title": "Is each button label relevant?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",
 		"wcag": [
@@ -843,7 +845,7 @@
 	},
     {
 		"themes": "Common navigation",
-		"title": "Does the application have at least 2 means of navigation?",
+		"title": "Does the application have at least two means of navigation?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
 		"wcag": [

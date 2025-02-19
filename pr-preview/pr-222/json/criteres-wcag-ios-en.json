@@ -74,7 +74,7 @@
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text located at the beginning of the form must explain the visual element of mandatory fields.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
 		"exception": "The criterion is not applicable if the mandatory nature of a field is obvious, then the visual element is optional (eg: search field, subscription to a newsletter, username / password).",
 		"group": "Form field",
 		"resultatTest": "nt",
@@ -90,7 +90,7 @@
 		"wcag": {
 			"0": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Check that the input format is clearly displayed, and that its position allows it to be associated with the appropriate field.</li><li>Check that the input format is vocalized with VoiceOver.</li></ul>",
+		"verifier": "<ul><li>The input format is visually present, and its positioning allows it to be associated with the relevant field.</li><li>The input format remains visible during input (do not display the expected format within the input field).</li><li>The input format is included in the vocalization of the field.</li></ul>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -225,8 +225,8 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Verify that the contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p><ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>18pt</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18pt</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>14pt</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14pt</code>: contrast ratio 3:1</li></ul></li></ul>",
-		"exception": "<p>Logo, decorative texts, and inactive elements do not need to meet this contrast ratio and therefore should not count towards the validation of this criteria.</p>",
+		"verifier": "<p>Verify that the contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p><ul><li><strong>For normal texts:</strong> <ul><li>Font size less than <code>18pt</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18pt</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold texts:</strong> <ul><li> Font size less than <code>14pt</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14pt</code>: contrast ratio 3:1</li></ul></li></ul>",
+		"exception": "<p>This criterion is not applicable for logos, decorative texts and inactive elements.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -240,8 +240,8 @@
 		"wcag": {
 			"0": "1.4.11 AA"
 		},
-		"verifier": "<p>Verify that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>the lack of contrast is necessary to convey information</li><li>disabled components</li><li>display is managed by the user agent</li></ul>",
+		"verifier": "<p>Images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
+		"exception": "<p>This criterion is not applicable for following cases:</p><ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>the lack of contrast is necessary to convey information</li><li>disabled components</li><li>display is managed by the user agent</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -255,7 +255,8 @@
 		"wcag": {
 			"0": "1.4.1 A"
 		},
-		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g. icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link (e.g. underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a webviews's navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
+		"verifier": "<p>Color is not the only means of conveying information:</p><ul><li>Information can also be obtained through text.</li><li>At least one other visual means is available to obtain the same information (e.g., icons that use colors but also different shapes).</li><li>If content is conveyed using colors that differ not only in hue but also present a significant difference in brightness (e.g., light green and dark red), this constitutes an additional visual distinction.</li></ul><p>Specific case of a link or button without formatting in text:</p><ul><li>The link or button must have a contrast of 3:1 with the surrounding text.</li><li>And an indicator, not relying on color, must allow it to be distinguished when focused (e.g., underlined).</li></ul>", 
+		"exception": "<p>The criterion is not applicable in the following cases:</p><ul><li>Links whose nature is explicit, such as links present in navigation areas (header and footer, menu, or list of links…)</li><li>If no information is conveyed by color.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -268,7 +269,7 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
+		"verifier": "<p>The information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
 		"exception": "<p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -316,7 +317,7 @@
 			"0": "1.3.2 A",
 			"1": "2.4.3 A"
 		},
-		"verifier": "<p>Verify that the elements follow a logical and understandable order using voice navigation.</p>",
+		"verifier": "<p>The elements follow a logical and understandable order using voice navigation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -473,7 +474,7 @@
 			"0": "3.1.2 AA"
 		},
 		"verifier": "<p>The screen reader changes language for textual content that does not match the primary language of the page.</p>",
-		"exception": "<p>For words or or proper namesin foreign languages that are commonly used (e.g., Google, newsletter), it is not necessary to indicate a language change.</p>",
+		"exception": "<p>It is not necessary to indicate a language change for words or or proper names in foreign languages that are commonly used (e.g., Google, rendez-vous).</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -487,7 +488,7 @@
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>If deemed necessary, the application must offer quick navigation using the  Rotor feature, for example:</p><ul><li>Navigation by headings</li><li>Navigation by links</li><li>Navigation by containers</li><li>Navigation by form fields</li><li>Or any other specific navigation method</li></ul>",
+		"verifier": "<p>If deemed necessary, the application must offer quick navigation using the Rotor feature, for example:</p><ul><li>Navigation by headings</li><li>Navigation by links</li><li>Navigation by containers</li><li>Navigation by form fields</li><li>Or any other specific navigation method</li></ul>",
 		"group": "Voice navigation",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -516,7 +517,7 @@
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<ul><li>All functionalities are available using Switch Control and Full Keyboard Access navigation</li><li>Only interactive elements are accessible</li><li>Elements are grouped when they are linked (e.g : contents within a clickable row in a list)</li><li>It is possible to scroll with to read the content in a ScrollView</li></ul>",
+		"verifier": "<ul><li>All functionalities are available using Switch Control and Full Keyboard Access navigation</li><li>Only interactive elements are accessible</li><li>Elements are grouped when they are linked (example: contents within a clickable row in a list)</li><li>It is possible to scroll with to read the content in a ScrollView</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -557,7 +558,8 @@
 		"wcag": {
 			"0": "2.4.3 A"
 		},
-		"verifier": "The order of focus for elements (buttons, links, form fields) is consistent and logical (often equivalent to the visual order) with Switch Control and an external keyboard.",
+		"verifier": "<p>The order of focus for elements (buttons, links, form fields) is consistent and logical (often equivalent to the visual order) with Switch Control and an external keyboard.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#reading-order",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -606,17 +608,18 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Do multipoint or path-based gestures have an alternative that can be operated with a single pointer without a path-based gesture&nbsp;? (exemple zoom map)",
+		"title": "Do multipoint or path-based gestures have an alternative that can be operated with a single pointer without a path-based gesture?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
 		"wcag": {
 			"0": "2.5.1 A"
 		},
 		"verifier": "<p>For any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
+		"complement": "<h5>For example</h5><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"exception": "<p>The criterion is not applicable for following cases:</p><ul><li>The complex gesture is essential for functionality(for example, entering a signature)</li><li>The gesture is defined by the operating system, user agent, or assistive technology</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false,
-		"complement": "<h5>Example</h5><p><stong>Zoom functionality on a map: (+ / -) buttons are available, as an alternative to a two-finger pinch.</p>"
+		"goodPractice": false
 	},
 	{
 		"themes": "Common navigation",
@@ -656,7 +659,7 @@
 			"0": "1.3.4 AA"
 		},
 		"verifier": "<p>Check that the content and functionalities are available in both orientations (no loss of information, no truncated elements).</p>",
-		"exception": "<p>If an orientation is deemed essential, the criterion is not applicable. Examples of essential displays include:</p><ul><li>video game application</li><li>piano playing application</li><li>check scanning application</li></ul>",
+		"exception": "<p>If an orientation is deemed essential, the criterion is not applicable. Examples:</p><ul><li>video game application</li><li>piano playing application</li><li>check scanning application</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -664,7 +667,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Do the clickable elements have a sufficiently large click area?",
+		"title": "Is the size of interactive elements sufficient?",
 		"ID": "testID-050",
 		"IDorigin": "testID-050",
 		"wcag": {
@@ -701,7 +704,7 @@
 		},
 		"verifier": "<p>If one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same order on all screens.</p>",
 		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc.</ p>",
-		"exception": "<p>The user has initiated a change in the presentation of the help following the use of the zoom or the orientation.</p>",
+		"exception": "<p>The criterion is not applicable if the user has initiated a change in the presentation of the help following the use of the zoom or the orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -843,7 +846,7 @@
 			"2.4.5 AA"
 		],
 		"verifier": "<p>There are several mechanisms to reach desired content and allow a user to navigate within the application:</p> <ul><li>a main navigation menu</li><li>a <code>tab bar</code></li><li>a search mechanism</li><li>...</li></ul>", 
-		"exception": "<p>Not applicable:</p><ul><li>If the number of screens is limited and/or the content is short.</li><li>For a results screen or a step in a multi-step process.</li></ul>",
+		"exception": "<p>The criterion is not applicable for following cases:</p><ul><li>If the number of screens is limited and/or the content is short.</li><li>For a results screen or a step in a multi-step process.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -956,13 +959,14 @@
 	},
 	{
 		"themes": "Multimedia",
-		"title": "Are there controls to interact with a media (pause, stop, volume, subtitles, etc...)?",
+		"title": "Are there controls to interact with a time-based media?",
 		"ID": "testID-048",
 		"IDorigin": "testID-048",
 		"wcag": {
 			"0": "2.2.2 A"
 		},
-		"verifier": "<p>Verify that controls are displayed to interact with audio media, or video media.</p>",
+		"verifier": "<p>If content in a part of the page starts automatically and lasts more than 5 seconds, is in motion, scrolls, or blinks, there is a way to stop, pause, or hide it.</p><p>For content in a part of the page that updates or refreshes automatically, there is a way to stop, pause, hide, or adjust its update frequency.</p>",
+		"exception": "<p>The criterion is not applicable if there is no movement, scrolling, blinking, updating, or automatic refreshing lasting more than 5 seconds and starting automatically.</p>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -1006,7 +1010,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Check that there is a text alternative provided</li><li>Check that the alternative is appropriate</li></ul>",
+		"verifier": "<ul><li>There is a text alternative provided</li><li>The alternative is appropriate</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

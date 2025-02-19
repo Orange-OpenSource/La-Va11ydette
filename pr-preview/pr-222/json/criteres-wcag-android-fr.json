@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<p>Vérifier que&nbsp;:</p> <ul><li>une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
+	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
 		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
 		"group": "Champ de formulaire",
@@ -24,7 +24,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Vérifier que l'étiquette de chaque champ est pertinente.</p>",
+		"verifier": "<p>L'étiquette de chaque champ est pertinente.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
 		"group": "Champ de formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
@@ -74,7 +74,7 @@
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
+		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
 		"group": "Champ de formulaire",
 		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
@@ -90,7 +90,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Vérifier que le format de saisie est présent visuellement, et que son positionnement permet de l'associer au champ concerné.</li><li>Vérifier que le format de saisie est présent dans la vocalisation du champ.</li></ul>",
+		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
 		"group": "Champ de formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
 		"resultatTest": "nt",
@@ -120,7 +120,7 @@
 		"wcag": [
 			"3.3.8 AA"
 		],
-		"verifier": "<p>Vérifier que toutes les étapes d'un processus d'authentification ne repose pas sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au application mobile</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
+		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne repose pas sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au application mobile</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
 		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
@@ -152,7 +152,7 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Le critère est non applicable lorsqu'il est impossible de faire une suggestion (exemple: pour des questions de sécurité).</p>",
+		"exception":"<p>Le critère est non-applicable lorsqu'il est impossible de faire une suggestion (exemple: pour des questions de sécurité).</p>",
 		"group": "Champ de formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/formulaire/#identifier-les-erreurs-de-saisie",
 		"resultatTest": "nt",
@@ -227,8 +227,8 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<p>Vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour texte standard</strong> <ul><li>Taille inférieure à <code>18sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18sp</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>14sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14sp</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
-		"exception": "<p>Les logos, textes décoratifs, et les éléments inactifs n'ont pas besoin de respecter ce ratio de contraste et ne doivent donc pas entrer en compte pour la validation de ce critère.</p>",
+		"verifier": "<p>Le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour les textes non gras :</strong> <ul><li>Taille inférieure à <code>18sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18sp</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong> <ul><li>Taille inférieure à <code>14sp</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14sp</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
+		"exception": "<p>Ce critère est non-applicable pour les logos, textes décoratifs et les éléments inactifs.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -242,8 +242,8 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p>Vérifier que les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
-		"exception": "<ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>le composant est inactif</li><li>l'affichage par défaut de l'agent utilisateur n'est pas modifié</li></ul>",
+		"verifier": "<p>Les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
+		"exception": "<p>Ce critère est non-applicable pour les cas suivants :</p><ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>le composant est inactif</li><li>l'affichage par défaut de l'agent utilisateur n'est pas modifié</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -257,7 +257,8 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>cas particulier des liens non soulignés dans du texte : <ul> <li>le lien doit avoir un contraste de 3 :1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li> </ul></li></ul><p><strong>Remarques :</strong></p><ul> <li>sont exclus les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li> <li>critère non applicable, si aucune information n'est portée par de la couleur</li></ul>",
+		"verifier": "<p>La couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li></ul><p>Cas particulier d'un lien ou bouton sans mise en forme dans du texte :</p><ul><li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li><li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -271,8 +272,8 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
-		"exception": "<p>Non applicable, si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"exception": "<p>Le critère est non-applicable si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -319,7 +320,7 @@
 			"1.3.2 A",
 			"2.4.3 A"
 		],
-		"verifier": "<p>Vérifier que les éléments suivent un ordre logique et compréhensible en utilisant la navigation vocale.</p>",
+		"verifier": "<p>Les éléments suivent un ordre logique et compréhensible en utilisant la navigation vocale.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#gerer-lordre-de-lecture-avec-la-navigation-vocale",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -448,6 +449,7 @@
 		],
 		"verifier": "<p>Le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
 		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple : pour un lien \"démarrer\", mettre une alternative \"démarrer la lecture\", mais pas \"lancer la lecture\"</p>",
+		"exception": "<p>Le critère est non-applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -474,7 +476,7 @@
 			"3.1.2 AA"
 		],
 		"verifier": "<p>Le lecteur d'écran change de langue pour les contenus textuels dont la langue ne correspond pas à la langue principale de la page</p>",
-		"exception": "<p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (Google, newsletter…) ou les noms propres, il n'est pas nécessaire d'indiquer de changement de langue.</p>",
+		"exception": "<p>Il n'est pas nécessaire d'indiquer de changement de langue pour les mots ou expressions en langue étrangère passés dans l'usage courant (newsletter, week-end, etc.) ou les noms propres (Google, Apple, etc.)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
@@ -483,13 +485,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Un mécanisme pour naviguer au sein de la WebView est-il présent ?",
+		"title": "Un mécanisme pour naviguer au sein de la page est-il présent ?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": [
 			"2.4.1 A"
 		],
-		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de TalkBack, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par paragraphes</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de TalkBack, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par paragraphes</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-liens-devitement",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
@@ -519,7 +521,7 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec Switch Access et avec un clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (Ex : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec Switch Access et avec un clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (exemple : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -561,7 +563,7 @@
 		"wcag": [
 			"2.4.3 A"
 		],
-		"verifier": "L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access et avec un clavier externe.",
+		"verifier": "<p>L'ordre de prise de focus des éléments (boutons, liens, champs de formulaires) est cohérent et logique (souvent équivalent à l'ordre visuel) avec Switch Access et avec un clavier externe.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#ordonner-la-navigation-au-clavier",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -613,7 +615,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?",
+		"title": "Les gestes complexes disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
 		"wcag": [
@@ -621,6 +623,7 @@
 		],
 		"verifier": "<p>Pour tout geste multipoints (nécessitant plusieurs doigts) et/ou nécessitant une trajectoire gestuelle, une alternative nécessitant un seul pointeur (un seul doigt) et sans trajectoire gestuelle est disponible (exemple : simple tap, double tap, tap prolongé)</p>",
 		"complement": "<h5>Exemple</h5><p><stong>Zoom sur une carte&nbsp;: </strong>des boutons (+ / -) sont disponibles, en alternative au pincé.</p>",
+		"exception": "<p>Le critère est non-applicable dans les cas suivants :</p><ul><li>Le geste complexe est essentiel à la fonctionnalité (par exemple : saisir une signature)</li><li>Le geste est défini par le système d'exploitation, l'agent utilisateur ou la technologie d'assistance.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -636,7 +639,7 @@
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
-		"exception":"<p>Le critère est non applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
+		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -664,8 +667,8 @@
 		"wcag": [
 			"1.3.4 AA"
 		],
-		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
-		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemple d'affichage jugé essentiel : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li></ul>",
+		"verifier": "<p>Le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
+		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemples : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-une-application-utilisable-quelle-que-soit-lorientation",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -673,14 +676,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "La taille des zones cliquables ou tactiles est-elle suffisante ? ",
+		"title": "La taille des éléments interactifs est-elle suffisante ?",
 		"ID": "testID-050",
 		"IDorigin": "testID-050",
 		"wcag": [
 			"2.5.8 AA"
 		],
 		"verifier": "<p>Vérifier que chaque élément interactif respecte la surface minimale de 48dp (recommandations Google) dans toutes les conditions d'affichage (zoom, orientation).</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Si l'élément interactif a une surface inférieure à la surface minimale de 48dp mais est placé de manière à ce qu'un cercle de 48dp de diamètre centré sur l'élément ne chevauche pas un autre élément interactif ou le cercle d'un élément sous-dimensionné.</li><li>Si la surface de l'élément interactif est inférieure à 48dp mais qu'il existe dans la page une alternative conforme permettant de réaliser la même action.</li><li>Si l'élément interactif est intégré dans une phrase ou si sa taille est contrainte par la hauteur de ligne du texte non interactif environnant.</li></ul>",
-		"exception":"<p>Critère non applicable si :</p><ul><li>Le rendu des éléments interactifs est le rendu par défaut de l'agent utilisateur.</li><li>La taille et la position des éléments interactifs sont cruciales pour le contenu (exemple : des repères sur une carte) ou contraintes par une obligation légale. Dans ce cas il est toutefois recommandé de fournir des alternatives lorsque cela est possible.</li></ul>",
+		"exception":"<p>Critère non-applicable si :</p><ul><li>Le rendu des éléments interactifs est le rendu par défaut de l'agent utilisateur.</li><li>La taille et la position des éléments interactifs sont cruciales pour le contenu (exemple : des repères sur une carte) ou contraintes par une obligation légale. Dans ce cas il est toutefois recommandé de fournir des alternatives lorsque cela est possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#avoir-des-zones-de-clic-suffisamment-grandes",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -711,7 +714,7 @@
 		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
 
 		"complement":"<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p>",
-		"exception":"<p>L'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
+		"exception": "<p>le critère est non applicable si l'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "",
 		"wcag22" : true,
@@ -756,8 +759,8 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
-		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
-		"exception": "<p>Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
+		"exception": "<p>Le critère est non-applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
@@ -793,7 +796,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Le mécanisme de navigation est cohérent avec les autres écrans de l'application",
+		"title": "Les mécanismes de navigation sont cohérents avec les autres écrans de l'application",
 		"ID": "testID-056",
 		"IDorigin": "testID-056",
 		"wcag": [
@@ -813,7 +816,7 @@
 			"1.4.5 AA"
 		],
 		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
-		"exception": "Non applicable si aucune image ne contient de texte",
+		"exception": "Critère non-applicable si aucune image ne contient de texte",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -854,7 +857,7 @@
 			"2.4.5 AA"
 		],
 		"verifier": "<p>Il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
-		"exception": "<p>Non applicable :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour le cas suivants :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -883,7 +886,7 @@
 		"wcag": [
 			"1.2.1 A"
 		],
-		"verifier": "<p>Pour toute vidéo préenregistrée sans audio,un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
+		"verifier": "<p>Pour toute vidéo préenregistrée sans audio, un transcrit complet (texte contenant l'ensemble des informations visuelles) est fourni sous forme de texte.<br>Cette transcription textuelle est alors&nbsp;: </p><ul><li>présente dans l'écran</li><li>ou disponible via un lien positionné à proximité de la vidéo</li><li>ou vérifier la présence d'une piste audio fournissant les informations présentées visuellement</li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",
@@ -968,13 +971,14 @@
 	},
 	{
 		"themes": "Multimédia",
-		"title": "Des contrôles sont-ils présents pour interagir avec un média temporel(pause, stop, volume, sous titres, etc...) ?",
+		"title": "Des contrôles sont-ils présents pour interagir avec un média temporel&nbsp?",
 		"ID": "testID-048",
 		"IDorigin": "testID-048",
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Vérifier que des contrôles sont présents pour interagir avec un média audio, un média vidéo, mais aussi avec un média basé sur le temps. Par exemple, un caroussel qui change de contenu automatiquement après un certain délai doit lui aussi proposer un sytème de contrôle pour pouvoir revenir au contenu précédent ou aller au contenu suivant.</p>",
+		"verifier": "<p>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</p><p>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</p>",
+		"exception": "<p>Le critère est non-applicable si aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#controler-le-contenu-multimedia",
 		"resultatTest": "nt",
@@ -1017,7 +1021,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier qu'une alternative est fournie sous forme de texte</li><li>vérifier que l'alternative est pertinente</li></ul>",
+		"verifier": "<ul><li>Une alternative est fournie sous forme de texte</li><li>L'alternative est pertinente</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

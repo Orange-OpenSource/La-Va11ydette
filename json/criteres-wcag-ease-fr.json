@@ -906,13 +906,13 @@
 	},
 	{
 		"themes": "Mise en page",
-		"title": "La page est-elle compréhensible et utilisable sans défilement horizontal pour une fenêtre réduite à 320px de large?",
+		"title": "La page est-elle compréhensible et utilisable sans défilement horizontal pour une fenêtre réduite à 320px de large ou sans défilement vertical pour une fenêtre réduite à 256px de haut&nbsp;?",
 		"ID": "testID-043",
 		"IDorigin": "testID-043",
 		"wcag": [
 			"1.4.10 AA"
 		],
-		"verifier": "<p>Le contenu est présenté sans perte d'informations ni de fonctionnalités sur la fenêtre réduite à 320px de large, sans nécessité de défiler horizontalement sur la page</p><p>Conforme si une barre de défilement horizontale est présente mais que son utilisation n'est pas nécessaire pour accéder au contenu informatif ou utiliser les fonctionnalités de la page.</p>",
+		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>Le contenu est présenté sans perte d'informations ni de fonctionnalités dans une fenêtre réduite à 320px de large, sans nécessité de défiler horizontalement</li><li>Le contenu est présenté sans perte d'informations ni de fonctionnalités dans une fenêtre réduite à 256px de haut, sans nécessité de défiler verticalement</li></ul><p>Conforme si une barre de défilement est présente mais que son utilisation n'est pas nécessaire pour accéder au contenu informatif ou utiliser les fonctionnalités de la page.</p>",
 		"exception": "Le critère est non-applicable pour des contenus nécessitant les deux dimensions pour être compréhensibles comme des images, cartes, présentations, tableaux de données, jeux….",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#utiliser-des-tailles-relatives-et-faire-du-web-adaptatif",
 		"priority": "P3",

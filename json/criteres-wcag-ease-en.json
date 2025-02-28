@@ -72,7 +72,7 @@
             "2.4.6 AA"
         ],
         "verifier": "<ul><li>The label of each input field is relevant.</li><li>If a data format is indicated for a input field, it is relevant.</li><li>If fields are grouped, check that the legend is relevant.</li></ul>",
-        "complement": "<h5>Additionally</h5><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
+        "complement":"<h5>Additionally</h5><p>It is important to check the relevance of the visible label and the accessible name of the input field.</p>",
         "group": "Form",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
         "priority": "P0",
@@ -90,7 +90,7 @@
         ],
         "verifier": "<ul><li>A text or a visual element (symbol such as an asterisk, an image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>In the code, one of the techniques must be implemented:<ul><li>The text or visual element must be embedded in the label tag or linked to the form field (example with a <code>aria-labelledby</code>...)</li><li>presence of the <code>required</code> attribute or <code>aria-required</code></li></ul></li></ul><p>The criterion is also applicable if all fields in a form are mandatories, except for one optional field. It is then possible to identify only the optional field using the method detailed above.</p>",
         "group": "Form",
-        "exception": "The criterion is not applicable if the mandatory nature of a field is obvious, then the visual element is optional (eg: search field, subscription to a newsletter, username / password).",
+        "exception":"The criterion is not applicable if the mandatory nature of a field is obvious, then the visual element is optional (eg: search field, subscription to a newsletter, username / password).",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
         "priority": "P1",
         "resultatTest": "nt",
@@ -135,7 +135,7 @@
             "3.3.1 A"
         ],
         "verifier": "<p>Check that:</p><ul><li> an error message is present visually, </li><li>the field in error is precisely identified by the error message, </li> the nature of the error is clear (examples: required phone field, invalid email format…).</li></ul>",
-        "complement": "<p>The criterion is compliant if it is impossible to specifically identify the field in error (examples: authentication page with username, password for which, for security reasons, it is not possible to specifically identify which of the two fields is in error).</p>",
+        "complement":"<p>The criterion is compliant if it is impossible to specifically identify the field in error (examples: authentication page with username, password for which, for security reasons, it is not possible to specifically identify which of the two fields is in error).</p>",
         "group": "Form",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
         "priority": "P2",
@@ -151,7 +151,7 @@
             "3.3.3 AA"
         ],
         "verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
-        "exception": "The criterion is not applicable if it's impossible to make a suggestion to correct.",
+        "exception":"The criterion is not applicable if it's impossible to make a suggestion to correct.",
         "group": "Form",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
         "priority": "P3",
@@ -167,7 +167,7 @@
             "3.3.7 A"
         ],
         "verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p><p>The criterion is also compliant for following exceptions:</p><ul><li>An activity (a memory game for instance) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ul>",
-        "complement": "<h5>Additionally</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
+        "complement":"<h5>Additionally</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
         "group": "Form",
         "moreInfo": "",
         "priority": "P3",
@@ -266,9 +266,9 @@
         "wcag": [
             "1.3.1 A"
         ],
-        "verifier": "<ul><li>Check that elements resembling headings or having the role of a heading use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
+        "verifier": "<ul><li>Check that elements resembling headings use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical oder (without strict requirement of a single heading level skip) </li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
-        "exception": "The criterion is not applicable if no title is present.",
+        "exception":"The criterion is not applicable if no title is present.",
         "priority": "P1",
         "resultatTest": "nt",
         "goodPractice": false
@@ -283,7 +283,7 @@
         ],
         "verifier": "<ul><li>Level headings should be relevant and help understand the content of the page.</li><li>Headings should accurately describe the section of content they present.</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
-        "exception": "The criterion is not applicable if no title is present.",
+        "exception":"The criterion is not applicable if no title is present.",
         "priority": "P1",
         "resultatTest": "nt",
         "goodPractice": false
@@ -500,7 +500,7 @@
             "1.4.1 A"
         ],
         "verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (example: icons using the same colours, but different shapes)</li><li>colors conveying information should be well differentiated by hue and brightness (i.e., the contrast between colors must be greater than 3:1). For example: light green and dark red.</li></ul><p>Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text<li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link or hovers over it with the mouse (example: underlined)</li></ul>",
-        "exception": "The criterion is not applicable for following cases:<ul><li>Links that are explicit in nature, for example links that are in a website's navigation areas (page headers and footers, menus or link lists…)</li><li>If no information is conveyed by the use of colour</li></ul>",
+        "exception":"The criterion is not applicable for following cases:<ul><li>Links that are explicit in nature, for example links that are in a website's navigation areas (page headers and footers, menus or link lists…)</li><li>If no information is conveyed by the use of colour</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
         "priority": "P2",
         "resultatTest": "nt",
@@ -515,7 +515,7 @@
             "1.3.3 A"
         ],
         "verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text, an alternative or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next page, press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
-        "exception": "The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position.",
+        "exception":"The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position.",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
         "priority": "P2",
         "resultatTest": "nt",
@@ -530,7 +530,7 @@
             "2.5.3 A"
         ],
         "verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a>)</p>",
-        "exception": "The criterion is not applicable if no interface component has a visible text label (example: an icon without text).",
+        "exception":"The criterion is not applicable if no interface component has a visible text label (example: an icon without text).",
         "complement": "<p>For example: for a 'start' link, use an <code>aria-label</code> 'start playing', but not 'begin playing'</p>",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
         "priority": "P3",
@@ -869,7 +869,7 @@
         ],
         "verifier": "<p>Check if the focus indicator is displayed and if it is visible enough.</p>",
         "complement": "<h5>Additionally</h5><p> if the browser focus is disabled, a custom focus must be present instead.</p>",
-        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
+        "moreInfo":"https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
         "priority": "P2",
         "resultatTest": "nt",
         "goodPractice": false
@@ -1014,7 +1014,7 @@
             "2.5.8 AA"
         ],
         "verifier": "<p>Verify that each interactive element meets the minimum target size of 24*24 CSS pixels in all display conditions (zoom, viewport size, etc.).</p><p>The criterion is also compliant for the following exceptions:</p><ul><li>If the interactive element has a target size smaller than the minimum of 24*24 CSS pixels but is placed so that a circle with a diameter of 24 CSS pixels centered on the target does not overlap with another target or the circle for an undersized target.</li><li>If the target size of the interactive element is less than 24*24 CSS pixels but there is a compliant alternative in the page that allows the same action.</li><li>If the interactive element is embedded in a sentence or its size is constrained by the line height of surrounding non-interactive text.</li></ul>",
-        "exception": "The criterion is not applicable if:<ul><li>The rendering of interactive elements is the default rendering of the user agent.</li><li>The size and position of interactive elements are crucial for the content (example: markers on a map) or constrained by legal obligations. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
+        "exception":"The criterion is not applicable if:<ul><li>The rendering of interactive elements is the default rendering of the user agent.</li><li>The size and position of interactive elements are crucial for the content (example: markers on a map) or constrained by legal obligations. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#define-sensitive-areas-of-sufficient-size",
         "priority": "P2",
         "resultatTest": "nt",
@@ -1093,7 +1093,7 @@
         ],
         "verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single pointing action).</p>",
         "exception": "The criterion is not applicable for following cases:<ul><li>The drag and drop action is essential (exemple: a dexterity game)</li><li>The functionality is native and unmodified< /li></ul>",
-        "complement": "<h5>Additionally</h5><p>This criterion only targets actions for which only the start and end points are taken into account (example: dragging and then dropping a ticket in a Kanban board) and does not take into account so-called “multi- points”, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
+        "complement":"<h5>Additionally</h5><p>This criterion only targets actions for which only the start and end points are taken into account (example: dragging and then dropping a ticket in a Kanban board) and does not take into account so-called “multi- points”, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
         "group": "",
         "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
         "priority": "P2",

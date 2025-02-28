@@ -72,7 +72,7 @@
             "2.4.6 AA"
         ],
         "verifier": "<ul><li>L'étiquette de chaque champ est pertinente.</li><li>Si un format de donnée est indiqué pour un champ, il est pertinent.</li><li>Si des champs sont regroupés, vérifier que la légende est pertinente.</li></ul>",
-        "complement": "<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
+        "complement":"<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
         "group": "Formulaire",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
         "priority": "P0",
@@ -89,7 +89,7 @@
             "3.3.2 A"
         ],
         "verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Dans le code, l'une des techniques doit être implémentée :<ul><li>Le texte ou l'élément visuel doit être intégré dans la balise <code>label</code> ou lié au champ du formulaire (ex: avec un <code>aria-labelledby</code>...)</li><li>présence de l'attribut <code>required</code> ou <code>aria-required</code></li></ul></li></ul><p>Le critère est également applicable si tous les champs d'un formulaire sont obligatoires, à l'exception d'un champ optionnel. Il est alors possible d'identifier uniquement le champ optionnel selon la méthode détaillée ci-dessus.</p>",
-        "exception": "Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).",
+        "exception":"Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).",
         "group": "Formulaire",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
         "priority": "P1",
@@ -151,7 +151,7 @@
             "3.3.3 AA"
         ],
         "verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-        "exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion.",
+        "exception":"Le critère est non applicable lorsqu'il est impossible de faire une suggestion.",
         "group": "Formulaire",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
         "priority": "P3",
@@ -167,7 +167,7 @@
             "3.3.7 A"
         ],
         "verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (exemple : jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
-        "complement": "<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
+        "complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
         "group": "Formulaire",
         "moreInfo": "",
         "priority": "P3",
@@ -268,7 +268,7 @@
         ],
         "verifier": "<ul><li>vérifier que les éléments qui ressemblent visuellement à des titres ou qui ont la fonction de titre sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-        "exception": "Le critère est non-applicable si aucun titre n'est présent.",
+        "exception":"Le critère est non-applicable si aucun titre n'est présent.",
         "priority": "P1",
         "resultatTest": "nt",
         "goodPractice": false
@@ -283,7 +283,7 @@
         ],
         "verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
-        "exception": "Le critère est non-applicable si aucun titre n'est présent.",
+        "exception":"Le critère est non-applicable si aucun titre n'est présent.",
         "priority": "P1",
         "resultatTest": "nt",
         "goodPractice": false
@@ -455,7 +455,7 @@
             "1.4.3 AA"
         ],
         "verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24 px CSS</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24 px CSS</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5 px CSS</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5 px CSS</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li><li>vérifier que le rapport de contraste est suffisant au survol de la souris et au focus</li></ul>",
-        "exception": "Le critère n'est pas applicable pour les logos, les éléments textuels purement décoratifs ou les textes d'éléments inactifs.",
+        "exception":"Le critère n'est pas applicable pour les logos, les éléments textuels purement décoratifs ou les textes d'éléments inactifs.",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
         "priority": "P1",
         "resultatTest": "nt",
@@ -500,7 +500,7 @@
             "1.4.1 A"
         ],
         "verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemples&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>les couleurs portant l'information sont bien différenciées selon leur teinte et leur luminosité (i.e le contraste entre les couleurs doit être supérieur à 3:1). Par exemple : vert clair et rouge foncé</li></ul><p>Cas particuliers des liens non soulignés dans du texte&nbsp;:</p><ul><li>le lien doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus et au survol de la souris (exemple&nbsp;: souligné)</li></ul>",
-        "exception": "Le critère est non-applicable pour les cas suivants :<ul><li>Les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-têtes et pieds de page, menu ou liste de liens…)</li><li>Si aucune information n'est portée par de la couleur</li></ul>",
+        "exception":"Le critère est non-applicable pour les cas suivants :<ul><li>Les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-têtes et pieds de page, menu ou liste de liens…)</li><li>Si aucune information n'est portée par de la couleur</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
         "priority": "P2",
         "resultatTest": "nt",
@@ -515,7 +515,7 @@
             "1.3.3 A"
         ],
         "verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
-        "exception": "Le critère est non-applicable si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position",
+        "exception":"Le critère est non-applicable si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
         "priority": "P2",
         "resultatTest": "nt",
@@ -531,7 +531,7 @@
         ],
         "verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenêtre)'>Le nom accessible en HTML</a></p>",
         "complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre un <code>aria-label</code> «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
-        "exception": "Le critère est non-applicable si aucun composant d'interface n'a de libellé texte visible (exemple : icônes sans texte)",
+        "exception":"Le critère est non-applicable si aucun composant d'interface n'a de libellé texte visible (exemple : icônes sans texte)",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
         "priority": "P3",
         "resultatTest": "nt",
@@ -869,7 +869,7 @@
         ],
         "verifier": "<p>Le focus doit toujours être présent et suffisament visible sur tous les éléments focusables.</p>",
         "complement": "<h5>Complément d'information</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
-        "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
+        "moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
         "priority": "P2",
         "resultatTest": "nt",
         "goodPractice": false
@@ -1014,7 +1014,7 @@
             "2.5.8 AA"
         ],
         "verifier": "<p>Vérifier que chaque élément interactif respecte la surface minimale de 24*24 px CSS dans toutes les conditions d'affichage (zoom, taille de viewport, etc).</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Si l'élément interactif a une surface inférieure à la surface minimale de 24*24 px CSS mais est placé de manière à ce qu'un cercle de 24 px CSS de diamètre centré sur l'élément ne chevauche pas un autre élément interactif ou le cercle d'un élément sous-dimensionné.</li><li>Si la surface de l'élément interactif est inférieure à 24*24 px CSS mais qu'il existe dans la page une alternative conforme permettant de réaliser la même action.</li><li>Si l'élément interactif est intégré dans une phrase ou si sa taille est contrainte par la hauteur de ligne du texte non interactif environnant.</li></ul>",
-        "exception": "Critère non applicable si :<ul><li>Le rendu des éléments interactifs est le rendu par défaut de l'agent utilisateur.</li><li>La taille et la position des éléments interactifs sont cruciales pour le contenu (exemple : des repères sur une carte) ou contraintes par une obligation légale. Dans ce cas il est toutefois recommandé de fournir des alternatives lorsque cela est possible.</li></ul>",
+        "exception":"Critère non applicable si :<ul><li>Le rendu des éléments interactifs est le rendu par défaut de l'agent utilisateur.</li><li>La taille et la position des éléments interactifs sont cruciales pour le contenu (exemple : des repères sur une carte) ou contraintes par une obligation légale. Dans ce cas il est toutefois recommandé de fournir des alternatives lorsque cela est possible.</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
         "priority": "P2",
         "resultatTest": "nt",
@@ -1093,7 +1093,7 @@
         ],
         "verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
         "exception": "Le critère est non applicable dans les cas suivants :<ul><li>L'action de glisser/déposer est essentielle (exemple : un jeux de dextérité)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
-        "complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (exemple : glisser puis déposer un ticket dans un tableau Kanban) et ne tient pas compte des actions \"multi-points\", couvertes dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+        "complement":"<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (exemple : glisser puis déposer un ticket dans un tableau Kanban) et ne tient pas compte des actions \"multi-points\", couvertes dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
         "group": "",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
         "priority": "P2",
@@ -1201,7 +1201,7 @@
             "1.4.2 A"
         ],
         "verifier": "<p>Il est possible de :</p> <ul><li>mettre en pause ou d'arrêter le son</li><li>régler le volume indépendamment du volume système</li></ul>",
-        "complement": "<h5>Complément d'information</h5><p>Le mécanisme doit être facilement atteignable</p>",
+        "complement":"<h5>Complément d'information</h5><p>Le mécanisme doit être facilement atteignable</p>",
         "group": "Multimédia",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
         "priority": "P3",

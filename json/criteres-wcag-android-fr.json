@@ -51,14 +51,15 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Les champs de même nature sont-ils regroupés si nécessaire ?",
+		"title": "Les champs sont-ils regroupés lorsque nécessaire ?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<p>Les champs de même nature sont regroupés, par exemple :</p><ul><li>pour une adresse (plusieurs champs rue, code postal et ville selon l'adresse de livraison ou de facturation)</li><li>pour une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
+		"verifier": "<p>Les champs liés doivent être regroupés, par exemple :</p><ul><li>des champs pour une adresse de livraison et de facturation (plusieurs champs rue, code postal et ville selon l'adresse)</li><li>une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio regroupés par la propriété <code>RadioGroup</code>.</p>",
 		"group": "Champ de formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#regrouper-les-elements",
 		"resultatTest": "nt",
@@ -349,6 +350,7 @@
 			"0": "1.3.1 A"
 		},
 		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Une liste peut-être utilisée pour présenter des éléments non-ordonnés (par exemple une liste d'ingrédients pour une recette de cuisine) ou ordonnés (par exemple une succession d'étapes précises à suivre)</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -390,7 +392,7 @@
 		"wcag": [
 			"4.1.3 AA"
 		],
-		"verifier": "<ul><li>Chaque message d'état est restitué par le lecteur d'écran sans déplacement du focus (mécanisme reposant sur les annonces ou <span lang=\"en\">live regions</span>)</li><li>Chaque message d'état est restitué de façon pertinente</li></ul>",
+		"verifier": "<ul><li>Chaque message d'état (voir les exemples ci-dessous) est restitué par le lecteur d'écran sans déplacement du focus (mécanisme reposant sur les annonces ou les <span lang=\"en\">live regions</span>)</li><li>Chaque message d'état est restitué de façon pertinente</li></ul>",
         "complement": "<h4>Exemples de message d'état</h4><ul><li>résultat d'une recherche</li><li>état de l'application (par ex. hors-ligne)</li><li>message d'erreur</li><li>message indiquant la progression</li><li>notification</li><li>message suite à l'ajout d'un produit dans un panier</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
 		"resultatTest": "nt",
@@ -823,7 +825,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'étiquette/nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
+		"title": "L'étiquette et le nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": [

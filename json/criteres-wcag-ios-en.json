@@ -51,14 +51,15 @@
 	},
 	{
 		"themes": "Form fields",
-		"title": "Are the form elements grouped where it is necessary?",
+		"title": "Are the form fields grouped where it is necessary?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": {
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<p>Fields of the same nature are grouped, for example:</p><ul><li>for an address (multiple fields for street, postal code, and city based on the delivery or billing address)</li><li>for a list of radio buttons or checkboxes linked to the same setting</li></ul>",
+		"verifier": "<p>Linked form fields must be grouped, for example:</p><ul><li>fields for a shipping and billing address (multiple fields for street, postal code, and city based on the address)</li><li>a list of radio buttons or checkboxes associated with the same parameter</li></ul>",
+		"complement": "<h5>Additional Information</h5><p>Examples of grouping: a list of radio buttons grouped using <code>.accessibilityElement(children: .contain)</code>.</p>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -346,6 +347,7 @@
 			"0": "1.3.1 A"
 		},
 		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
+		"complement": "<h5>Additional Information</h5><p>A list can be used to present unordered items (for example, a list of ingredients for a recipe) or ordered items (for example, a sequence of specific steps to follow).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -386,7 +388,7 @@
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<ul><li>Each status message is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li></ul>",
+		"verifier": "<ul><li>Each status message (see the examples below) is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li></ul>",
         "complement": "<h4>Examples of status messages</h4><ul><li>Search result</li><li>Application status (e.g., offline)</li><li>Error message</li><li>Progress indication message</li><li>Notification</li><li>Message following the addition of a product to a cart</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
@@ -811,7 +813,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Is the accessible label/name of each interactive element explicit, at least within its context?",
+		"title": "Is the label and accessible ame of each interactive element explicit, at least within its context?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": {

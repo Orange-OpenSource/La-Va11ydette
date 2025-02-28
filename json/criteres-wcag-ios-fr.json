@@ -23,7 +23,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'étiquette de chaque champ est pertinente.</p>",
+		"verifier": "<p>L'étiquette de chaque champ est pertinente et permet d'en comprendre la nature.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -43,7 +43,7 @@
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#formulaire"
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
 	},
 	{
 		"themes": "Champ de formulaire",

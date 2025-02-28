@@ -204,7 +204,7 @@
             "1.3.1 A",
             "PDF9"
         ],
-        "verifier": "<ul><li>Vérifier que les éléments qui ressemblent visuellement à des titres sont bien balisés comme tels (<code>HN</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
+        "verifier": "<ul><li>Vérifier que les éléments qui ressemblent visuellement à des titres ou qui ont la fonction de titre sont bien balisés comme tels (<code>HN</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
         "moreInfo": "https://a11y-guidelines.orange.com/fr/contenu-et-communication/pdf/",
         "complement":"<h4>Complément</h4><p>Ce critère n'oblige pas l'utilisation de titre, si aucun titre n'est présent ce critère est non-applicable.</p>",
         "priority": "P1",

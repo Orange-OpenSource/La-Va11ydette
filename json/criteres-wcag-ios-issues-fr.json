@@ -12,20 +12,20 @@
             "title": "Absence de format de données",
             "detail": "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
             "solution": "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
-            "technicalSolution": "Afficher le format de donnée dans l'élément label, exemple : \"Date au format JJ/MM/AAAA\""
+            "technicalSolution": "Afficher le format de donnée dans l'élément label, exemple : 'Date au format JJ/MM/AAAA'"
         }
     ],
     "testID-072": [
         {
-            "title": "Présence de champs non liés à leur étiquette",
-            "detail": "Un ou plusieurs champs ont un nom accessible différent de l'étiquette visible",
-            "solution": "Regrouper les champs et leur étiquette visible. Pour associer par exemple un champ texte à son étiquette visible, utiliser .accessibilityElement(children: .combine)",
+            "title": "Présence de champs de formulaire non liés à leur étiquette",
+            "detail": "Un ou plusieurs champs de formulaire ont un nom accessible différent de l'étiquette visible",
+            "solution": "Regrouper les champs de formulaire et leur étiquette visible. Pour associer un champ à son étiquette visible, utiliser .accessibilityElement(children: .combine)",
             "technicalSolution": ""
         },
         {
             "title": "Présence d'éléments non-labellisés",
             "detail": "Tous les éléments de formulaire doivent posséder un nom accessible, en particulier les éléments sans étiquette visible.",
-            "solution": "Pour les éléments sans étiquette visible, appliquer un nom accessible à l'aide de .accessibilityLabel",
+            "solution": "Pour les éléments sans étiquette visible, appliquer un nom accessible à l'aide de la méthode accessibilityLabel(_:)",
             "technicalSolution": ""
         }
     ],
@@ -41,7 +41,7 @@
         {
             "title": "Présence de champs non groupés",
             "detail": "Lorsque nécessaire les champs de même nature doivent être groupés",
-            "solution": "Regrouper les champs à l'aide de .accessibilityElement(children .contain) labellisé avec .accessibilityLabel",
+            "solution": "Regrouper les champs à l'aide de .accessibilityElement(children .contain) labellisé avec la méthode accessibilityLabel(_:)",
             "technicalSolution": ""
         }
     ],
@@ -55,7 +55,7 @@
         {
             "title": "Champ obligatoire non identifiable de manière programmatique",
             "detail": "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex. : lecteur d'écran), si elle n'est pas donnée de manière programmatique.",
-            "solution": "Ajouter l'information textuelle dans le label (exemple : \"Date de naissance (obligatoire)\" ou ajouter .accessibilityLabel sur l'élément visuel",
+            "solution": "Ajouter l'information textuelle dans le label (exemple : \"Date de naissance (obligatoire)\" ou ajouter accessibilityLabel(_:) sur l'élément visuel",
             "technicalSolution": ""
         }
     ],
@@ -64,15 +64,15 @@
             "title": "Absence d'attribut autocomplete pour des champs présentant des données personnelles",
             "detail": "Tout champ permettant de collecter des données spécifiques sur l'utilisateur, doit posséder un attribut \"autocomplete\".",
             "solution": "Ajouter la propriété \"textContentType\" sur les champs demandant une donnée personnelle.\nLa liste des valeurs possibles est disponible sur https://developer.apple.com/documentation/uikit/uitextcontenttype",
-            "technicalSolution": "exemple : .textContentType(.emailAddress) "
+            "technicalSolution": "exemple : .textContentType(.emailAddress)"
         }
     ],
     "testID-006": [
         {
-            "title": "Des champs ou messages d'erreurs ne sont pas perçus par les utilisateurs",
+            "title": "Des messages d'erreurs ne sont pas perçus par les utilisateurs",
             "detail": "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quel que soit leur équipement.",
             "solution": "Appliquer une des techniques ci-dessous :\n- Le message d'erreur est présent avant le formulaire.\n Le message liste les champs en erreur.\n- Le focus est positionné sur le message d'erreur.\n-Les messages d'erreurs sont ajoutés dans les labels des champs.",
-            "technicalSolution": "Il est recommandé de coupler l'affichage avec un système d'annonces (\"announcements\") pour que les messages d'erreurs soient restitués automatiquement par les aides techniques telles que VoiceOver."
+            "technicalSolution": "Il est recommandé de coupler l'affichage avec une méthode d'annonces (\"announcements\") pour que les messages d'erreurs soient restitués automatiquement par les aides techniques telles que VoiceOver."
         }
     ],
     "testID-007": [
@@ -123,14 +123,14 @@
         {
             "title": "Titre de page non renseigné",
             "detail": "Chaque page doit posséder un titre unique.",
-            "solution": "Renseigner l'élément <title>, avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
-            "technicalSolution": "<title>Accueil - Espace client Orange</title>"
+            "solution": "Utiliser la méthode <code>navigationTitle</code> dans une vue de type <code>NavigationStack</code>.",
+            "technicalSolution": ".navigationTitle(\"Titre de la page\")"
         },
         {
             "title": "Titre de page non pertinent",
-            "detail": "Chaque page doit posséder un titre unique, permettant de comprendre le rôle de celle-ci.",
-            "solution": "Renseigner l'élément <title> avec des mots clefs permettant de comprendre le rôle de la page. Les informations peuvent être ordonnées de la plus spécifique vers la moins spécifique, ou inversement (pas de règles).",
-            "technicalSolution": "<title>Accueil - Espace client Orange</title>"
+            "detail": "Chaque page doit posséder un titre unique et permettant de comprendre le rôle de celle-ci.",
+            "solution": "Renseigner l'élément <code>navigationTitle</code> avec des mots clefs permettant de comprendre le rôle de la page.",
+            "technicalSolution": ".navigationTitle(\"Accueil-Espace Client Orange\")"
         }
     ],
     "testID-076": [
@@ -145,13 +145,13 @@
         {
             "title": "Contraste insuffisant entre texte et fond",
             "detail": "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
-            "solution": "Assurer un contraste de 4.5:1 minimum pour les textes de tailles normales (inférieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum pour les textes de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+            "solution": "Assurer un contraste de 4.5:1 minimum pour les textes de taille normale (inférieure ou égale à 18pt ou 14pt gras). Assurer un contraste de 3:1 minimum les textes de grande taille (supérieur à 18pt ou 14pt gras).",
             "technicalSolution": ""
         },
         {
             "title": "Contraste insuffisant pour des liens non-soulignés",
             "detail": "Les liens non-soulignés doivent avoir un rapport de contraste suffisant avec le texte environnant.",
-            "solution": "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (inférieur à 24px CSS et 19px CSS en gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 24px CSS et 19px CSS en gras).",
+            "solution": "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (inférieure ou égale à 18pt ou 14pt gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 18pt ou 14pt gras).",
             "technicalSolution": ""
         }
     ],
@@ -163,15 +163,9 @@
             "technicalSolution": ""
         },
         {
-            "title": "Contraste insuffisant pour des composants interactifs (boutons, boutons radios…)",
+            "title": "Contraste insuffisant pour des composants interactifs (boutons, boutons radios, etc.) ou états de componsants (focus, hover, etc.)",
             "detail": "Le contraste doit être suffisant pour transmettre l'information.",
-            "solution": "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
-            "technicalSolution": ""
-        },
-        {
-            "title": "Contraste insuffisant pour états de composants interactifs (focus, hover, …)",
-            "detail": "Le contraste doit être suffisant pour transmettre l'information.",
-            "solution": "Assurer un contraste de 3:1 minimum pour les différents états de composants interactifs.",
+            "solution": "Assurer un contraste de 3:1 minimum pour tous les composants interactifs et leurs différents états (sauf pour les composants inactifs)",
             "technicalSolution": ""
         }
     ],
@@ -194,128 +188,74 @@
     "testID-017": [
         {
             "title": "Textes tronqués ou masqués",
-            "detail": "Perte d'informations due à la présence de textes tronqués ou masqués lors du redimensionnement de la page (zoom texte à 200 %).",
-            "solution": "Pour résoudre ces problèmes, il est conseillé d'utiliser de préférence des unités relatives (ex : %, em, rem) pour le texte, mais aussi pour les différents conteneurs parents (div, boutons...).",
+            "detail": "Perte d'informations due à la présence de textes tronqués ou masqués lors du redimensionnement de la page (niveau de zoom à 200 %).",
+            "solution": "Pour résoudre ce genre de problème, utiliser le DynamicType sur les textes et conteneurs de l'application.",
             "technicalSolution": ""
         },
         {
             "title": "Le zoom n'est pas autorisé",
-            "detail": "L'agrandissement du texte doit être possible sur mobile.",
-            "solution": "Si une balise \"<meta name= 'viewport'>\" est présente :\n - le paramètre user-scalable='no' n'est pas présent\n-  et le paramètre maximum-scale n'est pas inférieur à 2 ",
+            "detail": "L'agrandissement du texte doit être possible sur toutes les pages.",
+            "solution": "",
             "technicalSolution": ""
         }
     ],
     "testID-018": [
         {
-            "title": "Absence de ALT sur des images",
-            "detail": "Toutes les images doivent posséder un attribut ALT.",
-            "solution": "Ajouter un attribut ALT aux images.",
-            "technicalSolution": "<img alt=\"[…]\" […]> "
+            "title": "Absence d'alternative textuelle sur un élément graphique  informatif",
+            "detail": "Chaque élément graphique (images, icones, etc.) informatif doit posséder une alternative textuelle.",
+            "solution": "Ajouter un accessibilityLabel(_:) sur les éléments porteurs d'information.",
+            "technicalSolution": "Image(\"oem_logo\") \n .accessibilityLabel(\"Logo Orange et moi\")"
         },
         {
-            "title": "Le ALT d'une image-lien n'est pas renseigné ou non pertinent",
-            "detail": "Le contenu de l'attribut ALT de chaque image-lien n'est pas pertinent par rapport à sa fonction de lien.",
-            "solution": "Renseigner la cible du lien dans le ALT.",
-            "technicalSolution": "<a href=\"http://monsite.com\"> <img src=\"[…]\" alt= \"Mon site\" > </a>"
-        },
-        {
-            "title": "Le ALT d'une image porteuse d'information n'est pas renseigné ou non pertinent",
-            "detail": "L'attribut ALT de chaque image n'est pas pertinent par rapport au rôle de l'image dans la page.",
-            "solution": "Renseigner dans le ALT, l'information portée par l'image.",
+            "title": "L'alternative textuelle d'une image contenant du texte n'est pas renseignée ou non pertinente",
+            "detail": "L'alternative ne reprend pas le texte présenté dans l'image ",
+            "solution": "L'alternative textuelle doit reprendre au moins le texte de l'image.",
             "technicalSolution": ""
         },
         {
-            "title": "Le ALT d'une image contenant du texte n'est pas renseigné ou non pertinent",
-            "detail": "L'attribut alt reprend au moins le texte de l'image.",
-            "solution": "Reporter, a minima, dans le ALT le texte affiché par l'image.",
+            "title": "L'alternative d'une image complexe (schéma, graphe…) n'est pas pertinente",
+            "detail": "L'alternative d'une image complexe (schéma, graphe…) n'est pas pertinente ou trop longue",
+            "solution": "Pour toute description d'image trop longue pour être mise dans un .accessibilityLabel, la description détaillée doit être disponible à proximité de l'image : soit sur la même page, soit depuis un lien/bouton ouvrant la page contenant la description.",
             "technicalSolution": ""
-        },
-        {
-            "title": "Le ALT d'une image complexe (schémas, graphes…) n'est pas pertinent",
-            "detail": "",
-            "solution": "Pour toute description d'image trop longue pour être mise dans un attribut ALT, la description de l'image sous forme de texte html est, soit présente dans la page, soit, un lien pointe vers une page html contenant la description, et ceci, à proximité de l'image à décrire.",
-            "technicalSolution": ""
-        },
-        {
-            "title": "L'attribut aria-hidden d'une balise SVG décorative n'est pas renseignée",
-            "detail": "Une image (balise) SVG décorative doit avoir un attribut aria-hidden=\"true\" et un attribut focusable=\"false\"",
-            "solution": "Ajouter les attributs aria-hidden et focusable dans la balise SVG de l'élément.",
-            "technicalSolution": "<svg aria-hidden=\"true\" focusable=\"false\"> … </svg>\n Pour en savoir plus :\n https://a11y-guidelines.orange.com/fr/articles/svg-accessibles/"
-        },
-        {
-            "title": "Une image SVG porteuse d'informations n'a pas d'alternative textuelle.",
-            "detail": "Dans le cas d'une balise SVG contenant une image porteuse d'information, l'élément <svg> doit avoir&nbsp;:\n - un attribut role=\"img\"\n- un intitulé avec soit l'attribut aria-label, soit un élément <title> lié avec l'attribut aria-labelledby qui reprend l'identifiant (id) de cet élément <title>.\n- un attribut focusable=\"false\".\n Dans le cas d'une balise <img> avec une image source au format SVG, l'élément devra avoir un attribut role=\"img\" et un ALT pertinent",
-            "solution": "Ajouter soit un attribut alt, soit un attribut aria-label pertinent à la balise SVG.",
-            "technicalSolution": "Exemple d'une balise <svg> :\n <svg role=\"img\" aria-label=\"Démarche en cours\" focusable=\"false\"></svg> Exemple d'une balise <img> avec une image au format .svg\n <img src=\"image.svg\" role=\"img\" alt=\"Nom accessible\"> Pour en savoir plus : https://a11y-guidelines.orange.com/fr/articles/svg-accessibles/"
         }
     ],
     "testID-019": [
         {
             "title": "Déplacement du focus non-logique",
             "detail": "Le déplacement du focus ne suit pas un ordre de lecture logique.",
-            "solution": "",
+            "solution": "Utiliser la méthode .accessibilitySortPriority pour corriger l'ordre de lecture.",
             "technicalSolution": ""
-        },
-        {
-            "title": "Ordre de lecture non compréhensible après désactivation du CSS",
-            "detail": "L'ordre de lecture doit permettre de comprendre et d'utiliser le contenu lorsque le CSS est désactivé sur la page",
-            "solution": "L'ordre d'apparition des éléments dans le code HTML doivent permettre la compréhension et l'utilisation du contenu de la page.",
-            "technicalSolution": " https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation"
         }
     ],
     "testID-020": [
         {
-            "title": "Présence de champs non-groupés",
-            "detail": "Lorsque nécessaire les champs de même nature doivent être groupés",
-            "solution": "- appliquer un \"fieldset\" complété par un élément \"legend\"\n- appliquer un rôle \"group\" sur l'élément parent encapsulant les champs, et compléter par un équivalent de légende basé sur un aria-labelledby",
+            "title": "Présence d'éléments liés non-groupés",
+            "detail": "Des éléments liés visuellement ne sont pas regroupés programmatiquement.",
+            "solution": "Utiliser .accessibilityElement(children: .combine) pour grouper des éléments. Si besoin, modifier le nom accessible du groupe avec la méthode accessibilityLabel(_:).",
             "technicalSolution": ""
         }
     ],
     "testID-021": [
         {
-            "title": "Absence de sémantique de liste",
-            "detail": "Les éléments présentés visuellement comme des listes doivent être structurés avec une sémantique de liste.",
-            "solution": "Utiliser des sémantiques de listes appropriées <ul>, <ol> ou <dl>, <dt> et <dd>",
+            "title": "Absence de structure de liste",
+            "detail": "Les éléments présentés visuellement comme une liste doivent être restitués sous forme de liste.",
+            "solution": "Les éléments de la liste doivent être séparés les uns des autres pour être lus séparement par le lecteur d'écran. Par exemple, un élément Text() par item.",
             "technicalSolution": ""
         }
     ],
-    "testID-023": [
+    "testID-022": [
         {
-            "title": "Ouverture de popup ou modale lors de la prise de focus d'un élément ou au chargement de page",
-            "detail": "Au chargement de la page ou à la prise de focus aucune modale ou popup ne doit s'ouvrir.",
-            "solution": "",
-            "technicalSolution": ""
-        },
-        {
-            "title": "Formulaire soumis automatiquement sans validation explicite de l'utilisateur",
-            "detail": "Un formulaire est soumis automatiquement sans action utilisateur.",
-            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
-            "technicalSolution": ""
-        },
-        {
-            "title": "Formulaire soumis automatiquement lors de la modification de paramètres",
-            "detail": "Un formulaire est soumis automatiquement suite à la modification de l'état d'une case à cocher, d'un bouton radio, au choix dans une liste déroulante...",
-            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
-            "technicalSolution": ""
-        },
-        {
-            "title": "Formulaire soumis automatiquement lors de la saisie de données",
-            "detail": "Un formulaire est soumis automatiquement après saisie de données dans un champ (onInput).",
-            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
+            "title": "En-têtes non restitués au lecteur d'écran",
+            "detail": "Les éléments présentés visuellement comme des en-têtes ne sont pas restitués comme tels au lecteur d'écran",
+            "solution": "Appliquer un attribut .accessibilityAddTraits(.isHeader) sur les en-têtes.",
             "technicalSolution": ""
         }
     ],
     "testID-049": [
         {
-            "title": "Absence de rôles ARIA (status, alert, alertdialog…) ou de régions dynamiques aria-live",
-            "detail": "Les messages d'alerte ne sont pas perçus depuis un lecteur d'écran.",
-            "solution": "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc…) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement. Exemples : \"\n - <div role=\"status\"> […] </div> \n - <div aria-live=\"assertive\">[…]</div>\"",
-            "technicalSolution": ""
-        },
-        {
-            "title": "La progression d'une action n'est pas restituée à l'utilisateur",
-            "detail": "La progression via des messages d'alerte n'est pas restitué au lecteur d'écran.",
-            "solution": "Appliquer un role ARIA (\"status\", \"alert\", \"alertdialog\", etc…) ou un attribut \"aria-live\" au message d'alerte afin qu'il soit vocalisé automatiquement. Exemples : \"\n - <div role=\"status\"> […] </div> \n - <div aria-live=\"assertive\">[…]</div>\"",
+            "title": "Absence de notifications pour des messages d'état ou contextuels",
+            "detail": "Les messages d'état ou contextuels (alerte, résultat ou progression d'une action) ne sont pas perçus depuis un lecteur d'écran.",
+            "solution": "Utiliser le système d'annonces UIAccessibility.post(notification: .announcement, argument: message) ou AccessibilityNotification.Announcement",
             "technicalSolution": ""
         }
     ],
@@ -323,19 +263,19 @@
         {
             "title": "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
             "detail": "Les états cochés/décochés, pliés/dépliés… ne sont pas perçus par un lecteur d'écran",
-            "solution": "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n - sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected…)",
+            "solution": "utiliser autant que possible les composants natifs (Button, Disclosure, Toggle, Tabview, etc.)",
             "technicalSolution": ""
         },
         {
             "title": "Un composant interactif n'est pas utilisable avec un lecteur d'écran",
             "detail": "Les fonctionnalités d'un composant ne sont pas utilisables avec un lecteur d'écran",
-            "solution": "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n- sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte",
+            "solution": "utiliser autant que possible les composants natifs (Button, Disclosure, Toggle, Tabview, etc.)",
             "technicalSolution": ""
         },
         {
             "title": "Un composant interactif n'a pas de nom accessible",
             "detail": "Un composant interactif n'a pas de nom accessible",
-            "solution": "Privilégier les méthodes natives en renseignant un libellé de bouton.\n Au besoin, le nom accessible peut être modifié à l'aide des attributs ARIA aria-label et aria-labelledby.",
+            "solution": "Fournir un nom accessible grâce à la méthode accessibilityLabel(_:)",
             "technicalSolution": ""
         }
     ],
@@ -343,88 +283,82 @@
         {
             "title": "Des éléments non visibles à l'écran sont restitués par le lecteur d'écran",
             "detail": "Des éléments non visibles à l'écran sont restitués par le lecteur d'écran",
-            "solution": "",
+            "solution": "Dans le cas d'ouverture d'une modale, utiliser .accessibilityAddTraits(.isModal) pour masquer automatiquement les éléments derrière la modale.",
             "technicalSolution": ""
         }
     ],
     "testID-026": [
         {
-            "title": "Le ALT d'une image décorative n'est pas pertinent",
-            "detail": "L'attribut ALT d'une image décorative doit être vide, afin que l'image soit ignorée par les aides techniques.",
-            "solution": "Renseigner un alt vide.",
-            "technicalSolution": "<img src=\"[…]\" alt=\"\" >"
+            "title": "Un élément décoratif est restitué inutilement",
+            "detail": "Une image décorative (ou tout autre élément non informatif) n'est pas ignorée par les aides techniques.",
+            "solution": "Masquer les éléments aux aides techniques en utilisant la méthode accessibilityHidden(_:) ou spécifiquement pour les images : Image(decorative:)",
+            "technicalSolution": ""
         }
     ],
     "testID-051": [
         {
-            "title": "Absence du texte visible à l'écran, dans l'accessible name",
-            "detail": "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom (accessible) de ce composant.",
-            "solution": "Modifier l'accessible name de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
-            "technicalSolution": "Plusieurs solutions sont possibles pour redéfinir l'accessible name : aria-labelledby, aria-label, title, du texte accessible caché."
+            "title": "Absence du texte visible dans le nom accessible",
+            "detail": "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom accessible d'un composant.",
+            "solution": "Modifier le nom accessible de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
+            "technicalSolution": "Utiliser .accessibilityLabel"
         }
     ],
     "testID-070": [
         {
             "title": "Absence de sémantiques d'entêtes de ligne ou de colonne",
             "detail": "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",
-            "solution": "Les cellules d'entêtes de colonnes doivent posséder une sémantique de TH + un attribut scope=\"col\". Les cellules d'entêtes de lignes doivent posséder une sémantique de TH + un attribut scope=\"row\". ",
-            "technicalSolution": "<th scope=\"col\"> / <th scope=\"row\"> "
+            "solution": "Utiliser le composant Table pour structurer les tableaux de données.",
+            "technicalSolution": ""
         },
         {
             "title": "Présence de tableau de mise en forme",
-            "detail": "Les tableaux ne doivent pas être utilisés pour de la mise en forme",
-            "solution": "Ajouter un role=\"presentation\" au tableau",
-            "technicalSolution": "<table role=\"presentation\">"
+            "detail": "Les tableaux ne doivent pas être utilisés pour de la mise en forme.",
+            "solution": "Utiliser les vues VStack et HStack pour la mise en forme.",
+            "technicalSolution": ""
         }
     ],
     "testID-058": [
         {
             "title": "Changement de langue non indiqué",
             "detail": "Les mots et expressions en langue étrangère doivent être indiqués aux utilisateurs.",
-            "solution": "Ajouter un attribut lang aux termes en langue étrangère",
+            "solution": "Utiliser la propriété .accessibilitySpeechLanguage pour définir la langue de restitution. Il est aussi possible d'utiliser .accessibilityLabel en se basant sur un fichier de traduction, voir https://developer.apple.com/documentation/swiftui/localizedstringkey.",
             "technicalSolution": "<q lang=\"en\">[…]</q>"
         }
     ],
     "testID-059": [
         {
-            "title": "Absence de titres de niveau",
-            "detail": "Il manque des titres de niveau qui permettraient à des utilisateurs d'aides techniques d'accéder directement à des contenus de la page pour éviter les éléments communs (exemple : navigation principale).",
-            "solution": "Utiliser des titres de niveau (h1…) pour définir les différentes sections de votre page.",
-            "technicalSolution": ""
+            "title": "Absence d'en-têtes",
+            "detail": "Il manque des en-têtes qui permettraient à des utilisateurs d'aides techniques d'accéder directement à des contenus précis de la page.",
+            "solution": "Utiliser des en-têtes pour définir les différentes sections de votre page.",
+            "technicalSolution": "Définir les en-têtes à l'aide de .accessibilityAddTraits(.isHeader)"
         },
         {
-            "title": "Absence de liens d'évitement",
-            "detail": "Il manque des liens d'évitement qui permettraient d'accéder directement à un contenu de la page pour éviter les éléments communs (exemple : navigation principale).",
-            "solution": "Utiliser des liens d'évitement en début de page (premier élément du <body>) pour accéder rapidement à certains contenus de votre page (contenu principal, formulaire…).",
-            "technicalSolution": ""
-        },
-        {
-            "title": "Absence de balises pour structurer la page",
-            "detail": "Il manque des balises de structure (landmark) qui permettraient à certains utilisateurs de mieux comprendre la page et de pouvoir sauter des blocs de contenu pour éviter les éléments communs (exemple : navigation principale).",
-            "solution": "Utiliser des balises de structure pour définir les différentes sections de votre page (header, nav, main, article…).",
+            "title": "Absence de mécanismes de navigation",
+            "detail": "La structure de la page et des informations présentées nécessitent de pouvoir naviguer rapidement par un moyen spécifique autre que les en-têtes (liens, conteneur, etc.)",
+            "solution": "Utiliser par exemple .accessibilityAddTraits",
             "technicalSolution": ""
         }
     ],
     "testID-027": [
         {
             "title": "Élément non utilisable au clavier",
-            "detail": "Un élément n'est pas utilisable depuis une navigation clavier.",
-            "solution": "",
+            "detail": "Un élément n'est pas utilisable avec le contrôle de sélection ou avec un clavier.",
+            "solution": "Si un élément n'est pas atteignable, il est possible de le rendre accessible avec la méthode accessibilityRespondsToUserInteraction(_:)",
             "technicalSolution": ""
         }
     ],
     "testID-028": [
         {
             "title": "Présence de pièges clavier dans la page",
-            "detail": "Quelle que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir accéder au clavier à tous les contenus sans se retrouver bloqué à la navigation clavier.",
-            "solution": "",
+            "detail": "Quelle que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir en sortir à l'aide du clavier seul sans se retrouver bloqué à la navigation clavier.",
+            "solution": "Permettre la sortie du composant (modale, popup, etc.) grâce à un bouton de fermeture",
             "technicalSolution": ""
         }
     ],
     "testID-075": [
         {
             "title": "L'utilisateur n'a pas le contrôle d'un raccourci clavier",
-            "detail": "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur un caractère : lettre (minuscule ou majuscule), ponctuation, chiffre, ou caractère symbole.",
+            "detail": "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur un caractère imprimable : lettre (minuscule ou majuscule), ponctuation, chiffre, ou caractère symbole.",
             "solution": "L'utilisateur doit pouvoir : \n - désactiver le raccourci \n - ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n - ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
             "technicalSolution": ""
         }
@@ -433,7 +367,7 @@
         {
             "title": "Déplacement du focus non-logique",
             "detail": "Le déplacement du focus ne suit pas un ordre de lecture logique.",
-            "solution": "",
+            "solution": "Il est possible de modifier l'ordre de focus grâce à accessibilitySortPriority",
             "technicalSolution": ""
         }
     ],
@@ -441,32 +375,22 @@
         {
             "title": "Le focus est affiché mais peu visible",
             "detail": "La visibilité du focus doit être suffisante (vérifier le contraste et la taille).",
-            "solution": "Pour accentuer la visibilité du focus, vous pouvez :\nProposer un niveau de contraste suffisant entre le focus et la couleur de fond ( niveau 3.1 minimum).\nAugmenter la taille du focus, en modifiant la propriété CSS du outline (ex. : outline:2px).",
+            "solution": "Pour accentuer la visibilité du focus, si possible vous pouvez :\n- Proposer un niveau de contraste suffisant entre le focus et la couleur de fond (ratio de 3:1 minimum).\n- Ajouter un contour au focus.",
             "technicalSolution": ""
-        },
+        }
+    ],
+    "testID-061": [
         {
-            "title": "La visualisation du focus (outline) est désactivée",
-            "detail": "Le outline ne doit pas être désactivé.",
-            "solution": "Vérifier que le outline n'est pas supprimé par une propriété CSS (ex. : outline:none;).",
-            "technicalSolution": ""
-        },
-        {
-            "title": "La couleur uniquement permet de visualiser le focus ",
-            "detail": "La couleur ne peut être le seul élément permettant de distinguer le focus.",
-            "solution": "Mettre en place un autre moyen que le changement de couleur pour l'indicateur de focus (ex.&nbsp;: forme, taille, encadré, souligné...).",
-            "technicalSolution": ""
-        },
-        {
-            "title": "La visualisation du focus est insuffisante",
-            "detail": "Le contraste de l'indicateur du focus doit être suffisamment contrasté (3:1) par rapport au fond de l'élément",
-            "solution": "Assurer un contraste de 3:1 minimum pour les différents composants interactifs et l'indicateur de focus.",
+            "title": "Le focus est complètement masqué par un contenu",
+            "detail": "Le focus est complètement masqué par un élément de la page apparaissant lors de la navigation clavier ou avec le contrôle de sélection",
+            "solution": ".",
             "technicalSolution": ""
         }
     ],
     "testID-031": [
         {
             "title": "Une action basée sur un mouvement de l'appareil ou un geste de l'utilisateur ne possède pas d'alternative",
-            "detail": "Toute action basée sur un mouvement de l'appareil doit posséder une alternative.",
+            "detail": "Toute action basée sur un mouvement de l'appareil ou un geste spécifique doit posséder une alternative.",
             "solution": "Permettre de déclencher cette action par un autre moyen (ex : ajouter un bouton dans l'interface).",
             "technicalSolution": ""
         }
@@ -475,18 +399,27 @@
         {
             "title": "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
             "detail": "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur l'utilisation d'un seul pointeur.",
-            "solution": "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de <button> [+] et [-] est proposée.",
+            "solution": "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de boutons [+] et [-] est proposée.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-074": [
+        {
+            "title": "Une action de glisser et déposer n'a pas d'alternative",
+            "detail": "Une action de glisser et déposer ne peut pas être réalisée par un autre moyen",
+            "solution": "Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).",
             "technicalSolution": ""
         }
     ],
     "testID-033": [
         {
             "title": "Une action ne peut être annulée",
-            "detail": "L'action ne peut être annulée car déclenchée sur l'évènement DOWN.",
-            "solution": "- déclencher l'action sur l'évènement UP\n - pour des composants complexes (ex : drag n'drop), l'action sur le UP est complétée par une boîte de dialogue donnant la possibilité aux utilisateurs d'annuler leur action.",
+            "detail": "L'action ne peut être annulée car déclenchée sur l'évènement touchDown.",
+            "solution": "Utiliser autant que possible les gestes natifs : https://developer.apple.com/design/human-interface-guidelines/gestures#Standard-gestures\nPour un geste non-natif, définir une activation seulement sur à la fin du geste à l'aide de la méthode onEnded.",
             "technicalSolution": ""
         }
     ],
+
     "testID-034": [
         {
             "title": "Perte d'information lors d'une consultation en mode portrait ou paysage",
@@ -501,11 +434,27 @@
             "technicalSolution": ""
         }
     ],
+    "testID-050": [
+        {
+            "title": "Des éléments cliquables ont une zone tactile trop petite",
+            "detail": "Des éléments cliquables ont une zone tactile trop petite",
+            "solution": "La zone tactile doit faire au moins 44pt (hauteur ET largeur)",
+            "technicalSolution": ""
+        }
+    ],
     "testID-035": [
         {
             "title": "Composants répétés sur plusieurs pages, dans des ordres différents",
             "detail": "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
             "solution": "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaître de manière uniforme, dans le même ordre relatif.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-073": [
+        {
+            "title": "Aide présentée de manière incohérente sur plusieurs pages",
+            "detail": "Un mécanisme d'aide répété sur plusieurs pages n'est pas présenté de manière cohérente sur chaque page.",
+            "solution": "Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.",
             "technicalSolution": ""
         }
     ],
@@ -526,20 +475,20 @@
         },
         {
             "title": "Formulaire soumis automatiquement lors de la prise de focus d'un élément",
-            "detail": "Un formulaire est soumis automatiquement dès la prise de focus d'un élément du formulaire (onFocus).",
-            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission (onClick).",
+            "detail": "Un formulaire est soumis automatiquement dès la prise de focus d'un élément du formulaire.",
+            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission.",
             "technicalSolution": ""
         },
         {
             "title": "Changement du contenu de la page lors de la prise de focus",
-            "detail": "Un changement de contenu s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
-            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien ou un bouton d'action.",
+            "detail": "Un changement de contenu s'opère sans qu'il soit initié volontairement par l'utilisateur.",
+            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur sur un lien ou un bouton d'action.",
             "technicalSolution": ""
         },
         {
             "title": "Ouverture d'une nouvelle page lors de la prise de focus",
-            "detail": "Un changement de page (ou d'un onglet) s'opère sans qu'il soit initié volontairement par l'utilisateur (onFocus).",
-            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur (onClick) sur un lien.",
+            "detail": "Un changement de page (ou d'un onglet) s'opère sans qu'il soit initié volontairement par l'utilisateur.",
+            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur sur un lien.",
             "technicalSolution": ""
         }
     ],
@@ -570,17 +519,17 @@
     "testID-052": [
         {
             "title": "Présence de texte sous forme d'image",
-            "detail": "Les textes doivent être présent dans le HTML et mis en forme via CSS.",
-            "solution": "Intégrer les textes dans le HTML et gérer la mise en forme via CSS.",
+            "detail": "Les images ne doivent pas servir à présenter du texte.",
+            "solution": "Si des textes sous forme d'image sont présents, une alternative sous forme de texte doit être affichée à proximité.",
             "technicalSolution": ""
         }
     ],
     "testID-054": [
         {
-            "title": "Présence de libellés de lien non-compréhensibles dans leurs contextes",
-            "detail": "La cible d'un lien n'est pas compréhensible même en s'aidant de son contexte direct (texte environnant).",
+            "title": "Présence de libellés de lien ou de bouton non-compréhensibles dans leur contexte",
+            "detail": "La cible d'un lien ou d'un bouton n'est pas compréhensible même en s'aidant de son contexte direct (texte environnant).",
             "solution": "Ajouter une information discriminante dans le texte environnant.",
-            "technicalSolution": "La solution dépend du contexte d'utilisation de l'élément : \n - élément dans un paragraphe : compléter le texte du paragraphe (<p>[…]</p>) \n - élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n - élément dans une cellule de tableau : compléter le texte de la cellule (<td>[…]</td>) ou compléter l'entête directe de la cellule (<th>[…]</th>)."
+            "technicalSolution": ""
         }
     ],
     "testID-068": [
@@ -594,8 +543,8 @@
     "testID-069": [
         {
             "title": "Un seul mécanisme de navigation est présent",
-            "detail": "Au moins 2 mécanismes de navigation doivent être présent sur les pages.",
-            "solution": "Compléter le mécanisme existant avec une solution listée ci-dessous : \n -  un menu de navigation principal \n - une table des matières \n - un sitemap \n - un mécanisme de recherche \n - une liste de liens permettant de naviguer à travers tout le site (pied de page).",
+            "detail": "Au moins 2 mécanismes de navigation doivent être présents sur les pages.",
+            "solution": "Compléter le mécanisme existant avec une solution listée ci-dessous : \n -  un menu de navigation principal \n - une tab bar \n - un mécanisme de recherche.",
             "technicalSolution": ""
         }
     ],
@@ -603,7 +552,7 @@
         {
             "title": "Absence de transcrit complet",
             "detail": "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
-            "solution": "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+            "solution": "Ajouter un transcrit complet sous forme de texte, soit directement dans la page, soit par un lien pointant vers une autre page (in-app ou externe) contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
             "technicalSolution": ""
         }
     ],
@@ -611,7 +560,7 @@
         {
             "title": "Absence de transcrit complet",
             "detail": "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
-            "solution": "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+            "solution": "Ajouter un transcrit complet sous forme de texte, soit directement dans la page, soit par un lien pointant vers une autre page (in-app ou externe) contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
             "technicalSolution": ""
         }
     ],
@@ -619,7 +568,7 @@
         {
             "title": "Absence de transcrit complet",
             "detail": "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
-            "solution": "Ajouter un transcrit complet sous forme de texte html, soit directement dans la page, soit par un lien pointant vers une page html contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+            "solution": "Ajouter un transcrit complet sous forme de texte, soit directement dans la page, soit par un lien pointant vers une autre page (in-app ou externe) contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
             "technicalSolution": ""
         }
     ],
@@ -674,6 +623,14 @@
             "title": "Absence d'alternative au Captcha",
             "detail": "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
             "solution": "Proposer en alternative : un Captcha audio + visuel, ou des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-067": [
+        {
+            "title": "Absence d'alternative au contenu cryptique",
+            "detail": "Tout contenu cryptique doit posséder une alternative textuelle pertinente.",
+            "solution": "Proposer en alternative textuelle et pertinente.",
             "technicalSolution": ""
         }
     ]

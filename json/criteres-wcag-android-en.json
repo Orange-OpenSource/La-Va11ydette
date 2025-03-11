@@ -1,110 +1,116 @@
 [
 	{
-		"themes": "Input screen",
-		"title": "Does every input field in the form have a label?",
+		"themes": "Form fields",
+		"title": "Does every form field in the form have a label?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<p>Check that:</p> <ul><li>a label is visually present near the form fields,</li><li> or the form field has a title attribute </li> <li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
-		"exception": "<p>When the form field has no visible label but its role is obvious (search field accompanied by a magnifying glass button for example, checkbox to select a line in a data array), this is an exception.</p>",
-        "group": "Input screen",
+		"verifier": "<ul><li>A label is visually present near the form fields,</li><li>or the form field has a title attribute</li><li>or the field is accompanied by a text that becomes visible when the focus is taken.</li></ul>",
+		"exception": "<p>When the form field has no visible label but its role is obvious (example: search field accompanied by a magnifying glass button, checkbox to select a line in a data array), this is an exception and the criterion is considered compliant.</p>",
+		"complement": "<h5>Additional information</h5><p>A <code>placeholder</code> alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text near the form field.</p>",
+        "group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
     {
-		"themes": "Input screen",
-		"title": "Is every input field's label relevant?",
+		"themes": "Form fields",
+		"title": "Is every form field's label relevant?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Check that the accessible name of each input field is relevant.</p>",
-		"group": "Input screen",
+		"verifier": "<p>The accessible name of each form field is relevant.</p>",
+		"complement":"<h5>Additional information</h5><p>It is important to check the relevance of the visible label and the accessible name of the form field.</p>",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
     {
-		"themes": "Input screen",
+		"themes": "Form fields",
 		"title": "Does each form field have an accessible name?",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [
-			"1.3.1 A"
+			"1.3.1 A",
+			"4.1.2 A"
 		],
-		"verifier": "All labels are properly linked to their fields",
-		"group": "Input screen",
+		"verifier": "<p>Using screen reader or voice control, check that all labels are properly linked to their fields</p>",
+		"complement": "<h5>Additional information</h5><p>A <code>placeholder</code> alone is not sufficient to provide a visible label ; it must be accompanied by a persistent text near the form field.</p>",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "Are the form elements grouped where it is necessary?",
+		"themes": "Form fields",
+		"title": "Are the form fields grouped where it is necessary?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<p>Are the elements grouped when it is necessary, for example:</p><ul><li>for an address (road, postcode, town, etc...)</li><li>for a <code>RadioButton</code> list, use of <code>RadioGroup</code> property is necessary</li><li>for a <code>Checkbox</code> list</li></ul>",
-		"group": "Input screen",
+		"verifier": "<p>Linked form fields must be grouped, for example:</p><ul><li>fields for a shipping and billing address (multiple fields for street, postal code, and city based on the address)</li><li>a list of radio buttons or checkboxes associated with the same parameter</li></ul>",
+		"complement": "<h5>Additional Information</h5><p>Examples of grouping: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "Are the required input fields clearly identified?",
+		"themes": "Form fields",
+		"title": "Are the required form fields clearly identified?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
 		"wcag": [
 			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text must explain the visual element mandatory field. In the source code, this text must appear before the first use.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
-		"exception": "<p>The visual element is optional in the event that the mandatory nature of the fields is obvious (eg: search field, subscription to a newsletter, username / password)</p>",
-		"group": "Input screen",
+		"verifier": "<ul><li>A text or a visual element (symbol such as the asterisk, image) must be present to indicate that a form field is mandatory.</li><li>A text located at the beginning of the form must explain the visual element of mandatory fields.</li><li>Verify that the requirement is properly vocalized with voice navigation.</li><li>Check that the form cannot be validated if the mandatory field is not filled in.</li></ul>",
+		"exception": "The criterion is not applicable if the mandatory nature of a field is obvious, then the visual element is optional (eg: search field, subscription to a newsletter, username / password).",
+		"group": "Form field",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/form/#explicitly-label-input-fields",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "For the input fields which require a specific data format, is this expected data format clearly communicated to the user?",
+		"themes": "Form fields",
+		"title": "For the form fields which require a specific data format, is this expected data format clearly communicated to the user?",
 		"ID": "testID-004",
 		"IDorigin": "testID-004",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>check that the input format is present visually, and that its position allows it to be associated with the appropriate field</li><li>Check that the input format is vocalized with Talkback.</li></ul>",
-		"group": "Input screen",
+		"verifier": "<ul><li>The input format is visually present, and its positioning allows it to be associated with the relevant field.</li><li>The input format remains visible during input (do not display the expected format within the form field).</li><li>The input format is included in the vocalization of the field.</li></ul>",
+		"group": "Form field",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/form/#explicitly-label-input-fields",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "Is an autocomplete present for the input fields intended for personal information about the user?",
+		"themes": "Form fields",
+		"title": "Is an autocomplete present for the form fields intended for personal information about the user?",
 		"ID": "testID-005",
 		"IDorigin": "testID-005",
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>for the input fields intended for information about the user (name, address…), check that the <code>autofill</code> attribute is present</li><li>the value indicated for the <code>autofill</code> attribute is appropriate with respect to the type of information expected</li></ul>",
-		"group": "Input screen",
+		"verifier": "<ul><li>for the form fields intended for information about the user (name, address…), check that the <code>autofill</code> attribute is present</li><li>the value indicated for the <code>autofill</code> attribute is appropriate with respect to the type of information expected</li></ul>",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
+		"themes": "Form fields",
 		"title": "Can the user authenticate without using a cognitive-based test?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
@@ -112,44 +118,31 @@
 			"3.3.8 AA"
 		],
 		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing, unless that step provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the mobile application</li></ul><p>Warning, remembering a username and password is a cognitive test.<br/>The copy/paste function must be enabled on these fields.<br />If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
-		"complement": "<h5>Complementary information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
-		"group": "Input screen",
+		"complement": "<h5>Additional information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "Are the fields that are in error identified?",
+		"themes": "Form fields",
+		"title": "Are the form fields in error identifiable and explicit?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Check that the field that is in error is modified (e.g. by inserting an error message into the page prefixed by the word  'error ', by the use of an error-icon, field change to red color and aspect)</p>",
-		"group": "Input screen",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Input screen",
-		"title": "Are the error messages explicit?",
-		"ID": "testID-007",
-		"IDorigin": "testID-007",
-		"wcag": [
-			"3.3.1 A"
-		],
-		"verifier": "<p>Check that an error message is present visually, and that it allows the field in error to be precisely identified and the nature of the error to be understood.</p>",
-		"group": "Input screen",
+		"verifier": "<p>Fields with errors are visually identifiable:</p><ul><li>either by adding text near each field</li><li>or by displaying a message listing the different errors (e.g., at the beginning of the form)</li></ul><p>The nature of the error should be sufficiently clear (e.g., required phone field, invalid email format…)</p>",
+		"complement": "<h5>Additional information</h5><p>It is also possible to complement the textual information with the addition of an icon, color change, etc.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
+		"themes": "Form fields",
 		"title": "If an error is detected, is a suggestion for correction provided to the user?",
 		"ID": "testID-008",
 		"IDorigin": "testID-008",
@@ -157,25 +150,24 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Check that the error messages give the information necessary about how to correct the errors, for example, with additional help facilitating the correction of the input error or by making suggestions from a limited list of values.</p>",
-		"exception":"<p>If it's impossible to make a suggestion to correct, the criterion is not applicable.</p>",
-		"group": "Input screen",
+		"exception":"<p>The criterion is not applicable if it's impossible to make a suggestion to correct (example: safety reason).</p>",
+		"group": "Form field",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "If information is requested from the user in the same process, isn't entering it redundant?",
+		"themes": "Form fields",
+		"title": "If an information is requested several times from the user in the same process, isn't entering it redundant?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>In a data entry screen in several steps and in the same session, an automatic filling system must be offered to the user to restore information previously entered or provided by the application while knowing that autocomplete is not considered sufficient.</p>",
-		"complement": "<h5>Additional information</h5><p>Examples of valid mechanisms: automatic feeding, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data ( billing address equals delivery address)</p>",
-		"exception": "<ul><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password 'user</li><li>Previously entered information that is no longer valid</li></ul>",
-		"group": "Input screen",
+		"verifier": "<p>In a form and during the same process or session, an autofill system for previously provided information must be offered to the user to retrieve previously entered data. Browser autocomplete is not considered sufficient.</p><p>The criterion is also compliant for following exceptions:</p><ul><li>An activity (memory game) where re-entering information is essential</li><li>Security information such as double-entering a user-created password</li><li>Previously provided information that is no longer valid</li></ul>",
+		"complement":"<h5>Additional information</h5><p>Examples of valid mechanisms: automatic supply, choice in a drop-down selector, copy-paste from an area, checkbox to use previously entered data (invoice address equals delivery address)</p>",
+		"group": "Form field",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/form/#identify-input-errors-in-the-form",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -183,43 +175,58 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Input screen",
-		"title": "For each input screen requiring sensitive or personal data, does the user have control over their data?",
+		"themes": "Form fields",
+		"title": "For each form field requiring sensitive or personal data, does the user have control over their data?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>For input screen that:</p><ul><li>modify or delete data,</li><li>submit user test responses,</li><li> cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of checkbox).</p>>",
-		"group": "Input screen",
+		"verifier": "<p>For form fields that:</p><ul><li>modify or delete data,</li><li>submit user test responses,\n</li><li>cause legal commitments (validate terms of service) or financial transactions (online shopping) for the user to occur,</li></ul><p>Check that the user can modify or cancel before and after validation unless the validation is explicit (e.g. use of a checkbox).</p>",
+		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
 		"themes": "Headers",
-		"title": "Does the screen have a relevant title?",
+		"title": "Does the screen have a unique and relevant title?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<p>Verify that&nbsp;:</p> <ul><li>le title of <code>Activity</code> is visible,</li><li>the title of the <code>Activity</code> is unique. A common error is to use the same title for the whole application,</li><li>the page context is understandable with the <code>Activity</code> title</li></ul>",
+		"verifier": "<ul><li>The page title is visible,</li><li>The page title is unique. A common error is to use the same title for the whole application,</li><li>The page context is understandable with the page title</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/entetes/#avoir-un-titre-decran-pertinent-et-unique",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
+    {
+		"themes": "Headers",
+		"title": "Is the information structured by the use of relevant headings?",	
+		"ID": "testID-076",
+		"IDorigin": "testID-076",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<p>Headings should be relevant, help understand the content of the page, and accurately describe the section of content they present.</p>",
+		"exception":"The criterion is not applicable if no heading is present.",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
+	},
 	{
 		"themes": "Colors and constrasts",
-		"title": "Is there sufficient contrast between the text color and the background color (except for special cases)?",
+		"title": "Is there sufficient contrast between the text color and the background color?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<p>Verify that the contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p><ul><li><strong>For normal text:</strong> <ul><li>Font size less than <code>18sp</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18sp</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold text</strong> <ul><li> Font size less than <code>14sp</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14sp</code>: contrast ratio 3:1</li></ul></li></ul>",
-		"exception": "<p>Logo, decorative texts, and inactive elements do not need to meet this contrast ratio and therefore should not count towards the validation of this criteria.</p>",
+		"verifier": "<p>The contrast is sufficient in order that the information communicated by the text can be understood. Verify in light mode and dark mode.</p><ul><li><strong>For normal texts:</strong> <ul><li>Font size less than <code>18sp</code>: contrast ratio 4.5:1</li><li>Font size greater than or equal to <code>18sp</code>: contrast ratio 3:1</li></ul></li><li><strong>For bold texts:</strong> <ul><li> Font size less than <code>14sp</code>: contrast ratio 4.5:1</li><li> Font size greater than or equal to <code>14sp</code>: contrast ratio 3:1</li></ul></li></ul>",
+		"exception": "<p>This criterion is not applicable for logos, decorative texts and inactive elements.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-sufficient-contrast-between-foreground-and-background-colors",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -233,8 +240,8 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p>Verify that images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exception": "<ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>The lack of contrast is necessary to convey information</li><li>disabled components</li></ul>",
+		"verifier": "<p>Images of text, as well as graphics, icons and interactive components have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
+		"exception": "<p>This criterion is not applicable for following cases:</p><ul><li>logos</li><li>if text provides the same information as the icon or graphic element</li><li>if the lack of image contrast does not prevent the user from understanding the content or its purpose</li><li>the lack of contrast is necessary to convey information</li><li>disabled components</li><li>display is managed by the user agent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-sufficient-contrast-between-foreground-and-background-colors",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -248,7 +255,8 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (e.g. icons using the same colours, but different shapes)</li><li> Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text</li><li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link (e.g. underlined)</li></ul></li></ul><p><strong>Remarks:</strong></p><ul><li>are excluded links that are explicit in nature, for example links that are in a webviews’s navigation areas (page headers and footers, menus or link lists…)</li><li>the criterion is not applicable if no information is conveyed by the use of colour</li></ul>",
+		"verifier": "<p>Color is not the only means of conveying information:</p><ul><li>Information can also be obtained through text.</li><li>At least one other visual means is available to obtain the same information (e.g., icons that use colors but also different shapes).</li><li>If content is conveyed using colors that differ not only in hue but also present a significant difference in brightness (e.g., light green and dark red), this constitutes an additional visual distinction.</li></ul><p>Specific case of a link or button without formatting in text:</p><ul><li>The link or button must have a contrast of 3:1 with the surrounding text.</li><li>And an indicator, not relying on color, must allow it to be distinguished when focused (e.g., underlined).</li></ul>", 
+		"exception": "<p>The criterion is not applicable in the following cases:</p><ul><li>Links whose nature is explicit, such as links present in navigation areas (header and footer, menu, or list of links…)</li><li>If no information is conveyed by color.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-that-color-or-sensory-information-is-not-the-only-source-of-information",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -262,14 +270,15 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul><p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
+		"verifier": "<p>The information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
+		"exception": "<p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-that-color-or-sensory-information-is-not-the-only-source-of-information",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Elements magnification",
+		"themes": "Text enlargement",
 		"title": "Can the text be enlarged without loss of content or functionality?",
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
@@ -277,72 +286,75 @@
 			"1.4.4 AA",
 			"1.4.10 AA"
 		],
-		"verifier": "<p>Verify that there is no loss of information (no unusable, truncated or hidden content or functionality) as a result of enlarging the text size to 200%.</p>",
+		"verifier": "<ul><li>On Android, following text enlargement to 200% (maximum font size in settings), \"standard\" text sizes must enlarge according to native settings.</li><li>Content is presented without loss of information or functionality (no truncated, hidden, or overlapping content) and without the need for scrolling in both dimensions.</li></ul>",
+		"complement": "<h5>Additional information</h5><ul><li>Some texts, such as headings, may be enlarged by less than 200% depending on their original size.</li><li>Similarly, certain native elements, such as the tab bar, may not enlarge (OS limitation).</li></ul>",
+		"exception": "<p>The criterion is not applicable for captions and images of text.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/magnification/",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Are all the significant elements vocalized and relevant ?",
+		"themes": "Screen reader",
+		"title": "Are all the significant elements vocalized and relevant?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Verify that all significant elements are vocalized and accessible using Voice navigation.</p><ul><li>Each element has a relevant vocalisation (especially on informative images and <ImageButton</code> which have no text initially).<li><li>Each interactive element is vocalized with the associated action.</li><li> The title of the activity is vocalized.</li><li> Does each row of a list have a relevant and unique description? </li><li>For complex images, an alternative shall be present through an adjacent content</li></ul>",
+		"verifier": "<p>All significant graphical elements are vocalized and accessible using voice navigation:</p><ul><li>Each graphical element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
+		"complement": "<h5>Additional information</h5><ul><li>If the non-text content is a test or exercise that would be invalid if presented in text form, then the alternative provides at least a brief description of that content.</li><li>If the non-text content is primarily intended to create a specific sensory experience, then the textual alternative provides at least a brief description of that content.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Is the order of vocalisation of the elements logical and understandable?",
+		"themes": "Screen reader",
+		"title": "Is the reading order of the elements logical and understandable?",
 		"ID": "testID-019",
 		"IDorigin": "testID-019",
 		"wcag": [
 			"1.3.2 A",
 			"2.4.3 A"
 		],
-		"verifier": "<p>Verify that the elements follow a logical and understandable order using voice navigation.</p>",
+		"verifier": "<p>Using the screen reader, the elements follow a logical and understandable order.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#manage-the-vocalization-order",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Is an input field vocalized with its associated label?",
-		"ID": "testID-061",
-		"IDorigin": "testID-061",
-		"wcag": [
-			"1.3.5 AA"
-		],
-		"verifier": "<p>Check that the label of the input fields are well associated with them through the <code>LabelFor</code> attribute. The labels must therefore be vocalized when navigating the input fields with which they are associated.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/form/#explicitly-label-input-fields",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false
-	},
-	{
-		"themes": "Voice navigation",
-		"title": "Are the linked elements gathered in the same announcement block for vocalization?",
+		"themes": "Screen reader",
+		"title": "Are the linked elements read together?",
 		"ID": "testID-020",
 		"IDorigin": "testID-020",
 		"wcag": [
 			"1.3.1 A",
 			"1.3.2 A"
 		],
-		"verifier": "<p>Check that the linked elements are vocalized in a single block:</p><ul><li>are the linked elements gathered in the same announcement block for vocalization?</li><li>does the multidimensional information respect a good balance between the number of blocks and the content within each block?</li></ul>",
+		"verifier": "<p>Elements whose visual grouping is essential for understanding the information must be grouped within the same announcement block for vocalization.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
+		"title": "Are the elements presented as a list correctly rendered?",
+		"ID": "testID-021",
+		"IDorigin": "testID-021",
+		"wcag": {
+			"0": "1.3.1 A"
+		},
+		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
+		"complement": "<h5>Additional Information</h5><p>A list can be used to present unordered items (for example, a list of ingredients for a recipe) or ordered items (for example, a sequence of specific steps to follow).</p>",
+		"resultatTest": "nt",
+		"priority": "P2",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
 		"title": "Are the section headers used in the header-based voice navigation?",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
@@ -350,177 +362,238 @@
 			"1.3.1 A",
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Verify that with Talkback voice navigation and the header navigation setting set:</p><ul><li>all section headers are navigable and vocalized</li><li>only headers are navigable and vocalized</li></ul>",
+		"verifier": "<p>Verify that with screen reader and header navigation mode:</p><ul><li>all headings are navigable and vocalized</li><li>only headings are navigable and vocalized</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#enable-header-navigation",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are content changes vocalized?",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
 			"3.2.2 A"
 		],
-		"verifier": "<p>Verify that using voice navigation, the content changes are vocalized to the user:</p><ul><li>the opening of pop-up (<code>dialog</code>) is vocalized</li><li>the opening of a new screen (activity) is vocalized by its title</li><li>the change of a part of the screen (such as a fragment that changes) is vocalized</li><li>horizontal scrolling is vocalized</li></ul>",
+		"verifier": "<p>Content changes are announced to the user:</p><ul><li>The opening of pop-up windows (<code>dialogs</code>).</li><li>The opening of a new screen.</li><li>The information about a change in a part of the screen (such as a changing fragment).</li><li>Horizontal scrolling.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-content-change",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are status or contextual messages correctly rendered?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
 		"wcag": [
 			"4.1.3 AA"
 		],
-		"verifier": "<p>For all status messages (results of a reload, a notification, dialogue in a chat, temporary or error messages, change of significant element, upload of a file, product registration in a basket, progressive loading of a list... ): </p><ul><li>check that a mechanism based on live regions is implemented</li><li>check that they are rendered in a relevant way to the screen reader</li></ul>",
-		"complement": "<h4>Examples</h4><ul><li>message that informs about the result of an action or the state of the application</li><li>error message</li><li>message indicating progress</li></ul>",
-        "moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-content-change",
+		"verifier": "<ul><li>Each status message (see the examples below) is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li></ul>",
+        "complement": "<h4>Examples of status messages</h4><ul><li>Search result</li><li>Application status (e.g., offline)</li><li>Error message</li><li>Progress indication message</li><li>Notification</li><li>Message following the addition of a product to a cart</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-content-change",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Are element states vocalized?",
+		"themes": "Screen reader",
+		"title": "Are the name, role, and value of each interface component vocalized?",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "<p>Check that element states are vocalized (tabs, checkbox, radio button, etc).</p>",
+		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-the-state-of-the-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the visible elements the only ones vocalized?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Verify that there are no ghost elements using voice navigation.</p>",
+		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are decorative elements ignored when using voice navigation?",
 		"ID": "testID-026",
 		"IDorigin": "testID-026",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Check that decorative elements (such as certain images) are not vocalized.</p>",
+		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
-		"title": "Does the vocalization of a text contain at least its label visible on the screen?",
+		"themes": "Screen reader",
+		"title": "Does the accessible name of each component include at least the visible label on the screen?",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Check that the element's label is present (first if possible) in the vocalization of this component. Not applicable if the element has no visible label (icon without text for example).</p>",
-		"complement": "<p>For example: for a 'start' link, use an alternative 'start playing', but not 'begin playing'</p>",
+		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
+		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
+		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Voice navigation",
+		"themes": "Screen reader",
 		"title": "Are the tables structured properly?",
 		"ID": "testID-070",
 		"IDorigin": "testID-070",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>If the table is a data table&nbsp;:</p><ol><li>If a title is present, check that it is rendered to the screen reader and is relevant (identifies the nature of the data presented in the table).</li><li>If the table is complex, a summary must be included (to help understand the nature of the data and the construction of the table).</li><li>Headers must not be empty</li><li>Row and column headers must be correctly rendered and linked to data cells</li></ol>",
+		"verifier": "<p>For data tables:</p><ul><li>If a title is present, ensure it is conveyed to the screen reader and is relevant (helps identify the nature of the data presented in the table).</li><li>If the table is complex, a summary must be present and relevant (helps understand the nature of the data and the structure of the table).</li><li>Headers must not be empty.</li><li>Row and column headers must be correctly conveyed and linked to the data cells.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
 	{
-		"themes": "Keyboard navigation and Switch Access",
-		"title": "Is all functionality of the page content operable through a keyboard interface or Switch Access?",
+		"themes": "Screen reader",
+		"title": "Are changes in language clearly identified?",
+		"ID": "testID-058",
+		"IDorigin": "testID-058",
+		"wcag": [
+			"3.1.2 AA"
+		],
+		"verifier": "<p>The screen reader changes language for textual content that does not match the primary language of the page.</p>",
+		"exception": "<p>It is not necessary to indicate a language change for words or or proper names in foreign languages that are commonly used (e.g., Google, rendez-vous).</p>",
+		"group": "WebView",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Is there a mechanism to navigate within the page?",
+		"ID": "testID-059",
+		"IDorigin": "testID-059",
+		"wcag": [
+			"2.4.1 A"
+		],
+		"verifier": "<p>If deemed necessary, the application should offer quick navigation using TalkBack, for example:</p><ul><li>Navigation by headings</li><li>Navigation by links</li><li>Navigation by paragraphs</li><li>Navigation by form fields</li><li>Or any other specific navigation method</li></ul>",
+		"group": "Voice navigation",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-skip-links",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Is the content of the page conveyed in the primary language of the page?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": [
+			"3.1.1 A"
+		],
+		"verifier": "<p>The screen reader conveys textual content in the primary language of the page.</p>",
+		"group": "Voice navigation",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false
+	},
+	{
+		"themes": "Switch Access and keyboard navigation",
+		"title": "Are all functionalities of the page operable through Switch Access or an external keyboard interface?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<p>Check that:</p><ul><li>all features are available using Switch Access or keyboard navigation</li><li>only interactive elements are focusable using Switch Access or keyboard navigation</li><li>elements are gathered when they are linked (e.g. contents within a clickable row in a list).</li><li>it is possible to scroll with keyboard to read the content in a scrollView</li></ul>",
+		"verifier": "<ul><li>All functionalities are available using Switch Access and keyboard navigation</li><li>Only interactive elements are accessible</li><li>Elements are grouped when they are linked (example: contents within a clickable row in a list)</li><li>It is possible to scroll with to read the content in a ScrollView</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Keyboard navigation and Switch Access",
+		"themes": "Switch Access and keyboard navigation",
 		"title": "The screen does not contain keyboard traps?",
 		"ID": "testID-028",
 		"IDorigin": "testID-028",
 		"wcag": [
 			"2.1.2 A"
 		],
-		"verifier": "<p>Check that the screen does not contain keyboard traps: if the focus is on an element, the user must be able to exit this element using the standard keys (escape, enter, arrows...). If the focus seems trapped in a component, there must be information explaining the procedure to exit (via keyboard or selector control)</p>",
+		"verifier": "<p>The screen contains no traps:</p><ul><li>When navigating with the keyboard, if focus lands on an element, the user should be able to exit that element using standard keys (Escape, Enter, arrow keys, etc.).</li><li>With Switch Access, focus should not be stuck within a container.</li></ul><p>If focus appears to be trapped in a component, there should be information explaining the procedure to exit (with keyboard and Switch Access).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#keyboard-navigation-order",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
 	},
 	{
-		"themes": "Keyboard navigation and Switch Access",
+		"themes": "Switch Access and keyboard navigation",
+		"title": "If a keyboard shortcut using a single printable character is available, is it controllable by the user?",
+		"ID": "testID-075",
+		"IDorigin": "testID-075",
+		"wcag": {
+			"0": "2.1.4 A"
+		},
+		"verifier": "<p>One of the following conditions is met:</p><ul><li>The shortcut can be disabled by the user.</li><li>The shortcut is active only when the focus is on the interface component.</li><li>The shortcut can be modified, allowing the addition of one or more non-printable characters (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Shift</kbd>, etc.) to the combination.</li></ul>",
+		"exception": "<p>The criterion does not apply to keyboard shortcuts using a modifier key (non-printable character keys, e.g., Ctrl, Alt, or Shift).</p>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+	{
+		"themes": "Switch Access and keyboard navigation",
 		"title": "Is the order in which focusable components receive focus logical and consistent?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
 		"wcag": [
 			"2.4.3 A"
 		],
-		"verifier": "Check that the focus order of the elements (buttons, links, form fields) is consistent and logical (usually equivalent to the visual order).",
+		"verifier": "<p>The order of focus for elements (buttons, links, form fields) is consistent and logical (often equivalent to the visual order) with Switch Access and an external keyboard.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#keyboard-navigation-order",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
-		"themes": "Keyboard navigation and Switch Access",
+		"themes": "Switch Access and keyboard navigation",
 		"title": "When focus is received, is there a visible focus indicator?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": [
 			"2.4.7 AA"
 		],
-		"verifier": "<p>Check that the focus is clearly and easily visible.</p>",
+		"verifier": "<ul><li>The focus is easily visible at a glance and stands out from the rest of the screen.</li><li>If necessary, check the contrast ratio of the focus, which should be at least 3:1 compared to the surrounding color.</li></ul>",
+		"exception": "<p>The criterion is not applicable for native focus that is not modifiable.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
-		"themes": "Keyboard navigation and Switch Access",
+		"themes": "Switch Access and keyboard navigation",
 		"title": "Is the focus visible on all elements?",
-		"ID": "testID-062",
-		"IDorigin": "testID-062",
-		"wcag": [
-			"2.4.11 AA"
-		],
-		"verifier": "<p>Check that the focus is clearly and easily visible.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
+		"ID": "testID-061",
+		"IDorigin": "testID-061",
+		"wcag": {
+			"0": "2.4.11 AA"
+		},
+		"verifier": "<p>A component's focus is not completely obscured by page content during keyboard navigation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -534,8 +607,8 @@
 		"wcag": [
 			"2.5.4 A"
 		],
-		"verifier": "<ul><li>check that these actions can also be operated by user interface components (e.g. button)</li><li>check that it is possible to disable the motion detection</li></ul>",
-		"exceptions": "<p>The motion is essential for the function (e.g. pedometer)</p>",
+		"verifier": "<ul><li>Actions triggered by device movement or user gestures have alternatives available from an interface component (e.g., button).</li><li>It is possible to disable motion detection.</li></ul>",
+		"exception": "<p>The criterion is not applicable if the motion is essential to accomplish the feature (ex.&nbsp;: pedometer)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -549,8 +622,9 @@
 		"wcag": [
 			"2.5.1 A"
 		],
-		"verifier": "<p>Check that for any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
+		"verifier": "<p>For any multipoint gesture (requiring several fingers) and / or requiring path-based gestures, an alternative is available that requires only a single pointer (a single finger) and without a path-based gesture.</p>",
 		"complement": "<h5>For example</h5><p><strong> Zoom functionality on a map: </strong>(+ / -) buttons are available, as an alternative to a two-finger pinch.</p>",
+		"exception": "<p>The criterion is not applicable for following cases:</p><ul><li>The complex gesture is essential for functionality(for example, entering a signature)</li><li>The gesture is defined by the operating system, user agent, or assistive technology</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -565,7 +639,7 @@
 			"2.5.7 AA"
 		],
 		"verifier": "<p>Drag-and-drop functionality should have an alternative that does not require the dexterity specific to this type of movement (single-pointing action).</p>",
-		"complement": "<h5>Complement</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging then dropping a ticket in a Kanban board for example ) and does not take into account so-called “multi-point” actions, covered in criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\"</p>",
+		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging then dropping a ticket in a Kanban board for example ) and does not take into account so-called \"multi-point\" actions, covered by criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\"</p>",
 		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
@@ -575,7 +649,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Can click (or touch) errors be cancelled?",
+		"title": "Can touch or click errors be cancelled?",
 		"ID": "testID-033",
 		"IDorigin": "testID-033",
 		"wcag": [
@@ -595,6 +669,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Check that the content and functionalities are available in both orientations (no loss of information, no truncated elements).</p>",
+		"exception": "<p>If an orientation is deemed essential, the criterion is not applicable. Examples:</p><ul><li>video game application</li><li>piano playing application</li><li>check scanning application</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#have-an-application-that-can-be-used-in-any-orientation",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -602,14 +677,14 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Do the clickable elements have a sufficiently large click area?",
+		"title": "Is the size of interactive elements sufficient?",
 		"ID": "testID-050",
 		"IDorigin": "testID-050",
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>Check that:</p><ul><li>interactive elements have a click area greater than or equal to 26dp</li><li>Interactive elements have a margin that separates them from other elements or edges of the screen</li><li>If several click zones perform the same action, only one of these zones must respect the size necessary to validate the criterion</li></ul>",
-		"exception": "<p>There are two exceptions to this rule:</p><ul><li>There is another element on the screen that performs the same action, and meets the required size. In this specific case, it is accepted that the element is too small.</li><li>The interactive element is in a sentence or block of text (e.g. links).</li></ul>",
+		"verifier": "<p>Check that each interactive element meets the minimum area of 48dp (Google recommendations) in all display conditions (zoom, orientation).</p><p>The criterion is also compliant for the following exceptions:</p><ul><li>If the interactive element has an area smaller than the minimum area of 48dp but is positioned so that a circle of 48dp in diameter centered on the element does not overlap another interactive element or the circle of an undersized element.</li><li>If the area of the interactive element is less than 48dp but there is a compliant alternative on the page that allows for the same action.</li><li>If the interactive element is embedded in a sentence or if its size is constrained by the line height of the surrounding non-interactive text.</li></ul>",
+		"exception": "<p>Criterion not applicable if:</p><ul><li>The rendering of interactive elements is the default rendering of the user agent.</li><li>The size and position of interactive elements are crucial for the content (e.g., markers on a map) or constrained by a legal requirement. In this case, it is still recommended to provide alternatives when possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#have-sufficiently-large-click-areas",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -624,22 +699,22 @@
 		"wcag": [
 			"3.2.4 AA"
 		],
-		"verifier": "<p>Check that components that have the same function are named identically from one screen to another, and within the same screen if a component is repeated.</p>",
+		"verifier": "<p>Components that have the same function are named identically from one screen to another, and within the same screen if a component is repeated.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
 		"themes": "Common navigation",
-		"title": "If help is offered and repeated on several pages, is it presented in a coherent manner?",
+		"title": "If help is offered and repeated on several pages, is it presented in a consistent manner?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
 		"wcag": [
 			"3.2.6 A"
 		],
-		"verifier": "<p>Check that if one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same order on all screens.</p>",
-		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc)</ p>",
-		"exception": "<p>The user initiated a change in the presentation of the help following the use of zoom or orientation.</p>",
+		"verifier": "<p>If one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same order on all screens.</p>",
+		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc.</ p>",
+		"exception": "<p>The criterion is not applicable if the user has initiated a change in the presentation of the help following the use of the zoom or the orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -653,8 +728,8 @@
 		"wcag": [
 			"2.2.1 A"
 		],
-		"verifier": "<p>Check that one of the conditions below is met:</p><ul><li>user is allowed to turn off the time limit</li><li>the user is allowed to increase the time limit up to 10 times the minimum default value</li><li>the user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action</li></ul>",
-		"exception": "<ul><li>real-time exception: the time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible;</li><li>essential exception: the time limit is essential and extending it would invalidate the activity;</li><li>20 hour exception: the time limit is longer than 20 hours.</li></ul>",
+		"verifier": "<p>Check that one of the conditions below is met:</p><ul><li>user is allowed to turn off the time limit</li><li>the user is allowed to increase the time limit up to 10 times the minimum default value</li><li>the user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action</li><li>the time limit is longer than 20 hours.</li></ul>",
+		"exception": "<p>The criterion is not applicable in following cases:<ul><li>real-time exception: the time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible;</li><li>essential exception: the time limit is essential and extending it would invalidate the activity;</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/general-navigation/#make-ui-with-timeout-adaptable",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -672,7 +747,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/general-navigation/#provide-readable-text",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
+		"goodPractice": true
 	},
 	{
 		"themes": "Common navigation",
@@ -683,21 +758,22 @@
 			"3.2.1 A",
 			"3.2.2 A"
 		],
-		"verifier": "<p>When using forms or any interactive component, check that there is no change of context, without warning the user: </p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul>",
-		"complement": "<h5>Context changes</h5><p>Major change in the content of the screen which, when done without the knowledge of the user, can be confusing.</p> <p>The changes context include changes:</p><ul><li>the user agent (opening an other application) </li><li>the viewport (other part of the displayed screen, open a new screen)</li><li>the focus position (focus sequence) </li><li>content that changes the meaning of the screen </li></ul>The context switch is compliant if: <ul><li>the action is initiated by a button or an explicit link </li><li>the user is warned by a text before it is triggered</li></ul>",
+		"verifier": "<p>When using forms or any interactive component, check that there is no change of context&nbsp;:</p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul><p>Context change is compliant if:</p><ul><li>the action is initiated by an explicit button or link</li><li>the user is warned by text before its activation</li></ul>",
+		"complement": "<h5>Context Change</h5><p>Major change in the screen content that, when done without the user's knowledge, can be disorienting.</p><p>Context changes include changes in:</p><ul><li>user agent (opening another application)</li><li><span lang=\"en\">viewport</span> (opening a new screen, another part of the displayed screen)</li><li>focus (moving the focus)</li><li>content that alters the meaning of the screen</li></ul>",
+		"exception": "<p>The criterion is not applicable if, upon gaining focus, the context does not change. For example, the appearance of a menu or visual changes when hovering over a link are not considered context changes.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
 	{
 		"themes": "Common navigation",
-		"title": "If content on the page is moving, scrolling, blinking or updating, lasting more than 5 seconds and starting automatically, does the user have the option to stop, pause, hide or modify its update frequency of this content?",
+		"title": "Does the user have control over content that is moving, scrolling, blinking, or updating for more than 5 seconds and starting automatically?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>If content from part of the page, starting automatically and lasting more than 5 seconds, is moving, scrolling, blinking, there is a way to stop it, pause it or hide it.< /p><p>For content on a part of the page that updates or is automatically refreshed, there is a way to stop it, pause it, hide it or play on its update frequency .</p><p>Not applicable, if no movement, no scrolling, no blinking and no automatic update or refresh that lasts more than 5 seconds or starts automatically</p>",
+		"verifier": "<ul><li>If content in a part of the page starts automatically and lasts more than 5 seconds, is in motion, scrolling, or blinking, there is a way to stop, pause, or hide it.</li><li>For content in a part of the page that updates or refreshes automatically, there is a way to stop, pause, hide, or adjust its update frequency.</li></ul>", "complement": "<h5>Additional Information</h5><p>Stopping the animation only upon gaining focus or touch is not considered a mechanism for allowing the user to pause.</p>", "exception": "<p>The criterion is not applicable in the following cases:</p><ul><li>No movement, scrolling, blinking, updating, or automatic refreshing lasting more than 5 seconds and starting automatically.</li><li>The movement, scrolling, blinking, or refreshing is essential to the service.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -710,7 +786,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Compliant, if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code> i.e. a square of side 78 dp)</p>",
+		"verifier": "<p>Compliant if the flashes flash less than 3 times per second or on a very small area (less than <code> 21 824 px² </code> i.e. a square of side 78 dp)</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#avoid-epileptic-risk-contents",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -718,68 +794,67 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "The navigation mechanism is consistent with the other screens.",
+		"title": "Navigation mechanisms are consistent with the other screens.",
 		"ID": "testID-056",
 		"IDorigin": "testID-056",
 		"wcag": [
 			"3.2.3 AA"
 		],
-		"verifier": "<p>Check that the navigation mechanisms are always located in the same place in a set of screens (between the different activities of the application).</p>",
+		"verifier": "<p>Navigation mechanisms are always located in the same place in a set of screens (between the different screens of the application).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
 	},
 	{
 		"themes": "Common navigation",
-		"title": "No image is used to display text?",
+		"title": "Is there any image used to display text?",
 		"ID": "testID-052",
 		"IDorigin": "testID-052",
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Check that images and graphics elements are not used to display text.</p>",
-		"exception": "<ul><li>special cases (e.g.: logo, captcha, tradename)</li><li>The item is essential</li><li>The image is customizable by the user</li></ul>",
+		"verifier": "<p>Images are not used to present text.</p><p>The criterion is compliant for the following exceptions:</p><ul><li>SVG (true text)</li><li>specific cases (e.g., logo, captcha, brand name)</li><li>the element is necessary</li><li>the image is visually modifiable by the user</li></ul>", "exception": "Not applicable if no image contains text.",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Is each link or button label explicit, at least if the user takes its context into consideration?",
+		"title": "Is the  label and accessible name of each interactive element explicit, at least within its context?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>The user should be able to determine if they wish to follow a link without having to move around the page to understand what it is.</p><ul><li>check that there are not any identical labels pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link or button given only its accessible name</li><li>if the above checks are inconclusive, ensure that the target of a link or the action carried by a button can be inferred from its context</li></ul>",
-		"complement": "<h5>How to determine the context of the link:</h5><p>The context of the link constitutes additional information that helps the user understand the purpose. Check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph</li><li> in the same list element</li><li> in the same table cell</li><li>in the table header cell, associated with the cell of the link</li></ul>",
+		"verifier": "<p>The user must be able to understand the purpose of a link or button without having to navigate the page to comprehend its meaning.</p><ul><li>Check that there are no identical labels pointing to different destinations.</li><li>Verify that the destination of a link or the action of a button can be determined solely from its accessible name.</li><li>If the previous checks are inconclusive, ensure that the target of a link or the action of a button is at least understandable through its context (sentence, paragraph, cell...).</li></ul>",
+		"complement": "<h5>How to Determine the Context of a Link:</h5><p>The context of the link represents additional information that helps understand its label. Ensure that this additional information is positioned either:</p><ul><li>in the same sentence</li><li>in the same paragraph</li><li>in the same list item</li><li>in the same table cell</li><li>in the header cell of the table, associated with the link cell</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
     {
 		"themes": "Common navigation",
-		"title": "Each button label is relevant?",
+		"title": "Is each button label relevant?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>The user must be able to find the button function with the button text. Check that the action carried by the accessible name of each button is relevant.</p>",
+		"verifier": "<p>For each interactive component with a visible label, it must be sufficiently descriptive to allow the user to understand the function of the component.</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
     {
 		"themes": "Common navigation",
-		"title": "Does the application have at least 2 means of navigation?",
+		"title": "Does the application have at least two means of navigation?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>when there is less than 3 or 4 screens and/or the content is short, this criterion is not applicable.</p><p>Check that at least 2 of the following mechanisms are present on the screen, to allow a user to determine their location on the application:</p>\n<ul><li>a main navigation menu</li><li>a table of contents</li><li>a sitemap</li><li>a search feature</li></ul>", 
-		"exception": " except if the screen is the result of, or a step in a process.",
+		"verifier": "<p>There are several mechanisms to reach desired content and allow a user to navigate within the application:</p> <ul><li>a main navigation menu</li><li>a <code>tab bar</code></li><li>a search mechanism</li><li>...</li></ul>", 
+		"exception": "<p>The criterion is not applicable for following cases:</p><ul><li>If the number of screens is limited and/or the content is short.</li><li>For a results screen or a step in a multi-step process.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
@@ -792,7 +867,8 @@
 		"wcag": [
 			"1.2.1 A"
 		],
-		"verifier": "<p>Check that a complete transcript (text containing all the auditory information) is provided as text.<br> This text transcript should be:</p><ul><li>present in the screen</li> <li>or available via a link immediately next to the link to the audio clip</li></ul>",
+		"verifier": "<p>For any pre-recorded audio-only media, a complete transcript (text containing all the auditory information) is provided as text.<br>This text transcript should be&nbsp;:</p><ul><li>présente dans l'écran</li><li>or available via a link immediately next to the link to the audio clip</li></ul>",
+		"complement": "<h5>Transcribed subtitles</h5><p>Subtitles not only communicate dialogue, but also all the other audio information needed to understand the content (e.g. identification of speakers, sound effects, etc.).</p>",		
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
 		"resultatTest": "nt",
@@ -807,7 +883,7 @@
 		"wcag": [
 			"1.2.1 A"
 		],
-		"verifier": "<p>Check that a complete transcript (text that provides an equivalent to what is presented visually) is provided as text.<br> This text transcript should be: </p><ul><li> present in the screen </li> <li> or available via a link immediately next to the link to the video clip</li></ul> ",
+		"verifier": "<p>For any pre-recorded video without audio, a complete transcript (text containing all visual information) is provided in text form.<br>This textual transcription is then:</p><ul><li>present on the screen</li><li>or available via a link positioned near the video</li><li>or verify the presence of an audio track providing the information presented visually</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
 		"resultatTest": "nt",
@@ -822,7 +898,7 @@
 		"wcag": [
 			"1.2.3 A"
 		],
-		"verifier": "<ul><li>Check that a complete transcript (all of the information - both visual and auditory - in text form) is provided as text.<br> This text transcript should be:<ul><li> present in the screen </li> <li> or available via a link immediately next to the link to the video clip</li></ul></li><li>Or for all video content, check that an audio description is provided:<ul><li> check that the audio description is synchronized correctly </li><li> check that the audio description does not conflict with the audio track of the video (no loss of information)</li><li> check that the audio description is appropriate</li></ul>",
+		"verifier": "<p>For any pre-recorded video (with or without audio):</p><ul><li>Either a complete transcript (text containing all auditory and visual information) is provided in text form: this textual transcription must be present on the screen or available via a link positioned near the video.</li><li>Or, an audio description is available; verify that: <ul><li>the audio description is properly synchronized</li><li>the audio description does not conflict with the audio track of the video (no loss of information)</li><li>the audio description is relevant</li></ul></li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
 		"resultatTest": "nt",
@@ -837,7 +913,7 @@
 		"wcag": [
 			"1.2.5 AA"
 		],
-		"verifier": "<ul><li>check that an audio description is provided for all video content</li><li>check that the audio description is synchronized correctly</li><li>check that the audio description does not conflict with the audio track of the video (no loss of information)</li><li>check that the audio description is appropriate</li></ul>",
+		"verifier": "<p>For any video:</p><ul><li>An audio description is available.</li><li>The audio description is properly synchronized.</li><li>The audio description does not conflict with the audio track of the video (no loss of information).</li><li>The audio description is relevant.</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
 		"resultatTest": "nt",
@@ -852,7 +928,8 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "<ul><li>check that captions are available for all video with audio content</li><li>check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li><li>check that the captions are not covering important information in the video</li></ul>",
+		"verifier": "<p>For any video with audio:</p><ul><li>Subtitles are available.</li><li>The subtitles are relevant (providing all necessary information for understanding, such as the identity of speakers).</li><li>The subtitles do not obscure important information in the video.</li></ul>",
+		"exception": "<p>Subtitles are not necessary when the information presented in the video is also provided in text or textual alternative on the same page.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
 		"resultatTest": "nt",
@@ -867,7 +944,7 @@
 		"wcag": [
 			"1.2.4 AA"
 		],
-		"verifier": "<ul><li>check that captions are available</li><li>check that the captions are relevant (providing all of the information needed to understand the content, such as the identity of the speakers)</li></ul>",
+		"verifier": "<p>For any live video with audio:</p><ul><li>Subtitles are available.</li><li>The subtitles are relevant (providing all necessary information for understanding, such as the identity of speakers).</li></ul>",
 		"complement": "<h5>Captions</h5><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
@@ -883,7 +960,7 @@
 		"wcag": [
 			"1.4.2 A"
 		],
-		"verifier": "<ul><li>possible to pause or stop the sound</li><li>possible to control audio volume independently from the overall system volume level</li></ul>",
+		"verifier": "<ul><li>Possibility to pause or mute the sound.</li><li>Or possibility to adjust the volume independently of the system volume.</li></ul>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#control-multimedia-content",
 		"resultatTest": "nt",
@@ -892,101 +969,59 @@
 	},
 	{
 		"themes": "Multimedia",
-		"title": "Are there controls to interact with a time-based media (pause, stop, volume, subtitles, etc...)?",
+		"title": "Are there controls to interact with a time-based media?",
 		"ID": "testID-048",
 		"IDorigin": "testID-048",
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Verify that controls are displayed to interact with audio media, video media,  but also with a time-based media. For example, a carousel that automatically changes content after a time period must also offer a control system to be able to return to the previous content or go to the next content.</p>",
+		"verifier": "<p>If content in a part of the page starts automatically and lasts more than 5 seconds, is in motion, scrolls, or blinks, there is a way to stop, pause, or hide it.</p><p>For content in a part of the page that updates or refreshes automatically, there is a way to stop, pause, hide, or adjust its update frequency.</p>",
+		"exception": "<p>The criterion is not applicable if there is no movement, scrolling, blinking, updating, or automatic refreshing lasting more than 5 seconds and starting automatically.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#control-multimedia-content",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false
 	},
-	{
-		"themes": "WebView",
-		"title": "Are changes in language clearly identified?",
-		"ID": "testID-058",
-		"IDorigin": "testID-058",
-		"wcag": [
-			"3.1.2 AA"
-		],
-		"verifier": "<p>This criterion can only be verified if you have access to the URL of the WebView.</p><p>Check that a <code>lang</code> attribute is present for words and expressions in a foreign language.</p>",
-		"exceptions": "<p>For words and expressions in a foreign language which are in everyday use (déjà vu, hors d'oeuvre…) or for proper nouns, do not indicate a change of language.</p>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
-		"title": "Is there a mechanism to navigate within the page?",
-		"ID": "testID-059",
-		"IDorigin": "testID-059",
-		"wcag": [
-			"2.4.1 A"
-		],
-		"verifier": "<p>If one of the mechanisms below is necessary for navigation, but absent from the page, then the test is non-compliant:</p><ul><li> heading tags (<code>hn</code>)</li><li> bypass blocks or skip links present at the top of the page, which allow the user to go directly to the main content sections </li><li>landmark elements, used to organize the document (<code>header</code>, <code>main</code>…)</li><li> bypass blocks present within the content</li></ul>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-skip-links",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "WebView",
-		"title": "Is the main language defined, and does it correspond to the document's primary language?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": [
-			"3.1.1 A"
-		],
-		"verifier": "<p>This criterion can only be verified if you have access to the URL of the WebView.</p><ul><li>check there is a <code>lang</code> attribute present (N.B. the presence of the <code>xml:lang</code> attribute is not sufficient to pass this test)</li><li>the value of the <code>lang</code> attribute should correspond to the primary language used on the page</li></ul>",
-		"group": "WebView",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false
-	},
     {
-		"themes": "Non-text Content",
-		"title": "Does every captcha image possess an alternative?",
+		"themes": "CAPTCHA",
+		"title": "Does every CAPTCHA image possess an alternative?",
 		"ID": "testID-065",
 		"IDorigin": "testID-065",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Check that the accessible name of each captcha image conveys the purpose of the image and not its content (e.g.: \"captcha (anti-spam image)\").</p>",
+		"verifier": "<p>The alternative for each CAPTCHA image communicates the purpose of the image rather than its content (e.g., 'CAPTCHA (anti-spam image)').</p>",
+		"group": "CAPTCHA",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#avoid-captcha",
 		"goodPractice": false
 	},
 	{
-		"themes": "Non-text Content",
+		"themes": "CAPTCHA",
 		"title": "If a CAPTCHA is used, is there an alternative for visually impaired, blind and hearing impaired users?",
 		"ID": "testID-066",
 		"IDorigin": "testID-066",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Check that for each captcha which is exclusively visual or audio, one of the following alternatives is provided in addition: </p><ul><li>audio and visual captcha</li><li>logic problems (question for which the response is obvious, simple maths test…)</li><li>there is another method to access the functionality that is protected by the CAPTCHA</li></ul>",
-		"group": "Captcha",
+		"verifier": "<p>For each CAPTCHA which is exclusively visual or audio, one of the following alternatives is provided in addition: </p><ul><li>audio and visual CAPTCHA</li><li>logic problems (question for which the response is obvious, simple maths test…)</li><li>there is another method to access the functionality that is protected by the CAPTCHA</li></ul>",
+		"group": "CAPTCHA",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/non-textual-content/#avoid-captcha",
 		"goodPractice": false
 	},
 	{
-		"themes": "Non-text Content",
+		"themes": "Cryptic content",
 		"title": "Does each occurrence of cryptic content (ASCII art, emoticon, cryptic syntax) have an appropriate alternative?",
 		"ID": "testID-067",
 		"IDorigin": "testID-067",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Check that there is a text alternative provided</li><li>Check that the alternative is appropriate</li></ul>",
+		"verifier": "<ul><li>There is a text alternative provided</li><li>The alternative is appropriate</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

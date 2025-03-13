@@ -1400,25 +1400,21 @@ exportStatementHTML = function (statementResult) {
                 if(dataVallydette.statement.nonCompliant === false){
 
         htmlStatement += `<div class="row summary">
-						<div class="col-lg-auto text-center">
-							<h4 class="pie" data-value="${dataWCAG.result}">
+						<div class="col-lg-auto text-center d-flex flex-column-reverse align-items-center">
+                            <h4 class="lead">${langStatement.auditTxt1}</h4>
+							<p class="pie" data-value="${dataWCAG.result}">
 								<span class="visually-hidden">${langStatement.auditTxt1} </span>
 								<span class="pie-val">${dataWCAG.result}%</span>
-							</h4>
-
-							<p class="lead">${langStatement.auditTxt1}
 							</p>
 						</div>
-						<div class="col-lg-auto text-center">
-							<h4 class="pie" data-value="${dataWCAG.globalPagesResult}">
+						<div class="col-lg-auto text-center d-flex flex-column-reverse align-items-center">
+                            <h4 class="lead">${langStatement.auditTxt13}</h4>
+							<p class="pie" data-value="${dataWCAG.globalPagesResult}">
 								<span class="visually-hidden">${langStatement.auditTxt13} </span>
 								<span class="pie-val">${dataWCAG.globalPagesResult}%</span>
-							</h4>
-
-							<p class="lead">${langStatement.auditTxt13}</p>
+							</p>
 						</div>
 					</div>`;
-
 
         htmlStatement += `<p>${langStatement.statementTemplate.resultsContent1} ${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => utils.escape_html(a.name)).join('')} ${langStatement.statementTemplate.resultsContent1bis}</p>
 					<ul>

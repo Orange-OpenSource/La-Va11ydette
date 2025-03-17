@@ -1,0 +1,637 @@
+{
+    "testID-001": [
+        {
+            "title": "Présence de champs non étiquetés visuellement",
+            "detail": "Tous les éléments de formulaire doivent posséder une étiquette visible.",
+            "solution": "Mettre une étiquette pertinente, visible à proximité de tout champ de formulaire",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-004": [
+        {
+            "title": "Absence de format de données",
+            "detail": "Un format de données est nécessaire pour permettre à tous les utilisateurs de renseigner correctement une information.",
+            "solution": "Ajouter un format de données. Ce format est lié de manière programmatique au champ.",
+            "technicalSolution": "Afficher le format de donnée dans l'élément label, exemple : 'Date au format JJ/MM/AAAA'"
+        }
+    ],
+    "testID-072": [
+        {
+            "title": "Présence de champs de formulaire non liés à leur étiquette",
+            "detail": "Un ou plusieurs champs de formulaire ont un nom accessible différent de l'étiquette visible",
+            "solution": "Regrouper les champs de formulaire et leur étiquette visible. Pour associer un champ à son étiquette visible, utiliser .accessibilityElement(children: .combine)",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Présence d'éléments non-labellisés",
+            "detail": "Tous les éléments de formulaire doivent posséder un nom accessible, en particulier les éléments sans étiquette visible.",
+            "solution": "Pour les éléments sans étiquette visible, appliquer un nom accessible à l'aide de la méthode accessibilityLabel(_:)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-071": [
+        {
+            "title": "Présence d'étiquette de champs non-pertinente",
+            "detail": "Tous les éléments de formulaire doivent posséder une étiquette pertinente permettant de comprendre la nature du champ.",
+            "solution": "Compléter le libellé texte de  l'étiquette afin de comprendre la fonction du champ ou/et les données attendues.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-002": [
+        {
+            "title": "Présence de champs non groupés",
+            "detail": "Lorsque nécessaire les champs de même nature doivent être groupés",
+            "solution": "Regrouper les champs à l'aide de .accessibilityElement(children .contain) labellisé avec la méthode accessibilityLabel(_:)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-003": [
+        {
+            "title": "Champ obligatoire non identifiable visuellement",
+            "detail": "L'identification visuelle du champ obligatoire ne repose pas uniquement sur la couleur.",
+            "solution": "Ajouter une information visuelle ne reposant pas uniquement sur la couleur, exemple : astérisque, icône…",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Champ obligatoire non identifiable de manière programmatique",
+            "detail": "L'identification d'un champ obligatoire n'est pas possible depuis une aide technique (ex. : lecteur d'écran), si elle n'est pas donnée de manière programmatique.",
+            "solution": "Ajouter l'information textuelle dans le label (exemple : \"Date de naissance (obligatoire)\" ou ajouter accessibilityLabel(_:) sur l'élément visuel",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-005": [
+        {
+            "title": "Absence d'attribut autocomplete pour des champs présentant des données personnelles",
+            "detail": "Tout champ permettant de collecter des données spécifiques sur l'utilisateur, doit posséder un attribut \"autocomplete\".",
+            "solution": "Ajouter la propriété \"textContentType\" sur les champs demandant une donnée personnelle.\nLa liste des valeurs possibles est disponible sur https://developer.apple.com/documentation/uikit/uitextcontenttype",
+            "technicalSolution": "exemple : .textContentType(.emailAddress)"
+        }
+    ],
+    "testID-006": [
+        {
+            "title": "Des messages d'erreurs ne sont pas perçus par les utilisateurs",
+            "detail": "Les messages d'erreurs doivent être perçus par tous les utilisateurs, quel que soit leur équipement.",
+            "solution": "Appliquer une des techniques ci-dessous :\n- Le message d'erreur est présent avant le formulaire.\n Le message liste les champs en erreur.\n- Le focus est positionné sur le message d'erreur.\n-Les messages d'erreurs sont ajoutés dans les labels des champs.",
+            "technicalSolution": "Il est recommandé de coupler l'affichage avec une méthode d'annonces (\"announcements\") pour que les messages d'erreurs soient restitués automatiquement par les aides techniques telles que VoiceOver."
+        }
+    ],
+    "testID-007": [
+        {
+            "title": "Absence de messages d'erreur",
+            "detail": "Des messages d'erreur sont absents.",
+            "solution": "Les messages d'erreur permettent aux utilisateurs de détecter facilement les erreurs de saisie. Mettre en place un système de validation du formulaire afin de détecter et afficher des messages d'erreur pertinents et explicites",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Présence de messages d'erreur non explicites",
+            "detail": "Les messages d'erreur ne sont pas assez explicites pour déterminer la nature de l'erreur.",
+            "solution": "Les messages d'erreur explicites permettent aux utilisateurs de détecter et corriger facilement les erreurs. Prévoir donc, en fonction de la nature de l'erreur, un message spécifique.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Présence de messages d'erreur ne permettant pas d'identifier le champ en erreur",
+            "detail": "Les textes des messages d'erreur ne permettent pas d'identifier le champ en erreur.",
+            "solution": "Le texte du message d'erreur doit permettre d'identifier le champ en erreur. Le message doit reprendre le libellé du champ.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-008": [
+        {
+            "title": "Absence de suggestions de corrections",
+            "detail": "Lorsque des champs sont en erreur, des suggestions de corrections doivent être proposées si nécessaire. Par exemple :\n - Suggestion à partir d'un ensemble limité de valeurs\n - Aide supplémentaire pour corriger une saisie au mauvais format.",
+            "solution": "Proposer des suggestions de corrections adaptées au champ et au type d'erreur commise",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-063": [
+        {
+            "title": "Une authentification possède seulement un test cognitif",
+            "detail": "Il n'est pas possible de se connecter autrement qu'avec un test cognitif",
+            "solution": "Une autre technique d'authentification doit être présente et ne pas reposer sur un test cognitif, par exemple : \n- authentification par email \n- connexion à l'aide oAuth \n- les champs sont correctement balisés permettant de les remplir automatiquement",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-009": [
+        {
+            "title": "Des données importantes sont soumises sans possibilité d'être annulées ou vérifiées",
+            "detail": "Les utilisateurs doivent avoir le contrôle lors de la soumission de données importantes (engagement juridique, transaction financière, modification ou effacement de données importantes, réponse à un test ou examen…).",
+            "solution": "Appliquer une des solutions ci-dessous :\n - L'action peut être annulée\n - une étape de confirmation permettant la vérification ou la modification est présente avant validation finale ",
+            "technicalSolution": "Exemple :\n Après soumission du formulaire, un message de confirmation apparaît dans une popin.\n Le message reprend les données saisies par l'utilisateur, et donne la possibilité de valider ou annuler.\n Si l'utilisateur annule, il est redirigé vers le formulaire, ses saisies sont toujours présentes dans les champs, avec la possibilité de les modifier."
+        }
+    ],
+    "testID-010": [
+        {
+            "title": "Titre de page non renseigné",
+            "detail": "Chaque page doit posséder un titre unique.",
+            "solution": "Utiliser la méthode <code>navigationTitle</code> dans une vue de type <code>NavigationStack</code>.",
+            "technicalSolution": ".navigationTitle(\"Titre de la page\")"
+        },
+        {
+            "title": "Titre de page non pertinent",
+            "detail": "Chaque page doit posséder un titre unique et permettant de comprendre le rôle de celle-ci.",
+            "solution": "Renseigner l'élément <code>navigationTitle</code> avec des mots clefs permettant de comprendre le rôle de la page.",
+            "technicalSolution": ".navigationTitle(\"Accueil-Espace Client Orange\")"
+        }
+    ],
+    "testID-076": [
+        {
+            "title": "Les titres de niveaux ne sont pas pertinents.",
+            "detail": "Les titres de niveaux doivent être pertinents et décrire précisément la section de contenu qu'ils présentent.\n Les titres d'un même niveau ne peuvent pas avoir le même intitulé.",
+            "solution": "",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-013": [
+        {
+            "title": "Contraste insuffisant entre texte et fond",
+            "detail": "Le contraste doit être suffisant pour comprendre l'information portée par tous les textes.",
+            "solution": "Assurer un contraste de 4.5:1 minimum pour les textes de taille normale (inférieure ou égale à 18pt ou 14pt gras). Assurer un contraste de 3:1 minimum les textes de grande taille (supérieur à 18pt ou 14pt gras).",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Contraste insuffisant pour des liens non-soulignés",
+            "detail": "Les liens non-soulignés doivent avoir un rapport de contraste suffisant avec le texte environnant.",
+            "solution": "Assurer un contraste de 4.5:1 minimum entre un lien non-souligné et le texte environnant de tailles normales (inférieure ou égale à 18pt ou 14pt gras). Assurer un contraste de 3:1 minimum entre un lien non-souligné et le texte environnant de grandes tailles (supérieur à 18pt ou 14pt gras).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-014": [
+        {
+            "title": "Contraste insuffisant pour des icônes porteur d'information",
+            "detail": "Le contraste doit être suffisant pour transmettre l'information.",
+            "solution": "Assurer un contraste de 3:1 minimum pour les icônes.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Contraste insuffisant pour des composants interactifs (boutons, boutons radios, etc.) ou états de componsants (focus, hover, etc.)",
+            "detail": "Le contraste doit être suffisant pour transmettre l'information.",
+            "solution": "Assurer un contraste de 3:1 minimum pour tous les composants interactifs et leurs différents états (sauf pour les composants inactifs)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-015": [
+        {
+            "title": "La couleur est le seul moyen de convoyer de l'information",
+            "detail": "La couleur ne doit pas être le seul moyen de convoyer d'information : au moins un autre moyen visuel est disponible pour obtenir la même information.",
+            "solution": "Compléter la couleur par un texte explicite, ou une autre information visuelle (exemple : des icônes utilisent des couleurs, mais également des formes différentes).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-016": [
+        {
+            "title": "Une information sensorielle est le seul moyen de convoyer de l'information",
+            "detail": "Une information sensorielle (ex : position, taille, son) ne doit pas être le seul moyen pour transmettre de l'information.",
+            "solution": "Compléter l'information par un texte, ou un message explicite.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-017": [
+        {
+            "title": "Textes tronqués ou masqués",
+            "detail": "Perte d'informations due à la présence de textes tronqués ou masqués lors du redimensionnement de la page (niveau de zoom à 200 %).",
+            "solution": "Pour résoudre ce genre de problème, utiliser le DynamicType sur les textes et conteneurs de l'application.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Le zoom n'est pas autorisé",
+            "detail": "L'agrandissement du texte doit être possible sur toutes les pages.",
+            "solution": "",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-018": [
+        {
+            "title": "Absence d'alternative textuelle sur un élément graphique  informatif",
+            "detail": "Chaque élément graphique (images, icones, etc.) informatif doit posséder une alternative textuelle.",
+            "solution": "Ajouter un accessibilityLabel(_:) sur les éléments porteurs d'information.",
+            "technicalSolution": "Image(\"oem_logo\") \n .accessibilityLabel(\"Logo Orange et moi\")"
+        },
+        {
+            "title": "L'alternative textuelle d'une image contenant du texte n'est pas renseignée ou non pertinente",
+            "detail": "L'alternative ne reprend pas le texte présenté dans l'image ",
+            "solution": "L'alternative textuelle doit reprendre au moins le texte de l'image.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "L'alternative d'une image complexe (schéma, graphe…) n'est pas pertinente",
+            "detail": "L'alternative d'une image complexe (schéma, graphe…) n'est pas pertinente ou trop longue",
+            "solution": "Pour toute description d'image trop longue pour être mise dans un .accessibilityLabel, la description détaillée doit être disponible à proximité de l'image : soit sur la même page, soit depuis un lien/bouton ouvrant la page contenant la description.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-019": [
+        {
+            "title": "Déplacement du focus non-logique",
+            "detail": "Le déplacement du focus ne suit pas un ordre de lecture logique.",
+            "solution": "Utiliser la méthode .accessibilitySortPriority pour corriger l'ordre de lecture.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-020": [
+        {
+            "title": "Présence d'éléments liés non-groupés",
+            "detail": "Des éléments liés visuellement ne sont pas regroupés programmatiquement.",
+            "solution": "Utiliser .accessibilityElement(children: .combine) pour grouper des éléments. Si besoin, modifier le nom accessible du groupe avec la méthode accessibilityLabel(_:).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-021": [
+        {
+            "title": "Absence de structure de liste",
+            "detail": "Les éléments présentés visuellement comme une liste doivent être restitués sous forme de liste.",
+            "solution": "Les éléments de la liste doivent être séparés les uns des autres pour être lus séparement par le lecteur d'écran. Par exemple, un élément Text() par item.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-022": [
+        {
+            "title": "En-têtes non restitués au lecteur d'écran",
+            "detail": "Les éléments présentés visuellement comme des en-têtes ne sont pas restitués comme tels au lecteur d'écran",
+            "solution": "Appliquer un attribut .accessibilityAddTraits(.isHeader) sur les en-têtes.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-049": [
+        {
+            "title": "Absence de notifications pour des messages d'état ou contextuels",
+            "detail": "Les messages d'état ou contextuels (alerte, résultat ou progression d'une action) ne sont pas perçus depuis un lecteur d'écran.",
+            "solution": "Utiliser le système d'annonces UIAccessibility.post(notification: .announcement, argument: message) ou AccessibilityNotification.Announcement",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-024": [
+        {
+            "title": "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
+            "detail": "Les états cochés/décochés, pliés/dépliés… ne sont pas perçus par un lecteur d'écran",
+            "solution": "utiliser autant que possible les composants natifs (Button, Disclosure, Toggle, Tabview, etc.)",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Un composant interactif n'est pas utilisable avec un lecteur d'écran",
+            "detail": "Les fonctionnalités d'un composant ne sont pas utilisables avec un lecteur d'écran",
+            "solution": "utiliser autant que possible les composants natifs (Button, Disclosure, Toggle, Tabview, etc.)",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Un composant interactif n'a pas de nom accessible",
+            "detail": "Un composant interactif n'a pas de nom accessible",
+            "solution": "Fournir un nom accessible grâce à la méthode accessibilityLabel(_:)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-025": [
+        {
+            "title": "Des éléments non visibles à l'écran sont restitués par le lecteur d'écran",
+            "detail": "Des éléments non visibles à l'écran sont restitués par le lecteur d'écran",
+            "solution": "Dans le cas d'ouverture d'une modale, utiliser .accessibilityAddTraits(.isModal) pour masquer automatiquement les éléments derrière la modale.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-026": [
+        {
+            "title": "Un élément décoratif est restitué inutilement",
+            "detail": "Une image décorative (ou tout autre élément non informatif) n'est pas ignorée par les aides techniques.",
+            "solution": "Masquer les éléments aux aides techniques en utilisant la méthode accessibilityHidden(_:) ou spécifiquement pour les images : Image(decorative:)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-051": [
+        {
+            "title": "Absence du texte visible dans le nom accessible",
+            "detail": "Le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) doit être présent (en premier, si possible) dans le nom accessible d'un composant.",
+            "solution": "Modifier le nom accessible de l'élément afin d'intégrer le texte visible à l'écran, si possible en premier.",
+            "technicalSolution": "Utiliser .accessibilityLabel"
+        }
+    ],
+    "testID-070": [
+        {
+            "title": "Absence de sémantiques d'entêtes de ligne ou de colonne",
+            "detail": "Les entêtes sont obligatoires pour identifier la nature des colonnes et/ou des lignes",
+            "solution": "Utiliser le composant Table pour structurer les tableaux de données.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Présence de tableau de mise en forme",
+            "detail": "Les tableaux ne doivent pas être utilisés pour de la mise en forme.",
+            "solution": "Utiliser les vues VStack et HStack pour la mise en forme.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-058": [
+        {
+            "title": "Changement de langue non indiqué",
+            "detail": "Les mots et expressions en langue étrangère doivent être indiqués aux utilisateurs.",
+            "solution": "Utiliser la propriété .accessibilitySpeechLanguage pour définir la langue de restitution. Il est aussi possible d'utiliser .accessibilityLabel en se basant sur un fichier de traduction, voir https://developer.apple.com/documentation/swiftui/localizedstringkey.",
+            "technicalSolution": "<q lang=\"en\">[…]</q>"
+        }
+    ],
+    "testID-059": [
+        {
+            "title": "Absence d'en-têtes",
+            "detail": "Il manque des en-têtes qui permettraient à des utilisateurs d'aides techniques d'accéder directement à des contenus précis de la page.",
+            "solution": "Utiliser des en-têtes pour définir les différentes sections de votre page.",
+            "technicalSolution": "Définir les en-têtes à l'aide de .accessibilityAddTraits(.isHeader)"
+        },
+        {
+            "title": "Absence de mécanismes de navigation",
+            "detail": "La structure de la page et des informations présentées nécessitent de pouvoir naviguer rapidement par un moyen spécifique autre que les en-têtes (liens, conteneur, etc.)",
+            "solution": "Utiliser par exemple .accessibilityAddTraits",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-027": [
+        {
+            "title": "Élément non utilisable au clavier",
+            "detail": "Un élément n'est pas utilisable avec le contrôle de sélection ou avec un clavier.",
+            "solution": "Si un élément n'est pas atteignable, il est possible de le rendre accessible avec la méthode accessibilityRespondsToUserInteraction(_:)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-028": [
+        {
+            "title": "Présence de pièges clavier dans la page",
+            "detail": "Quelle que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir en sortir à l'aide du clavier seul sans se retrouver bloqué à la navigation clavier.",
+            "solution": "Permettre la sortie du composant (modale, popup, etc.) grâce à un bouton de fermeture",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-075": [
+        {
+            "title": "L'utilisateur n'a pas le contrôle d'un raccourci clavier",
+            "detail": "L'utilisateur n'a pas le contrôle d'un raccourci clavier basé sur un caractère imprimable : lettre (minuscule ou majuscule), ponctuation, chiffre, ou caractère symbole.",
+            "solution": "L'utilisateur doit pouvoir : \n - désactiver le raccourci \n - ou modifier le raccourci pour ajouter une touche supplémentaire à la combinaison \n - ou s'assurer que le raccourci est actif uniquement lors de la prise de focus du composant de l'interface.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-029": [
+        {
+            "title": "Déplacement du focus non-logique",
+            "detail": "Le déplacement du focus ne suit pas un ordre de lecture logique.",
+            "solution": "Il est possible de modifier l'ordre de focus grâce à accessibilitySortPriority",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-030": [
+        {
+            "title": "Le focus est affiché mais peu visible",
+            "detail": "La visibilité du focus doit être suffisante (vérifier le contraste et la taille).",
+            "solution": "Pour accentuer la visibilité du focus, si possible vous pouvez :\n- Proposer un niveau de contraste suffisant entre le focus et la couleur de fond (ratio de 3:1 minimum).\n- Ajouter un contour au focus.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-061": [
+        {
+            "title": "Le focus est complètement masqué par un contenu",
+            "detail": "Le focus est complètement masqué par un élément de la page apparaissant lors de la navigation clavier ou avec le contrôle de sélection",
+            "solution": ".",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-031": [
+        {
+            "title": "Une action basée sur un mouvement de l'appareil ou un geste de l'utilisateur ne possède pas d'alternative",
+            "detail": "Toute action basée sur un mouvement de l'appareil ou un geste spécifique doit posséder une alternative.",
+            "solution": "Permettre de déclencher cette action par un autre moyen (ex : ajouter un bouton dans l'interface).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-032": [
+        {
+            "title": "Une action basée sur une gestuelle complexe ne possède pas d'alternative",
+            "detail": "Toute action basée sur une gestuelle complexe doit posséder une alternative basée sur l'utilisation d'un seul pointeur.",
+            "solution": "Exemple : pour une action de zoom sur une carte au pincement de doigt, une alternative sous forme de boutons [+] et [-] est proposée.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-074": [
+        {
+            "title": "Une action de glisser et déposer n'a pas d'alternative",
+            "detail": "Une action de glisser et déposer ne peut pas être réalisée par un autre moyen",
+            "solution": "Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-033": [
+        {
+            "title": "Une action ne peut être annulée",
+            "detail": "L'action ne peut être annulée car déclenchée sur l'évènement touchDown.",
+            "solution": "Utiliser autant que possible les gestes natifs : https://developer.apple.com/design/human-interface-guidelines/gestures#Standard-gestures\nPour un geste non-natif, définir une activation seulement sur à la fin du geste à l'aide de la méthode onEnded.",
+            "technicalSolution": ""
+        }
+    ],
+
+    "testID-034": [
+        {
+            "title": "Perte d'information lors d'une consultation en mode portrait ou paysage",
+            "detail": "Le contenu et les fonctionnalités doivent être disponibles dans les 2 orientations sans perte d'informations.",
+            "solution": "",
+            "technicalSolution": ""
+        },
+        {
+            "title": "L'affichage du contenu est limité à une seule orientation (paysage ou portrait)",
+            "detail": "Il est impossible d'afficher le contenu dans les deux orientations disponibles, ou un message apparaît demandant de réorienter l'appareil.",
+            "solution": "",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-050": [
+        {
+            "title": "Des éléments cliquables ont une zone tactile trop petite",
+            "detail": "Des éléments cliquables ont une zone tactile trop petite",
+            "solution": "La zone tactile doit faire au moins 44pt (hauteur ET largeur)",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-035": [
+        {
+            "title": "Composants répétés sur plusieurs pages, dans des ordres différents",
+            "detail": "Des composants répétés sur plusieurs pages, n'apparaissent pas dans le même ordre sur certaines pages.",
+            "solution": "La mise en page des composants doit être homogène entre toutes les pages d'un site. Les composants doivent apparaître de manière uniforme, dans le même ordre relatif.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-073": [
+        {
+            "title": "Aide présentée de manière incohérente sur plusieurs pages",
+            "detail": "Un mécanisme d'aide répété sur plusieurs pages n'est pas présenté de manière cohérente sur chaque page.",
+            "solution": "Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-036": [
+        {
+            "title": "Une limite de temps n'est pas contrôlable par l'utilisateur",
+            "detail": "Toute limite de temps doit être contrôlable par l'utilisateur.",
+            "solution": "Toute limite de temps doit, au choix, être supprimée,  ou, augmentée jusqu'à 10 fois minimum le temps par défaut, ou, l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-038": [
+        {
+            "title": "Ouverture de popup ou modale lors de la prise de focus d'un élément ou au chargement de page",
+            "detail": "Au chargement de la page ou à la prise de focus aucune modale ou popup ne doit s'ouvrir.",
+            "solution": "",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Formulaire soumis automatiquement lors de la prise de focus d'un élément",
+            "detail": "Un formulaire est soumis automatiquement dès la prise de focus d'un élément du formulaire.",
+            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Changement du contenu de la page lors de la prise de focus",
+            "detail": "Un changement de contenu s'opère sans qu'il soit initié volontairement par l'utilisateur.",
+            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur sur un lien ou un bouton d'action.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Ouverture d'une nouvelle page lors de la prise de focus",
+            "detail": "Un changement de page (ou d'un onglet) s'opère sans qu'il soit initié volontairement par l'utilisateur.",
+            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur sur un lien.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-039": [
+        {
+            "title": "Absence de mécanisme permettant de stopper un contenu en mouvement",
+            "detail": "L'utilisateur doit avoir le contrôle des contenus en mouvement.",
+            "solution": "Proposer un mécanisme accessible permettant de stopper ou mettre en pause un contenu en mouvement.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-040": [
+        {
+            "title": "Présence de clignotements rapides",
+            "detail": "Présence de contenu présentant des clignotements rapides (plus de 3 flashs à la seconde) ou les flashs sont inférieurs au seuil général ou seuil de rouge.",
+            "solution": "",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-056": [
+        {
+            "title": "Composants répétés sur plusieurs pages, avec des intitulés différents",
+            "detail": "Des composants répétés sur plusieurs pages, ne possèdent pas le même nom (accessible).",
+            "solution": "Les composants répétés sur plusieurs pages doivent avoir des intitulés homogènes.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-052": [
+        {
+            "title": "Présence de texte sous forme d'image",
+            "detail": "Les images ne doivent pas servir à présenter du texte.",
+            "solution": "Si des textes sous forme d'image sont présents, une alternative sous forme de texte doit être affichée à proximité.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-054": [
+        {
+            "title": "Présence de libellés de lien ou de bouton non-compréhensibles dans leur contexte",
+            "detail": "La cible d'un lien ou d'un bouton n'est pas compréhensible même en s'aidant de son contexte direct (texte environnant).",
+            "solution": "Ajouter une information discriminante dans le texte environnant.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-068": [
+        {
+            "title": "Présence de libellés de bouton non-compréhensibles",
+            "detail": "L'action portée par un bouton n'est pas compréhensible.",
+            "solution": "Ajouter une information discriminante dans l'intitulé des boutons.",
+            "technicalSolution": "Le nom accessible du bouton doit permettre d'en comprendre la fonction, tout ou une partie du texte peut être caché de manière accessible."
+        }
+    ],
+    "testID-069": [
+        {
+            "title": "Un seul mécanisme de navigation est présent",
+            "detail": "Au moins 2 mécanismes de navigation doivent être présents sur les pages.",
+            "solution": "Compléter le mécanisme existant avec une solution listée ci-dessous : \n -  un menu de navigation principal \n - une tab bar \n - un mécanisme de recherche.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-041": [
+        {
+            "title": "Absence de transcrit complet",
+            "detail": "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
+            "solution": "Ajouter un transcrit complet sous forme de texte, soit directement dans la page, soit par un lien pointant vers une autre page (in-app ou externe) contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-042": [
+        {
+            "title": "Absence de transcrit complet",
+            "detail": "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
+            "solution": "Ajouter un transcrit complet sous forme de texte, soit directement dans la page, soit par un lien pointant vers une autre page (in-app ou externe) contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-043": [
+        {
+            "title": "Absence de transcrit complet",
+            "detail": "Un transcrit complet (texte contenant l'ensemble des informations visuelles et auditives) doit être proposé en alternative aux pistes audios ou vidéos. ",
+            "solution": "Ajouter un transcrit complet sous forme de texte, soit directement dans la page, soit par un lien pointant vers une autre page (in-app ou externe) contenant ce transcrit et ceci, à proximité de l'élément à décrire.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-044": [
+        {
+            "title": "Absence d'audiodescription",
+            "detail": "Une audiodescription est nécessaire pour les vidéos présentant des informations sous forme visuelle.",
+            "solution": "Ajouter une audio-description en complément de la bande audio si besoin. Celle-ci présente, sous format texte, les informations convoyées uniquement par l'image.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-045": [
+        {
+            "title": "Absence de sous-titres",
+            "detail": "Pour toute vidéo, des sous-titres sont disponibles.",
+            "solution": "Ajouter des sous-titres au format texte pour toutes vidéos. Ceux-ci restituent l'ensemble des informations de la piste audio.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-046": [
+        {
+            "title": "Absence de sous-titres",
+            "detail": "Pour toute vidéo, des sous-titres sont disponibles.",
+            "solution": "Ajouter des sous-titres sous formats texte pour toutes vidéos. Ceux-ci restituent l'ensemble des informations de la piste audio.",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-047": [
+        {
+            "title": "Impossible de stopper une piste audio ou vidéo",
+            "detail": "Les pistes audio de la page automatiquement jouées plus de 3 secondes peuvent être stoppées ou mises en pause.",
+            "solution": "Fournir un mécanisme facilement atteignable et accessible permettant aux utilisateurs de stopper ou mettre en pause un audio (exemple : un lien au début de la tabulation 'mettre en pause la vidéo').",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Impossible de couper le son d'une piste audio ou vidéo indépendamment du volume système",
+            "detail": "Les pistes audio de la page automatiquement jouées plus de 3 secondes doivent proposer un moyen de couper le son, sans que celui-ci soit dépendant du volume système.",
+            "solution": "Fournir un mécanisme facilement atteignable et accessible permettant aux utilisateurs de contrôler le volume des sons joués plus de 3 secondes (exemple : un lien au début de la tabulation 'Couper le son de l'audio').",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-065": [
+        {
+            "title": "Alternative textuelle du CAPTCHA absente ou erronée.",
+            "detail": "L'alternative textuelle de l'image CAPTCHA n'indique pas à l'utilisateur qu'il s'agit d'un CAPTCHA.",
+            "solution": "Mettre une alternative textuelle valide pour cette image, exemple : \"CAPTCHA (image anti-spam)\".",
+            "technicalSolution": "<img alt=\"CAPTCHA (image anti-spam)\" […]>"
+        }
+    ],
+    "testID-066": [
+        {
+            "title": "Absence d'alternative au Captcha",
+            "detail": "Tout captcha uniquement visuel ou sonore doit posséder une alternative accessible.",
+            "solution": "Proposer en alternative : un Captcha audio + visuel, ou des tests logiques (question dont la réponse est évidente, test mathématique simple…).",
+            "technicalSolution": ""
+        }
+    ],
+    "testID-067": [
+        {
+            "title": "Absence d'alternative au contenu cryptique",
+            "detail": "Tout contenu cryptique doit posséder une alternative textuelle pertinente.",
+            "solution": "Proposer en alternative textuelle et pertinente.",
+            "technicalSolution": ""
+        }
+    ]
+}

@@ -491,6 +491,32 @@
             "technicalSolution": ""
         }
     ],
+    "testID-077": [
+        {
+            "title": "Opening of a popup or modal when changing a setting on the page",
+            "detail": "Upon loading the page or focusing, no modal or popup should open.",
+            "solution": "",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Form submitted automatically when focusing on an element",
+            "detail": "A form is submitted automatically as soon as a setting is changed.",
+            "solution": "A form must be submitted only after activating the submit button.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Content change occurs when focusing",
+            "detail": "An important content change occurs without being voluntarily initiated by the user.",
+            "solution": "An important content change must occur only after voluntary triggering by the user on a link or action button.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Opening a new page when focusing",
+            "detail": "A page (or tab) change occurs without being voluntarily initiated by the user.",
+            "solution": "A content change must occur only after voluntary triggering by the user on a link.",
+            "technicalSolution": ""
+        }
+    ],
     "testID-039": [
         {
             "title": "Absence of a mechanism to stop moving content",

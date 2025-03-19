@@ -368,20 +368,6 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are content changes vocalized?",
-		"ID": "testID-023",
-		"IDorigin": "testID-023",
-		"wcag": {
-			"0": "3.2.2 A"
-		},
-		"verifier": "<p>Content changes are announced to the user:</p><ul><li>The opening of pop-up windows (<code>dialogs</code>).</li><li>The opening of a new screen.</li><li>The information about a change in a part of the screen (such as a changing fragment).</li><li>Horizontal scrolling.</li></ul>",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#notify-a-content-change"
-	},
-	{
-		"themes": "Screen reader",
 		"title": "Are status or contextual messages correctly rendered?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
@@ -742,16 +728,30 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Does the user have control over context changes?",
+		"title": "Does the user have control over context changes on focus?",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
 		"wcag": {
-			"0": "3.2.1 A",
-			"1": "3.2.2 A"
+			"0": "3.2.1 A"
 		},
-		"verifier": "<p>When using forms or any interactive component, check that there is no change of context&nbsp;:</p><ul><li>when a component receives focus</li><li>when entering data</li><li>when activating a form element other than a button</li></ul><p>Context change is compliant if:</p><ul><li>the action is initiated by an explicit button or link</li><li>the user is warned by text before its activation</li></ul>",
+		"verifier": "<p>When an element receives the focus, check that there is no change of context without prior warning to the user.</p>",
 		"complement": "<h5>Context Change</h5><p>Major change in the screen content that, when done without the user's knowledge, can be disorienting.</p><p>Context changes include changes in:</p><ul><li>user agent (opening another application)</li><li><span lang=\"en\">viewport</span> (opening a new screen, another part of the displayed screen)</li><li>focus (moving the focus)</li><li>content that alters the meaning of the screen</li></ul>",
-		"exception": "<p>The criterion is not applicable if, upon gaining focus, the context does not change. For example, the appearance of a menu or visual changes when hovering over a link are not considered context changes.</p>",
+		"exception": "<p>The criterion is not applicable if, upon receiving the focus, the context does not change. For example, the appearance of a menu or visual changes when hovering over a link are not considered context changes.</p>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#content-control"
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Does the user have control over context changes on input?",
+		"ID": "testID-077",
+		"IDorigin": "testID-077",
+		"wcag": {
+			"0": "3.2.2 A"
+		},
+		"verifier": "<p>When modifying a setting, check for the absence of context change without prior warning to the user.</p><p>Modifying a setting can include setting a checkbox, entering content in a text field, or selecting an option in a form control. All of these should have predictable results (behavior expected by the user).</p><p>A context change is acceptable if:</p><ul><li>The action is initiated by an explicit button or link.</li><li>The user is warned by text before its activation.</li></ul>",
+		"complement": "<h5>Context Change</h5><p>Major change in the screen content that, when done without the user's knowledge, can be disorienting.</p><p>Context changes include changes in:</p><ul><li>user agent (opening another application)</li><li><span lang=\"en\">viewport</span> (opening a new screen, another part of the displayed screen)</li><li>focus (moving the focus)</li><li>content that alters the meaning of the screen</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,

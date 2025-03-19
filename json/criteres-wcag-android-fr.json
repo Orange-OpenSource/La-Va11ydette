@@ -372,20 +372,6 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les changements de contenu sont-ils vocalisés&nbsp;? ",
-		"ID": "testID-023",
-		"IDorigin": "testID-023",
-		"wcag": [
-			"3.2.2 A"
-		],
-		"verifier": "<p>Les changements de contenu sont annoncés à l'utilisateur :</p><ul><li>l'ouverture des fenêtres surgissantes (<code>dialogs</code>).</li><li>l'ouverture d'un nouvel écran.</li><li>l'information du changement d'une partie de l'écran (comme un fragment qui change).</li><li>les défilements horizontaux.</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-le-changement-de-contenu",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false
-	},
-	{
-		"themes": "Navigation vocale",
 		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués&nbsp;?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
@@ -753,19 +739,34 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'utilisateur a-t-il le contrôle des changements de contexte&nbsp;?",
+		"title": "L'utilisateur a-t-il le contrôle des changements de contexte lors de la prise de focus ?",
 		"ID": "testID-038",
 		"IDorigin": "testID-038",
-		"wcag": [
-			"3.2.1 A",
-			"3.2.2 A"
-		],
-		"verifier": "<p>Lors de l'utilisation de formulaire ou de tout composant interactif, vérifier l'absence de changement de contexte, sans avertissement de l'utilisateur&nbsp;:</p><ul><li>lors de la prise de focus d'un élément</li><li>lors de la saisie de données</li><li>lors de l'activation d'un élément de formulaire autre qu'un bouton</li></ul><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"wcag": {
+			"0": "3.2.1 A"
+		},
+		"verifier": "<p>Lors de la prise de focus d'un élément, vérifier l'absence de changement de contexte sans avertissement de l'utilisateur.</p>",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
 		"exception": "<p>Le critère est non-applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "L'utilisateur a-t-il le contrôle des changements de contexte lors de la saisie ?",
+		"ID": "testID-077",
+		"IDorigin": "testID-077",
+		"wcag": {
+			"0": "3.2.2 A"
+		},
+		"verifier": "<p>Lors de la modification de paramètre, vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, saisir du contenu dans un champ de texte, sélectionner une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
 	},
 	{
 		"themes": "Navigation générale",

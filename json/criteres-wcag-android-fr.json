@@ -1,7 +1,7 @@
 [
 	{
 		"themes": "Champ de formulaire",
-		"title": "Chaque champ de formulaire possède-t-il une étiquette ?",
+		"title": "Chaque champ de formulaire possède-t-il une étiquette&nbsp;?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
@@ -51,7 +51,7 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire ?",
+		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
@@ -115,7 +115,7 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives ?",
+		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives&nbsp;?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
 		"wcag": [
@@ -162,7 +162,7 @@
 	},
 	{
 		"themes": "Champ de formulaire",
-		"title": "Si une information est demandé plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie n'est-elle pas redondante ?",
+		"title": "Si une information est demandé plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie n'est-elle pas redondante&nbsp;?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
@@ -207,7 +207,7 @@
 	},
 	{
 		"themes": "Entêtes",
-		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes ?",
+		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
@@ -299,7 +299,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments signifiants sont-ils tous vocalisés et pertinents ? ",
+		"title": "Les éléments signifiants sont-ils tous vocalisés et pertinents&nbsp;? ",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
@@ -314,7 +314,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "L'ordre de vocalisation des éléments est-il logique et compréhensible ? ",
+		"title": "L'ordre de vocalisation des éléments est-il logique et compréhensible&nbsp;? ",
 		"ID": "testID-019",
 		"IDorigin": "testID-019",
 		"wcag": [
@@ -329,7 +329,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation ?",
+		"title": "Les éléments reliés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation&nbsp;?",
 		"ID": "testID-020",
 		"IDorigin": "testID-020",
 		"wcag": [
@@ -343,7 +343,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments présentés sous forme de liste sont-ils correctement restitués ?",
+		"title": "Les éléments présentés sous forme de liste sont-ils correctement restitués&nbsp;?",
 		"ID": "testID-021",
 		"IDorigin": "testID-021",
 		"wcag": {
@@ -357,7 +357,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête ? ",
+		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête&nbsp;? ",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": [
@@ -372,7 +372,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les changements de contenu sont-ils vocalisés ? ",
+		"title": "Les changements de contenu sont-ils vocalisés&nbsp;? ",
 		"ID": "testID-023",
 		"IDorigin": "testID-023",
 		"wcag": [
@@ -386,7 +386,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués ?",
+		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués&nbsp;?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
 		"wcag": [
@@ -401,7 +401,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés ?",
+		"title": "Le nom, le rôle et la valeur de chaque composant d'interface sont-ils vocalisés&nbsp;?",
 		"ID": "testID-024",
 		"IDorigin": "testID-024",
 		"wcag": [
@@ -415,7 +415,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments visibles sont-ils les seuls à être vocalisés ? ",
+		"title": "Les éléments visibles sont-ils les seuls à être vocalisés&nbsp;? ",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
@@ -429,7 +429,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments décoratifs sont-ils ignorés par la navigation vocale ? ",
+		"title": "Les éléments décoratifs sont-ils ignorés par la navigation vocale&nbsp;? ",
 		"ID": "testID-026",
 		"IDorigin": "testID-026",
 		"wcag": [
@@ -443,7 +443,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran ?",
+		"title": "Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran&nbsp;?",
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": [
@@ -487,7 +487,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Un mécanisme pour naviguer au sein de la page est-il présent ?",
+		"title": "Un mécanisme pour naviguer au sein de la page est-il présent&nbsp;?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": [
@@ -502,7 +502,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Le contenu de la page est-il restitué dans la langue principale de la page ?",
+		"title": "Le contenu de la page est-il restitué dans la langue principale de la page&nbsp;?",
 		"ID": "testID-060",
 		"IDorigin": "testID-060",
 		"wcag": [
@@ -517,7 +517,7 @@
 	},
 	{
 		"themes": "Switch Access et navigation clavier",
-		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access ou avec un clavier externe ?",
+		"title": "Les fonctionnalités de l'écran sont-elles utilisables avec Switch Access ou avec un clavier externe&nbsp;?",
 		"ID": "testID-027",
 		"IDorigin": "testID-027",
 		"wcag": [
@@ -545,7 +545,7 @@
 	},
 	{
 		"themes": "Switch Access et navigation clavier",
-		"title": "Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci est-il contrôlable par l'utilisateur ?",
+		"title": "Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci est-il contrôlable par l'utilisateur&nbsp;?",
 		"ID": "testID-075",
 		"IDorigin": "testID-075",
 		"wcag": {
@@ -603,7 +603,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur disposent-elles d'une alternative ?",
+		"title": "Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur disposent-elles d'une alternative&nbsp;?",
 		"ID": "testID-031",
 		"IDorigin": "testID-031",
 		"wcag": [
@@ -633,14 +633,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative ?",
+		"title": "Les fonctionnalités utilisant l'action de glisser et déposer ont-elles une alternative&nbsp;?",
 		"ID": "testID-074",
 		"IDorigin": "testID-074",
 		"wcag": [
 			"2.5.7 AA"
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
-		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?\"</p>",
 		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
@@ -678,7 +678,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "La taille des éléments interactifs est-elle suffisante ?",
+		"title": "La taille des éléments interactifs est-elle suffisante&nbsp;?",
 		"ID": "testID-050",
 		"IDorigin": "testID-050",
 		"wcag": [
@@ -694,7 +694,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Tous les éléments qui ont la même fonction sont-ils nommés de manière identique ?",
+		"title": "Tous les éléments qui ont la même fonction sont-ils nommés de manière identique&nbsp;?",
 		"ID": "testID-035",
 		"IDorigin": "testID-035",
 		"wcag": [
@@ -707,7 +707,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente ?",
+		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente&nbsp;?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
 		"wcag": [
@@ -724,7 +724,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Une limite de temps impliquant un changement de contexte a-t-elle son délai adaptable ?",
+		"title": "Une limite de temps impliquant un changement de contexte a-t-elle son délai adaptable&nbsp;?",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": [
@@ -739,7 +739,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les textes sont-ils lisibles sans difficulté ?",
+		"title": "Les textes sont-ils lisibles sans difficulté&nbsp;?",
 		"ID": "testID-037",
 		"IDorigin": "testID-037",
 		"wcag": [
@@ -811,7 +811,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Aucune image n'est utilisée pour présenter du texte ?",
+		"title": "Aucune image n'est utilisée pour présenter du texte&nbsp;?",
 		"ID": "testID-052",
 		"IDorigin": "testID-052",
 		"wcag": [
@@ -825,7 +825,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'étiquette et le nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte ?",
+		"title": "L'étiquette et le nom accessible de chaque élément interactif est-il explicite, au minimum dans son contexte&nbsp;?",
 		"ID": "testID-054",
 		"IDorigin": "testID-054",
 		"wcag": [

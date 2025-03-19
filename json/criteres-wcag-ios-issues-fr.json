@@ -492,6 +492,32 @@
             "technicalSolution": ""
         }
     ],
+    "testID-077": [
+        {
+            "title": "Ouverture de popup ou modale lors d'un changement de paramètre",
+            "detail": "Après un changement de paramètre, aucune modale ou popup ne doit s'ouvrir.",
+            "solution": "",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Formulaire soumis automatiquement lors d'un changement de paramètre",
+            "detail": "Un formulaire est soumis automatiquement après un changement de paramètre.",
+            "solution": "Un formulaire doit être soumis uniquement après activation du bouton de soumission.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Changement du contenu de la page d'un changement de paramètre",
+            "detail": "Un changement de contenu important s'opère sans qu'il soit initié volontairement par l'utilisateur.",
+            "solution": "Un changement de contenu important doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur sur un lien ou un bouton d'action.",
+            "technicalSolution": ""
+        },
+        {
+            "title": "Ouverture d'une nouvelle page lors d'un changement de paramètre",
+            "detail": "Un changement de page (ou d'un onglet) s'opère sans qu'il soit initié volontairement par l'utilisateur.",
+            "solution": "Un changement de contenu doit s'opèrer uniquement après déclenchement volontaire de l'utilisateur sur un lien.",
+            "technicalSolution": ""
+        }
+    ],
     "testID-039": [
         {
             "title": "Absence de mécanisme permettant de stopper un contenu en mouvement",

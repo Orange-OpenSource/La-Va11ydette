@@ -1234,14 +1234,14 @@ exportStatementXML = function (statementResult) {
     xmlStatement += '		<ok>' + dataWCAG.nbTrueWcag + '</ok><!-- valid -->\n';
     xmlStatement += '		<nok>' + dataWCAG.nbFalseWcag + '</nok><!-- not valid -->\n';
     xmlStatement += '		<na>' + dataWCAG.nbNaWcag + '</na><!-- not applicable -->\n';
-    xmlStatement += '		<conformity>' + dataWCAG.globalPagesResult + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
+    xmlStatement += '		<conformity>' + dataWCAG.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n';
     xmlStatement += '	</result>\n';
     xmlStatement += '</results>\n\n';
 
     xmlStatement += '<!--\n';
     xmlStatement += 'Pages results details\n';
     xmlStatement += '-->\n';
-    xmlStatement += '<pages_results conformity="' + dataWCAG.result + '">\n';
+    xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
     statementResult.forEach(item => xmlStatement += '	<page name="' + utils.escape_html(item.name) + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');
     ;
     xmlStatement += '</pages_results>\n\n';

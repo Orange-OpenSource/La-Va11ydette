@@ -292,7 +292,7 @@
 		}, 
 		{
 			"title": "Une image SVG porteuse d’informations n’a pas d’alternative textuelle.", 
-			"detail": "Dans le cas d’une balise SVG contenant une image porteuse d’information, l’élément <svg> doit avoir&nbsp;:\n - un attribut role=\"img\"\n- un intitulé avec soit l’attribut aria-label, soit un élément <title> lié avec l’attribut aria-labelledby qui reprend l’identifiant (id) de cet élément <title>.\n- un attribut focusable=\"false\".\n Dans le cas d’une balise <img> avec une image source au format SVG, l’élément devra avoir un attribut role=\"img\" et un ALT pertinent", 
+			"detail": "Dans le cas d’une balise SVG contenant une image porteuse d’information, l’élément <svg> doit avoir:\n - un attribut role=\"img\"\n- un intitulé avec soit l’attribut aria-label, soit un élément <title> lié avec l’attribut aria-labelledby qui reprend l’identifiant (id) de cet élément <title>.\n- un attribut focusable=\"false\".\n Dans le cas d’une balise <img> avec une image source au format SVG, l’élément devra avoir un attribut role=\"img\" et un ALT pertinent", 
 			"solution": "Ajouter soit un attribut alt, soit un attribut aria-label pertinent à la balise SVG.", 
 			"technicalSolution": "Exemple d’une balise <svg> :\n <svg role=\"img\" aria-label=\"Démarche en cours\" focusable=\"false\"></svg> Exemple d’une balise <img> avec une image au format .svg\n <img src=\"image.svg\" role=\"img\" alt=\"Nom accessible\"> Pour en savoir plus : https://a11y-guidelines.orange.com/fr/articles/svg-accessibles/"
 		}
@@ -681,7 +681,7 @@
 		{
 			"title" : "La couleur uniquement permet de visualiser le focus ",
 			"detail" : "La couleur ne peut être le seul élément permettant de distinguer le focus.",
-			"solution" : "Mettre en place un autre moyen que le changement de couleur pour l'indicateur de focus (ex.&nbsp;: forme, taille, encadré, souligné...).",
+			"solution" : "Mettre en place un autre moyen que le changement de couleur pour l'indicateur de focus (exemple : forme, taille, encadré, souligné...).",
 			"technicalSolution" : ""
 		},
 		{

@@ -1137,7 +1137,7 @@ exportStatementXML = function (statementResult) {
     xmlStatement += '	<name>WCAG</name><!-- if it\'s an abbreviation, the document template must translate it to plain text -->\n';
     xmlStatement += '	<version>2.2</version>\n';
     xmlStatement += '	<level>AA</level>\n';
-    xmlStatement += '	<url>https://www.w3.org/Translations/WCAG20-fr/</url>\n';
+    xmlStatement += '	<url>https://www.w3.org/Translations/WCAG22-fr/</url>\n';
     xmlStatement += '</referential>\n\n';
 
     xmlStatement += '<!--\n';

@@ -1517,7 +1517,7 @@ exportStatementHTML = function (statementResult) {
             					<div class="col-lg-auto text-center">
             						<h4 class="pie" data-value="50">
             							<span class="visually-hidden">${langStatement.auditTxt1} </span>
-            							<span class="pie-val pie-noncompliant">${langStatement.template.status2}</span>
+            							<span class="pie-noncompliant-val pie-noncompliant">${langStatement.template.status2}</span>
             						</h4>
             						<p class="lead">${langStatement.auditTxt1}</p>
             				</div>

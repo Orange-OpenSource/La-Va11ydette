@@ -417,7 +417,9 @@ displayIssueBody= function(targetId){
  * @param {string} issueIndex - index of the issue to remove into an issue array
 */
 deleteConfirmationIssue = function (targetId, issueIndex) {
-	
+	const feedbackId = "deleteIssueBtn-" + targetId + "-" + issueIndex + "-feedback";
+	if (document.getElementById(feedbackId)) return
+
 	let htmlIssueFeedback = '<div id="deleteIssueBtn-'+ targetId +'-'+ issueIndex +'-feedback">';
 	htmlIssueFeedback += '<span id="deleteIssueMessage-'+ targetId +'-'+ issueIndex +'">' + langVallydette.issueTxt3 + '</span>';
 	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">' + langVallydette.no + '</button>';

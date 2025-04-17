@@ -416,7 +416,38 @@ displayIssueBody= function(targetId){
  * @param {string} targetId - current test ID
  * @param {string} issueIndex - index of the issue to remove into an issue array
 */
-deleteConfirmationIssue = function (targetId, issueIndex) {
+const deleteConfirmationIssue = (targetId, issueIndex) => {
+    const feedbackId = `deleteIssueBtn-${targetId}-${issueIndex}-feedback`;
+    if (document.getElementById(feedbackId)) return;
+
+    const messageId = `deleteIssueMessage-${targetId}-${issueIndex}`;
+    const noButtonId = `btnDeleteIssueNo-${targetId}-${issueIndex}`;
+    const yesButtonId = `btnDeleteIssueYes-${targetId}-${issueIndex}`;
+
+    const htmlIssueFeedback = `
+        <div id="${feedbackId}">
+            <p id="${messageId}" class="mt-2 mb-0">${langVallydette.issueTxt3}</p>
+            <button type="button" 
+                id="${noButtonId}" 
+                class="btn btn-secondary btn-sm" 
+                aria-labelledby="${messageId} ${noButtonId}"
+                onClick="deleteIssue('${targetId}',${issueIndex}, false)">
+                ${langVallydette.no}
+            </button>
+            <button type="button" 
+                id="${yesButtonId}" 
+                class="btn btn-secondary btn-sm"
+                aria-labelledby="${messageId} ${yesButtonId}"
+                onClick="deleteIssue('${targetId}',${issueIndex}, true)">
+                ${langVallydette.yes}
+            </button>
+        </div>`;
+
+    document.getElementById(`deleteIssueBtn-${targetId}-${issueIndex}`)
+        .insertAdjacentHTML("afterend", htmlIssueFeedback);
+
+    document.getElementById(noButtonId).focus();
+}
 	const feedbackId = "deleteIssueBtn-" + targetId + "-" + issueIndex + "-feedback";
 	if (document.getElementById(feedbackId)) return
 

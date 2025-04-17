@@ -416,19 +416,37 @@ displayIssueBody= function(targetId){
  * @param {string} targetId - current test ID
  * @param {string} issueIndex - index of the issue to remove into an issue array
 */
-deleteConfirmationIssue = function (targetId, issueIndex) {
-	
-	let htmlIssueFeedback = '<div id="deleteIssueBtn-'+ targetId +'-'+ issueIndex +'-feedback">';
-	htmlIssueFeedback += '<span id="deleteIssueMessage-'+ targetId +'-'+ issueIndex +'">' + langVallydette.issueTxt3 + '</span>';
-	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueNo-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm" onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', false)">' + langVallydette.no + '</button>';
-	htmlIssueFeedback += '<button type="button" id="btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'" class="btn btn-secondary btn-sm"  aria-labelledby="deleteIssueMessage-'+ targetId +'-'+ issueIndex +' btnDeleteIssueYes-'+ targetId +'-'+ issueIndex +'"  onClick="deleteIssue(\''+ targetId +'\','+ issueIndex +', true)">' + langVallydette.yes + '</button>';
-	htmlIssueFeedback += '</div>';
-	
-	let elButton = document.getElementById("deleteIssueBtn-"+ targetId +"-"+ issueIndex);
-	elButton.insertAdjacentHTML("afterend", htmlIssueFeedback); 
-	
-	document.getElementById("btnDeleteIssueNo-"+ targetId +"-"+ issueIndex).focus();
-	
+const deleteConfirmationIssue = (targetId, issueIndex) => {
+    const feedbackId = `deleteIssueBtn-${targetId}-${issueIndex}-feedback`;
+    if (document.getElementById(feedbackId)) return;
+
+    const messageId = `deleteIssueMessage-${targetId}-${issueIndex}`;
+    const noButtonId = `btnDeleteIssueNo-${targetId}-${issueIndex}`;
+    const yesButtonId = `btnDeleteIssueYes-${targetId}-${issueIndex}`;
+
+    const htmlIssueFeedback = `
+        <div id="${feedbackId}">
+            <p id="${messageId}" class="mt-2 mb-0">${langVallydette.issueTxt3}</p>
+            <button type="button" 
+                id="${noButtonId}" 
+                class="btn btn-secondary btn-sm" 
+                aria-labelledby="${messageId} ${noButtonId}"
+                onClick="deleteIssue('${targetId}',${issueIndex}, false)">
+                ${langVallydette.no}
+            </button>
+            <button type="button" 
+                id="${yesButtonId}" 
+                class="btn btn-secondary btn-sm"
+                aria-labelledby="${messageId} ${yesButtonId}"
+                onClick="deleteIssue('${targetId}',${issueIndex}, true)">
+                ${langVallydette.yes}
+            </button>
+        </div>`;
+
+    document.getElementById(`deleteIssueBtn-${targetId}-${issueIndex}`)
+        .insertAdjacentHTML("afterend", htmlIssueFeedback);
+
+    document.getElementById(noButtonId).focus();
 }
 
 /**

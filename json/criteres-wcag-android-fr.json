@@ -121,8 +121,8 @@
 		"wcag": [
 			"3.3.8 AA"
 		],
-		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne repose pas sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au application mobile</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
-		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
+		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif, sauf si :</p><ul><li>une autre méthode d'authentification est proposée.</li><li>une aide est disponible pour l'utilisateur.</li><li>le test cognitif consiste à reconnaitre des objets (contenu de type image, vidéo ou audio).</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni à l'application.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",
+		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Parmi les exemples de mécanismes qui satisfont à ce critère, on peut citer : l'aide à la saisie de mots de passe par des gestionnaires de mots de passe pour réduire le besoin de mémoire et le copier-coller pour réduire la charge cognitive liée à la ressaisie.</p",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -259,6 +259,7 @@
 			"1.4.1 A"
 		],
 		"verifier": "<p>La couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li></ul><p>Cas particulier d'un lien ou bouton sans mise en forme dans du texte :</p><ul><li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li><li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Si un élément natif d'une plateforme mobile repose uniquement sur la couleur, des moyens visuels supplémentaires doivent transmettre l'information.</p>",
 		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt",
@@ -273,7 +274,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son, retour haptique) peut également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
 		"exception": "<p>Le critère est non-applicable si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#sassurer-que-la-couleur-ou-linformation-sensorielle-ne-sont-pas-les-seules-sources-dinformation",
 		"resultatTest": "nt",
@@ -299,7 +300,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments signifiants sont-ils tous vocalisés et pertinents&nbsp;? ",
+		"title": "Les éléments graphiques signifiants sont-ils tous vocalisés et pertinents&nbsp;?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
@@ -314,7 +315,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "L'ordre de vocalisation des éléments est-il logique et compréhensible&nbsp;? ",
+		"title": "L'ordre de vocalisation des éléments est-il logique et compréhensible&nbsp;?",
 		"ID": "testID-019",
 		"IDorigin": "testID-019",
 		"wcag": [
@@ -357,7 +358,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête&nbsp;? ",
+		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête&nbsp;?",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": [
@@ -401,7 +402,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments visibles sont-ils les seuls à être vocalisés&nbsp;? ",
+		"title": "Les éléments visibles sont-ils les seuls à être vocalisés&nbsp;?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
@@ -415,7 +416,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments décoratifs sont-ils ignorés par la navigation vocale&nbsp;? ",
+		"title": "Les éléments décoratifs sont-ils ignorés par la navigation vocale&nbsp;?",
 		"ID": "testID-026",
 		"IDorigin": "testID-026",
 		"wcag": [
@@ -436,7 +437,7 @@
 			"2.5.3 A"
 		],
 		"verifier": "<p>Le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
-		"complement": "<p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple : pour un lien \"démarrer\", mettre une alternative \"démarrer la lecture\", mais pas \"lancer la lecture\"</p>",
+		"complement": "<h5>Complément d'information</h5><p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple : pour un lien \"démarrer\", mettre une alternative \"démarrer la lecture\", mais pas \"lancer la lecture\"</p>",
 		"exception": "<p>Le critère est non-applicable si l'élément n'a pas de libellé visible (icône sans texte par exemple).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt",
@@ -538,7 +539,7 @@
 			"0": "2.1.4 A"
 		},
 		"verifier": "<p>Une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
-		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : Ctrl, Alt ou Shift).</p>",
+		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : Ctrl, Alt ou Shift) ou à un appui long sur une touche (2 secondes ou plus).</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -649,7 +650,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'écran est-il consultable quelle que soit l'orientation (portrait ou paysage)&nbsp;?",
+		"title": "Le contenu et les fonctionnalités sont-ils disponibles quelle que soit l'orientation (portrait ou paysage)&nbsp;?",
 		"ID": "testID-034",
 		"IDorigin": "testID-034",
 		"wcag": [
@@ -661,6 +662,17 @@
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Le contenu et les fonctionnalités sont-ils en orientation inversée&nbsp;?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [],
+		"verifier": "<p>Le contenu et les fonctionnalités sont disponibles en orientations portrait et paysage inversés.</p>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": true
 	},
 	{
 		"themes": "Navigation générale",
@@ -699,9 +711,8 @@
 		"wcag": [
 			"3.2.6 A"
 		],
-		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
-
-		"complement":"<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p>",
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre relatif sur tous les écrans sur lesquels ils sont présents.</p><p>L'ordre relatif doit être considéré dans la même configuration d'affichage pour les différentes écrans (par exemple, même niveau de zoom et même orientation).</p>",
+		"complement":"<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p><p>Les mécanismes d'aide peuvent être fournis directement sur l'écran ou via un lien menant vers un écran différent contenant les informations d'aide.</p>",
 		"exception": "<p>le critère est non applicable si l'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "",
@@ -717,8 +728,24 @@
 			"2.2.1 A"
 		],
 		"verifier": "<p>Vérifier qu'une des conditions ci-dessous est respectée&nbsp;:</p><ul><li>possibilité de supprimer la limite de temps</li><li>possibilité d'augmenter jusqu'à 10 fois minimum le temps par défaut</li><li>l'utilisateur est prévenu au minimum 20 secondes avant la fin et peut augmenter la durée simplement</li><li>la limite de temps est supérieure à 20 heures.</li></ul>",
-		"exception": "<p>Le critère est non-applicable dans les cas suivants :</p><ul><li>l'exception du temps réel&nbsp;: la limite de temps est une partie constitutive d'un évènement en temps réel (par exemple, une enchère) et aucune alternative n'est possible&nbsp;;</li><li>l'exception de la limite essentielle&nbsp;: la limite de temps est essentielle et l'étendre invaliderait alors l'activité&nbsp;;</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Ce critère doit être considéré conjointement avec le critère 3.2.1, qui traite des changements de contenu ou de contexte à la suite d'une action de l'utilisateur.</p>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</li><li>Lors d'une phase de chargement, une animation peut être considérée comme essentielle si aucune interaction n'est possible pendant cette phase et qu'aucune indication de progression n'est affichée, afin de ne pas laisser penser que l'application serait bloquée ou en erreur.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#rendre-adaptable-les-ui-avec-limite-de-temps",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Les propriétés d'espacement du texte peuvent-elles être redéfinies par l'utilisateur sans perte de contenu ou de fonctionnalité&nbsp;?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"1.4.12 AA"
+		],
+		"verifier": "<p>Si le système d'exploitation mobile permet aux utilisateurs de remplacer les propriétés du style de texte, alors :</p><ul><li>la hauteur des lignes doit pouvoir être ajustée à 1.5 fois minimum la taille de la police de caractères</li><li>l'espace situé entre deux paragraphes doit pouvoir être ajusté à 2 fois minimum la taille de la police de caractères</li><li>l'espacement entre les lettres doit pouvoir être ajusté à 0.12 fois minimum la taille de la police de caractères</li><li>l'espacement entre les mots doit pouvoir être ajusté à 0.16 fois minimum la taille de la police de caractères</li><li>absence de textes tronqués ou superposés</li></ul>",
+		"exception": "<p>Le critère est non-applicable si le système d'exploitation mobile ne permet pas aux utilisateurs de remplacer les propriétés du style de texte.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -728,9 +755,7 @@
 		"title": "Les textes sont-ils lisibles sans difficulté&nbsp;?",
 		"ID": "testID-037",
 		"IDorigin": "testID-037",
-		"wcag": [
-			"1.4.12 AA"
-		],
+		"wcag": [],
 		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt",
@@ -934,7 +959,7 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "<p>Pour toute vidéo avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
+		"verifier": "<p>Pour toute vidéo avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension : dialogues, effets sonores, identité des orateurs, etc.).</li><li>Les sous-titres ne masquent pas des informations importantes de la vidéo.</li></ul>",
 		"exception": "<p>Les sous-titres ne sont pas nécessaires lorsque les informations présentes dans la vidéo sont également présentées sous forme de texte ou d'alternative textuelle sur la même page.</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
@@ -950,7 +975,7 @@
 		"wcag": [
 			"1.2.4 AA"
 		],
-		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
+		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension : dialogues, effets sonores, identité des orateurs, etc.).</li></ul>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/multimedia/#transcrire-le-contenu-audio-ou-video",
 		"resultatTest": "nt",

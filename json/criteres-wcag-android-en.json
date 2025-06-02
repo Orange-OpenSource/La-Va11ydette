@@ -117,8 +117,8 @@
 		"wcag": [
 			"3.3.8 AA"
 		],
-		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing, unless that step provides:</p><ul><li>another method of authentication</li><li> help is available for the user</li><li>the cognitive test consists of recognizing objects</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the mobile application</li></ul><p>Warning, remembering a username and password is a cognitive test.<br/>The copy/paste function must be enabled on these fields.<br />If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
-		"complement": "<h5>Additional information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p>",
+		"verifier": "<p>Verify that all steps in an authentication process do not rely on cognitive testing, unless that step provides:</p><ul><li>another method of authentication.</li><li> help is available for the user.</li><li>the cognitive test consists of recognizing objects (image, video or audio content).</li><li>the cognitive test consists of identifying the non-textual content that the user has provided to the mobile application.</li></ul><p>Warning, remembering a username and password is a cognitive test.<br/>The copy/paste function must be enabled on these fields.<br />If the username and password can be auto-filled, it is not considered a cognitive test.</p>",
+		"complement": "<h5>Additional information</h5><p>A cognitive test is a task that requires the user to memorize, manipulate or transcribe information.</p><p>Examples of mechanisms that satisfy this criterion include: support for password entry by password managers to reduce memory need, and copy and paste to reduce the cognitive burden of re-typing.</p>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -255,7 +255,8 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Color is not the only means of conveying information:</p><ul><li>Information can also be obtained through text.</li><li>At least one other visual means is available to obtain the same information (e.g., icons that use colors but also different shapes).</li><li>If content is conveyed using colors that differ not only in hue but also present a significant difference in brightness (e.g., light green and dark red), this constitutes an additional visual distinction.</li></ul><p>Specific case of a link or button without formatting in text:</p><ul><li>The link or button must have a contrast of 3:1 with the surrounding text.</li><li>And an indicator, not relying on color, must allow it to be distinguished when focused (e.g., underlined).</li></ul>", 
+		"verifier": "<p>Color is not the only means of conveying information:</p><ul><li>Information can also be obtained through text.</li><li>At least one other visual means is available to obtain the same information (e.g., icons that use colors but also different shapes).</li><li>If content is conveyed using colors that differ not only in hue but also present a significant difference in brightness (e.g., light green and dark red), this constitutes an additional visual distinction.</li></ul><p>Specific case of a link or button without formatting in text:</p><ul><li>The link or button must have a contrast of 3:1 with the surrounding text.</li><li>And an indicator, not relying on color, must allow it to be distinguished when focused (e.g., underlined).</li></ul>",
+		"complement": "<h5>Additional information</h5><p>If a mobile platform's built-in distinction relies only on color, additional visual means must convey the information.</p>",
 		"exception": "<p>The criterion is not applicable in the following cases:</p><ul><li>Links whose nature is explicit, such as links present in navigation areas (header and footer, menu, or list of links…)</li><li>If no information is conveyed by color.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-that-color-or-sensory-information-is-not-the-only-source-of-information",
 		"resultatTest": "nt",
@@ -270,7 +271,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>The information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
+		"verifier": "<p>The information conveyed by a sensory characteristic (shape, size, position, orientation, sound, haptic feedback) can also be obtained with a text or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next screen press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
 		"exception": "<p>The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/colors-and-contrasts/#ensure-that-color-or-sensory-information-is-not-the-only-source-of-information",
 		"resultatTest": "nt",
@@ -296,7 +297,7 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are all the significant elements vocalized and relevant?",
+		"title": "Are all the significant graphical elements vocalized and relevant?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
@@ -434,7 +435,7 @@
 			"2.5.3 A"
 		],
 		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
-		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
+		"complement": "<h5>Additional information</h5><p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
 		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
 		"resultatTest": "nt",
@@ -537,7 +538,7 @@
 			"0": "2.1.4 A"
 		},
 		"verifier": "<p>One of the following conditions is met:</p><ul><li>The shortcut can be disabled by the user.</li><li>The shortcut is active only when the focus is on the interface component.</li><li>The shortcut can be modified, allowing the addition of one or more non-printable characters (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Shift</kbd>, etc.) to the combination.</li></ul>",
-		"exception": "<p>The criterion does not apply to keyboard shortcuts using a modifier key (non-printable character keys, e.g., Ctrl, Alt, or Shift).</p>",
+		"exception": "<p>The criterion does not apply to keyboard shortcuts using a modifier key (non-printable character keys, e.g., Ctrl, Alt, or Shift)a long press of a key (2 seconds or more).</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -648,7 +649,7 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Is the content displayed regardless of the screen orientation (portrait or landscape)?",
+		"title": "Are the content and functionalities available regardless of the screen orientation (portrait or landscape)?",
 		"ID": "testID-034",
 		"IDorigin": "testID-034",
 		"wcag": [
@@ -660,6 +661,17 @@
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
+	},
+	{
+		"themes": "Common navigation",
+		"title": "Are the content and functionalities available in reversed portrait and landscape orientations?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [],
+		"verifier": "<p>Check that the content and functionalities are available in reversed portrait and landscape orientations.</p>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": true
 	},
 	{
 		"themes": "Common navigation",
@@ -698,8 +710,8 @@
 		"wcag": [
 			"3.2.6 A"
 		],
-		"verifier": "<p>If one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same order on all screens.</p>",
-		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc.</ p>",
+		"verifier": "<p>If one or more help devices are offered, these must always be located in the same place, presented in the same way and in the same relative order on all screens.</p><p>The relative order must be considered in the same display configuration for the different screens (for example, same zoom level and same orientation).</p>",
+		"complement": "<h5>Additional information</h5><p>Help mechanisms can be an email address, a telephone number, a contact form, a chat, a FAQ, etc.</p><p>Help mechanisms may be provided directly on the view, or may be provided via a direct link to a different view containing the information.</p>",
 		"exception": "<p>The criterion is not applicable if the user has initiated a change in the presentation of the help following the use of the zoom or the orientation.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -715,8 +727,24 @@
 			"2.2.1 A"
 		],
 		"verifier": "<p>Check that one of the conditions below is met:</p><ul><li>user is allowed to turn off the time limit</li><li>the user is allowed to increase the time limit up to 10 times the minimum default value</li><li>the user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action</li><li>the time limit is longer than 20 hours.</li></ul>",
+		"complement": "<h5>Additional information</h5><p>This criterion should be considered in conjunction with criterion 3.2.1, which deals with changes of content or context as a result of user action.</p>",
 		"exception": "<p>The criterion is not applicable in following cases:<ul><li>real-time exception: the time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible;</li><li>essential exception: the time limit is essential and extending it would invalidate the activity;</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/general-navigation/#make-ui-with-timeout-adaptable",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "Can the user override text spacing properties without loss of content or functionality?",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
+		"wcag": [
+			"1.4.12 AA"
+		],
+		"verifier": "<p>If the mobile operating system allows users to override text style properties, then:</p><ul><li>line height must be adjustable to at least 1.5 times the font size </li><li>spacing following paragraphs must be adjustable to at least 2 times the font size </li><li>letter spacing must be adjustable to at least 0.12 times the font size</li><li>word spacing must be adjustable to at least 0.16 times the font size </li><li>absence of truncated or superimposed text</li></ul>",
+		"exception": "<p>The criterion is not applicable if the mobile operating system does not allow users to override text style properties.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -726,9 +754,7 @@
 		"title": "Are the texts easy to read?",
 		"ID": "testID-037",
 		"IDorigin": "testID-037",
-		"wcag": [
-			"1.4.12 AA"
-		],
+		"wcag": [],
 		"verifier": "<p>Check that:</p><ul><li>texts have a sufficient size to be read easily</li><li>the font used is sans serif</li><li>text is not in italic</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/general-navigation/#provide-readable-text",
 		"resultatTest": "nt",
@@ -774,7 +800,9 @@
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<ul><li>If content in a part of the page starts automatically and lasts more than 5 seconds, is in motion, scrolling, or blinking, there is a way to stop, pause, or hide it.</li><li>For content in a part of the page that updates or refreshes automatically, there is a way to stop, pause, hide, or adjust its update frequency.</li></ul>", "complement": "<h5>Additional Information</h5><p>Stopping the animation only upon gaining focus or touch is not considered a mechanism for allowing the user to pause.</p>", "exception": "<p>The criterion is not applicable in the following cases:</p><ul><li>No movement, scrolling, blinking, updating, or automatic refreshing lasting more than 5 seconds and starting automatically.</li><li>The movement, scrolling, blinking, or refreshing is essential to the service.</li></ul>",
+		"verifier": "<ul><li>If content in a part of the page starts automatically and lasts more than 5 seconds, is in motion, scrolling, or blinking, there is a way to stop, pause, or hide it.</li><li>For content in a part of the page that updates or refreshes automatically, there is a way to stop, pause, hide, or adjust its update frequency.</li></ul>",
+		"complement": "<h5>Additional Information</h5><p>Stopping the animation only upon gaining focus or touch is not considered a mechanism for allowing the user to pause.</p>",
+		"exception": "<p>The criterion is not applicable in the following cases:</p><ul><li>No movement, scrolling, blinking, updating, or automatic refreshing lasting more than 5 seconds and starting automatically.</li><li>The movement, scrolling, blinking, or refreshing is essential to the service.</li><li>During a preload phase or similar situation, an animation that occurs can be considered essential if interaction cannot occur during that phase and if there is no progress indication, so as not to suggest that the application is blocked or in error.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -929,7 +957,7 @@
 		"wcag": [
 			"1.2.2 A"
 		],
-		"verifier": "<p>For any video with audio:</p><ul><li>Subtitles are available.</li><li>The subtitles are relevant (providing all necessary information for understanding, such as the identity of speakers).</li><li>The subtitles do not obscure important information in the video.</li></ul>",
+		"verifier": "<p>For any video with audio:</p><ul><li>Subtitles are available.</li><li>The subtitles are relevant (providing all necessary information for understanding, such as : speech, sound effects, speaker identity, etc.).</li><li>The subtitles do not obscure important information in the video.</li></ul>",
 		"exception": "<p>Subtitles are not necessary when the information presented in the video is also provided in text or textual alternative on the same page.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",
@@ -945,7 +973,7 @@
 		"wcag": [
 			"1.2.4 AA"
 		],
-		"verifier": "<p>For any live video with audio:</p><ul><li>Subtitles are available.</li><li>The subtitles are relevant (providing all necessary information for understanding, such as the identity of speakers).</li></ul>",
+		"verifier": "<p>For any live video with audio:</p><ul><li>Subtitles are available.</li><li>The subtitles are relevant (providing all necessary information for understanding, such as: speech, sound effects, speaker identity, etc.).</li></ul>",
 		"complement": "<h5>Captions</h5><p>The captions convey not only the content of spoken dialogue, but also equivalents for non-dialogue audio information needed to understand the program content, including sound effects, music, laughter, speaker identification and location.</p>",
 		"group": "Multimedia",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/multimedia/#transcribe-audio-or-video-content",

@@ -200,7 +200,7 @@
 			"2.4.2 A"
 		],
         "verifier": "<ul><li>Le titre de la page est visible.</li><li>Le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>Le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/headers/#have-a-relevant-and-unique-screen-title",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/entetes/#avoir-un-titre-decran-pertinent-et-unique",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -665,7 +665,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Le contenu et les fonctionnalités sont-ils en orientation inversée&nbsp;?",
+		"title": "Le contenu et les fonctionnalités sont-ils disponibles en orientation inversée&nbsp;?",
 		"ID": "testID-078",
 		"IDorigin": "testID-078",
 		"wcag": [],

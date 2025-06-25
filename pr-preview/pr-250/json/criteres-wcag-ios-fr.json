@@ -656,7 +656,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Le contenu et les fonctionnalités sont-ils en orientation inversée&nbsp;?",
+		"title": "Le contenu et les fonctionnalités sont-ils disponibles en orientation inversée&nbsp;?",
 		"ID": "testID-078",
 		"IDorigin": "testID-078",
 		"wcag": [],

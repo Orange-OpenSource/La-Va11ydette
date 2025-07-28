@@ -338,7 +338,7 @@
 		"wcag": [
 			"3.1.2 AA"
 		],
-		"verifier": "<p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangère.</p><p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (exemples : newsletter, week-end) ou les noms propres(exemples : Google, Apple...), il n'est pas nécessaire d'indiquer de changement de langue.</p>",
+		"verifier": "<p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangère.</p><p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (exemples&nbsp;: newsletter, week-end) ou les noms propres (exemples&nbsp;: Google, Apple...), il n'est pas nécessaire d'indiquer de changement de langue.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -352,7 +352,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l'une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l'audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l'élément table *</li><li><code>Aria-labelledby</code> sur l'élément pointant vers l'<code>ID</code> du titre *</li><li>Title sur l'élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n'est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l'une des techniques ci-dessous&nbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d'entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d'entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère.</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l'une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l'audit.<ul><li>Balise <code>caption</code></li><li><code>aria-label</code> sur l'élément table *</li><li><code>aria-labelledby</code> sur l'élément pointant vers l'<code>id</code> du titre *</li><li>Title sur l'élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n'est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l'une des techniques ci-dessous&nbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d'entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d'entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -366,7 +366,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier l'<span lang=\"en\">accessible name</span> des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que le nom accessible n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégré en CSS (<code>background-image</code>) </li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
+		"verifier": "<ul><li>vérifier le nom accessible des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que le nom accessible n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégré en CSS (<code>background-image</code>) </li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -389,13 +389,13 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Chaque image captcha a-t-elle une alternative&nbsp;?",
+		"title": "Chaque image CAPTCHA a-t-elle une alternative&nbsp;?",
 		"ID": "testID-014",
 		"IDorigin": "testID-014",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"verifier": "<p>Vérifier que le nom accessible de chaque image CAPTCHA communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;CAPTCHA (image anti-spam)&nbsp;» ).</p>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
 		"priority": "P2",
@@ -410,7 +410,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que pour tout captcha uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"verifier": "<p>Vérifier que pour tout CAPTCHA uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>CAPTCHA audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
 		"priority": "P2",
@@ -956,7 +956,7 @@
 		"wcag": [
 			"3.2.4 AA"
 		],
-		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique (<span lang=\"en\">accessible name</span> identique, ou au moins verbe d'action commun) d'une page à l'autre et à l'intérieur d'une même page si un composant est répété.</p>",
+		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique (nom accessible identique, ou au moins verbe d'action commun) d'une page à l'autre et à l'intérieur d'une même page si un composant est répété.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#identifier-et-conserver-la-coherence-des-regroupements-et-des-differentes-regions-de-la-page",
 		"priority": "P3",
 		"resultatTest": "nt",

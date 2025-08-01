@@ -777,7 +777,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur ne zone de moins de <code>21 824 px²</code></p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P2",
 		"resultatTest": "nt",

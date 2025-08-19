@@ -299,17 +299,45 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les éléments signifiants sont-ils tous vocalisés et pertinents&nbsp;? ",
+		"title": "Les éléments non-textuels signifiants sont-ils tous vocalisés et pertinents&nbsp;? ",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Tous les éléments graphiques signifiants sont vocalisés et accessibles en utilisant la navigation vocale : </p><ul><li>Chaque élément graphique porteur d'information est vocalisé de façon pertinente.</li><li>Les images contenant du texte ont une alternative reprenant au moins le texte visible.</li><li>Les images complexes ont une alternative détaillée fournie par un contenu adjacent.</li><li>Chaque élément interactif est restitué au moins par un nom pertinent.</li><li>Les contenus multimédias pré-enregistrés sont facilement identifiables (par une alternative pertinente ou un contenu textuel adjacent).</li></ul>",
+		"verifier": "<p>Tous les éléments non-textuels signifiants sont vocalisés et accessibles en utilisant la navigation vocale : </p><ul><li>Chaque élément non-textuel porteur d'information est vocalisé de façon pertinente.</li><li>Les images contenant du texte ont une alternative reprenant au moins le texte visible.</li><li>Les images complexes ont une alternative détaillée fournie par un contenu adjacent.</li><li>Chaque élément non-textuel interactif est restitué au moins par un nom pertinent.</li><li>Les contenus multimédias pré-enregistrés sont facilement identifiables (par une alternative pertinente ou un contenu textuel adjacent).</li></ul>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Si le contenu non textuel est un test ou un exercice qui serait invalide s'il était présenté sous forme de texte, alors l'alternative fournit au moins une description succinte de ce contenu.</li><li>Si le contenu non textuel est principalement destiné à créer une expérience sensorielle spécifique, alors l'alternative textuelle fournit au moins une description succinte de ce contenu.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt",
 		"priority": "P0",
+		"goodPractice": false
+	},
+		{
+		"themes": "Navigation vocale",
+		"title": "Les éléments décoratifs sont-ils ignorés par la navigation vocale&nbsp;? ",
+		"ID": "testID-026",
+		"IDorigin": "testID-026",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Les éléments graphiques décoratifs ne sont pas vocalisés.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+		{
+		"themes": "Navigation vocale",
+		"title": "Les éléments visibles sont-ils les seuls à être vocalisés&nbsp;? ",
+		"ID": "testID-025",
+		"IDorigin": "testID-025",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Il n'y a aucun élément fantôme (non-visible) restitué par le lecteur d'écran.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
+		"resultatTest": "nt",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -395,34 +423,6 @@
 		],
 		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-letat-des-elements",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false
-	},
-	{
-		"themes": "Navigation vocale",
-		"title": "Les éléments visibles sont-ils les seuls à être vocalisés&nbsp;? ",
-		"ID": "testID-025",
-		"IDorigin": "testID-025",
-		"wcag": [
-			"1.1.1 A"
-		],
-		"verifier": "<p>Il n'y a aucun élément fantôme (non-visible) restitué par le lecteur d'écran.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Navigation vocale",
-		"title": "Les éléments décoratifs sont-ils ignorés par la navigation vocale&nbsp;? ",
-		"ID": "testID-026",
-		"IDorigin": "testID-026",
-		"wcag": [
-			"1.1.1 A"
-		],
-		"verifier": "<p>Les éléments graphiques décoratifs ne sont pas vocalisés.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#ne-pas-vocaliser-les-elements-decoratifs-et-caches",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false

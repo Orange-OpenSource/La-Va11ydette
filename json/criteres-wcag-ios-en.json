@@ -296,18 +296,47 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are all the significant elements vocalized and relevant?",
+		"title": "Are all the significant non-text elements vocalized and relevant?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>All significant graphical elements are vocalized and accessible using voice navigation:</p><ul><li>Each graphical element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
+		"verifier": "<p>All significant non-text elements are vocalized and accessible using voice navigation:</p><ul><li>Each non-text element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive non-text element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
 		"complement": "<h5>Additional information</h5><ul><li>If the non-text content is a test or exercise that would be invalid if presented in text form, then the alternative provides at least a brief description of that content.</li><li>If the non-text content is primarily intended to create a specific sensory experience, then the textual alternative provides at least a brief description of that content.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#element-trait"
+	},
+		{
+		"themes": "Screen reader",
+		"title": "Are decorative elements ignored when using voice navigation?",
+		"ID": "testID-026",
+		"IDorigin": "testID-026",
+		"wcag": {
+			"0": "1.1.1 A"
+		},
+		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#images"
+
+	},
+		{
+		"themes": "Screen reader",
+		"title": "Are the visible elements the only ones vocalized?",
+		"ID": "testID-025",
+		"IDorigin": "testID-025",
+		"wcag": {
+			"0": "1.1.1 A"
+		},
+		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#modal-view"
 	},
 	{
 		"themes": "Screen reader",
@@ -394,35 +423,6 @@
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#element-trait"
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are the visible elements the only ones vocalized?",
-		"ID": "testID-025",
-		"IDorigin": "testID-025",
-		"wcag": {
-			"0": "1.1.1 A"
-		},
-		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#modal-view"
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are decorative elements ignored when using voice navigation?",
-		"ID": "testID-026",
-		"IDorigin": "testID-026",
-		"wcag": {
-			"0": "1.1.1 A"
-		},
-		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#images"
-
 	},
 	{
 		"themes": "Screen reader",

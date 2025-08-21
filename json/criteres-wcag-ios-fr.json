@@ -191,7 +191,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "en-têtes",
+		"themes": "En-têtes",
 		"title": "Le titre de la page est-il unique et pertinent&nbsp;?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
@@ -205,7 +205,7 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#titre-et-en-tete"
 	},
     {
-		"themes": "en-têtes",
+		"themes": "En-têtes",
 		"title": "L'information est-elle structurée par l'utilisation d'en-têtes pertinentes&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
@@ -258,7 +258,7 @@
 			"0": "1.4.1 A"
 		},
 		"verifier": "<p>La couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li></ul><p>Cas particulier d'un lien ou bouton sans mise en forme dans du texte :</p><ul><li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li><li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li></ul>",
-		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-tête et pieds de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-tête et pied de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false

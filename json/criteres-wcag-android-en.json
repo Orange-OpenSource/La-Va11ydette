@@ -56,7 +56,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Linked form fields must be grouped, for example:</p><ul><li>fields for a shipping and billing address (multiple fields for street, postal code, and city based on the address)</li><li>a list of radio buttons or checkboxes associated with the same parameter</li></ul>",
-		"complement": "<h5>Additional Information</h5><p>Example of grouping: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
+		"complement": "<h5>Additional Information</h5><p>Grouping example: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
 		"group": "Form field",
 		"resultatTest": "nt",

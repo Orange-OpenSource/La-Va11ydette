@@ -206,14 +206,14 @@
 	},
     {
 		"themes": "En-têtes",
-		"title": "L'information est-elle structurée par l'utilisation d'en-têtes pertinentes&nbsp;?",
+		"title": "L'information est-elle structurée par l'utilisation d'en-têtes pertinents&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Les en-têtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
-		"exception":"Le critère est non-applicable si aucune en-tête n'est présente.",
+		"verifier": "<p>Les en-têtes doivent être pertinents, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
+		"exception":"Le critère est non-applicable si aucun en-tête n'est présent.",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -447,7 +447,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Pour les tableaux de données :</p><ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d'identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les en-têtes ne doivent pas être vides.</li><li>Les en-têtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
+		"verifier": "<p>Pour les tableaux de données :</p><ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d'identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les en-têtes ne doivent pas être vides.</li><li>Les en-têtes de lignes et de colonnes doivent être correctement restitués et reliés aux cellules de données.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,

@@ -59,7 +59,7 @@
 			"1": "3.3.2 A"
 		},
 		"verifier": "<p>Les champs liés doivent être regroupés, par exemple :</p><ul><li>des champs pour une adresse de livraison et de facturation (plusieurs champs rue, code postal et ville selon l'adresse)</li><li>une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>Exemples de regroupement : une liste de boutons radio regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p>",
 		"group": "Champ de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -191,7 +191,7 @@
 		"goodPractice": false
 	},
 	{
-		"themes": "Entêtes",
+		"themes": "en-têtes",
 		"title": "Le titre de la page est-il unique et pertinent&nbsp;?",
 		"ID": "testID-010",
 		"IDorigin": "testID-010",
@@ -205,15 +205,15 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#titre-et-en-tete"
 	},
     {
-		"themes": "Entêtes",
-		"title": "L'information est-elle structurée par l'utilisation d'entêtes pertinentes&nbsp;?",
+		"themes": "en-têtes",
+		"title": "L'information est-elle structurée par l'utilisation d'en-têtes pertinentes&nbsp;?",
 		"ID": "testID-076",
 		"IDorigin": "testID-076",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Les entêtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
-		"exception":"Le critère est non-applicable si aucune entête n'est présente.",
+		"verifier": "<p>Les en-têtes doivent être pertinentes, aider à comprendre le contenu de la page et décrire précisement la section de contenu qu'elles présentent.</p>",
+		"exception":"Le critère est non-applicable si aucune en-tête n'est présente.",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -258,7 +258,7 @@
 			"0": "1.4.1 A"
 		},
 		"verifier": "<p>La couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li></ul><p>Cas particulier d'un lien ou bouton sans mise en forme dans du texte :</p><ul><li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li><li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li></ul>",
-		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (entête et pieds de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-tête et pieds de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -272,7 +272,7 @@
 			"0": "1.3.3 A"
 		},
 		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>Identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>Identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
-		"exception": "<p>Le critère est non-applicable si aucune information n'est portée par de le son, l'orientation, la taille, la forme ou la position</p>",
+		"exception": "<p>Le critère est non-applicable si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
@@ -383,13 +383,13 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les titres ou entêtes sont-ils exploités lors de la navigation vocale par entête&nbsp;? ",
+		"title": "Les titres ou en-têtes sont-ils exploités lors de la navigation vocale par en-têtes&nbsp;? ",
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>À l'aide du lecteur d'écran et en mode de navigation par entête :</p><ul><li>tous les titres ou entêtes sont navigables et vocalisés.</li><li>seuls les titres ou entêtes sont navigables et vocalisés.</li></ul>",
+		"verifier": "<p>À l'aide du lecteur d'écran et en mode de navigation par en-tête :</p><ul><li>tous les titres ou en-têtes sont navigables et vocalisés.</li><li>seuls les titres ou en-têtes sont navigables et vocalisés.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -447,7 +447,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Pour les tableaux de données :</p><ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d'identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les entêtes ne doivent pas être vides.</li><li>Les entêtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
+		"verifier": "<p>Pour les tableaux de données :</p><ul><li>Si un titre est présent, vérifier que celui-ci est restitué au lecteur d'écran et est pertinent (permet d'identifier la nature des données présentées dans le tableau).</li><li>Si le tableau est complexe, un résumé doit être présent et pertinent(permet de comprendre la nature des données et la construction du tableau).</li><li>Les en-têtes ne doivent pas être vides.</li><li>Les en-têtes de lignes et de colonnes doivent être correctement restituées et reliées aux cellules de données.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
 		"goodPractice": false,
@@ -476,7 +476,7 @@
 		"wcag": {
 			"0": "2.4.1 A"
 		},
-		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par entêtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
+		"verifier": "<p>Si cela est jugé nécessaire, l'application doit proposer une navigation rapide à l'aide de la fonction Rotor de Voice Over, par exemple : </p><ul><li>navigation par en-têtes</li><li>navigation par liens</li><li>navigation par conteneur</li><li>navigation par champs de formulaire</li><li>ou tout autre moyen de navigation spécifique</li></ul>",
 		"group": "Navigation vocale",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -619,7 +619,7 @@
 		},
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"complement": "<h5>Complement</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?\".</p>",
-		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeux de dexterité par exemple)</li><li>La fonctionalité est native et non modifiée</li></ul>",
+		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeu de dexterité par exemple)</li><li>La fonctionalité est native et non modifiée</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"wcag22" : true,
@@ -823,7 +823,7 @@
 			"0": "2.4.4 A"
 		},
 		"verifier": "<p>L'utilisateur doit être capable de comprendre l'objectif d'un lien ou d'un bouton sans avoir à se déplacer dans la page pour comprendre de quoi il s'agit.</p><ul><li>Vérifier qu'il n'y a pas d'étiquettes identiques pointant vers des destinations différentes</li><li>Vérifier qu'il est possible de déterminer la destination d'un lien ou l'action d'un bouton uniquement à partir de son nom accessible</li><li>Si les vérifications précédentes sont non concluantes, vérifier que la cible d'un lien ou l'action portée par un bouton est au moins compréhensible grâce à son contexte (phrase, paragraphe, cellule...)</li></ul>",
-		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'entête du tableau, associée à la cellule du lien</li></ul>",
+		"complement": "<h5>Comment déterminer le contexte de lien&nbsp;: </h5><p>Le contexte du lien représente les informations supplémentaires qui permettent de comprendre son intitulé. Vérifier que ces informations supplémentaires sont positionnées soit :</p><ul><li>dans la même phrase</li><li>dans le même paragraphe</li><li>dans le même élément de liste</li><li>dans la même cellule de tableau</li><li>dans la cellule d'en-tête du tableau, associée à la cellule du lien</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false

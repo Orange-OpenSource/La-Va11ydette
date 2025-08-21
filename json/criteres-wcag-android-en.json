@@ -56,7 +56,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Linked form fields must be grouped, for example:</p><ul><li>fields for a shipping and billing address (multiple fields for street, postal code, and city based on the address)</li><li>a list of radio buttons or checkboxes associated with the same parameter</li></ul>",
-		"complement": "<h5>Additional Information</h5><p>Examples of grouping: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
+		"complement": "<h5>Additional Information</h5><p>Example of grouping: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
 		"group": "Form field",
 		"resultatTest": "nt",
@@ -626,7 +626,7 @@
 		],
 		"verifier": "<p>Drag-and-drop functionality should have an alternative that does not require the dexterity specific to this type of movement (single-pointing action).</p>",
 		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging then dropping a ticket in a Kanban board for example ) and does not take into account so-called \"multi-point\" actions, covered by criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\"</p>",
-		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
+		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (a dexterity game for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P3",

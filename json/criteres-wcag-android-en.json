@@ -56,7 +56,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Linked form fields must be grouped, for example:</p><ul><li>fields for a shipping and billing address (multiple fields for street, postal code, and city based on the address)</li><li>a list of radio buttons or checkboxes associated with the same parameter</li></ul>",
-		"complement": "<h5>Additional Information</h5><p>Examples of grouping: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
+		"complement": "<h5>Additional Information</h5><p>Grouping example: a list of radio buttons grouped using <code>RadioGroup</code> property.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
 		"group": "Form field",
 		"resultatTest": "nt",
@@ -296,17 +296,45 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are all the significant elements vocalized and relevant?",
+		"title": "Are all the significant non-text elements vocalized and relevant?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>All significant graphical elements are vocalized and accessible using voice navigation:</p><ul><li>Each graphical element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
+		"verifier": "<p>All significant non-text elements are vocalized and accessible using voice navigation:</p><ul><li>Each non-text element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive non-text element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
 		"complement": "<h5>Additional information</h5><ul><li>If the non-text content is a test or exercise that would be invalid if presented in text form, then the alternative provides at least a brief description of that content.</li><li>If the non-text content is primarily intended to create a specific sensory experience, then the textual alternative provides at least a brief description of that content.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
+		"goodPractice": false
+	},
+		{
+		"themes": "Screen reader",
+		"title": "Are decorative elements ignored when using voice navigation?",
+		"ID": "testID-026",
+		"IDorigin": "testID-026",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Are the visible elements the only ones vocalized?",
+		"ID": "testID-025",
+		"IDorigin": "testID-025",
+		"wcag": [
+			"1.1.1 A"
+		],
+		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
+		"resultatTest": "nt",
+		"priority": "P1",
 		"goodPractice": false
 	},
 	{
@@ -393,34 +421,6 @@
 		],
 		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-the-state-of-the-elements",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are the visible elements the only ones vocalized?",
-		"ID": "testID-025",
-		"IDorigin": "testID-025",
-		"wcag": [
-			"1.1.1 A"
-		],
-		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are decorative elements ignored when using voice navigation?",
-		"ID": "testID-026",
-		"IDorigin": "testID-026",
-		"wcag": [
-			"1.1.1 A"
-		],
-		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -626,7 +626,7 @@
 		],
 		"verifier": "<p>Drag-and-drop functionality should have an alternative that does not require the dexterity specific to this type of movement (single-pointing action).</p>",
 		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging then dropping a ticket in a Kanban board for example ) and does not take into account so-called \"multi-point\" actions, covered by criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\"</p>",
-		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
+		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (a dexterity game for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/design/general-navigation/#propose-an-alternative-to-gestural-actions",
 		"resultatTest": "nt",
 		"priority": "P3",

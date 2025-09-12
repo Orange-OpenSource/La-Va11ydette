@@ -360,7 +360,7 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Les images possédent-elles un texte de remplacement pertinent&nbsp;?",
+		"title": "Les images possèdent-elles un texte de remplacement pertinent&nbsp;?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [

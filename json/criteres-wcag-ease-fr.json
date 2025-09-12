@@ -861,13 +861,13 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Le focus est-il présent et suffisament visible ?",
+		"title": "Le focus est-il présent et suffisamment visible ?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
 			"2.4.7 AA"
 		],
-		"verifier": "<p>Le focus doit toujours être présent et suffisament visible sur tous les éléments focusables.</p>",
+		"verifier": "<p>Le focus doit toujours être présent et suffisamment visible sur tous les éléments focusables.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
 		"moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",

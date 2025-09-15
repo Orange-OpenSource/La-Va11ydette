@@ -134,8 +134,8 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
-		"complement": "<p>Le critère est conforme s'il est impossible d'identifier précisement le champ en erreur (exemple&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier précisement lequel des deux champs est en erreur).</p>",
+		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (exemple&nbsp;: champ téléphone obligatoire, format de l'e-mail invalide…).</ul>",
+		"complement": "<p>Le critère est conforme s'il est impossible d'identifier précisément le champ en erreur (exemple&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier précisément lequel des deux champs est en erreur).</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
@@ -166,7 +166,7 @@
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (exemple : jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
+		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocomplétion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (exemple : jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
 		"group": "Formulaire",
 		"moreInfo": "",
@@ -184,7 +184,7 @@
 			"3.3.8 AA",
 			"3.3.9 AAA"
 		],
-		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
+		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier-coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
@@ -252,7 +252,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchronement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
+		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchroniquement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -281,7 +281,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
+		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisément la section de contenu qu'ils présentent.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
 		"exception":"Le critère est non-applicable si aucun titre n'est présent.",
 		"priority": "P1",
@@ -419,7 +419,7 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
+		"title": "Chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
 		"ID": "testID-016",
 		"IDorigin": "testID-016",
 		"wcag": [
@@ -514,7 +514,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non-conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
 		"exception":"Le critère est non-applicable si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
@@ -771,13 +771,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à <code>21 824 px²</code>",
+		"title": "Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à <code>21 824 px²</code>",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -791,7 +791,7 @@
 		"wcag": [
 			"3.2.6 A"
 		],
-		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit et dans le même ordre relatif sur toutes les pages.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais pourtant dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, de résolution de la page, activation du zoom, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
+		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit et dans le même ordre relatif sur toutes les pages.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, de résolution de la page, activation du zoom, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</li><li>Ce critère n'impose pas la présence de mécanismes d'aide. S'ils sont présents, vérifier que leur positionnement relatif est le même sur les différents pages du site ou de l'application.</li><li>Si la structure des pages est modifiée selon les profils d'utilisation (exemple : profil visiteur ou profil connecté), il convient de faire la vérification indépendamment pour chaque profil.</li></ul>",
 		"exception": "Le critère n'est pas applicable dans les cas suivants :<ul><li>des pages qui n'auraient rien à voir d'un point de vue visuel et fonctionnel (exemples : sur un site de e-commerce, lors du processus de paiement, le template peut changer et la page de paiement est fonctionnellement et visuellement totalement différente).</li><li>le mécanisme d'aide n'est présent que sur une seule page OU le mécanisme d'aide est absent de la page en cours.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/navigation-generale/#sassurer-que-les-elements-daide-sont-places-dans-le-meme-ordre-relatif-sur-les-pages-qui-les-integrent",
@@ -1030,7 +1030,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'éléments tronqués).</p>",
-		"exception" : "Le critère est non-applicable si une orientation est jugé essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur..</li></ul>",
+		"exception" : "Le critère est non-applicable si une orientation est jugée essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur…</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
 		"priority": "P3",
 		"resultatTest": "nt",

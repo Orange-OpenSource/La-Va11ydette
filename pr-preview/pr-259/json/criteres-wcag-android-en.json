@@ -325,13 +325,43 @@
 	},
 	{
 		"themes": "Screen reader",
+		"title": "Are the name, role, and state of each interface component vocalized?",
+		"ID": "testID-024",
+		"IDorigin": "testID-024",
+		"wcag": [
+			"4.1.2 A"
+		],
+		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state or value of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-the-state-of-the-elements",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Does the accessible name of each component include at least the visible label on the screen?",
+		"ID": "testID-051",
+		"IDorigin": "testID-051",
+		"wcag": [
+			"2.5.3 A"
+		],
+		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
+		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
+		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
 		"title": "Are the visible elements the only ones vocalized?",
 		"ID": "testID-025",
 		"IDorigin": "testID-025",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
+		"verifier": "<p>There are no invisible elements conveyed by screen reader.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#do-not-vocalize-the-decorative-and-hidden-elements",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -346,7 +376,7 @@
 			"1.3.2 A",
 			"2.4.3 A"
 		],
-		"verifier": "<p>Using the screen reader, the elements follow a logical and understandable order.</p>",
+		"verifier":"<p>The elements must follow a logical and comprehensible order using the screen reader. Elements are read in the natural reading order (left to right and top to bottom).</p><p>The specific layout of content is covered by criterion 1.3.1.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#manage-the-vocalization-order",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -363,20 +393,6 @@
 		],
 		"verifier": "<p>Elements whose visual grouping is essential for understanding the information must be grouped within the same announcement block for vocalization.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#group-the-elements",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are the elements presented as a list correctly rendered?",
-		"ID": "testID-021",
-		"IDorigin": "testID-021",
-		"wcag": {
-			"0": "1.3.1 A"
-		},
-		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
-		"complement": "<h5>Additional Information</h5><p>A list can be used to present unordered items (for example, a list of ingredients for a recipe) or ordered items (for example, a sequence of specific steps to follow).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -404,8 +420,8 @@
 		"wcag": [
 			"4.1.3 AA"
 		],
-		"verifier": "<ul><li>Each status message (see the examples below) is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li></ul>",
-        "complement": "<h4>Examples of status messages</h4><ul><li>Search result</li><li>Application status (e.g., offline)</li><li>Error message</li><li>Progress indication message</li><li>Notification</li><li>Message following the addition of a product to a cart</li></ul>",
+		"verifier": "<ul><li>Each status message (see the examples below) is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li><li>In the case of a non-permanent status message whose disappearance provides information (for example a 'busy' or 'waiting' status which disappears as soon as the service is available), this status must also be conveyed.</li></ul>",
+		"complement": "<h4>Examples of status messages</h4><ul><li>Search result</li><li>Application status (e.g., offline)</li><li>Error message</li><li>Progress indication message</li><li>Notification</li><li>Message following the addition of a product to a cart</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-content-change",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -413,32 +429,16 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are the name, role, and value of each interface component vocalized?",
-		"ID": "testID-024",
-		"IDorigin": "testID-024",
-		"wcag": [
-			"4.1.2 A"
-		],
-		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-the-state-of-the-elements",
+		"title": "Are the elements presented as a list correctly rendered?",
+		"ID": "testID-021",
+		"IDorigin": "testID-021",
+		"wcag": {
+			"0": "1.3.1 A"
+		},
+		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
+		"complement": "<h5>Additional Information</h5><p>A list can be used to present unordered items (for example, a list of ingredients for a recipe) or ordered items (for example, a sequence of specific steps to follow).</p>",
 		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Does the accessible name of each component include at least the visible label on the screen?",
-		"ID": "testID-051",
-		"IDorigin": "testID-051",
-		"wcag": [
-			"2.5.3 A"
-		],
-		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
-		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
-		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/vocal-navigation/#vocalize-all-significant-elements",
-		"resultatTest": "nt",
-		"priority": "P1",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -452,6 +452,21 @@
 		"verifier": "<p>For data tables:</p><ul><li>If a title is present, ensure it is conveyed to the screen reader and is relevant (helps identify the nature of the data presented in the table).</li><li>If the table is complex, a summary must be present and relevant (helps understand the nature of the data and the structure of the table).</li><li>Headers must not be empty.</li><li>Row and column headers must be correctly conveyed and linked to the data cells.</li></ul>",
 		"priority": "P2",
 		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Is the content of the page conveyed in the primary language of the page?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": [
+			"3.1.1 A"
+		],
+		"verifier": "<p>The screen reader conveys textual content in the primary language of the page.</p>",
+		"group": "Voice navigation",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
+		"resultatTest": "nt",
+		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -483,21 +498,6 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-skip-links",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": false
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Is the content of the page conveyed in the primary language of the page?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": [
-			"3.1.1 A"
-		],
-		"verifier": "<p>The screen reader conveys textual content in the primary language of the page.</p>",
-		"group": "Voice navigation",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
-		"resultatTest": "nt",
-		"priority": "P3",
 		"goodPractice": false
 	},
 	{
@@ -565,7 +565,7 @@
 			"2.4.7 AA"
 		],
 		"verifier": "<ul><li>The focus is easily visible at a glance and stands out from the rest of the screen.</li><li>If necessary, check the contrast ratio of the focus, which should be at least 3:1 compared to the surrounding color.</li></ul>",
-		"exception": "<p>The criterion is not applicable for native focus that is not modifiable.</p>",
+		"complement":"<h5>Complement</h5><p>On Android, it is possible to change the focus using the <a href='https://developer.android.com/develop/ui/compose/modifiers-list#Border'>Border</a> modifier or by <a href='https://developer.android.com/develop/ui/compose/touch-input/focus/react-to-focus#advanced-visual-cues'>personalising the focus</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/android/development/focus-navigation/#access-to-interactive-elements",
 		"resultatTest": "nt",
 		"priority": "P1",

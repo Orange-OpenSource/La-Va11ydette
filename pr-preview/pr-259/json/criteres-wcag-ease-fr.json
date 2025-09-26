@@ -134,8 +134,8 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</ul>",
-		"complement": "<p>Le critère est conforme s'il est impossible d'identifier précisement le champ en erreur (exemple&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier précisement lequel des deux champs est en erreur).</p>",
+		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (exemple&nbsp;: champ téléphone obligatoire, format de l'e-mail invalide…).</ul>",
+		"complement": "<p>Le critère est conforme s'il est impossible d'identifier précisément le champ en erreur (exemple&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier précisément lequel des deux champs est en erreur).</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
@@ -166,7 +166,7 @@
 		"wcag": [
 			"3.3.7 A"
 		],
-		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (exemple : jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
+		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocomplétion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (exemple : jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
 		"group": "Formulaire",
 		"moreInfo": "",
@@ -184,7 +184,7 @@
 			"3.3.8 AA",
 			"3.3.9 AAA"
 		],
-		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
+		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier-coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
@@ -252,7 +252,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchronement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
+		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchroniquement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -281,7 +281,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisement la section de contenu qu'ils présentent.</li></ul>",
+		"verifier": "<ul><li>Les titres de niveaux doivent être pertinents et aider à comprendre le contenu de la page.</li><li>Les titres doivent décrire précisément la section de contenu qu'ils présentent.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
 		"exception":"Le critère est non-applicable si aucun titre n'est présent.",
 		"priority": "P1",
@@ -338,7 +338,7 @@
 		"wcag": [
 			"3.1.2 AA"
 		],
-		"verifier": "<p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangère.</p><p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (exemples : newsletter, week-end) ou les noms propres(exemples : Google, Apple...), il n'est pas nécessaire d'indiquer de changement de langue.</p>",
+		"verifier": "<p>Vérifier qu'un attribut <code>lang</code> est renseigné pour les mots et expressions en langue étrangère.</p><p>Pour les mots ou expressions en langue étrangère passés dans l'usage courant (exemples&nbsp;: newsletter, week-end) ou les noms propres (exemples&nbsp;: Google, Apple...), il n'est pas nécessaire d'indiquer de changement de langue.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -352,7 +352,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l'une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l'audit.<ul><li>Balise <code>Caption</code></li><li><code>Aria-label</code> sur l'élément table *</li><li><code>Aria-labelledby</code> sur l'élément pointant vers l'<code>ID</code> du titre *</li><li>Title sur l'élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n'est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l'une des techniques ci-dessous&nbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d'entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d'entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère.</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l'une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l'audit.<ul><li>Balise <code>caption</code></li><li><code>aria-label</code> sur l'élément table *</li><li><code>aria-labelledby</code> sur l'élément pointant vers l'<code>id</code> du titre *</li><li>Title sur l'élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n'est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l'une des techniques ci-dessous&nbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d'entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d'entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -360,13 +360,13 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Les images possédent-elles un texte de remplacement pertinent&nbsp;?",
+		"title": "Les images possèdent-elles un texte de remplacement pertinent&nbsp;?",
 		"ID": "testID-013",
 		"IDorigin": "testID-013",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier l'<span lang=\"en\">accessible name</span> des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que le nom accessible n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégré en CSS (<code>background-image</code>) </li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
+		"verifier": "<ul><li>vérifier le nom accessible des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que le nom accessible n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégré en CSS (<code>background-image</code>) </li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -389,13 +389,13 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Chaque image captcha a-t-elle une alternative&nbsp;?",
+		"title": "Chaque image CAPTCHA a-t-elle une alternative&nbsp;?",
 		"ID": "testID-014",
 		"IDorigin": "testID-014",
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que l'<span lang=\"en\">accessible name</span> de chaque image captcha communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;captcha (image anti-spam)&nbsp;» ).</p>",
+		"verifier": "<p>Vérifier que le nom accessible de chaque image CAPTCHA communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;CAPTCHA (image anti-spam)&nbsp;» ).</p>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
 		"priority": "P2",
@@ -410,7 +410,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>Vérifier que pour tout captcha uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>captcha audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"verifier": "<p>Vérifier que pour tout CAPTCHA uniquement visuel ou sonore, une alternative ci-dessous est proposée en complément&nbsp;: </p><ul><li>CAPTCHA audio et visuel</li><li>des tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
 		"group": "Captcha",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
 		"priority": "P2",
@@ -419,7 +419,7 @@
 	},
 	{
 		"themes": "Contenu non-textuel",
-		"title": "Chaque contenu cryptique (art ASCII, émoticon, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
+		"title": "Chaque contenu cryptique (art ASCII, émoticône, syntaxe cryptique) possède-t-il une alternative pertinente&nbsp;?",
 		"ID": "testID-016",
 		"IDorigin": "testID-016",
 		"wcag": [
@@ -514,7 +514,7 @@
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non-conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
 		"exception":"Le critère est non-applicable si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
@@ -771,13 +771,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à <code>21 824 px²</code>",
+		"title": "Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à <code>21 824 px²</code>",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur ne zone de moins de <code>21 824 px²</code></p>",
+		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -791,7 +791,7 @@
 		"wcag": [
 			"3.2.6 A"
 		],
-		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit et dans le même ordre relatif sur toutes les pages.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais pourtant dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, de résolution de la page, activation du zoom, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
+		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit et dans le même ordre relatif sur toutes les pages.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, de résolution de la page, activation du zoom, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</li><li>Ce critère n'impose pas la présence de mécanismes d'aide. S'ils sont présents, vérifier que leur positionnement relatif est le même sur les différents pages du site ou de l'application.</li><li>Si la structure des pages est modifiée selon les profils d'utilisation (exemple : profil visiteur ou profil connecté), il convient de faire la vérification indépendamment pour chaque profil.</li></ul>",
 		"exception": "Le critère n'est pas applicable dans les cas suivants :<ul><li>des pages qui n'auraient rien à voir d'un point de vue visuel et fonctionnel (exemples : sur un site de e-commerce, lors du processus de paiement, le template peut changer et la page de paiement est fonctionnellement et visuellement totalement différente).</li><li>le mécanisme d'aide n'est présent que sur une seule page OU le mécanisme d'aide est absent de la page en cours.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/navigation-generale/#sassurer-que-les-elements-daide-sont-places-dans-le-meme-ordre-relatif-sur-les-pages-qui-les-integrent",
@@ -861,13 +861,13 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Le focus est-il présent et suffisament visible ?",
+		"title": "Le focus est-il présent et suffisamment visible ?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
 			"2.4.7 AA"
 		],
-		"verifier": "<p>Le focus doit toujours être présent et suffisament visible sur tous les éléments focusables.</p>",
+		"verifier": "<p>Le focus doit toujours être présent et suffisamment visible sur tous les éléments focusables.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
 		"moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
@@ -956,7 +956,7 @@
 		"wcag": [
 			"3.2.4 AA"
 		],
-		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique (<span lang=\"en\">accessible name</span> identique, ou au moins verbe d'action commun) d'une page à l'autre et à l'intérieur d'une même page si un composant est répété.</p>",
+		"verifier": "<p>Vérifier que les composants qui ont la même fonction sont nommés de manière identique (nom accessible identique, ou au moins verbe d'action commun) d'une page à l'autre et à l'intérieur d'une même page si un composant est répété.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#identifier-et-conserver-la-coherence-des-regroupements-et-des-differentes-regions-de-la-page",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -1030,7 +1030,7 @@
 			"1.3.4 AA"
 		],
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'éléments tronqués).</p>",
-		"exception" : "Le critère est non-applicable si une orientation est jugé essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur..</li></ul>",
+		"exception" : "Le critère est non-applicable si une orientation est jugée essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur…</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -73,19 +73,30 @@ function getIfAutoCheck(currentIDorigin, previewPage = 0) {
 }
 
 function applyAutoCheck(currentPage, testIDorigin){
-
+    // Check if array exists
     if (!dataVallydette.checklist.page[currentPage].autoCheckIDs) {
         dataVallydette.checklist.page[currentPage].autoCheckIDs = [];
     }
-    dataVallydette.checklist.page[currentPage].autoCheckIDs.push(testIDorigin);
+
+    // Check if ID doesn't already exist before adding it
+    if (!dataVallydette.checklist.page[currentPage].autoCheckIDs.includes(testIDorigin)) {
+        dataVallydette.checklist.page[currentPage].autoCheckIDs.push(testIDorigin);
+    }
 
     if ((currentPage != dataVallydette.checklist.page.length - 1)) {
         nextPage = dataVallydette.checklist.page[(currentPage + 1)].items.find(e => e.IDorigin == testIDorigin);
         currentPageTab = dataVallydette.checklist.page[currentPage].items.find(e => e.IDorigin == testIDorigin);
         nextPage.resultatTest = currentPageTab.resultatTest;
-        nextPage.issues = nextPage.issues.concat(currentPageTab.issues);
-    }
 
+        // Merge existing and new issues while avoiding duplicates
+        let mergedIssues = [...nextPage.issues]; // Keep existing issues
+        currentPageTab.issues.forEach(issue => {
+            if (!mergedIssues.some(existingIssue => existingIssue === issue)) {
+                mergedIssues.push(issue);
+            }
+        });
+        nextPage.issues = mergedIssues;
+    }
 }
 
 function allPageAutoCheckModal() {

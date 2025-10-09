@@ -1,82 +1,81 @@
 [
 	{
-		"themes": "Champ de formulaire",
-		"title": "Chaque champ de formulaire possède-t-il une étiquette&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Chaque élément de formulaire possède-t-il une étiquette&nbsp;?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul>",
-		"exception": "<p>Lorsque le champ de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
-		"group": "Champ de formulaire",
+	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité de chaque élément de formulaire ou sous forme de libellé pour les boutons,</li><li>ou l'élément est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme, sous réserve que l'élément qui tient lieu d'étiquette visible soit lui-même accessible. Par exemple, un bouton loupe doit avoir une alternative textuelle.</p>",
+		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette de champ est-elle pertinente ?</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr>4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li></ul>",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#formulaire"
 	},
     {
-		"themes": "Champ de formulaire",
-		"title": "Chaque étiquette de champ est-elle pertinente&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'étiquette de chaque champ est pertinente.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
-		"group": "Champ de formulaire",
+		"verifier": "<ul><li>L'étiquette de chaque élément de formulaire doit être pertinente.</li><li>Si un format de donnée est indiqué, il doit être pertinent.</li><li>Si des éléments de formulaire sont regroupés, vérifier également que la légende est pertinente.</li><li>Si l'étiquette visible est doublée par un nom accessible, alors le nom accessible doit contenir au moins l'intitulé visible</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Ce test concerne la pertinence de l'<strong>étiquette visible</strong> et non celle du nom accessible de l'élément, qui sera évalué à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></p>",
+		"exception": "<p>La présence d'une étiquette ou d'une légende visible n'est pas obligatoire (exemple&nbsp;: un champ de recherche unique avec un bouton en forme de loupe). En cas d'absence, c'est une exception et le critère est non-applicable.</p>",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#formulaire"
 	},
     {
-		"themes": "Champ de formulaire",
-		"title": "Chaque champ de formulaire a-t-il un nom accessible&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Chaque élément de formulaire a-t-il un nom accessible&nbsp;?",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [
 			"1.3.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que toutes les étiquettes sont bien liées à leurs champs.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
-		"group": "Champ de formulaire",
+		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que le nom accessible de chaque élément de formulaire est cohérent avec son étiquette visible.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p>",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
 	},
 	{
-		"themes": "Champ de formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Les éléments de formulaire sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
-		"wcag": {
-			"0": "1.3.1 A",
-			"1": "3.3.2 A"
-		},
-		"verifier": "<p>Les champs liés doivent être regroupés, par exemple :</p><ul><li>des champs pour une adresse de livraison et de facturation (plusieurs champs rue, code postal et ville selon l'adresse)</li><li>une liste de boutons radio ou cases à cocher associés à un même paramètre</li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p>",
-		"group": "Champ de formulaire",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Les champs liés doivent être regroupés lorsque nécessaire.</p><p>A l'aide du lecteur d'écran, vérifier que le nom du groupe est restitué au moins sur le premier élément du regroupement.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio associés à une même question et regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p><p><strong>Attention&nbsp;:</strong> La pertinence du nom du groupe (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette de champ est-elle pertinente ?</a></p>",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
 	},
 	{
-		"themes": "Champ de formulaire",
-		"title": "Les champs obligatoires sont-ils identifiables&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Les éléments de formulaire obligatoires sont-ils identifiables&nbsp;?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
 		"wcag": {
 			"0": "1.3.1 A",
 			"1": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Un texte ou un élément visuel (autre que la couleur) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul>",
-		"group": "Champ de formulaire",
+		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
+		"group": "Elément de formulaire",
 		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -84,22 +83,23 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
 	},
 	{
-		"themes": "Champ de formulaire",
-		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué&nbsp;?",
 		"ID": "testID-004",
 		"IDorigin": "testID-004",
 		"wcag": {
 			"0": "3.3.2 A"
 		},
-		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le champ de saisie)</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
-		"group": "Champ de formulaire",
+		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le <code>placeholder</code>).</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
+		"group": "Elément de formulaire",
+		"complement": "<p><strong>Attention&nbsp;:</strong> La pertinence du format (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette de champ est-elle pertinente ?</a></p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
 	},
 	{
-        "themes": "Champ de formulaire",
+        "themes": "Formulaire",
         "title": "Un remplissage automatique est-il présent pour les champs de saisie destinés à contenir des informations sur l'utilisateur&nbsp;?",
         "ID": "testID-005",
         "IDorigin": "testID-005",
@@ -107,13 +107,13 @@
             "1.3.5 AA"
         ],
         "verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>textContentType</code>.</li><li>La valeur indiquée pour la propriété <code>textContentType</code> est pertinente au regard du type d'information attendue.</li></ul>",
-        "group": "Champ de formulaire",
+        "group": "Elément de formulaire",
         "resultatTest": "nt",
         "priority": "P3",
         "goodPractice": false
     },
 	{
-		"themes": "Champ de formulaire",
+		"themes": "Formulaire",
 		"title": " L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives&nbsp;?",
 		"ID": "testID-063",
 		"IDorigin": "testID-063",
@@ -122,46 +122,47 @@
 		},
 		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif, sauf si :</p><ul><li>une autre méthode d'authentification est proposée</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",		
 		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
-		"group": "Champ de formulaire",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
-		"themes": "Champ de formulaire",  
-		"title": "Les champs en erreur sont-ils identifiables et explicites&nbsp;?",
+		"themes": "Formulaire",  
+		"title": "Les éléments en erreur sont-ils identifiables et l'erreur est-elle décrite sous forme de texte et l'erreur est-elle décrite sous forme de texte&nbsp;",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
 		"wcag": {
 			"0": "3.3.1 A"
 		},
-		"verifier": "<p>Les champs en erreur sont visuellement identifiables:</p><ul><li>soit par l'ajout d'un texte à proximité de chaque champ</li><li>soit par l'affichage d'un message listant les différentes erreurs (exemple: en début de formulaire)</li></ul><p>La nature de l'erreur doit être suffisamment explicite (exemple : champ téléphone obligatoire, format de l'email invalide…)</p>",
-		"complement":"<h5>Complément d'information</h5><p>Il est également possible de compléter l'information textuelle par l'ajout d'un picto, changement de couleur, etc.</p>",
-		"group": "Champ de formulaire",
+		"verifier": "<p>Un message d'erreur sous forme de texte visible est présent et identifie spécifiquement chaque champ en erreur</p>",
+ 		"complement": "<p><strong>Attention&nbsp;:</strong> La pertinence du texte de l'erreur (<abbr>WCAG</abbr> 3.3.3 Error suggestion) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-008>Les messages d'erreur et les suggestions sont-ils explicites&nbsp;?</a>.</p><p>Ce critère n'impose aucune méthode particulière d'affichage des erreurs. Selon la situation, il peut être plus judicieux d'indiquer toutes les erreurs au début ou avant un formulaire. Dans d'autres cas, il peut être plus judicieux d'afficher les erreurs directement, avec des messages d'erreur à côté des champs concernés. Les erreurs peuvent également être répertoriées dans une alerte ou une boîte de dialogue.</p>",
+		"exception":"Le critère est non-applicable si cela constitue une risque potentiel de sécurité.", 
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
 	},
 	{
-		"themes": "Champ de formulaire",
-		"title": "En cas d'erreur, est-ce qu'une suggestion de correction est proposée à l'utilisateur&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Les messages d'erreur et les suggestions sont-ils explicites&nbsp;?",
 		"ID": "testID-008",
 		"IDorigin": "testID-008",
 		"wcag": {
 			"0": "3.3.3 AA"
 		},
-		"verifier": "<p>Les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction des erreurs ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"<p>Le critère est non-applicable lorsqu'il est impossible de faire une suggestion (exemple : pour des questions de sécurité).</p>",
-        "group": "Champ de formulaire",
+        "verifier": "<ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Si besoin, les suggestions de correction aident à la correction des erreurs.</li>",
+		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
 	},
 	{
-		"themes": "Champ de formulaire",
+		"themes": "Formulaire",
 		"title": "Si une information est demandé plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie n'est-elle pas redondante&nbsp;?",
 		"ID": "testID-064",
 		"IDorigin": "testID-064",
@@ -170,22 +171,22 @@
 		},
 		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
 		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
-		"group": "Champ de formulaire",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"wcag22" : true,
 		"goodPractice": false
 	},
 	{
-		"themes": "Champ de formulaire",
-		"title": "Si le champ de formulaire est sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
+		"themes": "Formulaire",
+		"title": "Pour chaque formulaire sensible, l'utilisateur a-t-il le contrôle de ses données&nbsp;?",
 		"ID": "testID-009",
 		"IDorigin": "testID-009",
 		"wcag": {
 			"0": "3.3.4 AA"
 		},
-		"verifier": "<p>Pour les champs de saisie avec&nbsp;:</p><ul><li>modification ou suppression de données,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation),</li></ul><p>Vérifier que l'utilisateur peut modifier ou annuler avant et après validation, sauf si celle-ci est explicitement confirmée (par exemple avec une case à cocher \"Je confirme que je souhaite supprimer ces données\").</p>",
-		"group": "Champ de formulaire",
+		"verifier": "<p>Pour les formulaires avec&nbsp;:<ul><li>modification ou suppression de données propres à l'utilisateur</li><li>transmission de réponse à un test ou un examen</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation)</li></ul></p><p>Vérifier qu'une de ces conditions est vraie&nbsp;:<ul><li>La soumission de données est réversible.</li><li>Les données saisies par l'utilisateur sont vérifiées afin de détecter d'éventuelles erreurs de saisie et l'utilisateur a la possibilité de les corriger.</li><li>Un mécanisme est disponible pour vérifier, confirmer et corriger les informations avant de finaliser la soumission (par exemple, la validation est explicite avec une case à cocher).</li></ul></p>",
+		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -227,7 +228,7 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Le contraste est suffisant pour comprendre l'information portée par tous les textes. Vérifier en mode clair et en mode sombre.</p><ul><li><strong>Pour les textes non gras :</strong> <ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong> <ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li></ul>",
+		"verifier": "<p>Le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'image.</p><ul><li><strong>Pour les textes non gras :</strong><ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong><ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li><br><li>Vérifier que les états de tous les composants ont un rapport de contraste suffisant, notamment au survol de la souris et au focus.</li><li>Vérifier le contraste également pour les <code>placeholder</code> informatifs.</li><li>Vérifier en mode clair et en mode sombre.</li></ul>",
 		"exception": "<p>Ce critère est non-applicable pour les logos, textes décoratifs et les éléments inactifs.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -332,7 +333,7 @@
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, champ de formulaire, etc.) est correctement restitué</li><li>L'état ou la valeur de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
+		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, élément de formulaire, etc.) est correctement restitué</li><li>L'état ou la valeur de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,

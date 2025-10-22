@@ -8,7 +8,7 @@
 			"3.3.2 A"
 		],
 	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité de chaque élément de formulaire ou sous forme de libellé pour les boutons,</li><li>ou l'élément est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme, sous réserve que l'élément qui tient lieu d'étiquette visible soit lui-même accessible. Par exemple, un bouton loupe doit avoir une alternative textuelle.</p>",
-		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette de champ est-elle pertinente ?</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr>4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr>4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li></ul>",
 		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -58,7 +58,7 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Les champs liés doivent être regroupés lorsque nécessaire.</p><p>A l'aide du lecteur d'écran, vérifier que le nom du groupe est restitué au moins sur le premier élément du regroupement.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio associés à une même question et regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p><p><strong>Attention&nbsp;:</strong> La pertinence du nom du groupe (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette de champ est-elle pertinente ?</a></p>",
+		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio associés à une même question et regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p><p><strong>Attention&nbsp;:</strong> La pertinence du nom du groupe (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -67,16 +67,33 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les éléments de formulaire obligatoires sont-ils identifiables&nbsp;?",
+		"title": "Les éléments de formulaire obligatoires sont-ils visuellement identifiables&nbsp;?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
-		"wcag": {
-			"0": "1.3.1 A",
-			"1": "3.3.2 A"
-		},
+		"wcag": [
+			"3.3.2 A"
+		],
 		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
 		"group": "Elément de formulaire",
+		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
+	},
+		{
+		"themes": "Formulaire",
+		"title": "Les éléments de formulaire obligatoires sont-ils programmatiquement identifiables&nbsp;?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>L'aspect obligatoire de l'élement de formulaire est présent dans le nom accessible.</p>",
+		"group": "Elément de formulaire",
+		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
+		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un élément est évident et pour lequel l'identification programmatique devient donc facultative (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -92,7 +109,7 @@
 		},
 		"verifier": "<ul><li>Le format de saisie est présent visuellement, et son positionnement permet de l'associer au champ concerné.</li><li>Le format de saisie reste visible pendant la saisie (ne pas afficher le format attendu dans le <code>placeholder</code>).</li><li>Le format de saisie est présent dans la vocalisation du champ.</li></ul>",
 		"group": "Elément de formulaire",
-		"complement": "<p><strong>Attention&nbsp;:</strong> La pertinence du format (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette de champ est-elle pertinente ?</a></p>",
+		"complement": "<p><strong>Attention&nbsp;:</strong> La pertinence du format (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -120,8 +137,8 @@
 		"wcag": {
 			"0": "3.3.8 AA"
 		},
-		"verifier": "<p>Toutes les étapes d'un processus d'authentification ne reposent pas sur un test cognitif, sauf si :</p><ul><li>une autre méthode d'authentification est proposée</li><li>une aide est disponible pour l'utilisateur</li><li>le test cognitif consiste à reconnaitre des objets</li><li>le test cognitif consiste à identifier le contenu non textuel que l'utilisateur a fourni au site Web.</li></ul><p>Attention, la mémorisation d'un nom utilisateur et d'un mot de passe est un test cognitif.<br/>La fonction de copier/coller doit être autorisée sur ces champs.<br/>Si le nom d'utilisateur et le mot de passe peuvent être remplis automatiquement, ce n'est pas considéré comme un test cognitif.</p>",		
-		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p>",
+		"verifier": "<p><p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour effectuer le test cognitif</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p><p><strong>Présence d'un système à 2FA</strong>&nbsp;: le code reçu doit pouvoir être copié-collé par l'utilisateur ou bien être rempli automatiquement.</p><p><strong>Présence d'un CAPTCHA</strong>&nbsp;: le mécanisme ne doit pas reposer sur un test cognitif, sauf reconnaissance d'objet et identification d'un contenu personnel non textuel.</p>",		
+		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Elément de formulaire",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -153,7 +170,7 @@
 		"wcag": {
 			"0": "3.3.3 AA"
 		},
-        "verifier": "<ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Si besoin, les suggestions de correction aident à la correction des erreurs.</li>",
+        "verifier": "<ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
 		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
 		"group": "Elément de formulaire",
 		"resultatTest": "nt",
@@ -169,7 +186,7 @@
 		"wcag": {
 			"0": "3.3.7 A"
 		},
-		"verifier": "<p>Dans un formulaire et au cours d'un même processus ou session, un système de remplissage automatique des informations déjà fournies doit être proposé à l'utilisateur pour restituer une information préalablement saisie. L'autocompletion du navigateur n'est pas jugé suffisante.</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Une activité (jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul>",
+		"verifier": "<p>Le critère est conforme pour des champs demandant une nouvelle saisie d'une même donnée avec les exceptions suivantes :</p><ul><li>Le format des informations était différent (PDF, Word…)</li><li>Une activité essentielle (exemple : jeu de mémoire) où saisir à nouveau une information est essentiel</li><li>Des informations de sécurité comme la double saisie d'un mot de passe créé par l'utilisateur</li><li>Des informations préalablement renseignées qui ne sont plus valides</li></ul><p>Le critère est non applicable quand aucun champ ne doit être rerempli avec une même donnée préalablement saisie.</p>",
 		"complement":"<h5>Complément d'information</h5><p>Exemples de mécanismes valides : alimentation automatique, choix dans un sélecteur déroulant, copier-coller depuis une zone, case à cocher pour reprendre des données préalablement saisies (adresse de facturation égale adresse de livraison)</p>",
 		"group": "Elément de formulaire",
 		"resultatTest": "nt",
@@ -199,7 +216,7 @@
 		"wcag": {
 			"0": "2.4.2 A"
 		},
-        "verifier": "<ul><li>Le titre de la page est visible.</li><li>Le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>Le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li></ul>",
+        "verifier": "<ul><li>Le titre de la page est visible.</li><li>Le titre de la page est unique. Une erreur courante est d'utiliser un même titre pour l'ensemble de l'application.</li><li>Le titre de la page permet à l'utilisateur de comprendre le contexte de la page.</li><li>Lorsque le contexte de la page est modifié de manière asynchrone (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié de ce changement par modification du titre</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -228,7 +245,7 @@
 		"wcag": {
 			"0": "1.4.3 AA"
 		},
-		"verifier": "<p>Le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'image.</p><ul><li><strong>Pour les textes non gras :</strong><ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong><ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li><br><li>Vérifier que les états de tous les composants ont un rapport de contraste suffisant, notamment au survol de la souris et au focus.</li><li>Vérifier le contraste également pour les <code>placeholder</code> informatifs.</li><li>Vérifier en mode clair et en mode sombre.</li></ul>",
+		"verifier": "<p>Le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'image.</p><ul><li><strong>Pour les textes non gras :</strong><ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong><ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li><br><li>Vérifier que les états de tous les composants ont un rapport de contraste suffisant, notamment au focus clavier.</li><li>Vérifier le contraste également pour les <code>placeholder</code> informatifs.</li><li>Vérifier en mode clair et en mode sombre.</li></ul>",
 		"exception": "<p>Ce critère est non-applicable pour les logos, textes décoratifs et les éléments inactifs.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -243,8 +260,8 @@
 		"wcag": {
 			"0": "1.4.11 AA"
 		},
-		"verifier": "<p>Les textes sous forme d'images, les graphiques, les icônes et les composants interactifs ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
-		"exception": "<p>Ce critère est non-applicable pour les cas suivants :</p><ul><li>les logos</li><li>si un texte apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>le composant est inactif</li><li>l'affichage par défaut de l'agent utilisateur n'est pas modifié</li></ul>",
+		"verifier": "<p>Les textes sous forme d'images, les graphiques, les icônes, les composants interactifs (ainsi que leurs états focus/hover) et les éléments de formulaire ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
+		"exception": "Le critère n'est pas applicable pour les cas suivants&nbsp;:<ul><li>les logos, photos de scènes de la vie réelle (paysages, personnes, etc.), drapeaux, captures d'écran, etc.</li><li>si une alternative (texte de remplacement, une étiquette, une longue description ou un tableau de données), apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction (liens d'une barre de navigation)</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>les composants interactifs inactifs (pas d'action possible)</li><li>les logos, les marques</li><li>éléments dynamiques dont le contraste au survol / focus est suffisant</li><li>les composants dont l'apparence est déterminée par le navigateur et non modifiée par l'applicatif.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -691,9 +708,9 @@
 		"wcag": {
 			"0": "3.2.6 A"
 		},
-		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans.</p>",
+		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans et pour chaque orientation portrait/paysage.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais pourtant dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, agrandissement, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p>",
-		"exception": "<p>Le critère est non applicable si l'utilisateur est à l'initiative d'un changement de la présentation de l'aide suite à l'usage du zoom ou de l'orientation.</p>",
+		"exception": "Le critère n'est pas applicable dans les cas suivants :<ul><li>des pages qui n'auraient rien à voir d'un point de vue visuel et fonctionnel (exemples : sur un site de e-commerce, lors du processus de paiement, le template peut changer et la page de paiement est fonctionnellement et visuellement totalement différente).</li><li>le mécanisme d'aide n'est présent que sur une seule page OU le mécanisme d'aide est absent de la page en cours.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -751,7 +768,7 @@
 		"wcag": {
 			"0": "3.2.2 A"
 		},
-		"verifier": "<p>Lors de la modification de paramètre, vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, saisir du contenu dans un champ de texte, sélectionner une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si :</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"verifier": "<p>Lors de la modification de paramètre, vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, saisir du contenu dans un champ de texte, sélectionner une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si l'utilisateur est averti par un texte avant son déclenchement</p><p>L'activation d'un lien ou d'un bouton n'est pas une modification de paramètre donc non-applicable.</p>",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -766,9 +783,9 @@
 		"wcag": {
 			"0": "2.2.2 A"
 		},
-		"verifier": "<ul><li>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</li><li>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
+		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarrant automatiquement&nbsp;:<ul><li>durant plus de 5 secondes, en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le masquer/cacher.</li><li>se met à jour ou est rafraichi automatiquement, il doit exister un moyen de l'arrêter, le mettre en pause masquer/cacher ou jouer sur sa fréquence de mise à jour.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
-		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -781,7 +798,7 @@
 		"wcag": {
 			"0": "2.3.1 A"
 		},
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone très petite (de moins de <code>21 824 px²</code> soit un carré de 78dp de côté)</p>",
+		"verifier": "S'il y a des flashs (clignotements ou changements brusque de luminosités), le critère est conforme si l'une des conditions est valide&nbsp;: <ul><li>Il y a moins de 3 flashs dans un intervalle d'une seconde</li><li>La zone totale contde flash contient moins de 21 824 px (soit un carré de 78dp de côté)</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil PEAT.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -802,14 +819,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Aucune image n'est utilisée pour présenter du texte&nbsp;?",
+		"title": "Aucune image porteuse d'information n'est utilisée pour présenter du texte&nbsp;?",
 		"ID": "testID-052",
 		"IDorigin": "testID-052",
 		"wcag": {
 			"0": "1.4.5 AA"
 		},
-		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
-		"exception": "Critère non-applicable si aucune image ne contient de texte",
+		"verifier": "<p>Les images ne doivent pas être utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes&nbsp;:</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"exception": "Critère non-applicable si&nbsp;:<ul><li>aucune image ne contient de texte,</li><li>l'image ne porte pas d'information,</li><li>l'image est essentielle (logo, marque, CAPTCHA, image de test dans un jeu ou un quiz par exemple,…).</li>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -831,13 +848,14 @@
 	},
     {
 		"themes": "Navigation générale",
-		"title": "Chaque étiquette de composant est-elle pertinente&nbsp;?",
+		"title": "Chaque étiquette de composant est-elle pertinente (si présente)&nbsp;?",
 		"ID": "testID-068",
 		"IDorigin": "testID-068",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>Pour chaque composant intéractif possédant une étiquette visible, celle-ci doit être suffisamment descriptive pour permettre à l'utilisateur de comprendre la fonction du composant</p>",
+		"verifier": "<p>Pour chaque composant intéractif possédant une étiquette visible, vérifier que son étiquette visible et son nom accessible sont pertinents au regard de la fonction du composant.</p>",
+		"complement": "<p>En cas d'absence de nom accessible, invalider le critère <a href=#headingtestID-024>4.1.2 A \"Le nom, le rôle et l'état de chaque composant d'interface sont-ils vocalisés&nbsp;?</a></p><p>Vérifier également que le nom accessible contienne bien l'étiquette visible. Si ce n'est pas le cas, invalider le critère <a href=#headingtestID-051>2.5.3 A \"Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran&nbsp;?</p>",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false,

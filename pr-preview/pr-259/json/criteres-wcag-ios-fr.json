@@ -90,7 +90,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>L'aspect obligatoire de l'élement de formulaire est présent dans le nom accessible.</p>",
+		"verifier": "<p>L'aspect obligatoire de l'élément de formulaire est présent dans le nom accessible.</p>",
 		"group": "Elément de formulaire",
 		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un élément est évident et pour lequel l'identification programmatique devient donc facultative (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
@@ -798,7 +798,7 @@
 		"wcag": {
 			"0": "2.3.1 A"
 		},
-		"verifier": "S'il y a des flashs (clignotements ou changements brusque de luminosités), le critère est conforme si l'une des conditions est valide&nbsp;: <ul><li>Il y a moins de 3 flashs dans un intervalle d'une seconde</li><li>La zone totale contde flash contient moins de 21 824 px (soit un carré de 78dp de côté)</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil PEAT.</p>",
+		"verifier": "S'il y a des flashs (clignotements ou changements brusques de luminosité), le critère est conforme si l'une des conditions est valide&nbsp;: <ul><li>Il y a moins de 3 flashs dans un intervalle d'une seconde</li><li>La zone totale de flash contient moins de 21 824 px (soit un carré de 78dp de côté)</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil PEAT.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,

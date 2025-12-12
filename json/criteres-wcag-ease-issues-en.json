@@ -169,8 +169,8 @@
 			"title": "Level headings are irrelevant.",
 			"detail": "Level headings should be relevant and accurately describe the section of content they feature.\n Headings within the same level cannot have the same name.",
 			"solution" : "",
-			"technical solution" : ""
-		}		
+			"technicalSolution" : ""
+		}
 	],
 	"testID-084":[
 		{

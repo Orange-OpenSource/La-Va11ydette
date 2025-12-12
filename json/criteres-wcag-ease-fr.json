@@ -73,7 +73,7 @@
 			"2.4.6 AA"
 		],
 		"verifier": "<p>L'étiquette de chaque élément de formulaire doit être pertinente :</p><ul><li>Si un format de donnée est indiqué, vérifier sa pertinence.</li><li>Si des éléments de formulaires sont regroupés, vérifier également que la légende ou l'étiquette sont pertinentes.</li><li>Si l'élément de formulaire a un nom accessible, vérifier aussi sa pertinence.</li><li>Si l'élément de formulaire est obligatoire, vérifier la pertinence de la mention.</li></ul>",
-		"complement": "<strong>complément&nbsp;:</strong><p>Ce test concerne la pertinence de l'étiquette visible et non celle du nom accessible de l'élément de formulaire.</p>",
+		"complement": "<strong>Complément&nbsp;:</strong><p>Ce test concerne la pertinence de l'étiquette visible et non celle du nom accessible de l'élément de formulaire.</p>",
 		"exception": "<p>La présence d'une étiquette ou d'une légende visible n'est pas obligatoire (exemple&nbsp;: un champ de recherche unique avec un bouton en forme de loupe). Dans ce cas c'est une exception et le critère est conforme.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",

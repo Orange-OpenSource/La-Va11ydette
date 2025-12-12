@@ -24,7 +24,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<p>Le format de données est présent visuellement, et sa position permet de l'associer à l'élément de formulaire concerné.</p>",
-		"complement": "<strong>Attention&nbsp;:</strong>La pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) du format est à évaluer à la question&nbsp;: https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-002",
+		"complement": "<strong>Attention&nbsp;:</strong>La pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) du format est à évaluer à la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",

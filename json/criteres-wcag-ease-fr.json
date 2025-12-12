@@ -89,7 +89,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Un texte  ou un élément graphique (astérisque, image ou autre symbole) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément graphique signalant un élément de formulaire obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li></ul>",
+		"verifier": "<ul><li>Un texte  ou un élément graphique (astérisque, image ou autre symbole) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément graphique signalant un élément de formulaire obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
 		"complement": "<strong>Attention&nbsp;:</strong> la pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) de la mention obligatoire est à évaluer au niveau de la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a>.",
 		"exception": "<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident (exemple&nbsp;: champ de recherche, inscription à une newsletter, identifiant / mot de passe). Dans ce cas l'élément visuel est facultatif.</p><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
 		"group": "Formulaire",

@@ -225,7 +225,7 @@
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>Pour les formulaires avec&nbsp;:<ul><li>modification ou suppression de données propres à l'utilisateur</li><li>transmission de réponse à un test ou un examen</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation)</li></ul></p><p>Vérifier qu'une de ces conditions est vraie&nsp;: <ul><li>La soumission de données est réversible</li><li>Les données saisies par l'utilisateur sont vérifiées afin de détecter d'éventuelles erreurs de saisie et l'utilisateur a la possibilité de les corriger</li><li>Un mécanisme est disponible pour vérifier, confirmer et corriger les informations avant de finaliser la soumission (par exemple, la validation est explicite avec une case à cocher).</li></ul></p>",
+		"verifier": "<p>Pour les formulaires avec&nbsp;:</p><ul><li>modification ou suppression de données propres à l'utilisateur,</li><li>ou transmission de réponse à un test ou un examen,</li><li>ou conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation).</li></ul><p>Vérifier qu'une de ces conditions est vraie&nbsp;:</p><ul><li>La soumission de données est réversible.</li><li>Les données saisies par l'utilisateur sont vérifiées afin de détecter d'éventuelles erreurs de saisie et l'utilisateur a la possibilité de les corriger.</li><li>Un mécanisme est disponible pour vérifier, confirmer et corriger les informations avant de finaliser la soumission (par exemple, la validation est explicite avec une case à cocher).</li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",

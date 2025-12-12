@@ -138,7 +138,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<ul><li>Vérifier que les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li> Et que, si besoin, les suggestions de correction aident à la correction des erreurs.</li>",
+		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Et que, si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
 		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",

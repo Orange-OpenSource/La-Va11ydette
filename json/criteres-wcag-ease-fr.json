@@ -603,7 +603,7 @@
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>Si le bouton est dans un formulaire&nbsp;: ne vérifier que la pertinence de l'étiquette et du nom (la présence étant évaluée au critère WCAG 3.3.2 testID-001)</li><li>Si le bouton est hors d'un formulaire&nbsp;: évaluer présence ET pertinence de l'étiquette et du nom.</li></ul><p>L'utilisateur doit pouvoit identifier la fonction d'un bouton. Vérifier que l'étiquette visible et le nom accessible de chaque bouton sont pertinents au regard de la fonction du bouton.</p>",
+		"verifier": "<ul><li><strong>Si le bouton est dans un formulaire&nbsp;:</strong> ne vérifier que la pertinence de l'étiquette et du nom (la présence étant évaluée au <a href='#testID-001')>test du critère WCAG 3.3.2</a></li><li><strong>Si le bouton est hors d'un formulaire&nbsp;:</strong> évaluer présence ET pertinence de l'étiquette et du nom.</li></ul><p>L'utilisateur doit pouvoir identifier la fonction d'un bouton. Vérifier que l'étiquette visible et le nom accessible de chaque bouton sont pertinents au regard de la fonction du bouton.</p>",
 		"complement": "<p>En cas d'absence de nom accessible, invalider le critère <a href=#headingtestID-066>4.1.2 A \"Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance&nbsp;?\"</a></p><p>Vérifier également que le nom accessible contienne bien l'étiquette visible. Si ce n'est pas le cas, invalider le critère <a href=#headingtestID-011>2.5.3 A \"Le nom accessible des composants d'interface contient-il au minimum le libellé visible à l'écran&nbsp;?\"</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P1",

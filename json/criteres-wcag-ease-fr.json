@@ -778,7 +778,7 @@
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>S'il y a des flashs, clignotements, changements de luminosités ou scintillements, le critère est conforme si l'une des conditions est valide&nbsp;:</p><ul><li>Il y en a moins de 3 pour n'importe quel intervalle d'une seconde</li><li>ou sur une zone totale contenant moins de 21 824 px (25% d'un rectangle de 341x256 px) pour un affichage minimum de 1024x768</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil <a href=\"https://trace.umd.edu/peat/\">PEAT (Photosensitive Epilepsy Analysis Tool)</a>.</p>",
+		"verifier": "<p>S'il y a des flashs, clignotements, changements de luminosité ou scintillements, le critère est conforme si l'une des conditions est valide&nbsp;:</p><ul><li>Il y en a moins de trois pour n'importe quel intervalle d'une seconde</li><li>ou sur une zone totale contenant moins de 21 824 px (25% d'un rectangle de 341x256 px) pour un affichage minimum de 1024x768 px.</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil <a href=\"https://trace.umd.edu/peat/\">PEAT (Photosensitive Epilepsy Analysis Tool)</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P2",
 		"resultatTest": "nt",

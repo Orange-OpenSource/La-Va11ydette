@@ -726,7 +726,7 @@
 			"2.2.2 A"
 		],
 		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarre automatiquement&nbsp;:</p><ul><li>durant plus de 5 secondes, est en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le cacher.</li><li>se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
-		"exception": "<p>Le critère est non-applicable si&nbsp;:</p><ul><li>aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>le contenu est essentiel</li><ul>",
+		"exception": "<p>Le critère est non-applicable si&nbsp;:</p><ul><li>aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>le contenu est essentiel</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P3",
 		"resultatTest": "nt",

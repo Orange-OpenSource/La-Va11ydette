@@ -704,7 +704,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les messages de statuts sont-ils correctement restitués&nbsp;?",
+		"title": "Les messages d'état sont-ils correctement restitués&nbsp;?",
 		"ID": "testID-034",
 		"IDorigin": "testID-034",
 		"wcag": [

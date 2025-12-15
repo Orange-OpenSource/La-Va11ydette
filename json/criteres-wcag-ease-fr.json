@@ -287,7 +287,7 @@
 		"wcag": [
 			"3.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier la présence d'un attribut <code>lang</code> dans la balise <code>html</code></li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale du document. Voir la liste des codes <a href='https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1'>ISO 639-1</a>.</li></ul><p>Dans le cas d'une page avec un doctype XHTML, l'attribut <code>xml:lang</code> seul ne permet pas de valider le test et un attribut lang est également nécessaire et les deux attributs doivent avoir la même valeur.",
+		"verifier": "<ul><li>vérifier la présence d'un attribut <code>lang</code> dans la balise <code>html</code></li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale du document. Voir la liste des codes <a href='https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1'>ISO 639-1</a>.</li></ul><p>Dans le cas d'une page avec un doctype XHTML, l'attribut <code>xml:lang</code> seul ne permet pas de valider le test et un attribut lang est également nécessaire et les deux attributs doivent avoir la même valeur.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -252,7 +252,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchroniquement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
+		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchroniquement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
 		"priority": "P1",
 		"resultatTest": "nt",

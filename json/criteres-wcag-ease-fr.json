@@ -1,14 +1,14 @@
 [
 	{
 		"themes": "Formulaire",
-		"title": "Chaque champ de formulaire possède-t-il une étiquette visible&nbsp;?",
+		"title": "Chaque élément de formulaire possède-t-il une étiquette visible&nbsp;?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Une étiquette est visuellement présente à proximité des champs de formulaire,</li><li> ou le champ de formulaire possède un attribut <code>title</code></li><li>ou le champ est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Lorsque le champ de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p> ",
-		"complement": "<h5>Complément d'information</h5><p>Un placeholder seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité du champ de formulaire.</p>",
+		"verifier": "<ul><li>Une étiquette est présente à proximité de chaque élément de formulaire permettant de les associer visuellement,</li><li>ou l'élément de formulaire possède un attribut <code>title</code>,</li><li>ou l'élément de formulaire est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Vérifier également qu'une légende est visible pour les éléments de formulaire regroupés.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme.</p>",
+		"complement": "<strong>Complément&nbsp;</strong><ul><li>La pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) de l'étiquette et du message d'erreur est à évaluer à la question :&nbsp;<a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a></li><li>Le lien sémantique élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr> 1.3.1 Info and Relationships) est à évaluer à la question&nbsp;: <a href='#headingtestID-089'>L'élément de formulaire est-il lié programmatiquement à son étiquette et, si présent, au message d'erreur&nbsp;?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr>4.1.2 Name, Role, Value) est à évaluer à la question&nbsp;: <a href=#headingtestID-067>Chaque champ de formulaire a-t-il un nom accessible pertinent&nbsp;?</a></li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
@@ -17,13 +17,14 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur&nbsp;?",
+		"title": "Un format de données est-il indiqué, si besoin&nbsp;?",
 		"ID": "testID-005",
 		"IDorigin": "testID-005",
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<p>Le format de saisie est présent visuellement, et sa position permet de l'associer au champ concerné.</p>",
+		"verifier": "<p>Le format de données est présent visuellement, et sa position permet de l'associer à l'élément de formulaire concerné.</p>",
+		"complement": "<strong>Attention&nbsp;:</strong>La pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) du format est à évaluer à la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
@@ -32,15 +33,15 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Chaque champ de formulaire a-t-il un nom accessible&nbsp;?",
+		"title": "Chaque champ de formulaire a-t-il un nom accessible pertinent&nbsp;?",
 		"ID": "testID-067",
 		"IDorigin": "testID-067",
 		"wcag": [
 			"1.3.1 A",
 			"4.1.2 A"
 		],
-		"verifier": "<ul><li>Toutes les étiquettes sont bien liées à leurs champs, grâce à&nbsp;: <ul><li>un attribut ARIA <code>aria-labelledby</code> dans le champ</li><li>un attribut ARIA <code>aria-label</code> dans le champ</li><li>une balise <code>label</code> avec un attribut <code>for</code> référençant l'<code>id</code> du champ</li><li>un attribut <code>title</code> dans la balise <code>input</code> du champ</li></ul></li><li>Tous les formats de données présents sont bien liés à leurs champs, en l'intégrant : <ul><li>directement dans la balise <code>label</code></li><li>en modifiant l'attribut <code>aria-label</code> du champ</li><li>en ajoutant l'ID du format dans l'attribut <code>aria-labelledby</code> du champ</li><li>en modifiant l'accessible description du champ avec l'attribut <code>aria-describedby</code></li></ul></li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir un nom accessible, il doit être accompagné d'une des techniques citées ci-dessus.</p>",
+		"verifier": "<ul><li>Vérifier que tous les éléments de formulaire ont un nom accessible pertinent, via un des éléments suivants&nbsp;:<ul><li>un attribut <code>aria-labelledby</code></li><li>un attribut <code>aria-label</code></li><li>une balise <code>label</code> avec obligation d'un attribut <code>for</code> référençant l'<code>id</code> de l'élément de formulaire</li><li>une balise <code>label</code> incluant l'élément de formulaire (label implicite)</li><li>un attribut <code>title</code> dans l'élément de formulaire</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir un nom accessible, il doit être accompagné d'une des techniques citées ci-dessus.</p><p>Le lien programmatique entre l'étiquette et l'élément de formulaire (WCAG 1.3.1 Info and Relationships) est à évaluer à la question&nbsp;: <a href='#headingtestID-089'>L'élément de formulaire est-il lié programmatiquement à son étiquette et, si présent, au message d'erreur&nbsp;?</a>.</p><p>L'état de l'élément (WCAG 4.1.2 A Role, Name, Value) est à évaluer à la question&nbsp;: <a href='#headingtestID-066'>Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance&nbsp;?</a>.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -49,14 +50,14 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"title": "Les éléments de formulaire sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>la présence de groupe <code>fieldset</code> ou <code>role='group'</code></li><li>chaque groupe possède une légende (<code>legend</code>, <code>aria-labelledby</code>)</li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de <code>radio</code> ou <code>checkbox</code></li></ul>",
+		"verifier": "<p>Vérifier la présence, si nécessaire, de groupement de type <code>fieldset</code> ou d'un attribut ARIA <code>role='group'</code> ou <code>role='radiogroup'</code> ou <code>optgroup</code> dans un <code>select</code></p><p>Vérifier que chaque groupe possède une légende ou une étiquette.</p>",
+		"complement": "<strong>Complément&nbsp;: </strong><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de type radio (<code><input type='radio'></code>) ou balises possédant un attribut ARIA <code>role='radio'</code>) ou de type checkbox(<code><input type='checkbox'></code>) ou balises possédant un attribut ARIA <code>role='checkbox'</code></li></ul><p><strong>Attention&nbsp;:</strong> La pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) de la légende est à évaluer au niveau de la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a></p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P3",
@@ -65,14 +66,15 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Chaque étiquette de champ est-elle pertinente&nbsp;?",
+		"title": "Chaque étiquette et légende de champ est-elle pertinente&nbsp;?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<ul><li>L'étiquette de chaque champ est pertinente.</li><li>Si un format de donnée est indiqué pour un champ, il est pertinent.</li><li>Si des champs sont regroupés, vérifier que la légende est pertinente.</li></ul>",
-		"complement":"<h5>Complément d'information</h5><p>Il est important de vérifier la pertinence de l'étiquette visible et du nom accessible du champ.</p>",
+		"verifier": "<p>L'étiquette de chaque élément de formulaire doit être pertinente :</p><ul><li>Si un format de donnée est indiqué, vérifier sa pertinence.</li><li>Si des éléments de formulaires sont regroupés, vérifier également que la légende ou l'étiquette sont pertinentes.</li><li>Si l'élément de formulaire a un nom accessible, vérifier aussi sa pertinence.</li><li>Si l'élément de formulaire est obligatoire, vérifier la pertinence de la mention.</li></ul>",
+		"complement": "<strong>Complément&nbsp;:</strong><p>Ce test concerne la pertinence de l'étiquette visible et non celle du nom accessible de l'élément de formulaire.</p>",
+		"exception": "<p>La présence d'une étiquette ou d'une légende visible n'est pas obligatoire (exemple&nbsp;: un champ de recherche unique avec un bouton en forme de loupe). Dans ce cas c'est une exception et le critère est conforme.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P0",
@@ -81,15 +83,15 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les champs obligatoires sont-ils identifiables&nbsp;?",
+		"title": "Les éléments de formulaire obligatoires sont-ils identifiables&nbsp;?",
 		"ID": "testID-004",
 		"IDorigin": "testID-004",
 		"wcag": [
-			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Un texte ou un élément visuel (symbole comme l'astérique, image) doit être présent pour indiquer qu'un champ de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément visuel de champ obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li><li>Dans le code, l'une des techniques doit être implémentée :<ul><li>Le texte ou l'élément visuel doit être intégré dans la balise <code>label</code> ou lié au champ du formulaire (ex: avec un <code>aria-labelledby</code>...)</li><li>présence de l'attribut <code>required</code> ou <code>aria-required</code></li></ul></li></ul><p>Le critère est également applicable si tous les champs d'un formulaire sont obligatoires, à l'exception d'un champ optionnel. Il est alors possible d'identifier uniquement le champ optionnel selon la méthode détaillée ci-dessus.</p>",
-		"exception":"Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).",
+		"verifier": "<ul><li>Un texte  ou un élément graphique (astérisque, image ou autre symbole) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte doit expliciter l'élément graphique signalant un élément de formulaire obligatoire. Dans le code source, ce texte doit apparaitre avant la première utilisation.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
+		"complement": "<strong>Attention&nbsp;:</strong> la pertinence (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) de la mention obligatoire est à évaluer au niveau de la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a>.",
+		"exception": "<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident (exemple&nbsp;: champ de recherche, inscription à une newsletter, identifiant / mot de passe). Dans ce cas l'élément visuel est facultatif.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
@@ -113,13 +115,15 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les champs en erreur sont-ils identifiables&nbsp;?",
+		"title": "Les champs en erreur sont-ils identifiables et l'erreur est-elle décrite sous forme de texte&nbsp;?",
 		"ID": "testID-006",
 		"IDorigin": "testID-006",
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<ul><li>vérifier que le label, le nom accessible ou la description accessible du champ en erreur est modifié afin que l'on comprenne que ce champ est en erreur (ex&nbsp;: ajout de la mention «&nbsp;erreur&nbsp;», ajout d'un icône, ajout d'un <code>aria-labelledby</code>, ajout d'un <code>aria-describedby</code> sur le champ en erreur,…)</li><li>et vérifier que le champ possède un attribut <code>aria-invalid='true'</code></li></ul>",
+		"verifier": "<p>Vérifier qu'un message d'erreur sous forme de texte visible est présent et qu'on identifie spécifiquement chaque champ en erreur.</p>",
+		"exception": "Le critère est non-applicable si cela constitue une risque potentiel de sécurité.",
+		"complement": "<p>Ce critère n'impose aucune méthode particulière d'affichage des erreurs. Selon la situation, il peut être plus judicieux d'indiquer toutes les erreurs au début ou avant un formulaire.</p><p>Dans d'autres cas, il peut être plus judicieux d'afficher les erreurs directement, avec des messages d'erreur à côté des champs concernés. Les erreurs peuvent également être répertoriées dans une alerte ou une boîte de dialogue.</p><p><strong>Attention&nbsp;:</strong> La pertinence (<abbr>WCAG</abbr> 3.3.3 Error suggestion) du texte de l'erreur est à évaluer au niveau de la question&nbsp;: <a href='#headingtestID-007'>Les messages d'erreur et les suggestions sont-ils explicites&nbsp;?</a></p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P1",
@@ -128,33 +132,17 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les messages d'erreur sont-ils explicites&nbsp;?",
+		"title": "Les messages d'erreur et les suggestions sont-ils explicites&nbsp;?",
 		"ID": "testID-007",
 		"IDorigin": "testID-007",
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Vérifier que :</p> <ul><li>le message d'erreur est présent visuellement,</li><li>il permet d'identifier explicitement le champ en erreur,</li><li>la nature de l'erreur est claire (exemple&nbsp;: champ téléphone obligatoire, format de l'e-mail invalide…).</ul>",
-		"complement": "<p>Le critère est conforme s'il est impossible d'identifier précisément le champ en erreur (exemple&nbsp;: page d'authentification avec identifiant, mot de passe pour laquelle, pour des raisons de sécurité, on ne peut identifier précisément lequel des deux champs est en erreur).</p>",
+		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Et que, si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
+		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
-		"resultatTest": "nt",
-		"goodPractice": false
-	},
-	{
-		"themes": "Formulaire",
-		"title": "En cas d'erreur, est-ce qu'une suggestion de correction est proposée à l'utilisateur&nbsp;?",
-		"ID": "testID-008",
-		"IDorigin": "testID-008",
-		"wcag": [
-			"3.3.3 AA"
-		],
-		"verifier": "<p>Vérifier que les messages d'erreurs donnent les informations nécessaires à la correction des saisies, par exemple, avec une aide complémentaire facilitant la correction de l'erreur de saisie ou en faisant des suggestions parmi une liste limitée de valeurs.</p>",
-		"exception":"Le critère est non applicable lorsqu'il est impossible de faire une suggestion.",
-		"group": "Formulaire",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
-		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -178,49 +166,12 @@
 	{
 		"themes": "Formulaire",
 		"title": "L'utilisateur peut-il s'authentifier avec un nom d'utilisateur et un mot de passe sans utiliser de test s'appuyant sur des fonctions cognitives&nbsp;?",
-		"ID": "testID-086",
-		"IDorigin": "testID-086",
+		"ID": "testID-091",
+		"IDorigin": "testID-091",
 		"wcag": [
-			"3.3.8 AA",
-			"3.3.9 AAA"
+			"3.3.8 AA"
 		],
-		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour l'utilisateur</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier-coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p>",
-		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
-		"group": "Formulaire",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
-		"priority": "P0",
-		"resultatTest": "nt",
-		"wcag22": true,
-		"goodPractice": false
-	},
-	{
-		"themes": "Formulaire",
-		"title": "L'utilisateur peut-il s'authentifier avec un système à double facteur (2FA) sans utiliser de test s'appuyant sur des fonctions cognitives&nbsp;?",
-		"ID": "testID-087",
-		"IDorigin": "testID-087",
-		"wcag": [
-			"3.3.8 AA",
-			"3.3.9 AAA"
-		],
-		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification avec un système à double facteur (2FA) ne repose sur un test cognitif sauf si cette étape permet au choix :</p><ul><li>à l'utilisateur :<ul><li>de coller le code de vérification</li><li>de brancher une clé USB où il lui suffit d'appuyer sur un bouton pour entrer un jeton valable pendant une durée limitée</li><li>de scanner un QR code par une application présente sur son appareil pour confirmer son identité</li><li>de recevoir une notification sur son appareil qui lui permet de confirmer son identité (par exemple, par un code PIN défini par l'utilisateur, une empreinte digitale, une reconnaissance faciale)</li></ul></li><li>à un agent utilisateur de renseigner automatiquement le code de vérification</li></ul><p>Le processus d'authentification proposé répond au critère 3.3.8 ou 3.3.9, c'est-à-dire qu'il ne repose pas sur un test cognitif (ex : mémoriser ou saisir un identifiant et mot de passe qui doivent être recopiés sans erreur, reproduire un schéma gestuel sur un écran tactile, résoudre une énigme)</p>",
-		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
-		"group": "Formulaire",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
-		"priority": "P0",
-		"resultatTest": "nt",
-		"wcag22": true,
-		"goodPractice": false
-	},
-	{
-		"themes": "Formulaire",
-		"title": "Lorsque l'authentification inclut un CAPTCHA, une alternative qui ne repose pas sur un test cognitif est-elle proposée&nbsp;?",
-		"ID": "testID-088",
-		"IDorigin": "testID-088",
-		"wcag": [
-			"3.3.8 AA",
-			"3.3.9 AAA"
-		],
-		"verifier": "<p>Vérifier que lorsqu'un parcours d'authentification inclut un CAPTCHA, une méthode alternative qui ne repose pas sur un test cognitif (retenir, recopier un mot, reconnaitre une image donnée par le site web) est proposée. Note : la reconnaissance d'objets ou l'identification d'un contenu personnel non textuel est tolérée.</p><ul><li>S'il s'agit d'une authentification à double facteur qui se fait par la reconnaissance d'un contenu personnel non textuel, les conditions de sécurité doivent permettre d'éviter à une tierce personne de deviner quelle est l'image à reconnaitre.</li><li>Dans le cas où l'utilisateur est obligé de transcrire du texte (ex : création pour la première fois d'un mot de passe qui sera ensuite enregistré dans un logiciel de gestion de mot de passe), la possibilité de montrer les caractères saisis doit être proposée.</li></ul>",
+		"verifier": "<p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour effectuer le test cognitif</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p><p>Présence d'un système à 2FA : le code reçu doit pouvoir être copié-collé par l'utilisateur ou bien être rempli automatiquement.</p><p><strong>Présence d'un CAPTCHA :</strong> le mécanisme ne doit pas reposer sur un test cognitif, sauf reconnaissance d'objet et identification d'un contenu personnel non textuel.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le processus d'authentification, ne pas utiliser de méthode basée sur :</p><ul><li>la reconnaissance d'objets</li><li>l'identification d'un contenu personnel non textuel (images, vidéo, audio) préalablement fourni au site web par l'utilisateur.</li></ul><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/formulaires/#authentification-accessible",
@@ -237,10 +188,42 @@
 		"wcag": [
 			"3.3.4 AA"
 		],
-		"verifier": "<p>Pour les formulaires avec&nbsp;:</p><ul><li>modification ou suppression de données propres à l'utilisateur,</li><li>transmission de réponse à un test ou un examen,</li><li>conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation)</li></ul><p>Vérifier que l'utilisateur peut modifier ou annuler avant et après validation, sauf si la validation est explicite (avec une case à cocher par exemple).</p>",
+		"verifier": "<p>Pour les formulaires avec&nbsp;:</p><ul><li>modification ou suppression de données propres à l'utilisateur,</li><li>ou transmission de réponse à un test ou un examen,</li><li>ou conséquences financières (achat en ligne) ou juridiques (validation de conditions générales d'utilisation).</li></ul><p>Vérifier qu'une de ces conditions est vraie&nbsp;:</p><ul><li>La soumission de données est réversible.</li><li>Les données saisies par l'utilisateur sont vérifiées afin de détecter d'éventuelles erreurs de saisie et l'utilisateur a la possibilité de les corriger.</li><li>Un mécanisme est disponible pour vérifier, confirmer et corriger les informations avant de finaliser la soumission (par exemple, la validation est explicite avec une case à cocher).</li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "L'élément de formulaire est-il lié programmatiquement à son étiquette et, si présent, au message d'erreur&nbsp;?",
+		"ID": "testID-089",
+		"IDorigin": "testID-089",
+		"wcag": [
+			"1.3.1 AA"
+		],
+		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>le <code>label</code> possède un attribut <code>for</code> référençant l'<code>id</code> de l'élément de formulaire à associer,</li><li>le <code>label</code> est implicite,</li><li>l'étiquette visible est référencée par un attribut <code>aria-labelledby</code> porté par l'élément de formulaire,</li><li>le nom accessible est donné par un attribut title.</li></ul><p>Le format de données et/ou la mention obligatoire peuvent être liés via un attribut <code>aria-describedby</code>.</p><p>Pour les messages d'erreurs, vérifier que&nbsp;:</p><ul><li>L'élément de formulaire référence, via <code>aria-labelledby</code> ou <code>aria-describedby</code>, l'<code>id</code> du/des message(s) d'erreur.</li><li>Si le message d'erreur est ajouté dans le <code>label</code> celui-ci doit aussi être lié à l'élément de formulaire.</li></ul>",
+"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce que c'est une fonctionnalité essentielle.",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "Les éléments de formulaire obligatoires sont-ils programmatiquement identifiables&nbsp;?",
+		"ID": "testID-090",
+		"IDorigin": "testID-090",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Vérifier que l'une des techniques suivantes est utilisée&nbsp;:<ul><li>L'étiquette de l'lément de formulaire mentionne l'aspect obligatoire directement dans le nom ou la description accessible</li><li>Présence de l'attribut <code>required</code> ou <code>aria-required='true'.</code></li></ul></p>",
+		"exception": "Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'identification programmatique devient donc facultative (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false
 	},
@@ -252,7 +235,7 @@
 		"wcag": [
 			"2.4.2 A"
 		],
-		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page permet à l'utilisateur de comprendre le contexte de la page.</li><li>vérifier que, lorsque le contexte de la page est modifié asynchroniquement (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié par modification du titre</li></ul>",
+		"verifier": "<ul><li>vérifier que le titre de page est renseigné,</li><li>vérifier que le titre de page est unique et qu'il permet à l'utilisateur de comprendre le contexte de la page&nbsp;: le sujet, la fonction…</li><li>vérifier que, lorsque le contexte de la page est modifié de manière asynchrone (sans recharger la page&nbsp;: résultats de recherche, validation ou erreur de formulaire, modification dynamique du contenu…), l'utilisateur est notifié de ce changement par modification du titre</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-un-titre-aux-pages",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -310,7 +293,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment p) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), pour tout déclenchement d'action,  validation ou sélection</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
+		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment <code>p</code>) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), pour tout déclenchement d'action, validation ou sélection</li><li>les tableaux de présentation (voir critère <a href='#headingtestID-023'>Les tableaux sont-ils correctement structurés&nbsp?</a>) : doivent porter un attribut <code>role='presentation'</code> sur la balise <code>table</code> ET ne doivent pas contenir de balises et/ou attributs sémantiques de tableau ET le contenu du tableau doit porter une sémantique appropriée/sa propre sémantique.</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -324,7 +307,7 @@
 		"wcag": [
 			"3.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier la présence d'un attribut <code>lang</code> (attention l'attribut <code>xml:lang</code> ne permet pas de valider le test)</li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale de la page</li></ul>",
+		"verifier": "<ul><li>vérifier la présence d'un attribut <code>lang</code> dans la balise <code>html</code></li><li>la valeur de l'attribut <code>lang</code> doit correspondre à la langue principale du document. Voir la liste des codes <a href='https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1'>ISO 639-1</a>.</li></ul><p>Dans le cas d'une page avec un doctype XHTML, l'attribut <code>xml:lang</code> seul ne permet pas de valider le test et un attribut lang est également nécessaire et les deux attributs doivent avoir la même valeur.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#indiquer-la-langue-principale-et-les-changements-de-langue",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -352,7 +335,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Si le tableau est un tableau de présentation, enlever toute balise ou attribut à valeur sémantique de tableau (<code>caption, summary, th, scope, headers</code>…) et mettre un attribut <code>role='presentation'</code> dans la balise <code>table</code> et donc ce tableau devient non applicable pour ce critère.</p><p>Si le tableau est un tableau de données&nbsp;:</p><ol><li>Si un titre de tableau est présent, vérifier que celui-ci est lié de manière programmatique au tableau par l'une des techniques ci-dessous&nbsp; <br>* Attention&nbsp;: en complément la technique doit être validée par un test fonctionnel sur le ou les environnements (navigateur / aide technique) pris en compte dans l'audit.<ul><li>Balise <code>caption</code></li><li><code>aria-label</code> sur l'élément table *</li><li><code>aria-labelledby</code> sur l'élément pointant vers l'<code>id</code> du titre *</li><li>Title sur l'élément table *</li></ul></li><li>Si un titre de tableau est présent, vérifier que celui-ci est pertinent <ul><li>Le titre n'est pas vide</li><li>Le titre permet de comprendre la nature des données présentées dans le tableau</li></ul></li><li>Si un résumé de tableau est présent, vérifier que celui-ci est lié de manière programmatique par l'une des techniques ci-dessous&nbsp;:<ul><li><strong>HTML5</strong>&nbsp;: présence d'un résumé, si nécessaire en masquage accessible ou <code>display:none</code>, lié au tableau via un <code>aria-describedby</code></li><li><strong>Version antérieure&nbsp;:</strong> résumé présent dans un attribut <code>summary</code></li></ul></li><li>Si un résumé est présent, vérifier que celui-ci est&nbsp;: <ul><li>pertinent</li><li>différent du titre</li></ul></li><li>Les entêtes <code>th</code> ne doivent pas être vides</li><li><strong>Tableau à simple entête</strong> (une ligne, ou une colonne d'entête uniquement), vérifier la présence d'entêtes (<code>th</code>)</li><li><strong>Tableau à double entêtes</strong> (une ligne et une colonne d'entête)&nbsp;:<ul><li>Pour chaque <code>th</code> vérifier la présence d'un attribut <code>scope='col'</code> pour les entêtes de colonnes,</li><li>et la présence d'un <code>scope='row'</code> pour les entêtes de lignes</li></ul></li><li><strong>Tableaux complexes</strong> (entêtes multiples et irrégulières), vérifier la présence d'entêtes <code>th</code> et / ou d'attributs <code>id</code> et <code>headers</code></li></ol>",
+		"verifier": "<p><strong>Tableaux de données simples&nbsp;:</strong></p><ul><li>Vérifier la présence d'un titre sauf cas particulier</li><li>Vérifier que le titre est pertinent (c'est-à-dire, permet de comprendre la nature des données présentées dans le tableau) et utilise une des techniques ci-dessous&nbsp;:<ul><li>balise <code>caption</code></li><li><code>aria-labelledby</code> sur l'élément table et pointant vers l'<code>ID</code> du titre</li><li><code>aria-label</code> sur l'élément <code>table</code> (un titre doit cependant être visible)</li><li>attribut <code>title</code> sur l'élément <code>table</code> (un titre doit cependant être visible)</li></ul></li><li>Chaque tableau de données est structuré avec des cellules d'en-têtes <code>th</code> non vides, et si nécessaire avec un attribut <code>scope='col'</code> (pour les en-têtes de colonne) et/ou <code>scope='row'</code> (pour les en-têtes de ligne).</li></ul></br><p><strong>Tableaux de données complexes&nbsp;:</strong></p><ul><li>Un titre est présent pour chaque tableau de données complexes (ce titre doit inclure un résumé qui explique l'organisation spatiale du tableau)</li><li>Vérifier la présence d'un résumé, si nécessaire masqué, lié au tableau via un attribut <code>aria-describedby</code> (voire <code>aria-labelledby</code>)</li><li>vérifier que ce résumé est pertinent (c'est un passage de texte associé à un tableau de données complexe. Il permet de donner des informations sur la nature et la structure du tableau afin d'en faciliter l'utilisation par les utilisateurs de technologies d'assistance par exemple)</li><li>Chaque tableau de données est structuré avec des cellules d'en-têtes <code>th</code> non vides, et si nécessaire avec un attribut <code>scope='col'</code> (pour les en-têtes de colonne) et/ou <code>scope='row'</code> (pour les en-têtes de ligne).</li></ul></br><p><strong>Tableaux de mise en forme&nbsp;:</strong></p><p>Vérifier que&nbsp;:</p><ul><li>toute balise ou attribut à valeur sémantique de tableau (<code>caption</code>, <code>summary</code>, <code>th</code>, <code>scope</code>, <code>headers</code>…) est absent</li><li>ET un attribut <code>role='presentation'</code> sur l'élément <code>table</code> est présent. Sinon, rendre non conforme la question <a href='#headingtestID-068'>1.3.1 A 'Le contenu est-il structuré sémantiquement&nbsp;?'</a></li></ul><p>Si ces deux points sont valides, ce tableau devient, donc, non applicable pour ce critère.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#structurer-les-tableaux-de-donnees",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -366,7 +349,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier le nom accessible des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code></li><li>vérifier que le nom accessible n'est pas défini par le <code>title</code></li><li>pour les images décoratives, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégré en CSS (<code>background-image</code>) </li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li></ul>",
+		"verifier": "<ul><li>vérifier que le nom accessible des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code> est pertinent</li><li>pour les images décoratives et les polices d'icônes, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégrée en CSS (<code>background-image</code>)</li><li>vérifier pour les contenus audios et videos qu'une alternative est fournie par un contenu adjacent</li><li>à défaut d'une autre méthode plus robuste, le nom accessible peut être défini par un attribut <code>title</code> (assurez-vous cependant du support par les aides techniques cibles)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -380,8 +363,8 @@
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Vérifier que des images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter du texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex&nbsp;: logo, CAPTCHA, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
-		"exception": "Non applicable si aucune image ne contient de texte",
+		"verifier": "<p>Vérifier que des images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex&nbsp;: logo, CAPTCHA, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"exception": "Non applicable si aucune image ne contient de texte ou si l'image ne porte pas d'information. Idem si l'image est essentielle (logo, marque, CAPTCHA, image de test dans un jeu ou un quiz par exemple,…)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -454,7 +437,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24 px CSS</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24 px CSS</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5 px CSS</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5 px CSS</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les liens non-soulignés ont un rapport de contraste suffisant avec le texte environnant</li><li>vérifier que le rapport de contraste est suffisant au survol de la souris et au focus</li></ul>",
+		"verifier": "<ul><li>vérifier que le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'images.<ul><li><strong>Pour texte standard&nbsp;:</strong> <ul><li>Taille inférieure à <code>24 px CSS</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>24 px CSS</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras</strong> <ul><li>Taille inférieure à <code>18,5 px CSS</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18,5 px CSS</code>&nbsp;: contraste de 3:1</li></ul></li></ul></li><li>vérifier que les états de tous les composants ont un rapport de contraste suffisant, notamment au survol de la souris et au focus</li><li>vérifier le contraste également pour les placeholders informatifs</li></ul>",
 		"exception":"Le critère n'est pas applicable pour les logos, les éléments textuels purement décoratifs ou les textes d'éléments inactifs.",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",
@@ -470,7 +453,7 @@
 			"1.4.3 AA"
 		],
 		"verifier": "<ul><li>Si la couleur du texte est redéfinie (<code>color</code>), la couleur du fond doit l'être également (<code>background-color</code>).</li><li>Si la couleur du fond est redéfinie (<code>background-color</code>), la couleur du texte doit l'être également (<code>color</code>).</li><li>Si une image de fond est utilisée pour un élément contenant du texte (<code>background-image</code>), la couleur du fond doit être définie (<code>background-color</code>).</li></ul>",
-		"complement": "<h5>Complément d'information</h5><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur. Dans Firefox, aller dans \"Paramètres > Langue et apparence > Couleurs\", ouvrir \"Gérer les couleurs...\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier, puis décocher \"Utiliser les couleurs systèmes\". Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme</li><li>Dans le cas d'un texte sur une image de fond déclarée en \"background-image\", il est possible de vérifier en utilisant l'extension Web Developer puis dans le menu \"Images\" > \"Hide background images\", repérer les textes dont le fond a disparu et vérifier qu'ils sont lisibles et suffisamment contrastés.</li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Ces propriétés peuvent être appliquées directement sur un élément ou héritées d'un parent.</li><li> Pour tester, le plus simple est de modifier les couleurs par défaut de votre navigateur. Dans Firefox, aller dans \"Paramètres > Langue et apparence > Contrôle du contraste\" puis sélectionner \"Personnalisé\", ouvrir \"Gérer les couleurs\" et dans \"Texte et arrière-plan\", personnaliser les couleurs \"Texte\" et \"Arrière-plan\" afin de bien les identifier. Si, dans le page, une seule de ces couleurs apparait sans que l'autre n'apparaisse dans un même élément, le test est non conforme.</li><li>Dans le cas d'un texte sur une image de fond déclarée en \"background-image\", il est possible de vérifier en utilisant l'extension Web Developer puis dans le menu \"Images\" > \"Hide background images\", repérer les textes dont le fond a disparu et vérifier qu'ils sont lisibles et suffisamment contrastés.</li></ul>",
 		"moreInfo": "",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -484,8 +467,8 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p>Vérifier que les graphiques, les icônes et les composants interactifs graphiques ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
-		"exception": "Le critère n'est pas applicable pour les cas suivants:<ul><li>les logos</li><li>si un texte, comme un label ou un tableau de données, apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>le composant est inactif</li><li>l'affichage par défaut de l'agent utilisateur n'est pas modifié</li></ul>",
+		"verifier": "<p>Vérifier que les éléments graphiques, les icônes, les composants interactifs graphiques, leurs états (focus/hover…) et les éléments de formulaire ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
+		"exception": "Le critère n'est pas applicable pour les cas suivants&nbsp;:<ul><li>les logos, photos de scènes de la vie réelle (paysages, personnes, etc.), drapeaux, captures d'écran, etc.</li><li>si une alternative (un texte de remplacement, une étiquette, une longue description ou un tableau de données), apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction (liens d'une barre de navigation)</li><li>le manque de contraste est nécessaire pour convoyer l'information</li><li>les composants interactifs inactifs (pas d'action possible)</li><li>les logos, les marques</li><li>les éléments dynamiques dont le contraste au survol / focus est suffisant</li><li>les composants dont l'apparence est déterminée par le navigateur et non modifiée par l'applicatif.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -719,8 +702,8 @@
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site</li><li>un mécanisme de recherche</li></ul>",
-		"exception": "Le critère est non-applicable dans les cas suivants :<ul><li>Le nombre de pages est inférieur à 3 ou 4 et/ou le contenu succinct</li><li>Une page résultat ou étape d'un processus à étapes.</li></ul>",
+		"verifier": "<p>Vérifier qu'au moins 2 des mécanismes listés ci-dessous sont présents sur la page, pour permettre à un utilisateur de se situer au sein d'un site&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une table des matières</li><li>un plan de site ou une liste de liens globale</li><li>un mécanisme de recherche indexant la totalité du site.</li></ul><p>Attention, le critère est conforme si le nombre de pages est inférieur à 3 ou 4 et/ou le contenu est succinct mais que des liens (navigation) existent pour toutes les pages.</p>",
+		"exception": "Le critère est non-applicable dans les cas suivants :<ul><li>la page est indépendante et hébergée en dehors du site</li><li>une page résultat ou étape d'un processus à étapes.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-acces-multiples-et-une-localisation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -742,13 +725,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les messages de statuts sont-ils correctement restitués&nbsp;?",
+		"title": "Les messages d'état sont-ils correctement restitués&nbsp;?",
 		"ID": "testID-034",
 		"IDorigin": "testID-034",
 		"wcag": [
 			"4.1.3 A"
 		],
-		"verifier": "<p>Pour tous les messages de status (résultats d'une recherche, une notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page (20 articles suivants)…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'ils soient restitués de façon pertinente au lecteur d'écran</li></ul>",
+		"verifier": "<p>Pour chaque message d'état (résultats d'une recherche, notification, dialogue dans un chatbot, upload d'un fichier, enregistrement produit dans un panier, chargement progressif d'une page…)&nbsp;:</p><ul><li>vérifier qu'un mécanisme reposant sur les rôles ARIA (<code>status</code>, <code>alert</code>, <code>alertdialog</code>…) ou sur les régions dynamiques <code>aria-live</code> est implémenté</li><li>vérifier qu'il soit restitué de façon pertinente au lecteur d'écran</li><li>dans le cas d'un message d'état non permanent et dont la disparition apporte une information (par exemple un état 'occupé' ou 'en attente' qui disparait dès la disponibilité du service), cet état doit également être restitué.</li></ul>",
 		"complement": "<h5>Exemples</h5><ul><li>message qui informe sur le résultat d'une action ou sur l'état de l'application&nbsp;: <code>role='status'</code></li><li>message d'erreur&nbsp;: <code>role='alert'</code></li><li>message qui indique la progression&nbsp;: <code>role='log'</code>, <code>'progressbar'</code> ou <code>'status'</code></li></ul><p>Plus d'information sur <a href=\"https://a11y-guidelines.orange.com/web/aria-status.html#utiliser-abbr-aria-abbr-les-messages-d-tat-de-statut-ou-contextuel \" target=\"_blank\" title=\"Les messages d'état (nouvelle fenêtre)\">les messages d'état</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-de-connaitre-le-resultat-dune-interaction-utilisateur-a-laide-de-messages-contextuels",
 		"priority": "P2",
@@ -763,8 +746,8 @@
 		"wcag": [
 			"2.2.2 A"
 		],
-		"verifier": "<p>Si un contenu d'une partie de la page, démarrant automatiquement et durant plus de 5 secondes, est en mouvement, défile, clignote, il existe un moyen de l'arrêter, le mettre en pause ou le cacher.</p><p>Pour du contenu d'une partie de la page qui se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</p>",
-		"exception": "Le critère est non-applicable si aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.",
+		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarre automatiquement&nbsp;:</p><ul><li>durant plus de 5 secondes, est en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le cacher.</li><li>se met à jour qui ou est rafraichi automatiquement, il existe un moyen de l'arrêter, le mettre en pause masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
+		"exception": "<p>Le critère est non-applicable si&nbsp;:</p><ul><li>aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>le contenu est essentiel</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -580,13 +580,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Chaque libellé de bouton est-il présent et pertinent&nbsp;?",
+		"title": "Les étiquettes visibles et les noms des boutons sont-ils présents et pertinents&nbsp;?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
 		"wcag": [
 			"2.4.6 AA"
 		],
-		"verifier": "<p>L'utilisateur doit connaitre la fonction d'un bouton grâce à son intitulé. Vérifier que l'action portée par le nom accessible de chaque bouton est pertinente.</p><p>En cas d'absence de nom accessible, penser à invalider le critère <a href=#headingtestID-066>4.1.2 A \"Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance ?</a></p>",
+		"verifier": "<ul><li><strong>Si le bouton est dans un formulaire&nbsp;:</strong> ne vérifier que la pertinence de l'étiquette et du nom (la présence étant évaluée au <a href='#testID-001')>test du critère WCAG 3.3.2</a></li><li><strong>Si le bouton est hors d'un formulaire&nbsp;:</strong> évaluer présence ET pertinence de l'étiquette et du nom.</li></ul><p>L'utilisateur doit pouvoir identifier la fonction d'un bouton. Vérifier que l'étiquette visible et le nom accessible de chaque bouton sont pertinents au regard de la fonction du bouton.</p>",
+		"complement": "<p>En cas d'absence de nom accessible, invalider le critère <a href=#headingtestID-066>4.1.2 A \"Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance&nbsp;?\"</a></p><p>Vérifier également que le nom accessible contienne bien l'étiquette visible. Si ce n'est pas le cas, invalider le critère <a href=#headingtestID-011>2.5.3 A \"Le nom accessible des composants d'interface contient-il au minimum le libellé visible à l'écran&nbsp;?\"</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -670,7 +671,7 @@
 		"wcag": [
 			"3.2.1 A"
 		],
-		"verifier": "<p>Lors de l'utilisation de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction à des résultats prédictibles (comportement classique, attendu par l'utilisateur).</p>", 
+		"verifier": "<p>Lors de l'utilisation de tout composant interactif, vérifier l'absence de changement de contexte lors de la prise de focus ou au survol souris d'un élément. Il s'agit de s'assurer que ce type d'interaction à des résultats prédictibles (comportement classique, attendu par l'utilisateur).</p>",
 		"exception": "Le critère est non applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
@@ -686,7 +687,7 @@
 		"wcag": [
 			"3.2.2 A"
 		],
-		"verifier": "<p>Vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur, lors de la modification de paramètre de tout composant interactif.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, la saisie de contenu dans un champ de texte, la sélection d'une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement classique, attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si&nbsp;:</p><ul><li>l'action est initiée par un bouton ou un lien explicite</li><li>l'utilisateur est averti par un texte avant son déclenchement</li></ul>",
+		"verifier": "<p>Vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur, lors de la modification de paramètre de tout composant interactif.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, la saisie de contenu dans un champ de texte, la sélection d'une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement classique, attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si l'utilisateur est averti par un texte avant son déclenchement.</p><p>L'activation d'un lien ou d'un bouton n'est pas une modification de paramètre donc le critère est non-applicable dans ce cas.</p>",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de la page Web qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements&nbsp;:</p><ul><li>d'agent utilisateur (ouverture d'une application depuis le navigateur)</li><li>de <span lang=\"en\">viewport</span> (autre partie de la page affichée, ouverture d'une nouvelle fenêtre)</li><li>de focus (déplacement du focus)</li><li>de contenu qui modifie le sens de la page Web</li></ul><p>L'activation d'un lien ou d'un bouton n'est pas une modification de paramètre.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisateur-garde-le-controle-lors-des-interactions",
 		"priority": "P2",
@@ -754,13 +755,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à <code>21 824 px²</code>",
+		"title": "Il n'y a aucun clignotement perturbant pour l'utilisateur",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": [
 			"2.3.1 A"
 		],
-		"verifier": "<p>Conforme, si les clignotements flashent moins de 3 fois par seconde ou sur une zone de moins de <code>21 824 px²</code></p>",
+		"verifier": "<p>S'il y a des flashs, clignotements, changements de luminosité ou scintillements, le critère est conforme si l'une des conditions est valide&nbsp;:</p><ul><li>Il y en a moins de trois pour n'importe quel intervalle d'une seconde</li><li>ou sur une zone totale contenant moins de 21 824 px (25% d'un rectangle de 341x256 px) pour un affichage minimum de 1024x768 px.</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil <a href=\"https://trace.umd.edu/peat/\">PEAT (Photosensitive Epilepsy Analysis Tool)</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#permettre-le-controle-des-animations",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -768,14 +769,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs pages, celui-ci est-il présenté dans le même ordre relatif ?",
+		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs pages, celui-ci est-il présenté dans le même ordre relatif&nbsp;?",
 		"ID": "testID-085",
 		"IDorigin": "testID-085",
 		"wcag": [
 			"3.2.6 A"
 		],
 		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit et dans le même ordre relatif sur toutes les pages.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, de résolution de la page, activation du zoom, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
-		"complement": "<h5>Complément d'information</h5><ul><li>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</li><li>Ce critère n'impose pas la présence de mécanismes d'aide. S'ils sont présents, vérifier que leur positionnement relatif est le même sur les différents pages du site ou de l'application.</li><li>Si la structure des pages est modifiée selon les profils d'utilisation (exemple : profil visiteur ou profil connecté), il convient de faire la vérification indépendamment pour chaque profil.</li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Les mécanismes d'aide peuvent prendre plusieurs formes selon le contexte&nbsp;: une adresse mail, un numéro de téléphone, un formulaire de contact, un lien de contact, un chat, une FAQ, etc.</li><li>Ce critère n'impose pas la présence de mécanismes d'aide. S'ils sont présents, vérifier que leur positionnement relatif est le même sur les différents pages du site ou de l'application.</li><li>Si la structure des pages est modifiée selon les profils d'utilisation (exemple : profil visiteur ou profil connecté), il convient de faire la vérification indépendamment pour chaque profil.</li></ul>",
 		"exception": "Le critère n'est pas applicable dans les cas suivants :<ul><li>des pages qui n'auraient rien à voir d'un point de vue visuel et fonctionnel (exemples : sur un site de e-commerce, lors du processus de paiement, le template peut changer et la page de paiement est fonctionnellement et visuellement totalement différente).</li><li>le mécanisme d'aide n'est présent que sur une seule page OU le mécanisme d'aide est absent de la page en cours.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/designer/navigation-generale/#sassurer-que-les-elements-daide-sont-places-dans-le-meme-ordre-relatif-sur-les-pages-qui-les-integrent",
 		"priority": "P1",
@@ -791,8 +792,8 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier que les fonctionnalités disponibles à la souris sont également disponibles au clavier</li><li>vérifier que les contenus apparaissant au survol (exemple&nbsp;: <span lang=\"en\">popin</span>, modale, infobulle) apparaissent également au focus</li></ul>", 
-		"exception": "Le critère est non applicable pour les cas suivants :<ul><li>les infobulles sont générées par l'agent utilisateur (exemple : les infobulles de l'attribut <code>title</code>)</li><li>la fonction sous-jacente nécessite l'exécution d'un chemin par l'utilisateur et pas seulement des deux points terminaux</li></ul>", 
+		"verifier": "<ul><li>vérifier que les fonctionnalités disponibles à la souris sont également disponibles au clavier</li><li>vérifier que les contenus apparaissant au survol (exemple&nbsp;: <span lang=\"en\">popin</span>, modale, infobulle) apparaissent également au focus</li></ul>",
+		"exception": "Le critère est non applicable pour les cas suivants :<ul><li>les infobulles sont générées par l'agent utilisateur (exemple : les infobulles de l'attribut <code>title</code>)</li><li>la fonction sous-jacente nécessite l'exécution d'un chemin par l'utilisateur et pas seulement des deux points terminaux</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#permettre-dutiliser-les-principales-fonctionnalites-de-lapplication-au-clavier",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -844,14 +845,14 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Le focus est-il présent et suffisamment visible ?",
+		"title": "Le focus est-il présent et suffisamment visible&nbsp;?",
 		"ID": "testID-041",
 		"IDorigin": "testID-041",
 		"wcag": [
 			"2.4.7 AA"
 		],
 		"verifier": "<p>Le focus doit toujours être présent et suffisamment visible sur tous les éléments focusables.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Si le focus par défaut du navigateur est désactivé, un focus personnalisé doit être affiché en remplacement.</p><p>En cas de contraste insuffisant de l'indicateur de focus, invalider le critère <a href=#headingtestID-026>WCAG 1.4.11 AA / \"Les couleurs utilisées dans les composants d'interface ou les éléments graphiques porteurs d'informations sont-elles suffisamment contrastées&nbsp;?\"</a></p><p>Vérifier également que la visualisation de l'indicateur de focus n'est pas transmise que par un changement de couleur. Si c'est le cas, invalider le critère <a href=#headingtestID-027>WCAG 1.4.1 A / \"L'information est-elle également transmise à l'utilisateur par un autre moyen que par la couleur&nbsp;?\"</a></p> ",
 		"moreInfo":"https://a11y-guidelines.orange.com/fr/web/developper/navigation-clavier/#rendre-visible-le-focus-en-toute-circonstance",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -859,7 +860,7 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Le composant recevant le focus n'est pas complètement masqué ? ",
+		"title": "Le composant recevant le focus n'est pas complètement masqué&nbsp;? ",
 		"ID": "testID-081",
 		"IDorigin": "testID-081",
 		"wcag": [
@@ -953,7 +954,7 @@
 		"wcag": [
 			"1.3.2 A"
 		],
-		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page&nbsp;:<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p><strong>Exemple&nbsp;:</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre sans CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
+		"verifier": "<p>Si un ordre de lecture spécifique est obligatoire pour comprendre un contenu de la page&nbsp;:<br/> quand le CSS est désactivé, vérifier que ce contenu lu de façon linéaire reste compréhensible.</p><p>Dans le cas d'un tableau utilisé pour de la mise en forme, vérifier que la désactivation du CSS ne dégrade pas l'ordre de lecture et la compréhension du contenu.</p><p><strong>Exemple&nbsp;:</strong> un contenu implémenté sous forme de colonnes en CSS doit être restitué dans le bon ordre sans CSS.</p><p>Si aucun contenu nécessite un ordre de lecture spécifique, alors le critère est non applicable.</p>",
 		"complement": "<h5>Compléments d'information</h5><p>L'ordre des contenus dans le code HTML doit rester compréhensible, en général, il suffit qu'il soit identique à l'ordre d'affichage des contenus à l'écran.</p><p>Exemples de contenus à tester&nbsp;:</p><ul><li>Mise en page via ces propriétés CSS&nbsp; <ul><li>les propriétés de positionnement (<code>top</code>, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> ou <code>display:\"grid\"</code></li></ul></li><li>Tableau de mise en forme</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
@@ -1014,6 +1015,20 @@
 		],
 		"verifier": "<p>Vérifier que le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'éléments tronqués).</p>",
 		"exception" : "Le critère est non-applicable si une orientation est jugée essentielle, exemples :<ul><li>un chèque bancaire</li><li>une application pour du piano</li><li>des diapositives pour un téléviseur ou projecteur…</li></ul>",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Mise en page",
+		"title": "Les contenus cachés doivent-ils être ignorés par les technologies d'assistance&nbsp;?",
+		"ID": "testID-092",
+		"IDorigin": "testID-092",
+		"wcag": [
+			"1.3.2 A"
+		],
+		"verifier": "<p>Vérifier la présence de contenu caché, par exemple, à l'aide d'un attribut <code>hidden</code> ou <code>aria-hidden</code> et que :</p><ul><li>ce contenu doit effectivement être masqué aux technologies d'assistance</li><li>ou que ce contenu peut être rendu restituable par une action de l'utilisateur.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#donner-acces-au-contenu-quelle-que-soit-lorientation-de-lecran",
 		"priority": "P3",
 		"resultatTest": "nt",

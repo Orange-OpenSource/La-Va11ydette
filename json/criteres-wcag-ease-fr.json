@@ -56,8 +56,8 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Vérifier la présence, si nécessaire, de groupement de type <code>fieldset</code> ou d'un attribut ARIA <code>role='group'</code> ou <code>role='radiogroup'</code> ou <code>optgroup</code> dans un <code>select</code></p><p>Vérifier que chaque groupe possède une légende ou une étiquette.</p>",
-		"complement": "<strong>Complément&nbsp;: </strong><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de type radio (<code><input type='radio'></code>) ou balises possédant un attribut ARIA <code>role='radio'</code>) ou de type checkbox(<code><input type='checkbox'></code>) ou balises possédant un attribut ARIA <code>role='checkbox'</code></li></ul><p><strong>Attention&nbsp;:</strong> La pertinence (<abbr>WCAG</abbr> 2.4.6 <span lang=\"en\">Headings and Labels</span>) de la légende est à évaluer au niveau de la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a></p>",
+		"verifier": "<p>Vérifier la présence, si nécessaire, de groupement de type <code>fieldset</code> ou d'un attribut ARIA <code>role='group'</code> ou <code>role='radiogroup'</code> ou <code>optgroup</code> dans un <code>select</code>.</p><p>Vérifier que chaque groupe possède une légende ou une étiquette.</p>",
+		"complement": "<strong>Complément&nbsp;: </strong><p>On regroupe uniquement lorsque nécessaire, par exemple&nbsp;:</p><ul><li>afin de distinguer plusieurs champs ayant le même label (rue, code postal, ville pour adresse de facturation et adresse de livraison)</li><li>légende nécessaire pour faire un choix dans une liste de type radio (<code>input type='radio'</code>) ou balises possédant un attribut ARIA <code>role='radio'</code>) ou de type checkbox(<code>input type='checkbox'</code>) ou balises possédant un attribut ARIA <code>role='checkbox'</code></li></ul><p><strong>Attention&nbsp;:</strong> La pertinence (<abbr>WCAG</abbr> 2.4.6 <span lang=\"en\">Headings and Labels</span>) de la légende est à évaluer au niveau de la question&nbsp;: <a href='#headingtestID-002'>Chaque étiquette et légende de champ est-elle pertinente&nbsp;?</a></p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P3",
@@ -482,7 +482,7 @@
 		"wcag": [
 			"1.4.1 A"
 		],
-		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemples&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>les couleurs portant l'information sont bien différenciées selon leur teinte et leur luminosité (i.e le contraste entre les couleurs doit être supérieur à 3:1). Par exemple : vert clair et rouge foncé</li></ul><p>Cas particuliers des liens non soulignés dans du texte&nbsp;:</p><ul><li>le lien doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus et au survol de la souris (exemple&nbsp;: souligné)</li></ul>",
+		"verifier": "<p>Vérifier que la couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemples&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>les couleurs portant l'information sont bien différenciées selon leur teinte et leur luminosité (i.e le contraste entre les couleurs doit être supérieur à 3:1). Par exemple : vert clair et rouge foncé.</li></ul><p>Cas particuliers des liens non soulignés dans du texte&nbsp;:</p><ul><li>le lien doit avoir un contraste de 3:1 avec le texte environnant</li> <li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus et au survol de la souris (exemple&nbsp;: souligné)</li></ul>",
 		"exception":"Le critère est non-applicable pour les cas suivants :<ul><li>Les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-têtes et pieds de page, menu ou liste de liens…)</li><li>Si aucune information n'est portée par de la couleur</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",
@@ -512,7 +512,7 @@
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenêtre)'>Le nom accessible en HTML</a></p>",
+		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenêtre)'>le nom accessible en HTML</a>).</p>",
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre un <code>aria-label</code> «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
 		"exception":"Le critère est non-applicable si aucun composant d'interface n'a de libellé texte visible (exemple : icônes sans texte)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
@@ -823,7 +823,7 @@
 		],
 		"verifier": "<ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) à la combinaison</li></ul>",
 		"exception": "Le critère n'est pas applicable aux raccourcis par <code>accesskey</code> ni aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : <kbd>Ctrl</kbd>, <kbd>Alt</kbd> ou <kbd>Shift</kbd>).",
-		"complement": "<h5>Complément d'information</h5><p>La présence de raccourcis peut être détectée en utilisant ce <a href='https://a11y-guidelines.orange.com/fr/web/outils/methodes-et-outils-de-test/raccourcis-clavier/'>bookmarklet raccourcis clavier</a></p>",
+		"complement": "<h5>Complément d'information</h5><p>La présence de raccourcis peut être détectée en utilisant ce <a href='https://a11y-guidelines.orange.com/fr/web/outils/methodes-et-outils-de-test/raccourcis-clavier/'>bookmarklet raccourcis clavier</a>.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#sassurer-que-lutilisaateur-garde-le-controle-lors-des-interactions",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -969,7 +969,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Vérifier l'absence de perte d'information</p>",
+		"verifier": "<p>Vérifier l'absence de perte d'information.</p>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (exemples&nbsp;: propriété <code>content</code> des pseudo classes <code>::before</code> / <code>:before</code> et <code>::after</code> / <code>: after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
@@ -1198,7 +1198,7 @@
 			"1.4.2 A"
 		],
 		"verifier": "<p>Il est possible de :</p> <ul><li>mettre en pause ou d'arrêter le son</li><li>régler le volume indépendamment du volume système</li></ul>",
-		"complement":"<h5>Complément d'information</h5><p>Le mécanisme doit être facilement atteignable</p>",
+		"complement":"<h5>Complément d'information</h5><p>Le mécanisme doit être facilement atteignable.</p>",
 		"group": "Multimédia",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#rendre-accessible-les-pistes-audio-ou-video",
 		"priority": "P3",

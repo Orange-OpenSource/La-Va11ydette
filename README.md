@@ -8,7 +8,7 @@ D’autre part, un outil de réponses à une liste de contrôles (checklist) est
 
 ## Copyright and license
 
-Documentation under the [https://creativecommons.org/licenses/by/3.0/](https://creativecommons.org/licenses/by/3.0).  
+Documentation under the [https://creativecommons.org/licenses/by/3.0/](https://creativecommons.org/licenses/by/3.0/).  
 Source code under the [MIT License](https://github.com/Orange-OpenSource/La-Va11ydette/blob/master/LICENSE).
 
 The Orange logo and some images or screenshots are the property of Orange:

@@ -137,13 +137,13 @@ All notable changes to this project will be documented in this file. This projec
 
     Précision que si des champs obligatoires ont juste un astérisque (*), il faut préciser au début du champ qu'il signifie qu'il est obligatoire
 
-- [La prise de focus est-elle visible?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-041)
+- [La prise de focus est-elle visible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-041)
 
     Passage du critère WCAG 2.4.7 de AA à A.
 
 ### Supprimé
 
-- [Le code source est-il valide?](https://www.w3.org/WAI/WCAG21/Understanding/parsing.html)
+- [Le code source est-il valide ?](https://www.w3.org/WAI/WCAG21/Understanding/parsing.html)
 
     Le critère est déprécié, il est donc supprimé avec la sortie des WCAG 2.2
 

@@ -92,7 +92,6 @@ All notable changes to this project will be documented in this file. This projec
 
 - [Après désactivation du CSS, la page reste-t-elle compréhensible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-058): more details were added to the corresponding methodology.
 
-
 ### Removed
 
 - Criteria **En cas d'erreur, est-ce qu'une suggestion de correction est proposée à l'utilisateur ?** (testID-088) has been removed.

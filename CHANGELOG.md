@@ -38,27 +38,27 @@ All notable changes to this project will be documented in this file. This projec
 
 - [Un format de données est-il indiqué, si besoin ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-005):testID-005 has been renamed (old name was **Pour les champs nécessitant un type ou un format de données précis, ce format de données est-il indiqué clairement à l'utilisateur ?**) and more information was added to warn user to check if the format is explicit enough in testID-002.
 
--[Chaque champ de formulaire a-t-il un nom accessible pertinent ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-067) has been renamed (old name was **Chaque champ de formulaire a-t-il un nom accessible ?**) and more details were added to the corresponding methodology.
+- [Chaque champ de formulaire a-t-il un nom accessible pertinent ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-067) has been renamed (old name was **Chaque champ de formulaire a-t-il un nom accessible ?**) and more details were added to the corresponding methodology.
 
--[Les éléments de formulaire sont-ils regroupés lorsque nécessaire ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-003) has been renamed (old name was **Les champs sont-ils regroupés lorsque nécessaire ?**) and more details were added to the corresponding methodology.
+- [Les éléments de formulaire sont-ils regroupés lorsque nécessaire ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-003) has been renamed (old name was **Les champs sont-ils regroupés lorsque nécessaire ?**) and more details were added to the corresponding methodology.
 
--[Chaque étiquette et légende de champ est-elle pertinente ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-002) has been renamed (old name was **Chaque étiquette de champ est-elle pertinente ?**) and more details were added to the corresponding methodology.
+- [Chaque étiquette et légende de champ est-elle pertinente ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-002) has been renamed (old name was **Chaque étiquette de champ est-elle pertinente ?**) and more details were added to the corresponding methodology.
 
--[Les éléments de formulaire obligatoires sont-ils identifiables ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-004) has been renamed (old name was **Les champs obligatoires sont-ils identifiables ?**) and more details were added to the corresponding methodology.
+- [Les éléments de formulaire obligatoires sont-ils identifiables ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-004) has been renamed (old name was **Les champs obligatoires sont-ils identifiables ?**) and more details were added to the corresponding methodology.
 
--[Les champs en erreur sont-ils identifiables et l'erreur est-elle décrite sous forme de texte ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-006) has been renamed (old name was **Les champs en erreur sont-ils identifiables ?**) and more details were added to the corresponding methodology.
+- [Les champs en erreur sont-ils identifiables et l'erreur est-elle décrite sous forme de texte ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-006) has been renamed (old name was **Les champs en erreur sont-ils identifiables ?**) and more details were added to the corresponding methodology.
 
--[Les messages d'erreur et les suggestions sont-ils explicites ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-007) has been renamed (old name was **Les messages d'erreur sont-ils explicites ?**) and more details were added to the corresponding methodology.
+- [Les messages d'erreur et les suggestions sont-ils explicites ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-007) has been renamed (old name was **Les messages d'erreur sont-ils explicites ?**) and more details were added to the corresponding methodology.
 
--[Les messages d'état sont-ils correctement restitués ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-034) has been renamed (old name was **Les messages de statuts sont-ils correctement restitués ?**) and more details were added to the corresponding methodology.
+- [Les messages d'état sont-ils correctement restitués ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-034) has been renamed (old name was **Les messages de statuts sont-ils correctement restitués ?**) and more details were added to the corresponding methodology.
 
--[Les étiquettes visibles et les noms des boutons sont-ils présents et pertinents ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-069) has been renamed (old name was **Chaque libellé de bouton est-il présent et pertinent ?**) and more details were added to the corresponding methodology.
+- [Les étiquettes visibles et les noms des boutons sont-ils présents et pertinents ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-069) has been renamed (old name was **Chaque libellé de bouton est-il présent et pertinent ?**) and more details were added to the corresponding methodology.
 
--[Il n'y a aucun clignotement perturbant pour l'utilisateur](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-036) has been renamed (old name was **Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à 21 824 px²**) and more details were added to the corresponding methodology.
+- [Il n'y a aucun clignotement perturbant pour l'utilisateur](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-036) has been renamed (old name was **Il n'y a aucun clignotement de plus de 3 flashs par seconde sur une zone égale ou supérieure à 21 824 px²**) and more details were added to the corresponding methodology.
 
 ### Fixed
 
--[Pour chaque formulaire sensible, l'utilisateur a-t-il le contrôle de ses données ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-009): more details were added to the corresponding methodology.
+- [Pour chaque formulaire sensible, l'utilisateur a-t-il le contrôle de ses données ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-009): more details were added to the corresponding methodology.
 
 - [Le titre de la page est-il pertinent ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-017): more details were added to the corresponding methodology.
 

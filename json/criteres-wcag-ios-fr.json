@@ -436,7 +436,7 @@
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<ul><li>Chaque message d'état (voir les exemples ci-dessous) est restitué par le lecteur d'écran sans déplacement du focus (mécanisme reposant sur les annonces ou les <span lang=\"en\">live regions</span>).</li><li>Chaque message d'état est restitué de façon pertinente.</li><li>Dans le cas d'un message d'état non permanent et dont la disparition apporte une information (par exemple un état 'occupé' ou 'en attente' qui disparait dès la disponibilité du service), cet état doit également être restitué.</li></ul>",
+		"verifier": "<ul><li>Chaque message d'état sans déplacement du focus (voir les exemples ci-dessous) est restitué par le lecteur d'écran (mécanisme reposant sur les annonces ou les <span lang=\"en\">live regions</span>).</li><li>Chaque message d'état est restitué de façon pertinente.</li><li>Dans le cas d'un message d'état non permanent et dont la disparition apporte une information (par exemple un état 'occupé' ou 'en attente' qui disparait dès la disponibilité du service), cet état doit également être restitué.</li></ul>",
         "complement": "<h4>Exemples de message d'état</h4><ul><li>résultat d'une recherche</li><li>état de l'application (par ex. hors-ligne)</li><li>message d'erreur</li><li>message indiquant la progression</li><li>notification</li><li>message suite à l'ajout d'un produit dans un panier</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
@@ -578,7 +578,7 @@
 			"0": "2.4.7 AA"
 		},
 		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
-		"complement": "<h5>Complément</h5><p>Sur iOS, il n'est pas possible de modifier l'aspect du focus mais il est possible de modifier la couleur d'un composant recevant le focus, en utilisant la méthode Swift <a href='https://developer.apple.com/documentation/objectivec/nsobject-swift.class/accessibilityelementdidbecomefocused()/'>accessibilityElementDidBecomeFocused</a> ou la propriété SwiftUI <a href='https://developer.apple.com/documentation/swiftui/accessibilityfocusstate'>accessibilityfocusstate.</p>",
+		"complement": "<h5>Complément</h5><p>Sur iOS, il n'est pas possible de modifier l'aspect du focus mais il est possible de modifier la couleur d'un composant recevant le focus, en utilisant la méthode Swift <a href='https://developer.apple.com/documentation/objectivec/nsobject-swift.class/accessibilityelementdidbecomefocused()/'>accessibilityElementDidBecomeFocused</a> ou la propriété SwiftUI <a href='https://developer.apple.com/documentation/swiftui/accessibilityfocusstate'>accessibilityfocusstate</a>.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -596,6 +596,37 @@
 		"priority": "P1",
 		"wcag22" : true,
 		"goodPractice": false
+	},
+	{
+		"themes": "Navigation générale",
+		"title": "L'utilisateur a-t-il le contrôle des changements de contexte lors de la prise de focus ?",
+		"ID": "testID-038",
+		"IDorigin": "testID-038",
+		"wcag": {
+			"0": "3.2.1 A"
+		},
+		"verifier": "<p>Lors de la prise de focus d'un élément, vérifier l'absence de changement de contexte sans avertissement de l'utilisateur.</p>",
+		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
+		"exception": "<p>Le critère est non-applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
+	},
+    {
+		"themes": "Navigation générale",
+		"title": "Les étiquettes visibles et les noms des boutons sont-ils présents et pertinents&nbsp;?",
+		"ID": "testID-068",
+		"IDorigin": "testID-068",
+		"wcag": [
+			"2.4.6 AA"
+		],
+		"verifier": "<ul><li><strong>Si le bouton est dans un formulaire :</strong> ne vérifier que la pertinence de l'étiquette et du nom (la présence étant évaluée au <a href=#headingtestID-001>test du critère WCAG 3.3.2</a></li><li><strong>Si le bouton est hors d'un formulaire :</strong> évaluer présence ET pertinence de l'étiquette et du nom.</li></ul><p>Pour chaque bouton possédant une étiquette visible, vérifier que son étiquette visible et son nom accessible sont pertinents au regard de la fonction du composant.</p>",
+		"complement": "<p>En cas d'absence de nom accessible, invalider le critère <a href=#headingtestID-024>4.1.2 A \"Le nom, le rôle et l'état de chaque composant d'interface sont-ils vocalisés&nbsp;?</a></p><p>Vérifier également que le nom accessible contienne bien l'étiquette visible. Si ce n'est pas le cas, invalider le critère <a href=#headingtestID-051>2.5.3 A \"Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran&nbsp;?</p>",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
 	},
 	{
 		"themes": "Navigation générale",
@@ -718,7 +749,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Une limite de temps impliquant un changement de contexte a-t-elle son délai adaptable&nbsp;?",
+		"title": "Les limites de temps sont-elles contrôlables par l'utilisateur&nbsp;?",
 		"ID": "testID-036",
 		"IDorigin": "testID-036",
 		"wcag": {
@@ -746,29 +777,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'utilisateur a-t-il le contrôle des changements de contexte lors de la prise de focus ?",
-		"ID": "testID-038",
-		"IDorigin": "testID-038",
-		"wcag": {
-			"0": "3.2.1 A"
-		},
-		"verifier": "<p>Lors de la prise de focus d'un élément, vérifier l'absence de changement de contexte sans avertissement de l'utilisateur.</p>",
-		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
-		"exception": "<p>Le critère est non-applicable si, à la prise de focus, le contexte ne change pas. Par exemple, l'apparition d'un menu ou encore la modification visuelle lors du survol d'un lien ne sont pas des changements de contexte.</p>",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/conception/#controle-de-contenu"
-	},
-	{
-		"themes": "Navigation générale",
 		"title": "L'utilisateur a-t-il le contrôle des changements de contexte lors de la saisie ?",
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
 		"wcag": {
 			"0": "3.2.2 A"
 		},
-		"verifier": "<p>Lors de la modification de paramètre, vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, saisir du contenu dans un champ de texte, sélectionner une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si l'utilisateur est averti par un texte avant son déclenchement</p><p>L'activation d'un lien ou d'un bouton n'est pas une modification de paramètre donc non-applicable.</p>",
+		"verifier": "<p>Lors de la modification de paramètre, vérifier l'absence de changement de contexte, sans avertissement préalable de l'utilisateur.</p><p>La modification d'un paramètre peut être, par exemple, cocher une case, saisir du contenu dans un champ de texte, sélectionner une option dans un contrôle de formulaire, tout cela doit avoir des résultats prédictibles (comportement attendu par l'utilisateur)</p><p>Le changement de contexte est conforme si l'utilisateur est averti par un texte avant son déclenchement</p><p>L'activation d'un lien ou d'un bouton n'est pas une modification de paramètre donc non-applicable dans ce cas.</p>",
 		"complement": "<h5>Changement de contexte</h5><p>Changement majeur dans le contenu de l'écran qui, lorsqu'il est effectué à l'insu de l'utilisateur, peut désorienter.</p><p>Les changements de contexte incluent les changements de&nbsp;:</p><ul><li>agent utilisateur (ouverture d'une autre application)</li><li><span lang=\"en\">viewport</span>(ouverture d'un nouvel écran, autre partie de l'écran affiché)</li><li>focus (déplacement du focus)</li><li>contenu qui modifie le sens de l'écran</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -783,7 +798,7 @@
 		"wcag": {
 			"0": "2.2.2 A"
 		},
-		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarrant automatiquement&nbsp;:<ul><li>durant plus de 5 secondes, en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le masquer/cacher.</li><li>se met à jour ou est rafraichi automatiquement, il doit exister un moyen de l'arrêter, le mettre en pause masquer/cacher ou jouer sur sa fréquence de mise à jour.</li></ul>",
+		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarrant automatiquement&nbsp;:<ul><li>durant plus de 5 secondes, en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le masquer.</li><li>se met à jour ou est rafraichi automatiquement, il doit exister un moyen de l'arrêter, le mettre en pause, le masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
 		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service.</li></ul>",
 		"resultatTest": "nt",
@@ -792,7 +807,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Il n'y a aucun clignotement de plus de 3 flashs",
+		"title": "Il n'y a aucun clignotement perturbant pour l'utilisateur",
 		"ID": "testID-040",
 		"IDorigin": "testID-040",
 		"wcag": {
@@ -846,31 +861,16 @@
 		"priority": "P3",
 		"goodPractice": false
 	},
-    {
-		"themes": "Navigation générale",
-		"title": "Chaque étiquette de composant est-elle pertinente (si présente)&nbsp;?",
-		"ID": "testID-068",
-		"IDorigin": "testID-068",
-		"wcag": [
-			"2.4.6 AA"
-		],
-		"verifier": "<p>Pour chaque composant intéractif possédant une étiquette visible, vérifier que son étiquette visible et son nom accessible sont pertinents au regard de la fonction du composant.</p>",
-		"complement": "<p>En cas d'absence de nom accessible, invalider le critère <a href=#headingtestID-024>4.1.2 A \"Le nom, le rôle et l'état de chaque composant d'interface sont-ils vocalisés&nbsp;?</a></p><p>Vérifier également que le nom accessible contienne bien l'étiquette visible. Si ce n'est pas le cas, invalider le critère <a href=#headingtestID-051>2.5.3 A \"Le nom accessible de chaque composant contient-il au minimum le libellé visible à l'écran&nbsp;?</p>",
-		"priority": "P1",
-		"resultatTest": "nt",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles"
-	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'application dispose-t-elle d'au moins 2 mécanismes de navigation&nbsp;?",
+		"title": "L'application dispose-t-elle d'au moins deux mécanismes de navigation&nbsp;?",
 		"ID": "testID-069",
 		"IDorigin": "testID-069",
 		"wcag": [
 			"2.4.5 AA"
 		],
-		"verifier": "<p>Il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche</li><li>...</li></ul>", 
-		"exception": "<p>Le critère est non-applicable pour le cas suivants :</p><ul><li>Si le nombre d'écrans est limité et/ou que le contenu est court.</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
+		"verifier": "<p>Il existe plusieurs mécanismes pour atteindre un contenu souhaité et permettre à un utilisateur de se situer au sein de l'application&nbsp;:</p> <ul><li>un menu de navigation principal</li><li>une <code>tab bar</code></li><li>un mécanisme de recherche indexant la totalité du site.</li><li>...</li></ul><p>Attention, le critère est conforme si le nombre de pages est inférieur à 3 ou 4 et/ou le contenu est succinct mais que des liens (navigation) existent pour toutes les pages.</p>", 
+		"exception": "<p>La page est indépendante et hébergée en dehors de l'application</li><li>Pour un écran résultat ou étape d'un processus à étapes.</li></ul>",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

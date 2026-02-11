@@ -505,7 +505,7 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Le nom accessible des composants d'interface contient-il au minimum le libellé visible à l'écran&nbsp;?",
+		"title": "Le nom accessible des composants interactifs contient-il au minimum le libellé visible à l'écran&nbsp;?",
 		"ID": "testID-011",
 		"IDorigin": "testID-011",
 		"wcag": [
@@ -513,7 +513,7 @@
 		],
 		"verifier": "<p>Vérifier que le texte de l'étiquette affichée (le libellé textuel ou le texte de l'image visible à l'écran) est présent dans le nom accessible de ce composant (pour aller plus loin&nbsp;: <a href='https://a11y-guidelines.orange.com/fr/articles/le-nom-accessible-en-html/' target='_blank' title='Le nom accessible en HTML (nouvelle fenêtre)' aria-label='La nom accessible en HTML (nouvelle fenêtre)'>le nom accessible en HTML</a>).</p>",
 		"complement": "<p>Exemple&nbsp;: pour un lien «&nbsp;démarrer&nbsp;», mettre un <code>aria-label</code> «&nbsp;démarrer la lecture&nbsp;», mais pas «&nbsp;lancer la lecture&nbsp;»</p>",
-		"exception":"Le critère est non-applicable si aucun composant d'interface n'a de libellé texte visible (exemple : icônes sans texte)",
+		"exception":"Le critère est non-applicable si aucun composant interactif n'a de libellé texte visible (exemple : icônes sans texte)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#rendre-les-intitules-des-liens-et-des-boutons-accessibles",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -883,6 +883,7 @@
 		],
 		"verifier": "<p>Vérifier l'absence de perte d'information (pas de contenus ou de fonctionnalités inutilisables, tronqués ou masqués) suite à l'agrandissement de la taille du texte à 200%.</p><p><em>Note&nbsp:</em> le zoom du texte doit être autorisé sur mobile. Il ne faut pas de présence de balise \"&lt;meta name='viewport'&gt;\" avec&nbsp:</p><ul><li>soit, le paramètre user-scalable='no' </li><li>soit, le paramètre maximum-scale inférieur à 2</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#utiliser-des-tailles-relatives-et-faire-du-web-adaptatif",
+        "exception": "Le critère est non-applicable pour les sous-titres et textes sous forme d'image.",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

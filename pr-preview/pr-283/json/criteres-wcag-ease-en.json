@@ -899,7 +899,8 @@
 			"1.4.4 AA"
 		],
 		"verifier": "<p>Check that there is no loss of information (no unusable, truncated or hidden content or functionality) following the enlargement of the text size to 200%.</p><p><em>Note:</em> text zoom must be allowed on mobile. There must not be a \"&lt;meta name= 'viewport'&gt;\" tag with:</p><ul><li>the parameter user-scalable='no' </li><li>or, the parameter maximum-scale less than 2</li></ul>",
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
+		"exception": "The criterion is not applicable for captions and images of text."
+        "moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#use-relative-size-to-allow-changing-text-size-and-responsive-design",
 		"priority": "P3",
 		"resultatTest": "nt",
 		"goodPractice": false

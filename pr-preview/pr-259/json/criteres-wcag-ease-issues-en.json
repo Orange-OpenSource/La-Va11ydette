@@ -169,8 +169,8 @@
 			"title": "Level headings are irrelevant.",
 			"detail": "Level headings should be relevant and accurately describe the section of content they feature.\n Headings within the same level cannot have the same name.",
 			"solution" : "",
-			"technical solution" : ""
-		}		
+			"technicalSolution" : ""
+		}
 	],
 	"testID-084":[
 		{
@@ -611,12 +611,12 @@
 			"solution" : "Apply an ARIA role (\"status\", \"alert\", \"alertdialog\", etc...) or an attribute \"aria-live\" to the alert message to make it automatically vocalized. Examples: \"\n - <div role=\"status\"> […] </div> \n - <div aria-live=\"assertive\">[…]</div>\"",
 			"technicalSolution" : ""
 		},
-				{ 
-			"title" : "Action in progress is not returned to the user", 
-			"detail" : "The progression through warning messages is not returned to screen readers.", 
+		{
+			"title" : "Action in progress is not returned to the user",
+			"detail" : "The progression through warning messages is not returned to screen readers.",
 			"solution" : "Apply an ARIA role (\"status\", \"alert\", \"alertdialog\", etc…) or attribute \"aria-live\" on the alert message so that it is automatically vocalized. Examples: \"\n - <div role=\"status\"> […] </div> \n - <div aria-live=\"assertive\">[…]</div>\"", 
-			"technicalSolution" : "" 
-		} 
+			"technicalSolution" : ""
+		}
 	],
 	"testID-035":[
 		{
@@ -630,6 +630,14 @@
 		{
 			"title" : "Presence of rapid flashing",
 			"detail" : "Presence of content presenting rapid flashes (more than 3 flashes per second) or the flashes are below the general threshold or red threshold.",
+			"solution" : "",
+			"technicalSolution" : ""
+		}
+	],
+	"testID-037":[
+		{
+			"title" : "Element not usable using keyboard",
+			"detail" : "An element is not usable via keyboard navigation.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}

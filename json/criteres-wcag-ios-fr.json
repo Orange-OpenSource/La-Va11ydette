@@ -302,8 +302,7 @@
 		"ID": "testID-017",
 		"IDorigin": "testID-017",
 		"wcag": {
-			"0": "1.4.4 AA",
-			"1": "1.4.10 AA"
+			"0": "1.4.4 AA"
 		},
 		"verifier": "<ul><li>Sur iOS, après agrandissement du texte à 235%, les textes de taille \"standard\" doivent s'agrandir conformément aux réglages natifs (ex. texte 17pt agrandi à 40pt d'après les spécifications Apple).</li><li>Le contenu est présenté sans perte d'information ni de fonctionnalité (contenu tronqué, masqué ou superposé) et sans nécessité de défilement dans les deux dimensions.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Certains textes comme les titres peuvent être agrandis de moins de 200% en fonction de leur taille d'origine (ex. titre 28pt agrandi à 48pt d'après les spécifications Apple)</li><li>De même, certains éléments natifs tels que la barre d'onglets peuvent ne pas s'agrandir (limitation de l'OS).</li></ul>",
@@ -350,7 +349,7 @@
 		"wcag": {
 			"0": "4.1.2 A"
 		},
-		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, élément de formulaire, etc.) est correctement restitué</li><li>L'état ou la valeur de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
+		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, élément de formulaire, etc.) est correctement restitué.</li><li>L'état ou la valeur de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -391,28 +390,13 @@
 		"ID": "testID-019",
 		"IDorigin": "testID-019",
 		"wcag": {
-			"0": "1.3.2 A",
-			"1": "2.4.3 A"
+			"0": "1.3.2 A"
 		},
-		"verifier": "<p>Les éléments doivent suivre un ordre logique et compréhensible en utilisant la navigation vocale. Les éléments restitués sont lus selon l'ordre de lecture naturel (de gauche à droite et de haut en bas).</p><p>La disposition spécifique d'un contenu est traitée par le critère 1.3.1.</p>",
+		"verifier": "<p>Les éléments doivent suivre un ordre logique et compréhensible en utilisant la navigation vocale. L'organisation des informations et en particulier le regroupement visuel d'éléments doivent être restitués de manière cohérente et compréhensible.</p><p>La disposition spécifique d'un contenu est traitée par le critère 1.3.1.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#ordre-de-lecture"
-	},
-	{
-		"themes": "Navigation vocale",
-		"title": "Les éléments liés sont-ils groupés au sein d'un même bloc d'annonce pour la vocalisation&nbsp;?",
-		"ID": "testID-020",
-		"IDorigin": "testID-020",
-		"wcag": {
-			"0": "1.3.1 A"
-		},
-		"verifier": "<p>Les éléments, dont le regroupement visuel est primordial pour comprendre l'information, doivent être groupés au sein d'un même bloc d'annonce pour la vocalisation.</p>",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
 	},
 	{
 		"themes": "Navigation vocale",
@@ -502,6 +486,19 @@
 	},
 	{
 		"themes": "Navigation vocale",
+		"title": "Les changements de sens de lecture sont-ils signalés&nbsp;?",
+		"ID": "testID-020",
+		"IDorigin": "testID-020",
+		"wcag": {
+			"0": "1.3.2 A"
+		},
+		"verifier": "<p>Vérifier que les changements de sens de lecture (RTL : <span lang=\"en\">Right-To-Left</span>) sont restitués correctement par le lecteur d'écran.</p>",
+		"priority": "P3",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+	{
+		"themes": "Navigation vocale",
 		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
@@ -522,7 +519,7 @@
 		"wcag": {
 			"0": "2.1.1 A"
 		},
-		"verifier": "<ul><li>Toutes les fonctionnalités sont disponibles avec le Contrôle de Sélection et avec l'Accès Complet au Clavier</li><li>Seuls les éléments interactifs sont focusables</li><li>Les éléments sont regroupés lorsqu'ils sont liés (exemple : contenu au sein d'une ligne cliquable d'une liste)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (ScrollView)</li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités disponibles en tactile le sont aussi avec le Contrôle de Sélection et avec l'Accès Complet au Clavier (directement ou au travers une alternative)</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (<span lang=\"en\">ScrollView)</span></li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
@@ -549,8 +546,8 @@
 		"wcag": {
 			"0": "2.1.4 A"
 		},
-		"verifier": "<p>Une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
-		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : Ctrl, Alt ou Shift).</p>",
+		"verifier": "<p>Au moins une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
+		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : <kbd>Ctrl</kbd>, <kbd>Alt</kbd> ou <kbd>Shift</kbd>).</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -571,14 +568,14 @@
 	},
 	{
 		"themes": "Contrôle de sélection et navigation clavier",
-		"title": "La prise de focus est-elle visible&nbsp;?",
+		"title": "Le focus est-il présent et suffisamment visible&nbsp;?",
 		"ID": "testID-030",
 		"IDorigin": "testID-030",
 		"wcag": {
 			"0": "2.4.7 AA"
 		},
-		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
-		"complement": "<h5>Complément</h5><p>Sur iOS, il n'est pas possible de modifier l'aspect du focus mais il est possible de modifier la couleur d'un composant recevant le focus, en utilisant la méthode Swift <a href='https://developer.apple.com/documentation/objectivec/nsobject-swift.class/accessibilityelementdidbecomefocused()/'>accessibilityElementDidBecomeFocused</a> ou la propriété SwiftUI <a href='https://developer.apple.com/documentation/swiftui/accessibilityfocusstate'>accessibilityfocusstate</a>.</p>",
+		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante. Si besoin, modifier l'aspect du focus via les paramètres de réglages du clavier.</li></ul>",
+		"complement": "<h5>Complément</h5><p>Sur iOS, il n'est pas possible de modifier programmatiquement l'aspect du focus mais il est possible de modifier la couleur d'un composant recevant le focus, en utilisant la méthode Swift <a href='https://developer.apple.com/documentation/objectivec/nsobject-swift.class/accessibilityelementdidbecomefocused()/'>accessibilityElementDidBecomeFocused</a> ou la propriété SwiftUI <a href='https://developer.apple.com/documentation/swiftui/accessibilityfocusstate'>accessibilityfocusstate</a>.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -591,7 +588,8 @@
 		"wcag": {
 			"0": "2.4.11 AA"
 		},
-		"verifier": "<p>Le focus d'un composant n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"verifier": "<p>Le composant recevant le focus n'est pas complètement masqué par du contenu de la page lors de la navigation clavier.</p>",
+		"complement": "<h5>Complément</h5><ul><li>Lorsque le contenu d'une interface configurable peut être repositionné par l'utilisateur, seules les positions initiales du contenu déplaçable par l'utilisateur sont prises en compte pour les tests et la conformité à ce critère de réussite.</li><li>Le contenu ouvert par l'utilisateur peut masquer le composant recevant le focus. Si l'utilisateur peut révéler le composant ciblé sans déplacer le focus, le composant avec le focus n'est pas considéré comme masqué en raison du contenu créé par l'auteur.</li><li>Si le composant qui reçoit le focus est recouvert par un autre élément dont l'opacité est inférieure à 100 % alors l'élément qui reçoit le focus n'est pas totalement masqué et le critère est validé.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"wcag22" : true,
@@ -636,15 +634,15 @@
 		"wcag": {
 			"0": "2.5.4 A"
 		},
-		"verifier": "<ul><li>Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur ont des alternatives disponibles depuis un composant d'interfaces (ex.&nbsp;: bouton).</li><li>Il est possible de désactiver la détection de mouvement.</li></ul>",
+		"verifier": "<ul><li>Les actions déclenchées par un mouvement de l'appareil ou un geste de l'utilisateur ont des alternatives disponibles depuis un composant d'interface (ex.&nbsp;: un bouton).</li><li>Il est possible de désactiver la détection de mouvement.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false,
-		"exception": "<p>Le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>"
+		"exception": "<p>Le critère n'est pas applicable si le mouvement est essentiel à l'accomplissement de la fonctionnalité (ex.&nbsp;: podomètre)</p>"
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les gestes complexes disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire?",
+		"title": "Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?",
 		"ID": "testID-032",
 		"IDorigin": "testID-032",
 		"wcag": {
@@ -667,7 +665,7 @@
 			"0": "2.5.7 AA"
 		},
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
-		"complement": "<h5>Complement</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?\".</p>",
+		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère WCAG 2.5.1 - <a href=#headingtestID-032>\"Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?\"</a></p>",
 		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeu de dexterité par exemple)</li><li>La fonctionalité est native et non modifiée</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -720,27 +718,27 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Tous les éléments qui ont la même fonction sont-ils nommés de manière identique&nbsp;?",
+		"title": "Les éléments qui ont la même fonction sont-ils nommés de manière identique d'un écran à l'autre&nbsp;?",
 		"ID": "testID-035",
 		"IDorigin": "testID-035",
 		"wcag": {
 			"0": "3.2.4 AA"
 		},
-		"verifier": "<p>Les composants qui ont la même fonction ont un nom accessible similaire d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
+		"verifier": "<p>Les composants qui ont la même fonction ont un nom accessible similaire (identique ou verbe d'action commun) d'un écran à l'autre, et au sein d'un même écran si un composant est répété.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente&nbsp;?",
+		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs pages, celui-ci est-il présenté de manière cohérente&nbsp;?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": {
 			"0": "3.2.6 A"
 		},
-		"verifier": "<p>Si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre sur tous les écrans et pour chaque orientation portrait/paysage.</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais pourtant dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, agrandissement, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</p>",
+		"verifier": "<p>Pour chaque mode d'affichage ou orientation (portrait/paysage), si un ou plusieurs dispositifs d'aide sont proposés, ceux-ci doivent toujours être localisés au même endroit, présentés de la même manière et dans le même ordre relatif (même ordre avec Voice Over et Contrôle de Sélection).</p><p>Le critère est également conforme dans les cas suivants :</p><ul><li>Un élément n'est pas positionné visuellement au même endroit mais pourtant dans le même ordre (selon le code source) par rapport aux autres éléments communs de la page.</li><li>Le repositionnement des éléments d'aide est engendré par un changement d'affichage à l'initiative de l'utilisateur (changement d'orientation, agrandissement, etc.).</li><li>Un élément comme un lien promotionnel ad-hoc, qui n'apparaît que sur une seule page et modifie l'ordre relatif du mécanisme d'aide sur cette seule page, peut être ignoré.</li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>Les mécanismes d'aide peuvent être une adresse mail, un numéro de téléphone, un formulaire de contact, un chat, une FAQ, etc.</li><li>Ce critère n'impose pas la présence de mécanismes d'aide. S'ils sont présents, vérifier que leur positionnement relatif est le même sur les différents pages du site ou de l'application.<li>Si la structure des pages est modifiée selon les profils d'utilisation (exemple : profil visiteur ou profil connecté), il convient de faire la vérification indépendamment pour chaque profil.</li></ul>",
 		"exception": "Le critère n'est pas applicable dans les cas suivants :<ul><li>des pages qui n'auraient rien à voir d'un point de vue visuel et fonctionnel (exemples : sur un site de e-commerce, lors du processus de paiement, le template peut changer et la page de paiement est fonctionnellement et visuellement totalement différente).</li><li>le mécanisme d'aide n'est présent que sur une seule page OU le mécanisme d'aide est absent de la page en cours.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
@@ -763,17 +761,17 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les textes sont-ils lisibles sans difficulté&nbsp;?",
+		"title": "Les propriétés d'espacement du texte peuvent-elles être redéfinies par l'utilisateur sans perte de contenu ou de fonctionnalité&nbsp;?",
 		"ID": "testID-037",
 		"IDorigin": "testID-037",
 		"wcag": [
 			"1.4.12 AA"
 		],
-		"verifier": "<p>Vérifier que :</p><ul><li>les textes ont une taille suffisante pour être lus facilement</li><li>la police d'écriture utilisée est sans empattement</li><li>le texte n'est pas en italique</li></ul>",
+		"verifier": "<p>Si le système d'exploitation ou l'application permettent à l'utilisateur de redéfinir les propriétés d'espacement du texte, vérifier que :</p><ul><li>Les propriétés définies sont correctement appliquées dans l'application.</li><li>Il n'y a pas de perte de contenu ou de fonctionnalité liée à cette modification.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-generale/#proposer-des-textes-lisibles",
 		"resultatTest": "nt",
 		"priority": "P1",
-		"goodPractice": true
+		"goodPractice": false
 	},
 	{
 		"themes": "Navigation générale",
@@ -813,7 +811,7 @@
 		"wcag": {
 			"0": "2.3.1 A"
 		},
-		"verifier": "S'il y a des flashs (clignotements ou changements brusques de luminosité), le critère est conforme si l'une des conditions est valide&nbsp;: <ul><li>Il y a moins de 3 flashs dans un intervalle d'une seconde</li><li>La zone totale de flash contient moins de 21 824 px (soit un carré de 78dp de côté)</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil PEAT.</p>",
+		"verifier": "S'il y a des flashs (clignotements ou changements brusques de luminosité), le critère est conforme si l'une des conditions est valide&nbsp;: <ul><li>Il y a moins de 3 flashs dans un intervalle d'une seconde</li><li>La zone de totale de flash contient moins de 21 824 px</li></ul><p>Si aucune des deux conditions précédentes n'est vérifiable facilement ou en cas de doute, vérifier avec l'outil <a href=https://trace.umd.edu/peat/>PEAT (Photosensitive Epilepsy Analysis Tool)</a>.</p>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"goodPractice": false,
@@ -821,13 +819,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Les mécanismes de navigation sont cohérents avec les autres écrans de l'application",
+		"title": "Le positionnement des mécanismes de navigation est-il cohérent avec les autres écrans de l'application",
 		"ID": "testID-056",
 		"IDorigin": "testID-056",
 		"wcag": {
 			"0": "3.2.3 AA"
 		},
-		"verifier": "<p>Les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (entre les différents écrans de l'application).</p>",
+		"verifier": "<p>Les mécanismes de navigation sont toujours situés au même endroit dans un ensemble d'écrans (visuellement et programmatiquement).</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -975,7 +973,7 @@
 		"wcag": {
 			"0": "1.4.2 A"
 		},
-		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Ou possibilité de régler le volume indépendamment du volume système.</li></ul>",
+		"verifier": "<ul><li>Possibilité de mettre en pause ou d'arrêter le son.</li><li>Ou possibilité de régler le volume indépendamment du volume système.</li></ul><p>Le mécanisme doit être facilement atteignable.</p>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

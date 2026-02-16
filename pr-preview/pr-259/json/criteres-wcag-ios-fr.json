@@ -137,7 +137,7 @@
 		"wcag": {
 			"0": "3.3.8 AA"
 		},
-		"verifier": "<p><p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour effectuer le test cognitif</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement au site Web</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p><p><strong>Présence d'un système à 2FA</strong>&nbsp;: le code reçu doit pouvoir être copié-collé par l'utilisateur ou bien être rempli automatiquement.</p><p><strong>Présence d'un CAPTCHA</strong>&nbsp;: le mécanisme ne doit pas reposer sur un test cognitif, sauf reconnaissance d'objet et identification d'un contenu personnel non textuel.</p>",		
+		"verifier": "<p><p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour effectuer le test cognitif</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement à l'application</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p><p><strong>Présence d'un système à 2FA</strong>&nbsp;: le code reçu doit pouvoir être copié-collé par l'utilisateur ou bien être rempli automatiquement.</p><p><strong>Présence d'un CAPTCHA</strong>&nbsp;: le mécanisme ne doit pas reposer sur un test cognitif, sauf reconnaissance d'objet et identification d'un contenu personnel non textuel.</p>",		
 		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
 		"group": "Elément de formulaire",
 		"resultatTest": "nt",
@@ -276,6 +276,7 @@
 			"0": "1.4.1 A"
 		},
 		"verifier": "<p>La couleur n'est pas le seul moyen de convoyer une information&nbsp;:</p><ul><li>l'information peut également être obtenue par un texte</li><li>au moins un autre moyen visuel est disponible pour obtenir la même information (exemple&nbsp;: des icônes qui utilisent des couleurs, mais également des formes différentes)</li><li>si le contenu est transmis par l'utilisation de couleurs qui diffèrent non seulement par leur teinte, mais qui présentent également une différence significative en termes de luminosité (par exemple vert clair et rouge foncé), cela constitue alors une distinction visuelle supplémentaire.</li></ul><p>Cas particulier d'un lien ou bouton sans mise en forme dans du texte :</p><ul><li>le lien ou bouton doit avoir un contraste de 3:1 avec le texte environnant</li><li>et un indicateur, ne reposant pas sur la couleur, doit permettre de le distinguer lors de la prise de focus (ex : souligné)</li></ul>",
+		"complement": "<h5>Complément d'information</h5><p>Si un élément natif d'une plateforme mobile repose uniquement sur la couleur, des moyens visuels supplémentaires doivent transmettre l'information.</p>",
 		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>les liens dont la nature est explicite, exemple des liens présent dans les zones de navigation (en-tête et pied de page, menu ou liste de liens…)</li><li>si aucune information n'est portée par de la couleur</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -289,7 +290,7 @@
 		"wcag": {
 			"0": "1.3.3 A"
 		},
-		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>Identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>Identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"verifier": "<p>L'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son, retour haptique) doit également être obtenue par un texte ou un message explicite.</p><p><strong>Exemples de non conformités :</strong></p><ul> <li>Identification d'une information uniquement par sa position : \" pour aller à l'écran suivant appuyez sur le bouton à droite \", ou \" choisissez un des boutons affichés au-dessus de l'image pour en savoir plus \"</li> <li>Identification d'une information uniquement par sa forme visuelle ou un symbole graphique : \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
 		"exception": "<p>Le critère est non-applicable si aucune information n'est portée par le son, l'orientation, la taille, la forme ou la position</p>",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -364,7 +365,7 @@
 			"0": "2.5.3 A"
 		},
 		"verifier": "<p>Le libellé visible de l'élément est présent dans la vocalisation de ce composant.</p>",
-		"complement": "<h5>Complément</h5><p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple : pour un lien \"démarrer\", mettre une alternative \"démarrer la lecture\", mais pas \"lancer la lecture\"</p>",
+		"complement": "<h5>Complément d'information</h5><p>Il est recommandé de restituer le contenu du libellé visible en premier dans le nom accessible. Exemple : pour un lien \"démarrer\", mettre une alternative \"démarrer la lecture\", mais pas \"lancer la lecture\"</p>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -547,7 +548,7 @@
 			"0": "2.1.4 A"
 		},
 		"verifier": "<p>Au moins une des conditions ci-dessous est respectée :</p><ul><li>le raccourci peut être désactivé par l'utilisateur</li><li>le raccourci est actif uniquement à la prise de focus du composant de l'interface</li><li>le raccourci peut être modifié, avec la possibilité d'ajouter un ou plusieurs caractères non-imprimables (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>, <kbd>Maj</kbd>,…) à la combinaison</li></ul>",
-		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : <kbd>Ctrl</kbd>, <kbd>Alt</kbd> ou <kbd>Shift</kbd>).</p>",
+		"exception": "<p>Le critère n'est pas applicable aux raccourcis clavier utilisant une touche de modification (touche de caractère non imprimables, exemple : <kbd>Ctrl</kbd>, <kbd>Alt</kbd> ou <kbd>Shift</kbd>) ou à un appui long sur une touche (2 secondes ou plus).</p>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false
@@ -687,13 +688,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "L'écran est-il consultable quelle que soit l'orientation (portrait ou paysage)&nbsp;?",
+		"title": "Le contenu et les fonctionnalités sont-ils disponibles quelle que soit l'orientation (portrait ou paysage)&nbsp;?",
 		"ID": "testID-034",
 		"IDorigin": "testID-034",
 		"wcag": {
 			"0": "1.3.4 AA"
 		},
-		"verifier": "<p>Le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</p>",
+		"verifier": "<ul><li>Le contenu et les fonctionnalités sont disponibles dans les deux orientations (pas de perte d'information, pas d'élément tronqué).</li><li>Le contenu et les fonctionnalités sont utilisables dans les deux orientations inversées.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"exception": "<p>Si une orientation est jugée essentielle, le critère est non-applicable. Exemples : </p><ul><li>application de jeu vidéo</li><li>application pour jouer du piano</li><li>application pour scanner un chèque bancaire</li></ul>",
@@ -798,7 +799,7 @@
 		},
 		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarrant automatiquement&nbsp;:<ul><li>durant plus de 5 secondes, en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le masquer.</li><li>se met à jour ou est rafraichi automatiquement, il doit exister un moyen de l'arrêter, le mettre en pause, le masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
-		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service.</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service.</li><li>Lors d'une phase de chargement, une animation peut être considérée comme essentielle si aucune interaction n'est possible pendant cette phase et qu'aucune indication de progression n'est affichée, afin de ne pas laisser penser que l'application serait bloquée ou en erreur.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -958,7 +959,7 @@
 		"wcag": {
 			"0": "1.2.4 AA"
 		},
-		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension, comme l'identité des orateurs).</li></ul>",
+		"verifier": "<p>Pour toute vidéo en direct avec audio :</p><ul><li>Des sous-titres sont disponibles.</li><li>Les sous-titres sont pertinents (restitution de toutes les informations nécessaires à la compréhension : dialogues, effets sonores, identité des orateurs, etc.).</li></ul>",
 		"group": "Multimédia",
 		"resultatTest": "nt",
 		"priority": "P3",

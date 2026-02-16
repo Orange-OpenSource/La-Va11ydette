@@ -7,7 +7,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité de chaque élément de formulaire ou sous forme de libellé pour les boutons,</li><li>ou l'élément est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p><p>Vérifier également qu'une légende est visible pour les éléments de formulaire regroupés.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme, sous réserve que l'élément qui tient lieu d'étiquette visible soit lui-même accessible. Par exemple, un bouton loupe doit avoir une alternative textuelle.</p>",
+	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité de chaque élément de formulaire ou sous forme de libellé pour les boutons,</li><li>ou l'élément est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme, sous réserve que l'élément qui tient lieu d'étiquette visible soit lui-même accessible. Par exemple, un bouton loupe doit avoir une alternative textuelle.</p>",
 		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr>4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li></ul>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
@@ -17,7 +17,7 @@
 	},
     {
 		"themes": "Formulaire",
-		"title": "Chaque étiquette et légende de champ est-elle pertinente&nbsp;?",
+		"title": "Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [
@@ -40,7 +40,7 @@
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que le nom accessible de chaque élément de formulaire est cohérent avec son étiquette visible (si elle est présente).</p><p>Le nom accessible doit contenir au moins l'intitulé de l'étiquette visible</p>",
+		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que le nom accessible de chaque élément de formulaire est cohérent avec son étiquette visible.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p>",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/formulaire/#avoir-des-champs-de-saisie-explicites",
@@ -50,7 +50,7 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les champs sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"title": "Les éléments de formulaire sont-ils regroupés lorsque nécessaire&nbsp;?",
 		"ID": "testID-002",
 		"IDorigin": "testID-002",
 		"wcag": [
@@ -70,10 +70,9 @@
 		"ID": "testID-003",
 		"IDorigin": "testID-003",
 		"wcag": [
-			"1.3.1 A",
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Un texte ou un élément graphique autre que la couleur (astérisque, image ou autre symbole) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
+		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
 		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"group": "Formulaire",
@@ -133,8 +132,8 @@
 	{
 		"themes": "Formulaire",
 		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives&nbsp;?",
-		"ID": "testID-064",
-		"IDorigin": "testID-064",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
 		"wcag": [
 			"3.3.8 AA"
 		],
@@ -246,7 +245,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<p>Le contraste doit être suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'image.</p><ul><li><strong>Pour les textes non gras :</strong><ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong><ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li><br><li>Vérifier que les états de tous les composants ont un rapport de contraste suffisant, notamment au survol de la souris et au focus.</li><li>Vérifier le contraste également pour les <code>placeholder</code> informatifs.</li><li>Vérifier en mode clair et en mode sombre.</li></ul>",
+		"verifier": "<p>Le contraste est suffisant pour comprendre l'information portée par tous les textes et les textes sous forme d'image.</p><ul><li><strong>Pour les textes non gras :</strong><ul><li>Taille inférieure à <code>18pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>18pt</code>&nbsp;: contraste de 3:1</li></ul></li><li><strong>Pour les textes gras :</strong><ul><li>Taille inférieure à <code>14pt</code>&nbsp;: contraste de 4,5:1</li><li>Taille supérieure ou égale à <code>14pt</code>&nbsp;: contraste de 3:1</li></ul></li><br><li>Vérifier que les états de tous les composants ont un rapport de contraste suffisant, notamment au focus clavier.</li><li>Vérifier le contraste également pour les <code>placeholder</code> informatifs.</li><li>Vérifier en mode clair et en mode sombre.</li></ul>",
 		"exception": "<p>Ce critère est non-applicable pour les logos, textes décoratifs et les textes d'éléments inactifs.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
@@ -261,7 +260,7 @@
 		"wcag": [
 			"1.4.11 AA"
 		],
-		"verifier": "<p>Les textes sous forme d'images, les éléments graphiques, les icônes, les composants interactifs (ainsi que leurs états focus, hover, etc.) et les éléments de formulaire ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
+		"verifier": "<p>Les éléments graphiques, les icônes, les composants interactifs (ainsi que leurs états focus, hover, etc.) et les éléments de formulaire ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
 		"exception": "Le critère n'est pas applicable pour les cas suivants&nbsp;:<ul><li>les logos, photos de scènes de la vie réelle (paysages, personnes, etc.), drapeaux, captures d'écran, etc.</li><li>si une alternative (texte de remplacement, une étiquette, une longue description ou un tableau de données), apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction (liens d'une barre de navigation)</li><li>le manque de contraste est nécessaire pour véhiculer l'information</li><li>les composants interactifs inactifs (pas d'action possible)</li><li>les logos, les marques</li><li>éléments dynamiques dont le contraste au survol / focus est suffisant</li><li>les composants dont l'apparence est déterminée par le navigateur et non modifiée par l'applicatif.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"resultatTest": "nt",
@@ -323,7 +322,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<p>En utilisant Talkback, vérifier que tous les éléments non-textuels signifiants sont vocalisés de manière pertinente : </p><ul><li>Les images contenant du texte ont une alternative reprenant au moins le texte visible.</li><li>Les images complexes ont une alternative détaillée fournie par un contenu adjacent.</li><li>Chaque élément non-textuel interactif est restitué au moins par un nom pertinent.</li><li>Les contenus multimédias pré-enregistrés sont facilement identifiables (par une alternative pertinente ou un contenu textuel adjacent).</li></ul>",
+		"verifier": "<p>En utilisant Talkback, vérifier que tous les éléments non-textuels signifiants sont vocalisés de manière pertinente : </p><ul><li>Chaque élément non-textuel porteur d'information est vocalisé de façon pertinente.</li><li>Les images contenant du texte ont une alternative reprenant au moins le texte visible.</li><li>Les images complexes ont une alternative détaillée fournie par un contenu adjacent.</li><li>Chaque élément non-textuel interactif est restitué au moins par un nom pertinent.</li><li>Les contenus multimédias pré-enregistrés sont facilement identifiables (par une alternative pertinente ou un contenu textuel adjacent).</li></ul>",
 		"complement": "<h5>Complément d'information</h5><ul><li>Si le contenu non textuel est un test ou un exercice qui serait invalide s'il était présenté sous forme de texte, alors l'alternative fournit au moins une description succinte de ce contenu.</li><li>Si le contenu non textuel est principalement destiné à créer une expérience sensorielle spécifique, alors l'alternative textuelle fournit au moins une description succinte de ce contenu.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-tous-les-elements-signifiants",
 		"resultatTest": "nt",
@@ -352,7 +351,7 @@
 		"wcag": [
 			"4.1.2 A"
 		],
-		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, élément de formulaire, etc.) est correctement restitué</li><li>L'état ou la valeur de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
+		"verifier": "<ul><li>Le nom et le rôle de chaque composant d'interface (bouton, lien, case à cocher, élément de formulaire, etc.) est correctement restitué.</li><li>L'état ou la valeur de chaque composant d'interface est vocalisé (\"sélectionné\", \"coché\", etc).</li><li>Chaque composant d'interface est vocalisé avec l'action associée.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#vocaliser-letat-des-elements",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -408,10 +407,9 @@
 		"ID": "testID-022",
 		"IDorigin": "testID-022",
 		"wcag": [
-			"1.3.1 A",
-			"2.4.6 AA"
+			"1.3.1 A"
 		],
-		"verifier": "<p>À l'aide de la navigation vocale et en mode de navigation par en-tête :</p><ul><li>tous les titres ou en-têtes sont navigables et vocalisés.</li><li>seuls les titres ou en-têtes sont navigables et vocalisés.</li></ul>",
+		"verifier": "<p>À l'aide de Talkback et en mode de navigation par en-tête :</p><ul><li>tous les titres ou en-têtes sont navigables et vocalisés.</li><li>seuls les titres ou en-têtes sont navigables et vocalisés.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-vocale/#gerer-la-navigation-par-entetes",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -419,7 +417,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Les messages de statuts ou contextuels sont-ils correctement restitués&nbsp;?",
+		"title": "Les messages d'état ou contextuels sont-ils correctement restitués&nbsp;?",
 		"ID": "testID-049",
 		"IDorigin": "testID-049",
 		"wcag": [
@@ -505,7 +503,7 @@
 	},
 	{
 		"themes": "Navigation vocale",
-		"title": "Un mécanisme pour naviguer au sein de la page est-il présent&nbsp;?",
+		"title": "Un mécanisme pour naviguer rapidement au sein de la page est-il présent&nbsp;?",
 		"ID": "testID-059",
 		"IDorigin": "testID-059",
 		"wcag": [
@@ -583,7 +581,7 @@
 			"2.4.7 AA"
 		],
 		"verifier": "<ul><li>Le focus est visible d'un coup d'oeil et il se distingue bien du reste de l'écran.</li><li>Si besoin, vérifier le ratio de contraste du focus qui doit être au moins de 3:1 par rapport à la couleur environnante.</li></ul>",
-		"complement": "<h5>Complément</h5><p>Sur Android, il est possible de modifier le focus à l'aide du modificateur <a href='https://developer.android.com/develop/ui/compose/modifiers-list#Border'>Border</a> ou en <a href='https://developer.android.com/develop/ui/compose/touch-input/focus/react-to-focus#advanced-visual-cues'>personnalisant le focus</a>.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Sur Android, il est possible de modifier le focus à l'aide du modificateur <a href='https://developer.android.com/develop/ui/compose/modifiers-list#Border'>Border</a> ou en <a href='https://developer.android.com/develop/ui/compose/touch-input/focus/react-to-focus#advanced-visual-cues'>personnalisant le focus</a>.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -600,7 +598,7 @@
 		"complement": "<h5>Complément</h5><ul><li>Lorsque le contenu d'une interface configurable peut être repositionné par l'utilisateur, seules les positions initiales du contenu déplaçable par l'utilisateur sont prises en compte pour les tests et la conformité à ce critère de réussite.</li><li>Le contenu ouvert par l'utilisateur peut masquer le composant recevant le focus. Si l'utilisateur peut révéler le composant ciblé sans déplacer le focus, le composant avec le focus n'est pas considéré comme masqué en raison du contenu créé par l'auteur.</li><li>Si le composant qui reçoit le focus est recouvert par un autre élément dont l'opacité est inférieure à 100 % alors l'élément qui reçoit le focus n'est pas totalement masqué et le critère est validé.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
-		"priority": "",
+		"priority": "P1",
 		"wcag22" : true,
 		"goodPractice": false
 	},
@@ -674,7 +672,7 @@
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"complement": "<h5>Complément d'information</h5><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (glisser puis déposer un ticket dans un tableau Kanban par exemple) et ne tient pas compte des actions dit de \"multi-points\", couvertes par le critère WCAG 2.5.1 - <a href=#headingtestID-032>\"Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire&nbsp;?\"</a></p>",
-		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeu de dextérité par exemple)</li><li>La fonctionnalité est native est non modifiée</li></ul>",
+		"exception":"<p>Le critère est non-applicable si :</p><ul><li>L'action de glisser/déposer est essentielle (jeu de dexterité par exemple)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/conception/navigation-generale/#proposer-une-alternative-aux-actions-gestuelles",
 		"resultatTest": "nt",
 		"priority": "P3",
@@ -689,7 +687,7 @@
 		"wcag": [
 			"2.5.2 A"
 		],
-		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>vérifier qu'aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément) et qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
+		"verifier": "<p>Les actions déclenchées au moyen d'un dispositif de pointage sur un point unique de l'écran doivent pouvoir être annulées&nbsp;:</p><ul><li>Aucune action n'est déclenchée sur le <span lang=\"en\">'down event'</span> (dès qu'on touche ou qu'on presse un élément), vérifier qu'il est possible d'annuler en relâchant le pointeur en dehors de l'élément déclencheur</li><li>Si une action est déclenchée lors de l'appui, vérifier que celle-ci est annulée dès le relâchement du pointeur</li><li>Pour des actions complexes (ex&nbsp;: <span lang=\"en\">drag n'drop</span>), vérifier que l'utilisateur peut annuler l'action avant la fin de son exécution à travers une modale de confirmation par exemple.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -740,9 +738,9 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Si une aide est proposée et répétée sur plusieurs pages, celle-ci est-elle présentée de manière cohérente&nbsp;?",
-		"ID": "testID-063",
-		"IDorigin": "testID-063",
+		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs pages, celui-ci est-il présenté de manière cohérente&nbsp;?",
+		"ID": "testID-073",
+		"IDorigin": "testID-073",
 		"wcag": [
 			"3.2.6 A"
 		],
@@ -808,7 +806,7 @@
 		],
 		"verifier": "<p>Si un contenu d'une partie de la page, présenté en parallèle d'autres contenus, démarrant automatiquement&nbsp;:<ul><li>durant plus de 5 secondes, en mouvement, défile, clignote, il doit exister un moyen de l'arrêter, le mettre en pause ou le masquer.</li><li>se met à jour ou est rafraichi automatiquement, il doit exister un moyen de l'arrêter, le mettre en pause, le masquer ou jouer sur sa fréquence de mise à jour.</li></ul>",
 		"complement": "<h5>Complément d'information</h5><p>Le fait que l'animation s'arrête uniquement à la prise de focus ou au toucher n'est pas considéré comme un mécanisme permettant à l'utilisateur de faire une pause.</p>",
-		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service</li><li>Lors d'une phase de chargement, une animation peut être considérée comme essentielle si aucune interaction n'est possible pendant cette phase et qu'aucune indication de progression n'est affichée, afin de ne pas laisser penser que l'application serait bloquée ou en erreur.</li></ul>",
+		"exception": "<p>Le critère est non-applicable pour les cas suivants :</p><ul><li>Aucun mouvement, défilement, clignotement, mise à jour ou rafraichissement automatique durant plus de 5 secondes et démarrant automatiquement.</li><li>Le mouvement, défilement, clignotement ou rafraichissement est essentiel au service.</li><li>Lors d'une phase de chargement, une animation peut être considérée comme essentielle si aucune interaction n'est possible pendant cette phase et qu'aucune indication de progression n'est affichée, afin de ne pas laisser penser que l'application serait bloquée ou en erreur.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P2",
 		"goodPractice": false
@@ -842,14 +840,14 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Aucune image n'est utilisée pour présenter du texte&nbsp;?",
+		"title": "Aucune image porteuse d'information n'est utilisée pour présenter du texte&nbsp;?",
 		"ID": "testID-052",
 		"IDorigin": "testID-052",
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Les images ne sont pas utilisées pour présenter du texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
-		"exception": "Critère non-applicable si aucune image ne contient de texte",
+		"verifier": "<p>Les images ne doivent pas être utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes&nbsp;:</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex. logo, captcha, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"exception": "Critère non-applicable si&nbsp;:<ul><li>aucune image ne contient de texte,</li><li>l'image ne porte pas d'information,</li><li>l'image est essentielle (logo, marque, CAPTCHA, image de test dans un jeu ou un quiz par exemple,…).</li>",
         "resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -1014,10 +1012,11 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>L'alternative à chaque image CAPTCHA communique l'objectif de l'image et non son contenu (ex&nbsp;: «&nbsp;CAPTCHA (image anti-spam)&nbsp;» ).</p>",
+		"group": "CAPTCHA",
 		"priority": "P2",
 		"resultatTest": "nt",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha"
 	},
 	{
 		"themes": "CAPTCHA",
@@ -1028,10 +1027,11 @@
 			"1.1.1 A"
 		],
 		"verifier": "<p>Pour tout CAPTCHA uniquement visuel ou sonore, l'une des alternatives ci-dessous est proposée en complément&nbsp;: </p><ul><li>CAPTCHA audio et visuel</li><li>tests logiques (question dont la réponse est évidente, test mathématique simple…)</li><li>il existe une autre solution d'accès à la fonctionnalité sécurisée par le CAPTCHA</li></ul>",
+		"group": "CAPTCHA",
 		"priority": "P2",
 		"resultatTest": "nt",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha",
-		"goodPractice": false
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#eviter-les-captcha"
 	},
 	{
 		"themes": "Contenu cryptique",

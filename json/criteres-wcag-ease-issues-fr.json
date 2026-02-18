@@ -644,7 +644,7 @@
 	"testID-038":[
 		{
 			"title" : "Présence de pièges clavier dans la page",
-			"detail" : "Quelle que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir accéder au clavier à tous les contenus sans se retrouver bloqué à la navigation clavier.",
+			"detail" : "Quel que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir accéder au clavier à tous les contenus sans se retrouver bloqué à la navigation clavier.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}

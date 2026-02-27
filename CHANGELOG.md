@@ -40,6 +40,8 @@ All notable changes to this project will be documented in this file. This projec
 
 - [Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-066): methodology was rephrased to make it clear that this test applies to all components, including native components and customs ones.
 
+- [L'utilisateur a-t-il le contrôle des changements de contexte à la prise de focus au clavier ou au survol souris ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-032) and [L'utilisateur a-t-il le contrôle des changements de contexte lors d'une modification de paramètre ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-061): a note was added to the methodology of those tests to clarify the edge case where a change of content is not a change of context.
+
 ### Removed
 
 - The pre-defined issue "The ALT attribute of an image within a link is not filled in or not relevant" has been removed from testID-013 ("Do the images have appropriate text alternatives?") in english and french version since this issue has an impact on links and not images. The removed issue has been split in two: one when the alt attribute is not relevant (testID-028) and one when this attribute is not filled at all (testID-066) (see **Added**).

@@ -24,7 +24,7 @@ All notable changes to this project will be documented in this file. This projec
 
 ### Changed
 
-- [Un raccourci clavier est-il disponible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-039):testID-005 has been renamed (old name was **Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci vérifie-t-il l'une des conditions ci-dessous ?**) and more information was added to the corresponding methodology to explicitly add that not all methods are required but only at least one of them.
+- [Un raccourci clavier utilisant un seul caractère imprimable est-il accessible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-039):testID-005 has been renamed (old name was **Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci vérifie-t-il l'une des conditions ci-dessous ?**) and more information was added to the corresponding methodology to explicitly add that not all methods are required but only at least one of them.
 
 ### Fixed
 

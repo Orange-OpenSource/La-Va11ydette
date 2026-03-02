@@ -814,7 +814,7 @@
 	},
 	{
 		"themes": "Navigation clavier",
-		"title": "Un raccourci clavier est-il disponible&nbsp;?",
+		"title": "Un raccourci clavier utilisant un seul caractère imprimable est-il accessible&nbsp;?",
 		"ID": "testID-039",
 		"IDorigin": "testID-039",
 		"wcag": [

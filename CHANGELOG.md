@@ -24,17 +24,17 @@ All notable changes to this project will be documented in this file. This projec
 
 ### Changed
 
-- [Un raccourci clavier utilisant un seul caractère imprimable est-il accessible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-039):testID-005 has been renamed (old name was **Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci vérifie-t-il l'une des conditions ci-dessous ?**) and more information was added to the corresponding methodology to explicitly add that not all methods are required but only at least one of them.
+- [Un raccourci clavier utilisant un seul caractère imprimable est-il accessible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-039): has been renamed (old name was **Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci vérifie-t-il l'une des conditions ci-dessous ?**) and more information was added to the corresponding methodology to explicitly add that not all methods are required but only at least one of them.
 
 ### Fixed
 
 - [L'information est-elle structurée par l'utilisation appropriée de titres de niveaux ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-010): added precisions for elements having the role of a heading.
 
-- [Si un CAPTCHA est utilisé, une alternative est-elle prévue pour les utilisateurs malvoyants, non-voyants et malentendants ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-015): added precisions the possible alternatives.
+- [Si un CAPTCHA est utilisé, une alternative est-elle prévue pour les utilisateurs malvoyants, non-voyants et malentendants ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-015): improved the precision of the potential accessible alternatives.
 
-- [Le titre de la page est-il pertinent ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-017): methodology was rephrased to make it clear that this test does not apply only to single page applications.
+- [Le titre de la page est-il pertinent ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-017): methodology has been reworded to clarify that this test is not exclusive to single-page applications.
 
-- [La langue principale est-elle définie et correspond-elle à la langue principale du document ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-021): added precisions for the attribute defining the maing language of an informative frame or iframe in the page.
+- [La langue principale est-elle définie et correspond-elle à la langue principale du document ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-021): added precisions for the attribute defining the main language of an informative frame or iframe in the page.
 
 - [Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-047): two missing exceptions were added to the methodoly (*i.e.* when it an essential functionnality or when it comes from the exploitation system, the user agent or the assistive technology).
 

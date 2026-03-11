@@ -254,11 +254,6 @@
 			"detail" : "Toutes les images doivent posséder un attribut ALT.",
 			"solution" : "Ajouter un attribut ALT aux images.",
 			"technicalSolution" : "<img alt=\"[…]\" […]> "
-		},{
-			"title" : "Le ALT d'une image-lien n'est pas renseigné ou non pertinent",
-			"detail" : "Le contenu de l'attribut ALT de chaque image-lien n'est pas pertinent par rapport à sa fonction de lien.",
-			"solution" : "Renseigner la cible du lien dans le ALT.",
-			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[…]\" alt= \"Mon site\" > </a>"
 		},
 		{
 			"title" : "Le ALT d'une image porteuse d'information n'est pas renseigné ou non pertinent",
@@ -407,6 +402,12 @@
 			"detail" : "La cible d'un lien n'est pas compréhensible même en s'aidant de son contexte direct (texte environnant).",
 			"solution" : "Ajouter une information discriminante dans le texte environnant.",
 			"technicalSolution" : "La solution dépend du contexte d'utilisation de l'élément : \n - élément dans un paragraphe : compléter le texte du paragraphe (<p>[…]</p>) \n - élément dans une liste : compléter un item de la liste (<ul>, <ol>) \n - élément dans une cellule de tableau : compléter le texte de la cellule (<td>[…]</td>) ou compléter l'entête directe de la cellule (<th>[…]</th>)."
+		},
+		{
+			"title" : "Le ALT d'une image-lien n'est pas pertinent",
+			"detail" : "Le contenu de l'attribut ALT de chaque image-lien n'est pas pertinent par rapport à sa fonction de lien.",
+			"solution" : "Renseigner la cible du lien dans le ALT.",
+			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[…]\" alt= \"Mon site\" > </a>"
 		}
 	],
 	"testID-070": [
@@ -644,7 +645,7 @@
 	"testID-038":[
 		{
 			"title" : "Présence de pièges clavier dans la page",
-			"detail" : "Quelle que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir accéder au clavier à tous les contenus sans se retrouver bloqué à la navigation clavier.",
+			"detail" : "Quel que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir accéder au clavier à tous les contenus sans se retrouver bloqué à la navigation clavier.",
 			"solution" : "",
 			"technicalSolution" : ""
 		}
@@ -873,6 +874,12 @@
 			"detail" : "Un composant interactif n'a pas de nom accessible",
 			"solution" : "Privilégier les méthodes natives en renseignant un libellé de bouton.\n Au besoin, le nom accessible peut être modifié à l'aide des attributs ARIA aria-label et aria-labelledby.",
 			"technicalSolution" : ""
+		},
+		{
+			"title" : "Le ALT d'une image-lien n'est pas renseigné",
+			"detail" : "Le contenu de l'attribut ALT de chaque image-lien n'est pas renseigné.",
+			"solution" : "Renseigner la cible du lien dans le ALT.",
+			"technicalSolution" : "<a href=\"http://monsite.com\"> <img src=\"[…]\" alt= \"Mon site\" > </a>"
 		}
 	]
 }

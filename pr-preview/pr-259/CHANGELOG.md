@@ -14,6 +14,40 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.2] – 2026-04-03
+
+### Added
+
+- 2 new pre-defined issues have been added (english and french versions):
+  - The ALT attribute of an image within a link is not not relevant (testID-028).
+  - The ALT attribute of an image within a link is not not filled (testID-066).
+
+### Changed
+
+- [Un raccourci clavier utilisant un seul caractère imprimable est-il accessible ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-039): has been renamed (old name was **Si un raccourci clavier utilisant un seul caractère imprimable est disponible, celui-ci vérifie-t-il l'une des conditions ci-dessous ?**) and more information was added to the corresponding methodology to explicitly add that not all methods are required but only at least one of them.
+
+### Fixed
+
+- [L'information est-elle structurée par l'utilisation appropriée de titres de niveaux ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-010): added precisions for elements having the role of a heading.
+
+- [Si un CAPTCHA est utilisé, une alternative est-elle prévue pour les utilisateurs malvoyants, non-voyants et malentendants ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-015): improved the precision of the potential accessible alternatives.
+
+- [Le titre de la page est-il pertinent ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-017): methodology has been reworded to clarify that this test is not exclusive to single-page applications.
+
+- [La langue principale est-elle définie et correspond-elle à la langue principale du document ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-021): added precisions for the attribute defining the main language of an informative frame or iframe in the page.
+
+- [Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-047): two missing exceptions were added to the methodoly (*i.e.* when it an essential functionnality or when it comes from the exploitation system, the user agent or the assistive technology).
+
+- [Les composants d'interfaces (natifs ou personnalisés) sont-ils interprétés par les technologies d'assistance ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-066): methodology was rephrased to make it clear that this test applies to all components, including native components and customs ones.
+
+- [L'utilisateur a-t-il le contrôle des changements de contexte à la prise de focus au clavier ou au survol souris ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-032) and [L'utilisateur a-t-il le contrôle des changements de contexte lors d'une modification de paramètre ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-061): a note was added to the methodology of those tests to clarify the edge case where a change of content is not a change of context.
+
+### Removed
+
+- The pre-defined issue "The ALT attribute of an image within a link is not filled in or not relevant" has been removed from testID-013 ("Do the images have appropriate text alternatives?") in english and french version since this issue has an impact on links and not images. The removed issue has been split in two: one when the alt attribute is not relevant (testID-028) and one when this attribute is not filled at all (testID-066) (see **Added**).
+
+---
+
 ## [3.0.1] – 2026-21-01
 
 ### Changed
@@ -26,7 +60,7 @@ All notable changes to this project will be documented in this file. This projec
 
 ### Added
 
-- 2 new criterias have been added:
+- 4 new criterias have been added:
   - [L'élément de formulaire est-il lié programmatiquement à son étiquette et, si présent, au message d'erreur ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-089)
   - [Les éléments de formulaire obligatoires sont-ils programmatiquement identifiables ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-090)
   - [L'utilisateur peut-il s'authentifier avec un nom d'utilisateur et un mot de passe sans utiliser de test s'appuyant sur des fonctions cognitives ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-091). This criteria is a new version of the previous testID-086 (see **Removed**).

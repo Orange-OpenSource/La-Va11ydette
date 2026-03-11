@@ -8,7 +8,7 @@
 			"3.3.2 A"
 		],
 	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité de chaque élément de formulaire ou sous forme de libellé pour les boutons,</li><li>ou l'élément est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme, sous réserve que l'élément qui tient lieu d'étiquette visible soit lui-même accessible. Par exemple, un bouton loupe doit avoir une alternative textuelle.</p>",
-		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible pertinent&nbsp;?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr> 4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-024>Le nom, le rôle et l'état de chaque composant d'interface sont-ils vocalisés&nbsp;?</a></li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-089>Chaque élément de formulaire est-il lié programmatiquement à son étiquette et, si présent, au message d'erreur&nbsp;?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr> 4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible pertinent&nbsp;?</a></li></ul>",
 		"group": "Formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -38,7 +38,7 @@
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [
-			"1.3.1 A"
+			"4.1.2 A"
 		],
 		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que le nom accessible de chaque élément de formulaire est cohérent avec son étiquette visible.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p>",

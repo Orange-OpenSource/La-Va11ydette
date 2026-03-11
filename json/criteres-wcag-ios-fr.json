@@ -1,14 +1,14 @@
 [
 	{
 		"themes": "Formulaire",
-		"title": "Chaque élément de formulaire possède-t-il une étiquette&nbsp;?",
+		"title": "Chaque élément de formulaire possède-t-il une étiquette visible&nbsp;?",
 		"ID": "testID-001",
 		"IDorigin": "testID-001",
 		"wcag": [
 			"3.3.2 A"
 		],
 	    "verifier": "<ul><li>Une étiquette est visuellement présente à proximité de chaque élément de formulaire ou sous forme de libellé pour les boutons,</li><li>ou l'élément est accompagné d'un texte qui devient visible à la prise de focus.</li></ul><p>Attention, un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible. Il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p><p>Lorsque l'élément de formulaire n'a pas de libellé visible mais que son rôle est évident (exemple : champ de recherche accompagné d'un bouton en forme de loupe, case à cocher pour sélectionner une ligne dans un tableau de données), c'est une exception et le critère est conforme, sous réserve que l'élément qui tient lieu d'étiquette visible soit lui-même accessible. Par exemple, un bouton loupe doit avoir une alternative textuelle.</p>",
-		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr>4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></li></ul>",
+		"complement": "<h5>Complément d'information</h5><ul><li>La pertinence de l'étiquette et du message d'erreur (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer à la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></li><li>Le lien sémantique entre élément de formulaire et étiquette/message d'erreur (<abbr>WCAG</abbr>  1.3.1 Info and Relationships) est à évaluer à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible pertinent&nbsp;?</a></li><li>La présence d'un nom ou d'une description accessible (<abbr>WCAG</abbr> 4.1.2 Name, Role, Value) est à évaluer à la question <a href=#headingtestID-024>Le nom, le rôle et l'état de chaque composant d'interface sont-ils vocalisés&nbsp;?</a></li></ul>",
 		"group": "Formulaire",
 		"resultatTest": "nt",
 		"priority": "P0",
@@ -17,14 +17,14 @@
 	},
     {
 		"themes": "Formulaire",
-		"title": "Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;?",
+		"title": "Chaque étiquette d'élément de formulaire est-elle pertinente&nbsp;?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [
 			"2.4.6 AA"
 		],
 		"verifier": "<ul><li>L'étiquette de chaque élément de formulaire doit être pertinente.</li><li>Si un format de donnée est indiqué, il doit être pertinent.</li><li>Si des éléments de formulaire sont regroupés, vérifier également que la légende est pertinente.</li><li>Si l'étiquette visible est doublée par un nom accessible, alors le nom accessible doit contenir au moins l'intitulé visible</li></ul>",
-		"complement": "<h5>Complément d'information</h5><p>Ce test concerne la pertinence de l'<strong>étiquette visible</strong> et non celle du nom accessible de l'élément, qui sera évalué à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible ?</a></p>",
+		"complement": "<h5>Complément d'information</h5><p>Ce test concerne la pertinence de l'<strong>étiquette visible</strong> et non celle du nom accessible de l'élément, qui sera évalué à la question <a href=#headingtestID-072>Chaque élément de formulaire a-t-il un nom accessible pertinent&nbsp;?</a></p>",
 		"exception": "<p>La présence d'une étiquette ou d'une légende visible n'est pas obligatoire (exemple&nbsp;: un champ de recherche unique avec un bouton en forme de loupe). En cas d'absence, c'est une exception et le critère est non-applicable.</p>",
 		"group": "Formulaire",
 		"resultatTest": "nt",
@@ -34,11 +34,11 @@
 	},
     {
 		"themes": "Formulaire",
-		"title": "Chaque élément de formulaire a-t-il un nom accessible&nbsp;?",
+		"title": "Chaque élément de formulaire a-t-il un nom accessible pertinent&nbsp;?",
 		"ID": "testID-072",
 		"IDorigin": "testID-072",
 		"wcag": [
-			"4.1.2 A"
+			"1.3.1 A"
 		],
 		"verifier": "<p>À l'aide du lecteur d'écran ou du contrôle vocal, vérifier que le nom accessible de chaque élément de formulaire est cohérent avec son étiquette visible.</p>",
 		"complement": "<h5>Complément d'information</h5><p>Un <code>placeholder</code> seul ne suffit pas à fournir une étiquette visible, il doit être accompagné par un texte persistant à proximité de l'élément de formulaire.</p>",
@@ -47,56 +47,6 @@
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
-	},
-	{
-		"themes": "Formulaire",
-		"title": "Les éléments de formulaire sont-ils regroupés lorsque nécessaire&nbsp;?",
-		"ID": "testID-002",
-		"IDorigin": "testID-002",
-		"wcag": [
-			"1.3.1 A"
-		],
-		"verifier": "<p>Les champs liés doivent être regroupés lorsque nécessaire.</p><p>A l'aide du lecteur d'écran, vérifier que le nom du groupe est restitué au moins sur le premier élément du regroupement.</p>",
-		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio associés à une même question et regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p><p><strong>Attention&nbsp;:</strong> La pertinence du nom du groupe (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
-		"group": "Formulaire",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
-	},
-	{
-		"themes": "Formulaire",
-		"title": "Les éléments de formulaire obligatoires sont-ils visuellement identifiables&nbsp;?",
-		"ID": "testID-003",
-		"IDorigin": "testID-003",
-		"wcag": [
-			"3.3.2 A"
-		],
-		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
-		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
-		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
-		"group": "Formulaire",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
-	},
-		{
-		"themes": "Formulaire",
-		"title": "Les éléments de formulaire obligatoires sont-ils programmatiquement identifiables&nbsp;?",
-		"ID": "testID-078",
-		"IDorigin": "testID-078",
-		"wcag": [
-			"1.3.1 A"
-		],
-		"verifier": "<p>L'aspect obligatoire de l'élément de formulaire est présent dans le nom accessible.</p>",
-		"group": "Formulaire",
-		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
-		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un élément est évident et pour lequel l'identification programmatique devient donc facultative (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
 	},
 	{
 		"themes": "Formulaire",
@@ -116,34 +66,51 @@
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/"
 	},
 	{
-        "themes": "Formulaire",
-        "title": "Un remplissage automatique est-il présent pour les champs de saisie destinés à contenir des informations sur l'utilisateur&nbsp;?",
-        "ID": "testID-005",
-        "IDorigin": "testID-005",
-        "wcag": [
-            "1.3.5 AA"
-        ],
-        "verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>textContentType</code>.</li><li>La valeur indiquée pour la propriété <code>textContentType</code> est pertinente au regard du type d'information attendue. <a href=https://developer.apple.com/documentation/UIKit/UITextContentType>Liste des valeurs autorisées</a></li></ul>",
-        "group": "Formulaire",
-        "resultatTest": "nt",
-        "priority": "P3",
-        "goodPractice": false
-    },
-	{
 		"themes": "Formulaire",
-		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives&nbsp;?",
-		"ID": "testID-063",
-		"IDorigin": "testID-063",
+		"title": "Les éléments de formulaire sont-ils regroupés lorsque nécessaire&nbsp;?",
+		"ID": "testID-002",
+		"IDorigin": "testID-002",
 		"wcag": [
-			"3.3.8 AA"
+			"1.3.1 A"
 		],
-		"verifier": "<p><p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour effectuer le test cognitif</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement à l'application</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p><p><strong>Présence d'un système à 2FA</strong>&nbsp;: le code reçu doit pouvoir être copié-collé par l'utilisateur ou bien être rempli automatiquement.</p><p><strong>Présence d'un CAPTCHA</strong>&nbsp;: le mécanisme ne doit pas reposer sur un test cognitif, sauf reconnaissance d'objet et identification d'un contenu personnel non textuel.</p>",		
-		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"verifier": "<p>Les champs liés doivent être regroupés lorsque nécessaire.</p><p>A l'aide du lecteur d'écran, vérifier que le nom du groupe est restitué au moins sur le premier élément du regroupement.</p>",
+		"complement": "<h5>Complément d'information</h5><p>Exemple de regroupement : une liste de boutons radio associés à une même question et regroupés à l'aide de <code>.accessibilityElement(children: .contain)</code>.</p><p><strong>Attention&nbsp;:</strong> La pertinence du nom du groupe (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"group": "Formulaire",
 		"resultatTest": "nt",
-		"priority": "P1",
-		"wcag22" : true,
+		"priority": "P2",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements"
+	},
+	{
+		"themes": "Formulaire",
+		"title": "Chaque élément de formulaire est-il lié programmatiquement à son étiquette et, si présent, au message d'erreur&nbsp;?",
+		"ID": "testID-089",
+		"IDorigin": "testID-089",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Vérifier que chaque étiquette visible est regroupée avec l'élément de formulaire, afin de lui fournir un nom accessible. En SwiftUI, cela se fait par <code>accessibilityElement(children: .combine)</code>.</p><p>Vérifier le lien également en cas de message d'erreur : dans ce cas, le nom accessible de l'élément doit être complété avec le message d'erreur.</p>",
+		"group": "Formulaire",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/ios/developpement/#grouper-des-elements",
+		"priority": "P3",
+		"resultatTest": "nt",
 		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "Les messages d'erreur et les suggestions sont-ils explicites&nbsp;?",
+		"ID": "testID-008",
+		"IDorigin": "testID-008",
+		"wcag": [
+			"3.3.3 AA"
+		],
+        "verifier": "<ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
+		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
+		"group": "Formulaire",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
 	},
 	{
 		"themes": "Formulaire",  
@@ -164,23 +131,55 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Les messages d'erreur et les suggestions sont-ils explicites&nbsp;?",
-		"ID": "testID-008",
-		"IDorigin": "testID-008",
+		"title": "Les éléments de formulaire obligatoires sont-ils visuellement identifiables&nbsp;?",
+		"ID": "testID-003",
+		"IDorigin": "testID-003",
 		"wcag": [
-			"3.3.3 AA"
+			"3.3.2 A"
 		],
-        "verifier": "<ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
-		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
+		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
+		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
+		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"group": "Formulaire",
 		"resultatTest": "nt",
-		"priority": "P3",
+		"priority": "P1",
 		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections"
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Si une information est demandé plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie n'est-elle pas redondante&nbsp;?",
+		"title": "Les éléments de formulaire obligatoires sont-ils programmatiquement identifiables&nbsp;?",
+		"ID": "testID-078",
+		"IDorigin": "testID-078",
+		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>L'aspect obligatoire de l'élément de formulaire est présent dans le nom accessible.</p>",
+		"group": "Formulaire",
+		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
+		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un élément est évident et pour lequel l'identification programmatique devient donc facultative (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/"
+	},
+	{
+        "themes": "Formulaire",
+        "title": "Un remplissage automatique est-il présent pour les champs de saisie destinés à contenir des informations sur l'utilisateur&nbsp;?",
+        "ID": "testID-005",
+        "IDorigin": "testID-005",
+        "wcag": [
+            "1.3.5 AA"
+        ],
+        "verifier": "<ul><li>Pour les champs de saisie destinés à contenir une information sur l'utilisateur (nom, adresse…), vérifier la présence de la propriété <code>textContentType</code>.</li><li>La valeur indiquée pour la propriété <code>textContentType</code> est pertinente au regard du type d'information attendue. <a href=https://developer.apple.com/documentation/UIKit/UITextContentType>Liste des valeurs autorisées</a></li></ul>",
+        "group": "Formulaire",
+        "resultatTest": "nt",
+        "priority": "P3",
+        "goodPractice": false
+    },
+	{
+		"themes": "Formulaire",
+		"title": "Si une même information est demandée plusieurs fois à l'utilisateur dans un même processus ou session, sa saisie n'est-elle pas redondante&nbsp;?",
 		"ID": "testID-073",
 		"IDorigin": "testID-073",
 		"wcag": [
@@ -191,6 +190,22 @@
 		"group": "Formulaire",
 		"resultatTest": "nt",
 		"priority": "P3",
+		"wcag22" : true,
+		"goodPractice": false
+	},
+	{
+		"themes": "Formulaire",
+		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives&nbsp;?",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
+		"wcag": [
+			"3.3.8 AA"
+		],
+		"verifier": "<p><p>Vérifier qu'aucune étape d'un processus d'authentification par un nom d'utilisateur et un mot de passe ne repose sur un test cognitif, sauf si cette étape fournit :</p><ul><li>une autre méthode d'authentification</li><li>une aide pour effectuer le test cognitif</li><li>un test cognitif qui consiste à reconnaitre des objets (images, vidéo, audio)</li><li>un test cognitif qui consiste à identifier le contenu personnel non textuel (images, vidéo, audio) que l'utilisateur a fourni préalablement à l'application</li></ul><p>La mémorisation d'un nom utilisateur et d'un mot de passe étant un test cognitif, il faut pour satisfaire le critère que la fonction de copier/coller soit autorisée sur ces champs ou que le nom d'utilisateur et le mot de passe soient remplis automatiquement (exemple : gestionnaire de mot de passe).</p><p><strong>Présence d'un système à 2FA</strong>&nbsp;: le code reçu doit pouvoir être copié-collé par l'utilisateur ou bien être rempli automatiquement.</p><p><strong>Présence d'un CAPTCHA</strong>&nbsp;: le mécanisme ne doit pas reposer sur un test cognitif, sauf reconnaissance d'objet et identification d'un contenu personnel non textuel.</p>",		
+		"complement":"<h5>Complément d'information</h5><p>Un test cognitif est une tâche qui oblige l'utilisateur à mémoriser, manipuler ou transcrire des informations.</p><p>Dans le cas d'un mot de passe masqué, offrir la possibilité d'afficher en clair les caractères saisis.</p>",
+		"group": "Formulaire",
+		"resultatTest": "nt",
+		"priority": "P1",
 		"wcag22" : true,
 		"goodPractice": false
 	},

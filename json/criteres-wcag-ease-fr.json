@@ -34,7 +34,7 @@
 	},
 	{
 		"themes": "Formulaire",
-		"title": "Chaque champ de formulaire a-t-il un nom accessible pertinent&nbsp;?",
+		"title": "Chaque élément de formulaire a-t-il un nom accessible pertinent&nbsp;?",
 		"ID": "testID-067",
 		"IDorigin": "testID-067",
 		"wcag": [

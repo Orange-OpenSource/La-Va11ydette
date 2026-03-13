@@ -14,6 +14,14 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.3] – 2026-09-13
+
+### Changed
+
+- The order of tests in the **Forms** group has been updated to simplify the audit process.
+
+---
+
 ## [3.0.2] – 2026-04-03
 
 ### Added

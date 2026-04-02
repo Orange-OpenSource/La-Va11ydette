@@ -347,7 +347,7 @@
 		"resultsContent1bis": "révèle que :",
 		"resultsContentnonCompliant": "Moins de 50",
 		"resultsContent2": "% des critères WCAG de niveau A et AA sont respectés.",
-		"resultsContent2bis": "Le taux moyen de conformité du service en ligne s'élève à",
+		"resultsContent2bis": "À titre informatif, le taux moyen de conformité du service en ligne s'élève à",
 		"resultsContent3": ", avec ",
 		"resultsContent4": " point(s) bloquant(s) d'un point de vue utilisateur",
 		"resultsContent5": "Le tableau présente par page auditée le nombre de critères conformes, non conformes, non applicables selon le niveau A ou AA. La dernière colonne mentionne le taux de conformité de la page qui est égal au nombre de critères conformes divisé par le nombre de critères applicables.",

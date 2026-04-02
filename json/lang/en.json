@@ -345,7 +345,7 @@
 		"pagesContent": "The verification audit was performed on the following pages using the Orange va11ydette: ",
 		"resultsHeading": "Tests result",
 		"resultsContent1": "The compliance audit carried out by",
-		"resultsContent1bis": "reveals that :",
+		"resultsContent1bis": "reveals that:",
 		"resultsContentnonCompliant": "Less than 50",
 		"resultsContent2": "% of WCAG level A and AA criteria are met.",
         "resultsContent2bis": "For your information, the average compliance rate of the online service is",

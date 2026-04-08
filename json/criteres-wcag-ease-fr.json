@@ -102,7 +102,7 @@
 		"ID": "testID-007",
 		"IDorigin": "testID-007",
 		"wcag": [
-			"3.3.1 A"
+			"3.3.3 AA"
 		],
 		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Et que, si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
 		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",

@@ -14,7 +14,15 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
-## [3.0.3] – 2026-09-13
+## [3.0.4] – 2026-08-04
+
+### Fixed
+
+- [Les messages d'erreur et les suggestions sont-ils explicites ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-007) was linked to **3.3.1 A** instead of **3.3.3 AA**.
+
+---
+
+## [3.0.3] – 2026-09-03
 
 ### Changed
 

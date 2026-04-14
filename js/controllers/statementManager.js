@@ -1368,7 +1368,7 @@ exportStatementHTML = function (statementResult) {
 <body>
     <main class="container-md content">
         <div class="row">
-            <div class="col-lg-12 col-md-6">
+            <div class="col-lg-12 col-md-6 text-break">
                 <h1>${langStatement.statementTemplate.title} : ${utils.escape_html(dataVallydette.statement.app)}</h1>
             </div>
         </div>

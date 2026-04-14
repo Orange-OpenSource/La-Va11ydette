@@ -1615,7 +1615,7 @@ exportStatementHTML = function (statementResult) {
 					<h3>${langStatement.statementTemplate.pagesHeading}</h3>
 					<p>${langStatement.statementTemplate.pagesContent}</p>
 
-					<ol>
+					<ol class="text-break">
 						${dataVallydette.checklist.page.map(item => `<li><strong>${utils.escape_html(item.name)} : </strong>${utils.escape_html(item.url)}</li>`).join('\n					')}
 					</ol>
 				</div>

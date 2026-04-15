@@ -1367,23 +1367,19 @@ exportStatementHTML = function (statementResult) {
 
 <body>
     <main class="container-md content">
-        <h1>${langStatement.statementTemplate.title} : ${utils.escape_html(dataVallydette.statement.app)}</h1>
+        <div class="row">
+            <div class="col-lg-12 col-md-6 text-break">
+                <h1>${langStatement.statementTemplate.title} : ${utils.escape_html(dataVallydette.statement.app)}</h1>
+            </div>
+        </div>
 
         <div class="summary">
-
             <div class="row">
-
-
-
                 <div class="col-lg-12">
-
 					<h2 class="h4 mt-4">${langStatement.statementTemplate.contextHeading}</h2>
 					${md.render(dataVallydette.statement.plan)}
-
             	</div>
-
             </div>
-
         </div>
 
 		<div class="row">
@@ -1392,7 +1388,12 @@ exportStatementHTML = function (statementResult) {
 				<h2 class="h4 mt-4">${langStatement.statementTemplate.state}</h2>
 				<p>"${utils.escape_html(dataVallydette.statement.app)}" ${langStatement.is} ${conformity} ${langStatement.statementTemplate.compliantContent2}.</p>
 				${dataVallydette.statement.compliantStateComment !== "" ? `${md.render(dataVallydette.statement.compliantStateComment)}` : ""}
-                <p>${dataVallydette.statement.approval.filter(a => a.checked === "true").map(a => utils.escape_html(a.name)).join('')} ${langStatement.statementTemplate.linkRGAAWCAG}</p>
+                <p>${dataVallydette.statement.approval
+                    .filter((a) => a.checked === "true")
+                    .map((a) => utils.escape_html(a.name))
+                    .join(
+                        "",
+                    )} ${langStatement.statementTemplate.linkRGAAWCAG}</p>
 				<p>${langStatement.statementTemplate.method}</p>
 
 				<h3>${langStatement.statementTemplate.resultsHeading}</h3>`;
@@ -1615,7 +1616,7 @@ exportStatementHTML = function (statementResult) {
 					<h3>${langStatement.statementTemplate.pagesHeading}</h3>
 					<p>${langStatement.statementTemplate.pagesContent}</p>
 
-					<ol>
+					<ol class="text-break">
 						${dataVallydette.checklist.page.map(item => `<li><strong>${utils.escape_html(item.name)} : </strong>${utils.escape_html(item.url)}</li>`).join('\n					')}
 					</ol>
 				</div>
@@ -1701,3 +1702,4 @@ adaptPlan = function () {
     dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace, dataVallydette.statement.name);
     dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace2, dataVallydette.statement.app);
 }
+

@@ -520,22 +520,22 @@ function dataWCAGComputation() {
 		}
 
 		/** Adds the results to the WCAG object. */
-		dataWCAG.conformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === true).length;
-		dataWCAG.conformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === true).length;
-		dataWCAG.nonconformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === false).length;
-		dataWCAG.nonconformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === false).length;
-		dataWCAG.naA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === "na").length;
-		dataWCAG.naAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === "na").length;
+		dataWCAG.conformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === true && item.deprecated !== true).length;
+		dataWCAG.conformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === true && item.deprecated !== true).length;
+		dataWCAG.nonconformeA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === false && item.deprecated !== true).length;
+		dataWCAG.nonconformeAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === false && item.deprecated !== true).length;
+		dataWCAG.naA = dataWCAG.items.filter(item => item.level ==="A" && item.resultat === "na" && item.deprecated !== true).length;
+		dataWCAG.naAA = dataWCAG.items.filter(item => item.level ==="AA" && item.resultat === "na" && item.deprecated !== true).length;
 		dataWCAG.totalconforme = dataWCAG.conformeA + dataWCAG.conformeAA;
 		dataWCAG.totalnonconforme = dataWCAG.nonconformeA + dataWCAG.nonconformeAA;
 
-		dataWCAG.totalA = dataWCAG.items.filter(function(item){return item.level==="A"}).length;
-		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA"}).length;
+		dataWCAG.totalA = dataWCAG.items.filter(function(item){return item.level==="A" && item.deprecated !== true}).length;
+		dataWCAG.totalAA = dataWCAG.items.filter(function(item){return item.level==="AA" && item.deprecated !== true}).length;
 
-		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => (item.resultat === true || item.resultat === false) && item.level!=="AAA").length;
-		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true && item.level!=="AAA").length;
-		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false && item.level!=="AAA").length;
-		dataWCAG.nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na" && item.level!=="AAA").length;
+		dataWCAG.nbTotalWcag = dataWCAG.items.filter(item => (item.resultat === true || item.resultat === false) && item.level!=="AAA" && item.deprecated !== true).length;
+		dataWCAG.nbTrueWcag = dataWCAG.items.filter(item => item.resultat === true && item.level!=="AAA" && item.deprecated !== true).length;
+		dataWCAG.nbFalseWcag = dataWCAG.items.filter(item => item.resultat === false && item.level!=="AAA" && item.deprecated !== true).length;
+		dataWCAG.nbNaWcag = dataWCAG.items.filter(item => item.resultat === "na" && item.level!=="AAA" && item.deprecated !== true).length;
 
 		/**
 		* 	If all the wcag are non-applicables (hypothetical but tested)

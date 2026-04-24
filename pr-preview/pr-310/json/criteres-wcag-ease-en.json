@@ -90,7 +90,7 @@
 		],
 		"verifier": "<p>Verify that:</p><ul><li>the <code>label</code> has a <code>for</code> attribute referencing the <code>id</code> of the form element to be associated,</li><li>the <code>label</code> is implicit,</li><li>the visible label is referenced by an <code>aria-labelledby</code> attribute carried by the form element,</li><li>the accessible name is given by a title attribute.</li></ul><p>The data format and/or the mandatory field can be linked via an <code>aria-describedby</code> attribute.</p><p>For error messages, verify that:</p><ul><li>The form element references, via <code>aria-labelledby</code> or <code>aria-describedby</code>, the <code>id</code> of the message(s) error.</li><li>If the error message is added to the <code>label</code>, it must also be linked to the form element.</li></ul>",
 		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature.",
-		"group": "Formulaire",
+		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -104,7 +104,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<<p>Verify that:</p><ul><li>Error messages clearly state the nature of the error (example: phone number field required, invalid email format, etc.).</li><li>And that, if necessary, the suggested corrections help to correct the errors.</li></ul>",
+		"verifier": "<p>Verify that:</p><ul><li>Error messages clearly state the nature of the error (example: phone number field required, invalid email format, etc.).</li><li>And that, if necessary, the suggested corrections help to correct the errors.</li></ul>",
 		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature.",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
@@ -138,7 +138,7 @@
 			"3.3.2 A"
 		],
 		"verifier": "<ul><li>Text or a graphic element (asterisk, image, or other symbol) must be present to indicate that a form element is mandatory.</li><li>Text must explain the graphic element indicating a mandatory form element. In the source code, this text must appear before the first use.</li></ul><p>The criterion also applies if the majority of fields in a form are mandatory, with the exception of a few optional fields. It is then possible to visually identify the optional fields.</p>",
-		"complement": "<p><strong>Attention:</strong> The relevance (WCAG 2.4.6 Headings and Labels) of the mandatory designation must be evaluated at the question: < href='#headingtestID-002'>Is each field label and legend relevant?</a>.</p>",
+		"complement": "<p><strong>Attention:</strong> The relevance (WCAG 2.4.6 Headings and Labels) of the mandatory designation must be evaluated at the question: <a href='#headingtestID-002'>Is each field label and legend relevant?</a>.</p>",
 		"exception": "<p>The criterion is not applicable if the mandatory nature of a field is obvious (example: search field, newsletter signup, username/password). In this case, the visual element is optional.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
@@ -451,7 +451,7 @@
 		"wcag": [
 			"1.4.3 AA"
 		],
-		"verifier": "<ul><li>If the text color is defined (<code>color</code>), the background color must also be defined (<code>background-color</code>).</li><li>If the background color is defined (<code>background-color</code>), the text color must also be defined (<code>color</code>).</ li><li>If a background image is used for an element containing text (<code>background-image</code>), the background color must be set (<code>background-color</code>).</li></ul>",
+		"verifier": "<ul><li>If the text color is defined (<code>color</code>), the background color must also be defined (<code>background-color</code>).</li><li>If the background color is defined (<code>background-color</code>), the text color must also be defined (<code>color</code>).</li><li>If a background image is used for an element containing text (<code>background-image</code>), the background color must be set (<code>background-color</code>).</li></ul>",
 		"complement": "<strong>Additionally</strong><ul><li>These properties can be applied directly to an element or inherited from a parent.</li><li>To test, the easiest way is to change your browser default colors. In Firefox, go to \"Settings > Language and appearance > Contrast Control\", select \"Custom\", open \"Manage colors\" and in \"Text and background\", customize the \"Text\" and \"Background\" colors in order to clearly identify them. If in the page only one of these colors appears without the other appearing in the same element, the test is not compliant</li><li>In case of some texts on a background image declared as \"background-image\", it's possible to check using the Web Developer extension, then in the menu \"Images\" > \"Hide background images\", locate texts whose background has disappeared and check that they are readable and sufficiently contrasted.</li></ul>",
 		"moreInfo": "",
 		"priority": "P2",
@@ -511,7 +511,7 @@
 		"wcag": [
 			"2.5.3 A"
 		],
-		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML </a>)</p>",
+		"verifier": "<p>Check that the text of the displayed label (the textual description or the text of the image visible on the screen) is present in the accessible name of this component (to find out more: <a href='https://a11y-guidelines.orange.com/en/articles/accessible-name/' target='_blank' title='The accessible name in HTML (new window)' aria-label='The accessible name in HTML (new window)'>The accessible name in HTML</a>)</p>",
 		"exception": "The criterion is not applicable if no interactive component has a visible text label (example: an icon without text).",
 		"complement": "<p>For example: for a 'start' link, use an <code>aria-label</code> 'start playing', but not 'begin playing'</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
@@ -687,7 +687,7 @@
 			"3.2.2 A"
 		],
 		"verifier": "<p>Verify that there is no change of context, without prior warning to the user, when modifying the parameters of any interactive component.</p><p>Modifying a parameter could be, for example, checking a box, entering content in a text field, or selecting an option in a form control; all of these must have predictable results (typical behavior, expected by the user).</p><p>A change of context is considered valid if the user is notified by text before it is triggered.</p><p>Activating a link or button is not a parameter change, so the criterion does not apply in this case.</p><p>Note: if the direction of the web page is not changed when the content is modified, then it is not a change of context, and therefore the criterion is valid.</p>",
-		"complement": "<strong> Change of context</strong><p>A major change in the content of the web page, when done without the knowledge of the user, can be confusing.</p><p>Change of context includes modifications of:</p><ul><li>the user agent (opening an application from the browser)</li><li>the viewport (other part of the page displayed, opening of a new window)</li><li>the focus position (focus sequence)</li><li>content that changes the meaning of the web page</li></ul>"/p>",
+		"complement": "<strong> Change of context</strong><p>A major change in the content of the web page, when done without the knowledge of the user, can be confusing.</p><p>Change of context includes modifications of:</p><ul><li>the user agent (opening an application from the browser)</li><li>the viewport (other part of the page displayed, opening of a new window)</li><li>the focus position (focus sequence)</li><li>content that changes the meaning of the web page</li></ul></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interaction",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -955,7 +955,7 @@
 			"1.3.2 A"
 		],
 		"verifier": "<p>If a specific reading order is required to understand a content on the page<br/> when CSS is disabled, check that this content read linearly remains understandable.</p><p>In the case of a table used for formatting, verify that disabling CSS does not degrade the reading order and comprehension of the content.</p><p><strong>Example:</strong> a content implemented with multiple columns in CSS must be rendered in the correct order without CSS.</p><p>If no content requires a specific reading order, then the criterion is not applicable.</p>",
-		"complement": "<strong>Additional information</strong><p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p><p>Examples of content to test:</p><ul><li>Layout via these CSS properties:<ul><li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>dislay:\"grid\"</code></li></ul><li>Formatting table</li></ul>",
+		"complement": "<strong>Additional information</strong><p> The order of the contents in the HTML code must remain understandable, in general, it is sufficient that it be identical to the order of display of the contents on the screen.</p><p>Examples of content to test:</p><ul><li>Layout via these CSS properties:<ul><li>positioning properties (<code>top</code >, <code>left</code>, <code>float</code>…)</li><li><code>display:\"flex\"</code> or <code>display:\"grid\"</code></li></ul><li>Formatting table</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/layout/#decoupling-content-from-interaction-and-presentation",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -1091,7 +1091,7 @@
 		],
 		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single pointing action).</p>",
 		"exception": "The criterion is not applicable for following cases:<ul><li>The drag and drop action is essential (exemple: a accuracy game)</li><li>The functionality is native and unmodified< /li></ul>",
-		"complement":"<strong>Additionally</strong><p>This criterion only targets actions for which only the start and end points are taken into account (example: dragging and then dropping a ticket in a Kanban board) and does not take into account so-called “multi- points” actions, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
+		"complement":"<strong>Additionally</strong><p>This criterion only targets actions for which only the start and end points are taken into account (example: dragging and then dropping a ticket in a Kanban board) and does not take into account so-called “multi-points” actions, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
 		"group": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P2",
@@ -1220,3 +1220,4 @@
 		"resultatTest": "nt",
 		"goodPractice": false
 	}
+]

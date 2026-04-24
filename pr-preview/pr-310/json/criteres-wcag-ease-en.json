@@ -137,7 +137,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Text or a graphic element (asterisk, image, or other symbol) must be present to indicate that a form element is mandatory.</li><li>Text must explain the graphic element indicating a mandatory form element. In the source code, this text must appear before the first use.</li></ul><p>The criterion also applies if the majority of fields in a form are mandatory, with the exception of a few optional fields. It is then possible to visually identify the optional fields.</p>",
+		"verifier": "<ul><li>Text or a graphic element (asterisk, image, or other symbol) must be present to indicate that a form element is mandatory.</li><li>Text must explain the graphic element indicating a mandatory form element. In the source code, this text must appear before its first use.</li></ul><p>The criterion also applies if the majority of fields in a form are mandatory, with the exception of a few optional fields. It is then possible to visually identify the optional fields.</p>",
 		"complement": "<p><strong>Attention:</strong> The relevance (WCAG 2.4.6 Headings and Labels) of the mandatory designation must be evaluated at the question: <a href='#headingtestID-002'>Is each field label and legend relevant?</a>.</p>",
 		"exception": "<p>The criterion is not applicable if the mandatory nature of a field is obvious (example: search field, newsletter signup, username/password). In this case, the visual element is optional.</p>",
 		"group": "Form",
@@ -170,7 +170,7 @@
 		"wcag": [
 			"1.3.5 AA"
 		],
-		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'> exhaustive list of allowed values</a>)</li></ul>",
+		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected: (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'>exhaustive list of allowed values</a>)</li></ul>",
 			"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
@@ -306,7 +306,7 @@
 		"wcag": [
 			"3.1.1 A"
 		],
-		"verifier": "<ul><li>Check for the presence of a <code>lang</code> attribute in the <code>html</code> tag.</li><li>The value of the <code>lang</code> attribute must correspond to the document's primary language. See the list of v<a href='https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1'>ISO 639-1 codes.</a>.</li></ul><p>If an informative <code>frame</code> or <code>iframe</code> is present, it must also have a <code>lang</code> attribute, and this attribute must be relevant.</p><p>In the case of a page with an XHTML doctype, the <code>xml:lang</code> attribute alone is insufficient to validate the test; a <code>lang</code> attribute is also required, and both attributes must have the same value.</p>",
+		"verifier": "<ul><li>Check for the presence of a <code>lang</code> attribute in the <code>html</code> tag.</li><li>The value of the <code>lang</code> attribute must correspond to the document's primary language. See the list of <a href='https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes'>ISO 639-1 codes.</a>.</li></ul><p>If an informative <code>frame</code> or <code>iframe</code> is present, it must also have a <code>lang</code> attribute, and this attribute must be relevant.</p><p>In the case of a page with an XHTML doctype, the <code>xml:lang</code> attribute alone is insufficient to validate the test; a <code>lang</code> attribute is also required, and both attributes must have the same value.</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -348,7 +348,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Verify that the accessible name of the <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code>, and <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code> is relevant</li><li>For decorative images and icon fonts, verify that the <code>alt</code> attribute is empty or null, or that the image has a <code>role='presentation'</code> or <code>'none'</code> attribute, or an <code>aria-hidden='true'</code></li><li>For complex images, verify that an alternative is provided by adjacent content</li><li>Verify that there is no CSS embeded image containing information (<code>background-image</code>)</li><li>Verify for audio content and videos for which an alternative is provided by adjacent content</li><li>failing another more robust method, the accessible name can be defined by a <code>title</code> attribute (however, ensure support by the target assistive technologies)</li></ul>",
+		"verifier": "<ul><li>Verify that the accessible name of the <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code>, and <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code> is relevant</li><li>For decorative images and icon fonts, verify that the <code>alt</code> attribute is empty or null, or that the image has a <code>role='presentation'</code> or <code>'none'</code> attribute, or an <code>aria-hidden='true'</code></li><li>For complex images, verify that an alternative is provided by adjacent content</li><li>Verify that there is no CSS embedded image containing information (<code>background-image</code>)</li><li>Verify for audio content and videos for which an alternative is provided by adjacent content</li><li>failing another more robust method, the accessible name can be defined by a <code>title</code> attribute (however, ensure support by the target assistive technologies)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -482,7 +482,7 @@
 			"1.4.1 A"
 		],
 		"verifier": "<p>Check that colour is not the only means of conveying the information:</p><ul><li>the information can also be obtained in text form</li><li>one (or more) visual aids are available to convey the same information (example: icons using the same colours, but different shapes)</li><li>colors conveying information should be well differentiated by hue and brightness (i.e., the contrast between colors must be greater than 3:1). For example: light green and dark red.</li></ul><p>Particular case of non-underlined links in text:<ul><li>the link must have at least a 3:1 contrast ratio with the surrounding text<li>and an indicator that does not rely on the use of colour must make the link distinguishable for the user when he/she is focusing on the link or hovers over it with the mouse (example: underlined)</li></ul>",
-		"exception": "The criterion is not applicable for following cases:<ul><li>Links that are explicit in nature, for example links that are in a website's navigation areas (page headers and footers, menus or link lists…)</li><li>If no information is conveyed by the use of colour</li></ul>",
+		"exception": "The criterion is not applicable for the following cases:<ul><li>Links that are explicit in nature, for example links that are in a website's navigation areas (page headers and footers, menus or link lists…)</li><li>If no information is conveyed by the use of colour</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -497,7 +497,7 @@
 			"1.3.3 A"
 		],
 		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text, an alternative or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next page, press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
-		"exception": "The criterion is not applicable if no information is conveyed with the use of sound, orientation, size, shape or position.",
+		"exception": "The criterion is not applicable if no information is conveyed by the use of sound, orientation, size, shape or position.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -527,7 +527,7 @@
 		"wcag": [
 			"2.4.4 A"
 		],
-		"verifier": "<p>Users should be able to determine if they want to follow a link with the help of the context, if needed, to understand his destination.</p><ul><li>check that there is not any identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link only by its accessible name</li><li>If none of these above points are compliant, ensure that the target of a link can be inferred from its context</li></ul>",
+		"verifier": "<p>Users should be able to determine if they want to follow a link with the help of the context, if needed, to understand its destination.</p><ul><li>check that there is no identical link text pointing to different locations (URLs)</li><li>check that it is possible to determine the action or destination of a link only by its accessible name</li><li>If none of these above points are compliant, ensure that the target of a link can be inferred from its context</li></ul>",
 		"exception": "The criterion is not applicable if the link is ambiguous for any user or the context of the page does not make it possible to understand the destination of the link.",
 		"complement": "<strong>How to determine the context of the link:</strong><p>The context of the link constitutes additional information that helps the user understand the purpose. check that this additional information is located either:</p><ul><li>in the same phrase</li><li> in the same paragraph (<code>p</code>)</li><li> in the same list element (<code>li</code>)</li><li> in the same table cell (<code>td</code>)</li><li>in the table header cell (<code>th</code>), associated with the cell of the link (<code>td</code>)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
@@ -557,7 +557,7 @@
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [],
-		"verifier": "<p>The user must have the information if a link is used to open or download a document (pdf, word processing, video, audio…)</p><p>Each link allowing to download a file must be accompanied by information relating to its consultation.</p><p>Check that the label of the link contains:</p><ul><li>the name/title of the document</li><li> the type of document: pdf, text, mp3…</li><li>if necessary the language of the document</li><li>the weight of the document</li></ul>",
+		"verifier": "<p>The user must have the information if a link is used to open or download a document (pdf, word processing, video, audio…)</p><p>Each link allowing to download a file must be accompanied by information relating to its consultation.</p><p>Check that the label of the link contains:</p><ul><li>the name/title of the document</li><li> the type of document: pdf, text, MP3…</li><li>if necessary the language of the document</li><li>the weight of the document</li></ul>",
 		"complement": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#text-of-links-and-buttons-must-be-accessible",
 		"priority": "",
@@ -822,7 +822,7 @@
 		],
 		"verifier": "<p>Verify that at least one of the following conditions is met:</p><ul><li>The shortcut can be disabled by the user</li><li>The shortcut is only active when the interface component receives focus</li><li>The shortcut can be modified, with the possibility of adding one or more non-printable characters (<kbd>Ctrl</kbd>, <kbd>Alt</kbd>…) to the combination</li></ul>",
 		"exception": "The criterion is not applicable to keyboard shortcuts that include <code>accesskey</code> or a modifier key (non-printable character key, for instance <kbd>Ctrl</kbd>, <kbd>Alt</kbd> or <kbd>Shift</kbd>).",
-		"complement": "<strong>Additional information</strong><p>The presence of shortcuts can be detected using this <a href='https://a11y-guidelines.orange.com/en/web/toolbox/methods-and-test-tools/keyboard-shortcuts/'>keyboard shorcuts bookmarklet</a></p>",
+		"complement": "<strong>Additional information</strong><p>The presence of shortcuts can be detected using this <a href='https://a11y-guidelines.orange.com/en/web/toolbox/methods-and-test-tools/keyboard-shortcuts/'>keyboard shortcuts bookmarklet</a></p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#ensure-the-user-keeps-control-during-interactions",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -865,7 +865,7 @@
 		"wcag": [
 			"2.4.11 AA"
 		],
-		"verifier": "<p>Be sure that the interactive element receiving keyboard focus is not totally hidden.</p>",
+		"verifier": "<p>Ensure that that the interactive element receiving keyboard focus is not totally hidden.</p>",
 		"complement": "<strong> Additional information </strong><ul><li>When the content is in a user-movable content, then only the initial position needs to be tested.</li><li>The element receiving keyboard focus can be hidden by a content opened by the user. If it is possible to reveal the focused element without moving the focus, then the focused element is not considered hidden.</li><li>When the element receiving keyboard focus is hidden by another element with less than 100 percent opacity then the element receiving keyboard focus is considered as not entirely hidden.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#make-the-focus-visible-at-all-times",
 		"priority": "P2",

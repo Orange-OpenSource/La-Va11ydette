@@ -25,7 +25,7 @@
 		],
 		"verifier": "<p>The label for each form element must be relevant:</p><ul><li>If a data format or input aid is indicated, verify its relevance.</li><li>If form elements are grouped, also verify that the legend or label is relevant.</li><li>If the form element has an accessible name, also verify its relevance.</li><li>If the form element is mandatory, verify the relevance of the mandatory statement.</li></ul>",
 		"complement": "<strong>Additional Information:</strong><p>This test concerns the relevance of the visible label and not that of the accessible name of the form element.</p>",
-		"exception": "<p>The presence of a visible label or caption is not mandatory (example: a single search field with a magnifying glass button). In this case, it is an exception and the criterion is met.</p>",
+		"exception": "<p>The presence of a visible label or caption is not mandatory (example: a single search field with a magnifying glass button). In this case, it is an exception and the criterion is compliant.</p>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P0",

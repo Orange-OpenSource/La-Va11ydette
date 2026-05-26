@@ -89,7 +89,6 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>le <code>label</code> possède un attribut <code>for</code> référençant l'<code>id</code> de l'élément de formulaire à associer,</li><li>le <code>label</code> est implicite,</li><li>l'étiquette visible est référencée par un attribut <code>aria-labelledby</code> porté par l'élément de formulaire,</li><li>le nom accessible est donné par un attribut title.</li></ul><p>Le format de données et/ou la mention obligatoire peuvent être liés via un attribut <code>aria-describedby</code>.</p><p>Pour les messages d'erreurs, vérifier que&nbsp;:</p><ul><li>L'élément de formulaire référence, via <code>aria-labelledby</code> ou <code>aria-describedby</code>, l'<code>id</code> du/des message(s) d'erreur.</li><li>Si le message d'erreur est ajouté dans le <code>label</code> celui-ci doit aussi être lié à l'élément de formulaire.</li></ul>",
-		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce que c'est une fonctionnalité essentielle.",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P3",
@@ -105,7 +104,7 @@
 			"3.3.3 AA"
 		],
 		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Et que, si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
-		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle.",
+		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle. Idem pour les messages d'erreur.",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
 		"priority": "P2",
@@ -362,7 +361,7 @@
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Vérifier que des images (<code>img</code>, <code>input</code> / <code.>object type='image'</code.>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>cas particuliers (ex&nbsp;: logo, CAPTCHA, dénomination commerciale)</li><li>l'élément est nécessaire</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"verifier": "<p>Vérifier que des images (<code>img</code>, <code>input</code> / <code.>object type='image'</code.>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
 		"exception": "Non applicable, si aucune image ne contient de texte ou si l'image ne porte pas d'information. Idem si l'image est essentielle (logo, marque, CAPTCHA, image de test dans un jeu ou un quiz par exemple,…)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",

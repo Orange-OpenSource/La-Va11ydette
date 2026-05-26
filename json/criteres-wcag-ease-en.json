@@ -89,7 +89,6 @@
 			"1.3.1 A"
 		],
 		"verifier": "<p>Verify that:</p><ul><li>the <code>label</code> has a <code>for</code> attribute referencing the <code>id</code> of the form element to be associated,</li><li>the <code>label</code> is implicit,</li><li>the visible label is referenced by an <code>aria-labelledby</code> attribute carried by the form element,</li><li>the accessible name is given by a title attribute.</li></ul><p>The data format and/or the mandatory field can be linked via an <code>aria-describedby</code> attribute.</p><p>For error messages, verify that:</p><ul><li>The form element references, via <code>aria-labelledby</code> or <code>aria-describedby</code>, the <code>id</code> of the message(s) error.</li><li>If the error message is added to the <code>label</code>, it must also be linked to the form element.</li></ul>",
-		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature.",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P3",
@@ -105,7 +104,7 @@
 			"3.3.1 A"
 		],
 		"verifier": "<p>Verify that:</p><ul><li>Error messages clearly state the nature of the error (example: phone number field required, invalid email format, etc.).</li><li>And that, if necessary, the suggested corrections help to correct the errors.</li></ul>",
-		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature.",
+		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature. Same for error mesages.",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P2",
@@ -362,7 +361,7 @@
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Verify that images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) are not used to present information in text form.</p><p>The criterion is conform for the following exceptions:</p><ul><li>SVG (true text)</li><li>Special cases (e.g., logo, CAPTCHA, brand name)</li><li>The element is necessary</li><li>The image is visually editable by the user</li></ul>",
+		"verifier": "<p>Verify that images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) are not used to present information in text form.</p><p>The criterion is conform for the following exceptions:</p><ul><li>SVG (true text)</li><li>The image is visually editable by the user</li></ul>",
 		"exception": "Not applicable, if no image contains text or if the image does not carry information. The same applies if the image is essential (logo, brand, CAPTCHA, test image in a game or quiz, for example,…)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",

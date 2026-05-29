@@ -14,6 +14,14 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.6] – 2026-01-06
+
+---
+
+## [3.0.5] – 2026-26-05
+
+---
+
 ## [3.0.4] – 2026-08-04
 
 ### Fixed

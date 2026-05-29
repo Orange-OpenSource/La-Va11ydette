@@ -16,9 +16,17 @@ All notable changes to this project will be documented in this file. This projec
 
 ## [3.0.6] – 2026-01-06
 
+### Fixed
+
+- Minor typos and rephrasing on testID-007, -010, -012, -013, -026, -060, -062, -068, -076 and -080.
+
 ---
 
 ## [3.0.5] – 2026-26-05
+
+### Fixed
+
+- Minor typos and rephrasing on testID-007, -062 and -089.
 
 ---
 

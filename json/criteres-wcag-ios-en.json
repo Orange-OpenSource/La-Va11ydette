@@ -59,7 +59,7 @@
 			"1": "3.3.2 A"
 		},
 		"verifier": "<p>Linked form fields must be grouped, for example:</p><ul><li>fields for a shipping and billing address (multiple fields for street, postal code, and city based on the address)</li><li>a list of radio buttons or checkboxes associated with the same parameter</li></ul>",
-		"complement": "<h5>Additional Information</h5><p>Examples of grouping: a list of radio buttons grouped using <code>.accessibilityElement(children: .contain)</code>.</p>",
+		"complement": "<h5>Additional Information</h5><p>Grouping example: a list of radio buttons grouped using <code>.accessibilityElement(children: .contain)</code>.</p>",
 		"group": "Form field",
 		"resultatTest": "nt",
 		"priority": "P2",
@@ -296,18 +296,76 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are all the significant elements vocalized and relevant?",
+		"title": "Are all the significant non-text elements vocalized and relevant?",
 		"ID": "testID-018",
 		"IDorigin": "testID-018",
 		"wcag": {
 			"0": "1.1.1 A"
 		},
-		"verifier": "<p>All significant graphical elements are vocalized and accessible using voice navigation:</p><ul><li>Each graphical element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
+		"verifier": "<p>All significant non-text elements are vocalized and accessible using voice navigation:</p><ul><li>Each non-text element carrying information is vocalized appropriately.</li><li>Images containing text have an alternative that includes at least the visible text.</li><li>Complex images have a detailed alternative provided by adjacent content.</li><li>Each interactive non-text element is represented by at least a relevant name.</li><li>Pre-recorded multimedia content is easily identifiable (through a relevant alternative or adjacent textual content).</li></ul>",
 		"complement": "<h5>Additional information</h5><ul><li>If the non-text content is a test or exercise that would be invalid if presented in text form, then the alternative provides at least a brief description of that content.</li><li>If the non-text content is primarily intended to create a specific sensory experience, then the textual alternative provides at least a brief description of that content.</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P0",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#element-trait"
+	},
+		{
+		"themes": "Screen reader",
+		"title": "Are decorative elements ignored when using voice navigation?",
+		"ID": "testID-026",
+		"IDorigin": "testID-026",
+		"wcag": {
+			"0": "1.1.1 A"
+		},
+		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#images"
+
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Are the name, role, and state of each interface component vocalized?",
+		"ID": "testID-024",
+		"IDorigin": "testID-024",
+		"wcag": {
+			"0": "4.1.2 A"
+		},
+		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state or value of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
+		"resultatTest": "nt",
+		"priority": "P0",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#element-trait"
+	},
+		{
+		"themes": "Screen reader",
+		"title": "Does the accessible name of each component include at least the visible label on the screen?",
+		"ID": "testID-051",
+		"IDorigin": "testID-051",
+		"wcag": {
+			"0": "2.5.3 A"
+		},
+		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
+		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
+		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
+        "resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Are the visible elements the only ones vocalized?",
+		"ID": "testID-025",
+		"IDorigin": "testID-025",
+		"wcag": {
+			"0": "1.1.1 A"
+		},
+		"verifier": "<p>There are no invisible elements conveyed by screen reader.</p>",
+		"resultatTest": "nt",
+		"priority": "P1",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#modal-view"
 	},
 	{
 		"themes": "Screen reader",
@@ -318,7 +376,7 @@
 			"0": "1.3.2 A",
 			"1": "2.4.3 A"
 		},
-		"verifier": "<p>Using the screen reader, the elements follow a logical and understandable order.</p>",
+		"verifier":"<p>The elements must follow a logical and comprehensible order using the screen reader. Elements are read in the natural reading order (left to right and top to bottom).</p><p>The specific layout of content is covered by criterion 1.3.1.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false,
@@ -337,20 +395,6 @@
 		"priority": "P2",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#grouping-elements"
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are the elements presented as a list correctly rendered?",
-		"ID": "testID-021",
-		"IDorigin": "testID-021",
-		"wcag": {
-			"0": "1.3.1 A"
-		},
-		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
-		"complement": "<h5>Additional Information</h5><p>A list can be used to present unordered items (for example, a list of ingredients for a recipe) or ordered items (for example, a sequence of specific steps to follow).</p>",
-		"resultatTest": "nt",
-		"priority": "P2",
-		"goodPractice": false
 	},
 	{
 		"themes": "Screen reader",
@@ -374,7 +418,7 @@
 		"wcag": {
 			"0": "4.1.3 AA"
 		},
-		"verifier": "<ul><li>Each status message (see the examples below) is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li></ul>",
+		"verifier": "<ul><li>Each status message (see the examples below) is conveyed by the screen reader without moving the focus (mechanism based on announcements or <span lang=`\"en\">live regions</span>).</li><li>Each status message is conveyed appropriately.</li><li>In the case of a non-permanent status message whose disappearance provides information (for example a 'busy' or 'waiting' status which disappears as soon as the service is available), this status must also be conveyed.</li></ul>",
         "complement": "<h4>Examples of status messages</h4><ul><li>Search result</li><li>Application status (e.g., offline)</li><li>Error message</li><li>Progress indication message</li><li>Notification</li><li>Message following the addition of a product to a cart</li></ul>",
         "resultatTest": "nt",
 		"priority": "P2",
@@ -383,60 +427,16 @@
 	},
 	{
 		"themes": "Screen reader",
-		"title": "Are the name, role, and value of each interface component vocalized?",
-		"ID": "testID-024",
-		"IDorigin": "testID-024",
+		"title": "Are the elements presented as a list correctly rendered?",
+		"ID": "testID-021",
+		"IDorigin": "testID-021",
 		"wcag": {
-			"0": "4.1.2 A"
+			"0": "1.3.1 A"
 		},
-		"verifier": "<ul><li>The name and role of each interface component (button, link, checkbox, form field, etc.) are correctly conveyed.</li><li>The state of each interface component is vocalized (e.g., \"selected,\" \"checked,\" etc.).</li><li>Each interface component is vocalized with the associated action.</li></ul>",
+		"verifier": "<p>Elements presented as a list form are rendered as a list or in a way that conveys a list structure.</p>",
+		"complement": "<h5>Additional Information</h5><p>A list can be used to present unordered items (for example, a list of ingredients for a recipe) or ordered items (for example, a sequence of specific steps to follow).</p>",
 		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#element-trait"
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are the visible elements the only ones vocalized?",
-		"ID": "testID-025",
-		"IDorigin": "testID-025",
-		"wcag": {
-			"0": "1.1.1 A"
-		},
-		"verifier": "<p>There are no ghost (invisible) elements conveyed by screen reader.</p>",
-		"resultatTest": "nt",
-		"priority": "P1",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#modal-view"
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Are decorative elements ignored when using voice navigation?",
-		"ID": "testID-026",
-		"IDorigin": "testID-026",
-		"wcag": {
-			"0": "1.1.1 A"
-		},
-		"verifier": "<p>Decorative graphic elements are not vocalized.</p>",
-		"resultatTest": "nt",
-		"priority": "P0",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/design/#images"
-
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Does the accessible name of each component include at least the visible label on the screen?",
-		"ID": "testID-051",
-		"IDorigin": "testID-051",
-		"wcag": {
-			"0": "2.5.3 A"
-		},
-		"verifier": "<p>The visible label of the element is included in the vocalization of that component.</p>",
-		"complement": "<p>It is recommended to present the content of the visible label first in the accessible name. For example: for a link \"start,\" use an alternative \"start playback,\" but not \"launch playback.\"</p>",
-		"exception": "<p>Not applicable if the element has no visible label (icon without text for example).</p>",
-        "resultatTest": "nt",
-		"priority": "P1",
+		"priority": "P2",
 		"goodPractice": false
 	},
 	{
@@ -452,7 +452,22 @@
 		"resultatTest": "nt",
 		"goodPractice": false,
 		"moreInfo": "https://a11y-guidelines.orange.com/en/mobile/ios/development/#reading-order"
-	},	
+	},
+	{
+		"themes": "Screen reader",
+		"title": "Is the content of the page conveyed in the primary language of the page?",
+		"ID": "testID-060",
+		"IDorigin": "testID-060",
+		"wcag": {
+			"0": "3.1.1 A"
+		},
+		"verifier": "<p>The screen reader conveys textual content in the primary language of the page.</p>",
+		"group": "Voice navigation",
+		"resultatTest": "nt",
+		"priority": "P3",
+		"goodPractice": false,
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes"
+	},
 	{
 		"themes": "Screen reader",
 		"title": "Are changes in language clearly identified?",
@@ -481,21 +496,6 @@
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
-	},
-	{
-		"themes": "Screen reader",
-		"title": "Is the content of the page conveyed in the primary language of the page?",
-		"ID": "testID-060",
-		"IDorigin": "testID-060",
-		"wcag": {
-			"0": "3.1.1 A"
-		},
-		"verifier": "<p>The screen reader conveys textual content in the primary language of the page.</p>",
-		"group": "Voice navigation",
-		"resultatTest": "nt",
-		"priority": "P3",
-		"goodPractice": false,
-		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#declaring-the-main-language-and-language-changes"
 	},
 	{
 		"themes": "Switch Control and keyboard navigation",
@@ -561,7 +561,7 @@
 			"0": "2.4.7 AA"
 		},
 		"verifier": "<ul><li>The focus is easily visible at a glance and stands out from the rest of the screen.</li><li>If necessary, check the contrast ratio of the focus, which should be at least 3:1 compared to the surrounding color.</li></ul>",
-		"exception": "<p>The criterion is not applicable for native focus that is not modifiable.</p>",
+		"complement":"<h5>Complement</h5><p>On iOS, it is not possible to change the focus appearance but it is possible to change the colour of a component receiving the focus, using the Swift method <a href='https://developer.apple.com/documentation/objectivec/nsobject-swift.class/accessibilityelementdidbecomefocused()/'>accessibilityElementDidBecomeFocused</a> or the SwiftUI property <a href='https://developer.apple.com/documentation/swiftui/accessibilityfocusstate'>accessibilityfocusstate.</p>",
 		"resultatTest": "nt",
 		"priority": "P1",
 		"goodPractice": false
@@ -619,7 +619,7 @@
 		},
 		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single point action).</p>",
 		"complement": "<h5>Additional information</h5><p>This criterion only targets actions for which only the start and end points are taken into account, (dragging and then dropping a ticket in a Kanban board for example ) and does not take into account so-called \"multi-point\" actions, covered by criterion \"WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?\".</p>",
-		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (dexterity games for example)</li><li>The functionality is native is unmodified</li></ul>",
+		"exception": "<p>The criterion is not applicable:</p><ul><li>The drag and drop action is essential (a dexterity game for example)</li><li>The functionality is native is unmodified</li></ul>",
 		"resultatTest": "nt",
 		"priority": "P3",
 		"wcag22" : true,

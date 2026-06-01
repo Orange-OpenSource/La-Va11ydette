@@ -103,7 +103,7 @@
 		"wcag": [
 			"3.3.3 AA"
 		],
-		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Et que, si besoin, les suggestions de correction aident à la correction des erreurs.</li></ul>",
+		"verifier": "<p>Vérifier que&nbsp;:</p><ul><li>Les messages d'erreur énoncent clairement la nature de l'erreur (exemple&nbsp;: champ téléphone obligatoire, format de l'email invalide…).</li><li>Et que, s'il y a validation du format d'un élément de formulaire, les suggestions de correction aident à la correction des erreurs.</li></ul>",
 		"exception": "Le critère est non applicable lorsqu'il est impossible de faire une suggestion ou que l'on ne peut donner de suggestion pour des raisons de sécurité ou parce qu'il s'agit d'une fonctionnalité essentielle. Idem pour les messages d'erreur.",
 		"group": "Formulaire",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#detecter-identifier-les-erreurs-et-suggerer-des-corrections",
@@ -247,7 +247,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>vérifier que les éléments qui ressemblent visuellement à des titres ont la fonction de titre sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
+		"verifier": "<ul><li>vérifier que les éléments qui ressemblent visuellement à des titres et ont la fonction de titre sont bien balisés comme tels (<code>hn</code>, <code>role='heading'</code>)</li><li>vérifier que les niveaux de titres sont hiérarchisés de manière logique (sans obligation stricte d'un seul saut de niveau de titre)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#donner-des-titres-aux-rubriques",
 		"exception":"Le critère est non-applicable si aucun titre n'est présent.",
 		"priority": "P1",
@@ -291,7 +291,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment <code>p</code>) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>lien (<code>&lt;a&gt;</code>), pour tout changement de contexte via chargement d'une nouvelle URL</li><li>bouton (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>), pour tout déclenchement d'action, validation ou sélection</li><li>les tableaux de présentation (voir critère <a href='#headingtestID-023'>Les tableaux sont-ils correctement structurés&nbsp?</a>) : doivent porter un attribut <code>role='presentation'</code> sur la balise <code>table</code> ET ne doivent pas contenir de balises et/ou attributs sémantiques de tableau ET le contenu du tableau doit porter une sémantique appropriée/sa propre sémantique.</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
+		"verifier": "<ul><li>du contenu n'est pas isolé sans être entouré d'une balise sémantique (notamment <code>p</code>) pour en comprendre le sens ou sa relation au reste de la structure du document</li><li>les citations longues (paragraphe) sont balisées avec des <code>blockquote</code></li><li>les citations courtes sont balisées avec des <code>q</code>.</li><li>les informations présentées visuellement sous forme de liste sont codées en tant que liste HTML</li><li>les listes d'items non-ordonnés sont balisées avec des <code>ul</code> / <code>li</code></li><li>les listes d'items ordonnés sont balisées avec des <code>ol</code> / <code>li</code></li><li>les listes de définitions sont balisées avec des <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>les liens (<code>a</code>) sont utilisés pour tout changement de contexte via chargement d'une nouvelle URL</li><li>les boutons (<code>&lt;button&gt;</code>, <code>&lt;input type='button/submit'&gt;</code>) servent quand à eux pour tout déclenchement d'action, validation ou sélection</li><li>les tableaux de présentation (voir critère <a href='#headingtestID-023'>Les tableaux sont-ils correctement structurés&nbsp?</a>) : doivent porter un attribut <code>role='presentation'</code> sur la balise <code>table</code> ET ne doivent pas contenir de balises et/ou attributs sémantiques de tableau ET le contenu du tableau doit porter une sémantique appropriée/sa propre sémantique.</li></ul><p>Attention&nbsp;: les <code>role</code> ARIA peuvent modifier la sémantique des balises HTML et pas l'interactivité, vérifier qu'ils sont utilisés de manière accessible</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-textuel/#respecter-la-semantique-html",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -347,7 +347,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>vérifier que le nom accessible des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code> est pertinent</li><li>pour les images décoratives et les polices d'icônes, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégrée en CSS (<code>background-image</code>)</li><li>vérifier pour les contenus audios et vidéos qu'une alternative est fournie par un contenu adjacent</li><li>à défaut d'une autre méthode plus robuste, le nom accessible peut être défini par un attribut <code>title</code> (assurez-vous cependant du support par les aides techniques cibles)</li></ul>",
+		"verifier": "<ul><li>vérifier que le nom accessible des <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code> et <code>object type='image'</code>, <code>svg</code>, <code>role='img'</code> est pertinent</li><li>pour les images décoratives et les polices d'icônes, vérifier que l'attribut <code>alt</code> est vide ou nul, ou que l'image porte un <code>role='presentation'</code> ou <code>'none'</code> ou encore un attribut <code>aria-hidden='true'</code></li><li>vérifier pour les images complexes qu'une alternative est fournie par un contenu adjacent</li><li>vérifier qu'il n'existe pas d'image portant de l'information intégrée en CSS (<code>background-image</code>)</li><li>vérifier pour les contenus audios et vidéos qu'une alternative est fournie par un contenu adjacent</li><li>à défaut d'une autre méthode plus robuste, le nom accessible peut être défini par un attribut <code>title</code> (assurez-vous cependant du support par les aides techniques cibles)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -361,7 +361,7 @@
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Vérifier que des images (<code>img</code>, <code>input</code> / <code.>object type='image'</code.>, <code>embed</code>, <code>canvas</code>) ne sont pas utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>SVG (vrai texte)</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
+		"verifier": "<p>Vérifier que des images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>, <code>role='img'</code>) ne sont pas utilisées pour présenter de l'information sous forme de texte.</p><p>Le critère est conforme pour les exceptions suivantes :</p><ul><li>svg (vrai texte)</li><li>l'image est visuellement modifiable par l'utilisateur</li></ul>",
 		"exception": "Non applicable, si aucune image ne contient de texte ou si l'image ne porte pas d'information. Idem si l'image est essentielle (logo, marque, CAPTCHA, image de test dans un jeu ou un quiz par exemple,…)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
@@ -466,7 +466,7 @@
 			"1.4.11 AA"
 		],
 		"verifier": "<p>Vérifier que les éléments graphiques, les icônes, les composants interactifs graphiques, leurs états (focus/hover…) et les éléments de formulaire ont un contraste minimum de 3:1 pour transmettre l'information.</p>",
-		"exception": "Le critère n'est pas applicable pour les cas suivants&nbsp;:<ul><li>les logos, photos de scènes de la vie réelle (paysages, personnes, etc.), drapeaux, captures d'écran, etc.</li><li>si une alternative (un texte de remplacement, une étiquette, une longue description ou un tableau de données), apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction (liens d'une barre de navigation)</li><li>le manque de contraste est nécessaire pour véhiculer l'information</li><li>les composants interactifs inactifs (pas d'action possible)</li><li>les logos, les marques</li><li>les éléments dynamiques dont le contraste au survol / focus est suffisant</li><li>les composants dont l'apparence est déterminée par le navigateur et non modifiée par l'applicatif.</li></ul>",
+		"exception": "Le critère n'est pas applicable pour les cas suivants&nbsp;:<ul><li>les photos de scènes de la vie réelle (paysages, personnes, etc.), drapeaux, captures d'écran, etc.</li><li>si une alternative (un texte de remplacement, une étiquette, une longue description ou un tableau de données), apporte la même information que l'icône ou le graphique</li><li>si le manque de contraste de l'image n'empêche pas la compréhension du contenu ou de sa fonction (liens d'une barre de navigation)</li><li>le manque de contraste est nécessaire pour véhiculer l'information</li><li>les composants interactifs inactifs (pas d'action possible)</li><li>les logos, les marques</li><li>les éléments dynamiques dont le contraste au survol / focus est suffisant</li><li>les composants dont l'apparence est déterminée par le navigateur et non modifiée par l'applicatif.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#assurer-un-contraste-suffisant-entre-les-couleurs-de-premier-plan-et-de-fond",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -968,7 +968,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Vérifier l'absence de perte d'information.</p>",
+		"verifier": "<p>Vérifier qu'il n'y a pas de perte d'information.</p>",
 		"complement": "<strong>Complément d'information</strong><ul><li>Aucune information ne doit être transmise par du contenu généré en CSS (exemples&nbsp;: propriété <code>content</code> des pseudo classes <code>::before</code> / <code>:before</code> et <code>::after</code> / <code>: after</code >, <code>content</code> property, images intégrées en background)</li><li>Le contenu généré par CSS doit présenter uniquement des informations décoratives</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#separer-le-contenu-de-linteractivite-et-de-la-presentation",
 		"priority": "P3",
@@ -996,7 +996,7 @@
 		"wcag": [
 			"2.5.8 AA"
 		],
-		"verifier": "<p>Vérifier que chaque élément interactif respecte la surface minimale de 24*24 px CSS dans toutes les conditions d'affichage (zoom, taille de viewport, etc).</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Si l'élément interactif a une surface inférieure à la surface minimale de 24*24 px CSS mais est placé de manière à ce qu'un cercle de 24 px CSS de diamètre centré sur l'élément ne chevauche pas un autre élément interactif ou le cercle d'un élément sous-dimensionné.</li><li>Si la surface de l'élément interactif est inférieure à 24*24 px CSS mais qu'il existe dans la page une alternative conforme permettant de réaliser la même action.</li><li>Si l'élément interactif est intégré dans une phrase ou si sa taille est contrainte par la hauteur de ligne du texte non interactif environnant.</li></ul>",
+		"verifier": "<p>Vérifier que chaque élément interactif respecte la surface minimale de 24*24 px CSS dans toutes les conditions d'affichage (zoom, taille de viewport, etc.).</p><p>Le critère est également conforme pour les exceptions suivantes :</p><ul><li>Si l'élément interactif a une surface inférieure à la surface minimale de 24*24 px CSS mais est placé de manière à ce qu'un cercle de 24 px CSS de diamètre centré sur l'élément ne chevauche pas un autre élément interactif ou le cercle d'un élément sous-dimensionné.</li><li>Si la surface de l'élément interactif est inférieure à 24*24 px CSS mais qu'il existe dans la page une alternative conforme permettant de réaliser la même action.</li><li>Si l'élément interactif est intégré dans une phrase ou si sa taille est contrainte par la hauteur de ligne du texte non interactif environnant.</li></ul>",
 		"exception":"Critère non applicable si :<ul><li>Le rendu des éléments interactifs est le rendu par défaut de l'agent utilisateur.</li><li>La taille et la position des éléments interactifs sont cruciales pour le contenu (exemple : des repères sur une carte) ou contraintes par une obligation légale. Dans ce cas il est toutefois recommandé de fournir des alternatives lorsque cela est possible.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/mise-en-page/#definir-des-zones-sensibles-de-taille-suffisante",
 		"priority": "P2",
@@ -1090,7 +1090,7 @@
 		],
 		"verifier": "<p>Les fonctionnalités de type glisser-déposer, doivent avoir une alternative ne nécessitant pas une dextérité propre à ce type de mouvement (action à pointage unique).</p>",
 		"exception": "Le critère est non applicable dans les cas suivants :<ul><li>L'action de glisser/déposer est essentielle (exemple : un jeu de dextérité)</li><li>La fonctionnalité est native et non modifiée</li></ul>",
-		"complement":"<strong>Complément d'information</strong><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (exemple : glisser puis déposer un ticket dans un tableau Kanban) et ne tient pas compte des actions \"multi-points\", couvertes dans le critère \"WCAG 2.5.1 - Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoire ?\"</p>",
+		"complement":"<strong>Complément d'information</strong><p>Ce critère ne vise que les actions dont seuls les points de départ et d'arrivée sont pris en compte, (exemple : glisser puis déposer un ticket dans un tableau Kanban) et ne tient pas compte des actions \"multi-points\", couvertes dans le critère <a href='#headingtestID-047'>Les gestes multipoints ou basés sur une trajectoire disposent-ils d'une alternative nécessitant un seul pointeur sans trajectoirenbsp;?</a></p>",
 		"group": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/tactile-et-interactions/#proposer-une-alternative-aux-gestuelles-complexes",
 		"priority": "P2",

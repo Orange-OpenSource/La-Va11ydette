@@ -103,7 +103,7 @@
 		"wcag": [
 			"3.3.1 A"
 		],
-		"verifier": "<p>Verify that:</p><ul><li>Error messages clearly state the nature of the error (example: phone number field required, invalid email format, etc.).</li><li>And that, if necessary, the suggested corrections help to correct the errors.</li></ul>",
+		"verifier": "<p>Verify that:</p><ul><li>Error messages clearly state the nature of the error (example: phone number field required, invalid email format, etc.).</li><li>And that, if there is a form validation, the suggested corrections help to correct the errors.</li></ul>",
 		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature. Same for error mesages.",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
@@ -247,7 +247,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>Check that elements resembling headings or having the role of a heading use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical order (without strict requirement of a single heading level skip) </li></ul>",
+		"verifier": "<ul><li>Check that elements resembling headings and having the role of a heading use the correct heading tags (<code>hn</code>, <code>role='heading'</code>)</li><li>Check that the heading levels are prioritized in a logical order (without strict requirement of a single heading level skip) </li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#start-sections-with-headings",
 		"exception": "The criterion is not applicable if no title is present.",
 		"priority": "P1",
@@ -291,7 +291,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<ul><li>Content is not isolated without being surrounded by a semantic tag (notably <code>p</code>) to understand its meaning or its relationship to the rest of the document structure</li><li>Long quotations (paragraphs) are marked with <code>blockquote</code></li><li>Short quotations are marked with <code>q</code>.</li><li>Information presented visually as a list is coded as an HTML list</li><li>Lists of unordered items are marked with <code>ul</code> / <code>li</code></li><li>Lists of ordered items are marked with <code>ol</code> / <code>li</code></li><li>Lists of definitions are marked with <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>link (<code>a</code>), for any context change via loading a new URL</li><li>button (<code>button</code>, <code>input type='button/submit'</code>), for any action triggering, validation, or selection</li><li>presentation tables (see criterion <a href='#headingtestID-023'>Are the tables correctly structured?</a>): must have a <code>role='presentation'</code> attribute on the <code>table</code> tag AND must not contain semantic table tags and/or attributes AND the table content must have appropriate semantics/its own semantics.</li></ul><p>Warning: ARIA <code>role</code> tags can modify the semantics of HTML tags but not interactivity; check that they are used correctly. in an accessible way</p>",
+		"verifier": "<ul><li>Content is not isolated without being surrounded by a semantic tag (notably <code>p</code>) to understand its meaning or its relationship to the rest of the document structure</li><li>Long quotations (paragraphs) are marked with <code>blockquote</code></li><li>Short quotations are marked with <code>q</code>.</li><li>Information presented visually as a list is coded as an HTML list</li><li>Lists of unordered items are marked with <code>ul</code> / <code>li</code></li><li>Lists of ordered items are marked with <code>ol</code> / <code>li</code></li><li>Lists of definitions are marked with <code>dl</code> / <code>dt</code> / <code>dd</code></li><li>Links (<code>a</code>) are used for any context change via loading a new URL</li><li>Buttons (<code>button</code>, <code>input type='button/submit'</code>) served for any action triggering, validation, or selection</li><li>presentation tables (see criterion <a href='#headingtestID-023'>Are the tables correctly structured?</a>): must have a <code>role='presentation'</code> attribute on the <code>table</code> tag AND must not contain semantic table tags and/or attributes AND the table content must have appropriate semantics/its own semantics.</li></ul><p>Warning: ARIA <code>role</code> tags can modify the semantics of HTML tags but not interactivity; check that they are used correctly. in an accessible way</p>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#use-html-semantics",
 		"priority": "P2",
 		"resultatTest": "nt",
@@ -347,7 +347,7 @@
 		"wcag": [
 			"1.1.1 A"
 		],
-		"verifier": "<ul><li>Verify that the accessible name of the <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code>, and <code>object type='image'</code>, <code>SVG</code>, <code>role='img'</code> is relevant</li><li>For decorative images and icon fonts, verify that the <code>alt</code> attribute is empty or null, or that the image has a <code>role='presentation'</code> or <code>'none'</code> attribute, or an <code>aria-hidden='true'</code></li><li>For complex images, verify that an alternative is provided by adjacent content</li><li>Verify that there is no CSS embedded image containing information (<code>background-image</code>)</li><li>Verify for audio content and videos for which an alternative is provided by adjacent content</li><li>failing another more robust method, the accessible name can be defined by a <code>title</code> attribute (however, ensure support by the target assistive technologies)</li></ul>",
+		"verifier": "<ul><li>Verify that the accessible name of the <code>img</code>, <code>area</code>, <code>canvas</code>, <code>input</code>, and <code>object type='image'</code>, <code>svg</code>, <code>role='img'</code> is relevant</li><li>For decorative images and icon fonts, verify that the <code>alt</code> attribute is empty or null, or that the image has a <code>role='presentation'</code> or <code>'none'</code> attribute, or an <code>aria-hidden='true'</code></li><li>For complex images, verify that an alternative is provided by adjacent content</li><li>Verify that there is no CSS embedded image containing information (<code>background-image</code>)</li><li>Verify for audio content and videos for which an alternative is provided by adjacent content</li><li>failing another more robust method, the accessible name can be defined by a <code>title</code> attribute (however, ensure support by the target assistive technologies)</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/textual-content/#structuring-data-tables",
 		"priority": "P0",
 		"resultatTest": "nt",
@@ -361,7 +361,7 @@
 		"wcag": [
 			"1.4.5 AA"
 		],
-		"verifier": "<p>Verify that images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>) are not used to present information in text form.</p><p>The criterion is conform for the following exceptions:</p><ul><li>SVG (true text)</li><li>The image is visually editable by the user</li></ul>",
+		"verifier": "<p>Verify that images (<code>img</code>, <code>input</code> / <code>object type='image'</code>, <code>embed</code>, <code>canvas</code>, <code>role='img'</code>) are not used to present information in text form.</p><p>The criterion is conform for the following exceptions:</p><ul><li>SVG (true text)</li><li>The image is visually editable by the user</li></ul>",
 		"exception": "Not applicable, if no image contains text or if the image does not carry information. The same applies if the image is essential (logo, brand, CAPTCHA, test image in a game or quiz, for example,…)",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/contenu-non-textuel/#fournir-un-equivalent-textuel-pour-les-images-et-les-cadres",
 		"priority": "P3",
@@ -466,7 +466,7 @@
 			"1.4.11 AA"
 		],
 		"verifier": "<p> Check that as well as graphics, icons,graphic interactive components and their states (focus/hover…) have a minimum contrast ratio of 3:1 in order to communicate the information</p>",
-		"exception": "The criterion is not applicable in the following cases: <ul><li>logos, photos of real-life scenes (landscapes, people, etc.), flags, screenshots, etc.</li><li>if an alternative (alternative text, a label, a long description, or a data table) provides the same information as the icon or graphic</li><li>if the lack of image contrast does not prevent understanding the content or its function (links in a navigation bar)</li><li>the lack of contrast is necessary to convey the information</li><li>inactive interactive components (no action possible)</li><li>logos, trademarks</li><li>dynamic elements with sufficient contrast on hover/focus</li><li>components whose appearance is determined by the browser and not modified by the application.</li></ul>",
+		"exception": "The criterion is not applicable in the following cases: <ul><li>photos of real-life scenes (landscapes, people, etc.), flags, screenshots, etc.</li><li>if an alternative (alternative text, a label, a long description, or a data table) provides the same information as the icon or graphic</li><li>if the lack of image contrast does not prevent understanding the content or its function (links in a navigation bar)</li><li>the lack of contrast is necessary to convey the information</li><li>inactive interactive components (no action possible)</li><li>logos, trademarks</li><li>dynamic elements with sufficient contrast on hover/focus</li><li>components whose appearance is determined by the browser and not modified by the application.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#provide-enough-contrast-between-front-and-background-colors",
 		"priority": "P1",
 		"resultatTest": "nt",
@@ -1090,7 +1090,7 @@
 		],
 		"verifier": "<p>Drag-and-drop functionality must have an alternative that does not require the dexterity specific to this type of movement (single pointing action).</p>",
 		"exception": "The criterion is not applicable for following cases:<ul><li>The drag and drop action is essential (exemple: a accuracy game)</li><li>The functionality is native and unmodified< /li></ul>",
-		"complement":"<strong>Additionally</strong><p>This criterion only targets actions for which only the start and end points are taken into account (example: dragging and then dropping a ticket in a Kanban board) and does not take into account so-called “multi-points” actions, covered in the criterion “WCAG 2.5.1 - Do multi-point or path-based gestures have an alternative requiring a single pointer without a path?”</p>",
+		"complement":"<strong>Additionally</strong><p>This criterion only targets actions for which only the start and end points are taken into account (example: dragging and then dropping a ticket in a Kanban board) and does not take into account so-called “multi-points” actions, covered in the criterion <a href='#headingtestID-047'>Do multipoint or path-based gestures have an alternative that can be operated with a single pointer without a path-based gesture?</a></p>",
 		"group": "",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/touch-and-interactions/#offer-an-alternative-to-complex-gestures",
 		"priority": "P2",

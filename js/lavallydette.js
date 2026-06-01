@@ -654,6 +654,25 @@ const utils = {
 	
 }  
 
+/**
+ * Anchor link manager
+ * Handles clicks on anchor links with partial id matching.
+ * Works for all pages, including dynamically added ones.
+ */
+if (!window._anchorListenerInitialized) {
+    window._anchorListenerInitialized = true;
+
+    document.addEventListener("click", function (e) {
+        const link = e.target.closest('a[href^="#headingtest"]');
+        if (!link) return;
+        e.preventDefault();
+        const baseId = link.getAttribute("href").substring(1);
+        const target = document.querySelector(`[id^="${baseId}"]`);
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+        }
+    });
+}
+
 //default builder
 initVallydetteApp('', 'fr');
-

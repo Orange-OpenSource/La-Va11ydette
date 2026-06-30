@@ -101,7 +101,7 @@
 		"ID": "testID-007",
 		"IDorigin": "testID-007",
 		"wcag": [
-			"3.3.1 A"
+			"3.3.3 AA"
 		],
 		"verifier": "<p>Verify that:</p><ul><li>Error messages clearly state the nature of the error (example: phone number field required, invalid email format, etc.).</li><li>And that, if there is a form validation, the suggested corrections help to correct the errors.</li></ul>",
 		"exception": "The criterion is not applicable when it is impossible to make a suggestion or when a suggestion cannot be given for security reasons or because it is an essential feature. Same for error mesages.",

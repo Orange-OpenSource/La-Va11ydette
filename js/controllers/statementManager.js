@@ -1769,6 +1769,3 @@ adaptPlan = function () {
     dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace, dataVallydette.statement.name);
     dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace2, dataVallydette.statement.app);
 }
-
-
-

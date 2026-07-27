@@ -393,10 +393,10 @@ displayIssueBody= function(targetId){
 				htmlModal += ' <div id="collapse'+ targetId +'-'+ j +'" data-bs-parent="#issueList" class="accordion-collapse collapse" aria-labelledby="issue'+targetId+'-'+ j +'" >';
 
 				htmlModal += ' <div class="accordion-body">';
-				htmlModal += '   <div id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
+				htmlModal += '   <p id="issue-body-'+ targetId +'-'+ j +'" class="px-3">';
 				htmlModal +=  		utils.escape_html(dataVallydette.checklist.page[currentPage].items[i].issues[j].issueDetail);
 			
-				htmlModal += '  </div>';
+				htmlModal += '  </p>';
 				htmlModal += ' <button id="editIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="editIssue(\''+ targetId +'\','+ j +')">' + langVallydette.edit + '</button>';
 				htmlModal += ' <button id="deleteIssueBtn-'+ targetId +'-'+ j +'" class="btn btn-secondary btn-sm" onClick="deleteConfirmationIssue(\''+ targetId +'\','+ j +')">' + langVallydette.delete + '</button>';
 				

@@ -350,7 +350,7 @@
     "testID-028": [
         {
             "title": "Présence de pièges clavier dans la page",
-            "detail": "Quelle que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir en sortir à l'aide du clavier seul sans se retrouver bloqué à la navigation clavier.",
+            "detail": "Quel que soit le type de composant, de la page ou de l'application, l'utilisateur doit pouvoir en sortir à l'aide du clavier seul sans se retrouver bloqué à la navigation clavier.",
             "solution": "Permettre la sortie du composant (modale, popup, etc.) grâce à un bouton de fermeture",
             "technicalSolution": ""
         }

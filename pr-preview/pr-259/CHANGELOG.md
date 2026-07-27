@@ -14,6 +14,38 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.6] – 2026-01-06
+
+### Fixed
+
+- Minor typos and rephrasing on testID-007, -010, -012, -013, -026, -060, -062, -068, -076 and -080.
+
+---
+
+## [3.0.5] – 2026-26-05
+
+### Fixed
+
+- Minor typos and rephrasing on testID-007, -062 and -089.
+
+---
+
+## [3.0.4] – 2026-08-04
+
+### Fixed
+
+- [Les messages d'erreur et les suggestions sont-ils explicites ?](https://la-va11ydette.orange.com/?list=wcag-web&lang=fr#headingtestID-007) was linked to **3.3.1 A** instead of **3.3.3 AA**.
+
+---
+
+## [3.0.3] – 2026-09-03
+
+### Changed
+
+- The order of tests in the **Forms** group has been updated to simplify the audit process.
+
+---
+
 ## [3.0.2] – 2026-04-03
 
 ### Added

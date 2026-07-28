@@ -254,6 +254,11 @@ function initStatementObject() {
                             name: "Switch Access",
                             version: "",
                         },
+                        {
+                            type: "functional",
+                            name: langStatement.keyboardNavigation,
+                            version: "",
+                        },
                     ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-ios") {
@@ -266,6 +271,16 @@ function initStatementObject() {
                         {
                             type: "functional",
                             name: "Voice Over",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: langStatement.keyboardNavigation,
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: "Switch Control,
                             version: "",
                         },
                     ];

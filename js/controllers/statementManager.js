@@ -180,50 +180,50 @@ function initStatementObject() {
             if (p === "tests") {
                 if (dataVallydette.checklist.referentiel === "wcag-web") {
                     dataVallydette.statement.tests = [
+                        // Analyse automatique globale
                         {
                             type: "auto",
                             name: "axe DevTools",
-                            version: "4.131.2",
+                            version: "",
                         },
                         {
                             type: "auto",
                             name: "WAVE Evaluation Tool",
-                            version: "3.3.1.0",
-                        },
-                        {
-                            type: "auto",
-                            name: "Colour Contrast Analyser",
-                            version: "3.1.4",
-                        },
-                        {
-                            type: "auto",
-                            name: "WCAG Color Contrast Checker",
-                            version: "3.8.5",
-                        },
-                        {
-                            type: "auto",
-                            name: "Stylus",
-                            version: "2.4.5",
-                        },
-                        {
-                            type: "auto",
-                            name: "Web Developer",
-                            version: "3.0.1",
+                            version: "",
                         },
                         {
                             type: "auto",
                             name: "ARC Toolkit",
-                            version: "5.7.10",
+                            version: "",
                         },
                         {
                             type: "auto",
                             name: "Tanaguru webext",
-                            version: "6.0.1",
+                            version: "",
                         },
+                        // Analyse des contrastes
+                        {
+                            type: "auto",
+                            name: "Colour Contrast Analyser",
+                            version: "",
+                        },
+                        {
+                            type: "auto",
+                            name: "WCAG Color Contrast Checker",
+                            version: "",
+                        },
+                        // Inspection DOM/CSS
+                        { type: "auto", name: "Stylus", version: "2.4.5" },
+                        {
+                            type: "auto",
+                            name: "Web Developer",
+                            version: "",
+                        },
+                        // Tests fonctionnels
                         {
                             type: "functional",
                             name: "NVDA",
-                            version: "2026.1.1",
+                            version: "",
                         },
                         {
                             type: "functional",
@@ -237,7 +237,7 @@ function initStatementObject() {
                         {
                             type: "auto",
                             name: "aXe",
-                            version: "0.10.2",
+                            version: "",
                         },
                         {
                             type: "auto",
@@ -275,7 +275,7 @@ function initStatementObject() {
                         {
                             type: "functional",
                             name: "NVDA",
-                            version: "2026.1.1",
+                            version: "",
                         },
                         {
                             type: "functional",
@@ -1769,3 +1769,4 @@ adaptPlan = function () {
     dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace, dataVallydette.statement.name);
     dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace2, dataVallydette.statement.app);
 }
+

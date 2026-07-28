@@ -213,7 +213,11 @@ function initStatementObject() {
                             version: "",
                         },
                         // Inspection DOM/CSS
-                        { type: "auto", name: "Stylus", version: "2.4.5" },
+                        {
+                            type: "auto",
+                            name: "Stylus",
+                            version: "",
+                        },
                         {
                             type: "auto",
                             name: "Web Developer",

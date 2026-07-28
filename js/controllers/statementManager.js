@@ -250,12 +250,12 @@ function initStatementObject() {
                         },
                         {
                             type: "functional",
-                            name: "Talkback",
+                            name: "Switch Access",
                             version: "",
                         },
                         {
                             type: "functional",
-                            name: "Switch Access",
+                            name: "Talkback",
                             version: "",
                         },
                         {
@@ -274,6 +274,11 @@ function initStatementObject() {
                         },
                         {
                             type: "functional",
+                            name: "Switch Control",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
                             name: "Voice Over",
                             version: "",
                         },
@@ -281,12 +286,7 @@ function initStatementObject() {
                             type: "functional",
                             name: langStatement.keyboardNavigation,
                             version: "",
-                        },
-                        {
-                            type: "functional",
-                            name: "Switch Control,
-                            version: "",
-                        },
+                        }
                     ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-pdf") {

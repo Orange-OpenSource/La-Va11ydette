@@ -121,147 +121,233 @@ function initStatementObject() {
             }
             if (p === "technology") {
                 if (dataVallydette.checklist.referentiel === "wcag-web") {
-                    dataVallydette.statement.technology = [{
-                        "name": "HTML",
-                        "version": ""
-                    }, {
-                        "name": "CSS",
-                        "version": ""
-                    }, {
-                        "name": "JavaScript",
-                        "version": ""
-                    }];
+                    dataVallydette.statement.technology = [
+                        {
+                            name: "HTML",
+                            version: "",
+                        },
+                        {
+                            name: "CSS",
+                            version: "",
+                        },
+                        {
+                            name: "JavaScript",
+                            version: "",
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-android") {
-                    dataVallydette.statement.technology = [{
-                        "name": "Java",
-                        "version": ""
-                    }, {
-                        "name": "Kotlin",
-                        "version": ""
-                    }, {
-                        "name": "XML",
-                        "version": ""
-                    }];
+                    dataVallydette.statement.technology = [
+                        {
+                            name: "Java",
+                            version: "",
+                        },
+                        {
+                            name: "Kotlin",
+                            version: "",
+                        },
+                        {
+                            name: "Webviews",
+                            version: "",
+                        },
+                        {
+                            name: "XML",
+                            version: "",
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-ios") {
-                    dataVallydette.statement.technology = [{
-                        "name": "Swift",
-                        "version": ""
-                    }];
+                    dataVallydette.statement.technology = [
+                        {
+                            name: "Swift",
+                            version: "",
+                        },
+                        {
+                            name: "Webviews",
+                            version: "",
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-pdf") {
-                    dataVallydette.statement.technology = [{
-                        "name": "PDF",
-                        "version": ""
-                    }];
+                    dataVallydette.statement.technology = [
+                        {
+                            name: "PDF",
+                            version: "",
+                        },
+                    ];
                 }
             }
             if (p === "tests") {
                 if (dataVallydette.checklist.referentiel === "wcag-web") {
-                    dataVallydette.statement.tests = [{
-                        "type": "auto",
-                        "name": "aXe",
-                        "version": "4.7.2"
-                    },
+                    dataVallydette.statement.tests = [
+                        // Analyse automatique globale
                         {
-                            "type": "auto",
-                            "name": "Wave",
-                            "version": "3.2.4"
+                            type: "auto",
+                            name: "axe DevTools",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": "NVDA",
-                            "version": "2023.3"
+                            type: "auto",
+                            name: "WAVE Evaluation Tool",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": langStatement.keyboardNavigation,
-                            "version": ""
-                        }];
+                            type: "auto",
+                            name: "ARC Toolkit",
+                            version: "",
+                        },
+                        {
+                            type: "auto",
+                            name: "Tanaguru webext",
+                            version: "",
+                        },
+                        // Analyse des contrastes
+                        {
+                            type: "auto",
+                            name: "Colour Contrast Analyser",
+                            version: "",
+                        },
+                        {
+                            type: "auto",
+                            name: "WCAG Color Contrast Checker",
+                            version: "",
+                        },
+                        // Inspection DOM/CSS
+                        {
+                            type: "auto",
+                            name: "Stylus",
+                            version: "",
+                        },
+                        {
+                            type: "auto",
+                            name: "Web Developer",
+                            version: "",
+                        },
+                        // Tests fonctionnels
+                        {
+                            type: "functional",
+                            name: "NVDA",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: langStatement.keyboardNavigation,
+                            version: "",
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-android") {
-                    dataVallydette.statement.tests = [{
-                        "type": "auto",
-                        "name": "aXe",
-                        "version": "0.10.2"
-                    },
+                    dataVallydette.statement.tests = [
                         {
-                            "type": "auto",
-                            "name": "Accessibility Scanner",
-                            "version": ""
+                            type: "auto",
+                            name: "aXe",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": "Talkback",
-                            "version": ""
+                            type: "auto",
+                            name: "Accessibility Scanner",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": "Switch Access",
-                            "version": ""
-                        }];
+                            type: "functional",
+                            name: "Switch Access",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: "Talkback",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: langStatement.keyboardNavigation,
+                            version: "",
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-ios") {
-                    dataVallydette.statement.tests = [{
-                        "type": "auto",
-                        "name": "Accessibility Inspector",
-                        "version": ""
-                    },
+                    dataVallydette.statement.tests = [
                         {
-                            "type": "functional",
-                            "name": "Voice Over",
-                            "version": ""
-                        }];
+                            type: "auto",
+                            name: "Accessibility Inspector",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: "Switch Control",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: "Voice Over",
+                            version: "",
+                        },
+                        {
+                            type: "functional",
+                            name: langStatement.keyboardNavigation,
+                            version: "",
+                        }
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-pdf") {
                     dataVallydette.statement.tests = [
                         {
-                            "type": "functional",
-                            "name": "NVDA",
-                            "version": "2023.3"
+                            type: "functional",
+                            name: "NVDA",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": "Acrobat",
-                            "version": ""
+                            type: "functional",
+                            name: "Acrobat",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": "PAC",
-                            "version": ""
+                            type: "functional",
+                            name: "PAC",
+                            version: "",
                         },
                         {
-                            "type": "functional",
-                            "name": langStatement.keyboardNavigation,
-                            "version": ""
-                        }];
+                            type: "functional",
+                            name: langStatement.keyboardNavigation,
+                            version: "",
+                        },
+                    ];
                 }
             }
             if (p === "environments") {
                 if (dataVallydette.checklist.referentiel === "wcag-web") {
-                    dataVallydette.statement.environments = [{
-                        "environment": langStatement.environmentEx1
-                    }, {
-                        "environment": langStatement.environmentEx2
-                    }];
+                    dataVallydette.statement.environments = [
+                        {
+                            environment: langStatement.environmentEx1,
+                        },
+                        {
+                            environment: langStatement.environmentEx2,
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-android") {
-                    dataVallydette.statement.environments = [{
-                        "environment": langStatement.environmentEx3
-                    }];
+                    dataVallydette.statement.environments = [
+                        {
+                            environment: langStatement.environmentEx3,
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-ios") {
-                    dataVallydette.statement.environments = [{
-                        "environment": langStatement.environmentEx4
-                    }];
+                    dataVallydette.statement.environments = [
+                        {
+                            environment: langStatement.environmentEx4,
+                        },
+                    ];
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-pdf") {
-                    dataVallydette.statement.environments = [{
-                        "environment": langStatement.environmentEx1
-                    }, {
-                        "environment": langStatement.environmentEx2
-                    }];
+                    dataVallydette.statement.environments = [
+                        {
+                            environment: langStatement.environmentEx1,
+                        },
+                        {
+                            environment: langStatement.environmentEx2,
+                        },
+                    ];
                 }
             }
         }

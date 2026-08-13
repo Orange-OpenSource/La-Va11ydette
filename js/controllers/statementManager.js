@@ -12,42 +12,62 @@ var langStatement = {};
 
 
 /**
+ * Charge le fichier de langue et exécute un callback
+ * @param {string} lang - code de langue
+ * @param {function} callback - fonction appelée après chargement
+ */
+function loadLang(lang, callback) {
+    if (lang === globalLang) {
+        langStatement = langVallydette;
+        callback();
+        return;
+    }
+
+    var langRequest = new XMLHttpRequest();
+    langRequest.open("GET", "json/lang/" + lang + ".json", true);
+    langRequest.onreadystatechange = function () {
+        if (langRequest.readyState === 4) {
+            if (langRequest.status === 200) {
+                langStatement = JSON.parse(langRequest.responseText);
+            } else {
+                console.warn("Langue introuvable : " + lang + ". Fallback.");
+                langStatement = langVallydette;
+            }
+            callback();
+        }
+    };
+    langRequest.send();
+}
+
+/**
  * Init the statement object
- *
  */
 function initStatementObject() {
-
     if (!dataVallydette.statement) {
         dataVallydette.statement = {};
     }
 
     if (!dataVallydette.statement.lang) {
-
         dataVallydette.statement.lang = globalLang;
-        langStatement = langVallydette;
-
-    } else if (dataVallydette.statement.lang !== globalLang) {
-
-        var langRequest = new XMLHttpRequest();
-        langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
-        langRequest.onreadystatechange = function () {
-            if (langRequest.readyState === 4 && langRequest.status === 200) {
-                langStatementRequest = JSON.parse(langRequest.responseText);
-
-                langStatement = langStatementRequest;
-
-            }
-        };
-        langRequest.send();
-
-    } else {
-
-        langStatement = langVallydette;
-
     }
+
+    loadLang(dataVallydette.statement.lang, function () {
+        initStatementProperties(function () {
+            showStatementWizard();
+            initAnchorMenu();
+        });
+    });
+}
+
+/**
+ * Initialise les propriétés de l'objet statement.
+ * Appelée uniquement une fois langStatement correctement chargé.
+ */
+function initStatementProperties(onComplete) {
 
     statementObjectProperties.forEach(function (p) {
         if (!dataVallydette.statement.hasOwnProperty(p)) {
+
             if (p === "name") {
                 dataVallydette.statement.name = "";
             }
@@ -67,7 +87,8 @@ function initStatementObject() {
                 dataVallydette.statement.nonCompliant = false;
             }
             if (p === "plan") {
-                dataVallydette.statement.plan = langVallydette.accessibilityPlanText;
+                // Utilise langStatement (correctement chargé)
+                dataVallydette.statement.plan = langStatement.accessibilityPlanText;
             }
             if (p === "userNumber") {
                 dataVallydette.statement.userNumber = 0;
@@ -76,31 +97,38 @@ function initStatementObject() {
                 dataVallydette.statement.userBlockingPoints = 0;
             }
             if (p === "userTestDescription") {
-                dataVallydette.statement.userTestDescription = "";
+                // Utilise langStatement (correctement chargé)
+                dataVallydette.statement.userTestDescription = 
+                    langStatement.userTestingContent;
             }
             if (p === "approval") {
-                dataVallydette.statement.approval = [{
-                    "name": langStatement.customerService,
-                    "content": "",
-                    "checked": "true"
-                }, {
-                    "name": langStatement.internalService,
-                    "content": "",
-                    "checked": "false"
-                }
+                dataVallydette.statement.approval = [
+                    {
+                        // Utilise langStatement
+                        name: langStatement.customerService,
+                        content: "",
+                        checked: "true",
+                    },
+                    {
+                        name: langStatement.internalService,
+                        content: "",
+                        checked: "false",
+                    },
                 ];
             }
             if (p === "contact") {
-                dataVallydette.statement.contact = [{
-                    "name": "Orange France",
-                    "content": langStatement.textService,
-                    "checked": "true"
-                },
+                dataVallydette.statement.contact = [
                     {
-                        "name": langStatement.orangeGroup,
-                        "content": langStatement.textService,
-                        "checked": "false"
-                    }
+                        name: "Orange France",
+                        // Utilise langStatement
+                        content: langStatement.textService,
+                        checked: "true",
+                    },
+                    {
+                        name: langStatement.orangeGroup,
+                        content: langStatement.textService,
+                        checked: "false",
+                    },
                 ];
             }
             if (p === "compliantStateComment") {
@@ -114,10 +142,6 @@ function initStatementObject() {
             }
             if (p === "nonCompliantComment") {
                 dataVallydette.statement.nonCompliantComment = "";
-            }
-            if (p === "userTestDescription") {
-                dataVallydette.statement.userTestDescription = langStatement.userTestingContent;
-
             }
             if (p === "technology") {
                 if (dataVallydette.checklist.referentiel === "wcag-web") {
@@ -291,6 +315,9 @@ function initStatementObject() {
                 }
                 if (dataVallydette.checklist.referentiel === "wcag-pdf") {
                     dataVallydette.statement.tests = [
+                        { type: "functional", name: "NVDA", version: "2026.1.1" },
+                        { type: "functional", name: "Acrobat", version: "" },
+                        { type: "functional", name: "PAC", version: "" },
                         {
                             type: "functional",
                             name: "NVDA",
@@ -353,12 +380,9 @@ function initStatementObject() {
         }
     });
 
-    setTimeout(() => {
-        showStatementWizard();
-        initAnchorMenu();
-    }, "100")
-
-
+    if (typeof onComplete === 'function') {
+        onComplete();
+    }
 }
 
 /**
@@ -366,44 +390,59 @@ function initStatementObject() {
  *
  */
 function showStatementWizard() {
-
     setPageName(langVallydette.statementExport);
     utils.setPageTitle(langVallydette.statementTxt1);
     removeContextualMenu();
     removeFilterSection();
     utils.columnDisplay(2);
 
-    var btnStatementXmlExport = document.createElement('a');
+    var btnStatementXmlExport = document.createElement("a");
     btnStatementXmlExport.innerHTML = "XML";
-    btnStatementXmlExport.setAttribute('id', "btnStatementXmlExport");
-    btnStatementXmlExport.setAttribute('title', langVallydette.xmlBtn);
-    btnStatementXmlExport.setAttribute('aria-label', langVallydette.xmlBtn);
-    btnStatementXmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none");
-    document.getElementById("contextualMenu").appendChild(btnStatementXmlExport);
+    btnStatementXmlExport.setAttribute("id", "btnStatementXmlExport");
+    btnStatementXmlExport.setAttribute("title", langVallydette.xmlBtn);
+    btnStatementXmlExport.setAttribute("aria-label", langVallydette.xmlBtn);
+    btnStatementXmlExport.classList.add(
+        "btn",
+        "btn-secondary",
+        "btn-icon",
+        "ms-2",
+        "d-print-none",
+    );
+    document
+        .getElementById("contextualMenu")
+        .appendChild(btnStatementXmlExport);
 
-    var btnStatementHtmlExport = document.createElement('a');
+    var btnStatementHtmlExport = document.createElement("a");
     btnStatementHtmlExport.innerHTML = "HTML";
-    btnStatementHtmlExport.setAttribute('id', "btnStatementHtmlExport");
-    btnStatementHtmlExport.setAttribute('title', langVallydette.htmlBtn);
-    btnStatementHtmlExport.setAttribute('aria-label', langVallydette.htmlBtn);
-    btnStatementHtmlExport.classList.add("btn", "btn-secondary", "btn-icon", "ms-2", "d-print-none");
-    document.getElementById("contextualMenu").appendChild(btnStatementHtmlExport);
-
+    btnStatementHtmlExport.setAttribute("id", "btnStatementHtmlExport");
+    btnStatementHtmlExport.setAttribute("title", langVallydette.htmlBtn);
+    btnStatementHtmlExport.setAttribute("aria-label", langVallydette.htmlBtn);
+    btnStatementHtmlExport.classList.add(
+        "btn",
+        "btn-secondary",
+        "btn-icon",
+        "ms-2",
+        "d-print-none",
+    );
+    document
+        .getElementById("contextualMenu")
+        .appendChild(btnStatementHtmlExport);
 
     var statementResult = runComputationWcag(true);
     if (dataWCAG.complete === true) {
         dataVallydette.statement["nonCompliant"] = false;
     }
-    if ((dataWCAG.complete === true && dataVallydette.statement.status === "DONE") || (dataVallydette.statement["nonCompliant"] === true && dataVallydette.statement.status === "DONE")) {
-
+    if (
+        (dataWCAG.complete === true &&
+            dataVallydette.statement.status === "DONE") ||
+        (dataVallydette.statement["nonCompliant"] === true &&
+            dataVallydette.statement.status === "DONE")
+    ) {
         initStatementExports(statementResult);
-
     } else {
-
         btnStatementXmlExport.classList.add("disabled");
         btnStatementHtmlExport.classList.add("disabled");
     }
-
 
     var now = new Date(2013, 11, 31);
     var dateFormat = now.toLocaleDateString();
@@ -415,203 +454,405 @@ function showStatementWizard() {
     dateFormat = dateFormat.replace("12", "mm");
     dateFormat = dateFormat.replace("2013", "yyyy");
 
-    let statementWizardContent = '';
+    let statementWizardContent = "";
 
-    statementWizardContent += '<h2 class="pt-4 pb-3">' + langVallydette.statementTxt1 + '</h2>';
+    statementWizardContent +=
+        '<h2 class="pt-4 pb-3">' + langVallydette.statementTxt1 + "</h2>";
 
     statementWizardContent += '<div id="alertContainer">';
     if (dataWCAG.complete === false) {
-        statementWizardContent += '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.statementTxt2 + '</p>';
-        statementWizardContent += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">' + langVallydette.closeAlert + '</span></button>';
-        statementWizardContent += '</div>';
+        statementWizardContent +=
+            '<div class="alert alert-info alert-dismissible fade show" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' +
+            langVallydette.statementTxt2 +
+            "</p>";
+        statementWizardContent +=
+            '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">' +
+            langVallydette.closeAlert +
+            "</span></button>";
+        statementWizardContent += "</div>";
     }
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="row">';
     statementWizardContent += '<div class="col-lg-6">';
-    statementWizardContent += '<h3>1. ' + langVallydette.formPrefill + '</h3>';
-    statementWizardContent += '<p id="descStatementImport">' + langVallydette.formPrefillDesc + '</p>';
+    statementWizardContent += "<h3>1. " + langVallydette.formPrefill + "</h3>";
+    statementWizardContent +=
+        '<p id="descStatementImport">' +
+        langVallydette.formPrefillDesc +
+        "</p>";
     statementWizardContent += '<div class="input-group">';
     statementWizardContent += '                    <div class="custom-file">';
-    statementWizardContent += '                        <input class="custom-file-input" id="selectFilesStatement" type="file" aria-describedby="descStatementImport">';
-    statementWizardContent += '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' + langVallydette.dataBrowse + '">' + langVallydette.selectData + '</label>';
-    statementWizardContent += '                    </div>';
+    statementWizardContent +=
+        '                        <input class="custom-file-input" id="selectFilesStatement" type="file" aria-describedby="descStatementImport">';
+    statementWizardContent +=
+        '                        <label class="custom-file-label" id="selectFilesLabelStatement" for="selectFilesStatement" aria-describedby="importStatementData" data-browse="' +
+        langVallydette.dataBrowse +
+        '">' +
+        langVallydette.selectData +
+        "</label>";
+    statementWizardContent += "                    </div>";
     statementWizardContent += '                    <div class="input-group">';
-    statementWizardContent += '                        <button class="btn btn-secondary my-2" type="button" id="importStatementData">' + langVallydette.template.btnImportTxt + '</button>';
-    statementWizardContent += '                    </div>';
-    statementWizardContent += '                </div>';
-    statementWizardContent += '            </div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '                        <button class="btn btn-secondary my-2" type="button" id="importStatementData">' +
+        langVallydette.template.btnImportTxt +
+        "</button>";
+    statementWizardContent += "                    </div>";
+    statementWizardContent += "                </div>";
+    statementWizardContent += "            </div>";
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '<div class="border-top border-light my-3"></div>';
+    statementWizardContent +=
+        '<div class="border-top border-light my-3"></div>';
 
     statementWizardContent += '<form id="statementForm">';
 
-    statementWizardContent += '<h3>2. ' + langVallydette.manualDataEntry + '</h3>';
-    statementWizardContent += '<p>' + langVallydette.manualDataEntryDesc + '</p>';
-    statementWizardContent += '<p class="text-muted">' + langVallydette.fieldRequired + '</p>';
+    statementWizardContent +=
+        "<h3>2. " + langVallydette.manualDataEntry + "</h3>";
+    statementWizardContent +=
+        "<p>" + langVallydette.manualDataEntryDesc + "</p>";
+    statementWizardContent +=
+        '<p class="text-muted">' + langVallydette.fieldRequired + "</p>";
 
-    if (dataVallydette.checklist.page.length > 1 && dataWCAG.complete == false) {
+    if (
+        dataVallydette.checklist.page.length > 1 &&
+        dataWCAG.complete == false
+    ) {
         statementWizardContent += '<div class="row">';
         statementWizardContent += '<div class="col-lg-12">';
         statementWizardContent += '<div class="form-check mb-3">';
-        statementWizardContent += '<input class="form-check-input" type="checkbox" value="" id="checkbox-noncompliant" aria-describedby="checkboxHelpBlock" ' + (dataVallydette.statement["nonCompliant"] === true ? 'checked' : '') + '>';
-        statementWizardContent += '<label class="form-check-label" for="checkbox-noncompliant">' + langVallydette.noncompliantInput + '</label>';
-        statementWizardContent += '<div id="checkboxHelpBlock" class="form-text">' + langVallydette.noncompliantDesc + '</div>'
-        statementWizardContent += '</div>';
-        statementWizardContent += '</div>';
-        statementWizardContent += '</div>';
+        statementWizardContent +=
+            '<input class="form-check-input" type="checkbox" value="" id="checkbox-noncompliant" aria-describedby="checkboxHelpBlock" ' +
+            (dataVallydette.statement["nonCompliant"] === true
+                ? "checked"
+                : "") +
+            ">";
+        statementWizardContent +=
+            '<label class="form-check-label" for="checkbox-noncompliant">' +
+            langVallydette.noncompliantInput +
+            "</label>";
+        statementWizardContent +=
+            '<div id="checkboxHelpBlock" class="form-text">' +
+            langVallydette.noncompliantDesc +
+            "</div>";
+        statementWizardContent += "</div>";
+        statementWizardContent += "</div>";
+        statementWizardContent += "</div>";
     }
 
-
     statementWizardContent += '<div class="row">';
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-name" id="input-nameLabel" class="form-label">' + langVallydette.projectName + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<input type="text" class="form-control" id="input-name" aria-labelledby="input-nameLabel" style="scroll-margin-top: 10.35em;" value="' + utils.escape_html(dataVallydette.statement.name) + '" required aria-invalid="false">';
-    statementWizardContent += '<div id="input-nameError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.projectNameError + ' </p></div>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
-
+    statementWizardContent +=
+        '<label for="input-name" id="input-nameLabel" class="form-label">' +
+        langVallydette.projectName +
+        ' <span class="text-danger">*</span></label>';
+    statementWizardContent +=
+        '<input type="text" class="form-control" id="input-name" aria-labelledby="input-nameLabel" style="scroll-margin-top: 10.35em;" value="' +
+        utils.escape_html(dataVallydette.statement.name) +
+        '" required aria-invalid="false">';
+    statementWizardContent +=
+        '<div id="input-nameError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' +
+        langVallydette.projectNameError +
+        " </p></div>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-app" id="input-appLabel" class="form-label">' + langVallydette.projectSiteName + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<input type="text" class="form-control" id="input-app" aria-labelledby="input-appLabel" style="scroll-margin-top: 10.35em;" value="' + utils.escape_html(dataVallydette.statement.app) + '" required aria-invalid="false">';
-    statementWizardContent += '<div id="input-appError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.projectSiteNameError + ' </p></div>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
-
+    statementWizardContent +=
+        '<label for="input-app" id="input-appLabel" class="form-label">' +
+        langVallydette.projectSiteName +
+        ' <span class="text-danger">*</span></label>';
+    statementWizardContent +=
+        '<input type="text" class="form-control" id="input-app" aria-labelledby="input-appLabel" style="scroll-margin-top: 10.35em;" value="' +
+        utils.escape_html(dataVallydette.statement.app) +
+        '" required aria-invalid="false">';
+    statementWizardContent +=
+        '<div id="input-appError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' +
+        langVallydette.projectSiteNameError +
+        " </p></div>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-lang" id="input-langLabel" class="form-label">' + langVallydette.lang + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<select class="form-select" id="input-lang" aria-labelledby="input-langLabel"  style="scroll-margin-top: 10.35em;"  required aria-invalid="false">';
-    statementWizardContent += '<option value="" label="' + langVallydette.select + '"></option>';
-    statementWizardContent += '<option value="fr" ' + (dataVallydette.statement.lang === "fr" ? "selected" : "") + '>' + langVallydette.french + '</option>';
-    statementWizardContent += '<option value="en" ' + (dataVallydette.statement.lang === "en" ? "selected" : "") + '>' + langVallydette.english + '</option>';
-    statementWizardContent += '</select>';
-    statementWizardContent += '<div id="input-langError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.langError + ' </p></div>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label for="input-lang" id="input-langLabel" class="form-label">' +
+        langVallydette.lang +
+        ' <span class="text-danger">*</span></label>';
+    statementWizardContent +=
+        '<select class="form-select" id="input-lang" aria-labelledby="input-langLabel"  style="scroll-margin-top: 10.35em;"  required aria-invalid="false">';
+    statementWizardContent +=
+        '<option value="" label="' + langVallydette.select + '"></option>';
+    statementWizardContent +=
+        '<option value="fr" ' +
+        (dataVallydette.statement.lang === "fr" ? "selected" : "") +
+        ">" +
+        langVallydette.french +
+        "</option>";
+    statementWizardContent +=
+        '<option value="en" ' +
+        (dataVallydette.statement.lang === "en" ? "selected" : "") +
+        ">" +
+        langVallydette.english +
+        "</option>";
+    statementWizardContent += "</select>";
+    statementWizardContent +=
+        '<div id="input-langError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' +
+        langVallydette.langError +
+        " </p></div>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-6">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-date" id="input-dateLabel" class="form-label">' + langVallydette.date + ' <span class="text-danger">*</span></label>';
-    statementWizardContent += '<input type="date" class="form-control" id="input-date" aria-labelledby="input-dateLabel" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.date + '" required aria-invalid="false">';
-    statementWizardContent += '<div id="input-dateError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' + langVallydette.dateError + ' ' + dateFormat + '</p></div>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label for="input-date" id="input-dateLabel" class="form-label">' +
+        langVallydette.date +
+        ' <span class="text-danger">*</span></label>';
+    statementWizardContent +=
+        '<input type="date" class="form-control" id="input-date" aria-labelledby="input-dateLabel" style="scroll-margin-top: 10.35em;" value="' +
+        dataVallydette.statement.date +
+        '" required aria-invalid="false">';
+    statementWizardContent +=
+        '<div id="input-dateError" class="alert alert-danger alert-sm d-none"><span class="alert-icon" aria-hidden="true"></span><p>' +
+        langVallydette.dateError +
+        " " +
+        dateFormat +
+        "</p></div>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-6">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-dateUpdate" class="form-label">' + langVallydette.dateUpdate + '</label>';
-    statementWizardContent += '<input type="date" class="form-control" id="input-dateUpdate" style="scroll-margin-top: 10.35em;" value="' + dataVallydette.statement.dateUpdate + '">';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label for="input-dateUpdate" class="form-label">' +
+        langVallydette.dateUpdate +
+        "</label>";
+    statementWizardContent +=
+        '<input type="date" class="form-control" id="input-dateUpdate" style="scroll-margin-top: 10.35em;" value="' +
+        dataVallydette.statement.dateUpdate +
+        '">';
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '<div class="border-top border-light my-3"></div>';
+    statementWizardContent +=
+        '<div class="border-top border-light my-3"></div>';
 
     statementWizardContent += '<div class="row">';
-    statementWizardContent += '<div class="col-lg-3" role="group" aria-labelledby="approvalListHeading">';
-    statementWizardContent += '<h4 class="text-break" id="approvalListHeading">' + langVallydette.approval + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.approvalEdit + '" title="' + langVallydette.approvalEdit + '">' + htmlIcon.edit + '</span></button></h4>';
+    statementWizardContent +=
+        '<div class="col-lg-3" role="group" aria-labelledby="approvalListHeading">';
+    statementWizardContent +=
+        '<h4 class="text-break" id="approvalListHeading">' +
+        langVallydette.approval +
+        ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditApprovalList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' +
+        langVallydette.approvalEdit +
+        '" title="' +
+        langVallydette.approvalEdit +
+        '">' +
+        htmlIcon.edit +
+        "</span></button></h4>";
     statementWizardContent += '<div class="mb-3" id="approvalList">';
 
     dataVallydette.statement.approval.forEach(function (a, index) {
         statementWizardContent += '<div class="form-check">';
-        statementWizardContent += '<input type="radio" id="approval' + index + '" name="approvalRadio" class="form-check-input" onClick="radioIsChecked(\'approval\', ' + index + ')" ' + (a.checked === "true" ? " checked " : "") + ' >';
-        statementWizardContent += '<label class="form-check-label" for="approval' + index + '">' + utils.escape_html(a.name) + '</label>';
-        statementWizardContent += '</div>';
-    })
+        statementWizardContent +=
+            '<input type="radio" id="approval' +
+            index +
+            '" name="approvalRadio" class="form-check-input" onClick="radioIsChecked(\'approval\', ' +
+            index +
+            ')" ' +
+            (a.checked === "true" ? " checked " : "") +
+            " >";
+        statementWizardContent +=
+            '<label class="form-check-label" for="approval' +
+            index +
+            '">' +
+            utils.escape_html(a.name) +
+            "</label>";
+        statementWizardContent += "</div>";
+    });
 
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '<div class="col-lg-3" role="group" aria-labelledby="contactListHeading">';
-    statementWizardContent += '<h4 class="text-break" id="contactListHeading">' + langVallydette.contact + '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.contactEdit + '" title="' + langVallydette.contactEdit + '">' + htmlIcon.edit + '</span></button></h4>';
+    statementWizardContent +=
+        '<div class="col-lg-3" role="group" aria-labelledby="contactListHeading">';
+    statementWizardContent +=
+        '<h4 class="text-break" id="contactListHeading">' +
+        langVallydette.contact +
+        '  <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditContactList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' +
+        langVallydette.contactEdit +
+        '" title="' +
+        langVallydette.contactEdit +
+        '">' +
+        htmlIcon.edit +
+        "</span></button></h4>";
     statementWizardContent += '<div class="mb-3" id="contactList">';
 
     dataVallydette.statement.contact.forEach(function (c, index) {
         statementWizardContent += '<div class="form-check">';
-        statementWizardContent += '<input type="radio" id="contact' + index + '" name="contactRadio" class="form-check-input" onClick="radioIsChecked(\'contact\', ' + index + ')" ' + (c.checked === "true" ? " checked " : "") + ' >';
-        statementWizardContent += '<label class="form-check-label" for="contact' + index + '">' + utils.escape_html(c.name) + '</label>';
-        statementWizardContent += '</div>';
-    })
+        statementWizardContent +=
+            '<input type="radio" id="contact' +
+            index +
+            '" name="contactRadio" class="form-check-input" onClick="radioIsChecked(\'contact\', ' +
+            index +
+            ')" ' +
+            (c.checked === "true" ? " checked " : "") +
+            " >";
+        statementWizardContent +=
+            '<label class="form-check-label" for="contact' +
+            index +
+            '">' +
+            utils.escape_html(c.name) +
+            "</label>";
+        statementWizardContent += "</div>";
+    });
 
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-6">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label for="input-plan" class="form-label">' + langVallydette.accessibilityPlan + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-plan" rows="8" aria-describedby="planDesc">' + dataVallydette.statement.plan + '</textarea>';
-    statementWizardContent += '<small id="planDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label for="input-plan" class="form-label">' +
+        langVallydette.accessibilityPlan +
+        "</label>";
+    statementWizardContent +=
+        '<textarea class="form-control" id="input-plan" rows="8" aria-describedby="planDesc">' +
+        dataVallydette.statement.plan +
+        "</textarea>";
+    statementWizardContent +=
+        '<small id="planDesc" class="form-text text-muted">' +
+        langVallydette.markdownDesc +
+        "</small>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '<div class="border-top border-light my-3"></div>';
+    statementWizardContent +=
+        '<div class="border-top border-light my-3"></div>';
 
     statementWizardContent += '<div class="row">';
     statementWizardContent += '<div class="col-lg-3">';
-    statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="technologyLegend">';
-    statementWizardContent += '<h4 class="text-break" id="technologyLegend">' + langVallydette.technology + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.technologyEdit + '" title="' + langVallydette.technologyEdit + '">' + htmlIcon.edit + '</span></button></h4>';
+    statementWizardContent +=
+        '<div class="mb-3" role="group" aria-labelledby="technologyLegend">';
+    statementWizardContent +=
+        '<h4 class="text-break" id="technologyLegend">' +
+        langVallydette.technology +
+        ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTechList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' +
+        langVallydette.technologyEdit +
+        '" title="' +
+        langVallydette.technologyEdit +
+        '">' +
+        htmlIcon.edit +
+        "</span></button></h4>";
     statementWizardContent += '<ul id="technologyList">';
 
     dataVallydette.statement.technology.forEach(function (listItem, index) {
-        statementWizardContent += '<li>' + utils.escape_html(listItem.name) + ' ' + utils.escape_html(listItem.version) + '</li>';
-    })
+        statementWizardContent +=
+            "<li>" +
+            utils.escape_html(listItem.name) +
+            " " +
+            utils.escape_html(listItem.version) +
+            "</li>";
+    });
 
-    statementWizardContent += '</ul>';
+    statementWizardContent += "</ul>";
 
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-3">';
-    statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="testLegend">';
-    statementWizardContent += '<h4 class="text-break" id="testLegend">' + langVallydette.tests + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.testsEdit + '" title="' + langVallydette.testsEdit + '">' + htmlIcon.edit + '</span></button></h4>';
+    statementWizardContent +=
+        '<div class="mb-3" role="group" aria-labelledby="testLegend">';
+    statementWizardContent +=
+        '<h4 class="text-break" id="testLegend">' +
+        langVallydette.tests +
+        ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditTestList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' +
+        langVallydette.testsEdit +
+        '" title="' +
+        langVallydette.testsEdit +
+        '">' +
+        htmlIcon.edit +
+        "</span></button></h4>";
 
     statementWizardContent += '<ul id="testsList">';
 
     dataVallydette.statement.tests.forEach(function (listItem, index) {
-        statementWizardContent += '<li>' + utils.escape_html(listItem.name) + ' ' + utils.escape_html(listItem.version) + '</li>';
-    })
+        statementWizardContent +=
+            "<li>" +
+            utils.escape_html(listItem.name) +
+            " " +
+            utils.escape_html(listItem.version) +
+            "</li>";
+    });
 
-    statementWizardContent += '</ul>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
-
+    statementWizardContent += "</ul>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-3">';
-    statementWizardContent += '<div class="mb-3" role="group" aria-labelledby="environmentLegend">';
-    statementWizardContent += '<h4 class="text-break" id="environmentLegend">' + langVallydette.environments + ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' + langVallydette.environmentsEdit + '" title="' + langVallydette.environmentsEdit + '">' + htmlIcon.edit + '</span></button></h4>';
+    statementWizardContent +=
+        '<div class="mb-3" role="group" aria-labelledby="environmentLegend">';
+    statementWizardContent +=
+        '<h4 class="text-break" id="environmentLegend">' +
+        langVallydette.environments +
+        ' <button class="btn btn-secondary btn-icon btn-sm d-print-none" id="btnEditEnvironmentList" data-bs-toggle="modal" data-bs-target="#modalStatement" aria-label="' +
+        langVallydette.environmentsEdit +
+        '" title="' +
+        langVallydette.environmentsEdit +
+        '">' +
+        htmlIcon.edit +
+        "</span></button></h4>";
 
     statementWizardContent += '<ul id="environmentsList">';
 
     dataVallydette.statement.environments.forEach(function (listItem, index) {
-        statementWizardContent += '<li>' + utils.escape_html(listItem.environment) + '</li>';
-    })
+        statementWizardContent +=
+            "<li>" + utils.escape_html(listItem.environment) + "</li>";
+    });
 
-    statementWizardContent += '</ul>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</ul>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-
-    statementWizardContent += '<div class="col-lg-3" role="group" aria-labelledby="usersTestsHeading">';
-    statementWizardContent += '<h4 class="text-break" id="usersTestsHeading">' + langVallydette.userTesting + '</h4>';
+    statementWizardContent +=
+        '<div class="col-lg-3" role="group" aria-labelledby="usersTestsHeading">';
+    statementWizardContent +=
+        '<h4 class="text-break" id="usersTestsHeading">' +
+        langVallydette.userTesting +
+        "</h4>";
     statementWizardContent += '<div class="mb-3 input-group-sm">';
-    statementWizardContent += '<label class="form-label" for="input-userNumber" >' + langVallydette.userNumber + '</label>';
-    statementWizardContent += '<input type="number" class="form-control" id="input-userNumber" value="' + dataVallydette.statement.userNumber + '" min="0" max="100">';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label class="form-label" for="input-userNumber" >' +
+        langVallydette.userNumber +
+        "</label>";
+    statementWizardContent +=
+        '<input type="number" class="form-control" id="input-userNumber" value="' +
+        dataVallydette.statement.userNumber +
+        '" min="0" max="100">';
+    statementWizardContent += "</div>";
     statementWizardContent += '<div class="mb-3 input-group-sm">';
-    statementWizardContent += '<label class="form-label" for="input-userBlockingPoints" >' + langVallydette.blockingNumber + '</label>';
-    statementWizardContent += '<input type="number" class="form-control" id="input-userBlockingPoints" value="' + dataVallydette.statement.userBlockingPoints + '" min="0" max="100">';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label class="form-label" for="input-userBlockingPoints" >' +
+        langVallydette.blockingNumber +
+        "</label>";
+    statementWizardContent +=
+        '<input type="number" class="form-control" id="input-userBlockingPoints" value="' +
+        dataVallydette.statement.userBlockingPoints +
+        '" min="0" max="100">';
+    statementWizardContent += "</div>";
     statementWizardContent += '<div class="mb-3 input-group-sm">';
-    statementWizardContent += '<label class="form-label" for="input-userTestDescription" >' + langVallydette.userTestDescription + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-userTestDescription" rows="2" >' + dataVallydette.statement.userTestDescription
+    statementWizardContent +=
+        '<label class="form-label" for="input-userTestDescription" >' +
+        langVallydette.userTestDescription +
+        "</label>";
+    statementWizardContent +=
+        '<textarea class="form-control" id="input-userTestDescription" rows="2" >' +
+        dataVallydette.statement.userTestDescription;
     if (currentCriteriaListName === "wcag-web") {
         statementWizardContent += langVallydette.userTestingContentWeb;
     } else if (currentCriteriaListName === "wcag-android") {
@@ -619,173 +860,232 @@ function showStatementWizard() {
     } else if (currentCriteriaListName === "wcag-ios") {
         statementWizardContent += langVallydette.userTestingContentIOS;
     }
-    statementWizardContent += '</textarea>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</textarea>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '<div class="border-top border-light my-3"></div>';
+    statementWizardContent +=
+        '<div class="border-top border-light my-3"></div>';
     statementWizardContent += '<div class="row">';
     statementWizardContent += '<div class="col-lg-6">';
 
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="row">';
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label class="form-label" for="input-compliantStateComment">' + langVallydette.compliantStateComment + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-compliantStateComment" rows="5" aria-describedby="compliantStateCommentDesc">' + dataVallydette.statement.compliantStateComment + '</textarea>';
-    statementWizardContent += '<small id="compliantStateCommentDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label class="form-label" for="input-compliantStateComment">' +
+        langVallydette.compliantStateComment +
+        "</label>";
+    statementWizardContent +=
+        '<textarea class="form-control" id="input-compliantStateComment" rows="5" aria-describedby="compliantStateCommentDesc">' +
+        dataVallydette.statement.compliantStateComment +
+        "</textarea>";
+    statementWizardContent +=
+        '<small id="compliantStateCommentDesc" class="form-text text-muted">' +
+        langVallydette.markdownDesc +
+        "</small>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label class="form-label" for="input-derogation">' + langVallydette.derogations + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' + dataVallydette.statement.derogation + '</textarea>';
-    statementWizardContent += '<small id="derogationDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label class="form-label" for="input-derogation">' +
+        langVallydette.derogations +
+        "</label>";
+    statementWizardContent +=
+        '<textarea class="form-control" id="input-derogation" rows="5" aria-describedby="derogationDesc">' +
+        dataVallydette.statement.derogation +
+        "</textarea>";
+    statementWizardContent +=
+        '<small id="derogationDesc" class="form-text text-muted">' +
+        langVallydette.markdownDesc +
+        "</small>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label class="form-label" for="input-exemption">' + langVallydette.exemptions + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' + dataVallydette.statement.exemption + '</textarea>';
-    statementWizardContent += '<small id="exemptionDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label class="form-label" for="input-exemption">' +
+        langVallydette.exemptions +
+        "</label>";
+    statementWizardContent +=
+        '<textarea class="form-control" id="input-exemption" rows="5" aria-describedby="exemptionDesc">' +
+        dataVallydette.statement.exemption +
+        "</textarea>";
+    statementWizardContent +=
+        '<small id="exemptionDesc" class="form-text text-muted">' +
+        langVallydette.markdownDesc +
+        "</small>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="col-lg-4">';
     statementWizardContent += '<div class="mb-3">';
-    statementWizardContent += '<label class="form-label" for="input-nonCompliantComment">' + langVallydette.nonCompliantComment + '</label>';
-    statementWizardContent += '<textarea class="form-control" id="input-nonCompliantComment" rows="5" aria-describedby="nonCompliantCommentDesc">' + dataVallydette.statement.nonCompliantComment + '</textarea>';
-    statementWizardContent += '<small id="nonCompliantCommentDesc" class="form-text text-muted">' + langVallydette.markdownDesc + '</small>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent +=
+        '<label class="form-label" for="input-nonCompliantComment">' +
+        langVallydette.nonCompliantComment +
+        "</label>";
+    statementWizardContent +=
+        '<textarea class="form-control" id="input-nonCompliantComment" rows="5" aria-describedby="nonCompliantCommentDesc">' +
+        dataVallydette.statement.nonCompliantComment +
+        "</textarea>";
+    statementWizardContent +=
+        '<small id="nonCompliantCommentDesc" class="form-text text-muted">' +
+        langVallydette.markdownDesc +
+        "</small>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-
-    statementWizardContent += '</div>';
+    statementWizardContent += "</div>";
 
     statementWizardContent += '<div class="row mb-2">';
     statementWizardContent += '<div class="col-lg-12">';
-    statementWizardContent += '<button type="submit" id="statementSaveBtn" class="btn btn-primary ms-2">' + langVallydette.save + '</button>';
-    statementWizardContent += '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ms-2">' + langVallydette.saveDownloadJson + '</button>';
-    statementWizardContent += '<a href="#" id="exportStatementData" class="btn btn-secondary" hidden>';
+    statementWizardContent +=
+        '<button type="submit" id="statementSaveBtn" class="btn btn-primary ms-2">' +
+        langVallydette.save +
+        "</button>";
+    statementWizardContent +=
+        '<button type="submit" id="statementSaveAndDownloadBtn" class="btn btn-secondary ms-2">' +
+        langVallydette.saveDownloadJson +
+        "</button>";
+    statementWizardContent +=
+        '<a href="#" id="exportStatementData" class="btn btn-secondary" hidden>';
     statementWizardContent += langVallydette.downloadJson;
-    statementWizardContent += '</a>';
-    statementWizardContent += '</div>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</a>";
+    statementWizardContent += "</div>";
+    statementWizardContent += "</div>";
 
-    statementWizardContent += '</form>';
-    statementWizardContent += '</div>';
+    statementWizardContent += "</form>";
+    statementWizardContent += "</div>";
 
     htmlMainContent.innerHTML = statementWizardContent;
 
-    document.getElementById("btnEditContactList").addEventListener('click', function () {
-        event.preventDefault();
-        editStatementProperty("contact");
-    });
-    document.getElementById("btnEditApprovalList").addEventListener('click', function () {
-        event.preventDefault();
-        editStatementProperty("approval");
-    });
+    document
+        .getElementById("btnEditContactList")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            editStatementProperty("contact");
+        });
+    document
+        .getElementById("btnEditApprovalList")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            editStatementProperty("approval");
+        });
 
-    document.getElementById("btnEditTechList").addEventListener('click', function () {
-        event.preventDefault();
-        editStatementProperty("technology");
-    });
-    document.getElementById("btnEditTestList").addEventListener('click', function () {
-        event.preventDefault();
-        editStatementProperty("tests");
-    });
-    document.getElementById("btnEditEnvironmentList").addEventListener('click', function () {
-        event.preventDefault();
-        editStatementProperty("environments");
-    });
+    document
+        .getElementById("btnEditTechList")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            editStatementProperty("technology");
+        });
+    document
+        .getElementById("btnEditTestList")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            editStatementProperty("tests");
+        });
+    document
+        .getElementById("btnEditEnvironmentList")
+        .addEventListener("click", function (e) {
+            e.preventDefault();
+            editStatementProperty("environments");
+        });
 
-    document.getElementById('importStatementData').onclick = function () {
-        var files = document.getElementById('selectFilesStatement').files;
+    document.getElementById("importStatementData").onclick = function () {
+        var files = document.getElementById("selectFilesStatement").files;
+
+        if (!files || files.length === 0) {
+            console.warn("Aucun fichier sélectionné.");
+            return;
+        }
+
         var fr = new FileReader();
 
         fr.onload = function (e) {
             dataVallydette.statement = JSON.parse(e.target.result);
-            if (dataVallydette.statement.lang !== globalLang) {
-
-                var langRequest = new XMLHttpRequest();
-                langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
-                langRequest.onreadystatechange = function () {
-                    if (langRequest.readyState === 4 && langRequest.status === 200) {
-                        langStatementRequest = JSON.parse(langRequest.responseText);
-
-                        langStatement = langStatementRequest;
-                        initStatementObject();
-
-                    }
-                };
-                langRequest.send();
-
-            } else {
-
-                langStatement = langVallydette;
-                initStatementObject();
-            }
-
-
-        }
+            loadLang(dataVallydette.statement.lang, function () {
+                initStatementProperties(function () {
+                    showStatementWizard();
+                    initAnchorMenu();
+                });
+            });
+        };
 
         fr.readAsText(files.item(0));
     };
 
-
-    document.getElementById("selectFilesStatement").addEventListener('change', function () {
-        document.getElementById("selectFilesLabelStatement").innerText = document.getElementById("selectFilesStatement").files[0].name;
-    }, false);
+    document.getElementById("selectFilesStatement").addEventListener(
+        "change",
+        function () {
+            document.getElementById("selectFilesLabelStatement").innerText =
+                document.getElementById("selectFilesStatement").files[0].name;
+        },
+        false,
+    );
 
     let dataStr = JSON.stringify(dataVallydette.statement);
-    let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-    document.getElementById("exportStatementData").setAttribute('href', dataUri);
-    let exportFileName = 'statementData.json';
-    document.getElementById("exportStatementData").setAttribute('download', exportFileName);
-
-    statementSaveAndDownloadBtn
+    let dataUri =
+        "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+    document
+        .getElementById("exportStatementData")
+        .setAttribute("href", dataUri);
+    let exportFileName = "statementData.json";
+    document
+        .getElementById("exportStatementData")
+        .setAttribute("download", exportFileName);
 
     var statementSaveBtn = document.getElementById("statementSaveBtn");
 
-    statementSaveBtn.addEventListener('click', function (e) {
+    statementSaveBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        checkFormState("statementSaveBtn")
-    })
-
-    var statementSaveAndDownloadBtn = document.getElementById("statementSaveAndDownloadBtn");
-
-    statementSaveAndDownloadBtn.addEventListener('click', function (e) {
-        e.preventDefault();
-        checkFormState("statementSaveAndDownloadBtn")
-    })
-
-
-    document.getElementById("statementForm").addEventListener('focusin', function (e) {
-        if (document.getElementById('StatementFormInfo')) {
-            document.getElementById('StatementFormInfo').remove();
-        }
+        checkFormState("statementSaveBtn");
     });
 
-    document.getElementById("checkbox-noncompliant").addEventListener('change', function (e) {
-        if (this.checked) {
-            dataVallydette.statement.compliantStateComment = langVallydette.nonFinishedAudit;
-            document.getElementById("input-compliantStateComment").value = dataVallydette.statement.compliantStateComment;
-        }
+    var statementSaveAndDownloadBtn = document.getElementById(
+        "statementSaveAndDownloadBtn",
+    );
+
+    statementSaveAndDownloadBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        checkFormState("statementSaveAndDownloadBtn");
     });
 
+    document
+        .getElementById("statementForm")
+        .addEventListener("focusin", function (e) {
+            if (document.getElementById("StatementFormInfo")) {
+                document.getElementById("StatementFormInfo").remove();
+            }
+        });
+
+    const checkboxNonCompliant = document.getElementById(
+        "checkbox-noncompliant",
+    );
+    if (checkboxNonCompliant) {
+        checkboxNonCompliant.addEventListener("change", function (e) {
+            if (this.checked) {
+                dataVallydette.statement.compliantStateComment =
+                    langVallydette.nonFinishedAudit;
+                document.getElementById("input-compliantStateComment").value =
+                    dataVallydette.statement.compliantStateComment;
+            }
+        });
+    }
 }
 
 /**
  * Used to check form statement and what button sumbit
  */
-checkFormState = function (buttonSubmitter) {
+const checkFormState = function (buttonSubmitter) {
     var error = 0;
 
     var propertyDate = document.getElementById("input-date");
@@ -828,7 +1128,7 @@ checkFormState = function (buttonSubmitter) {
 /**
  * Used to update statement properties state
  */
-radioIsChecked = function (statementProperty, propertyIndex) {
+const radioIsChecked = function (statementProperty, propertyIndex) {
 
     dataVallydette.statement[statementProperty].forEach(function (listItem, index) {
 
@@ -845,7 +1145,7 @@ radioIsChecked = function (statementProperty, propertyIndex) {
  * Statement property edition
  * @param {string} statementProperty - statement property to edit
  */
-editStatementProperty = function (statementProperty) {
+const editStatementProperty = function (statementProperty) {
 
     let htmlModal = '';
     htmlModal += '<div class="modal-dialog modal-lg" role="document">';
@@ -932,7 +1232,7 @@ editStatementProperty = function (statementProperty) {
  * @param {string} listToEdit - a list ID (html element ID)
  * @param {string} statementProperty - statement property to edit
  */
-saveListElement = function (listToEdit, statementProperty) {
+const saveListElement = function (listToEdit, statementProperty) {
 
     dataVallydette.statement[statementProperty] = [];
     let listMarkup = '';
@@ -945,7 +1245,7 @@ saveListElement = function (listToEdit, statementProperty) {
 
         if ((name !== null && name.value !== "") || (environment !== null && environment.value !== "")) {
 
-            itemObj = {};
+            let itemObj = {};
 
             statementProperties.forEach(function (p) {
                 if (document.getElementById(p + "-" + index)) {
@@ -995,56 +1295,131 @@ saveListElement = function (listToEdit, statementProperty) {
  * Add a new item to a given list (list of properties)
  * @param {string} statementProperty - statement property to edit
  */
-addListElement = function (statementProperty) {
-
+const addListElement = function (statementProperty) {
     var listItem = document.createElement("li");
     var listToEdit = document.getElementById("listToEdit");
     var listIndex = listToEdit.querySelectorAll("li").length;
 
-    let htmlItem = '';
-    htmlItem += '';
+    let htmlItem = "";
 
-    if (statementProperty === 'approval' || statementProperty === 'contact') {
-        htmlItem += '<span role="group" aria-labelledby="itemLegend-' + listIndex + '">';
-        htmlItem += '<h6 class="d-inline"><span id="itemLegend-' + listIndex + '" class="font-weight-bold">' + langVallydette[statementProperty] + ' ' + (listIndex + 1) + '</span></h6>';
-    } else {
-        htmlItem += '<span role="group" aria-labelledby="itemLegend-' + listIndex + '">';
-        htmlItem += '<h6 class="d-inline"><span id="itemLegend-' + listIndex + '" class="font-weight-bold">' + langVallydette[statementProperty] + ' ' + (listIndex + 1) + '</span></h6>';
-    }
+    htmlItem += `<span role="group" aria-labelledby="itemLegend-${listIndex}">`;
+    htmlItem += `<h6 class="d-inline">
+    <span id="itemLegend-${listIndex}" class="font-weight-bold">
+        ${langVallydette[statementProperty]} ${listIndex + 1}
+    </span>
+</h6>`;
 
     statementProperties.forEach(function (p) {
-
-        if (p === 'checked') {
+        if (p === "checked") {
             return;
         }
 
-        if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'type') {
-
+        if (
+            dataVallydette.statement[statementProperty][0].hasOwnProperty(p) &&
+            p === "type"
+        ) {
             htmlItem += '<div class="m-2">';
-            htmlItem += '<label for="' + p + '-' + listIndex + '" class="form-label">' + langVallydette[p] + ' ' + (listIndex + 1) + '</label>'
-            htmlItem += '<select id="type-' + listIndex + '" class="form-select mb-1" title="' + langVallydette.type + '" >';
-            htmlItem += '<option value="auto" ' + (listItem[p] === "auto" ? "selected" : "") + ' >' + langVallydette.auto + '</option>';
-            htmlItem += '<option value="functional" ' + (listItem[p] === "functional" ? "selected" : "") + ' >' + langVallydette.functional + '</option>';
-            htmlItem += '<option value="manual" ' + (listItem[p] === "manual" ? "selected" : "") + ' >' + langVallydette.manual + '</option>';
-            htmlItem += '<option value="user" ' + (listItem[p] === "user" ? "selected" : "") + ' >' + langVallydette.user + '</option>';
-            htmlItem += '</select>';
+            htmlItem +=
+                '<label for="' +
+                p +
+                "-" +
+                listIndex +
+                '" class="form-label">' +
+                langVallydette[p] +
+                " " +
+                (listIndex + 1) +
+                "</label>";
+            htmlItem +=
+                '<select id="type-' +
+                listIndex +
+                '" class="form-select mb-1" title="' +
+                langVallydette.type +
+                '" >';
+            htmlItem +=
+                '<option value="auto" ' +
+                (listItem[p] === "auto" ? "selected" : "") +
+                " >" +
+                langVallydette.auto +
+                "</option>";
+            htmlItem +=
+                '<option value="functional" ' +
+                (listItem[p] === "functional" ? "selected" : "") +
+                " >" +
+                langVallydette.functional +
+                "</option>";
+            htmlItem +=
+                '<option value="manual" ' +
+                (listItem[p] === "manual" ? "selected" : "") +
+                " >" +
+                langVallydette.manual +
+                "</option>";
+            htmlItem +=
+                '<option value="user" ' +
+                (listItem[p] === "user" ? "selected" : "") +
+                " >" +
+                langVallydette.user +
+                "</option>";
+            htmlItem += "</select>";
             htmlItem += "</div>";
-
-        } else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p) && p === 'content') {
+        } else if (
+            dataVallydette.statement[statementProperty][0].hasOwnProperty(p) &&
+            p === "content"
+        ) {
             htmlItem += '<div class="m-2">';
-            htmlItem += '<label for="' + p + '-' + listIndex + '" class="form-label">' + langVallydette.content + ' ' + (listIndex + 1) + '</label>'
-            htmlItem += '<textarea  rows="4" cols="50" id="' + p + '-' + listIndex + '" class="form-control mb-1" aria-labelledby="itemLegend-' + listIndex + ' ' + p + '-' + listIndex + '" title="' + langVallydette.content + '" ></textarea>';
+            htmlItem +=
+                '<label for="' +
+                p +
+                "-" +
+                listIndex +
+                '" class="form-label">' +
+                langVallydette.content +
+                " " +
+                (listIndex + 1) +
+                "</label>";
+            htmlItem +=
+                '<textarea  rows="4" cols="50" id="' +
+                p +
+                "-" +
+                listIndex +
+                '" class="form-control mb-1" aria-labelledby="itemLegend-' +
+                listIndex +
+                " " +
+                p +
+                "-" +
+                listIndex +
+                '" title="' +
+                langVallydette.content +
+                '" ></textarea>';
             htmlItem += "</div>";
-        } else if (dataVallydette.statement[statementProperty][0].hasOwnProperty(p)) {
+        } else if (
+            dataVallydette.statement[statementProperty][0].hasOwnProperty(p)
+        ) {
             htmlItem += '<div class="m-2">';
-            htmlItem += '<label for="' + p + '-' + listIndex + '" class="form-label">' + langVallydette[p] + ' ' + (listIndex + 1) + '</label>'
-            htmlItem += '<input type="text" id="' + p + '-' + listIndex + '" class="form-control mb-1" value="" title="' + langVallydette[p] + '" aria-describedby="itemDesc" placeholder="' + langVallydette[p] + '" />';
+            htmlItem +=
+                '<label for="' +
+                p +
+                "-" +
+                listIndex +
+                '" class="form-label">' +
+                langVallydette[p] +
+                " " +
+                (listIndex + 1) +
+                "</label>";
+            htmlItem +=
+                '<input type="text" id="' +
+                p +
+                "-" +
+                listIndex +
+                '" class="form-control mb-1" value="" title="' +
+                langVallydette[p] +
+                '" aria-describedby="itemDesc" placeholder="' +
+                langVallydette[p] +
+                '" />';
             htmlItem += "</div>";
         }
+    });
 
-    })
-
-    htmlItem += '</span>';
+    htmlItem += "</span>";
 
     listItem.innerHTML = htmlItem;
     listToEdit.appendChild(listItem);
@@ -1054,14 +1429,14 @@ addListElement = function (statementProperty) {
     } else {
         document.getElementById("environment-" + listIndex).focus();
     }
-}
+};
 
 /**
  * Save the statement form
  * @param {object} statementForm - the statement form object
  * @param {string} submitterBtn - the submit button ID (html element ID)
  */
-saveStatement = function (statementForm, submitterBtn) {
+const saveStatement = function (statementForm, submitterBtn) {
 
     var statementResult = runComputationWcag(true);
 
@@ -1069,59 +1444,40 @@ saveStatement = function (statementForm, submitterBtn) {
         dataVallydette.statement[input] = statementForm.elements["input-" + input].value;
     });
 
-    dataVallydette.statement["nonCompliant"] = (statementForm.elements["checkbox-noncompliant"] !== undefined ? statementForm.elements["checkbox-noncompliant"].checked : false);
+    dataVallydette.statement["nonCompliant"] = (
+        statementForm.elements["checkbox-noncompliant"] !== undefined
+            ? statementForm.elements["checkbox-noncompliant"].checked
+            : false
+    );
 
     if (dataWCAG.complete || dataVallydette.statement["nonCompliant"]) {
-
         dataVallydette.statement.status = "DONE";
 
-        if (dataVallydette.statement.lang !== globalLang) {
-            var langRequest = new XMLHttpRequest();
-            langRequest.open("GET", "json/lang/" + dataVallydette.statement.lang + ".json", true);
-            langRequest.onreadystatechange = function () {
-                if (langRequest.readyState === 4 && langRequest.status === 200) {
-                    langStatementRequest = JSON.parse(langRequest.responseText);
-
-                    langStatement = langStatementRequest;
-
-                    initStatementExports(statementResult);
-
-                }
-            };
-            langRequest.send();
-
-        } else {
-
-            langStatement = langVallydette;
-
+        loadLang(dataVallydette.statement.lang, function () {
             initStatementExports(statementResult);
-
-        }
-
+        });
     } else {
-
         dataVallydette.statement.status = "WIP";
-
     }
 
-    alertMessage = '';
-    alertMessage += '<div class="alert alert-success alert-dismissible fade show" id="StatementFormInfo" role="alert"> <span class="alert-icon"><span class="visually-hidden">Info</span></span><p>' + langVallydette.successFeedback + '</p>';
-    alertMessage += '<button type="button" class="btn-close" data-bs-dismiss="alert"><span class="visually-hidden">' + langVallydette.closeInformations + '</span></button>';
-    alertMessage += '</div>';
+    let alertMessage = "";
+    alertMessage += '<div class="alert alert-success alert-dismissible fade show" id="StatementFormInfo" role="alert">';
+    alertMessage += '<span class="alert-icon"><span class="visually-hidden">Info</span></span>';
+    alertMessage += '<p>' + langVallydette.successFeedback + '</p>';
+    alertMessage += '<button type="button" class="btn-close" data-bs-dismiss="alert">';
+    alertMessage += '<span class="visually-hidden">' + langVallydette.closeInformations + '</span>';
+    alertMessage += '</button></div>';
 
-    document.getElementById('alertContainer').innerHTML += (alertMessage);
+    document.getElementById('alertContainer').innerHTML += alertMessage;
 
     if (submitterBtn === "statementSaveAndDownloadBtn") {
-        // dataStatement export update
         let dataStr = JSON.stringify(dataVallydette.statement);
         let dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
         document.getElementById("exportStatementData").setAttribute('href', dataUri);
         document.getElementById("exportStatementData").click();
     }
 
-    // dataVallydette export update
     jsonUpdate();
-
 }
 
 /**
@@ -1134,10 +1490,10 @@ function initStatementExports(statementResult) {
 
 /**
  * XML statement export
+ * Utilise la variable de module `langStatement` pour les traductions.
  * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
- * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
  */
-exportStatementXML = function (statementResult) {
+const exportStatementXML = function (statementResult) {
     adaptPlan();
 
     var md = window.markdownit();
@@ -1329,7 +1685,7 @@ exportStatementXML = function (statementResult) {
     xmlStatement += '-->\n';
     xmlStatement += '<pages_results conformity="' + dataWCAG.globalPagesResult + '">\n';
     statementResult.forEach(item => xmlStatement += '	<page name="' + utils.escape_html(item.name) + '">\n		<ok type="a">' + item.conformeA + '</ok><!-- valid -->\n		<ok type="aa">' + item.conformeAA + '</ok><!-- valid -->\n		<nok type="a">' + item.nonconformeA + '</nok> <!-- not valid -->\n		<nok type="aa">' + item.nonconformeAA + '</nok> <!-- not valid -->\n		<na type="a">' + item.naA + '</na><!-- not applicable -->\n		<na type="aa">' + item.naAA + '</na><!-- not applicable -->\n		<conformity>' + item.result + '</conformity><!-- percentage, expressed as a number with no “%” sign -->\n</page>\n');
-    ;
+
     xmlStatement += '</pages_results>\n\n';
 
     xmlStatement += '<!--\n';
@@ -1354,9 +1710,6 @@ exportStatementXML = function (statementResult) {
 
                 for (let j in listNonConformity[i].comment) {
                     last = last + 1;
-
-                    //xmlStatement += listNonConformity[i].comment[j] + (listNonConformity[i].comment.length !== last ? ' <br>' : '');
-
                 }
             }
 
@@ -1410,10 +1763,10 @@ exportStatementXML = function (statementResult) {
 
 /**
  * HTML statement export
+ * Utilise la variable de module `langStatement` pour les traductions.
  * @param {object} statementResult - Contains all wcag results by pages (pagesResults).
- * @param {object} langStatement - traductions keys (needed if statement lang is diffrent from global lang)
  */
-exportStatementHTML = function (statementResult) {
+const exportStatementHTML = function (statementResult) {
 
     const arrayTypeTest = ["auto", "manual", "functional", "user"];
     const listNonConformity = dataWCAG.items.filter(dataWcagResult => dataWcagResult.resultat === false);
@@ -1435,7 +1788,7 @@ exportStatementHTML = function (statementResult) {
         conformity = langStatement.statementTemplate.partialyCompliant;
     }
 
-    htmlStatement = "";
+    let htmlStatement = "";
     htmlStatement = `<!DOCTYPE html>
 <html lang="${dataVallydette.statement.lang}">
 
@@ -1784,8 +2137,15 @@ exportStatementHTML = function (statementResult) {
 /**
  * update plan with variable
  */
-adaptPlan = function () {
-    dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace, dataVallydette.statement.name);
-    dataVallydette.statement.plan = dataVallydette.statement.plan.replace(langVallydette.accessibilityPlanTextReplace2, dataVallydette.statement.app);
+const adaptPlan = function () {
+    // Utilise langStatement pour les clés de remplacement
+    dataVallydette.statement.plan = dataVallydette.statement.plan.replace(
+        langStatement.accessibilityPlanTextReplace,
+        dataVallydette.statement.name
+    );
+    dataVallydette.statement.plan = dataVallydette.statement.plan.replace(
+        langStatement.accessibilityPlanTextReplace2,
+        dataVallydette.statement.app
+    );
 }
 

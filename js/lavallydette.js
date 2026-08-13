@@ -466,17 +466,17 @@ for (let i in dataVallydette.checklist.page) {
 					excel.set(setIndex,0,rowIssues,  '=HYPERLINK("' + urlanchor + '","issue-' + i + '-' + rowIssues+ '")', formatHyperlink);
 					//@ ajout url tests
 					
-					excel.set(setIndex,1,rowIssues, item.title);
+					excel.set(setIndex,1,rowIssues, utils.decodeHtmlEntities(item.title));
 					if (item.moreInfo) {
 						excel.set(setIndex,2,rowIssues, '=HYPERLINK("' + item.moreInfo + '","' + langVallydette.moreInfo + '")', formatHyperlink);
 					} else {
 						excel.set(setIndex,2,rowIssues, '');
 					}
 
-					excel.set(setIndex,3,rowIssues, issue.issueTitle);
-					excel.set(setIndex,4,rowIssues, issue.issueDetail);
-					excel.set(setIndex,5,rowIssues, issue.issueSolution);
-					excel.set(setIndex,6,rowIssues, issue.issueTechnicalSolution);
+					excel.set(setIndex,3,rowIssues, utils.decodeHtmlEntities(issue.issueTitle));
+					excel.set(setIndex,4,rowIssues, utils.decodeHtmlEntities(issue.issueDetail));
+					excel.set(setIndex,5,rowIssues, utils.decodeHtmlEntities(issue.issueSolution));
+					excel.set(setIndex,6,rowIssues, utils.decodeHtmlEntities(issue.issueTechnicalSolution));
 					excel.set(setIndex,7,rowIssues, priority);
 		
 				})
@@ -501,158 +501,193 @@ for (let i in dataVallydette.checklist.page) {
  * Some utilities funtions.
  */
 const utils = {
-  reqError: function (err) {
-	//let htmlMainContent = document.getElementById('mainContent');
-	
-    htmlMainContent.innerHTML = '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="visually-hidden" lang="en">Warning</span></span>' + langVallydette.errorJson + '</div>';
-  },
-  formatHeading: function (str) {
-    return str.toLowerCase()
-		.replace(/é|è|ê/g, "e")
-		.replace(/ /g, "-")
-		.replace(/'/g, "")
-		.replace(/\(|\)/g, "");
-  },
-  slugify: function (str) {
-    return str.toString().toLowerCase()
-        .replace(/(\w)\'/g, '$1')       
-        .replace(/[^a-z0-9_\-]+/g, '-')
-        .replace(/\-\-+/g, '-') 
-        .replace(/^-+/, '')
-        .replace(/-+$/, '');
-  },
-  escape_html: function (str) {
-    var map = {
-    '&': '&amp;',
-	'<': '&lt;',
-	'>': '&gt;',
-	'"': '&quot;',
-	"'": '&#039;'
-	};
+    reqError: function (err) {
+        //let htmlMainContent = document.getElementById('mainContent');
 
-	return str.toString().replace(/[&<>"']/g, function(m) { return map[m]; });
-  },
-  putTheFocus: function (e) {
-	e.setAttribute("tabindex", "-1");
-	e.focus();
-  },
-  resetActive: function (e) {
-	var btnActive = e.querySelector(".active");
-		if (btnActive != undefined) {
-			btnActive.classList.remove("active");
-			btnActive.removeAttribute("aria-current");
-		}
-  },
-  setActive: function (e) {
-	e.classList.add("active");
-	e.setAttribute("aria-current", "true");
-  },
-  setPageTitle: function (e) {
-	document.title = e + " — " + ((dataVallydette) ? dataVallydette.checklist.name + " — " : '') + langVallydette.va11ydette + " Orange";
-  },
-  listOrParagraph: function (e) {
-	let htmlMarker;
-	if (e.length > 1) {
-		htmlMarker = "<ol>";
-		e.forEach(function(content){
-			htmlMarker += "<li>"+content+"</li>";
-		})
-		htmlMarker += "</ol>";
-	} else {
-		htmlMarker = "<p>"+e+"</p>";
-	}
-	return htmlMarker;
-  },
-  removeElement: function (e) { 
-	if(e){
-		e.parentNode.removeChild(e); 
-	}
-       
-  },
- fileName: function (ext) { 
-	if(ext){
-		let defaultName = document.getElementById("checklistName");
-		defaultName = utils.slugify(defaultName.innerText);
+        htmlMainContent.innerHTML =
+            '<div id="alertMsg" class="alert alert-danger mt-2"> <span class="alert-icon"><span class="visually-hidden" lang="en">Warning</span></span>' +
+            langVallydette.errorJson +
+            "</div>";
+    },
+    formatHeading: function (str) {
+        return str
+            .toLowerCase()
+            .replace(/é|è|ê/g, "e")
+            .replace(/ /g, "-")
+            .replace(/'/g, "")
+            .replace(/\(|\)/g, "");
+    },
+    slugify: function (str) {
+        return str
+            .toString()
+            .toLowerCase()
+            .replace(/(\w)\'/g, "$1")
+            .replace(/[^a-z0-9_\-]+/g, "-")
+            .replace(/\-\-+/g, "-")
+            .replace(/^-+/, "")
+            .replace(/-+$/, "");
+    },
+    escape_html: function (str) {
+        var map = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#039;",
+        };
 
-		let todayDate = new Date();
-		let date = todayDate.getFullYear() + '-' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+        return str.toString().replace(/[&<>"']/g, function (m) {
+            return map[m];
+        });
+    },
+    putTheFocus: function (e) {
+        e.setAttribute("tabindex", "-1");
+        e.focus();
+    },
+    resetActive: function (e) {
+        var btnActive = e.querySelector(".active");
+        if (btnActive != undefined) {
+            btnActive.classList.remove("active");
+            btnActive.removeAttribute("aria-current");
+        }
+    },
+    setActive: function (e) {
+        e.classList.add("active");
+        e.setAttribute("aria-current", "true");
+    },
+    setPageTitle: function (e) {
+        document.title =
+            e +
+            " — " +
+            (dataVallydette ? dataVallydette.checklist.name + " — " : "") +
+            langVallydette.va11ydette +
+            " Orange";
+    },
+    listOrParagraph: function (e) {
+        let htmlMarker;
+        if (e.length > 1) {
+            htmlMarker = "<ol>";
+            e.forEach(function (content) {
+                htmlMarker += "<li>" + content + "</li>";
+            });
+            htmlMarker += "</ol>";
+        } else {
+            htmlMarker = "<p>" + e + "</p>";
+        }
+        return htmlMarker;
+    },
+    removeElement: function (e) {
+        if (e) {
+            e.parentNode.removeChild(e);
+        }
+    },
+    fileName: function (ext) {
+        if (ext) {
+            let defaultName = document.getElementById("checklistName");
+            defaultName = utils.slugify(defaultName.innerText);
 
-		let todayHour = new Date();
-		let time = todayHour.getHours() + "-" + todayHour.getMinutes() + "-" + todayHour.getSeconds();
+            let todayDate = new Date();
+            let date =
+                todayDate.getFullYear() +
+                "-" +
+                (todayDate.getMonth() + 1) +
+                "-" +
+                todayDate.getDate();
 
-		let exportFileDefaultName = defaultName + '-' + date + '-' + time + '.' + ext;
-		
-		return exportFileDefaultName;
-	}
-  },
- addElement: function (type,  id, innerText, icon, iconOnly, arrayClass, title) { 
-	var e = document.createElement(type);
-	
-	if (icon) {
-		e.innerHTML = icon;
-	}
-	
-	if (!iconOnly) {
-		e.innerHTML += innerText;
-	} else {
-		e.setAttribute('aria-label', innerText);
-	}
-	
-	e.setAttribute('id', id);
-	if (title) {
-		e.setAttribute('title', title);
-	}
+            let todayHour = new Date();
+            let time =
+                todayHour.getHours() +
+                "-" +
+                todayHour.getMinutes() +
+                "-" +
+                todayHour.getSeconds();
 
+            let exportFileDefaultName =
+                defaultName + "-" + date + "-" + time + "." + ext;
 
-	arrayClass.forEach(c => e.classList.add(c));
-	
-	return e;
-	
-  },
-  columnDisplay: function (number) {
-	
-	let display;
-	let remove;
-	let add;
-	
-	if (number === 2) {
-		  
-		display = 'none';
-		remove = 'col-md-8';
-		add = 'col-md-10';
-		
-	} else if (number === 3) {
-		  
-		display = 'block';
-		remove = 'col-md-10';
-		add = 'col-md-8';
-		
-	} else {
-		
-		return
-		
-	}
+            return exportFileDefaultName;
+        }
+    },
+    addElement: function (
+        type,
+        id,
+        innerText,
+        icon,
+        iconOnly,
+        arrayClass,
+        title,
+    ) {
+        var e = document.createElement(type);
 
-	  
-	document.getElementById('filter').style.display = display;
-	document.getElementById('currentPageContent').classList.remove(remove);
-	document.getElementById('currentPageContent').classList.add(add);
-  },
-  htmlEntities: function (str) {
-    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-  },
+        if (icon) {
+            e.innerHTML = icon;
+        }
 
-  escapeExcel: function (url){
-		return url.replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-			return '&#'+i.charCodeAt(0)+';';
-		});
-	},
-  getUrlAnchor: function(item){
-		let urlanchor = window.location.origin + window.location.pathname + window.location.search + '#heading' + item.ID;
-		return utils.escapeExcel(urlanchor);
-  }
-	
-}  
+        if (!iconOnly) {
+            e.innerHTML += innerText;
+        } else {
+            e.setAttribute("aria-label", innerText);
+        }
+
+        e.setAttribute("id", id);
+        if (title) {
+            e.setAttribute("title", title);
+        }
+
+        arrayClass.forEach((c) => e.classList.add(c));
+
+        return e;
+    },
+    columnDisplay: function (number) {
+        let display;
+        let remove;
+        let add;
+
+        if (number === 2) {
+            display = "none";
+            remove = "col-md-8";
+            add = "col-md-10";
+        } else if (number === 3) {
+            display = "block";
+            remove = "col-md-10";
+            add = "col-md-8";
+        } else {
+            return;
+        }
+
+        document.getElementById("filter").style.display = display;
+        document.getElementById("currentPageContent").classList.remove(remove);
+        document.getElementById("currentPageContent").classList.add(add);
+    },
+    htmlEntities: function (str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    },
+
+    escapeExcel: function (url) {
+        return url.replace(/[\u00A0-\u9999<>\&]/gim, function (i) {
+            return "&#" + i.charCodeAt(0) + ";";
+        });
+    },
+    decodeHtmlEntities: function (str) {
+        if (!str || typeof str !== "string") return str;
+        var textarea = document.createElement("textarea");
+        textarea.innerHTML = str;
+        return textarea.value;
+    },
+    getUrlAnchor: function (item) {
+        let urlanchor =
+            window.location.origin +
+            window.location.pathname +
+            window.location.search +
+            "#heading" +
+            item.ID;
+        return utils.escapeExcel(urlanchor);
+    },
+};  
 
 /**
  * Anchor link manager
@@ -676,3 +711,4 @@ if (!window._anchorListenerInitialized) {
 
 //default builder
 initVallydetteApp('', 'fr');
+

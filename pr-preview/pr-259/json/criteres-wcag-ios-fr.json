@@ -747,8 +747,8 @@
 	{
 		"themes": "Navigation générale",
 		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs écrans, celui-ci est-il présenté de manière cohérente&nbsp;?",
-		"ID": "testID-073",
-		"IDorigin": "testID-073",
+		"ID": "testID-079",
+		"IDorigin": "testID-079",
 		"wcag": [
 			"3.2.6 A"
 		],

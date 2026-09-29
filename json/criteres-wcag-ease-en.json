@@ -155,11 +155,11 @@
 		],
 		"verifier": "<p>Verify that one of the following techniques is used:<ul><li>The form element label mentions the required nature directly in the accessible name or description</li><li>Presence of the <code>required</code> attribute or <code>aria-required='true'.</code></li></ul></p>",
 		"exception": "The criterion is not applicable if the required nature of a field is obvious and for which programmatic identification therefore becomes optional (e.g., search field, newsletter signup, username/password).",
-		"group": "Form", 
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire", 
-		"priority": "P1", 
-		"Testresult": "nt", 
-		"goodPractice": false 
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
 	},
 	{
 		"themes": "Form",
@@ -170,7 +170,7 @@
 			"1.3.5 AA"
 		],
 		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected: (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'>exhaustive list of allowed values</a>)</li></ul>",
-			"group": "Form",
+		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
 		"resultatTest": "nt",

@@ -156,7 +156,7 @@
 		"verifier": "<p>Verify that one of the following techniques is used:<ul><li>The form element label mentions the required nature directly in the accessible name or description</li><li>Presence of the <code>required</code> attribute or <code>aria-required='true'.</code></li></ul></p>",
 		"exception": "The criterion is not applicable if the required nature of a field is obvious and for which programmatic identification therefore becomes optional (e.g., search field, newsletter signup, username/password).",
 		"group": "Form",
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire", 
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
 		"priority": "P1",
 		"resultatTest": "nt",
 		"goodPractice": false

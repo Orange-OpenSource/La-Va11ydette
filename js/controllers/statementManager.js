@@ -2139,13 +2139,12 @@ const exportStatementHTML = function (statementResult) {
  */
 const adaptPlan = function () {
     // Utilise langStatement pour les clés de remplacement
-    dataVallydette.statement.plan = dataVallydette.statement.plan.replace(
+    dataVallydette.statement.plan = dataVallydette.statement.plan.replaceAll(
         langStatement.accessibilityPlanTextReplace,
         dataVallydette.statement.name
     );
-    dataVallydette.statement.plan = dataVallydette.statement.plan.replace(
+    dataVallydette.statement.plan = dataVallydette.statement.plan.replaceAll(
         langStatement.accessibilityPlanTextReplace2,
         dataVallydette.statement.app
     );
 }
-

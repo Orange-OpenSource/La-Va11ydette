@@ -14,6 +14,14 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.7] – 2026-21-10
+
+### Fixed
+
+- [Are the page features usable with a keyboard?](https://la-va11ydette.orange.com/?list=wcag-web&lang=en#headingtestID-037): added requirements for keystroke timing and key hold duration to ensure accessibility compliance.
+
+---
+
 ## [3.0.6] – 2026-01-06
 
 ### Fixed

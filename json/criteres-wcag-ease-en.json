@@ -88,7 +88,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Verify that:</p><ul><li>the <code>label</code> has a <code>for</code> attribute referencing the <code>id</code> of the form element to be associated,</li><li>the <code>label</code> is implicit,</li><li>the visible label is referenced by an <code>aria-labelledby</code> attribute carried by the form element,</li><li>the accessible name is given by a title attribute.</li></ul><p>The data format and/or the mandatory field can be linked via an <code>aria-describedby</code> attribute.</p><p>For error messages, verify that:</p><ul><li>The form element references, via <code>aria-labelledby</code> or <code>aria-describedby</code>, the <code>id</code> of the message(s) error.</li><li>If the error message is added to the <code>label</code>, it must also be linked to the form element.</li></ul>",
+		"verifier": "<p>Verify that:</p><ul><li>the <code>label</code> has a <code>for</code> attribute referencing the <code>id</code> of the form element to be associated,</li><li>the <code>label</code> is implicit,</li><li>the visible label is referenced by an <code>aria-labelledby</code> attribute carried by the form element,</li><li>the accessible name is given by a title attribute.</li></ul><p>The data format and/or the mandatory field can be linked via an <code>aria-describedby</code> attribute.</p><p>For error messages, verify that:</p><ul><li>The form element references, via <code>aria-labelledby</code> or <code>aria-describedby</code>, the <code>id</code> of the error message(s).</li><li>If the error message is added to the <code>label</code>, it must also be linked to the form element.</li></ul>",
 		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#detect-identify-errors-and-suggest-corrections",
 		"priority": "P3",
@@ -155,11 +155,11 @@
 		],
 		"verifier": "<p>Verify that one of the following techniques is used:<ul><li>The form element label mentions the required nature directly in the accessible name or description</li><li>Presence of the <code>required</code> attribute or <code>aria-required='true'.</code></li></ul></p>",
 		"exception": "The criterion is not applicable if the required nature of a field is obvious and for which programmatic identification therefore becomes optional (e.g., search field, newsletter signup, username/password).",
-		"group": "Form", 
-		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire", 
-		"priority": "P1", 
-		"Testresult": "nt", 
-		"goodPractice": false 
+		"group": "Form",
+		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/formulaires/#rendre-accessibles-les-champs-de-formulaire",
+		"priority": "P1",
+		"resultatTest": "nt",
+		"goodPractice": false
 	},
 	{
 		"themes": "Form",
@@ -170,7 +170,7 @@
 			"1.3.5 AA"
 		],
 		"verifier": "<ul><li>For the input fields intended for information about the user (name, address…), check that the <code>autocomplete</code> attribute is present</li><li>the value indicated for the <code>autocomplete</code> attribute is appropriate with respect to the type of information expected: (<a href='https://www.w3.org/TR/WCAG22/#input-purposes' target='_blank' aria-label='exhaustive list of allowed values (new window)'>exhaustive list of allowed values</a>)</li></ul>",
-			"group": "Form",
+		"group": "Form",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/forms/#make-form-fields-accessible",
 		"priority": "P3",
 		"resultatTest": "nt",
@@ -790,7 +790,7 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li>Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (examples: popin, modal, tooltip) is also displayed when focus is received </li></ul>", 
+		"verifier": "<ul><li>Check that the functionalities available by using the mouse can also be accessed using only the keyboard </li><li> Check that the content displayed on hover (examples: popin, modal, tooltip) is also displayed when focus is received</li><li>verify that no functionality requires specific keystroke timing or hold duration</li></ul>",
 		"exception": "The criterion is not applicable for following cases:<ul><li>user-agent generated tooltips (example: <code>title</code> attribute)</li><li>the underlying function requires the user to execute a path and not just the two endpoints</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/keyboard-navigation/#allow-the-use-of-the-main-features-of-the-application-with-the-keyboard",
 		"priority": "P0",

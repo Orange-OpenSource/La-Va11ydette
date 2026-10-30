@@ -495,7 +495,7 @@
 		"wcag": [
 			"1.3.1 A"
 		],
-		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non-conformités&nbsp;:</strong></p><ul><li>présence d’un marqueur visuel, pour indiquer la page active dans un menu de navigation (indication donnée par la position)</li><li>mise en avant-plan pour indiquer un onglet actif (indication donnée par la forme)</li><li>modification de la taille de police dans un nuage de tags (indication donnée par la taille).</li></ul>",
+		"verifier": "<p>Vérifier que l'information transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non-conformités&nbsp;:</strong></p><ul><li>présence uniquement d’un marqueur visuel, pour indiquer la page active dans un menu de navigation (indication donnée par la position)</li><li>mise en avant-plan uniquement pour indiquer un onglet actif (indication donnée par la forme)</li><li>modification uniquement de la taille de police dans un nuage de tags (indication donnée par la taille).</li></ul>",
 		"complement": "<p><strong>Complément d'information : </strong>Si l'information transmise par une caractéristique sensorielle correspond à une instruction, alors vérifier le <a href='#testID-077')>test du critère WCAG 1.3.3</a></p>",
 		"exception":"Le critère est non-applicable si aucune information n'est portée par la forme, taille, position, orientation ou son.",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
@@ -505,13 +505,13 @@
 	},
 		{
 		"themes": "Couleurs et contrastes",
-		"title": "L'information est-elle également transmise à l'utilisateur par un autre moyen qu'une caractéristique sensorielle&nbsp;?",
+		"title": "Les instructions sont-elles également transmises à l'utilisateur par un autre moyen qu'une caractéristique sensorielle&nbsp;?",
 		"ID": "testID-077",
 		"IDorigin": "testID-077",
 		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Vérifier qu'une instruction (identification d'un contenu ou d'un élément interactif présent dans la page) transmise par une caractéristique sensorielle (forme, taille, position, orientation, son) peut également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non-conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
+		"verifier": "<p>Vérifier que les instructions (identifications d'un contenu ou d'un élément interactif présent dans la page) transmises par une caractéristique sensorielle (forme, taille, position, orientation, son) peuvent également être obtenue par un texte, une alternative ou un message explicite.</p><p><strong>Exemples de non-conformités&nbsp;:</strong></p><ul> <li>identification d'une information uniquement par sa position&nbsp;: \" pour aller à la page suivante appuyez sur le bouton à droite \", ou \" choisissez un des liens affichés au-dessus de l'image pour en savoir plus \"</li> <li>identification d'une information uniquement par sa forme visuelle ou un symbole graphique&nbsp;: \" Appuyez sur le bouton rond pour quitter \"</li></ul>",
 		"exception":"Le critère est non-applicable si aucune instruction n'est portée par la forme, taille, position, orientation ou son.",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/couleurs-et-contrastes/#ne-pas-utiliser-la-couleur-ou-linformation-sensorielle-comme-seule-source-dinformation",
 		"priority": "P2",

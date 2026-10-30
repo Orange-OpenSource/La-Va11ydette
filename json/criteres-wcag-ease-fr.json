@@ -506,8 +506,8 @@
 		{
 		"themes": "Couleurs et contrastes",
 		"title": "Les instructions sont-elles également transmises à l'utilisateur par un autre moyen qu'une caractéristique sensorielle&nbsp;?",
-		"ID": "testID-077",
-		"IDorigin": "testID-077",
+		"ID": "testID-093",
+		"IDorigin": "testID-093",
 		"wcag": [
 			"1.3.3 A"
 		],

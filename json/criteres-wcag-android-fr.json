@@ -17,7 +17,7 @@
 	},
     {
 		"themes": "Formulaire",
-		"title": "Chaque étiquette d'élément de formulaire est-elle pertinente&nbsp;?",
+		"title": "Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;?",
 		"ID": "testID-071",
 		"IDorigin": "testID-071",
 		"wcag": [
@@ -135,7 +135,7 @@
 		"wcag": [
 			"3.3.2 A"
 		],
-		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li><li>Vérifier que l'obligation du champ est bien vocalisée avec la navigation vocale.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
+		"verifier": "<ul><li>Un texte ou un élément graphique (autre que la couleur) doit être présent pour indiquer qu'un élément de formulaire est obligatoire.</li><li>Un texte, situé en début de formulaire, doit expliciter l'élément visuel de champ obligatoire.</li></ul><p>Le critère est également applicable si la majorité des champs d'un formulaire est obligatoire, à l'exception de quelques champs optionnels. Il est alors possible d'identifier visuellement les champs optionnels.</p>",
 		"complement":"<p><strong>Attention&nbsp;:</strong> La pertinence de la mention obligatoire (<abbr>WCAG</abbr> 2.4.6 Headings and Labels) est à évaluer au niveau de la question&nbsp;: <a href=#headingtestID-071>Chaque étiquette et légende de formulaire est-elle pertinente&nbsp;</a></p>",
 		"exception":"<p>Le critère est non-applicable si le caractère obligatoire d'un champ est évident et pour lequel l'élément visuel devient donc facultatif (ex: champ de recherche, inscription à une newsletter, identifiant / mot de passe).</p>",
 		"group": "Formulaire",
@@ -196,8 +196,8 @@
 	{
 		"themes": "Formulaire",
 		"title": "L'utilisateur peut-il s'authentifier sans utiliser un test s'appuyant sur des fonctions cognitives&nbsp;?",
-		"ID": "testID-063",
-		"IDorigin": "testID-063",
+		"ID": "testID-064",
+		"IDorigin": "testID-064",
 		"wcag": [
 			"3.3.8 AA"
 		],
@@ -754,8 +754,8 @@
 	{
 		"themes": "Navigation générale",
 		"title": "Si un mécanisme d'aide est proposé et répété sur plusieurs écrans, celui-ci est-il présenté de manière cohérente&nbsp;?",
-		"ID": "testID-079",
-		"IDorigin": "testID-079",
+		"ID": "testID-063",
+		"IDorigin": "testID-063",
 		"wcag": [
 			"3.2.6 A"
 		],

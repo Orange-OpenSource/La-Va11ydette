@@ -453,7 +453,7 @@
 		"wcag": {
 			"0": "1.3.1 A"
 		},
-		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste.</p>",
+		"verifier": "<p>Les éléments présentés sous forme de liste sont restitués en tant que liste ou de manière à comprendre une structure de liste.</p><p>Les éléments regroupés visuellement (par exemple des éléments regroupés dans un conteneur ou une card) sont restitués de manière à comprendre ce regroupement (par exemple, présence d'un titre ou vocalisation groupée).</p>",
 		"complement": "<h5>Complément d'information</h5><p>Une liste peut-être utilisée pour présenter des éléments non-ordonnés (par exemple une liste d'ingrédients pour une recette de cuisine) ou ordonnés (par exemple une succession d'étapes précises à suivre)</p>",
 		"resultatTest": "nt",
 		"priority": "P2",

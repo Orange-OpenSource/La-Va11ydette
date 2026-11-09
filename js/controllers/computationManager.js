@@ -250,7 +250,6 @@ function runComputationWcag(obj) {
 
 				pagesResults[i].items[k].test = [];
 				pagesResults[i].items[k].name = dataWCAG.items[k].name;
-				pagesResults[i].items[k].deprecated = dataWCAG.items[k].deprecated === true;
 
 				/**
 				* Pass through each test of a wcag.
@@ -360,12 +359,16 @@ function pagesResultsComputationWcag(pagesResultsArray) {
 
 
 		/**
-		 *  Deletes the AAA wcag rules and deprecated rules.
-		 *  Computation is made only on A and AA level rules that are not deprecated.
+		 * 	Deletes the AAA wcag rules. Computation is made only on A and AA level rules.
 		*/
-		pagesResultsArray[i].items = pagesResultsArray[i].items.filter(function (item) {
-			return item.level !== 'AAA' && item.deprecated !== true;
-		});
+		var indexItem = 0;
+		for (let j in pagesResultsArray[i].items) {
+			if (pagesResultsArray[i].items[indexItem].level === 'AAA') {
+				pagesResultsArray[i].items.splice(indexItem,1);
+			} else {
+				indexItem = indexItem+1;
+			}
+		}
 
 		/**
 		 * 	Gets the number of true, false, non-applicable and non-tested by wcag level and by pages.

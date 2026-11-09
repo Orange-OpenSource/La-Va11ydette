@@ -555,7 +555,7 @@
 		"wcag": [
 			"2.1.1 A"
 		],
-		"verifier": "<ul><li>Toutes les fonctionnalités disponibles en tactile le sont aussi avec Switch Access et avec un clavier externe(directement ou au travers une alternative).</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (<span lang=\"en\">ScrollView)</span>.</li></ul>",
+		"verifier": "<ul><li>Toutes les fonctionnalités disponibles en tactile le sont aussi avec Switch Access et avec un clavier externe(directement ou au travers une alternative).</li><li>Il est possible de faire défiler le contenu dans une vue de défilement (<span lang=\"en\">ScrollView)</span>.</li><li>vérifier qu'aucune fonctionnalité n'impose un rythme de frappe ou une durée d'appui spécifique sur une touche</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/mobile/android/developpement/navigation-focus/#acceder-aux-elements-interactifs",
 		"resultatTest": "nt",
 		"priority": "P0",

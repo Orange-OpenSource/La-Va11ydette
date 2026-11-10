@@ -14,6 +14,18 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.8] – 2026-11-09
+
+### Added
+
+- added testID-093: instructions conveyed by sensory characteristics (linked to WCAG SC1.3.3).
+
+### Changed
+
+- changed testID-051: informations conveyed by sensory characteristics (linked WCAG SC1.3.1).
+
+---
+
 ## [3.0.7] – 2026-21-10
 
 ### Fixed

@@ -493,10 +493,25 @@
 		"ID": "testID-051",
 		"IDorigin": "testID-051",
 		"wcag": [
+			"1.3.1 A"
+		],
+		"verifier": "<p>Check that the information, the structure (the organisation of the page or its content) or the relationship (a meaningful association between parts of the content) conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained through text, an alternative, or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>the presence of a visual cue alone to indicate the active page in a navigation menu (indicated by position)</li><li>highlighting solely to indicate an active tab (indicated by shape)</li><li>only a change in font size within a tag cloud (indicated by size).</li></ul>",
+		"exception": "The criterion is not applicable if no information is conveyed by the use of sound, orientation, size, shape or position.",
+		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
+		"priority": "P2",
+		"resultatTest": "nt",
+		"goodPractice": false
+	},
+		{
+		"themes": "Colors and contrasts",
+		"title": "Are instructions also conveyed to the user by other means than a sensory characteristic?",
+		"ID": "testID-093",
+		"IDorigin": "testID-093",
+		"wcag": [
 			"1.3.3 A"
 		],
-		"verifier": "<p>Check that the information conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained with a text, an alternative or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next page, press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
-		"exception": "The criterion is not applicable if no information is conveyed by the use of sound, orientation, size, shape or position.",
+		"verifier": "<p>Check that instructions (identifiers for content or interactive elements on the page) conveyed by a sensory characteristic (shape, size, position, orientation, sound) can also be obtained through text, an alternative or an explicit message.</p><p><strong>Examples of non-conformities: </strong></p><ul><li>identification of an information only with its position: \"to go to the next page, press the button on the right\", or \"choose one of the links displayed above the image to know more\"</li><li>identification of information only from its visual shape or a graphical symbol: \"Press the round button to leave\"</li></ul>",
+		"exception": "The criterion is not applicable if no instruction is conveyed by the use of sound, orientation, size, shape or position.",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/colors-and-contrasts/#do-not-use-colour-or-sensory-characteristics-as-the-unique-source-of-information",
 		"priority": "P2",
 		"resultatTest": "nt",

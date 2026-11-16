@@ -261,7 +261,7 @@
     ],
     "testID-024": [
         {
-            "title": "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
+            "title": "L'état d'un composant n'est pas perçu par un lecteur d'écran",
             "detail": "Les états cochés/décochés, pliés/dépliés… ne sont pas perçus par un lecteur d'écran",
             "solution": "utiliser autant que possible les composants natifs (Button, Disclosure, Toggle, Tabview, etc.)",
             "technicalSolution": ""

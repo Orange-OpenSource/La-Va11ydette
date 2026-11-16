@@ -860,7 +860,7 @@
 	],
 	"testID-066":[
 		{
-			"title" : "L'état d'un composant n'est pas perçue depuis un lecteur d'écran",
+			"title" : "L'état d'un composant n'est pas perçu par un lecteur d'écran",
 			"detail" : "Les états cochés/décochés, pliés/dépliés… ne sont pas perçus par un lecteur d'écran",
 			"solution" : "- utiliser en priorité des composants natifs (exemple : utiliser des input checkbox pour des cases à cocher, l'état sera géré nativement\n - sinon veiller à appliquer les patterns ARIA, pour assurer une sémantique correcte et une gestion des états des composants (cf. attributs aria-expanded, aria-selected…)",
 			"technicalSolution" : ""

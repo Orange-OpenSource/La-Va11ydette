@@ -609,13 +609,13 @@
 	},
 	{
 		"themes": "Navigation générale",
-		"title": "Un mécanisme pour naviguer au sein de la page est-il présent&nbsp;?",
+		"title": "Un mécanisme pour contourner les contenus répétés est-il présent&nbsp;?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
 		"wcag": [
 			"2.4.1 A"
 		],
-		"verifier": "<p>Si un des mécanismes ci-dessous est jugé nécessaire à la navigation, mais absent de la page, le test est alors non-conforme&nbsp;:</p><ul><li>des titres de niveaux</li><li>des liens d'évitement, présents en début de page et permettant d'accéder aux principales zones de contenu</li><li>des <span lang=\"en\">landmarks</span>, utilisés pour structurer le document (<code>header</code>, <code>main</code>…)</li><li>des liens de sauts de bloc présents au sein du contenu</li></ul>",
+		"verifier": "<p>Si des éléments sont répétés sur la page (par exemple une longue de liste de filtres) ou sur un ensemble de pages (par exemple un menu de navigation), un mécanisme pour les contourner doit être disponible, il s'agit en général :</p><ul><li>d'un ou plusieurs liens d'évitement, en tout début de page pour contourner un menu de navigation ou un contenu répété en haut de page.</li><li>de liens de sauts de bloc présents au sein du contenu.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/fr/web/developper/navigation-generale/#fournir-des-liens-devitement",
 		"priority": "P3",
 		"resultatTest": "nt",

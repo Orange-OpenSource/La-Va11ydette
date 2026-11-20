@@ -608,13 +608,13 @@
 	},
 	{
 		"themes": "Common navigation",
-		"title": "Is there a mechanism to navigate within the page?",
+		"title": "Is there a mechanism to bypass repeated content?",
 		"ID": "testID-029",
 		"IDorigin": "testID-029",
 		"wcag": [
 			"2.4.1 A"
 		],
-		"verifier": "<p>If one of the mechanisms below is necessary for navigation, but absent from the page, then the test is non-compliant:</p><ul><li> heading tags (<code>hn</code>)</li><li>skip links present at the top of the page, which allow the user to go directly to the main content sections </li><li>landmark elements, used to organize the document (<code>header</code>, <code>main</code>…)</li><li> bypass blocks links present within the content</li></ul>",
+		"verifier": "<p>If elements are repeated on the page (for example, a long list of filters) or on a set of pages (for example, a navigation menu), a mechanism to bypass them must be available, usually:</p><ul><li>one or more skip links, at the very beginning of the page to bypass a navigation menu or repeated content at the top of the page.</li><li>links for skipping blocks present within the content.</li></ul>",
 		"moreInfo": "https://a11y-guidelines.orange.com/en/web/develop/common-navigation/#provide-skip-links",
 		"priority": "P3",
 		"resultatTest": "nt",

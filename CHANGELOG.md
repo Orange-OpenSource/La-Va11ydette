@@ -14,9 +14,20 @@ All notable changes to this project will be documented in this file. This projec
 
 ---
 
+## [3.0.10] - 2026-11-23
+
+### Changed
+
+- testID029: rephrase test title and description to be conform to WCAG 2.2 SC2.4.1
+
+
 ## [3.0.9] - 2026-11-23
 
-### Added
+### Changed
+
+- testID051 (web) and testID-016 (mobile): add precision on expected behavior
+
+### Changed
 
 - testID051 (web) and testID-016 (mobile): add precision on expected behavior
 

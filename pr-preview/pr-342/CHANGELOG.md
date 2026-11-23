@@ -27,10 +27,6 @@ All notable changes to this project will be documented in this file. This projec
 
 - testID051 (web) and testID-016 (mobile): add precision on expected behavior
 
-### Changed
-
-- testID051 (web) and testID-016 (mobile): add precision on expected behavior
-
 ## [3.0.8] – 2026-11-09
 
 ### Added
